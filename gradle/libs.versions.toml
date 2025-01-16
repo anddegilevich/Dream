@@ -1,22 +1,123 @@
 [versions]
+
+# Project
+project-plugin = "1.0.0"
+
+# SDK versions
+android-compile-sdk = "35"
+android-min-sdk = "24"
+android-target-sdk = "35"
+
+# Android gradle plugin
 agp = "8.5.2"
-android-compileSdk = "34"
-android-minSdk = "24"
-android-targetSdk = "34"
-androidx-activityCompose = "1.9.3"
-androidx-lifecycle = "2.8.4"
+
+# JVM version
+java = "17"
+
+# Kotlin
+kotlin-general = "2.1.0"
+
+# Compose
 compose-multiplatform = "1.7.0"
-kotlin = "2.1.0"
+
+# Androidx
+androidx-activity-compose = "1.9.3"
+androidx-lifecycle = "2.8.4"
+
+# Kotlinx
+kotlinx-coroutines = "1.7.3" # https://github.com/Kotlin/kotlinx.coroutines/releases
+kotlinx-serialization = "1.6.3" # https://github.com/Kotlin/kotlinx.serialization/releases
+kotlinx-immutable-collections = "0.3.8" # https://github.com/Kotlin/kotlinx.collections.immutable/releases
+
+# Detekt
+detekt = "1.23.3" # https://github.com/detekt/detekt/releases
+detekt-compose = "0.0.26" # https://github.com/twitter/compose-rules/releases
+
+# Koin
+koin-bom = "3.5.1" # https://github.com/InsertKoinIO/koin/releases
+
+# Ktor
+ktor = "2.3.6" # https://github.com/ktorio/ktor/releases
+
+# MVI Kotlin
+mvikotlin = "4.0.0" # https://github.com/arkivanov/MVIKotlin/releases
 
 [libraries]
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+
+# Kotlin
+kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-general" }
+
+# Android
+android-gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+
+# Androidx
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
+# Kotlinx
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-immutable-collections" }
+
+# Detekt
+detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+detekt-compose = { module = "com.twitter.compose.rules:detekt", version.ref = "detekt-compose" }
+
+# Koin
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+koin-core = { module = "io.insert-koin:koin-core" }
+koin-android = { module = "io.insert-koin:koin-android" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
+koin-androidx-workmanager = { module = "io.insert-koin:koin-androidx-workmanager" }
+koin-test = { module = "io.insert-koin:koin-test" }
+
+# Ktor
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+# MVI Kotlin
+mvikotlin = { module = "com.arkivanov.mvikotlin:mvikotlin", version.ref = "mvikotlin" }
+mvikotlin-main = { module = "com.arkivanov.mvikotlin:mvikotlin-main", version.ref = "mvikotlin" }
+mvikotlin-logging = { module = "com.arkivanov.mvikotlin:mvikotlin-logging", version.ref = "mvikotlin" }
+mvikotlin-timetravel = { module = "com.arkivanov.mvikotlin:mvikotlin-timetravel", version.ref = "mvikotlin" }
+mvikotlin-extensions-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines", version.ref = "mvikotlin" }
+
+# Compose
+compose-compiler-gradle = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin-general" }
+compose-multiplatform-gradle = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-multiplatform" }
+compose-material = { module = "androidx.compose.material:material", version.ref = "compose-multiplatform" }
+
+[bundles]
+mvikotlin = ["mvikotlin", "mvikotlin-main", "mvikotlin-logging", "mvikotlin-timetravel", "mvikotlin-extensions-coroutines"]
+
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "agp" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
-composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
-composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+# Android
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+android-test = { id = "com.android.test", version.ref = "agp" }
+
+# Kotlin
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin-general" }
+kotlin-android= { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-general" }
+
+# Kotlinx
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-general" }
+
+# Compose
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin-general" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+
+# Project
+project-multiplatform = { id = "project.multiplatform.plugin", version.ref = "project-plugin" }
+project-compose = { id = "project.compose.plugin", version.ref = "project-plugin" }
+project-serialization = { id = "project.serialization.plugin", version.ref = "project-plugin" }
+project-koin = { id = "project.koin.plugin", version.ref = "project-plugin" }
+project-ktor = { id = "project.ktor.plugin", version.ref = "project-plugin" }

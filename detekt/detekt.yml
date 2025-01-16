@@ -1,0 +1,168 @@
+complexity:
+  LongParameterList:
+    active: false
+  TooManyFunctions:
+    excludes: &excludePatterns
+      - '**/test/**'
+      - '**/androidTest/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/jsTest/**'
+      - '**/iosTest/**'
+      - '**/generated/**'
+    thresholdInClasses: 20
+  LargeClass:
+    excludes: *excludePatterns
+  LongMethod:
+    ignoreAnnotated:
+      - 'Composable'
+
+output-reports:
+  active: true
+
+exceptions:
+  TooGenericExceptionCaught:
+    active: true
+    excludes:
+      - '**/iosMain/**'
+    exceptionNames:
+      - 'Error'
+      - 'RuntimeException'
+      - 'Throwable'
+    allowedExceptionNameRegex: '_|(ignore|expected).*'
+  SwallowedException:
+    excludes: *excludePatterns
+
+naming:
+  FunctionNaming:
+    functionPattern: '([A-Za-z][a-zA-Z0-9]*)|(`.*)'
+  ClassNaming:
+    excludes: *excludePatterns
+  FunctionParameterNaming:
+    excludes: *excludePatterns
+  ConstructorParameterNaming:
+    excludes: *excludePatterns
+
+empty-blocks:
+  EmptyClassBlock:
+    excludes: *excludePatterns
+  EmptyFunctionBlock:
+    excludes: *excludePatterns
+  EmptyFinallyBlock:
+    active: false
+
+formatting:
+  CommentSpacing:
+    active: false
+  NoLineBreakBeforeAssignment:
+    excludes: *excludePatterns
+  NoUnusedImports:
+    excludes: *excludePatterns
+  ParameterListWrapping:
+    excludes: *excludePatterns
+  SpacingAroundColon:
+    excludes: *excludePatterns
+  SpacingAroundCurly:
+    excludes: *excludePatterns
+  NoUnitReturn:
+    excludes: *excludePatterns
+  NoConsecutiveBlankLines:
+    excludes: *excludePatterns
+  NoTrailingSpaces:
+    excludes: *excludePatterns
+  MaximumLineLength:
+    excludes: *excludePatterns
+  SpacingAroundKeyword:
+    excludes: *excludePatterns
+  NoBlankLineBeforeRbrace:
+    excludes: *excludePatterns
+  SpacingAroundParens:
+    excludes: *excludePatterns
+  NoEmptyClassBody:
+    excludes: *excludePatterns
+  Indentation:
+    excludes: *excludePatterns
+  ImportOrdering:
+    active: false
+  NoMultipleSpaces:
+    excludes: *excludePatterns
+  Wrapping:
+    excludes: *excludePatterns
+  ArgumentListWrapping:
+    active: false
+  NoEmptyFirstLineInMethodBlock:
+    active: false
+  Filename:
+    active: false
+  SpacingBetweenDeclarationsWithAnnotations:
+    active: false
+  FinalNewline:
+    active: false
+  ModifierListSpacing:
+    excludes: *excludePatterns
+
+style:
+  ForbiddenComment:
+    active: true
+    values:
+      - 'TODO'
+      - 'STOPSHIP'
+    allowedPatterns: 'FIXME'
+  MagicNumber:
+    excludes: *excludePatterns
+    ignorePropertyDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreAnnotated:
+      - 'Preview'
+  MaxLineLength:
+    excludes: *excludePatterns
+  MayBeConst:
+    excludes: *excludePatterns
+  UnusedPrivateMember:
+    ignoreAnnotated:
+      - 'Preview'
+    excludes: *excludePatterns
+  NewLineAtEndOfFile:
+    active: false
+  UnusedPrivateProperty:
+    excludes: *excludePatterns
+  UseArrayLiteralsInAnnotations:
+    excludes: *excludePatterns
+  ThrowsCount:
+    max: 10
+
+TwitterCompose:
+  CompositionLocalAllowlist:
+    active: true
+  CompositionLocalNaming:
+    active: true
+  ContentEmitterReturningValues:
+    active: true
+  ModifierComposable:
+    active: true
+  ModifierMissing:
+    active: true
+  ModifierReused:
+    active: true
+  ModifierWithoutDefault:
+    active: true
+  MultipleEmitters:
+    active: true
+  MutableParams:
+    active: true
+  ComposableNaming:
+    active: true
+  ComposableParamOrder:
+    active: true
+  PreviewNaming:
+    active: true
+  PreviewPublic:
+    active: true
+  RememberMissing:
+    active: true
+  UnstableCollections:
+    active: true
+  ViewModelForwarding:
+    active: true
+  ViewModelInjection:
+    active: true
