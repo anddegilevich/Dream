@@ -1,6 +1,4 @@
-import and.degilevich.dream.convention.common.libs
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
@@ -9,12 +7,7 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.fromTarget(libs().versions.java.get()))
-        }
-    }
-
+    androidTarget()
     listOf(
         iosX64(),
         iosArm64(),

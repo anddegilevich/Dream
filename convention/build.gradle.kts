@@ -41,6 +41,12 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.SerializationPlugin"
             }
         }
+        libs.plugins.project.coroutines.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.CoroutinesPlugin"
+            }
+        }
         libs.plugins.project.koin.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
