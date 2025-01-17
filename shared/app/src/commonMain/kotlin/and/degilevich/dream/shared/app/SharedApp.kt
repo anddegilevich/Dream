@@ -17,23 +17,24 @@ import androidx.compose.ui.Modifier
 import dream.shared.app.generated.resources.Res
 import dream.shared.app.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun SharedApp(
     modifier: Modifier = Modifier
 ) {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
+        var isVisibleContent by remember { mutableStateOf(false) }
 
         Column(
             modifier = modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+            Button(
+                onClick = { isVisibleContent = !isVisibleContent }
+            ) {
+                Text(text = "Click me!")
             }
-            AnimatedVisibility(showContent) {
+            AnimatedVisibility(isVisibleContent) {
                 val greeting = remember { Greeting().greet() }
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -45,10 +46,4 @@ fun SharedApp(
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun Preview() {
-    SharedApp()
 }

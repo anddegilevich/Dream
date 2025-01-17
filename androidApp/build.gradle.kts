@@ -36,17 +36,5 @@ android {
             isDebuggable = true
         }
     }
-
-    flavorDimensions.add("server")
-    productFlavors {
-        create("mock") {
-            dimension = "server"
-            applicationIdSuffix = ".mock"
-        }
-
-        create("prod") {
-            dimension = "server"
-        }
-    }
 }
 
