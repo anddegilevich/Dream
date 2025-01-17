@@ -20,6 +20,17 @@ androidConfig {
             add("META-INF/LGPL2.1")
         }
     }
+
+    flavorDimensions.add("server")
+    productFlavors {
+        create("mock") {
+            dimension = "server"
+        }
+
+        create("prod") {
+            dimension = "server"
+        }
+    }
 }
 
 plugins.withType<KotlinBasePlugin> {
