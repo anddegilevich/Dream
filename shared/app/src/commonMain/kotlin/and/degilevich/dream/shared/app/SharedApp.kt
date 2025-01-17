@@ -47,8 +47,8 @@ fun SharedApp(
     }
 }
 
-@Composable
 @Preview
+@Composable
 fun Preview() {
     SharedApp()
 }

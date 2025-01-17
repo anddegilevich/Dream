@@ -9,11 +9,11 @@ repositories {
 }
 
 dependencies {
-    api(libs.kotlin.gradle)
-    api(libs.android.gradle)
-    api(libs.detekt.gradle)
-    api(libs.compose.multiplatform.gradle)
-    api(libs.compose.compiler.gradle)
+    implementation(libs.kotlin.gradle)
+    implementation(libs.android.gradle)
+    implementation(libs.detekt.gradle)
+    implementation(libs.compose.multiplatform.gradle)
+    implementation(libs.compose.compiler.gradle)
     // Required for accessing version catalog for conventions/plugins
     // Issue - https://github.com/gradle/gradle/issues/15383
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))

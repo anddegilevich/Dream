@@ -9,13 +9,13 @@ android-min-sdk = "24"
 android-target-sdk = "35"
 
 # Android gradle plugin
-agp = "8.5.2"
+agp = "8.6.1"
 
 # JVM version
 java = "17"
 
 # Kotlin
-kotlin-general = "2.1.0"
+kotlin = "2.1.0"
 
 # Compose
 compose-multiplatform = "1.7.3"
@@ -61,7 +61,10 @@ coil = "2.5.0" # https://github.com/coil-kt/coil/releases
 [libraries]
 
 # Kotlin
-kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-general" }
+kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-test-common = {module = "org.jetbrains.kotlin:kotlin-test-common", version.ref = "kotlin"}
+kotlin-test-annotations-common = {module = "org.jetbrains.kotlin:kotlin-test-annotations-common", version.ref = "kotlin"}
+kotlin-test-junit = {module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin"}
 
 # Android
 android-gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
@@ -79,7 +82,7 @@ kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collec
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 
 # Compose
-compose-compiler-gradle = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin-general" }
+compose-compiler-gradle = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 compose-multiplatform-gradle = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-multiplatform" }
 
 # Detekt
@@ -141,14 +144,14 @@ android-test = { id = "com.android.test", version.ref = "agp" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 # Kotlin
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin-general" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-general" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 # Kotlinx
-kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-general" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 # Compose
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin-general" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 
 # Project

@@ -1,3 +1,4 @@
+import and.degilevich.dream.convention.common.libs
 import org.gradle.kotlin.dsl.withType
 
 plugins {
@@ -16,6 +17,17 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
+        }
+    }
+    
+    sourceSets {
+        commonTest.dependencies {
+            implementation(libs().kotlin.test.common)
+            implementation(libs().kotlin.test.annotations.common)
+        }
+
+        androidUnitTest.dependencies {
+            implementation(libs().kotlin.test.junit)
         }
     }
 
