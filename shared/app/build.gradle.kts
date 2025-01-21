@@ -12,6 +12,9 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(projects.shared.core.client.impl)
+            implementation(projects.shared.core.storage.impl)
+
+//            implementation(projects.shared.common.source)
 
             implementation(projects.shared.navigation.impl)
 

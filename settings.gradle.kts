@@ -27,17 +27,13 @@ include(":shared:foundation:serialization")
 include(":shared:foundation:model")
 
 // =====================================================================================================================
-// Foundation
-
-include(":shared:foundation:primitive")
-include(":shared:foundation:serialization")
-include(":shared:foundation:model")
-
-// =====================================================================================================================
 // Core
 
 include(":shared:core:client:api")
 include(":shared:core:client:impl")
+
+include(":shared:core:storage:api")
+include(":shared:core:storage:impl")
 
 include(":shared:core:dispatcher")
 
