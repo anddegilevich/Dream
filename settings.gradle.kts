@@ -25,6 +25,10 @@ dependencyResolutionManagement {
 include(":shared:foundation:primitive")
 include(":shared:foundation:serialization")
 include(":shared:foundation:model")
+include(":shared:foundation:dispatcher")
+
+include(":shared:foundation:decompose:navigator")
+include(":shared:foundation:decompose:lifecycle")
 
 // =====================================================================================================================
 // Core
@@ -34,8 +38,6 @@ include(":shared:core:client:impl")
 
 include(":shared:core:storage:api")
 include(":shared:core:storage:impl")
-
-include(":shared:core:dispatcher")
 
 // =====================================================================================================================
 // Common

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.compose)
     alias(libs.plugins.project.koin)
+    alias(libs.plugins.project.coroutines)
 }
 
 kotlin {
@@ -11,6 +12,9 @@ kotlin {
 
         }
         commonMain.dependencies {
+            implementation(projects.shared.common.component)
+            implementation(libs.decompose.extensions.compose)
+
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.storage.impl)
 

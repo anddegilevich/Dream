@@ -8,7 +8,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.shared.foundation.serialization)
-            api(projects.shared.core.dispatcher)
+            api(projects.shared.foundation.dispatcher)
             implementation(projects.shared.core.storage.api)
         }
     }

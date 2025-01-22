@@ -112,7 +112,8 @@ decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-co
 decompose-extensions-android = { module = "com.arkivanov.decompose:extensions-android", version.ref = "decompose" }
 
 # Essenty - https://github.com/arkivanov/Essenty
-essenty = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
+essenty-lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
+essenty-state-keaper = { module = "com.arkivanov.essenty:state-keeper", version.ref = "essenty" }
 
 # MVI Kotlin
 mvikotlin = { module = "com.arkivanov.mvikotlin:mvikotlin", version.ref = "mvikotlin" }
@@ -132,7 +133,7 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 mvikotlin = ["mvikotlin", "mvikotlin-main", "mvikotlin-logging", "mvikotlin-timetravel", "mvikotlin-extensions-coroutines"]
 coil = ["coil", "coil-compose"]
-decompose = ["decompose", "essenty"]
+decompose = ["decompose", "essenty-lifecycle", "essenty-state-keaper"]
 
 [plugins]
 

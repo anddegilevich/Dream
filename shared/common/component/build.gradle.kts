@@ -10,6 +10,8 @@ kotlin {
         commonMain.dependencies {
             api(libs.bundles.decompose)
             api(libs.bundles.mvikotlin)
+            api(projects.shared.foundation.decompose.lifecycle)
+            api(projects.shared.navigation.api)
         }
     }
 }
