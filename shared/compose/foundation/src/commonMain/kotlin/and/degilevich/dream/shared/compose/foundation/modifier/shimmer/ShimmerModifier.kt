@@ -32,7 +32,7 @@ fun Modifier.shimmer(
         onGloballyPositioned { layoutCoordinates ->
             viewSize = layoutCoordinates.size
         }.drawBehind {
-            drawRoundRect(
+            drawRect(
                 brush = Brush.linearGradient(
                     *gradient,
                     start = Offset.Zero,
