@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.compose.foundation.modifier.shimmer
 
+import and.degilevich.dream.shared.compose.foundation.modifier.shimmer.color.ShimmerColors
 import and.degilevich.dream.shared.compose.foundation.modifier.shimmer.controller.rememberShimmerGradient
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,7 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
-import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -31,7 +32,7 @@ fun Modifier.shimmer(
 
         onGloballyPositioned { layoutCoordinates ->
             viewSize = layoutCoordinates.size
-        }.drawBehind {
+        }.drawWithContent {
             drawRect(
                 brush = Brush.linearGradient(
                     *gradient,

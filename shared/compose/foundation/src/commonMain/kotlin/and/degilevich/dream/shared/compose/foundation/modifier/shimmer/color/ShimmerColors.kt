@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.compose.foundation.modifier.shimmer
+package and.degilevich.dream.shared.compose.foundation.modifier.shimmer.color
 
 import androidx.compose.ui.graphics.Color
 

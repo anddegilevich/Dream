@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.compose.foundation.modifier.shimmer.controller
 
-import and.degilevich.dream.shared.compose.foundation.modifier.shimmer.ShimmerColors
+import and.degilevich.dream.shared.compose.foundation.modifier.shimmer.color.ShimmerColors
 import androidx.compose.animation.core.Animatable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect

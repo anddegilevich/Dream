@@ -68,10 +68,10 @@ fun SkeletonModifierPreview() {
         ) {
             Spacer(
                 modifier = Modifier
+                    .skeleton(isSkeleton = isSkeleton)
                     .size(100.dp)
                     .clip(CircleShape)
                     .background(Color.Gray)
-                    .skeleton(isSkeleton = isSkeleton)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(
@@ -79,8 +79,8 @@ fun SkeletonModifierPreview() {
             ) {
                 Text(
                     modifier = Modifier
-                        .widthIn(min = 100.dp)
-                        .skeleton(isSkeleton = isSkeleton),
+                        .skeleton(isSkeleton = isSkeleton)
+                        .widthIn(min = 100.dp),
                     text = if (isSkeleton) "" else rememberLoremIpsumText(wordsCount = 1),
                     style = TextStyle(
                         fontSize = 24.sp
@@ -89,8 +89,8 @@ fun SkeletonModifierPreview() {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .skeleton(isSkeleton = isSkeleton),
+                        .skeleton(isSkeleton = isSkeleton)
+                        .fillMaxWidth(),
                     text = if (isSkeleton) "" else rememberLoremIpsumText(wordsCount = 10),
                     minLines = 3,
                     style = TextStyle(
@@ -104,8 +104,8 @@ fun SkeletonModifierPreview() {
                 Spacer(modifier = Modifier.height(16.dp))
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth()
                         .skeleton(isSkeleton = isSkeleton)
+                        .fillMaxWidth()
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),

@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.compose.foundation.modifier.shimmer
 
+import and.degilevich.dream.shared.compose.foundation.modifier.shimmer.color.ShimmerColors
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
