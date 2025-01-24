@@ -2,12 +2,18 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.compose)
+    alias(libs.plugins.project.koin)
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.bundles.decompose)
             implementation(projects.shared.app)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.decompose.extensions.android)
         }
     }
 }

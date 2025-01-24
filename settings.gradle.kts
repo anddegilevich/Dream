@@ -29,6 +29,7 @@ include(":shared:foundation:dispatcher")
 
 include(":shared:foundation:decompose:navigator")
 include(":shared:foundation:decompose:lifecycle")
+include(":shared:foundation:decompose:compose")
 
 // =====================================================================================================================
 // Core
@@ -44,6 +45,11 @@ include(":shared:core:storage:impl")
 
 include(":shared:common:component")
 include(":shared:common:source")
+
+
+// =====================================================================================================================
+// Compose
+include(":shared:compose:foundation")
 
 // =====================================================================================================================
 // Feature

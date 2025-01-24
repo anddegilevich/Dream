@@ -3,9 +3,10 @@
 
 package and.degilevich.dream.shared.foundation.dispatcher
 
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
 actual object DefaultKMPDispatchers : KMPDispatchers {
-    override val main = Dispatchers.Main
+    override val main = Dispatchers.Main as CoroutineDispatcher
     override val background = Dispatchers.Default
 }

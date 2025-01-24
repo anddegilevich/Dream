@@ -15,6 +15,8 @@ kotlin {
             implementation(projects.shared.common.component)
             implementation(libs.decompose.extensions.compose)
 
+            implementation(projects.shared.foundation.decompose.compose)
+
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.storage.impl)
 

@@ -14,7 +14,7 @@ import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import kotlin.reflect.KClass
 
-inline fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.popUpTo(
+fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.popUpTo(
     configurationKClass: StackConfigKClass
 ) where StackConfigKClass : KClass<StackConfig> {
     popWhile(
@@ -24,7 +24,7 @@ inline fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.po
     )
 }
 
-inline fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.pushOrReplace(
+fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.pushOrReplace(
     configuration: StackConfig,
     replaceConfigurationKClass: StackConfigKClass
 ) where StackConfigKClass : KClass<StackConfig> {
