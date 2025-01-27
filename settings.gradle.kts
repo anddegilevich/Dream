@@ -55,11 +55,10 @@ include(":shared:compose:foundation")
 // Feature
 
 // Artist
-include(":shared:feature:artist:model:api")
-include(":shared:feature:artist:model:impl")
+include(":shared:feature:artist:core:api")
+include(":shared:feature:artist:core:impl")
 
-include(":shared:feature:artist:source:api")
-include(":shared:feature:artist:source:impl")
+include(":shared:feature:artist:compose")
 
 include(":shared:feature:artist:component:details:api")
 include(":shared:feature:artist:component:details:impl")

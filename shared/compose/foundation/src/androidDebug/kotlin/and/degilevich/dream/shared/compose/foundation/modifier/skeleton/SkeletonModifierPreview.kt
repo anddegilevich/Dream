@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
-fun SkeletonModifierPreview() {
+private fun SkeletonModifierPreview() {
 
     var isSkeleton by remember { mutableStateOf(false) }
     val itemsCount = remember(isSkeleton) { if (isSkeleton) 3 else 5 }
