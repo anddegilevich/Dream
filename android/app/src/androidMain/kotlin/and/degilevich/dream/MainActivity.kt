@@ -1,7 +1,7 @@
 package and.degilevich.dream
 
-import and.degilevich.dream.shared.app.DreamApp
-import and.degilevich.dream.shared.app.root.RootComponentImpl
+import and.degilevich.dream.shared.app.api.compose.DreamApp
+import and.degilevich.dream.shared.app.impl.component.RootComponentImpl
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

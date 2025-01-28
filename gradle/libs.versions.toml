@@ -44,10 +44,10 @@ koin-bom = "3.5.1" # https://github.com/InsertKoinIO/koin/releases
 ktor = "2.3.6" # https://github.com/ktorio/ktor/releases
 
 # Decompose
-decompose = "3.0.0" # https://github.com/arkivanov/Decompose/releases
+decompose = "3.2.2" # https://github.com/arkivanov/Decompose/releases
 
 # Essenty
-essenty = "2.0.0" # https://github.com/arkivanov/Essenty/releases
+essenty = "2.2.1" # https://github.com/arkivanov/Essenty/releases
 
 # MVI Kotlin
 mvikotlin = "4.0.0" # https://github.com/arkivanov/MVIKotlin/releases

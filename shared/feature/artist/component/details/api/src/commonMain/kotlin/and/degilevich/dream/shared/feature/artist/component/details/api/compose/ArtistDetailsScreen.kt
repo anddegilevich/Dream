@@ -38,7 +38,7 @@ fun ArtistDetailsScreen(
         Space(height = 16.dp)
         TextButton(
             onClick = {
-                onIntent(ArtistDetailsIntent.OnSubscribeClicked())
+                onIntent(ArtistDetailsIntent.OnSubscribeClicked)
             }
         ) {
             Text(text = "Subscribe")
