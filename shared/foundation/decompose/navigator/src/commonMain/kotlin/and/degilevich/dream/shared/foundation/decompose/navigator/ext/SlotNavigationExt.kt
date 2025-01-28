@@ -5,7 +5,7 @@ import com.arkivanov.decompose.router.slot.SlotNavigation
 import com.arkivanov.decompose.router.slot.activate
 import com.arkivanov.decompose.router.slot.dismiss
 
-internal fun <SlotConfig : Any> SlotNavigation<SlotConfig>.executeNavigationAction(
+fun <SlotConfig : Any> SlotNavigation<SlotConfig>.executeNavigationAction(
     action: SlotNavigationAction<SlotConfig>
 ) {
     when (action) {

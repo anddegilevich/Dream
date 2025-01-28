@@ -10,5 +10,4 @@ interface DreamNavigator {
     // FIXME: Implement later
 //    val bottomSheetNavigator: SlotNavigator<BottomSheetConfig>
 //    val dialogNavigator: SlotNavigator<DialogConfig>
-//    val drawerConfig: SlotNavigator<DrawerConfig>
 }

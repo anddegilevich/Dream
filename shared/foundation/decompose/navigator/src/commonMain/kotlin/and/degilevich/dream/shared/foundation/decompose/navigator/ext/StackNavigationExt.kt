@@ -38,7 +38,7 @@ fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.pushOrRep
 }
 
 @Suppress("SpreadOperator")
-internal inline fun <reified StackConfig : Any, StackConfigKClass> StackNavigation<StackConfig>.executeNavigationAction(
+inline fun <reified StackConfig : Any, StackConfigKClass> StackNavigation<StackConfig>.executeNavigationAction(
     action: StackNavigationAction<StackConfig>
 ) where StackConfigKClass : KClass<StackConfig> {
     when (action) {

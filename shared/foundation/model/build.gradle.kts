@@ -7,7 +7,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.foundation.primitive)
+            api(projects.shared.foundation.primitive)
         }
     }
 }

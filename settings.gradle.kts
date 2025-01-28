@@ -55,6 +55,9 @@ include(":shared:compose:foundation")
 // Feature
 
 // Artist
+include(":shared:feature:artist:model:artifact")
+include(":shared:feature:artist:model:core")
+
 include(":shared:feature:artist:core:api")
 include(":shared:feature:artist:core:impl")
 

@@ -8,9 +8,11 @@ interface RootComponent {
 
     val screenStack: Value<ChildStack<ScreenConfig, Child>>
 
+    // FIXME: Add drawer child component
+    // https://arkivanov.github.io/Decompose/component/child-components/
+
     // FIXME: Add components and ViewLifecycle callbacks
     sealed interface Child {
-
         class ArtistList : Child
 
         class ArtistDetails : Child
