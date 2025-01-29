@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.app.api.compose.ext
 
-import and.degilevich.dream.shared.common.component.MVIComponent
+import and.degilevich.dream.shared.foundation.decompose.component.MVIComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState

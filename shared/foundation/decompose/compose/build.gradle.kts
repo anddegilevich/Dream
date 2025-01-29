@@ -9,6 +9,7 @@ kotlin {
         commonMain.dependencies {
             api(libs.bundles.decompose)
             api(libs.decompose.extensions.compose)
+            api(projects.shared.foundation.decompose.component)
         }
     }
 }

@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.app.impl.component
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
-import and.degilevich.dream.shared.feature.artist.component.details.impl.ArtistDetailsComponentImpl
+import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
 import and.degilevich.dream.shared.feature.artist.component.list.impl.component.ArtistListComponentImpl
 import and.degilevich.dream.shared.foundation.decompose.navigator.ext.executeNavigationAction
 import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
@@ -71,6 +71,7 @@ class RootComponentImpl(
                 RootComponent.Child.ArtistDetails(
                     component = ArtistDetailsComponentImpl(
                         componentContext = componentContext,
+                        storeFactory = storeFactory,
                         config = screenConfig
                     )
                 )

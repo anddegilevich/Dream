@@ -1,5 +1,8 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.component
 
-import and.degilevich.dream.shared.common.component.view.ViewComponent
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
+import and.degilevich.dream.shared.foundation.decompose.component.view.ViewComponent
 
-interface ArtistDetailsComponent : ViewComponent<ArtistDetailsUIState, ArtistDetailsIntent, Nothing>
+interface ArtistDetailsComponent : ViewComponent<ArtistDetailsUIState, ArtistDetailsIntent, ArtistDetailsSideEffect>

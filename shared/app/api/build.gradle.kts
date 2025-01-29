@@ -12,7 +12,9 @@ kotlin {
 
             implementation(projects.shared.foundation.decompose.compose)
 
-            api(projects.shared.common.component)
+            api(projects.shared.foundation.decompose.component)
+
+            api(projects.shared.navigation.api)
 
             api(projects.shared.feature.artist.component.details.api)
             api(projects.shared.feature.artist.component.list.api)
