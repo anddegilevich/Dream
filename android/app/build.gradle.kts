@@ -9,6 +9,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.bundles.decompose)
+
             implementation(projects.shared.app.impl)
         }
 

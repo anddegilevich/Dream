@@ -4,5 +4,5 @@ plugins {
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.core.client.api"
+    namespace = "and.degilevich.dream.shared.core.logger.api"
 }

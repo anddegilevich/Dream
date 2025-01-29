@@ -1,10 +1,12 @@
 package and.degilevich.dream.shared.app.impl.component
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
+import and.degilevich.dream.shared.app.impl.logger.StoreFactoryLogger
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
 import and.degilevich.dream.shared.feature.artist.component.list.impl.component.ArtistListComponentImpl
 import and.degilevich.dream.shared.foundation.decompose.navigator.ext.executeNavigationAction
 import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
+import and.degilevich.dream.shared.foundation.logger.Log
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.impl.manager.NavigationActionManager
 import com.arkivanov.decompose.ComponentContext
@@ -13,7 +15,7 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
-import com.arkivanov.mvikotlin.core.store.StoreFactory
+import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
@@ -27,7 +29,10 @@ class RootComponentImpl(
         context = DefaultKMPDispatchers.main
     )
 
-    private val storeFactory: StoreFactory = DefaultStoreFactory()
+    private val storeFactory = LoggingStoreFactory(
+        delegate = DefaultStoreFactory(),
+        logger = StoreFactoryLogger()
+    )
 
     private val navigationActionManager: NavigationActionManager by inject()
 
@@ -57,6 +62,7 @@ class RootComponentImpl(
         screenConfig: ScreenConfig,
         componentContext: ComponentContext
     ): RootComponent.Child {
+        Log.info("Navigate to -> $screenConfig")
         return when (screenConfig) {
             is ScreenConfig.ArtistList -> {
                 RootComponent.Child.ArtistList(

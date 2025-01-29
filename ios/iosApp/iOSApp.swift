@@ -5,6 +5,7 @@ import Shared
 struct iOSApp: App {
     
     init() {
+        LoggerHelperKt.doInitLogger()
         KoinHelperKt.doInitKoin()
     }
     

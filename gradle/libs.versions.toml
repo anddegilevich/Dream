@@ -58,6 +58,9 @@ kvault = "1.12.0" # https://github.com/Liftric/KVault/releases
 # Coil
 coil = "2.5.0" # https://github.com/coil-kt/coil/releases
 
+# Napier
+napier = "2.7.1" # https://github.com/AAkira/Napier/releases
+
 [libraries]
 
 # Kotlin
@@ -129,6 +132,9 @@ kvault = { module = "com.liftric:kvault", version.ref = "kvault" }
 # Coil - https://github.com/coil-kt/coil
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+
+# Napier - https://github.com/AAkira/Napier
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 
 [bundles]
 
