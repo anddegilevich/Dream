@@ -5,4 +5,5 @@ import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 sealed interface ArtistDetailsMessage {
     data class SetLoading(val isLoading: Boolean) : ArtistDetailsMessage
     data class SetArtist(val artist: ArtistData) : ArtistDetailsMessage
+    data class SetSimilarArtists(val artists: List<ArtistData>) : ArtistDetailsMessage
 }

@@ -14,6 +14,10 @@ internal class ArtistDetailsReducer : Reducer<ArtistDetailsState, ArtistDetailsM
             is ArtistDetailsMessage.SetLoading -> copy(
                 isLoading = msg.isLoading
             )
+
+            is ArtistDetailsMessage.SetSimilarArtists -> copy(
+                similarArtists = msg.artists
+            )
         }
     }
 }

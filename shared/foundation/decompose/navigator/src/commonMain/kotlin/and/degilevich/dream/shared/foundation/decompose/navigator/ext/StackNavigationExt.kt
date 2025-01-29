@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.foundation.decompose.navigator.ext
 
 import and.degilevich.dream.shared.foundation.decompose.navigator.stack.StackNavigationAction
+import com.arkivanov.decompose.DelicateDecomposeApi
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.StackNavigator
 import com.arkivanov.decompose.router.stack.bringToFront
@@ -14,9 +15,9 @@ import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import kotlin.reflect.KClass
 
-fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.popUpTo(
-    configurationKClass: StackConfigKClass
-) where StackConfigKClass : KClass<StackConfig> {
+fun <StackConfig : Any, T> StackNavigator<StackConfig>.popUpTo(
+    configurationKClass: KClass<out StackConfig>
+) where T : StackConfig {
     popWhile(
         predicate = { predicate ->
             !configurationKClass.isInstance(predicate)
@@ -24,10 +25,10 @@ fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.popUpTo(
     )
 }
 
-fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.pushOrReplace(
+fun <StackConfig : Any> StackNavigator<StackConfig>.pushOrReplace(
     configuration: StackConfig,
-    replaceConfigurationKClass: StackConfigKClass
-) where StackConfigKClass : KClass<StackConfig> {
+    replaceConfigurationKClass: KClass<out StackConfig>
+) {
     navigate { stack ->
         if (replaceConfigurationKClass.isInstance(stack.last())) {
             stack.dropLast(1) + configuration
@@ -38,9 +39,9 @@ fun <StackConfig : Any, StackConfigKClass> StackNavigator<StackConfig>.pushOrRep
 }
 
 @Suppress("SpreadOperator")
-inline fun <reified StackConfig : Any, StackConfigKClass> StackNavigation<StackConfig>.executeNavigationAction(
+inline fun <reified StackConfig : Any> StackNavigation<StackConfig>.executeNavigationAction(
     action: StackNavigationAction<StackConfig>
-) where StackConfigKClass : KClass<StackConfig> {
+) {
     when (action) {
         is StackNavigationAction.Pop -> {
             pop()
@@ -50,14 +51,12 @@ inline fun <reified StackConfig : Any, StackConfigKClass> StackNavigation<StackC
             bringToFront(action.config)
         }
 
-        is StackNavigationAction.PopUpTo<*, *> -> {
-            //FIXME: Check
-            (action as? StackNavigationAction.PopUpTo<StackConfig, StackConfigKClass>)?.let {
-                popUpTo(action.configKClass)
-            }
+        is StackNavigationAction.PopUpTo -> {
+            popUpTo(action.configKClass)
         }
 
         is StackNavigationAction.Push -> {
+            @OptIn(DelicateDecomposeApi::class)
             push(action.config)
         }
 
@@ -79,14 +78,11 @@ inline fun <reified StackConfig : Any, StackConfigKClass> StackNavigation<StackC
             )
         }
 
-        is StackNavigationAction.PushOrReplace<*, *> -> {
-            //FIXME: Check
-            (action as? StackNavigationAction.PushOrReplace<StackConfig, StackConfigKClass>)?.let {
-                pushOrReplace(
-                    configuration = action.config,
-                    replaceConfigurationKClass = action.replaceConfigKClass
-                )
-            }
+        is StackNavigationAction.PushOrReplace -> {
+            pushOrReplace(
+                configuration = action.config,
+                replaceConfigurationKClass = action.replaceConfigKClass
+            )
         }
     }
 }

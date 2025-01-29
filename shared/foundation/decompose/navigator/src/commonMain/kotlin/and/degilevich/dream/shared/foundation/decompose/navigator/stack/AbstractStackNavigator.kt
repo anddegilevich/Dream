@@ -48,16 +48,13 @@ abstract class AbstractStackNavigator<StackConfig : Any> : StackNavigator<StackC
         )
     }
 
-    override fun <StackConfigKClass : KClass<StackConfig>> popUpTo(configKClass: StackConfigKClass) {
+    override fun popUpTo(configKClass: KClass<out StackConfig>) {
         navigate(
             StackNavigationAction.PopUpTo(configKClass)
         )
     }
 
-    override fun <StackConfigKClass : KClass<StackConfig>> pushOrReplace(
-        config: StackConfig,
-        replaceConfigKClass: StackConfigKClass
-    ) {
+    override fun pushOrReplace(config: StackConfig, replaceConfigKClass: KClass<out StackConfig>) {
         navigate(
             StackNavigationAction.PushOrReplace(
                 config = config,

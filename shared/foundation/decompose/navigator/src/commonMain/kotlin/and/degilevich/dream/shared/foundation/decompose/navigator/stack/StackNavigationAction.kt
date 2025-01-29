@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.foundation.decompose.navigator.stack
 
 import kotlin.reflect.KClass
 
-sealed interface StackNavigationAction<StackConfig : Any> {
+sealed interface StackNavigationAction<in StackConfig : Any> {
     class Pop<StackConfig : Any> : StackNavigationAction<StackConfig>
 
     data class Push<StackConfig : Any>(
@@ -33,12 +33,12 @@ sealed interface StackNavigationAction<StackConfig : Any> {
         val config: StackConfig
     ) : StackNavigationAction<StackConfig>
 
-    data class PopUpTo<StackConfig : Any, StackConfigKClass>(
-        val configKClass: StackConfigKClass
-    ) : StackNavigationAction<StackConfig> where StackConfigKClass : KClass<StackConfig>
+    data class PopUpTo<StackConfig : Any>(
+        val configKClass: KClass<out StackConfig>
+    ) : StackNavigationAction<StackConfig>
 
-    data class PushOrReplace<StackConfig : Any, StackConfigKClass>(
+    data class PushOrReplace<StackConfig : Any>(
         val config: StackConfig,
-        val replaceConfigKClass: StackConfigKClass
-    ) : StackNavigationAction<StackConfig> where StackConfigKClass : KClass<StackConfig>
+        val replaceConfigKClass: KClass<out StackConfig>
+    ) : StackNavigationAction<StackConfig>
 }

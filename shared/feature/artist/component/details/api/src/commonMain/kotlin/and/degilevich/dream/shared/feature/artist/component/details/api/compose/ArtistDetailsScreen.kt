@@ -32,6 +32,14 @@ fun ArtistDetailsScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        TextButton(
+            onClick = {
+                onIntent(ArtistDetailsIntent.OnBackCLicked)
+            }
+        ) {
+            Text(text = "Back")
+        }
+        Space(height = 16.dp)
         Text(
             text = "Artist name: ${state.artistName}"
         )

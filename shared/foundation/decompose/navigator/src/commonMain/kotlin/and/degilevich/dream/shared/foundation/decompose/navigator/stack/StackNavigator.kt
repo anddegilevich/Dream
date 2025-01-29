@@ -13,9 +13,9 @@ interface StackNavigator<StackConfig : Any> {
     fun bringToFront(config: StackConfig)
     fun pushToFront(config: StackConfig)
     fun pushNew(config: StackConfig)
-    fun <StackConfigKClass> popUpTo(configKClass: StackConfigKClass) where StackConfigKClass : KClass<StackConfig>
-    fun <StackConfigKClass> pushOrReplace(
+    fun popUpTo(configKClass: KClass<out StackConfig>)
+    fun pushOrReplace(
         config: StackConfig,
-        replaceConfigKClass: StackConfigKClass
-    ) where StackConfigKClass : KClass<StackConfig>
+        replaceConfigKClass: KClass<out StackConfig>
+    )
 }
