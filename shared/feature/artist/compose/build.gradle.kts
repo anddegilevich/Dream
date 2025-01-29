@@ -10,6 +10,7 @@ kotlin {
             api(projects.shared.foundation.model)
             api(projects.shared.compose.foundation)
             implementation(projects.shared.compose.foundation)
+            implementation(projects.shared.feature.artist.model.core)
         }
     }
 }

@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.feature.artist.component.list.api.component
+package and.degilevich.dream.shared.feature.artist.component.list.api.component.model
 
 import and.degilevich.dream.shared.feature.artist.compose.model.ArtistUIItem
 import androidx.compose.runtime.Immutable

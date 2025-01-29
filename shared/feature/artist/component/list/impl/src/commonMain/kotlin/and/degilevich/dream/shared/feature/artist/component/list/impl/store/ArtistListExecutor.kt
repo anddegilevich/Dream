@@ -1,31 +1,32 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
-import and.degilevich.dream.shared.feature.artist.component.list.api.component.ArtistListIntent
+import and.degilevich.dream.shared.common.component.mvi.executor.AbstractExecutor
+import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListMessage
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsRequest
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
-import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
-import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
+import com.arkivanov.essenty.lifecycle.doOnStart
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-//FIXME: Subscribe to lifecycle
 internal class ArtistListExecutor(
     lifecycle: ExtendedLifecycle
-) : CoroutineExecutor<ArtistListIntent, Nothing, ArtistListState, ArtistListMessage, Nothing>(
-    mainContext = DefaultKMPDispatchers.main
-),
+) : AbstractExecutor<ArtistListState, ArtistListIntent, Nothing, ArtistListMessage>(),
     KoinComponent {
 
     private val navigator: DreamNavigator by inject()
     private val getArtistsFlowUseCase: GetArtistsFlowUseCase by inject()
+
+    init {
+        subscribeToLifecycle(lifecycle)
+    }
 
     override fun executeIntent(intent: ArtistListIntent) {
         when (intent) {
@@ -35,12 +36,12 @@ internal class ArtistListExecutor(
         }
     }
 
-    init {
-        lifecycle.subscribe(
-            onCreate = {
+    private fun subscribeToLifecycle(lifecycle: ExtendedLifecycle) {
+        with(lifecycle) {
+            doOnStart {
                 fetchArtists()
             }
-        )
+        }
     }
 
     private fun fetchArtists() {

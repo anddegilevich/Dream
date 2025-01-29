@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.feature.artist.component.list.api.compose
 
 import and.degilevich.dream.shared.compose.foundation.ext.Space
-import and.degilevich.dream.shared.feature.artist.component.list.api.component.ArtistListIntent
-import and.degilevich.dream.shared.feature.artist.component.list.api.component.ArtistListUIState
+import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
+import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListUIState
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
