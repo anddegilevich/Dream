@@ -24,7 +24,8 @@ internal class ArtistRemoteDataSourceImpl : ArtistRemoteDataSource, AbstractRemo
                     genres = listOf("pop", "rock"),
                     followers = ArtistFollowersData.Base(
                         total = 100
-                    )
+                    ),
+                    images = emptyList()
                 )
             )
         )
@@ -46,7 +47,8 @@ internal class ArtistRemoteDataSourceImpl : ArtistRemoteDataSource, AbstractRemo
                                 genres = listOf("pop", "rock"),
                                 followers = ArtistFollowersData.Base(
                                     total = 100
-                                )
+                                ),
+                                images = emptyList()
                             )
                         )
                     }

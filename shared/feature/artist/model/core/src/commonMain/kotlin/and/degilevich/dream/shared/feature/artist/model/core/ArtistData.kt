@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.feature.artist.model.core
 
 import and.degilevich.dream.shared.feature.artist.model.artifact.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.artist.model.artifact.dictionary.ArtistType
+import and.degilevich.dream.shared.feature.image.model.artifact.ImageObjectData
 import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.model.id.AbstractIdentified
 
@@ -9,6 +10,7 @@ interface ArtistData : ArtistSimplifiedData {
     val popularity: Int
     val genres: List<String>
     val followers: ArtistFollowersData
+    val images: List<ImageObjectData>
 
     data class Base(
         override val id: String,
@@ -16,7 +18,8 @@ interface ArtistData : ArtistSimplifiedData {
         override val type: ArtistType,
         override val popularity: Int,
         override val genres: List<String>,
-        override val followers: ArtistFollowersData
+        override val followers: ArtistFollowersData,
+        override val images: List<ImageObjectData>
     ) : ArtistData, AbstractIdentified()
 
     companion object : EmptyFactory<ArtistData> {
@@ -27,7 +30,8 @@ interface ArtistData : ArtistSimplifiedData {
                 type = ArtistType.UNKNOWN,
                 popularity = 0,
                 genres = emptyList(),
-                followers = ArtistFollowersData.empty()
+                followers = ArtistFollowersData.empty(),
+                images = emptyList()
             )
         }
     }

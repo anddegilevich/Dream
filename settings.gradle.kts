@@ -57,6 +57,9 @@ include(":shared:compose:foundation")
 // =====================================================================================================================
 // Feature
 
+// Image
+include(":shared:feature:image:model:artifact")
+
 // Artist
 include(":shared:feature:artist:model:artifact")
 include(":shared:feature:artist:model:core")
@@ -71,6 +74,13 @@ include(":shared:feature:artist:component:details:impl")
 
 include(":shared:feature:artist:component:list:api")
 include(":shared:feature:artist:component:list:impl")
+
+// Album
+include(":shared:feature:album:model:core")
+
+// Track
+include(":shared:feature:track:model:artifact")
+include(":shared:feature:track:model:core")
 
 // =====================================================================================================================
 // Navigation

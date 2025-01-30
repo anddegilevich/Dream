@@ -6,12 +6,12 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            api(projects.shared.foundation.model)
             api(projects.shared.feature.artist.model.artifact)
-            api(projects.shared.feature.image.model.artifact)
         }
     }
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.feature.artist.model.core"
+    namespace = "and.degilevich.dream.shared.feature.track.model.artifact"
 }

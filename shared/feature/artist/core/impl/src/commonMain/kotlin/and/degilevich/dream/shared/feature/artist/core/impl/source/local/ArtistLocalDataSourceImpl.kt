@@ -22,7 +22,8 @@ internal class ArtistLocalDataSourceImpl : ArtistLocalDataSource, AbstractLocalD
                 genres = listOf("pop", "rock"),
                 followers = ArtistFollowersData.Base(
                     total = 100
-                )
+                ),
+                images = emptyList()
             )
         )
     }
@@ -47,7 +48,8 @@ internal class ArtistLocalDataSourceImpl : ArtistLocalDataSource, AbstractLocalD
                                 genres = listOf("pop", "rock"),
                                 followers = ArtistFollowersData.Base(
                                     total = 100
-                                )
+                                ),
+                                images = emptyList()
                             )
                         )
                     }
