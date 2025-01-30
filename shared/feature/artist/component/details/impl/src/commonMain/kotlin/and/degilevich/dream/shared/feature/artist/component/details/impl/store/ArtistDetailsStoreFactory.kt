@@ -15,6 +15,7 @@ internal class ArtistDetailsStoreFactory(
     ArtistDetailsSideEffect,
     ArtistDetailsMessage
     >(
+    name = "artistDetails",
     storeFactory = storeFactory,
     executorFactory = { lifecycle -> ArtistDetailsExecutor(lifecycle = lifecycle) },
     reducer = ArtistDetailsReducer(),

@@ -7,6 +7,7 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 
 abstract class AbstractComponentStoreFactory<State : Any, Intent : Any, SideEffect : Any, Message : Any>(
+    private val name: String,
     private val storeFactory: StoreFactory,
     private val executorFactory: (ExtendedLifecycle) -> Executor<Intent, Nothing, State, Message, SideEffect>,
     private val reducer: Reducer<State, Message>,
@@ -16,6 +17,7 @@ abstract class AbstractComponentStoreFactory<State : Any, Intent : Any, SideEffe
         lifecycle: ExtendedLifecycle
     ): Store<Intent, State, SideEffect> {
         return storeFactory.create(
+            name = name,
             initialState = initialState,
             executorFactory = { executorFactory(lifecycle) },
             reducer = reducer
