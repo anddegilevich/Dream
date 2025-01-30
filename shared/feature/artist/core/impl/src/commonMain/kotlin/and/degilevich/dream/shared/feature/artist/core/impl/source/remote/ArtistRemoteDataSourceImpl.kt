@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.core.impl.source.remote
 
-import and.degilevich.dream.shared.common.source.remote.AbstractRemoteDataSource
+import and.degilevich.dream.shared.template.source.remote.AbstractRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistRequest
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistResponse

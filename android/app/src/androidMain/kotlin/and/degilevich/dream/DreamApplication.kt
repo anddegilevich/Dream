@@ -1,6 +1,7 @@
 package and.degilevich.dream
 
 import and.degilevich.dream.shared.app.impl.di.appModule
+import and.degilevich.dream.shared.app.impl.logger.KoinLogger
 import and.degilevich.dream.shared.core.logger.Log
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
@@ -21,6 +22,7 @@ class DreamApplication : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(this@DreamApplication)
+            logger(KoinLogger())
             modules(
                 appModule()
             )

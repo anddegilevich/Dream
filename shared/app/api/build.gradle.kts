@@ -14,7 +14,7 @@ kotlin {
 
             api(projects.shared.navigation.api)
 
-            api(projects.shared.common.component)
+            api(projects.shared.template.component)
 
             api(projects.shared.feature.artist.component.details.api)
             api(projects.shared.feature.artist.component.list.api)

@@ -45,10 +45,10 @@ include(":shared:core:storage:api")
 include(":shared:core:storage:impl")
 
 // =====================================================================================================================
-// Common
+// Template
 
-include(":shared:common:source")
-include(":shared:common:component")
+include(":shared:template:source")
+include(":shared:template:component")
 
 // =====================================================================================================================
 // Compose
