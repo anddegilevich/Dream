@@ -8,6 +8,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.foundation.decompose.component)
             api(projects.shared.core.logger)
+            api(projects.shared.core.resource.api)
         }
     }
 }

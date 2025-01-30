@@ -11,6 +11,7 @@ import kotlinx.collections.immutable.toImmutableList
 private fun ArtistListScreenPreview() {
     ArtistListScreen(
         state = ArtistListUIState(
+            artistCount = "10 Artists",
             artists = buildList {
                 for (i in 1..10) {
                     add(

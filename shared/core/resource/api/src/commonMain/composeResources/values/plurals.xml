@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="plurals_artist">
+        <item quantity="zero">No artists</item>
+        <item quantity="one">$d artist</item>
+        <item quantity="two">$d artists</item>
+        <item quantity="few">$d artists</item>
+        <item quantity="many">$d artists</item>
+        <item quantity="other">$d artists</item>
+    </plurals>
+</resources>

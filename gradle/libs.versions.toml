@@ -9,7 +9,7 @@ android-min-sdk = "24"
 android-target-sdk = "35"
 
 # Android gradle plugin
-agp = "8.6.1"
+agp = "8.7.3"
 
 # JVM version
 java = "17"
@@ -59,7 +59,8 @@ kvault = "1.12.0" # https://github.com/Liftric/KVault/releases
 coil = "2.5.0" # https://github.com/coil-kt/coil/releases
 
 # Napier
-napier = "2.7.1" # https://github.com/AAkira/Napier/releases
+napier = "2.7.1"
+ui-android = "1.7.7" # https://github.com/AAkira/Napier/releases
 
 [libraries]
 
@@ -135,6 +136,7 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 # Napier - https://github.com/AAkira/Napier
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "ui-android" }
 
 [bundles]
 

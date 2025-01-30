@@ -7,5 +7,6 @@ import kotlinx.collections.immutable.persistentListOf
 
 @Immutable
 data class ArtistListUIState(
+    val artistCount: String = "",
     val artists: ImmutableList<ArtistUIItem> = persistentListOf()
 )

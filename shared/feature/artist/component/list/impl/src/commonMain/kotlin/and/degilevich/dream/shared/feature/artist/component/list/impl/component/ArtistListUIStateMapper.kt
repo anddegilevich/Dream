@@ -11,8 +11,11 @@ internal class ArtistListUIStateMapper : Mapper<ArtistListState, ArtistListUISta
     private val artistUIItemMapper = ArtistUIItemMapper()
 
     override fun map(item: ArtistListState): ArtistListUIState {
-        return ArtistListUIState(
-            artists = artistUIItemMapper.map(item.artists).toImmutableList()
-        )
+        return with(item) {
+            ArtistListUIState(
+//                artistCount = Res.string.title_artists.toString(), //FIXME: Extract string
+                artists = artistUIItemMapper.map(artists).toImmutableList()
+            )
+        }
     }
 }

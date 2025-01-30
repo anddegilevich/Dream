@@ -6,11 +6,14 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.compose.
 import and.degilevich.dream.shared.feature.artist.component.list.api.compose.ArtistListScreen
 import and.degilevich.dream.shared.foundation.decompose.compose.animation.defaultStackAnimation
 import and.degilevich.dream.shared.foundation.decompose.compose.lifecycle.SubscribeToLifecycleDisposalEffect
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.arkivanov.decompose.extensions.compose.stack.Children
 
 @Composable
@@ -20,7 +23,10 @@ fun DreamApp(
 ) {
     MaterialTheme {
         Children(
-            modifier = modifier.fillMaxSize(),
+            modifier = modifier
+                .fillMaxSize()
+                .background(Color.White)
+                .safeContentPadding(),
             stack = rootComponent.screenStack,
             animation = defaultStackAnimation()
         ) { screen ->
