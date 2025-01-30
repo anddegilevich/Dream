@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.foundation.decompose.lifecycle.ComponentExten
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import com.arkivanov.decompose.ComponentContext
 
-abstract class AbstractViewComponent<State : Any, Intent, SideEffect>(
+abstract class AbstractViewComponent<out State : Any, in Intent, out SideEffect>(
     componentContext: ComponentContext
 ) : AbstractMVIComponent<State, Intent, SideEffect>(
     componentContext = componentContext

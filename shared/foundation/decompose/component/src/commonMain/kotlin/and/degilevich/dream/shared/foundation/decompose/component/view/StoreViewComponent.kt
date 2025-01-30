@@ -15,11 +15,11 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 abstract class StoreViewComponent<
-    UIState : Any,
-    Intent : Any,
-    SideEffect : Any,
-    State : Any,
-    Message : Any
+    out UIState : Any,
+    in Intent : Any,
+    out SideEffect : Any,
+    out State : Any,
+    out Message : Any
     >(
     private val componentContext: ComponentContext,
     storeFactory: ComponentStoreFactory<State, Intent, SideEffect>,

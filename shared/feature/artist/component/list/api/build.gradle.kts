@@ -7,7 +7,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.foundation.decompose.component)
+            api(projects.shared.common.component)
             api(projects.shared.compose.foundation)
             api(projects.shared.feature.artist.compose)
         }

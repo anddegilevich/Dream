@@ -4,6 +4,9 @@ import Shared
 @main
 struct iOSApp: App {
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    var appDelegate: AppDelegate
+    
     init() {
         LoggerHelperKt.doInitLogger()
         KoinHelperKt.doInitKoin()
@@ -11,7 +14,7 @@ struct iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(rootComponent: appDelegate.rootComponent)
         }
     }
 }

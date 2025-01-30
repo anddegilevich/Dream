@@ -16,5 +16,5 @@ kotlin {
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.common.source.api"
+    namespace = "and.degilevich.dream.shared.common.source"
 }

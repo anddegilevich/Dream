@@ -26,7 +26,7 @@ include(":shared:foundation:primitive")
 include(":shared:foundation:serialization")
 include(":shared:foundation:model")
 include(":shared:foundation:dispatcher")
-include(":shared:foundation:logger")
+include(":shared:foundation:tracer")
 
 include(":shared:foundation:decompose:navigator")
 include(":shared:foundation:decompose:lifecycle")
@@ -35,6 +35,8 @@ include(":shared:foundation:decompose:component")
 
 // =====================================================================================================================
 // Core
+
+include(":shared:core:logger")
 
 include(":shared:core:client:api")
 include(":shared:core:client:impl")
@@ -46,6 +48,7 @@ include(":shared:core:storage:impl")
 // Common
 
 include(":shared:common:source")
+include(":shared:common:component")
 
 // =====================================================================================================================
 // Compose

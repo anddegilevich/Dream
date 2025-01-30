@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
@@ -7,12 +9,27 @@ plugins {
 }
 
 kotlin {
+    iosArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        NativeBuildType.DEFAULT_BUILD_TYPES.forEach { buildType ->
+            iosTarget.binaries.getFramework(buildType = buildType).apply {
+                export(libs.bundles.decompose)
+                export(projects.shared.app.api)
+                export(projects.shared.core.logger)
+            }
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(libs.decompose.extensions.compose)
 
             implementation(projects.shared.foundation.dispatcher)
-            api(projects.shared.foundation.logger)
+            api(projects.shared.core.logger)
 
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.storage.impl)

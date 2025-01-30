@@ -3,12 +3,6 @@ complexity:
     active: false
   TooManyFunctions:
     excludes: &excludePatterns
-      - '**/test/**'
-      - '**/androidTest/**'
-      - '**/commonTest/**'
-      - '**/jvmTest/**'
-      - '**/jsTest/**'
-      - '**/iosTest/**'
       - '**/generated/**'
     thresholdInClasses: 20
   LargeClass:
@@ -114,6 +108,7 @@ style:
     ignoreCompanionObjectPropertyDeclaration: true
     ignoreAnnotated:
       - 'Preview'
+      - 'Test'
   MaxLineLength:
     excludes: *excludePatterns
   MayBeConst:

@@ -35,7 +35,7 @@ internal class ArtistDetailsExecutor(
     override fun executeIntent(intent: ArtistDetailsIntent) {
         when (intent) {
             is ArtistDetailsIntent.OnBackCLicked -> navigateBack()
-            is ArtistDetailsIntent.OnSimilarArtistClicked -> Unit //FIXME: Add navigation
+            is ArtistDetailsIntent.OnSimilarArtistClicked -> navigateToSimilarArtist(intent.id)
             is ArtistDetailsIntent.OnSubscribeClicked -> Unit //FIXME: Add
         }
     }
@@ -94,6 +94,14 @@ internal class ArtistDetailsExecutor(
     }
 
     private fun navigateBack() {
-        navigator.screenNavigator.popUpTo(ScreenConfig.ArtistList::class)
+        navigator.screenNavigator.pop()
+    }
+
+    private fun navigateToSimilarArtist(artistId: String) {
+        navigator.screenNavigator.pushNew(
+            ScreenConfig.ArtistDetails(
+                artistId = artistId
+            )
+        )
     }
 }

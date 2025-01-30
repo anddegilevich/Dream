@@ -8,6 +8,7 @@ plugins {
 }
 
 kotlin {
+    applyDefaultHierarchyTemplate()
     androidTarget()
     listOf(
         iosX64(),
@@ -19,7 +20,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         commonTest.dependencies {
             implementation(libs().kotlin.test.common)
@@ -30,8 +31,6 @@ kotlin {
             implementation(libs().kotlin.test.junit)
         }
     }
-
-    applyDefaultHierarchyTemplate()
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {

@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.artist.component.details.impl.compone
 import and.degilevich.dream.shared.feature.artist.component.list.impl.component.ArtistListComponentImpl
 import and.degilevich.dream.shared.foundation.decompose.navigator.ext.executeNavigationAction
 import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
-import and.degilevich.dream.shared.foundation.logger.Log
+import and.degilevich.dream.shared.core.logger.Log
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.impl.manager.NavigationActionManager
 import com.arkivanov.decompose.ComponentContext

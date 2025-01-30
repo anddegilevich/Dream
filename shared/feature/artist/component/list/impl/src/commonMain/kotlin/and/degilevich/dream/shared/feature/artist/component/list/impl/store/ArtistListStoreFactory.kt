@@ -10,7 +10,7 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 internal class ArtistListStoreFactory(
     storeFactory: StoreFactory
 ) : AbstractComponentStoreFactory<ArtistListState, ArtistListIntent, ArtistListSideEffect, ArtistListMessage>(
-    name = "artistList",
+    storeKClass = ArtistListStore::class,
     storeFactory = storeFactory,
     executorFactory = { lifecycle -> ArtistListExecutor(lifecycle = lifecycle) },
     reducer = ArtistListReducer(),
