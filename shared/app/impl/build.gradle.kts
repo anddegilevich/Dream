@@ -29,8 +29,9 @@ kotlin {
             implementation(libs.decompose.extensions.compose)
 
             implementation(projects.shared.foundation.dispatcher)
-            api(projects.shared.core.logger)
 
+            api(projects.shared.core.logger)
+            implementation(projects.shared.core.resource.impl)
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.storage.impl)
 

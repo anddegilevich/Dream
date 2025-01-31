@@ -59,8 +59,10 @@ kvault = "1.12.0" # https://github.com/Liftric/KVault/releases
 coil = "2.5.0" # https://github.com/coil-kt/coil/releases
 
 # Napier
-napier = "2.7.1"
-ui-android = "1.7.7" # https://github.com/AAkira/Napier/releases
+napier = "2.7.1" # https://github.com/AAkira/Napier/releases
+
+# Moko
+moko-resources = "0.24.0" # https://github.com/icerockdev/moko-resources/releases
 
 [libraries]
 
@@ -136,7 +138,12 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 # Napier - https://github.com/AAkira/Napier
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
-androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "ui-android" }
+
+# Moko resources - https://github.com/icerockdev/moko-resources
+moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko-resources" }
+moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
+moko-resources-test = { module = "dev.icerock.moko:resources-test", version.ref = "moko-resources" }
+moko-resources-generator-gradle = { module = "dev.icerock.moko:resources-generator", version.ref = "moko-resources" }
 
 [bundles]
 
@@ -164,6 +171,9 @@ kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", vers
 # Compose
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+
+# Moko resources
+moko-multiplatfrom-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
 
 # Project
 project-multiplatform = { id = "project.multiplatform.plugin", version.ref = "project-plugin" }

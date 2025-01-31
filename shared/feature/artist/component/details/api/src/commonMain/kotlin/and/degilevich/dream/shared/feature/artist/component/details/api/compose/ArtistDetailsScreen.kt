@@ -41,7 +41,7 @@ fun ArtistDetailsScreen(
         }
         Space(height = 16.dp)
         Text(
-            text = "Artist name: ${state.artistName}"
+            text = state.artistName
         )
         Space(height = 16.dp)
         TextButton(

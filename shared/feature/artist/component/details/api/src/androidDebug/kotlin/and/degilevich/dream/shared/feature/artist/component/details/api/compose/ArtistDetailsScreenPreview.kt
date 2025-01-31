@@ -11,7 +11,7 @@ import kotlinx.collections.immutable.toImmutableList
 fun ArtistDetailsScreenPreview() {
     ArtistDetailsScreen(
         state = ArtistDetailsUIState(
-            artistName = "Name",
+            artistName = "Artist name: Name",
             similarArtists = buildList {
                 for (i in 1..10) {
                     add(

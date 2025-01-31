@@ -39,6 +39,7 @@ include(":shared:foundation:decompose:component")
 include(":shared:core:logger")
 
 include(":shared:core:resource:api")
+include(":shared:core:resource:impl")
 
 include(":shared:core:client:api")
 include(":shared:core:client:impl")

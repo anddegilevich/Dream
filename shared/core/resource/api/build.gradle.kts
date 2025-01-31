@@ -2,22 +2,24 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.compose)
+    alias(libs.plugins.moko.multiplatfrom.resources)
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(compose.components.resources)
+            api(libs.moko.resources)
+            api(libs.moko.resources.compose)
+        }
+        commonTest.dependencies {
+            api(libs.moko.resources.test)
         }
     }
 }
 
-compose {
-    resources {
-        publicResClass = true
-        packageOfResClass = "and.degilevich.dream.shared.resource.api"
-        generateResClass = auto
-    }
+multiplatformResources {
+    resourcesPackage = "and.degilevich.dream.shared.resource"
+    resourcesClassName = "Res"
 }
 
 android {
