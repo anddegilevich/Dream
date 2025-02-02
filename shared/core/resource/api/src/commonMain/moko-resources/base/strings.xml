@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_artists">Artists</string>
+    <string name="title_similar_artists">Similar artists</string>
+    <string name="button_back">Back</string>
+    <string name="button_subscribe">Subscribe</string>
     <string name="mask_artist_name">Artist name: %s</string>
 </resources>

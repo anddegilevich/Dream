@@ -48,14 +48,16 @@ include(":shared:core:storage:api")
 include(":shared:core:storage:impl")
 
 // =====================================================================================================================
+// Compose
+include(":shared:compose:foundation")
+include(":shared:compose:theme")
+include(":shared:compose:design")
+
+// =====================================================================================================================
 // Template
 
 include(":shared:template:source")
 include(":shared:template:component")
-
-// =====================================================================================================================
-// Compose
-include(":shared:compose:foundation")
 
 // =====================================================================================================================
 // Feature

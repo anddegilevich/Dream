@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.project.compose)
     alias(libs.plugins.project.koin)
     alias(libs.plugins.project.coroutines)
+    alias(libs.plugins.moko.multiplatfrom.resources)
 }
 
 kotlin {
@@ -18,6 +19,7 @@ kotlin {
         NativeBuildType.DEFAULT_BUILD_TYPES.forEach { buildType ->
             iosTarget.binaries.getFramework(buildType = buildType).apply {
                 export(libs.bundles.decompose)
+                export(libs.moko.resources)
                 export(projects.shared.app.api)
                 export(projects.shared.core.logger)
             }

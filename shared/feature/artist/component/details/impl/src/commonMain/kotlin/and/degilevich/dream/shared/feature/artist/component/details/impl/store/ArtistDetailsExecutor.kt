@@ -36,7 +36,6 @@ internal class ArtistDetailsExecutor(
         when (intent) {
             is ArtistDetailsIntent.OnBackCLicked -> navigateBack()
             is ArtistDetailsIntent.OnSimilarArtistClicked -> navigateToSimilarArtist(intent.id)
-            is ArtistDetailsIntent.OnSubscribeClicked -> Unit //FIXME: Add
         }
     }
 

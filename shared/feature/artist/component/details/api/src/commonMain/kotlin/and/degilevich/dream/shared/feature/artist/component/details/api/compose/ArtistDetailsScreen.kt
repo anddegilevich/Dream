@@ -1,9 +1,11 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.compose
 
 import and.degilevich.dream.shared.compose.foundation.ext.Space
+import and.degilevich.dream.shared.compose.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard
+import and.degilevich.dream.shared.resource.Res
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,8 +18,8 @@ import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun ArtistDetailsScreen(
@@ -28,7 +30,7 @@ fun ArtistDetailsScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(Theme.colors.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -37,23 +39,20 @@ fun ArtistDetailsScreen(
                 onIntent(ArtistDetailsIntent.OnBackCLicked)
             }
         ) {
-            Text(text = "Back")
+            Text(
+                text = stringResource(Res.strings.button_back),
+                color = Theme.colors.textPrimary
+            )
         }
         Space(height = 16.dp)
         Text(
-            text = state.artistName
+            text = state.artistName,
+            color = Theme.colors.textPrimary
         )
         Space(height = 16.dp)
-        TextButton(
-            onClick = {
-                onIntent(ArtistDetailsIntent.OnSubscribeClicked)
-            }
-        ) {
-            Text(text = "Subscribe")
-        }
-        Space(height = 16.dp)
         Text(
-            text = "Similar artists"
+            text = stringResource(Res.strings.title_similar_artists),
+            color = Theme.colors.textPrimary
         )
         Space(height = 16.dp)
         LazyRow(

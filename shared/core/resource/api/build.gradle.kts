@@ -12,7 +12,7 @@ kotlin {
             api(libs.moko.resources.compose)
         }
         commonTest.dependencies {
-            api(libs.moko.resources.test)
+            implementation(libs.moko.resources.test)
         }
     }
 }
@@ -20,6 +20,7 @@ kotlin {
 multiplatformResources {
     resourcesPackage = "and.degilevich.dream.shared.resource"
     resourcesClassName = "Res"
+    iosBaseLocalizationRegion = "en"
 }
 
 android {

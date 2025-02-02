@@ -7,7 +7,7 @@ interface ShimmerColors {
     val background: Color
 
     object Default : ShimmerColors {
-        override val flash: Color = Color(0xFFFBFBFB)
-        override val background: Color = Color(0xFFE4E8EB)
+        override val flash: Color = Color.White
+        override val background: Color = Color.Gray
     }
 }

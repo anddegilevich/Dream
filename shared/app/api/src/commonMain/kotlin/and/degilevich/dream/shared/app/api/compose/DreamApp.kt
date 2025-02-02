@@ -2,6 +2,8 @@ package and.degilevich.dream.shared.app.api.compose
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.api.compose.ext.collectState
+import and.degilevich.dream.shared.compose.theme.api.DreamTheme
+import and.degilevich.dream.shared.compose.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.component.details.api.compose.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.artist.component.list.api.compose.ArtistListScreen
 import and.degilevich.dream.shared.foundation.decompose.compose.animation.defaultStackAnimation
@@ -9,11 +11,9 @@ import and.degilevich.dream.shared.foundation.decompose.compose.lifecycle.Subscr
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.arkivanov.decompose.extensions.compose.stack.Children
 
 @Composable
@@ -21,11 +21,11 @@ fun DreamApp(
     rootComponent: RootComponent,
     modifier: Modifier = Modifier
 ) {
-    MaterialTheme {
+    DreamTheme {
         Children(
             modifier = modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .background(Theme.colors.background)
                 .safeContentPadding(),
             stack = rootComponent.screenStack,
             animation = defaultStackAnimation()

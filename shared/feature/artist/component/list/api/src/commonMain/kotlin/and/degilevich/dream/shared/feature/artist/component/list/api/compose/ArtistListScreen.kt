@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.list.api.compose
 
 import and.degilevich.dream.shared.compose.foundation.ext.Space
+import and.degilevich.dream.shared.compose.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListUIState
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard
@@ -18,7 +19,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -32,22 +32,24 @@ fun ArtistListScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(Theme.colors.background),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
-            modifier = Modifier
-                .background(Color.Black)
-                .size(65.dp),
+            modifier = Modifier.size(65.dp),
             painter = painterResource(Res.images.ic_duck),
-            tint = Color.White,
+            tint = Theme.colors.icon,
             contentDescription = null,
         )
         Space(height = 16.dp)
         Text(
-            text = stringResource(Res.strings.title_artists)
+            text = stringResource(Res.strings.title_artists),
+            color = Theme.colors.textPrimary
         )
-        Text(text = state.artistCount)
+        Text(
+            text = state.artistCount,
+            color = Theme.colors.textSecondary
+        )
         Space(height = 16.dp)
         LazyColumn(
             modifier = Modifier.fillMaxWidth(),
