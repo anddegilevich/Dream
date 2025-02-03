@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -32,13 +33,14 @@ fun ArtistListScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Theme.colors.background),
+            .background(Theme.colors.background)
+            .safeContentPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
             modifier = Modifier.size(65.dp),
             painter = painterResource(Res.images.ic_duck),
-            tint = Theme.colors.icon,
+            tint = Theme.colors.brandGreen,
             contentDescription = null,
         )
         Space(height = 16.dp)

@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.compose
 
+import and.degilevich.dream.shared.compose.design.button.PrimaryButton
 import and.degilevich.dream.shared.compose.foundation.ext.Space
 import and.degilevich.dream.shared.compose.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
@@ -11,10 +12,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,21 +31,11 @@ fun ArtistDetailsScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Theme.colors.background),
+            .background(Theme.colors.background)
+            .safeContentPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        TextButton(
-            onClick = {
-                onIntent(ArtistDetailsIntent.OnBackCLicked)
-            }
-        ) {
-            Text(
-                text = stringResource(Res.strings.button_back),
-                color = Theme.colors.textPrimary
-            )
-        }
-        Space(height = 16.dp)
         Text(
             text = state.artistName,
             color = Theme.colors.textPrimary
@@ -70,6 +61,12 @@ fun ArtistDetailsScreen(
                     }
                 )
             }
+        }
+        Space(height = 16.dp)
+        PrimaryButton(
+            text = stringResource(Res.strings.button_back)
+        ) {
+            onIntent(ArtistDetailsIntent.OnBackCLicked)
         }
     }
 }
