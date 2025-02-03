@@ -26,7 +26,6 @@ include(":shared:foundation:primitive")
 include(":shared:foundation:serialization")
 include(":shared:foundation:model")
 include(":shared:foundation:dispatcher")
-include(":shared:foundation:tracer")
 
 include(":shared:foundation:decompose:navigator")
 include(":shared:foundation:decompose:lifecycle")
