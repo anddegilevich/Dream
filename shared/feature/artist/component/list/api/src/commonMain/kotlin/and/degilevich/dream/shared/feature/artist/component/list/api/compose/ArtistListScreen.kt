@@ -39,8 +39,8 @@ fun ArtistListScreen(
         modifier = modifier
             .fillMaxSize()
             .background(Theme.colors.background)
-            .fadingTop()
-            .fadingBottom(fadeFraction = 0.3f),
+            .fadingTop(fadeHeight = WindowInsets.statusBars.asPaddingValues().calculateTopPadding())
+            .fadingBottom(fadeHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(all = 16.dp)

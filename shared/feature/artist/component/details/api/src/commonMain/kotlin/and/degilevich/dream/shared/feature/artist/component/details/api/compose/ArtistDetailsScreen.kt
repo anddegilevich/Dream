@@ -52,8 +52,8 @@ fun ArtistDetailsScreen(
         LazyRow(
             modifier = Modifier
                 .fillMaxWidth()
-                .fadingStart()
-                .fadingEnd(),
+                .fadingStart(fadeWidth = 16.dp)
+                .fadingEnd(fadeWidth = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
