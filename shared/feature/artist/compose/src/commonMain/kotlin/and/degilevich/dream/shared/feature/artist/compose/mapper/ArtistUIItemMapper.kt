@@ -2,14 +2,17 @@ package and.degilevich.dream.shared.feature.artist.compose.mapper
 
 import and.degilevich.dream.shared.feature.artist.compose.model.ArtistUIItem
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
-import and.degilevich.dream.shared.foundation.model.mapper.Mapper
 
-class ArtistUIItemMapper : Mapper<ArtistData, ArtistUIItem> {
-    override fun map(item: ArtistData): ArtistUIItem {
-        return with(item) {
+class ArtistUIItemMapper {
+    fun map(
+        artist: ArtistData,
+        isEnabled: Boolean
+    ): ArtistUIItem {
+        return with(artist) {
             ArtistUIItem(
                 id = id,
-                name = name
+                name = name,
+                isEnabled = isEnabled
             )
         }
     }

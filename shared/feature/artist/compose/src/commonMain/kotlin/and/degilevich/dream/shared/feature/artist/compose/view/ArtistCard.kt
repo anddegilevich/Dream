@@ -1,11 +1,12 @@
 package and.degilevich.dream.shared.feature.artist.compose.view
 
-import and.degilevich.dream.shared.compose.foundation.ext.Space
 import and.degilevich.dream.shared.compose.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.compose.model.ArtistUIItem
+import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -15,7 +16,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
+import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,7 +33,11 @@ fun ArtistCard(
 ) {
     Column(
         modifier = modifier
-            .clickable {
+            .clickable(
+                enabled = item.isEnabled,
+                interactionSource = remember { MutableInteractionSource() },
+                indication = ripple(color = Theme.colors.ripple)
+            ) {
                 onCardClicked(item.id)
             }
             .border(
@@ -48,7 +55,7 @@ fun ArtistCard(
             modifier = Modifier
                 .clip(CircleShape)
                 .background(Theme.colors.black)
-                .size(64.dp)
+                .size(80.dp)
         )
         Space(height = 8.dp)
         Text(

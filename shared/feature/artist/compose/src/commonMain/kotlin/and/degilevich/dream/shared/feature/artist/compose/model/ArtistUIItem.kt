@@ -7,5 +7,6 @@ import androidx.compose.runtime.Stable
 data class ArtistUIItem(
     override val id: String = "",
     val name: String = "",
-    val iconUrl: String = ""
+    val iconUrl: String = "",
+    val isEnabled: Boolean = true
 ) : Identified

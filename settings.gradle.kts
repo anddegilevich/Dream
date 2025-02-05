@@ -26,6 +26,7 @@ include(":shared:foundation:primitive")
 include(":shared:foundation:serialization")
 include(":shared:foundation:model")
 include(":shared:foundation:dispatcher")
+include(":shared:foundation:compose")
 
 include(":shared:foundation:decompose:navigator")
 include(":shared:foundation:decompose:lifecycle")
@@ -48,7 +49,7 @@ include(":shared:core:storage:impl")
 
 // =====================================================================================================================
 // Compose
-include(":shared:compose:foundation")
+
 include(":shared:compose:theme")
 include(":shared:compose:design")
 
@@ -100,5 +101,6 @@ include(":shared:app:impl")
 
 // =====================================================================================================================
 // Android
+
 include(":android:app")
 //FIXME: Add baseline profile

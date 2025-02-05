@@ -1,15 +1,18 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.compose
 
 import and.degilevich.dream.shared.compose.design.button.PrimaryButton
-import and.degilevich.dream.shared.compose.foundation.ext.Space
 import and.degilevich.dream.shared.compose.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard
+import and.degilevich.dream.shared.foundation.compose.ext.Space
+import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingEnd
+import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingStart
 import and.degilevich.dream.shared.resource.Res
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeContentPadding
@@ -47,8 +50,12 @@ fun ArtistDetailsScreen(
         )
         Space(height = 16.dp)
         LazyRow(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .fadingStart()
+                .fadingEnd(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(
                 items = state.similarArtists,

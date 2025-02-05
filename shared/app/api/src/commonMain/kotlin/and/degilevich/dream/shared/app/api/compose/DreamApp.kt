@@ -10,7 +10,6 @@ import and.degilevich.dream.shared.foundation.decompose.compose.animation.defaul
 import and.degilevich.dream.shared.foundation.decompose.compose.lifecycle.SubscribeToLifecycleDisposalEffect
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -25,8 +24,7 @@ fun DreamApp(
         Children(
             modifier = modifier
                 .fillMaxSize()
-                .background(Theme.colors.background)
-                .safeContentPadding(),
+                .background(Theme.colors.background),
             stack = rootComponent.screenStack,
             animation = defaultStackAnimation()
         ) { screen ->

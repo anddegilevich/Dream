@@ -19,7 +19,12 @@ internal class ArtistListUIStateMapper : Mapper<ArtistListState, ArtistListUISta
         return with(item) {
             ArtistListUIState(
                 artistCount = resourceManager.getString(Res.plurals.plural_artist, artists.count()),
-                artists = artistUIItemMapper.map(artists).toImmutableList()
+                artists = artists.map { artist ->
+                    artistUIItemMapper.map(
+                        artist = artist,
+                        isEnabled = !isLoading
+                    )
+                }.toImmutableList()
             )
         }
     }

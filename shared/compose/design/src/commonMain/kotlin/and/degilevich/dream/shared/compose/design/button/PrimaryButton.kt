@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.compose.design.button
 
-import and.degilevich.dream.shared.compose.foundation.modifier.clickable.clickableWithDebounce
-import and.degilevich.dream.shared.compose.foundation.modifier.clickable.scaleOnClick
 import and.degilevich.dream.shared.compose.theme.api.Theme
+import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
+import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.padding

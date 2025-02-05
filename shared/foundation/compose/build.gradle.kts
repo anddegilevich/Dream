@@ -7,12 +7,12 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.template.component)
-            api(projects.shared.feature.artist.compose)
+            api(libs.kotlinx.collections.immutable)
+            implementation(projects.shared.foundation.primitive)
         }
     }
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.feature.artist.component.list.api"
+    namespace = "and.degilevich.dream.shared.foundation.compose"
 }

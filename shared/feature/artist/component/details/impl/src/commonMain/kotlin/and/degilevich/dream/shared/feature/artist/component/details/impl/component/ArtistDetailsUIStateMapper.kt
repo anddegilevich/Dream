@@ -19,7 +19,12 @@ internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDet
         return with(item) {
             ArtistDetailsUIState(
                 artistName = resourceManager.getString(Res.strings.mask_artist_name, artist.name),
-                similarArtists = artistUIItemMapper.map(similarArtists).toImmutableList()
+                similarArtists = similarArtists.map { artist ->
+                    artistUIItemMapper.map(
+                        artist = artist,
+                        isEnabled = !isLoading
+                    )
+                }.toImmutableList()
             )
         }
     }
