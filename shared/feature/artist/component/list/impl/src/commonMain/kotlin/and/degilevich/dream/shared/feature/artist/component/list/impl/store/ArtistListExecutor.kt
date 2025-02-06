@@ -5,13 +5,13 @@ import and.degilevich.dream.shared.feature.artist.component.list.api.component.m
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListMessage
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsRequest
+import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
-import com.arkivanov.essenty.lifecycle.doOnStart
+import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -38,7 +38,7 @@ internal class ArtistListExecutor(
 
     private fun subscribeToLifecycle(lifecycle: ExtendedLifecycle) {
         with(lifecycle) {
-            doOnStart {
+            doOnCreate {
                 fetchArtists()
             }
         }
@@ -48,7 +48,13 @@ internal class ArtistListExecutor(
         scope.launch {
             setLoading(true)
             getArtistsFlowUseCase(
-                request = GetArtistsRequest()
+                params = GetArtistsParams(
+                    ids = listOf(
+                        "2CIMQHirSU0MQqyYHq0eOx",
+                        "57dN52uHvrHOxijzpIgu3E",
+                        "1vCWHaC5f2uS3yhpwWbIA6"
+                    )
+                )
             )
                 .flowOnBackground()
                 .collect { result ->

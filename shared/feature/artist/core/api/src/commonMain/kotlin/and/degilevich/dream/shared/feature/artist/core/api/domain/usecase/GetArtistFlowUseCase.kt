@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.artist.core.api.domain.usecase
 
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistRequest
+import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 import kotlinx.coroutines.flow.Flow
 
 interface GetArtistFlowUseCase {
-    suspend operator fun invoke(request: GetArtistRequest): Flow<Result<ArtistData>>
+    suspend operator fun invoke(params: GetArtistParams): Flow<Result<ArtistData>>
 }

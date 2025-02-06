@@ -64,6 +64,9 @@ napier = "2.7.1" # https://github.com/AAkira/Napier/releases
 # Moko
 moko-resources = "0.24.4" # https://github.com/icerockdev/moko-resources/releases
 
+# BuildKonfig
+buildkonfig = "0.15.0" # https://github.com/yshrsmz/BuildKonfig/releases
+
 [libraries]
 
 # Kotlin
@@ -110,6 +113,7 @@ ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negoti
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
 # Decompose - https://github.com/arkivanov/Decompose
@@ -174,6 +178,9 @@ compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-m
 
 # Moko resources
 moko-multiplatfrom-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
+
+# BuildKonfig
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 
 # Project
 project-multiplatform = { id = "project.multiplatform.plugin", version.ref = "project-plugin" }

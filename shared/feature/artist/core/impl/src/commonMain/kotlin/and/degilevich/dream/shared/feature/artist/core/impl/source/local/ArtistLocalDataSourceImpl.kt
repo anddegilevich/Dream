@@ -2,8 +2,8 @@ package and.degilevich.dream.shared.feature.artist.core.impl.source.local
 
 import and.degilevich.dream.shared.template.source.local.AbstractLocalDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsRequest
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsResponse
+import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsResult
 import and.degilevich.dream.shared.feature.artist.core.api.source.local.ArtistLocalDataSource
 import and.degilevich.dream.shared.feature.artist.model.artifact.dictionary.ArtistType
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistFollowersData
@@ -32,11 +32,9 @@ internal class ArtistLocalDataSourceImpl : ArtistLocalDataSource, AbstractLocalD
         return Result.success(false)
     }
 
-    override suspend fun getArtists(request: GetArtistsRequest): Result<GetArtistsResponse> {
-        val count = 10
+    override suspend fun getArtists(params: GetArtistsParams): Result<GetArtistsResult> {
         return Result.success(
-            GetArtistsResponse(
-                count = count,
+            GetArtistsResult(
                 artists = buildList {
                     for (i in 1..10) {
                         add(

@@ -10,6 +10,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.shared.foundation.serialization)
             api(projects.shared.foundation.dispatcher)
+            api(projects.shared.core.service.api)
             implementation(projects.shared.core.storage.api)
         }
     }

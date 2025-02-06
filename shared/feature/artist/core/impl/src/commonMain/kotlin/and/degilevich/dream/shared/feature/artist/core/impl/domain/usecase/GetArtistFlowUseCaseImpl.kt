@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.core.impl.domain.usecase
 
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistFlowUseCase
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistRequest
+import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
@@ -12,15 +12,15 @@ internal class GetArtistFlowUseCaseImpl(
     private val artistRemoteDataSource: ArtistRemoteDataSource,
     private val artistLocalDataSource: ArtistRemoteDataSource
 ) : GetArtistFlowUseCase {
-    override suspend fun invoke(request: GetArtistRequest): Flow<Result<ArtistData>> {
+    override suspend fun invoke(params: GetArtistParams): Flow<Result<ArtistData>> {
         return flow {
             emit(
-                artistLocalDataSource.getArtist(request).foldResultSuccess { response ->
+                artistLocalDataSource.getArtist(params).foldResultSuccess { response ->
                     response.artist
                 }
             )
             emit(
-                artistRemoteDataSource.getArtist(request).foldResultSuccess { response ->
+                artistRemoteDataSource.getArtist(params).foldResultSuccess { response ->
                     response.artist
                 }
             )

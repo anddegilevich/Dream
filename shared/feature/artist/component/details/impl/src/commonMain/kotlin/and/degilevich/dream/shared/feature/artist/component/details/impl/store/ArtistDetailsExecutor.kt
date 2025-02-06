@@ -6,8 +6,8 @@ import and.degilevich.dream.shared.feature.artist.component.details.impl.store.m
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistRequest
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsRequest
+import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.executor.AbstractExecutor
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
@@ -50,7 +50,7 @@ internal class ArtistDetailsExecutor(
         scope.launch {
             setLoading(true)
             getArtistFlowUseCase(
-                request = GetArtistRequest(
+                params = GetArtistParams(
                     id = state().config.artistId
                 )
             )
@@ -72,7 +72,15 @@ internal class ArtistDetailsExecutor(
     private fun fetchSimilarArtists() {
         scope.launch {
             setLoading(true)
-            getArtistsFlowUseCase(request = GetArtistsRequest())
+            getArtistsFlowUseCase(
+                params = GetArtistsParams(
+                    ids = listOf(
+                        "2CIMQHirSU0MQqyYHq0eOx",
+                        "57dN52uHvrHOxijzpIgu3E",
+                        "1vCWHaC5f2uS3yhpwWbIA6"
+                    )
+                )
+            )
                 .flowOnBackground()
                 .collect { result ->
                     result.onSuccess { artists ->

@@ -2,6 +2,6 @@ package and.degilevich.dream.shared.feature.artist.core.api.source.model.request
 
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 
-data class GetArtistResponse(
+data class GetArtistResult(
     val artist: ArtistData
 )

@@ -44,6 +44,9 @@ include(":shared:core:resource:impl")
 include(":shared:core:client:api")
 include(":shared:core:client:impl")
 
+include(":shared:core:service:api")
+include(":shared:core:service:impl")
+
 include(":shared:core:storage:api")
 include(":shared:core:storage:impl")
 
