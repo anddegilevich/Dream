@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.image.model.artifact.mappers
 
-import and.degilevich.dream.shared.core.service.api.core.ImageObjectOutput
+import and.degilevich.dream.shared.core.service.api.core.image.ImageObjectOutput
 import and.degilevich.dream.shared.feature.image.model.artifact.ImageObjectData
 import and.degilevich.dream.shared.foundation.model.empty.state.ext.orEmpty
 

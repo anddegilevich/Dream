@@ -6,6 +6,7 @@ import and.degilevich.dream.shared.core.client.impl.logger.ClientLogger
 import and.degilevich.dream.shared.core.client.impl.token.model.Tokens
 import and.degilevich.dream.shared.core.client.impl.token.model.request.TokenResponse
 import and.degilevich.dream.shared.core.client.impl.token.storage.TokensStorage
+import and.degilevich.dream.shared.foundation.primitive.result.foldTry
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.HttpTimeout
@@ -52,28 +53,35 @@ internal class TokenClientImpl(
         expectSuccess = true
     }
 
-    @Suppress("TooGenericExceptionCaught")
     override suspend fun getToken(): Result<Tokens> {
-        return try {
+        return foldTry {
             val response = client.post {
-                url("https://accounts.spotify.com/api/token")
-                header(HttpHeaders.ContentType, "application/x-www-form-urlencoded")
-                parameter("grant_type", "client_credentials")
-                parameter("client_id", BuildKonfig.CLIENT_ID)
-                parameter("client_secret", BuildKonfig.CLIENT_SECRET)
+                url(SPOTIFY_TOKEN_URL)
+                header(HttpHeaders.ContentType, HEADER_CONTENT_TYPE_VALUE)
+                parameter(PARAM_GRANT_TYPE, PARAM_GRANT_TYPE_VALUE)
+                parameter(PARAM_CLIENT_ID, BuildKonfig.CLIENT_ID)
+                parameter(PARAM_CLIENT_SECRET, BuildKonfig.CLIENT_SECRET)
             }.body<TokenResponse>()
             val tokens = Tokens(
                 accessToken = response.accessToken.orEmpty(),
                 refreshToken = ""
             )
-            tokensStorage.save(tokens)
-            Result.success(tokens)
-        } catch (error: Throwable) {
-            Result.failure(error)
+            handleSuccessGetToken(tokens)
+            tokens
         }
+    }
+
+    private fun handleSuccessGetToken(tokens: Tokens) {
+        tokensStorage.save(tokens)
     }
 
     private companion object {
         val TIMEOUT = 30.seconds
+        const val SPOTIFY_TOKEN_URL = "https://accounts.spotify.com/api/token"
+        const val HEADER_CONTENT_TYPE_VALUE = "application/x-www-form-urlencoded"
+        const val PARAM_GRANT_TYPE = "grant_type"
+        const val PARAM_GRANT_TYPE_VALUE = "client_credentials"
+        const val PARAM_CLIENT_ID = "client_id"
+        const val PARAM_CLIENT_SECRET = "client_secret"
     }
 }

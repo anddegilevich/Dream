@@ -73,3 +73,12 @@ inline fun <T1, T2, R> foldResultsSuccesses(
         }
     )
 }
+
+@Suppress("TooGenericExceptionCaught")
+inline fun <T> foldTry(block: () -> T): Result<T> {
+    return try {
+        Result.success(block())
+    } catch (error: Throwable) {
+        Result.failure(error)
+    }
+}

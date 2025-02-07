@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.core.service.api.requests.getArtists
 
-import and.degilevich.dream.shared.core.service.api.core.ArtistOutput
+import and.degilevich.dream.shared.core.service.api.core.artist.ArtistOutput
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

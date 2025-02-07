@@ -1,5 +1,6 @@
-package and.degilevich.dream.shared.core.service.api.core
+package and.degilevich.dream.shared.core.service.api.core.artist
 
+import and.degilevich.dream.shared.core.service.api.core.image.ImageObjectOutput
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

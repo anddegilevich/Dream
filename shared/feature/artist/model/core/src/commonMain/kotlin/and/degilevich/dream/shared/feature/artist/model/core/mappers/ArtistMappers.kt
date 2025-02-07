@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.model.core.mappers
 
-import and.degilevich.dream.shared.core.service.api.core.ArtistOutput
+import and.degilevich.dream.shared.core.service.api.core.artist.ArtistOutput
 import and.degilevich.dream.shared.feature.artist.model.artifact.dictionary.ArtistType
 import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
 import and.degilevich.dream.shared.feature.image.model.artifact.mappers.mapToDomain
