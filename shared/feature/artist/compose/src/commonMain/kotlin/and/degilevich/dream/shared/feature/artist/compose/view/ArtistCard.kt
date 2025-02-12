@@ -42,7 +42,7 @@ fun ArtistCard(
             }
             .border(
                 width = 2.dp,
-                color = Theme.colors.white,
+                color = Theme.colors.outline,
                 shape = RoundedCornerShape(corner = CornerSize(8.dp)),
             )
             .background(

@@ -18,6 +18,9 @@ internal class DarkThemeDreamColors : DreamColors, DreamThemeIndifferentColors b
     override val icon: Color
         @Composable
         get() = white
+    override val outline: Color
+        @Composable
+        get() = white
 
     // Text
     override val textPrimary: Color

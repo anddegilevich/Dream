@@ -28,7 +28,7 @@ androidx-activity-compose = "1.10.0"
 androidx-lifecycle = "2.8.4"
 
 # Kotlinx
-kotlinx-coroutines = "1.9.0" # https://github.com/Kotlin/kotlinx.coroutines/releases
+kotlinx-coroutines = "1.10.1" # https://github.com/Kotlin/kotlinx.coroutines/releases
 kotlinx-serialization = "1.6.3" # https://github.com/Kotlin/kotlinx.serialization/releases
 kotlinx-immutable-collections = "0.3.8" # https://github.com/Kotlin/kotlinx.collections.immutable/releases
 kotlinx-datetime = "0.6.1" # https://github.com/Kotlin/kotlinx-datetime/releases
@@ -66,6 +66,9 @@ moko-resources = "0.24.4" # https://github.com/icerockdev/moko-resources/release
 
 # BuildKonfig
 buildkonfig = "0.15.0" # https://github.com/yshrsmz/BuildKonfig/releases
+
+# Room
+room = "2.7.0-alpha13" # https://developer.android.com/jetpack/androidx/releases/room
 
 [libraries]
 
@@ -148,6 +151,13 @@ moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko-re
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
 moko-resources-test = { module = "dev.icerock.moko:resources-test", version.ref = "moko-resources" }
 moko-resources-generator-gradle = { module = "dev.icerock.moko:resources-generator", version.ref = "moko-resources" }
+
+# Room - # https://developer.android.com/jetpack/androidx/releases/room
+room-runtime =  { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler =  { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx =  { module = "androidx.room:room-ktx", version.ref = "room" }
+room-testing =  { module = "androidx.room:room-testing", version.ref = "room" }
+room-paging =  { module = "androidx.room:room-paging", version.ref = "room" }
 
 [bundles]
 

@@ -7,6 +7,8 @@ import and.degilevich.dream.shared.feature.artist.component.list.impl.component.
 import and.degilevich.dream.shared.foundation.decompose.navigator.ext.executeNavigationAction
 import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
 import and.degilevich.dream.shared.core.logger.Log
+import and.degilevich.dream.shared.core.toast.api.channel.ToastChannel
+import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.impl.manager.NavigationActionManager
 import com.arkivanov.decompose.ComponentContext
@@ -17,6 +19,7 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -35,6 +38,7 @@ class RootComponentImpl(
     )
 
     private val navigationActionManager: NavigationActionManager by inject()
+    private val toastChannel: ToastChannel by inject()
 
     private val screenNavigation: StackNavigation<ScreenConfig> = StackNavigation()
 
@@ -46,11 +50,13 @@ class RootComponentImpl(
         childFactory = ::screenFactory,
     )
 
+    override val toasts: Flow<ToastData> = toastChannel.toasts
+
     init {
-        subscribeNavigationActions()
+        subscribeToNavigationActions()
     }
 
-    private fun subscribeNavigationActions() {
+    private fun subscribeToNavigationActions() {
         coroutineScope.launch {
             navigationActionManager.screenAction.collect { action ->
                 screenNavigation.executeNavigationAction(action)

@@ -1,11 +1,13 @@
 package and.degilevich.dream.shared.app.api.component
 
+import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.ArtistListComponent
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.view.ViewLifecycleCallbacks
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
+import kotlinx.coroutines.flow.Flow
 
 interface RootComponent {
 
@@ -13,6 +15,8 @@ interface RootComponent {
 
     // FIXME: Add drawer child component
     // https://arkivanov.github.io/Decompose/component/child-components/
+
+    val toasts: Flow<ToastData>
 
     sealed interface Child : ViewLifecycleCallbacks {
         class ArtistList(

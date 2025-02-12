@@ -37,6 +37,9 @@ kotlin {
             implementation(projects.shared.core.storage.impl)
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.service.impl)
+            implementation(projects.shared.core.toast.impl)
+            implementation(projects.shared.core.error.impl)
+            implementation(projects.shared.core.db.impl)
 
             implementation(projects.shared.navigation.impl)
 

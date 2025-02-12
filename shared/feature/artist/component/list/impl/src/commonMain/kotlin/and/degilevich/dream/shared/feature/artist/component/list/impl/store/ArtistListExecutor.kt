@@ -1,5 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
+import and.degilevich.dream.shared.core.error.api.manager.ErrorManager
+import and.degilevich.dream.shared.core.resource.api.ResourceManager
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.executor.AbstractExecutor
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListMessage
@@ -11,6 +13,7 @@ import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecy
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
+import and.degilevich.dream.shared.resource.Res
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
@@ -23,6 +26,8 @@ internal class ArtistListExecutor(
 
     private val navigator: DreamNavigator by inject()
     private val getArtistsFlowUseCase: GetArtistsFlowUseCase by inject()
+    private val errorManager: ErrorManager by inject()
+    private val resourceManager: ResourceManager by inject()
 
     init {
         subscribeToLifecycle(lifecycle)
@@ -58,9 +63,20 @@ internal class ArtistListExecutor(
             )
                 .flowOnBackground()
                 .collect { result ->
-                    result.onSuccess { artists ->
-                        setArtists(artists)
-                    }
+                    result
+                        .onSuccess { artists ->
+                            setArtists(artists)
+                        }
+                        .onFailure { error ->
+                            errorManager.handle(error) {
+                                setToast {
+                                    setAction(
+                                        action = resourceManager.getString(Res.strings.button_repeat),
+                                        onAction = ::fetchArtists
+                                    )
+                                }
+                            }
+                        }
                 }
         }.invokeOnCompletion {
             setLoading(false)

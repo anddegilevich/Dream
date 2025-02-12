@@ -1,52 +1,57 @@
 package and.degilevich.dream.shared.app.api.compose
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
-import and.degilevich.dream.shared.app.api.compose.ext.collectState
+import and.degilevich.dream.shared.app.api.compose.ext.showToast
+import and.degilevich.dream.shared.compose.design.snackbar.DreamSnackbar
 import and.degilevich.dream.shared.compose.theme.api.DreamTheme
 import and.degilevich.dream.shared.compose.theme.api.Theme
-import and.degilevich.dream.shared.feature.artist.component.details.api.compose.ArtistDetailsScreen
-import and.degilevich.dream.shared.feature.artist.component.list.api.compose.ArtistListScreen
-import and.degilevich.dream.shared.foundation.decompose.compose.animation.defaultStackAnimation
-import and.degilevich.dream.shared.foundation.decompose.compose.lifecycle.SubscribeToLifecycleDisposalEffect
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.SnackbarHost
+import androidx.compose.material.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.arkivanov.decompose.extensions.compose.stack.Children
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun DreamApp(
     rootComponent: RootComponent,
     modifier: Modifier = Modifier
 ) {
+    val snackBarHostState = remember { SnackbarHostState() }
+
+    LaunchedEffect(Unit) {
+        rootComponent.toasts.collect { toast ->
+            snackBarHostState.showToast(toast)
+        }
+    }
+
     DreamTheme {
-        Children(
+        Box(
             modifier = modifier
                 .fillMaxSize()
                 .background(Theme.colors.background),
-            stack = rootComponent.screenStack,
-            animation = defaultStackAnimation()
-        ) { screen ->
-            val screenComponent = remember(screen.configuration) { screen.instance }
-
-            when (screenComponent) {
-                is RootComponent.Child.ArtistList -> {
-                    ArtistListScreen(
-                        state = screenComponent.collectState(),
-                        onIntent = screenComponent::handleIntent
-                    )
-                }
-
-                is RootComponent.Child.ArtistDetails -> {
-                    ArtistDetailsScreen(
-                        state = screenComponent.collectState(),
-                        onIntent = screenComponent::handleIntent
-                    )
-                }
+        ) {
+            DreamScreens(
+                screens = rootComponent.screenStack
+            )
+            SnackbarHost(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .navigationBarsPadding(),
+                hostState = snackBarHostState
+            ) { snackbarData ->
+                DreamSnackbar(
+                    modifier = Modifier.padding(16.dp),
+                    data = snackbarData
+                )
             }
-
-            SubscribeToLifecycleDisposalEffect(screenComponent)
         }
     }
 }
