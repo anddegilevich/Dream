@@ -2,8 +2,6 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
----
-
 **Dream** is a sample multimodal **Kotlin Multiplatform Mobile** app with shared **Compose Multiplatform** UI.<br>
 It uses cutting-edge frameworks, patterns and plugins in order to achieve:
 
@@ -41,13 +39,9 @@ Here is the list of frameworks, that were used in this project:
 * **Image Loading** - [Coil](https://github.com/coil-kt/coil)
 * **Build Config** - [BuildKonfig](https://github.com/yshrsmz/BuildKonfig)
 
----
-
 ## Architecture
 
 //TODO: Describe projects modules structure
-
----
 
 ## Setup
 
