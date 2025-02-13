@@ -1,17 +1,17 @@
-package and.degilevich.dream.shared.core.toast.impl.manager
+package and.degilevich.dream.shared.core.toast.impl.controller
 
 import and.degilevich.dream.shared.core.toast.api.channel.ToastChannel
-import and.degilevich.dream.shared.core.toast.api.manager.ToastManager
+import and.degilevich.dream.shared.core.toast.api.controller.ToastController
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.core.toast.api.model.builder.ToastBuilderScope
 import and.degilevich.dream.shared.core.toast.impl.model.builder.ToastBuilder
 
-internal class ToastManagerImpl(
+internal class ToastControllerImpl(
     private val toastChannel: ToastChannel
-) : ToastManager {
+) : ToastController {
 
     override suspend fun showToast(toast: ToastData) {
-        toastChannel.sendToast(toast)
+        toastChannel.send(toast)
     }
 
     override suspend fun showToast(block: ToastBuilderScope.() -> Unit) {

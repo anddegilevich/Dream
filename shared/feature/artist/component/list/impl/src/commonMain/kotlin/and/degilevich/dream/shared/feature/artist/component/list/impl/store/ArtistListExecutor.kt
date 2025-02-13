@@ -1,7 +1,8 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
-import and.degilevich.dream.shared.core.error.api.manager.ErrorManager
 import and.degilevich.dream.shared.core.resource.api.ResourceManager
+import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
+import and.degilevich.dream.shared.core.toast.api.controller.ToastController
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.executor.AbstractExecutor
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListMessage
@@ -26,7 +27,8 @@ internal class ArtistListExecutor(
 
     private val navigator: DreamNavigator by inject()
     private val getArtistsFlowUseCase: GetArtistsFlowUseCase by inject()
-    private val errorManager: ErrorManager by inject()
+    private val toastController: ToastController by inject()
+    private val toastFactory: ToastFactory by inject()
     private val resourceManager: ResourceManager by inject()
 
     init {
@@ -67,15 +69,13 @@ internal class ArtistListExecutor(
                         .onSuccess { artists ->
                             setArtists(artists)
                         }
-                        .onFailure { error ->
-                            errorManager.handle(error) {
-                                setToast {
-                                    setAction(
-                                        action = resourceManager.getString(Res.strings.button_repeat),
-                                        onAction = ::fetchArtists
-                                    )
-                                }
-                            }
+                        .onFailure {
+                            toastController.showToast(
+                                toast = toastFactory.createRepeatToast(
+                                    message = resourceManager.getString(Res.strings.error_fetch_artists),
+                                    onRepeat = ::fetchArtists
+                                )
+                            )
                         }
                 }
         }.invokeOnCompletion {

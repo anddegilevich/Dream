@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.app.api.compose.ext
 
 import and.degilevich.dream.shared.foundation.decompose.component.MVIComponent
+import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -15,6 +16,8 @@ fun <SideEffect> MVIComponent<*, *, SideEffect>.HandleSideEffect(handler: (SideE
 
 @Composable
 fun <State : Any> MVIComponent<State, *, *>.collectState(): State {
-    val state by this.state.collectAsState()
+    val state by this.state.collectAsState(
+        context = DefaultKMPDispatchers.main
+    )
     return state
 }

@@ -10,7 +10,7 @@ import and.degilevich.dream.shared.core.logger.Log
 import and.degilevich.dream.shared.core.toast.api.channel.ToastChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
-import and.degilevich.dream.shared.navigation.impl.manager.NavigationActionManager
+import and.degilevich.dream.shared.navigation.api.dream.channel.ScreenNavigationActionChannel
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
@@ -37,7 +37,7 @@ class RootComponentImpl(
         logger = StoreFactoryLogger()
     )
 
-    private val navigationActionManager: NavigationActionManager by inject()
+    private val screenNavigationActionChannel: ScreenNavigationActionChannel by inject()
     private val toastChannel: ToastChannel by inject()
 
     private val screenNavigation: StackNavigation<ScreenConfig> = StackNavigation()
@@ -50,7 +50,7 @@ class RootComponentImpl(
         childFactory = ::screenFactory,
     )
 
-    override val toasts: Flow<ToastData> = toastChannel.toasts
+    override val toasts: Flow<ToastData> = toastChannel.value
 
     init {
         subscribeToNavigationActions()
@@ -58,7 +58,7 @@ class RootComponentImpl(
 
     private fun subscribeToNavigationActions() {
         coroutineScope.launch {
-            navigationActionManager.screenAction.collect { action ->
+            screenNavigationActionChannel.value.collect { action ->
                 screenNavigation.executeNavigationAction(action)
             }
         }

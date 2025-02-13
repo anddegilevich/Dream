@@ -8,4 +8,5 @@
     <string name="error">Error</string>
     <string name="error_forbidden_resource">Requested resource is forbidden</string>
     <string name="button_repeat">Repeat</string>
+    <string name="error_fetch_artists">Failed to load artists</string>
 </resources>

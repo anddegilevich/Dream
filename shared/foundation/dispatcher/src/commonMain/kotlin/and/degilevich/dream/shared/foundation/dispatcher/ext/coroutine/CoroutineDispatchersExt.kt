@@ -41,7 +41,7 @@ fun CoroutineScope.launchOnBackground(
     block: suspend CoroutineScope.() -> Unit
 ): Job {
     return launch(
-        context = DefaultKMPDispatchers.main,
+        context = DefaultKMPDispatchers.background,
         start = start,
         block = block
     )

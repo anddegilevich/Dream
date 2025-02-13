@@ -7,15 +7,14 @@ import and.degilevich.dream.shared.core.resource.api.ResourceManager
 import android.content.Context
 import dev.icerock.moko.resources.PluralsResource
 import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.desc.Resource
-import dev.icerock.moko.resources.desc.StringDesc
+import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.resources.format
 
 internal actual class ResourceManagerImpl(
     private val context: Context
 ) : ResourceManager {
     override fun getString(resource: StringResource): String {
-        return StringDesc.Resource(resource).toString(context = context)
+        return resource.desc().toString(context = context)
     }
 
     override fun getString(

@@ -9,7 +9,6 @@ kotlin {
             api(projects.shared.foundation.decompose.component)
             api(projects.shared.core.logger)
             api(projects.shared.core.resource.api)
-            api(projects.shared.core.error.api)
             api(projects.shared.core.toast.api)
             api(projects.shared.compose.design)
         }

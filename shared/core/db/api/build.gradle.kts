@@ -8,10 +8,11 @@ plugins {
 
 kotlin {
     sourceSets {
-        androidMain.dependencies { }
+        androidMain.dependencies {
+            api(libs.room.ktx)
+        }
         commonMain.dependencies {
             api(libs.room.runtime)
-            api(libs.room.ktx)
             api(libs.room.paging)
         }
         commonTest.dependencies {

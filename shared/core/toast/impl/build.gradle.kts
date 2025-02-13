@@ -10,6 +10,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.core.toast.api)
             api(projects.shared.foundation.model)
+            implementation(projects.shared.core.resource.api)
         }
     }
 }

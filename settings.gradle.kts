@@ -53,9 +53,6 @@ include(":shared:core:storage:impl")
 include(":shared:core:db:api")
 include(":shared:core:db:impl")
 
-include(":shared:core:error:api")
-include(":shared:core:error:impl")
-
 include(":shared:core:toast:api")
 include(":shared:core:toast:impl")
 

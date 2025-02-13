@@ -8,6 +8,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.foundation.decompose.navigator)
+            api(projects.shared.foundation.model)
         }
     }
 }
