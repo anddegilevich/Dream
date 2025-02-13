@@ -16,8 +16,6 @@ Design is also inspired by [Spotify Mobile App](https://apps.apple.com/us/app/sp
 The development of project is still in progress.
 However, even in its current state, it can still be a great example of Clean Architecture, and be a useful basis for any KMM project.
 
----
-
 ## Stack
 
 Here is the list of frameworks, that were used in this project:
