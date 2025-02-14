@@ -56,7 +56,7 @@ abstract class StoreViewComponent<
         componentContext.stateKeeper.register(
             key = stateConservator.key,
             strategy = stateConservator.serializer
-        ) { stateConservator.initialState }
+        ) { store.state }
     }
 
     override fun handleIntent(intent: Intent) {
