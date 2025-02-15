@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.core.impl.domain.usecase
 
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
-import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess

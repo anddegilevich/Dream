@@ -1,22 +1,21 @@
-package and.degilevich.dream.shared.feature.artist.model.core
+package and.degilevich.dream.shared.feature.artist.model.core.data
 
 import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.model.empty.state.EmptyState
+import kotlinx.serialization.Serializable
 
-interface ArtistFollowersData : EmptyState {
+@Serializable
+data class ArtistFollowersData(
     val total: Int
+) : EmptyState {
 
-    data class Base(
-        override val total: Int
-    ) : ArtistFollowersData {
-        override fun isEmpty(): Boolean {
-            return total == 0
-        }
+    override fun isEmpty(): Boolean {
+        return total == 0
     }
 
     companion object : EmptyFactory<ArtistFollowersData> {
         override fun empty(): ArtistFollowersData {
-            return Base(
+            return ArtistFollowersData(
                 total = 0
             )
         }

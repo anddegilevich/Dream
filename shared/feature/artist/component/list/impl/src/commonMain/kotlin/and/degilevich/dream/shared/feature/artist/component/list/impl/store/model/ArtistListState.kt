@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store.model
 
-import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import kotlinx.serialization.Serializable
 
 @Serializable

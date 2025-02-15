@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.api.requests.getArtists.GetArtis
 import and.degilevich.dream.shared.core.service.api.requests.getArtists.GetArtistsResponse
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsResult
-import and.degilevich.dream.shared.feature.artist.model.core.mappers.mapToDomain
+import and.degilevich.dream.shared.feature.artist.model.core.mappers.mapToData
 
 internal fun GetArtistsParams.mapToRequest(): GetArtistsRequest {
     return GetArtistsRequest(
@@ -15,7 +15,7 @@ internal fun GetArtistsParams.mapToRequest(): GetArtistsRequest {
 internal fun GetArtistsResponse.mapToResult(): GetArtistsResult {
     return GetArtistsResult(
         artists = artists?.map { artist ->
-            artist.mapToDomain()
+            artist.mapToData()
         }.orEmpty()
     )
 }

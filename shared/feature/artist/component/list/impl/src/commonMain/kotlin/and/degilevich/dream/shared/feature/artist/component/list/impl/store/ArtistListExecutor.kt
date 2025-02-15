@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
+import and.degilevich.dream.shared.core.logger.Log
 import and.degilevich.dream.shared.core.resource.api.ResourceManager
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.api.controller.ToastController
@@ -9,13 +10,14 @@ import and.degilevich.dream.shared.feature.artist.component.list.impl.store.mode
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
 import and.degilevich.dream.shared.resource.Res
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import com.arkivanov.essenty.lifecycle.doOnStart
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -47,6 +49,9 @@ internal class ArtistListExecutor(
         with(lifecycle) {
             doOnCreate {
                 fetchArtists()
+            }
+            doOnStart {
+                Log.trace("onStart")
             }
         }
     }

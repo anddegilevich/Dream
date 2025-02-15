@@ -8,13 +8,13 @@ import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArt
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.artist.model.core.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.executor.AbstractExecutor
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
-import com.arkivanov.essenty.lifecycle.doOnStart
+import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -40,9 +40,11 @@ internal class ArtistDetailsExecutor(
     }
 
     private fun subscribeToLifecycle(lifecycle: ExtendedLifecycle) {
-        lifecycle.doOnStart {
-            fetchArtist()
-            fetchSimilarArtists()
+        with(lifecycle) {
+            doOnCreate {
+                fetchArtist()
+                fetchSimilarArtists()
+            }
         }
     }
 

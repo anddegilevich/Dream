@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.api.requests.getArtist.GetArtist
 import and.degilevich.dream.shared.core.service.api.requests.getArtist.GetArtistResponse
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistResult
-import and.degilevich.dream.shared.feature.artist.model.core.mappers.mapToDomain
+import and.degilevich.dream.shared.feature.artist.model.core.mappers.mapToData
 
 internal fun GetArtistParams.mapToRequest(): GetArtistRequest {
     return GetArtistRequest(
@@ -13,6 +13,6 @@ internal fun GetArtistParams.mapToRequest(): GetArtistRequest {
 }
 internal fun GetArtistResponse.mapToResult(): GetArtistResult {
     return GetArtistResult(
-        artist = mapToDomain()
+        artist = mapToData()
     )
 }
