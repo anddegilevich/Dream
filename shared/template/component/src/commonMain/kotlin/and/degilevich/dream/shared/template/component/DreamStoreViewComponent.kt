@@ -13,7 +13,7 @@ abstract class DreamStoreViewComponent<
     out UIState : Any,
     in Intent : Any,
     out SideEffect : Any,
-    out State : Any,
+    State : Any,
     out Message : Any
     >(
     componentKClass: KClass<out ViewComponent<UIState, Intent, SideEffect>>,

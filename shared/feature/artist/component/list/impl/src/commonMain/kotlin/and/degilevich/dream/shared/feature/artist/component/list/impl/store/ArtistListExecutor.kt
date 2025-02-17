@@ -1,6 +1,5 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
-import and.degilevich.dream.shared.core.logger.Log
 import and.degilevich.dream.shared.core.resource.api.ResourceManager
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.api.controller.ToastController
@@ -17,14 +16,13 @@ import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
 import and.degilevich.dream.shared.resource.Res
 import com.arkivanov.essenty.lifecycle.doOnCreate
-import com.arkivanov.essenty.lifecycle.doOnStart
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 internal class ArtistListExecutor(
     lifecycle: ExtendedLifecycle
-) : AbstractExecutor<ArtistListState, ArtistListIntent, Nothing, ArtistListMessage>(),
+) : AbstractExecutor<ArtistListState, ArtistListIntent, Nothing, ArtistListMessage>(lifecycle),
     KoinComponent {
 
     private val navigator: DreamNavigator by inject()
@@ -34,7 +32,7 @@ internal class ArtistListExecutor(
     private val resourceManager: ResourceManager by inject()
 
     init {
-        subscribeToLifecycle(lifecycle)
+        subscribeToLifecycle()
     }
 
     override fun executeIntent(intent: ArtistListIntent) {
@@ -45,14 +43,9 @@ internal class ArtistListExecutor(
         }
     }
 
-    private fun subscribeToLifecycle(lifecycle: ExtendedLifecycle) {
-        with(lifecycle) {
-            doOnCreate {
-                fetchArtists()
-            }
-            doOnStart {
-                Log.trace("onStart")
-            }
+    private fun subscribeToLifecycle() {
+        doOnCreate {
+            fetchArtists()
         }
     }
 

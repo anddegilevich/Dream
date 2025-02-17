@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plural name="plural_artist">
-        <item quantity="zero">No artists</item>
+        <item quantity="zero">%d artists</item>
         <item quantity="one">%d artist</item>
         <item quantity="two">%d artists</item>
         <item quantity="few">%d artists</item>

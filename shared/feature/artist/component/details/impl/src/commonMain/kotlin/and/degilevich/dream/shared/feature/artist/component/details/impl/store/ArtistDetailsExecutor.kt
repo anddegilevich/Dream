@@ -21,7 +21,7 @@ import org.koin.core.component.inject
 
 internal class ArtistDetailsExecutor(
     lifecycle: ExtendedLifecycle
-) : AbstractExecutor<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect, ArtistDetailsMessage>(),
+) : AbstractExecutor<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect, ArtistDetailsMessage>(lifecycle),
     KoinComponent {
 
     private val navigator: DreamNavigator by inject()
@@ -29,7 +29,7 @@ internal class ArtistDetailsExecutor(
     private val getArtistsFlowUseCase: GetArtistsFlowUseCase by inject()
 
     init {
-        subscribeToLifecycle(lifecycle)
+        subscribeToLifecycle()
     }
 
     override fun executeIntent(intent: ArtistDetailsIntent) {
@@ -39,12 +39,10 @@ internal class ArtistDetailsExecutor(
         }
     }
 
-    private fun subscribeToLifecycle(lifecycle: ExtendedLifecycle) {
-        with(lifecycle) {
-            doOnCreate {
-                fetchArtist()
-                fetchSimilarArtists()
-            }
+    private fun subscribeToLifecycle() {
+        doOnCreate {
+            fetchArtist()
+            fetchSimilarArtists()
         }
     }
 

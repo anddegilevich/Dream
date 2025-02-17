@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plural name="plural_artist">
+        <item quantity="zero">%d артистов</item>
+        <item quantity="one">%d артист</item>
+        <item quantity="two">%d артиста</item>
+        <item quantity="few">%d артиста</item>
+        <item quantity="many">%d артистов</item>
+        <item quantity="other">%d артистов</item>
+    </plural>
+</resources>
