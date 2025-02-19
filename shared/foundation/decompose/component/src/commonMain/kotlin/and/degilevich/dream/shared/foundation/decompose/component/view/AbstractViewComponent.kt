@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.foundation.decompose.component.view
 
-import and.degilevich.dream.shared.foundation.decompose.component.AbstractMVIComponent
+import and.degilevich.dream.shared.foundation.decompose.component.mvi.AbstractMVIComponent
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ComponentExtendedLifecycle
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import com.arkivanov.decompose.ComponentContext

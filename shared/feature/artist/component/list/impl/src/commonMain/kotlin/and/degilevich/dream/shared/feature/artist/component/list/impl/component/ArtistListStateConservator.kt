@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.component
 
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.conservator.ComponentStateConservator
+import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.ComponentStateConservator
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import kotlinx.serialization.KSerializer

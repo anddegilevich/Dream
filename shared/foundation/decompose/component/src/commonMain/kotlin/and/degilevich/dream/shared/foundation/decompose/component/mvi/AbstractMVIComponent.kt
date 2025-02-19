@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.foundation.decompose.component
+package and.degilevich.dream.shared.foundation.decompose.component.mvi
 
 import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
 import com.arkivanov.decompose.ComponentContext

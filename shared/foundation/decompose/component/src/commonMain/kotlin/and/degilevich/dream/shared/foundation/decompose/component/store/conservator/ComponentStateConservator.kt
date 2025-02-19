@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.foundation.decompose.component.mvi.conservator
+package and.degilevich.dream.shared.foundation.decompose.component.store.conservator
 
 import kotlinx.serialization.KSerializer
 

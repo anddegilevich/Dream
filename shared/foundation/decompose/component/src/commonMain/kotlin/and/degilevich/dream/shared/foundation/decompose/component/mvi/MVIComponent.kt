@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.foundation.decompose.component
+package and.degilevich.dream.shared.foundation.decompose.component.mvi
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow

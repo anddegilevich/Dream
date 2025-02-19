@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.foundation.decompose.component.mvi.executor
+package and.degilevich.dream.shared.foundation.decompose.component.store.executor
 
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers

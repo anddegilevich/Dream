@@ -9,7 +9,7 @@ import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArt
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.executor.AbstractExecutor
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig

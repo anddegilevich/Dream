@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.app.api.compose.ext
 
-import and.degilevich.dream.shared.foundation.decompose.component.MVIComponent
+import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

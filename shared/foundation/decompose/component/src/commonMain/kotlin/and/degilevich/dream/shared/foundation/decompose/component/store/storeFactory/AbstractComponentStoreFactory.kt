@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.foundation.decompose.component.mvi.storeFactory
+package and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory
 
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.primitive.reflection.className

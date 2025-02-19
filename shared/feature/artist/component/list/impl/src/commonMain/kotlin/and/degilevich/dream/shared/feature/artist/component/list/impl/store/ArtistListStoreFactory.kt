@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.storeFactory.AbstractComponentStoreFactory
+import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.AbstractComponentStoreFactory
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListMessage

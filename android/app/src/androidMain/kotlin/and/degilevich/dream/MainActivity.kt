@@ -11,7 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.LocalOverscrollConfiguration
 import androidx.compose.runtime.CompositionLocalProvider
-import com.arkivanov.decompose.defaultComponentContext
+import com.arkivanov.decompose.retainedComponent
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class)
@@ -22,9 +22,11 @@ class MainActivity : ComponentActivity() {
         )
         super.onCreate(savedInstanceState)
 
-        val rootComponent = RootComponentImpl(
-            componentContext = defaultComponentContext()
-        )
+        val rootComponent = retainedComponent { componentContext ->
+            RootComponentImpl(
+                componentContext = componentContext
+            )
+        }
         setContent {
             CompositionLocalProvider(
                 LocalOverscrollConfiguration provides null

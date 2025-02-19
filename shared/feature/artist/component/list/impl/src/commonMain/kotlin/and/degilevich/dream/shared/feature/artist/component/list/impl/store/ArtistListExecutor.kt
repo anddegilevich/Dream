@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 import and.degilevich.dream.shared.core.resource.api.ResourceManager
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.api.controller.ToastController
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.executor.AbstractExecutor
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListMessage
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState

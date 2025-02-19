@@ -36,6 +36,7 @@ Here is the list of frameworks, that were used in this project:
 * **Logger** - [Napier](https://github.com/AAkira/Napier)
 * **Image Loading** - [Coil](https://github.com/coil-kt/coil)
 * **Build Config** - [BuildKonfig](https://github.com/yshrsmz/BuildKonfig)
+* **Static Code Analysis** - [Detekt](https://detekt.dev)
 
 ## Architecture
 
