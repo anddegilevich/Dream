@@ -1,11 +1,13 @@
 package and.degilevich.dream.shared.feature.artist.model.core.mappers
 
 import and.degilevich.dream.shared.core.service.api.core.artist.ArtistOutput
+import and.degilevich.dream.shared.core.db.api.feature.artist.entity.ArtistEntity
 import and.degilevich.dream.shared.feature.artist.model.artifact.dictionary.ArtistType
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistFollowersData
 import and.degilevich.dream.shared.feature.image.model.artifact.mappers.mapToData
 import and.degilevich.dream.shared.foundation.model.empty.state.ext.orEmpty
-import and.degilevich.dream.shared.foundation.model.id.ext.getEnumValueById
+import and.degilevich.dream.shared.foundation.model.id.ext.getEnumValueByIdOrElse
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZero
 
 fun ArtistOutput?.mapToData(): ArtistData {
@@ -13,7 +15,7 @@ fun ArtistOutput?.mapToData(): ArtistData {
         ArtistData(
             id = id.orEmpty(),
             name = name.orEmpty(),
-            artistType = getEnumValueById(type.orEmpty()) ?: ArtistType.UNKNOWN,
+            artistType = getEnumValueByIdOrElse(id = artistType) { ArtistType.UNKNOWN },
             popularity = popularity.orZero(),
             genres = genres.orEmpty(),
             followers = followers.mapToData(),
@@ -22,4 +24,26 @@ fun ArtistOutput?.mapToData(): ArtistData {
             }.orEmpty()
         )
     }.orEmpty(ArtistData)
+}
+
+fun ArtistEntity.mapToData(): ArtistData {
+    return ArtistData(
+        id = id,
+        name = name.orEmpty(),
+        artistType = getEnumValueByIdOrElse(id = artistType) { ArtistType.UNKNOWN },
+        popularity = popularity.orZero(),
+        //FIXME: Save to the separate entities
+        genres = emptyList(),
+        followers = ArtistFollowersData.empty(),
+        images = emptyList()
+    )
+}
+
+fun ArtistData.mapToEntity(): ArtistEntity {
+    return ArtistEntity(
+        id = id,
+        name = name,
+        artistType = artistType.id,
+        popularity = popularity,
+    )
 }

@@ -16,6 +16,22 @@ Design is also inspired by [Spotify Mobile App](https://apps.apple.com/us/app/sp
 The development of project is still in progress.
 However, even in its current state, it can still be a great example of Clean Architecture, and be a useful basis for any KMM project.
 
+## Features
+
+### ***Common***
+  * 99 % of shared code between Android and iOS (all three layers: Data, Domain and UI);
+  * Multimodal, clean project structure with safe dependencies (api/impl approach);
+  * Static code analysis;
+  * Shared localised resources; 
+  * //TODO Custom compose theme (with dark and light modes) for uniform and flexible UI;
+  * //TODO Multiplatform flavors;
+  * //TODO Multiplatform widget;
+  * //TODO Mock local rest api on Ktor;
+
+### ***Android***
+  * App state preservation during configuration changes and process death;
+  * //TODO Baseline profile and obfuscation optimisation for Android app;
+
 ## Stack
 
 Here is the list of frameworks, that were used in this project:

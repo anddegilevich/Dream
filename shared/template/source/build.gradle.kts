@@ -11,6 +11,7 @@ kotlin {
             implementation(projects.shared.foundation.serialization)
             api(projects.shared.foundation.dispatcher)
             api(projects.shared.core.service.api)
+            api(projects.shared.core.db.api)
             implementation(projects.shared.core.storage.api)
         }
     }

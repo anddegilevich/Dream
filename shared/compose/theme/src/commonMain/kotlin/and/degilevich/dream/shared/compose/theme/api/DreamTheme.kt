@@ -8,6 +8,7 @@ import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 
+//FIXME: add isDarkTheme parameter
 @Composable
 fun DreamTheme(
     content: @Composable () -> Unit

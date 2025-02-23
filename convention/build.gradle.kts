@@ -59,6 +59,12 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.KtorPlugin"
             }
         }
+        libs.plugins.project.room.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.RoomPlugin"
+            }
+        }
     }
 }
 

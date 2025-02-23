@@ -34,7 +34,7 @@ kotlinx-immutable-collections = "0.3.8" # https://github.com/Kotlin/kotlinx.coll
 kotlinx-datetime = "0.6.1" # https://github.com/Kotlin/kotlinx-datetime/releases
 
 # Detekt
-detekt = "1.23.7" # https://github.com/detekt/detekt/releases
+detekt = "1.23.8" # https://github.com/detekt/detekt/releases
 detekt-compose = "0.0.26" # https://github.com/twitter/compose-rules/releases
 
 # Koin
@@ -68,7 +68,10 @@ moko-resources = "0.24.4" # https://github.com/icerockdev/moko-resources/release
 buildkonfig = "0.15.0" # https://github.com/yshrsmz/BuildKonfig/releases
 
 # Room
-room = "2.7.0-alpha13" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.7.0-beta01" # https://developer.android.com/jetpack/androidx/releases/room
+
+# SQLite
+sqlite = "2.4.0" # https://mvnrepository.com/artifact/androidx.sqlite
 
 [libraries]
 
@@ -159,6 +162,10 @@ room-ktx =  { module = "androidx.room:room-ktx", version.ref = "room" }
 room-testing =  { module = "androidx.room:room-testing", version.ref = "room" }
 room-paging =  { module = "androidx.room:room-paging", version.ref = "room" }
 
+# SQLite - https://developer.android.com/kotlin/multiplatform/sqlite
+sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+
 [bundles]
 
 mvikotlin = ["mvikotlin", "mvikotlin-main", "mvikotlin-logging", "mvikotlin-timetravel", "mvikotlin-extensions-coroutines"]
@@ -199,3 +206,4 @@ project-serialization = { id = "project.serialization.plugin", version.ref = "pr
 project-coroutines = { id = "project.coroutines.plugin", version.ref = "project-plugin" }
 project-koin = { id = "project.koin.plugin", version.ref = "project-plugin" }
 project-ktor = { id = "project.ktor.plugin", version.ref = "project-plugin" }
+project-room = { id = "project.room.plugin", version.ref = "project-plugin" }
