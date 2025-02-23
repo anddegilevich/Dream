@@ -15,6 +15,7 @@ kotlin {
 
         androidMain.dependencies {
             implementation(libs.decompose.extensions.android)
+            implementation(libs.androidx.core.splashscreen)
         }
     }
 }
