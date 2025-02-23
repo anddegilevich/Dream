@@ -8,7 +8,7 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import kotlin.reflect.KClass
 
-abstract class AbstractComponentStoreFactory<State : Any, in Intent : Any, out SideEffect : Any, in Message : Any>(
+abstract class ComponentStoreFactoryAbs<State : Any, in Intent : Any, out SideEffect : Any, in Message : Any>(
     private val storeKClass: KClass<out Store<Intent, State, SideEffect>>,
     private val storeFactory: StoreFactory,
     private val executorFactory: (ExtendedLifecycle) -> Executor<Intent, Nothing, State, Message, SideEffect>,

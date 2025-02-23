@@ -1,5 +1,5 @@
 package and.degilevich.dream.shared.navigation.impl.result
 
-import and.degilevich.dream.shared.foundation.decompose.navigator.result.AbstractNavigationResultManager
+import and.degilevich.dream.shared.foundation.decompose.navigator.result.NavigationResultManagerAbs
 
-internal class DreamNavigationResultManager : AbstractNavigationResultManager()
+internal class DreamNavigationResultManager : NavigationResultManagerAbs()

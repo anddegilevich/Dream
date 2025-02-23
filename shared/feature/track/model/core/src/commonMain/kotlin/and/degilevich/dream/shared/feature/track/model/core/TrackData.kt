@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
 import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.track.model.artifact.abstraction.TrackInfo
 import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
-import and.degilevich.dream.shared.foundation.model.id.AbstractIdentified
+import and.degilevich.dream.shared.foundation.model.id.IdentifiedAbs
 
 data class TrackData(
     override val id: String,
@@ -14,7 +14,7 @@ data class TrackData(
     override val trackNumber: Int,
     override val durationMs: Int,
     override val artists: List<ArtistSimplifiedData>
-) : AbstractIdentified(), TrackInfo {
+) : IdentifiedAbs(), TrackInfo {
 
     companion object : EmptyFactory<TrackData> {
         override fun empty(): TrackData {

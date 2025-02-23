@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store
 
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
-import and.degilevich.dream.shared.foundation.decompose.component.view.AbstractViewComponent
+import and.degilevich.dream.shared.foundation.decompose.component.view.ViewComponentAbs
 import and.degilevich.dream.shared.foundation.model.mapper.Mapper
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
@@ -26,7 +26,7 @@ abstract class SingleStoreComponent<
     storeComponentFactory: (childComponentContext: ComponentContext) -> MVIComponent<State, Intent, SideEffect>,
     initialUIState: UIState,
     uiStateMapper: Mapper<State, UIState>,
-) : AbstractViewComponent<UIState, Intent, SideEffect>(componentContext) {
+) : ViewComponentAbs<UIState, Intent, SideEffect>(componentContext) {
 
     private val storeComponent: MVIComponent<State, Intent, SideEffect> = storeComponentFactory(
         childContext(key = STORE_COMPONENT_CHILD_KEY)

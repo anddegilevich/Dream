@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.storage.api.PreferenceStorage
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-abstract class AbstractStorage<T>(
+abstract class StorageAbs<T>(
     private val key: String,
     private val encoder: (T) -> String?,
     private val decoder: (String?) -> T?

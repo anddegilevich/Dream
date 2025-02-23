@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.track.model.artifact.data
 import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.track.model.artifact.abstraction.TrackInfo
 import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
-import and.degilevich.dream.shared.foundation.model.id.AbstractIdentified
+import and.degilevich.dream.shared.foundation.model.id.IdentifiedAbs
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -13,7 +13,7 @@ data class TrackSimplifiedData(
     override val trackNumber: Int,
     override val durationMs: Int,
     override val artists: List<ArtistSimplifiedData>
-) : AbstractIdentified(), TrackInfo {
+) : IdentifiedAbs(), TrackInfo {
 
     companion object : EmptyFactory<TrackSimplifiedData> {
         override fun empty(): TrackSimplifiedData {

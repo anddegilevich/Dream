@@ -6,7 +6,7 @@ import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 
-abstract class AbstractExecutor<State : Any, in Intent : Any, SideEffect : Any, Message : Any>(
+abstract class ExecutorAbs<State : Any, in Intent : Any, SideEffect : Any, Message : Any>(
     lifecycle: ExtendedLifecycle
 ) :
     CoroutineExecutor<Intent, Nothing, State, Message, SideEffect>(

@@ -1,11 +1,8 @@
-//https://github.com/detekt/detekt/issues/7769
-@file:Suppress("MatchingDeclarationName")
-
 package and.degilevich.dream.shared.core.logger.tracer
 
 import and.degilevich.dream.shared.foundation.primitive.stringBuilder.appendSpace
 
-internal actual object Tracer {
+internal actual object ThreadTracer {
     actual fun getTrace(): String {
         val stackTrace = Thread.currentThread().stackTrace
         val callingElement = stackTrace.getOrNull(TRACER_DEPTH) ?: return ""

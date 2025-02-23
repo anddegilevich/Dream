@@ -4,12 +4,12 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsMessage
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
-import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.AbstractComponentStoreFactory
+import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactoryAbs
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 
 internal class ArtistDetailsStoreFactory(
     storeFactory: StoreFactory
-) : AbstractComponentStoreFactory<
+) : ComponentStoreFactoryAbs<
     ArtistDetailsState,
     ArtistDetailsIntent,
     ArtistDetailsSideEffect,

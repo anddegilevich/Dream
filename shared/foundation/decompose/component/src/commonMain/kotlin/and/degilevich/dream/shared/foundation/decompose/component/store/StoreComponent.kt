@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.foundation.decompose.component.store
 
 import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.ComponentStateConservator
 import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactory
-import and.degilevich.dream.shared.foundation.decompose.component.view.AbstractViewComponent
+import and.degilevich.dream.shared.foundation.decompose.component.view.ViewComponentAbs
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.arkivanov.mvikotlin.core.store.Store
@@ -20,7 +20,7 @@ abstract class StoreComponent<
     private val componentContext: ComponentContext,
     storeFactory: ComponentStoreFactory<State, Intent, SideEffect>,
     stateConservator: ComponentStateConservator<State>,
-) : AbstractViewComponent<State, Intent, SideEffect>(componentContext) {
+) : ViewComponentAbs<State, Intent, SideEffect>(componentContext) {
 
     private val store: Store<Intent, State, SideEffect> = componentContext.instanceKeeper.getStore {
         storeFactory.create(

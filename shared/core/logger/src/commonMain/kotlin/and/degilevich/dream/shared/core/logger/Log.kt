@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.core.logger
 
 import and.degilevich.dream.shared.foundation.primitive.stringBuilder.appendSpace
-import and.degilevich.dream.shared.core.logger.tracer.Tracer
+import and.degilevich.dream.shared.core.logger.tracer.ThreadTracer
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.LogLevel
 import io.github.aakira.napier.Napier
@@ -21,7 +21,7 @@ object Log : Logger {
     }
 
     override fun trace(message: String) {
-        val trace = Tracer.getTrace()
+        val trace = ThreadTracer.getTrace()
         log(
             priority = LogLevel.INFO,
             message = buildString {

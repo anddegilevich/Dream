@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-abstract class AbstractValueChannel<T> : ValueChannel<T> {
+abstract class ValueChannelAbs<T> : ValueChannel<T> {
     private val channel: Channel<T> = Channel()
     override val value: Flow<T> = channel.receiveAsFlow()
 

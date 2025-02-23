@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.foundation.decompose.navigator.result.collect
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnStop
 
-abstract class AbstractNavigationResultManager : NavigationResultManager {
+abstract class NavigationResultManagerAbs : NavigationResultManager {
 
     private val navigationResults: HashMap<String, Any> = hashMapOf()
     private val resultCallbacks: HashMap<String, (Any) -> Unit> = hashMapOf()

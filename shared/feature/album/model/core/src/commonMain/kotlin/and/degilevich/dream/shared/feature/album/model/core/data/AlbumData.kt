@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.feature.album.model.core.dictionary.AlbumType
 import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.image.model.artifact.data.ImageObjectData
 import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
-import and.degilevich.dream.shared.foundation.model.id.AbstractIdentified
+import and.degilevich.dream.shared.foundation.model.id.IdentifiedAbs
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -19,7 +19,7 @@ data class AlbumData(
     val tracks: AlbumTracksData,
     val label: String,
     val popularity: Int
-) : AbstractIdentified() {
+) : IdentifiedAbs() {
 
     companion object : EmptyFactory<AlbumData> {
         override fun empty(): AlbumData {

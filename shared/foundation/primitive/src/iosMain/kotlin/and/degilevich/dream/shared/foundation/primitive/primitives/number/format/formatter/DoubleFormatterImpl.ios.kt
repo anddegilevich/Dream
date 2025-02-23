@@ -1,6 +1,3 @@
-//https://github.com/detekt/detekt/issues/7769
-@file:Suppress("MatchingDeclarationName")
-
 package and.degilevich.dream.shared.foundation.primitive.primitives.number.format.formatter
 
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.format.NumberFormatConfig

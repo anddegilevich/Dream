@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-abstract class AbstractValueHolder<T>(
+abstract class ValueHolderAbs<T>(
     private val defaultValueFactory: () -> T
 ) : ValueHolder<T> {
 

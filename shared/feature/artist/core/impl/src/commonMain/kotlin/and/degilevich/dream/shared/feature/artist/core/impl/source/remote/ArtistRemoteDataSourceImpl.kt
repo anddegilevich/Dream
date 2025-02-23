@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.core.impl.source.remote
 
-import and.degilevich.dream.shared.template.source.remote.AbstractRemoteDataSource
+import and.degilevich.dream.shared.template.source.remote.RemoteDataSourceAbs
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistResult
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
@@ -10,7 +10,7 @@ import and.degilevich.dream.shared.feature.artist.core.impl.source.remote.mapper
 import and.degilevich.dream.shared.feature.artist.core.impl.source.remote.mappers.mapToRequest
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 
-internal class ArtistRemoteDataSourceImpl : ArtistRemoteDataSource, AbstractRemoteDataSource() {
+internal class ArtistRemoteDataSourceImpl : ArtistRemoteDataSource, RemoteDataSourceAbs() {
     override suspend fun getArtist(params: GetArtistParams): Result<GetArtistResult> {
         return service.getArtist(params.mapToRequest()).foldResultSuccess { response ->
             response.mapToResult()

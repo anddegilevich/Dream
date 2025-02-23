@@ -9,7 +9,7 @@ import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArt
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
-import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
@@ -21,7 +21,7 @@ import org.koin.core.component.inject
 
 internal class ArtistDetailsExecutor(
     lifecycle: ExtendedLifecycle
-) : AbstractExecutor<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect, ArtistDetailsMessage>(lifecycle),
+) : ExecutorAbs<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect, ArtistDetailsMessage>(lifecycle),
     KoinComponent {
 
     private val navigator: DreamNavigator by inject()
