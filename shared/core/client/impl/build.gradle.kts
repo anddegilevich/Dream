@@ -30,22 +30,39 @@ android {
 buildkonfig {
     packageName = "and.degilevich.dream.shared.core.client.impl"
 
+    val clientIdField = "CLIENT_ID"
+    val clientSecretField = "CLIENT_SECRET"
     val localProperties = Properties().apply {
         load(FileInputStream("${rootDir}/local.properties"))
     }
-    val clientId = localProperties.getProperty("CLIENT_ID")
-    val clientSecret = localProperties.getProperty("CLIENT_SECRET")
+    val clientId = localProperties.getProperty(clientIdField)
+    val clientSecret = localProperties.getProperty(clientSecretField)
 
-    defaultConfigs {
+    defaultConfigs { }
+
+    defaultConfigs("prod") {
         buildConfigField(
             type = FieldSpec.Type.STRING,
-            name = "CLIENT_ID", 
+            name = clientIdField,
             value = clientId
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
-            name = "CLIENT_SECRET",
+            name = clientSecretField,
             value = clientSecret
+        )
+    }
+
+    defaultConfigs("mock") {
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = clientIdField,
+            value = "mockClientId"
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = clientSecretField,
+            value = "mockClientSecret"
         )
     }
 }

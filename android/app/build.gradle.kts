@@ -37,7 +37,22 @@ android {
             signingConfig = signingConfigs.getByName("debug") //FIXME: Add signing
         }
         getByName("debug") {
+            isDefault = true
             isDebuggable = true
+        }
+    }
+
+    flavorDimensions.add("server")
+    productFlavors {
+        create("mock") {
+            dimension = "server"
+            manifestPlaceholders["applicationName"] = "@string/app_name_mock"
+        }
+
+        create("prod") {
+            dimension = "server"
+            isDefault = true
+            manifestPlaceholders["applicationName"] = "@string/app_name"
         }
     }
 }
