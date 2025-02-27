@@ -1,17 +1,19 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
 import and.degilevich.dream.shared.core.resource.api.ResourceManager
-import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.api.controller.ToastController
-import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
+import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
+import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListMessage
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
+import and.degilevich.dream.shared.navigation.api.dream.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
 import and.degilevich.dream.shared.resource.Res
@@ -22,7 +24,7 @@ import org.koin.core.component.inject
 
 internal class ArtistListExecutor(
     lifecycle: ExtendedLifecycle
-) : ExecutorAbs<ArtistListState, ArtistListIntent, Nothing, ArtistListMessage>(lifecycle),
+) : ExecutorAbs<ArtistListState, ArtistListIntent, ArtistListSideEffect, ArtistListMessage>(lifecycle),
     KoinComponent {
 
     private val navigator: DreamNavigator by inject()
@@ -92,7 +94,9 @@ internal class ArtistListExecutor(
     private fun navigateToArtist(artistId: String) {
         navigator.screenNavigator.pushNew(
             ScreenConfig.ArtistDetails(
-                artistId = artistId
+                navArgs = ArtistDetailsNavArgs(
+                    artistId = artistId
+                )
             )
         )
     }

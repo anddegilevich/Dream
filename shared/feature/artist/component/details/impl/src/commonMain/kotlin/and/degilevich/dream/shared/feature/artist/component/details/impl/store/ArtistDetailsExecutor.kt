@@ -12,6 +12,7 @@ import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
+import and.degilevich.dream.shared.navigation.api.dream.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
 import com.arkivanov.essenty.lifecycle.doOnCreate
@@ -51,7 +52,7 @@ internal class ArtistDetailsExecutor(
             setLoading(true)
             getArtistFlowUseCase(
                 params = GetArtistParams(
-                    id = state().config.artistId
+                    id = state().navArgs.artistId
                 )
             )
                 .flowOnBackground()
@@ -107,7 +108,9 @@ internal class ArtistDetailsExecutor(
     private fun navigateToSimilarArtist(artistId: String) {
         navigator.screenNavigator.pushNew(
             ScreenConfig.ArtistDetails(
-                artistId = artistId
+                navArgs = ArtistDetailsNavArgs(
+                    artistId = artistId
+                )
             )
         )
     }

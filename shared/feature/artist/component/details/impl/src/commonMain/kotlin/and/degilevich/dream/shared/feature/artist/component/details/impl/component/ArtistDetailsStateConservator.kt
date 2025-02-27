@@ -10,6 +10,8 @@ internal class ArtistDetailsStateConservator(
     config: ScreenConfig.ArtistDetails
 ) : ComponentStateConservator<ArtistDetailsState> {
     override val key: String = ArtistDetailsState::class.className()
-    override val initialState: ArtistDetailsState = ArtistDetailsState(config = config)
+    override val initialState: ArtistDetailsState = ArtistDetailsState(
+        navArgs = config.navArgs
+    )
     override val serializer: KSerializer<ArtistDetailsState> = ArtistDetailsState.serializer()
 }

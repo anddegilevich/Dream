@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.navigation.api.dream.config
 
+import and.degilevich.dream.shared.navigation.api.dream.args.ArtistDetailsNavArgs
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,6 +10,6 @@ sealed interface ScreenConfig {
 
     @Serializable
     data class ArtistDetails(
-        val artistId: String
+        val navArgs: ArtistDetailsNavArgs
     ) : ScreenConfig
 }
