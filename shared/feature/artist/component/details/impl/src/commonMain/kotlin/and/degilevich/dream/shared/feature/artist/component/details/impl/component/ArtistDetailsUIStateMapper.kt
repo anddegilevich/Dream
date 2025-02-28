@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
 import and.degilevich.dream.shared.feature.artist.compose.mapper.ArtistUIItemMapper
 import and.degilevich.dream.shared.foundation.model.mapper.Mapper
-import and.degilevich.dream.shared.resource.Res
+import and.degilevich.dream.Res
 import kotlinx.collections.immutable.toImmutableList
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

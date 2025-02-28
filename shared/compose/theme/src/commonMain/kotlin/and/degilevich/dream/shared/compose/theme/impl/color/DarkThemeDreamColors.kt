@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.compose.theme.impl.color
 
 import and.degilevich.dream.shared.compose.theme.api.colors.DreamColors
 import and.degilevich.dream.shared.compose.theme.api.colors.DreamThemeIndifferentColors
-import and.degilevich.dream.shared.resource.Res
+import and.degilevich.dream.Res
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import dev.icerock.moko.resources.compose.colorResource

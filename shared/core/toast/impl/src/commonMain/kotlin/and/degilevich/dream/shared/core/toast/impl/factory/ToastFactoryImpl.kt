@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.api.model.ToastActionData
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.core.toast.api.model.ToastDurationData
-import and.degilevich.dream.shared.resource.Res
+import and.degilevich.dream.Res
 
 internal class ToastFactoryImpl(
     private val resourceManager: ResourceManager

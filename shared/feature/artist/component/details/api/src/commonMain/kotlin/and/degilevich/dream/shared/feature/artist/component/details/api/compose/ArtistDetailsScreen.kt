@@ -8,7 +8,7 @@ import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingEnd
 import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingStart
-import and.degilevich.dream.shared.resource.Res
+import and.degilevich.dream.Res
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

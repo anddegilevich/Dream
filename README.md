@@ -23,8 +23,8 @@ However, even in its current state, it can still be a great example of Clean Arc
   * Multimodal, clean project structure with safe dependencies (api/impl approach);
   * Static code analysis;
   * Shared localised resources; 
+  * Multiplatform build config with multiple flavors;
   * //TODO Custom compose theme (with dark and light modes) for uniform and flexible UI;
-  * //TODO Multiplatform flavors;
   * //TODO Multiplatform widget;
   * //TODO Mock local rest api on Ktor;
 

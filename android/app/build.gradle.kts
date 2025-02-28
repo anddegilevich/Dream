@@ -31,28 +31,30 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName("debug") //FIXME: Add signing
-        }
         getByName("debug") {
             isDefault = true
             isDebuggable = true
         }
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("debug") //FIXME: Add signing
+            matchingFallbacks.add("debug")
+        }
     }
 
-    flavorDimensions.add("server")
+    val variantFlavorDimension = "variant"
+    flavorDimensions.add(variantFlavorDimension)
     productFlavors {
-        create("mock") {
-            dimension = "server"
-            manifestPlaceholders["applicationName"] = "@string/app_name_mock"
-        }
-
         create("prod") {
-            dimension = "server"
+            dimension = variantFlavorDimension
             isDefault = true
             manifestPlaceholders["applicationName"] = "@string/app_name"
+        }
+        create("mock") {
+            dimension = variantFlavorDimension
+            applicationIdSuffix = ".mock"
+            manifestPlaceholders["applicationName"] = "@string/app_name_mock"
         }
     }
 }

@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.core.client.impl
 
+import and.degilevich.dream.BuildConfig
 import and.degilevich.dream.shared.core.client.api.RemoteClient
 import and.degilevich.dream.shared.core.client.impl.engine.ClientEngineFactory
 import and.degilevich.dream.shared.core.client.impl.logger.ClientLogger
@@ -44,7 +45,7 @@ internal class RemoteClientImpl(
             )
         }
         install(DefaultRequest) {
-            url(SPOTIFY_API_BASE_URL)
+            url(BuildConfig.API_BASE_URL)
         }
         install(HttpTimeout) {
             connectTimeoutMillis = TIMEOUT.inWholeMilliseconds
@@ -65,6 +66,5 @@ internal class RemoteClientImpl(
 
     private companion object {
         val TIMEOUT = 30.seconds
-        const val SPOTIFY_API_BASE_URL = "https://api.spotify.com/v1/"
     }
 }

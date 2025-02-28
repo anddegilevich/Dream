@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.core.client.impl.token.client
 
-import and.degilevich.dream.shared.core.client.impl.BuildKonfig
+import and.degilevich.dream.BuildConfig
 import and.degilevich.dream.shared.core.client.impl.engine.ClientEngineFactory
 import and.degilevich.dream.shared.core.client.impl.logger.ClientLogger
 import and.degilevich.dream.shared.core.client.impl.token.model.Tokens
@@ -56,11 +56,11 @@ internal class TokenClientImpl(
     override suspend fun getToken(): Result<Tokens> {
         return foldTry {
             val response = client.post {
-                url(SPOTIFY_TOKEN_URL)
+                url(BuildConfig.AUTH_BASE_URL)
                 header(HttpHeaders.ContentType, HEADER_CONTENT_TYPE_VALUE)
                 parameter(PARAM_GRANT_TYPE, PARAM_GRANT_TYPE_VALUE)
-                parameter(PARAM_CLIENT_ID, BuildKonfig.CLIENT_ID)
-                parameter(PARAM_CLIENT_SECRET, BuildKonfig.CLIENT_SECRET)
+                parameter(PARAM_CLIENT_ID, BuildConfig.CLIENT_ID)
+                parameter(PARAM_CLIENT_SECRET, BuildConfig.CLIENT_SECRET)
             }.body<TokenResponse>()
             val tokens = Tokens(
                 accessToken = response.accessToken.orEmpty(),
@@ -77,7 +77,6 @@ internal class TokenClientImpl(
 
     private companion object {
         val TIMEOUT = 30.seconds
-        const val SPOTIFY_TOKEN_URL = "https://accounts.spotify.com/api/token"
         const val HEADER_CONTENT_TYPE_VALUE = "application/x-www-form-urlencoded"
         const val PARAM_GRANT_TYPE = "grant_type"
         const val PARAM_GRANT_TYPE_VALUE = "client_credentials"

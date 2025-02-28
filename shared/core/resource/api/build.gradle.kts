@@ -18,7 +18,7 @@ kotlin {
 }
 
 multiplatformResources {
-    resourcesPackage = "and.degilevich.dream.shared.resource"
+    resourcesPackage = "and.degilevich.dream"
     resourcesClassName = "Res"
     iosBaseLocalizationRegion = "en"
 }

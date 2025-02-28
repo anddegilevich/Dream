@@ -16,7 +16,7 @@ import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackgrou
 import and.degilevich.dream.shared.navigation.api.dream.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
-import and.degilevich.dream.shared.resource.Res
+import and.degilevich.dream.Res
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
