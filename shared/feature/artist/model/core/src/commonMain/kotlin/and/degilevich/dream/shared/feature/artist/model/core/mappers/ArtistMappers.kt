@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.artist.model.artifact.dictionary.Arti
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistFollowersData
 import and.degilevich.dream.shared.feature.image.model.artifact.mappers.mapToData
-import and.degilevich.dream.shared.foundation.model.empty.state.ext.orEmpty
+import and.degilevich.dream.shared.foundation.model.empty.factory.ext.orEmpty
 import and.degilevich.dream.shared.foundation.model.id.ext.getEnumValueByIdOrElse
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZero
 

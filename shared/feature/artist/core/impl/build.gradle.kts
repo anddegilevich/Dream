@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
+    alias(libs.plugins.project.coroutines)
     alias(libs.plugins.project.koin)
 }
 

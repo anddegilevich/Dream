@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.foundation.decompose.navigator.stack
 import kotlin.reflect.KClass
 
 sealed interface StackNavigationAction<in StackConfig : Any> {
-    class Pop<StackConfig : Any> : StackNavigationAction<StackConfig>
+    class Pop<in StackConfig : Any> : StackNavigationAction<StackConfig>
 
     data class Push<StackConfig : Any>(
         val config: StackConfig

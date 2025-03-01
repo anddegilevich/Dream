@@ -15,31 +15,8 @@ import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import kotlin.reflect.KClass
 
-fun <StackConfig : Any, T> StackNavigator<StackConfig>.popUpTo(
-    configurationKClass: KClass<out StackConfig>
-) where T : StackConfig {
-    popWhile(
-        predicate = { predicate ->
-            !configurationKClass.isInstance(predicate)
-        }
-    )
-}
-
-fun <StackConfig : Any> StackNavigator<StackConfig>.pushOrReplace(
-    configuration: StackConfig,
-    replaceConfigurationKClass: KClass<out StackConfig>
-) {
-    navigate { stack ->
-        if (replaceConfigurationKClass.isInstance(stack.last())) {
-            stack.dropLast(1) + configuration
-        } else {
-            stack + configuration
-        }
-    }
-}
-
 @Suppress("SpreadOperator")
-inline fun <reified StackConfig : Any> StackNavigation<StackConfig>.executeNavigationAction(
+inline fun <reified StackConfig : Any> StackNavigation<in StackConfig>.executeNavigationAction(
     action: StackNavigationAction<StackConfig>
 ) {
     when (action) {
@@ -83,6 +60,29 @@ inline fun <reified StackConfig : Any> StackNavigation<StackConfig>.executeNavig
                 configuration = action.config,
                 replaceConfigurationKClass = action.replaceConfigKClass
             )
+        }
+    }
+}
+
+fun <StackConfig : Any, T> StackNavigator<StackConfig>.popUpTo(
+    configurationKClass: KClass<out StackConfig>
+) where T : StackConfig {
+    popWhile(
+        predicate = { predicate ->
+            !configurationKClass.isInstance(predicate)
+        }
+    )
+}
+
+fun <StackConfig : Any> StackNavigator<StackConfig>.pushOrReplace(
+    configuration: StackConfig,
+    replaceConfigurationKClass: KClass<out StackConfig>
+) {
+    navigate { stack ->
+        if (replaceConfigurationKClass.isInstance(stack.last())) {
+            stack.dropLast(1) + configuration
+        } else {
+            stack + configuration
         }
     }
 }

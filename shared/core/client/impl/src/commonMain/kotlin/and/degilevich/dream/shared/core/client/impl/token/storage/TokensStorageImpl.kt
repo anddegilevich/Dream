@@ -12,12 +12,14 @@ internal class TokensStorageImpl(
     override fun save(value: Tokens) {
         preferenceStorage.save(
             key = TOKENS_PREFERENCE_STORAGE_KEY,
-            value = value.encodeToJsonOrEmpty()
+            value = value.encodeToJsonOrEmpty(serializer = Tokens.serializer())
         )
     }
 
     override fun read(): Tokens? {
-        return preferenceStorage.readString(key = TOKENS_PREFERENCE_STORAGE_KEY)?.decodeFromJsonOrNull<Tokens>()
+        return preferenceStorage.readString(key = TOKENS_PREFERENCE_STORAGE_KEY)?.decodeFromJsonOrNull(
+            deserializer = Tokens.serializer()
+        )
     }
 
     override fun clear(): Boolean {

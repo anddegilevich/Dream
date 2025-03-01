@@ -1,15 +1,18 @@
 package and.degilevich.dream.shared.foundation.serialization
 
+import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.decodeFromJsonElement
-import kotlinx.serialization.json.encodeToJsonElement
 
-inline fun <reified T> T.encodeToJsonElement(): Result<JsonElement> {
+fun <T> T.encodeToJsonElement(serializer: SerializationStrategy<T>): Result<JsonElement> {
     return try {
         Result.success(
-            json().encodeToJsonElement(this)
+            json().encodeToJsonElement(
+                serializer = serializer,
+                value = this
+            )
         )
     } catch (error: SerializationException) {
         Result.failure(error)
@@ -18,18 +21,21 @@ inline fun <reified T> T.encodeToJsonElement(): Result<JsonElement> {
     }
 }
 
-inline fun <reified T> T.encodeToJsonElementOrNull(): JsonElement? {
-    return encodeToJsonElement().getOrNull()
+fun <T> T.encodeToJsonElementOrNull(serializer: SerializationStrategy<T>): JsonElement? {
+    return encodeToJsonElement(serializer = serializer).getOrNull()
 }
 
-inline fun <reified T> T.encodeToJsonElementOrEmpty(): JsonElement {
-    return encodeToJsonElement().getOrDefault(buildJsonObject { })
+fun <T> T.encodeToJsonElementOrEmpty(serializer: SerializationStrategy<T>): JsonElement {
+    return encodeToJsonElement(serializer = serializer).getOrDefault(buildJsonObject { })
 }
 
-inline fun <reified T> JsonElement.decodeFromJson(): Result<T> {
+fun <T> JsonElement.decodeFromJson(deserializer: DeserializationStrategy<T>): Result<T> {
     return try {
         Result.success(
-            json().decodeFromJsonElement<T>(this)
+            json().decodeFromJsonElement(
+                deserializer = deserializer,
+                element = this
+            )
         )
     } catch (error: SerializationException) {
         Result.failure(error)
@@ -38,10 +44,13 @@ inline fun <reified T> JsonElement.decodeFromJson(): Result<T> {
     }
 }
 
-inline fun <reified T> JsonElement.decodeFromJsonOrNull(): T? {
-    return decodeFromJson<T>().getOrNull()
+fun <T> JsonElement.decodeFromJsonOrNull(deserializer: DeserializationStrategy<T>): T? {
+    return decodeFromJson(deserializer = deserializer).getOrNull()
 }
 
-inline fun <reified T> JsonElement.decodeFromJsonOrDefault(default: () -> T): T {
-    return decodeFromJson<T>().getOrDefault(default())
+fun <T> JsonElement.decodeFromJsonOrDefault(
+    deserializer: DeserializationStrategy<T>,
+    default: () -> T
+): T {
+    return decodeFromJson(deserializer = deserializer).getOrDefault(default())
 }

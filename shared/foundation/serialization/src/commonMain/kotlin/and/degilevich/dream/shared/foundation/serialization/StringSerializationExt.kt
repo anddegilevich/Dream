@@ -1,30 +1,16 @@
 package and.degilevich.dream.shared.foundation.serialization
 
+import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.SerializationException
-import kotlinx.serialization.encodeToString
+import kotlinx.serialization.SerializationStrategy
 
-inline fun <reified T> T.encodeToJson(): Result<String> {
-    return try {
-        Result.success(json().encodeToString(this))
-    } catch (error: SerializationException) {
-        Result.failure(error)
-    } catch (error: IllegalArgumentException) {
-        Result.failure(error)
-    }
-}
-
-inline fun <reified T> T.encodeToJsonOrNull(): String? {
-    return encodeToJson().getOrNull()
-}
-
-inline fun <reified T> T.encodeToJsonOrEmpty(): String {
-    return encodeToJson().getOrDefault(defaultValue = "")
-}
-
-inline fun <reified T> String.decodeFromJson(): Result<T> {
+fun <T> T.encodeToJson(serializer: SerializationStrategy<T>): Result<String> {
     return try {
         Result.success(
-            json().decodeFromString<T>(this)
+            json().encodeToString(
+                serializer = serializer,
+                value = this
+            )
         )
     } catch (error: SerializationException) {
         Result.failure(error)
@@ -33,10 +19,36 @@ inline fun <reified T> String.decodeFromJson(): Result<T> {
     }
 }
 
-inline fun <reified T> String.decodeFromJsonOrNull(): T? {
-    return decodeFromJson<T>().getOrNull()
+fun <T> T.encodeToJsonOrNull(serializer: SerializationStrategy<T>): String? {
+    return encodeToJson(serializer = serializer).getOrNull()
 }
 
-inline fun <reified T> String.decodeFromJsonOrDefault(default: () -> T): T {
-    return decodeFromJson<T>().getOrDefault(default())
+fun <T> T.encodeToJsonOrEmpty(serializer: SerializationStrategy<T>): String {
+    return encodeToJson(serializer = serializer).getOrDefault(defaultValue = "")
+}
+
+fun <T> String.decodeFromJson(deserializer: DeserializationStrategy<T>): Result<T> {
+    return try {
+        Result.success(
+            json().decodeFromString(
+                deserializer = deserializer,
+                string = this
+            )
+        )
+    } catch (error: SerializationException) {
+        Result.failure(error)
+    } catch (error: IllegalArgumentException) {
+        Result.failure(error)
+    }
+}
+
+fun <T> String.decodeFromJsonOrNull(deserializer: DeserializationStrategy<T>): T? {
+    return decodeFromJson(deserializer = deserializer).getOrNull()
+}
+
+fun <T> String.decodeFromJsonOrDefault(
+    deserializer: DeserializationStrategy<T>,
+    default: () -> T
+): T {
+    return decodeFromJson(deserializer = deserializer).getOrDefault(default())
 }
