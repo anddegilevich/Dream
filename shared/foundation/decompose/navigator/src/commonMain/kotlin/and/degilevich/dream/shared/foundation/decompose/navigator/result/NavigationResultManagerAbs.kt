@@ -35,7 +35,7 @@ abstract class NavigationResultManagerAbs : NavigationResultManager {
         }
     }
 
-    protected fun collectNavigationResult(
+    private fun collectNavigationResult(
         lifecycle: Lifecycle,
         key: String,
         resultCallback: (Any) -> Unit

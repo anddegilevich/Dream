@@ -6,4 +6,9 @@ import and.degilevich.dream.shared.navigation.api.dream.channel.ScreenNavigation
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 
 internal class ScreenNavigationActionChannelImpl : ScreenNavigationActionChannel,
-    ValueChannelAbs<StackNavigationAction<ScreenConfig>>()
+    ValueChannelAbs<StackNavigationAction<ScreenConfig>>() {
+
+    override fun handle(action: StackNavigationAction<ScreenConfig>) {
+        trySend(action)
+    }
+}

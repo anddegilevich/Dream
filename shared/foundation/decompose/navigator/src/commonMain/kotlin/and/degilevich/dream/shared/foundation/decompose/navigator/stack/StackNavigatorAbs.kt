@@ -2,7 +2,13 @@ package and.degilevich.dream.shared.foundation.decompose.navigator.stack
 
 import kotlin.reflect.KClass
 
-abstract class StackNavigatorAbs<StackConfig : Any> : StackNavigator<StackConfig> {
+abstract class StackNavigatorAbs<StackConfig : Any>(
+    private val navigationActionHandler: StackNavigationActionHandler<StackConfig>
+) : StackNavigator<StackConfig> {
+
+    override fun navigate(action: StackNavigationAction<StackConfig>) {
+        navigationActionHandler.handle(action)
+    }
 
     override fun pop() {
         navigate(StackNavigationAction.Pop())
