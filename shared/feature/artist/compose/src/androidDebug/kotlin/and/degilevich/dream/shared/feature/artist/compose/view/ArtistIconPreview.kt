@@ -9,8 +9,23 @@ import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
-fun ArtistIconPreview() {
-    DreamTheme {
+fun ArtistIconDarkPreview() {
+    DreamTheme(
+        isDarkMode = true
+    ) {
+        ArtistIcon(
+            modifier = Modifier.size(100.dp),
+            iconUrl = ""
+        )
+    }
+}
+
+@Preview
+@Composable
+fun ArtistIconLightPreview() {
+    DreamTheme(
+        isDarkMode = false
+    ) {
         ArtistIcon(
             modifier = Modifier.size(100.dp),
             iconUrl = ""

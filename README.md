@@ -19,12 +19,12 @@ However, even in its current state, it can still be a great example of Clean Arc
 ## Features
 
 ### ***Common***
-  * 99 % of shared code between Android and iOS (all three layers: Data, Domain and UI);
+  * ~100 % of shared code between Android and iOS (all three layers: Data, Domain and UI);
   * Multimodal, clean project structure with safe dependencies (api/impl approach);
   * Static code analysis;
   * Shared localised resources; 
   * Multiplatform build config with multiple flavors;
-  * //TODO Custom compose theme (with dark and light modes) for uniform and flexible UI;
+  * Custom compose theme (with dark and light modes) for uniform and flexible UI;
   * //TODO Multiplatform widget;
   * //TODO Mock local rest api on Ktor;
 

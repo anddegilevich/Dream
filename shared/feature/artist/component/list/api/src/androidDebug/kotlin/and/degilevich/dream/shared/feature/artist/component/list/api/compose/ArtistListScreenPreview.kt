@@ -9,23 +9,43 @@ import kotlinx.collections.immutable.toImmutableList
 
 @Preview
 @Composable
-private fun ArtistListScreenPreview() {
-    DreamTheme {
+private fun ArtistListScreenDarkPreview() {
+    DreamTheme(
+        isDarkMode = true
+    ) {
         ArtistListScreen(
-            state = ArtistListUIState(
-                artistCount = "10 Artists",
-                artists = buildList {
-                    for (i in 1..10) {
-                        add(
-                            ArtistUIItem(
-                                id = i.toString(),
-                                name = "Artist $i"
-                            )
-                        )
-                    }
-                }.toImmutableList()
-            ),
+            state = providePreviewArtistListUIState(),
             onIntent = {}
         )
     }
+}
+
+@Preview
+@Composable
+private fun ArtistListScreenLightPreview() {
+    DreamTheme(
+        isDarkMode = false
+    ) {
+        ArtistListScreen(
+            state = providePreviewArtistListUIState(),
+            onIntent = {}
+        )
+    }
+}
+
+@Suppress("MagicNumber")
+private fun providePreviewArtistListUIState(): ArtistListUIState {
+    return ArtistListUIState(
+        artistCount = "10 Artists",
+        artists = buildList {
+            for (i in 1..10) {
+                add(
+                    ArtistUIItem(
+                        id = i.toString(),
+                        name = "Artist $i"
+                    )
+                )
+            }
+        }.toImmutableList()
+    )
 }

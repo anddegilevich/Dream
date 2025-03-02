@@ -5,8 +5,6 @@ import and.degilevich.dream.shared.feature.artist.component.list.api.component.m
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListUIState
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard
 import and.degilevich.dream.shared.foundation.compose.ext.plus
-import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingBottom
-import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingTop
 import and.degilevich.dream.Res
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -38,9 +36,7 @@ fun ArtistListScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(Theme.colors.background)
-            .fadingTop(fadeHeight = WindowInsets.statusBars.asPaddingValues().calculateTopPadding())
-            .fadingBottom(fadeHeight = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()),
+            .background(Theme.colors.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(all = 16.dp)

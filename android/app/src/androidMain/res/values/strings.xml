@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Dream</string>
-    <string name="app_name_mock">Dream MOCK</string>
+    <string name="app_name" translatable="false">Dream</string>
+    <string name="app_name_mock" translatable="false">Dream MOCK</string>
 </resources>

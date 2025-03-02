@@ -6,6 +6,7 @@ import and.degilevich.dream.shared.compose.design.snackbar.DreamSnackbar
 import and.degilevich.dream.shared.compose.theme.api.DreamTheme
 import and.degilevich.dream.shared.compose.theme.api.Theme
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -32,7 +33,9 @@ fun DreamApp(
         }
     }
 
-    DreamTheme {
+    DreamTheme(
+        isDarkMode = isSystemInDarkTheme()
+    ) {
         Box(
             modifier = modifier
                 .fillMaxSize()

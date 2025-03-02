@@ -6,8 +6,6 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingEnd
-import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingStart
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistIcon
 import androidx.compose.foundation.background
@@ -39,7 +37,6 @@ fun ArtistDetailsScreen(
             .background(Theme.colors.background)
             .safeContentPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
     ) {
         ArtistIcon(
             modifier = Modifier.size(200.dp),
@@ -50,17 +47,15 @@ fun ArtistDetailsScreen(
             text = state.artistName,
             color = Theme.colors.textPrimary
         )
-        Space(height = 16.dp)
+        Space(height = 32.dp)
         Text(
             text = stringResource(Res.strings.title_similar_artists),
             color = Theme.colors.textPrimary
         )
         Space(height = 12.dp)
         LazyRow(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fadingStart(fadeWidth = 16.dp)
-                .fadingEnd(fadeWidth = 16.dp),
+            modifier = Modifier.fillMaxWidth(),
+            reverseLayout = true,
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
         ) {

@@ -1,34 +1,34 @@
 package and.degilevich.dream.shared.compose.theme.impl.color
 
+import and.degilevich.dream.Res
 import and.degilevich.dream.shared.compose.theme.api.colors.DreamColors
 import and.degilevich.dream.shared.compose.theme.api.colors.DreamThemeIndifferentColors
-import and.degilevich.dream.Res
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import dev.icerock.moko.resources.compose.colorResource
 
-internal class DarkThemeDreamColors : DreamColors, DreamThemeIndifferentColors by DreamThemeIndifferentColorsImpl() {
+internal class LightThemeDreamColors : DreamColors, DreamThemeIndifferentColors by DreamThemeIndifferentColorsImpl() {
     // Common
     override val background: Color
         @Composable
-        get() = colorResource(Res.colors.chinese_black)
+        get() = colorResource(Res.colors.white)
     override val ripple: Color
         @Composable
         get() = brandGreen
     override val icon: Color
         @Composable
-        get() = white
+        get() = black
     override val iconPlaceholderBackground: Color
         @Composable
-        get() = black
+        get() = colorResource(Res.colors.philippine_silver)
     override val outline: Color
         @Composable
-        get() = white
+        get() = black
 
     // Text
     override val textPrimary: Color
         @Composable
-        get() = white
+        get() = black
     override val textSecondary: Color
         @Composable
         get() = colorResource(Res.colors.philippine_silver)
@@ -45,7 +45,7 @@ internal class DarkThemeDreamColors : DreamColors, DreamThemeIndifferentColors b
         get() = colorResource(Res.colors.davys_gray)
     override val buttonPrimaryText: Color
         @Composable
-        get() = colorResource(Res.colors.chinese_black)
+        get() = white
     override val buttonPrimaryTextDisabled: Color
         @Composable
         get() = buttonPrimaryText
@@ -65,20 +65,20 @@ internal class DarkThemeDreamColors : DreamColors, DreamThemeIndifferentColors b
 
     override val buttonOutlined: Color
         @Composable
-        get() = white
+        get() = black
     override val buttonOutlinedDisabled: Color
         @Composable
         get() = colorResource(Res.colors.davys_gray)
     override val buttonOutlinedText: Color
         @Composable
-        get() = white
+        get() = black
     override val buttonOutlinedTextDisabled: Color
         @Composable
         get() = colorResource(Res.colors.davys_gray)
 
     override val buttonBorderlessText: Color
         @Composable
-        get() = white
+        get() = black
     override val buttonBorderlessTextDisabled: Color
         @Composable
         get() = colorResource(Res.colors.davys_gray)

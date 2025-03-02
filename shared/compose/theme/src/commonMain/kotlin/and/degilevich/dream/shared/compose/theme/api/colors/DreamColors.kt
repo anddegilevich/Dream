@@ -14,6 +14,9 @@ interface DreamColors : DreamThemeIndifferentColors {
     val icon: Color
         @Composable
         get
+    val iconPlaceholderBackground: Color
+        @Composable
+        get
     val outline: Color
         @Composable
         get

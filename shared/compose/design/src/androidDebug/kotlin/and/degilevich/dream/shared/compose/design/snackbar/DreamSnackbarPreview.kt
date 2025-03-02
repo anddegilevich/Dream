@@ -8,17 +8,35 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
-private fun DreamSnackbarPreview() {
-    DreamTheme {
+private fun DreamSnackbarDarkPreview() {
+    DreamTheme(
+        isDarkMode = true
+    ) {
         DreamSnackbar(
-            data = object : SnackbarData {
-                override val actionLabel: String = "Action"
-                override val duration: SnackbarDuration = SnackbarDuration.Short
-                override val message: String = "Message"
-
-                override fun dismiss() = Unit
-                override fun performAction() = Unit
-            }
+            data = providePreviewSnackbarData()
         )
+    }
+}
+
+@Preview
+@Composable
+private fun DreamSnackbarLightPreview() {
+    DreamTheme(
+        isDarkMode = false
+    ) {
+        DreamSnackbar(
+            data = providePreviewSnackbarData()
+        )
+    }
+}
+
+private fun providePreviewSnackbarData(): SnackbarData {
+    return object : SnackbarData {
+        override val actionLabel: String = "Action"
+        override val duration: SnackbarDuration = SnackbarDuration.Short
+        override val message: String = "Message"
+
+        override fun dismiss() = Unit
+        override fun performAction() = Unit
     }
 }

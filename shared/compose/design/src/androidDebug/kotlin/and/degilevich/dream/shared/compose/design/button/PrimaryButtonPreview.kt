@@ -6,8 +6,22 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
-private fun PrimaryButtonPreview() {
-    DreamTheme {
+private fun PrimaryButtonDarkPreview() {
+    DreamTheme(
+        isDarkMode = false
+    ) {
+        PrimaryButton(
+            text = "Button"
+        ) { }
+    }
+}
+
+@Preview
+@Composable
+private fun PrimaryButtonLightPreview() {
+    DreamTheme(
+        isDarkMode = false
+    ) {
         PrimaryButton(
             text = "Button"
         ) { }

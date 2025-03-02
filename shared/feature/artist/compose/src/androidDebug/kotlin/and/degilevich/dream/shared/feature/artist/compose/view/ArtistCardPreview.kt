@@ -7,14 +7,33 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
-fun ArtistCardPreview() {
-    DreamTheme {
+fun ArtistCardDarkPreview() {
+    DreamTheme(
+        isDarkMode = true
+    ) {
         ArtistCard(
-            item = ArtistUIItem(
-                id = "1",
-                name = "Artist Name"
-            ),
+            item = providePreviewArtistUIItem(),
             onCardClicked = {}
         )
     }
+}
+
+@Preview
+@Composable
+fun ArtistCardLightPreview() {
+    DreamTheme(
+        isDarkMode = false
+    ) {
+        ArtistCard(
+            item = providePreviewArtistUIItem(),
+            onCardClicked = {}
+        )
+    }
+}
+
+private fun providePreviewArtistUIItem(): ArtistUIItem {
+    return ArtistUIItem(
+        id = "1",
+        name = "Artist Name"
+    )
 }
