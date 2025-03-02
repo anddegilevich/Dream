@@ -8,6 +8,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.compose.theme)
+            api(libs.bundles.coil)
         }
     }
 }

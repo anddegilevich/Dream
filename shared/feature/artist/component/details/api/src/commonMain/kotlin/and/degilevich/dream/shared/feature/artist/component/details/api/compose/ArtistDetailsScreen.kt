@@ -9,6 +9,7 @@ import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingEnd
 import and.degilevich.dream.shared.foundation.compose.modifier.fade.fadingStart
 import and.degilevich.dream.Res
+import and.degilevich.dream.shared.feature.artist.compose.view.ArtistIcon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
@@ -39,6 +41,11 @@ fun ArtistDetailsScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        ArtistIcon(
+            modifier = Modifier.size(200.dp),
+            iconUrl = state.artistIconUrl
+        )
+        Space(height = 12.dp)
         Text(
             text = state.artistName,
             color = Theme.colors.textPrimary
@@ -48,7 +55,7 @@ fun ArtistDetailsScreen(
             text = stringResource(Res.strings.title_similar_artists),
             color = Theme.colors.textPrimary
         )
-        Space(height = 16.dp)
+        Space(height = 12.dp)
         LazyRow(
             modifier = Modifier
                 .fillMaxWidth()

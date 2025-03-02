@@ -9,67 +9,67 @@ android-min-sdk = "24"
 android-target-sdk = "35"
 
 # Android gradle plugin
-agp = "8.7.3"
+agp = "8.8.2" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
 
 # JVM version
 java = "17"
 
 # Kotlin
-kotlin = "2.1.0"
+kotlin = "2.1.10" # https://kotlinlang.org/docs/releases.html#release-details
 
 # Compose
 compose-multiplatform = "1.7.3"
 
 # KSP
-ksp = "2.1.0-1.0.29" # https://github.com/google/ksp/releases
+ksp = "2.1.10-1.0.31" # https://github.com/google/ksp/releases
 
 # Androidx
-androidx-activity-compose = "1.10.0"
+androidx-activity-compose = "1.10.1"
 androidx-lifecycle = "2.8.4"
 androidx-core-splashscreen = "1.0.1"
 
 # Kotlinx
 kotlinx-coroutines = "1.10.1" # https://github.com/Kotlin/kotlinx.coroutines/releases
-kotlinx-serialization = "1.6.3" # https://github.com/Kotlin/kotlinx.serialization/releases
+kotlinx-serialization = "1.8.0" # https://github.com/Kotlin/kotlinx.serialization/releases
 kotlinx-immutable-collections = "0.3.8" # https://github.com/Kotlin/kotlinx.collections.immutable/releases
-kotlinx-datetime = "0.6.1" # https://github.com/Kotlin/kotlinx-datetime/releases
+kotlinx-datetime = "0.6.2" # https://github.com/Kotlin/kotlinx-datetime/releases
 
 # Detekt
 detekt = "1.23.8" # https://github.com/detekt/detekt/releases
 detekt-compose = "0.0.26" # https://github.com/twitter/compose-rules/releases
 
 # Koin
-koin-bom = "3.5.1" # https://github.com/InsertKoinIO/koin/releases
+koin-bom = "4.0.2" # https://github.com/InsertKoinIO/koin/releases
 
 # Ktor
-ktor = "2.3.6" # https://github.com/ktorio/ktor/releases
+ktor = "3.1.1" # https://github.com/ktorio/ktor/releases
 
 # Decompose
-decompose = "3.2.2" # https://github.com/arkivanov/Decompose/releases
+decompose = "3.3.0" # https://github.com/arkivanov/Decompose/releases
 
 # Essenty
-essenty = "2.2.1" # https://github.com/arkivanov/Essenty/releases
+essenty = "2.5.0" # https://github.com/arkivanov/Essenty/releases
 
 # MVI Kotlin
-mvikotlin = "4.0.0" # https://github.com/arkivanov/MVIKotlin/releases
+mvikotlin = "4.3.0" # https://github.com/arkivanov/MVIKotlin/releases
 
 # KVault
 kvault = "1.12.0" # https://github.com/Liftric/KVault/releases
 
 # Coil
-coil = "2.5.0" # https://github.com/coil-kt/coil/releases
+coil = "3.1.0" # https://github.com/coil-kt/coil/releases
 
 # Napier
 napier = "2.7.1" # https://github.com/AAkira/Napier/releases
 
 # Moko
-moko-resources = "0.24.4" # https://github.com/icerockdev/moko-resources/releases
+moko-resources = "0.24.5" # https://github.com/icerockdev/moko-resources/releases
 
 # BuildKonfig
-buildkonfig = "0.15.0" # https://github.com/yshrsmz/BuildKonfig/releases
+buildkonfig = "0.17.0" # https://github.com/yshrsmz/BuildKonfig/releases
 
 # Room
-room = "2.7.0-beta01" # https://developer.android.com/jetpack/androidx/releases/room
+room = "2.7.0-rc01" # https://developer.android.com/jetpack/androidx/releases/room
 
 # SQLite
 sqlite = "2.4.0" # https://mvnrepository.com/artifact/androidx.sqlite
@@ -78,9 +78,9 @@ sqlite = "2.4.0" # https://mvnrepository.com/artifact/androidx.sqlite
 
 # Kotlin
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-test-common = {module = "org.jetbrains.kotlin:kotlin-test-common", version.ref = "kotlin"}
-kotlin-test-annotations-common = {module = "org.jetbrains.kotlin:kotlin-test-annotations-common", version.ref = "kotlin"}
-kotlin-test-junit = {module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin"}
+kotlin-test-common = { module = "org.jetbrains.kotlin:kotlin-test-common", version.ref = "kotlin" }
+kotlin-test-annotations-common = { module = "org.jetbrains.kotlin:kotlin-test-annotations-common", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 
 # Android
 android-gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
@@ -145,8 +145,9 @@ mvikotlin-extensions-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-
 kvault = { module = "com.liftric:kvault", version.ref = "kvault" }
 
 # Coil - https://github.com/coil-kt/coil
-coil = { module = "io.coil-kt:coil", version.ref = "coil" }
-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+coil-core = { module = "io.coil-kt.coil3:coil-core", version.ref = "coil" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
 # Napier - https://github.com/AAkira/Napier
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
@@ -158,11 +159,11 @@ moko-resources-test = { module = "dev.icerock.moko:resources-test", version.ref 
 moko-resources-generator-gradle = { module = "dev.icerock.moko:resources-generator", version.ref = "moko-resources" }
 
 # Room - # https://developer.android.com/jetpack/androidx/releases/room
-room-runtime =  { module = "androidx.room:room-runtime", version.ref = "room" }
-room-compiler =  { module = "androidx.room:room-compiler", version.ref = "room" }
-room-ktx =  { module = "androidx.room:room-ktx", version.ref = "room" }
-room-testing =  { module = "androidx.room:room-testing", version.ref = "room" }
-room-paging =  { module = "androidx.room:room-paging", version.ref = "room" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
+room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
 
 # SQLite - https://developer.android.com/kotlin/multiplatform/sqlite
 sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
@@ -171,8 +172,8 @@ sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sql
 [bundles]
 
 mvikotlin = ["mvikotlin", "mvikotlin-main", "mvikotlin-logging", "mvikotlin-timetravel", "mvikotlin-extensions-coroutines"]
-coil = ["coil", "coil-compose"]
-decompose = ["decompose", "essenty-lifecycle", "essenty-lifecycle-coroutines","essenty-state-keaper"]
+coil = ["coil-core", "coil-compose", "coil-network-ktor3"]
+decompose = ["decompose", "essenty-lifecycle", "essenty-lifecycle-coroutines", "essenty-state-keaper"]
 
 [plugins]
 
