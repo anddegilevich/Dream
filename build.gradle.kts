@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.kotlinx.serialization) apply false
     alias(libs.plugins.moko.multiplatfrom.resources) apply false
     alias(libs.plugins.buildkonfig) apply false
+    alias(libs.plugins.baselineprofile) apply false
 }
 
 buildscript {

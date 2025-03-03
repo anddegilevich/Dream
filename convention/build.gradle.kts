@@ -23,6 +23,12 @@ gradlePlugin {
     plugins {
         version = libs.versions.project.plugin
 
+        libs.plugins.project.android.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.AndroidPlugin"
+            }
+        }
         libs.plugins.project.multiplatform.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId

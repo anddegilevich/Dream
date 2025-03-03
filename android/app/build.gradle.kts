@@ -1,23 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.project.multiplatform)
-    alias(libs.plugins.project.compose)
-    alias(libs.plugins.project.koin)
-}
-
-kotlin {
-    sourceSets {
-        commonMain.dependencies {
-            implementation(libs.bundles.decompose)
-
-            implementation(projects.shared.app.impl)
-        }
-
-        androidMain.dependencies {
-            implementation(libs.decompose.extensions.android)
-            implementation(libs.androidx.core.splashscreen)
-        }
-    }
+    alias(libs.plugins.project.android)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.baselineprofile)
 }
 
 android {
@@ -57,5 +43,22 @@ android {
             manifestPlaceholders["applicationName"] = "@string/app_name_mock"
         }
     }
+}
+
+dependencies {
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+
+    implementation(libs.androidx.activity.compose)
+
+    implementation(libs.androidx.core.splashscreen)
+
+    implementation(libs.bundles.decompose)
+    implementation(libs.decompose.extensions.android)
+
+    implementation(projects.shared.app.impl)
+
+    implementation(libs.androidx.profileinstaller)
 }
 

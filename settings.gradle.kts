@@ -114,4 +114,4 @@ include(":shared:app:impl")
 // Android
 
 include(":android:app")
-//FIXME: Add baseline profile
+//include(":android:baseline")
