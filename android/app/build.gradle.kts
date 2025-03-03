@@ -30,7 +30,7 @@ android {
     }
 
     val variantFlavorDimension = "variant"
-    flavorDimensions.add(variantFlavorDimension)
+    flavorDimensions += variantFlavorDimension
     productFlavors {
         create("prod") {
             dimension = variantFlavorDimension
@@ -60,5 +60,6 @@ dependencies {
     implementation(projects.shared.app.impl)
 
     implementation(libs.androidx.profileinstaller)
+    baselineProfile(projects.android.baseline)
 }
 

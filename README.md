@@ -30,7 +30,7 @@ However, even in its current state, it can still be a great example of Clean Arc
 
 ### ***Android***
   * App state preservation during configuration changes and process death;
-  * //TODO Baseline profile and obfuscation optimisation for Android app;
+  * Baseline profile and obfuscation optimisation;
 
 ## Stack
 

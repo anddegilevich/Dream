@@ -1,8 +1,5 @@
 [versions]
 
-# Project
-project-plugin = "1.0.0"
-
 # SDK versions
 android-compile-sdk = "35"
 android-min-sdk = "26"
@@ -18,15 +15,15 @@ java = "17"
 kotlin = "2.1.10" # https://kotlinlang.org/docs/releases.html#release-details
 
 # Compose
-compose-multiplatform = "1.7.3"
+compose-multiplatform = "1.7.3" # https://mvnrepository.com/artifact/org.jetbrains.compose/compose-gradle-plugin
 
 # KSP
 ksp = "2.1.10-1.0.31" # https://github.com/google/ksp/releases
 
 # Androidx
-androidx-activity-compose = "1.10.1"
-androidx-lifecycle = "2.8.4"
-androidx-core-splashscreen = "1.0.1"
+androidx-activity-compose = "1.10.1" # https://mvnrepository.com/artifact/androidx.activity/activity-compose
+androidx-lifecycle = "2.8.4" # https://mvnrepository.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-runtime-compose
+androidx-core-splashscreen = "1.0.1" # https://mvnrepository.com/artifact/androidx.core/core-splashscreen
 
 # Kotlinx
 kotlinx-coroutines = "1.10.1" # https://github.com/Kotlin/kotlinx.coroutines/releases
@@ -76,7 +73,14 @@ sqlite = "2.4.0" # https://mvnrepository.com/artifact/androidx.sqlite
 
 # Baseline profile
 baselineprofile = "1.3.3" # https://mvnrepository.com/artifact/androidx.baselineprofile
-profileinstaller = "1.4.1"
+profileinstaller = "1.4.1" # https://mvnrepository.com/artifact/androidx.profileinstaller/profileinstaller
+junit = "1.2.1" # https://mvnrepository.com/artifact/androidx.test.ext/junit
+espresso-core = "3.6.1" # https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
+uiautomator = "2.3.0" # https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
+benchmark-macro-junit4 = "1.3.3" # https://mvnrepository.com/artifact/androidx.benchmark/benchmark-macro-junit4
+
+# Project
+project-plugin = "1.0.0"
 
 [libraries]
 
@@ -93,6 +97,11 @@ android-gradle = { module = "com.android.tools.build:gradle", version.ref = "agp
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-lifecycle-runtime-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splashscreen" }
+androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
+androidx-uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiautomator" }
+androidx-benchmark-macro-junit4 = { module = "androidx.benchmark:benchmark-macro-junit4", version.ref = "benchmark-macro-junit4" }
 
 # Kotlinx
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
@@ -172,9 +181,6 @@ room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
 # SQLite - https://developer.android.com/kotlin/multiplatform/sqlite
 sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
-
-# Baseline profile
-androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "profileinstaller" }
 
 [bundles]
 

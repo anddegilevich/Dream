@@ -114,4 +114,4 @@ include(":shared:app:impl")
 // Android
 
 include(":android:app")
-//include(":android:baseline")
+include(":android:baseline")

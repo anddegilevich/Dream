@@ -8,6 +8,7 @@ import com.android.build.api.dsl.DefaultConfig
 import com.android.build.api.dsl.Installation
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.ProductFlavor
+import com.android.build.api.dsl.TestExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.findByType
@@ -23,6 +24,7 @@ internal typealias AndroidExtensions = CommonExtension<
 internal fun Project.androidExtension(): AndroidExtensions {
     return extensions.findByType(BaseAppModuleExtension::class)
         ?: extensions.findByType(LibraryExtension::class)
+        ?: extensions.findByType(TestExtension::class)
         ?: error(
             buildString {
                 append("\"Project.and.degilevich.dream.convention.getAndroidExtension\" ")
