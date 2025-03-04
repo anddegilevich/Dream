@@ -17,19 +17,21 @@ abstract class StoreComponent<
     in Intent : Any,
     out SideEffect : Any
     >(
-    private val componentContext: ComponentContext,
+    componentContext: ComponentContext,
     storeFactory: ComponentStoreFactory<State, Intent, SideEffect>,
     stateConservator: ComponentStateConservator<State>,
 ) : ViewComponentAbs<State, Intent, SideEffect>(componentContext) {
 
-    private val store: Store<Intent, State, SideEffect> = componentContext.instanceKeeper.getStore {
-        storeFactory.create(
-            initialState = stateKeeper.consume(
-                key = stateConservator.key,
-                strategy = stateConservator.serializer
-            ) ?: stateConservator.initialState,
-            lifecycle = lifecycle
-        )
+    private val store: Store<Intent, State, SideEffect> by lazy {
+        instanceKeeper.getStore {
+            storeFactory.create(
+                initialState = stateKeeper.consume(
+                    key = stateConservator.key,
+                    strategy = stateConservator.serializer
+                ) ?: stateConservator.initialState,
+                lifecycle = lifecycle
+            )
+        }
     }
 
     override val state: StateFlow<State> = store.stateFlow(
@@ -48,7 +50,7 @@ abstract class StoreComponent<
     }
 
     private fun registerState(stateConservator: ComponentStateConservator<State>) {
-        componentContext.stateKeeper.register(
+        stateKeeper.register(
             key = stateConservator.key,
             strategy = stateConservator.serializer
         ) { store.state }

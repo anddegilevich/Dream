@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsMessage
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
 import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactoryAbs
+import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 
 internal class ArtistDetailsStoreFactory(
@@ -15,7 +16,7 @@ internal class ArtistDetailsStoreFactory(
     ArtistDetailsSideEffect,
     ArtistDetailsMessage
     >(
-    storeKClass = ArtistDetailsStore::class,
+    storeName = ArtistDetailsStore::class.className(),
     storeFactory = storeFactory,
     executorFactory = { lifecycle -> ArtistDetailsExecutor(lifecycle = lifecycle) },
     reducer = ArtistDetailsReducer(),

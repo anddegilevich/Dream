@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-abstract class SingleStoreComponent<
+abstract class UIStoreComponent<
     out UIState : Any,
     in Intent : Any,
     out SideEffect : Any,
