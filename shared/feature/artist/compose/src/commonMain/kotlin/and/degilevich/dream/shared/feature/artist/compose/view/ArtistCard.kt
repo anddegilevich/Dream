@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.compose.view
 
-import and.degilevich.dream.shared.compose.theme.api.Theme
+import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.compose.model.ArtistUIItem
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.background

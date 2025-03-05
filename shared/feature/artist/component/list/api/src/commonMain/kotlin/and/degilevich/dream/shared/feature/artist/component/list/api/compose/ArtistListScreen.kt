@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.list.api.compose
 
-import and.degilevich.dream.shared.compose.theme.api.Theme
+import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListUIState
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard

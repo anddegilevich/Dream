@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.compose
 
-import and.degilevich.dream.shared.compose.design.button.PrimaryButton
-import and.degilevich.dream.shared.compose.theme.api.Theme
+import and.degilevich.dream.shared.design.system.button.PrimaryButton
+import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.compose.view.ArtistCard

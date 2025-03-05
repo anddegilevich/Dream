@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.compose.view
 
 import and.degilevich.dream.Res
-import and.degilevich.dream.shared.compose.theme.api.Theme
+import and.degilevich.dream.shared.design.theme.api.Theme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable

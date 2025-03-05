@@ -10,7 +10,7 @@ kotlin {
             api(projects.shared.core.logger)
             api(projects.shared.core.resource.api)
             api(projects.shared.core.toast.api)
-            api(projects.shared.compose.design)
+            api(projects.shared.design.system)
         }
     }
 }

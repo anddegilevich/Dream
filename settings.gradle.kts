@@ -59,10 +59,10 @@ include(":shared:core:toast:api")
 include(":shared:core:toast:impl")
 
 // =====================================================================================================================
-// Compose
+// Design
 
-include(":shared:compose:theme")
-include(":shared:compose:design")
+include(":shared:design:theme")
+include(":shared:design:system")
 
 // =====================================================================================================================
 // Template

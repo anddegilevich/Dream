@@ -2,9 +2,9 @@ package and.degilevich.dream.shared.app.api.compose
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.api.compose.ext.showToast
-import and.degilevich.dream.shared.compose.design.snackbar.DreamSnackbar
-import and.degilevich.dream.shared.compose.theme.api.DreamTheme
-import and.degilevich.dream.shared.compose.theme.api.Theme
+import and.degilevich.dream.shared.design.system.snackbar.DreamSnackbar
+import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.Theme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box

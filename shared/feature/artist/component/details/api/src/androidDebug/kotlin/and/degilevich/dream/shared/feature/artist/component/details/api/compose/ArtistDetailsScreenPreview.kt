@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.compose
 
-import and.degilevich.dream.shared.compose.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.DreamTheme
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.compose.model.ArtistUIItem
 import androidx.compose.runtime.Composable

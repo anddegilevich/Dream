@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.compose.view
 
-import and.degilevich.dream.shared.compose.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.DreamTheme
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
