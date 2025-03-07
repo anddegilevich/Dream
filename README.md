@@ -22,9 +22,9 @@ Design is also inspired by [Spotify Mobile App](https://apps.apple.com/us/app/sp
   * Shared localised resources; 
   * Multiplatform build config with multiple flavors;
   * Custom compose theme (with dark and light modes) for uniform and flexible UI;
-  * //TODO Multiplatform widget;
   * //TODO Mock local rest api on Ktor;
-  * //TODO Custom file templates for swift feature entities creation;
+  * //TODO Custom file templates for convenient feature entities creation;
+  * //TODO Multiplatform widget;
 
 ### ***Android***
   * App state preservation during configuration changes and process death;
@@ -77,7 +77,7 @@ Here is the list of frameworks, that were used in this project:
 | | | | |- 2.5.1.1.1 artifact
 | | | | |- 2.5.1.1.2 core
 | | | |- 2.5.1.2 core
-| | | |- 2.5.1.3 compose
+| | | |- 2.5.1.3 design
 | | | |- 2.5.1.4 component
 | | | | |- 2.5.1.4.1 list
 | | | | |- 2.5.1.4.2 details
@@ -105,35 +105,161 @@ Public entities of this module should provide implementations with public constr
 
 ### 1. convention
 
-Module aggregates custom convention plugins for project's build.gradle.kts files optimisation.
+Custom convention plugins for project's build.gradle.kts files optimisation.
 Provided plugins are used for initializing multiplatform libraries, dependencies bundles and so on.
 
 ### 2. shared
 
-Contains all the shared project code.
+Shared project code.
 
-### 2.1 foundation
+### 2.1 shared.foundation
 
-Project unspecific code.
+project unspecific code.
 Manipulates with primitives and external libraries.
-Provides useful extensions for effective development.
+Provides useful extensions and abstractions for effective development.
 Can be extracted to libraries.
 
-***Examples:***
+***Contains:***
 Primitives (Int, String, List,...) extensions;
 Serializable extensions for unified json serialization;
 KMP dispatcher for multiplatform coroutines;
-...
+Basic abstractions (mappers, identified entities, timestamps, etc.);
+Custom compose modifiers;
+Decompose components base implementations;
+etc.
 
-### 2.2 core
+### 2.2 shared.core
 
 Project specific foundation modules. 
 Provide logic and models that can be used in any feature module.
 All of the core modules are feature unspecific (doesn't depend on any feature at all or any in particular).
 
+***Contains:***
+Build configuration;
+Logger;
+Project resources (strings, images, etc.);
+Http service;
+Local database;
+Preference storage;
+Toast manager;
+etc.
+
+### 2.3 shared.design
+
+Projects ui theme (colors, shapes, etc.) and basic ui elements(button, radio group, etc.).
+Feature unspecific views.
+
+### 2.4 shared.template
+
+Base abstractions for creating typical feature modules.
+
+***Contains:***
+Base component implementation;
+Abstraction over core data sources for feature sources.
+
+### 2.5 shared.feature
+
+Apps sources, models, logic and design divided by features.
+
+### 2.5.1 shared.feature.artist 
+
+Feature specific code.
+Used Artist feature as an example.
+
+### 2.5.1.1 shared.feature.artist.model
+
+Domain feature models that are unspecific to any particular component.
+
+### 2.5.1.1.1 shared.feature.artist.model.artifact
+
+Contains models that can be implemented in other features model modules.
+Used to prevent cycle dependencies.
+
+***Contains:***
+Simplified data classes that are contained in other features models as an entry points;
+Interfaces that declares specific behavior;
+Mappers for mapping data layer entities to the domain models.
+
+### 2.5.1.1.2 shared.feature.artist.model.core
+
+Feature specific models.
+Can not be imported in other features model modules.
+
+***Contains:***
+Data classes;
+Enum dictionaries;
+Mappers for mapping data layer entities to the domain models.
+
+### 2.5.1.2 shared.feature.artist.core
+
+Feature specific domain classes
+
+***Contains:***
+Data sources (local, remote, storage, paging and any combination of them);
+Value holders;
+Managers;
+Validators;
+etc.
+
+### 2.5.1.3 shared.feature.artist.design
+
+Feature ui elements.
+
+***Contains:***
+UI models;
+Compose functions;
+Mappers to map domain models to ui.
+
+### 2.5.1.4 shared.feature.artist.component
+
+Feature components (ie. screens, bottom sheets, dialogs).
+
+### 2.5.1.4.1 shared.feature.artist.component.list
+
+Component, its logic and ui.
+
+***Contains:***
+UI and domain models of the component entities;
+Component store entities (executor, ui state mapper, etc.).
+
+### 2.6 shared.navigation
+
+Global app navigation.
+Can implement feature model modules.
+
+***Contains:***
+Navigation manager;
+Configs with navigation arguments;
+
+### 2.7 shared.app
+
+Entry point for platforms to shared app code.
+Implementation submodule is used for ios app ui view controller generation.
+
+***Contains:***
+Root compose function;
+Root component implementation;
+App di module;
+
+### 3 android
+
+Android specific code.
+
+### 3.1 android.app
+
+Android app implementation.
+
+### 3.2 android.baseline
+
+Android app baseline profile generator.
+
+### 4 ios
+
+IOS XCode project.
+
 ## Setup
 
-In order to build a project **CLIENT_ID** and **CLIENT_SECRET** of the API should be added to your `local.properties`.
+In order to build a prod version of the project **CLIENT_ID** and **CLIENT_SECRET** of the API should be added to your `local.properties`.
 Check [Spotify Web API Getting Started](https://developer.spotify.com/documentation/web-api/tutorials/getting-started#request-an-access-token) to learn how get them.
 
 //TODO: Add alternative instructions for mock build
