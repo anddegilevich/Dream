@@ -91,7 +91,7 @@ include(":shared:feature:artist:component:list:api")
 include(":shared:feature:artist:component:list:impl")
 
 // Album
-include(":shared:feature:album:model:core")
+include(":shared:feature:album:model:artifact")
 
 // Track
 include(":shared:feature:track:model:artifact")

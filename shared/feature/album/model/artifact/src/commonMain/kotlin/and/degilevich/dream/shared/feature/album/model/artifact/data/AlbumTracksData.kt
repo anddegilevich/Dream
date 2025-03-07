@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.feature.album.model.core.data
+package and.degilevich.dream.shared.feature.album.model.artifact.data
 
 import and.degilevich.dream.shared.feature.track.model.artifact.data.TrackSimplifiedData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory

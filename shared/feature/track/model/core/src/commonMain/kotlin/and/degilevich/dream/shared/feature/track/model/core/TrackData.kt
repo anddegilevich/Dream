@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.track.model.core
 
-import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumData
 import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.track.model.artifact.abstraction.TrackInfo
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory

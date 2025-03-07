@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.feature.album.model.core.dictionary
+package and.degilevich.dream.shared.feature.album.model.artifact.dictionary
 
 import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 

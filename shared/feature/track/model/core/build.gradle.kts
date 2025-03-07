@@ -8,7 +8,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.feature.track.model.artifact)
             api(projects.shared.feature.image.model.artifact)
-            api(projects.shared.feature.album.model.core)
+            api(projects.shared.feature.album.model.artifact)
         }
     }
 }
