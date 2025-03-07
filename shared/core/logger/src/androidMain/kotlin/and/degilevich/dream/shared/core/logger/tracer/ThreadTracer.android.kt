@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.foundation.primitive.stringBuilder.appendSpac
 internal actual object ThreadTracer {
     actual fun getTrace(): String {
         val stackTrace = Thread.currentThread().stackTrace
-        val callingElement = stackTrace.getOrNull(TRACER_DEPTH) ?: return ""
+        val callingElement = stackTrace.getOrNull(THREAD_TRACER_DEPTH) ?: return ""
         return buildString {
             append(callingElement.className)
             append(".")

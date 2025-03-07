@@ -12,7 +12,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.LocalOverscrollConfiguration
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.arkivanov.decompose.retainedComponent
+import com.arkivanov.decompose.defaultComponentContext
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class)
@@ -25,11 +25,9 @@ class MainActivity : ComponentActivity() {
             navigationBarStyle = SystemBarStyle.dark(Color.TRANSPARENT)
         )
 
-        val rootComponent = retainedComponent { componentContext ->
-            RootComponentImpl(
-                componentContext = componentContext
-            )
-        }
+        val rootComponent = RootComponentImpl(
+            componentContext = defaultComponentContext()
+        )
 
         setContent {
             CompositionLocalProvider(

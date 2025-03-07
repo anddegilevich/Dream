@@ -4,7 +4,7 @@ import platform.Foundation.NSThread.Companion.callStackSymbols
 
 internal actual object ThreadTracer {
     actual fun getTrace(): String {
-        val trace = callStackSymbols.getOrNull(TRACER_DEPTH)?.toString().orEmpty()
+        val trace = callStackSymbols.getOrNull(THREAD_TRACER_DEPTH)?.toString().orEmpty()
         return formatTrace(trace)
     }
 

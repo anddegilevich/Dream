@@ -5,26 +5,25 @@ import and.degilevich.dream.shared.core.toast.api.controller.ToastController
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
-import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListMessage
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
-import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
 import and.degilevich.dream.Res
+import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 internal class ArtistListExecutor(
-    lifecycle: ExtendedLifecycle
-) : ExecutorAbs<ArtistListState, ArtistListIntent, ArtistListSideEffect, ArtistListMessage>(lifecycle),
+    lifecycle: Lifecycle
+) : ExecutorAbs<ArtistListState, ArtistListIntent, ArtistListSideEffect>(lifecycle),
     KoinComponent {
 
     private val navigator: DreamNavigator by inject()
@@ -84,11 +83,15 @@ internal class ArtistListExecutor(
     }
 
     private fun setArtists(artists: List<ArtistData>) {
-        dispatch(ArtistListMessage.SetArtists(artists))
+        reduce { state ->
+            state.copy(artists = artists)
+        }
     }
 
     private fun setLoading(isLoading: Boolean) {
-        dispatch(ArtistListMessage.SetLoading(isLoading))
+        reduce { state ->
+            state.copy(isLoading = isLoading)
+        }
     }
 
     private fun navigateToArtist(artistId: String) {

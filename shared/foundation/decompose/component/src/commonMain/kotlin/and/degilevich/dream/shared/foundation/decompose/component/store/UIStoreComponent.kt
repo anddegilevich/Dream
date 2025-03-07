@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store
 
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
-import and.degilevich.dream.shared.foundation.decompose.component.view.ViewComponentAbs
+import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponentAbs
 import and.degilevich.dream.shared.foundation.model.mapper.Mapper
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
@@ -26,26 +26,34 @@ abstract class UIStoreComponent<
     storeComponentFactory: (childComponentContext: ComponentContext) -> MVIComponent<State, Intent, SideEffect>,
     initialUIState: UIState,
     uiStateMapper: Mapper<State, UIState>,
-) : ViewComponentAbs<UIState, Intent, SideEffect>(componentContext) {
+) : MVIComponentAbs<UIState, Intent, SideEffect>(componentContext) {
 
-    private val storeComponent: MVIComponent<State, Intent, SideEffect> = storeComponentFactory(
-        childContext(key = STORE_COMPONENT_CHILD_KEY)
-    )
+    private val storeComponent: MVIComponent<State, Intent, SideEffect> by lazy {
+        storeComponentFactory(
+            childContext(
+                key = STORE_COMPONENT_CHILD_KEY
+            )
+        )
+    }
 
     private val currentStateChannel = Channel<State>()
 
-    override val state: StateFlow<UIState> = merge(
-        currentStateChannel.receiveAsFlow(),
-        storeComponent.state
-    )
-        .map(uiStateMapper::map)
-        .stateIn(
-            scope = coroutineScope,
-            started = SharingStarted.Lazily,
-            initialValue = initialUIState
+    override val state: StateFlow<UIState> by lazy {
+        merge(
+            currentStateChannel.receiveAsFlow(),
+            storeComponent.state
         )
+            .map(uiStateMapper::map)
+            .stateIn(
+                scope = coroutineScope,
+                started = SharingStarted.Lazily,
+                initialValue = initialUIState
+            )
+    }
 
-    override val sideEffect: Flow<SideEffect> = storeComponent.sideEffect
+    override val sideEffect: Flow<SideEffect> by lazy {
+        storeComponent.sideEffect
+    }
 
     override fun handleIntent(intent: Intent) {
         storeComponent.handleIntent(intent)

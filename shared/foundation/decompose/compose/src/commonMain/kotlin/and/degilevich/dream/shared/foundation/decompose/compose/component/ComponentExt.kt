@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.app.api.compose.ext
+package and.degilevich.dream.shared.foundation.decompose.compose.component
 
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers

@@ -1,11 +1,10 @@
 package and.degilevich.dream.shared.app.api.compose
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
-import and.degilevich.dream.shared.app.api.compose.ext.collectState
+import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
 import and.degilevich.dream.shared.feature.artist.component.details.api.compose.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.artist.component.list.api.compose.ArtistListScreen
 import and.degilevich.dream.shared.foundation.decompose.compose.animation.defaultStackAnimation
-import and.degilevich.dream.shared.foundation.decompose.compose.lifecycle.SubscribeToLifecycleDisposalEffect
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -42,7 +41,5 @@ fun DreamScreens(
                 )
             }
         }
-
-        SubscribeToLifecycleDisposalEffect(screenComponent)
     }
 }

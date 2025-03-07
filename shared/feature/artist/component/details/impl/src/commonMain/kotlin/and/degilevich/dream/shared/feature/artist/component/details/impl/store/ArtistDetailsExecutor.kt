@@ -2,7 +2,6 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
-import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsMessage
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
@@ -10,19 +9,19 @@ import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
-import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.dream.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
+import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 internal class ArtistDetailsExecutor(
-    lifecycle: ExtendedLifecycle
-) : ExecutorAbs<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect, ArtistDetailsMessage>(lifecycle),
+    lifecycle: Lifecycle
+) : ExecutorAbs<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect>(lifecycle),
     KoinComponent {
 
     private val navigator: DreamNavigator by inject()
@@ -67,7 +66,11 @@ internal class ArtistDetailsExecutor(
     }
 
     private fun setArtist(artist: ArtistData) {
-        dispatch(ArtistDetailsMessage.SetArtist(artist))
+        reduce { state ->
+            state.copy(
+                artist = artist
+            )
+        }
     }
 
     private fun fetchSimilarArtists() {
@@ -94,11 +97,19 @@ internal class ArtistDetailsExecutor(
     }
 
     private fun setSimilarArtists(artists: List<ArtistData>) {
-        dispatch(ArtistDetailsMessage.SetSimilarArtists(artists))
+        reduce { state ->
+            state.copy(
+                similarArtists = artists
+            )
+        }
     }
 
     private fun setLoading(isLoading: Boolean) {
-        dispatch(ArtistDetailsMessage.SetLoading(isLoading))
+        reduce { state ->
+            state.copy(
+                isLoading = isLoading
+            )
+        }
     }
 
     private fun navigateBack() {

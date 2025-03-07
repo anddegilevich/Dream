@@ -3,6 +3,6 @@ package and.degilevich.dream.shared.feature.artist.component.details.api.compone
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
-import and.degilevich.dream.shared.foundation.decompose.component.view.ViewComponent
+import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 
-interface ArtistDetailsComponent : ViewComponent<ArtistDetailsUIState, ArtistDetailsIntent, ArtistDetailsSideEffect>
+interface ArtistDetailsComponent : MVIComponent<ArtistDetailsUIState, ArtistDetailsIntent, ArtistDetailsSideEffect>

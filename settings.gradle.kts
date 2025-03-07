@@ -29,7 +29,6 @@ include(":shared:foundation:dispatcher")
 include(":shared:foundation:compose")
 
 include(":shared:foundation:decompose:navigator")
-include(":shared:foundation:decompose:lifecycle")
 include(":shared:foundation:decompose:compose")
 include(":shared:foundation:decompose:component")
 

@@ -1,11 +1,11 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory
 
-import and.degilevich.dream.shared.foundation.decompose.lifecycle.ExtendedLifecycle
+import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.mvikotlin.core.store.Store
 
 interface ComponentStoreFactory<State : Any, in Intent : Any, out SideEffect : Any> {
     fun create(
         initialState: State,
-        lifecycle: ExtendedLifecycle
+        lifecycle: Lifecycle
     ): Store<Intent, State, SideEffect>
 }

@@ -13,7 +13,6 @@ kotlin {
             api(projects.shared.foundation.primitive)
             api(projects.shared.foundation.serialization)
             api(projects.shared.foundation.model)
-            api(projects.shared.foundation.decompose.lifecycle)
             api(projects.shared.foundation.dispatcher)
         }
     }

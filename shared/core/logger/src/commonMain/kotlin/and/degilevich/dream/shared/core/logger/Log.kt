@@ -20,20 +20,6 @@ object Log : Logger {
         )
     }
 
-    override fun trace(message: String) {
-        val trace = ThreadTracer.getTrace()
-        log(
-            priority = LogLevel.INFO,
-            message = buildString {
-                if (trace.isNotEmpty()) {
-                    append("[$trace]")
-                    appendSpace()
-                }
-                append(message)
-            }
-        )
-    }
-
     override fun error(
         message: String,
         throwable: Throwable?
@@ -51,11 +37,19 @@ object Log : Logger {
         message: String,
         throwable: Throwable? = null
     ) {
+        val trace = ThreadTracer.getTrace()
+        val modifiedMessage = buildString {
+            if (trace.isNotEmpty()) {
+                append("[$trace]")
+                appendSpace()
+            }
+            append(message)
+        }
         Napier.log(
             priority = priority,
             tag = LOG_TAG,
             throwable = throwable,
-            message = message
+            message = modifiedMessage
         )
     }
 
