@@ -21,24 +21,20 @@ abstract class StoreComponent<
     stateConservator: ComponentStateConservator<State>,
 ) : MVIComponentAbs<State, Intent, SideEffect>(componentContext) {
 
-    private val store: Store<Intent, State, SideEffect> by lazy {
-        storeFactory.create(
-            initialState = stateKeeper.consume(
-                key = stateConservator.key,
-                strategy = stateConservator.serializer
-            ) ?: stateConservator.initialState,
-            lifecycle = lifecycle
-        )
-    }
+    private val store: Store<Intent, State, SideEffect> = storeFactory.create(
+        initialState = componentContext.stateKeeper.consume(
+            key = stateConservator.key,
+            strategy = stateConservator.serializer
+        ) ?: stateConservator.initialState,
+        lifecycle = componentContext.lifecycle
+    )
 
-    override val state: StateFlow<State> by lazy {
-        store.stateFlow(
-            scope = coroutineScope,
-            started = SharingStarted.Lazily
-        )
-    }
+    override val state: StateFlow<State> = store.stateFlow(
+        scope = coroutineScope,
+        started = SharingStarted.Lazily
+    )
 
-    override val sideEffect: Flow<SideEffect> by lazy { store.labels }
+    override val sideEffect: Flow<SideEffect> = store.labels
 
     override fun handleIntent(intent: Intent) {
         store.accept(intent)
