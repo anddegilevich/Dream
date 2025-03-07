@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.compose.model
 
-import and.degilevich.dream.shared.foundation.model.id.Identified
+import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 import androidx.compose.runtime.Stable
 
 @Stable

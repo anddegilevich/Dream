@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.track.model.core
 import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
 import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.track.model.artifact.abstraction.TrackInfo
-import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
-import and.degilevich.dream.shared.foundation.model.id.IdentifiedAbs
+import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
+import and.degilevich.dream.shared.foundation.abstraction.id.IdentifiedAbs
 
 data class TrackData(
     override val id: String,

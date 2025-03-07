@@ -9,7 +9,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.core.toast.api)
-            api(projects.shared.foundation.model)
+            api(projects.shared.foundation.abstraction)
             implementation(projects.shared.core.resource.api)
         }
     }

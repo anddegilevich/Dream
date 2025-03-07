@@ -24,7 +24,7 @@ dependencyResolutionManagement {
 
 include(":shared:foundation:primitive")
 include(":shared:foundation:serialization")
-include(":shared:foundation:model")
+include(":shared:foundation:abstraction")
 include(":shared:foundation:dispatcher")
 include(":shared:foundation:compose")
 

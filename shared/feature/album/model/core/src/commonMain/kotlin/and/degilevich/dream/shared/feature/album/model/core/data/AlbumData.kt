@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.album.model.core.data
 import and.degilevich.dream.shared.feature.album.model.core.dictionary.AlbumType
 import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.image.model.artifact.data.ImageObjectData
-import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
-import and.degilevich.dream.shared.foundation.model.id.IdentifiedAbs
+import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
+import and.degilevich.dream.shared.foundation.abstraction.id.IdentifiedAbs
 import kotlinx.serialization.Serializable
 
 @Serializable

@@ -7,7 +7,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.foundation.model)
+            api(projects.shared.foundation.abstraction)
         }
     }
 }

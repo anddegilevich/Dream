@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.image.model.artifact.mappers
 
 import and.degilevich.dream.shared.core.service.api.core.image.ImageObjectOutput
 import and.degilevich.dream.shared.feature.image.model.artifact.data.ImageObjectData
-import and.degilevich.dream.shared.foundation.model.empty.factory.ext.orEmpty
+import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty
 
 fun ImageObjectOutput?.mapToData(): ImageObjectData {
     return this?.let {

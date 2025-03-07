@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.image.model.artifact.data
 
-import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
-import and.degilevich.dream.shared.foundation.model.empty.state.EmptyState
+import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
+import and.degilevich.dream.shared.foundation.abstraction.empty.state.EmptyState
 import kotlinx.serialization.Serializable
 
 @Serializable

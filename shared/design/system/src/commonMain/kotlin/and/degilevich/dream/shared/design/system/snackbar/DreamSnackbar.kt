@@ -37,13 +37,14 @@ fun DreamSnackbar(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
+            modifier = Modifier.weight(1f),
             text = data.message,
             color = Theme.colors.textPrimary,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
         )
-        Space(width = 12.dp)
         data.actionLabel?.let { action ->
+            Space(width = 12.dp)
             Text(
                 modifier = Modifier.clickableWithDebounce(
                     indication = ripple(color = Theme.colors.ripple)
@@ -52,7 +53,8 @@ fun DreamSnackbar(
                 },
                 text = action,
                 textDecoration = TextDecoration.Underline,
-                color = Theme.colors.buttonBorderlessText
+                color = Theme.colors.buttonBorderlessText,
+                maxLines = 1
             )
         }
     }

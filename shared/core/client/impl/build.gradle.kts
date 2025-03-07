@@ -10,7 +10,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.core.client.api)
-            implementation(projects.shared.foundation.model)
+            implementation(projects.shared.foundation.abstraction)
             implementation(projects.shared.foundation.serialization)
             implementation(projects.shared.core.storage.api)
             implementation(projects.shared.core.config)

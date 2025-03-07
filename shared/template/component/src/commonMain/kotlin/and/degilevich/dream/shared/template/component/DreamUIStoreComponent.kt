@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.template.component
 
+import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 import and.degilevich.dream.shared.foundation.decompose.component.store.UIStoreComponent
 import and.degilevich.dream.shared.template.component.logger.LoggerExtendedLifecycleCallbacks
-import and.degilevich.dream.shared.foundation.model.mapper.Mapper
 import com.arkivanov.decompose.ComponentContext
 import kotlin.reflect.KClass
 

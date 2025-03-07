@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store
 
+import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponentAbs
-import and.degilevich.dream.shared.foundation.model.mapper.Mapper
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import kotlinx.coroutines.flow.Flow

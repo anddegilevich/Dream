@@ -2,8 +2,8 @@ package and.degilevich.dream.shared.feature.artist.model.artifact.data
 
 import and.degilevich.dream.shared.feature.artist.model.artifact.abstraction.ArtistInfo
 import and.degilevich.dream.shared.feature.artist.model.artifact.dictionary.ArtistType
-import and.degilevich.dream.shared.foundation.model.empty.factory.EmptyFactory
-import and.degilevich.dream.shared.foundation.model.id.IdentifiedAbs
+import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
+import and.degilevich.dream.shared.foundation.abstraction.id.IdentifiedAbs
 import kotlinx.serialization.Serializable
 
 @Serializable

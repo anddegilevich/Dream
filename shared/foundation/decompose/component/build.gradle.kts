@@ -12,7 +12,7 @@ kotlin {
             api(libs.bundles.mvikotlin)
             api(projects.shared.foundation.primitive)
             api(projects.shared.foundation.serialization)
-            api(projects.shared.foundation.model)
+            api(projects.shared.foundation.abstraction)
             api(projects.shared.foundation.dispatcher)
         }
     }
