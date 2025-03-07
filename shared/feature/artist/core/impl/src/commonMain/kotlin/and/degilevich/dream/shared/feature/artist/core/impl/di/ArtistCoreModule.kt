@@ -4,5 +4,5 @@ import org.koin.dsl.module
 
 fun artistCoreModule() = module {
     includes(artistSourceModule())
-    includes(artistDomainModule())
+    includes(artistLogicModule())
 }

@@ -28,10 +28,13 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            // Libs
             implementation(libs.decompose.extensions.compose)
 
+            // Foundation
             implementation(projects.shared.foundation.dispatcher)
 
+            // Core
             api(projects.shared.core.logger)
             implementation(projects.shared.core.resource.impl)
             implementation(projects.shared.core.storage.impl)
@@ -40,9 +43,12 @@ kotlin {
             implementation(projects.shared.core.toast.impl)
             implementation(projects.shared.core.db.impl)
 
+            // Navigation
             implementation(projects.shared.navigation.impl)
 
+            // Feature
             implementation(projects.shared.feature.artist.core.impl)
+            implementation(projects.shared.feature.artist.design.impl)
             implementation(projects.shared.feature.artist.component.details.impl)
             implementation(projects.shared.feature.artist.component.list.impl)
 

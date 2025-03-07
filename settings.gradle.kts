@@ -82,7 +82,8 @@ include(":shared:feature:artist:model:core")
 include(":shared:feature:artist:core:api")
 include(":shared:feature:artist:core:impl")
 
-include(":shared:feature:artist:compose")
+include(":shared:feature:artist:design:api")
+include(":shared:feature:artist:design:impl")
 
 include(":shared:feature:artist:component:details:api")
 include(":shared:feature:artist:component:details:impl")

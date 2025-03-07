@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
-import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistFlowUseCase
-import and.degilevich.dream.shared.feature.artist.core.api.domain.usecase.GetArtistsFlowUseCase
+import and.degilevich.dream.shared.feature.artist.core.api.logic.usecase.GetArtistFlowUseCase
+import and.degilevich.dream.shared.feature.artist.core.api.logic.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
@@ -32,17 +32,17 @@ internal class ArtistDetailsExecutor(
         subscribeToLifecycle()
     }
 
-    override fun executeIntent(intent: ArtistDetailsIntent) {
-        when (intent) {
-            is ArtistDetailsIntent.OnBackCLicked -> navigateBack()
-            is ArtistDetailsIntent.OnSimilarArtistClicked -> navigateToSimilarArtist(intent.id)
-        }
-    }
-
     private fun subscribeToLifecycle() {
         doOnCreate {
             fetchArtist()
             fetchSimilarArtists()
+        }
+    }
+
+    override fun executeIntent(intent: ArtistDetailsIntent) {
+        when (intent) {
+            is ArtistDetailsIntent.OnBackCLicked -> navigateBack()
+            is ArtistDetailsIntent.OnSimilarArtistClicked -> navigateToSimilarArtist(intent.id)
         }
     }
 

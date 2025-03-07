@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.component.model
 
-import and.degilevich.dream.shared.feature.artist.compose.model.ArtistUIItem
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistUIItem
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
