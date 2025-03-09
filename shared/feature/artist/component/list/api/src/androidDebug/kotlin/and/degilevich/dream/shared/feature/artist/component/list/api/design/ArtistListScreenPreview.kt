@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.artist.component.list.api.design
 
 import and.degilevich.dream.shared.design.theme.api.DreamTheme
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListUIState
-import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistUIItem
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.collections.immutable.toImmutableList
@@ -40,7 +40,7 @@ private fun providePreviewArtistListUIState(): ArtistListUIState {
         artists = buildList {
             for (i in 1..10) {
                 add(
-                    ArtistUIItem(
+                    ArtistCardUIState(
                         id = i.toString(),
                         name = "Artist $i"
                     )

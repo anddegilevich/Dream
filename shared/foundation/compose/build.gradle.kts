@@ -8,7 +8,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(libs.kotlinx.collections.immutable)
-            implementation(projects.shared.foundation.primitive)
+            api(projects.shared.foundation.coroutine)
+            api(projects.shared.foundation.dispatcher)
         }
     }
 }

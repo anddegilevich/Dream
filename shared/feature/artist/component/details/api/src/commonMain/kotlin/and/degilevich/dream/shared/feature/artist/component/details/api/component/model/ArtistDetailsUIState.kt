@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.component.model
 
-import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistUIItem
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
@@ -9,5 +9,5 @@ import kotlinx.collections.immutable.persistentListOf
 data class ArtistDetailsUIState(
     val artistIconUrl: String = "",
     val artistName: String = "",
-    val similarArtists: ImmutableList<ArtistUIItem> = persistentListOf()
+    val similarArtists: ImmutableList<ArtistCardUIState> = persistentListOf()
 )

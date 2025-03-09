@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.resource.api.ResourceManager
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
 import and.degilevich.dream.Res
-import and.degilevich.dream.shared.feature.artist.design.api.mapper.ArtistUIItemMapper
+import and.degilevich.dream.shared.feature.artist.design.api.mapper.ArtistCardUIStateMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import kotlinx.collections.immutable.toImmutableList
 import org.koin.core.component.KoinComponent
@@ -12,7 +12,7 @@ import org.koin.core.component.inject
 
 internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDetailsUIState>, KoinComponent {
 
-    private val artistUIItemMapper: ArtistUIItemMapper by inject()
+    private val artistCardUIStateMapper: ArtistCardUIStateMapper by inject()
     private val resourceManager: ResourceManager by inject()
 
     override fun map(item: ArtistDetailsState): ArtistDetailsUIState {
@@ -21,7 +21,7 @@ internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDet
                 artistIconUrl = artist.images.firstOrNull()?.url.orEmpty(),
                 artistName = resourceManager.getString(Res.strings.mask_artist_name, artist.name),
                 similarArtists = similarArtists.map { artist ->
-                    artistUIItemMapper.map(
+                    artistCardUIStateMapper.map(
                         artist = artist,
                         isEnabled = !isLoading
                     )

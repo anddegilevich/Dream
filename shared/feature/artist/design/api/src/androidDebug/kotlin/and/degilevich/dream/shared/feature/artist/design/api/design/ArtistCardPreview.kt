@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
 import and.degilevich.dream.shared.design.theme.api.DreamTheme
-import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistUIItem
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -12,7 +12,7 @@ fun ArtistCardDarkPreview() {
         isDarkMode = true
     ) {
         ArtistCard(
-            item = providePreviewArtistUIItem(),
+            state = providePreviewArtistUIItem(),
             onCardClicked = {}
         )
     }
@@ -25,14 +25,14 @@ fun ArtistCardLightPreview() {
         isDarkMode = false
     ) {
         ArtistCard(
-            item = providePreviewArtistUIItem(),
+            state = providePreviewArtistUIItem(),
             onCardClicked = {}
         )
     }
 }
 
-private fun providePreviewArtistUIItem(): ArtistUIItem {
-    return ArtistUIItem(
+private fun providePreviewArtistUIItem(): ArtistCardUIState {
+    return ArtistCardUIState(
         id = "1",
         name = "Artist Name"
     )

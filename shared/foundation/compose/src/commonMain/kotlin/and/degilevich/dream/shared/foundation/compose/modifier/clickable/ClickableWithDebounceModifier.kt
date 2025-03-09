@@ -1,5 +1,7 @@
 package and.degilevich.dream.shared.foundation.compose.modifier.clickable
 
+import and.degilevich.dream.shared.foundation.coroutine.mutex.withLockOrReturn
+import and.degilevich.dream.shared.foundation.dispatcher.ext.coroutine.withBackgroundContext
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -13,13 +15,12 @@ import androidx.compose.ui.composed
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
 fun Modifier.clickableWithDebounce(
     isEnabled: Boolean = true,
-    debounceDuration: Duration = 650.milliseconds,
+    debounceDuration: Duration = defaultDebounceDuration,
     interactionSource: MutableInteractionSource? = null,
     indication: Indication? = null,
     onClicked: suspend () -> Unit
@@ -35,14 +36,17 @@ fun Modifier.clickableWithDebounce(
             indication = indication
         ) {
             coroutineScope.launch {
-                if (mutex.isLocked) return@launch
-                mutex.withLock {
+                mutex.withLockOrReturn {
                     isDebounce = true
                     onClicked()
-                    delay(debounceDuration)
+                    withBackgroundContext {
+                        delay(debounceDuration)
+                    }
                     isDebounce = false
                 }
             }
         }
     }
 }
+
+private val defaultDebounceDuration = 650.milliseconds

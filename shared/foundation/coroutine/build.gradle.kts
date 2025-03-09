@@ -7,11 +7,11 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.foundation.coroutine)
+            api(projects.shared.foundation.primitive)
         }
     }
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.foundation.abstraction"
+    namespace = "and.degilevich.dream.shared.foundation.coroutine"
 }

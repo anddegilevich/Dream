@@ -69,7 +69,7 @@ fun ArtistListScreen(
             key = { item -> item.id }
         ) { item ->
             ArtistCard(
-                item = item,
+                state = item,
                 onCardClicked = { id ->
                     onIntent(ArtistListIntent.OnArtistClicked(id))
                 }

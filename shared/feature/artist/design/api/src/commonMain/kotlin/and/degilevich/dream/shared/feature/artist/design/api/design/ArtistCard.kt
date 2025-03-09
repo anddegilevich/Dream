@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
 import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistUIItem
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -24,18 +24,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ArtistCard(
-    item: ArtistUIItem,
+    state: ArtistCardUIState,
     modifier: Modifier = Modifier,
     onCardClicked: (String) -> Unit
 ) {
     Column(
         modifier = modifier
             .clickable(
-                enabled = item.isEnabled,
+                enabled = state.isEnabled,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(color = Theme.colors.ripple)
             ) {
-                onCardClicked(item.id)
+                onCardClicked(state.id)
             }
             .border(
                 width = 2.dp,
@@ -50,12 +50,12 @@ fun ArtistCard(
     ) {
         ArtistIcon(
             modifier = Modifier.size(80.dp),
-            iconUrl = item.iconUrl
+            iconUrl = state.iconUrl
         )
         Space(height = 8.dp)
         Text(
             modifier = Modifier.widthIn(max = 100.dp),
-            text = item.name,
+            text = state.name,
             color = Theme.colors.textPrimary,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
