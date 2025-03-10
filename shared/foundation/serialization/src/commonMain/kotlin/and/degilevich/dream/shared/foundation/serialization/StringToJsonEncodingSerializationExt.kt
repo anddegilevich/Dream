@@ -1,13 +1,13 @@
 package and.degilevich.dream.shared.foundation.serialization
 
-import kotlinx.serialization.DeserializationStrategy
+import and.degilevich.dream.shared.foundation.serialization.json.jsonSerialization
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.SerializationStrategy
 
 fun <T> T.encodeToJson(serializer: SerializationStrategy<T>): Result<String> {
     return try {
         Result.success(
-            json().encodeToString(
+            jsonSerialization().encodeToString(
                 serializer = serializer,
                 value = this
             )
@@ -27,13 +27,10 @@ fun <T> T.encodeToJsonOrEmpty(serializer: SerializationStrategy<T>): String {
     return encodeToJson(serializer = serializer).getOrDefault(defaultValue = "")
 }
 
-fun <T> String.decodeFromJson(deserializer: DeserializationStrategy<T>): Result<T> {
+inline fun <reified T> T.encodeToJson(): Result<String> {
     return try {
         Result.success(
-            json().decodeFromString(
-                deserializer = deserializer,
-                string = this
-            )
+            jsonSerialization().encodeToString(value = this)
         )
     } catch (error: SerializationException) {
         Result.failure(error)
@@ -42,13 +39,10 @@ fun <T> String.decodeFromJson(deserializer: DeserializationStrategy<T>): Result<
     }
 }
 
-fun <T> String.decodeFromJsonOrNull(deserializer: DeserializationStrategy<T>): T? {
-    return decodeFromJson(deserializer = deserializer).getOrNull()
+inline fun <reified T> T.encodeToJsonOrNull(): String? {
+    return encodeToJson().getOrNull()
 }
 
-fun <T> String.decodeFromJsonOrDefault(
-    deserializer: DeserializationStrategy<T>,
-    default: () -> T
-): T {
-    return decodeFromJson(deserializer = deserializer).getOrDefault(default())
+inline fun <reified T> T.encodeToJsonOrEmpty(): String {
+    return encodeToJson().getOrDefault(defaultValue = "")
 }

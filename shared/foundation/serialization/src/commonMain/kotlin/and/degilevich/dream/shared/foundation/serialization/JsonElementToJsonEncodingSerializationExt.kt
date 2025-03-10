@@ -1,15 +1,16 @@
 package and.degilevich.dream.shared.foundation.serialization
 
-import kotlinx.serialization.DeserializationStrategy
+import and.degilevich.dream.shared.foundation.serialization.json.jsonSerialization
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.encodeToJsonElement
 
 fun <T> T.encodeToJsonElement(serializer: SerializationStrategy<T>): Result<JsonElement> {
     return try {
         Result.success(
-            json().encodeToJsonElement(
+            jsonSerialization().encodeToJsonElement(
                 serializer = serializer,
                 value = this
             )
@@ -29,13 +30,10 @@ fun <T> T.encodeToJsonElementOrEmpty(serializer: SerializationStrategy<T>): Json
     return encodeToJsonElement(serializer = serializer).getOrDefault(buildJsonObject { })
 }
 
-fun <T> JsonElement.decodeFromJson(deserializer: DeserializationStrategy<T>): Result<T> {
+inline fun <reified T> T.encodeToJsonElement(): Result<JsonElement> {
     return try {
         Result.success(
-            json().decodeFromJsonElement(
-                deserializer = deserializer,
-                element = this
-            )
+            jsonSerialization().encodeToJsonElement(value = this)
         )
     } catch (error: SerializationException) {
         Result.failure(error)
@@ -44,13 +42,10 @@ fun <T> JsonElement.decodeFromJson(deserializer: DeserializationStrategy<T>): Re
     }
 }
 
-fun <T> JsonElement.decodeFromJsonOrNull(deserializer: DeserializationStrategy<T>): T? {
-    return decodeFromJson(deserializer = deserializer).getOrNull()
+inline fun <reified T> T.encodeToJsonElementOrNull(): JsonElement? {
+    return encodeToJsonElement().getOrNull()
 }
 
-fun <T> JsonElement.decodeFromJsonOrDefault(
-    deserializer: DeserializationStrategy<T>,
-    default: () -> T
-): T {
-    return decodeFromJson(deserializer = deserializer).getOrDefault(default())
+inline fun <reified T> T.encodeToJsonElementOrEmpty(): JsonElement {
+    return encodeToJsonElement().getOrDefault(buildJsonObject { })
 }
