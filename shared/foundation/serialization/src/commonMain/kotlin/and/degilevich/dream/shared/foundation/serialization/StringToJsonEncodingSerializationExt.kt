@@ -1,13 +1,14 @@
 package and.degilevich.dream.shared.foundation.serialization
 
-import and.degilevich.dream.shared.foundation.serialization.json.jsonSerialization
+import and.degilevich.dream.shared.foundation.serialization.format.JsonSerialFormat
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.SerializationStrategy
+import kotlinx.serialization.serializer
 
 fun <T> T.encodeToJson(serializer: SerializationStrategy<T>): Result<String> {
     return try {
         Result.success(
-            jsonSerialization().encodeToString(
+            JsonSerialFormat.encodeToString(
                 serializer = serializer,
                 value = this
             )
@@ -28,15 +29,9 @@ fun <T> T.encodeToJsonOrEmpty(serializer: SerializationStrategy<T>): String {
 }
 
 inline fun <reified T> T.encodeToJson(): Result<String> {
-    return try {
-        Result.success(
-            jsonSerialization().encodeToString(value = this)
-        )
-    } catch (error: SerializationException) {
-        Result.failure(error)
-    } catch (error: IllegalArgumentException) {
-        Result.failure(error)
-    }
+    return encodeToJson(
+        serializer = JsonSerialFormat.serializersModule.serializer()
+    )
 }
 
 inline fun <reified T> T.encodeToJsonOrNull(): String? {
