@@ -141,7 +141,7 @@ Project shared resources: strings, images, etc.
 
 Project specific foundation modules. 
 Provide logic and models that can be used in any feature module.
-All the core modules are feature unspecific (doesn't depend on any feature at all or any in particular).
+All the core modules are feature unspecific (do not depend on any feature at all or any in particular).
 
 ***Contains:***
 Logger;
@@ -219,7 +219,7 @@ Mappers to map domain models to ui.
 
 ### 2.7.1.4 shared.feature.artist.component
 
-Feature components (ie. screens, bottom sheets, dialogs).
+Feature components (i.e. screens, bottom sheets, dialogs).
 
 ### 2.7.1.4.1 shared.feature.artist.component.list
 
