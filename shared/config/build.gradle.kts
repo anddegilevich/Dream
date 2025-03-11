@@ -26,7 +26,7 @@ project.extra.set(
 
 buildkonfig {
     packageName = "and.degilevich.dream"
-    exposeObjectWithName = "BuildConfig"
+    exposeObjectWithName = "SharedBuildConfig"
 
     val variantField = "VARIANT"
     val clientIdField = "CLIENT_ID"
@@ -99,6 +99,15 @@ buildkonfig {
     }
 }
 
+private fun Project.currentBuildVariant(
+    variants: Set<String>,
+    default: String
+): String {
+    return getAndroidBuildVariantOrNull(variants = variants) ?: getIosBuildVariantOrNull()
+        .toString()
+        .takeIf { it in variants } ?: default
+}
+
 private fun Project.getAndroidBuildVariantOrNull(variants: Set<String>): String? {
     val taskRequestsStr = gradle.startParameter.taskRequests.toString()
     val pattern: Pattern = if (taskRequestsStr.contains("assemble")) {
@@ -116,12 +125,6 @@ private fun Project.getAndroidBuildVariantOrNull(variants: Set<String>): String?
     }
 }
 
-private fun Project.currentBuildVariant(
-    variants: Set<String>,
-    default: String
-): String {
-    return getAndroidBuildVariantOrNull(variants = variants)
-        ?: System.getenv()["VARIANT"]
-            .toString()
-            .takeIf { it in variants } ?: default
+private fun getIosBuildVariantOrNull(): String? {
+    return System.getenv()["VARIANT"]
 }

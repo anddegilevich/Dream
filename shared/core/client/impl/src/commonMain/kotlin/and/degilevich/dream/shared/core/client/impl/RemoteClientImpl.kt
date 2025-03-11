@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.core.client.impl
 
-import and.degilevich.dream.BuildConfig
+import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.client.api.RemoteClient
 import and.degilevich.dream.shared.core.client.impl.engine.ClientEngineFactory
 import and.degilevich.dream.shared.core.client.impl.logger.ClientLogger
@@ -45,7 +45,7 @@ internal class RemoteClientImpl(
             )
         }
         install(DefaultRequest) {
-            url(BuildConfig.API_BASE_URL)
+            url(SharedBuildConfig.API_BASE_URL)
         }
         install(HttpTimeout) {
             connectTimeoutMillis = TIMEOUT.inWholeMilliseconds

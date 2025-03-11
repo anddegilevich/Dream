@@ -12,14 +12,15 @@ class DreamApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initLogger()
-        initKoin()
+        initDI()
     }
 
     private fun initLogger() {
+        if (!BuildConfig.DEBUG) return
         Log.init()
     }
 
-    private fun initKoin() {
+    private fun initDI() {
         startKoin {
             androidContext(this@DreamApplication)
             logger(KoinLogger())

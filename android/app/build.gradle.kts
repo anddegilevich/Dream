@@ -15,7 +15,6 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
-
     buildTypes {
         getByName("debug") {
             isDefault = true
@@ -42,6 +41,9 @@ android {
             applicationIdSuffix = ".mock"
             manifestPlaceholders["applicationName"] = "@string/app_name_mock"
         }
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 

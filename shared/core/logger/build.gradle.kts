@@ -7,7 +7,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.napier)
-
             implementation(projects.shared.foundation.primitive)
         }
     }

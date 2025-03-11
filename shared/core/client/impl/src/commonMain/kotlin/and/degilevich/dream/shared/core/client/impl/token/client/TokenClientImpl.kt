@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.core.client.impl.token.client
 
-import and.degilevich.dream.BuildConfig
+import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.client.impl.engine.ClientEngineFactory
 import and.degilevich.dream.shared.core.client.impl.logger.ClientLogger
 import and.degilevich.dream.shared.core.client.impl.token.model.Tokens
@@ -56,11 +56,11 @@ internal class TokenClientImpl(
     override suspend fun getToken(): Result<Tokens> {
         return foldTry {
             val response = client.post {
-                url(BuildConfig.AUTH_BASE_URL)
+                url(SharedBuildConfig.AUTH_BASE_URL)
                 header(HttpHeaders.ContentType, HEADER_CONTENT_TYPE_VALUE)
                 parameter(PARAM_GRANT_TYPE, PARAM_GRANT_TYPE_VALUE)
-                parameter(PARAM_CLIENT_ID, BuildConfig.CLIENT_ID)
-                parameter(PARAM_CLIENT_SECRET, BuildConfig.CLIENT_SECRET)
+                parameter(PARAM_CLIENT_ID, SharedBuildConfig.CLIENT_ID)
+                parameter(PARAM_CLIENT_SECRET, SharedBuildConfig.CLIENT_SECRET)
             }.body<TokenResponse>()
             val tokens = Tokens(
                 accessToken = response.accessToken.orEmpty(),

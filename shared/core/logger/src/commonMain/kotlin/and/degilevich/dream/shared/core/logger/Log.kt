@@ -6,7 +6,6 @@ import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.LogLevel
 import io.github.aakira.napier.Napier
 
-//FIXME: Disable logger for release builds
 object Log : Logger {
 
     fun init() {
