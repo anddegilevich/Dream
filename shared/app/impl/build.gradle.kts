@@ -36,7 +36,7 @@ kotlin {
 
             // Core
             api(projects.shared.core.logger)
-            implementation(projects.shared.core.resource.impl)
+            implementation(projects.shared.resource.impl)
             implementation(projects.shared.core.storage.impl)
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.service.impl)

@@ -39,16 +39,13 @@ include(":shared:config")
 
 // =====================================================================================================================
 // Resource
-//include(":shared:resource:api")
-//include(":shared:resource:impl")
+include(":shared:resource:api")
+include(":shared:resource:impl")
 
 // =====================================================================================================================
 // Core
 
 include(":shared:core:logger")
-
-include(":shared:core:resource:api")
-include(":shared:core:resource:impl")
 
 include(":shared:core:client:api")
 include(":shared:core:client:impl")

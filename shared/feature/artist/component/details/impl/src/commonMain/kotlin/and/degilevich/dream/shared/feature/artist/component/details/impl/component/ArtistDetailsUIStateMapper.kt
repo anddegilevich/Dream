@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.impl.component
 
-import and.degilevich.dream.shared.core.resource.api.ResourceManager
+import and.degilevich.dream.shared.resource.api.ResourceManager
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
 import and.degilevich.dream.Res

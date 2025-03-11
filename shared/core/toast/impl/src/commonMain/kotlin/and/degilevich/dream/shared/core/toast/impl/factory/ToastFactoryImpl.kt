@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.core.toast.impl.factory
 
-import and.degilevich.dream.shared.core.resource.api.ResourceManager
+import and.degilevich.dream.shared.resource.api.ResourceManager
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.api.model.ToastActionData
 import and.degilevich.dream.shared.core.toast.api.model.ToastData

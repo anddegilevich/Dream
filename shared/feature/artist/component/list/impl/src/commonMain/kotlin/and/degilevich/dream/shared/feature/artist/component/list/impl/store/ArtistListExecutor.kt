@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
-import and.degilevich.dream.shared.core.resource.api.ResourceManager
+import and.degilevich.dream.shared.resource.api.ResourceManager
 import and.degilevich.dream.shared.core.toast.api.controller.ToastController
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
