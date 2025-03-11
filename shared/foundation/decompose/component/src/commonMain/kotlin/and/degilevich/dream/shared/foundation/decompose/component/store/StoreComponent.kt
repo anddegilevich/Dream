@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store
 
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponentAbs
-import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.ComponentStateConservator
+import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.StoreStateConservator
 import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactory
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.store.Store
@@ -18,7 +18,7 @@ abstract class StoreComponent<
     >(
     componentContext: ComponentContext,
     storeFactory: ComponentStoreFactory<State, Intent, SideEffect>,
-    stateConservator: ComponentStateConservator<State>,
+    stateConservator: StoreStateConservator<State>,
 ) : MVIComponentAbs<State, Intent, SideEffect>(componentContext) {
 
     private val store: Store<Intent, State, SideEffect> = storeFactory.create(
@@ -44,7 +44,7 @@ abstract class StoreComponent<
         registerState(stateConservator)
     }
 
-    private fun registerState(stateConservator: ComponentStateConservator<State>) {
+    private fun registerState(stateConservator: StoreStateConservator<State>) {
         stateKeeper.register(
             key = stateConservator.key,
             strategy = stateConservator.serializer

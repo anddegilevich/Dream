@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory
 
 import and.degilevich.dream.shared.foundation.decompose.component.store.reducer.ReduceMessage
-import and.degilevich.dream.shared.foundation.decompose.component.store.reducer.UniversalReducer
+import and.degilevich.dream.shared.foundation.decompose.component.store.reducer.ReducerImpl
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.mvikotlin.core.store.Executor
 import com.arkivanov.mvikotlin.core.store.Store
@@ -20,7 +20,7 @@ abstract class ComponentStoreFactoryAbs<State : Any, in Intent : Any, out SideEf
             name = storeName,
             initialState = initialState,
             executorFactory = { executorFactory(lifecycle) },
-            reducer = UniversalReducer()
+            reducer = ReducerImpl()
         )
     }
 }

@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.template.component
 
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
-import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.ComponentStateConservator
+import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.StoreStateConservator
 import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactory
 import and.degilevich.dream.shared.foundation.decompose.component.store.StoreComponent
 import and.degilevich.dream.shared.template.component.logger.LoggerExtendedLifecycleCallbacks
@@ -11,7 +11,7 @@ import kotlin.reflect.KClass
 abstract class DreamStoreComponent<out State : Any, in Intent : Any, out SideEffect : Any>(
     componentContext: ComponentContext,
     storeFactory: ComponentStoreFactory<State, Intent, SideEffect>,
-    stateConservator: ComponentStateConservator<State>,
+    stateConservator: StoreStateConservator<State>,
 ) : StoreComponent<State, Intent, SideEffect>(
     componentContext = componentContext,
     storeFactory = storeFactory,

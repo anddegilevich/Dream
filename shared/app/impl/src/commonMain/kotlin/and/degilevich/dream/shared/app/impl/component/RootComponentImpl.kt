@@ -69,7 +69,7 @@ class RootComponentImpl(
                     component = ArtistDetailsComponentImpl(
                         componentContext = componentContext,
                         storeFactory = storeFactory,
-                        config = screenConfig
+                        navArgs = screenConfig.navArgs
                     )
                 )
             }
