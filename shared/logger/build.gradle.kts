@@ -13,5 +13,5 @@ kotlin {
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.core.logger"
+    namespace = "and.degilevich.dream.shared.logger"
 }

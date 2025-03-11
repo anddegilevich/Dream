@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.app.impl.logger
 
-import and.degilevich.dream.shared.core.logger.Log
+import and.degilevich.dream.shared.logger.Log
 import org.koin.core.logger.Level
 import org.koin.core.logger.Logger
 import org.koin.core.logger.MESSAGE

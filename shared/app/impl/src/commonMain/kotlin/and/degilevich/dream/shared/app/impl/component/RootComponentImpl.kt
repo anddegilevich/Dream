@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.app.impl.component
 import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.impl.logger.StoreFactoryLogger
 import and.degilevich.dream.shared.feature.artist.component.list.impl.component.ArtistListComponentImpl
-import and.degilevich.dream.shared.core.logger.Log
+import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.core.toast.api.channel.ToastChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl

@@ -21,7 +21,7 @@ kotlin {
                 export(libs.bundles.decompose)
                 export(libs.moko.resources)
                 export(projects.shared.app.api)
-                export(projects.shared.core.logger)
+                export(projects.shared.logger)
             }
         }
     }
@@ -35,7 +35,7 @@ kotlin {
             implementation(projects.shared.foundation.dispatcher)
 
             // Core
-            api(projects.shared.core.logger)
+            api(projects.shared.logger)
             implementation(projects.shared.resource.impl)
             implementation(projects.shared.core.storage.impl)
             implementation(projects.shared.core.client.impl)

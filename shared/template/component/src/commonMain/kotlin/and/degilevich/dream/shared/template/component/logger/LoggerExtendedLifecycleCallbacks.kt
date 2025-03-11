@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.template.component.logger
 
-import and.degilevich.dream.shared.core.logger.Log
+import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import com.arkivanov.essenty.lifecycle.Lifecycle
