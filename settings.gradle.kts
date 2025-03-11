@@ -28,6 +28,7 @@ include(":shared:foundation:serialization")
 include(":shared:foundation:abstraction")
 include(":shared:foundation:dispatcher")
 include(":shared:foundation:compose")
+include(":shared:foundation:filepicker")
 
 include(":shared:foundation:decompose:navigation")
 include(":shared:foundation:decompose:compose")
