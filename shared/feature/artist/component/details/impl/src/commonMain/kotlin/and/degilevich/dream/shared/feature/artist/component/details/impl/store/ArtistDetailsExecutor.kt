@@ -10,9 +10,11 @@ import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
-import and.degilevich.dream.shared.navigation.api.dream.args.ArtistDetailsNavArgs
-import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
-import and.degilevich.dream.shared.navigation.api.dream.navigator.DreamNavigator
+import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
+import and.degilevich.dream.shared.navigation.api.DreamNavigator
+import com.arkivanov.decompose.router.stack.pop
+import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.launch

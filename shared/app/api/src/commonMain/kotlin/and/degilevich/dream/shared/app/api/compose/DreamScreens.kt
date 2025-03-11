@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.foundation.decompose.compose.component.collec
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.artist.component.list.api.design.ArtistListScreen
 import and.degilevich.dream.shared.foundation.decompose.compose.animation.defaultStackAnimation
-import and.degilevich.dream.shared.navigation.api.dream.config.ScreenConfig
+import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
