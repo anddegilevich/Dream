@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.core.config"
+    namespace = "and.degilevich.dream.shared.config"
 }
 
 val prodFlavor = "prod"

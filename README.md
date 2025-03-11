@@ -61,31 +61,32 @@ Here is the list of frameworks, that were used in this project:
 | | |- 2.1.1 primitive
 | | |- 2.1.2 serialization
 | | |- ...
-| |- 2.2 core
-| | |- 2.2.1 config
-| | |- 2.2.2 logger
+| |- 2.2 config
+| |- 2.3 core
+| | |- 2.3.1 logger
+| | |- 2.3.2 logger
 | | |- ...
-| |- 2.3 design
-| | |- 2.3.1 theme
-| | |- 2.3.2 system
-| |- 2.4 template
-| | |- 2.4.1 component
-| | |- 2.4.2 source
-| |- 2.5 feature
-| | |- 2.5.1 artist
-| | | |- 2.5.1.1 model
-| | | | |- 2.5.1.1.1 artifact
-| | | | |- 2.5.1.1.2 core
-| | | |- 2.5.1.2 core
-| | | |- 2.5.1.3 design
-| | | |- 2.5.1.4 component
-| | | | |- 2.5.1.4.1 list
-| | | | |- 2.5.1.4.2 details
+| |- 2.4 design
+| | |- 2.4.1 theme
+| | |- 2.4.2 system
+| |- 2.5 template
+| | |- 2.5.1 component
+| | |- 2.5.2 source
+| |- 2.6 feature
+| | |- 2.6.1 artist
+| | | |- 2.6.1.1 model
+| | | | |- 2.6.1.1.1 artifact
+| | | | |- 2.6.1.1.2 core
+| | | |- 2.6.1.2 core
+| | | |- 2.6.1.3 design
+| | | |- 2.6.1.4 component
+| | | | |- 2.6.1.4.1 list
+| | | | |- 2.6.1.4.2 details
 | | | | |- ...
-| | |- 2.5.2 album
+| | |- 2.6.2 album
 | | |- ...
-| |- 2.6 navigation
-| |- 2.7 app
+| |- 2.7 navigation
+| |- 2.8 app
 |- 3. android
 | |- 3.1 app
 | |- 3.2 baseline
@@ -128,14 +129,17 @@ Custom compose modifiers;
 Decompose components base implementations;
 etc.
 
-### 2.2 shared.core
+### 2.2 shared.config
+Project share build configuration.
+Depends on the selected build variant (for Android) or build scheme (for iOS).
+
+### 2.3 shared.core
 
 Project specific foundation modules. 
 Provide logic and models that can be used in any feature module.
-All of the core modules are feature unspecific (doesn't depend on any feature at all or any in particular).
+All the core modules are feature unspecific (doesn't depend on any feature at all or any in particular).
 
 ***Contains:***
-Build configuration;
 Logger;
 Project resources (strings, images, etc.);
 Http service;
@@ -144,12 +148,12 @@ Preference storage;
 Toast manager;
 etc.
 
-### 2.3 shared.design
+### 2.4 shared.design
 
 Projects ui theme (colors, shapes, etc.) and basic ui elements(button, radio group, etc.).
 Feature unspecific views.
 
-### 2.4 shared.template
+### 2.5 shared.template
 
 Base abstractions for creating typical feature modules.
 
@@ -157,20 +161,20 @@ Base abstractions for creating typical feature modules.
 Base component implementation;
 Abstraction over core data sources for feature sources.
 
-### 2.5 shared.feature
+### 2.6 shared.feature
 
 Apps sources, models, logic and design divided by features.
 
-### 2.5.1 shared.feature.artist 
+### 2.6.1 shared.feature.artist 
 
 Feature specific code.
 Used Artist feature as an example.
 
-### 2.5.1.1 shared.feature.artist.model
+### 2.6.1.1 shared.feature.artist.model
 
 Domain feature models that are unspecific to any particular component.
 
-### 2.5.1.1.1 shared.feature.artist.model.artifact
+### 2.6.1.1.1 shared.feature.artist.model.artifact
 
 Contains models that can be implemented in other features model modules.
 Used to prevent cycle dependencies.
@@ -180,7 +184,7 @@ Simplified data classes that are contained in other features models as an entry 
 Interfaces that declares specific behavior;
 Mappers for mapping data layer entities to the domain models.
 
-### 2.5.1.1.2 shared.feature.artist.model.core
+### 2.6.1.1.2 shared.feature.artist.model.core
 
 Feature specific models.
 Can not be imported in other features model modules.
@@ -190,7 +194,7 @@ Data classes;
 Enum dictionaries;
 Mappers for mapping data layer entities to the domain models.
 
-### 2.5.1.2 shared.feature.artist.core
+### 2.6.1.2 shared.feature.artist.core
 
 Feature specific domain classes
 
@@ -201,7 +205,7 @@ Managers;
 Validators;
 etc.
 
-### 2.5.1.3 shared.feature.artist.design
+### 2.6.1.3 shared.feature.artist.design
 
 Feature ui elements.
 
@@ -210,11 +214,11 @@ UI models;
 Compose functions;
 Mappers to map domain models to ui.
 
-### 2.5.1.4 shared.feature.artist.component
+### 2.6.1.4 shared.feature.artist.component
 
 Feature components (ie. screens, bottom sheets, dialogs).
 
-### 2.5.1.4.1 shared.feature.artist.component.list
+### 2.6.1.4.1 shared.feature.artist.component.list
 
 Component, its logic and ui.
 
@@ -222,7 +226,7 @@ Component, its logic and ui.
 UI and domain models of the component entities;
 Component store entities (executor, ui state mapper, etc.).
 
-### 2.6 shared.navigation
+### 2.7 shared.navigation
 
 Global app navigation.
 Can implement feature model modules.
@@ -231,7 +235,7 @@ Can implement feature model modules.
 Navigation manager;
 Configs with navigation arguments;
 
-### 2.7 shared.app
+### 2.8 shared.app
 
 Entry point for platforms to shared app code.
 Implementation submodule is used for ios app ui view controller generation.

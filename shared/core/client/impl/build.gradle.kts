@@ -9,11 +9,11 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.core.client.api)
             implementation(projects.shared.foundation.abstraction)
             implementation(projects.shared.foundation.serialization)
+            implementation(projects.shared.config)
+            api(projects.shared.core.client.api)
             implementation(projects.shared.core.storage.api)
-            implementation(projects.shared.core.config)
             implementation(projects.shared.core.logger)
         }
     }

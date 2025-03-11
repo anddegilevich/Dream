@@ -34,11 +34,18 @@ include(":shared:foundation:decompose:compose")
 include(":shared:foundation:decompose:component")
 
 // =====================================================================================================================
+// Config
+include(":shared:config")
+
+// =====================================================================================================================
+// Resource
+//include(":shared:resource:api")
+//include(":shared:resource:impl")
+
+// =====================================================================================================================
 // Core
 
 include(":shared:core:logger")
-
-include(":shared:core:config")
 
 include(":shared:core:resource:api")
 include(":shared:core:resource:impl")
