@@ -4,7 +4,7 @@ import android.net.Uri
 
 internal actual data class PickedFileImpl(
     override val key: String,
-    val uri: Uri
+    val androidUri: Uri
 ) : PickedFile {
-    override val url: String = uri.toString()
+    override val uri: String = androidUri.toString()
 }

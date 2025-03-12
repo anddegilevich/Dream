@@ -25,7 +25,7 @@ internal class ProfileExecutor(
     }
 
     private fun onPhotoPicked(intent: ProfileIntent.OnPhotoPicked) {
-        setIconUrl(intent.path)
+        setIconUrl(intent.uri)
     }
 
     private fun setIconUrl(path: String) {

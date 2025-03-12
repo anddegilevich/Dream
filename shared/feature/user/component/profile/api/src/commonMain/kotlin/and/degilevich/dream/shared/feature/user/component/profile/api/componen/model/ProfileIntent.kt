@@ -4,6 +4,6 @@ sealed interface ProfileIntent {
     data object OnIconClicked : ProfileIntent
     data object OnBackClicked : ProfileIntent
     data class OnPhotoPicked(
-        val path: String
+        val uri: String
     ) : ProfileIntent
 }

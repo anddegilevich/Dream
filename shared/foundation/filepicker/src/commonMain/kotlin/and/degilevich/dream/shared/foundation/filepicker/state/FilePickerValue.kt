@@ -8,7 +8,7 @@ sealed interface FilePickerValue {
         override val key: String = ""
     }
 
-    data class Displayed(
+    data class Launched(
         val config: FilePickerConfig,
     ) : FilePickerValue {
         override val key: String = config.key

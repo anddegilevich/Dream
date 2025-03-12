@@ -11,8 +11,8 @@ class FilePickerState internal constructor() {
     internal val value: State<FilePickerValue> = valueMutable
 
     fun launch(config: FilePickerConfig) {
-        if (valueMutable.value is FilePickerValue.Displayed) return
-        valueMutable.value = FilePickerValue.Displayed(
+        if (valueMutable.value is FilePickerValue.Launched) return
+        valueMutable.value = FilePickerValue.Launched(
             config = config
         )
     }

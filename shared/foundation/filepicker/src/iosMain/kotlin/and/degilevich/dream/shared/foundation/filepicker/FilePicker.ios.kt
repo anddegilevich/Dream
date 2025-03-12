@@ -8,6 +8,6 @@ import androidx.compose.runtime.Composable
 @Composable
 actual fun FilePicker(
     state: FilePickerState,
-    onFilePicked: (PickedFile) -> Unit
+    onFilesPicked: (List<PickedFile>) -> Unit
 ) {
 }

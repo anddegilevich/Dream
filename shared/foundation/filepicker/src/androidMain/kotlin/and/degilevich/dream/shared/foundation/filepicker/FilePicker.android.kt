@@ -15,30 +15,52 @@ import androidx.compose.runtime.remember
 @Composable
 actual fun FilePicker(
     state: FilePickerState,
-    onFilePicked: (PickedFile) -> Unit
+    onFilesPicked: (List<PickedFile>) -> Unit
 ) {
     val stateValue by remember { state.value }
 
-    val launcher = rememberLauncherForActivityResult(
+    val singleFileLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument()
     ) { uri ->
-        uri?.let {
-            val file = PickedFileImpl(
-                key = stateValue.key,
-                uri = uri
-            )
-            onFilePicked(file)
-        }
+        onFilesPicked(
+            buildList {
+                uri?.let {
+                    val file = PickedFileImpl(
+                        key = stateValue.key,
+                        androidUri = uri
+                    )
+                    add(file)
+                }
+            }
+        )
+        state.reset()
+    }
+    val multipleFileLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.OpenMultipleDocuments()
+    ) { uris ->
+        onFilesPicked(
+            uris.map { uri ->
+                PickedFileImpl(
+                    key = stateValue.key,
+                    androidUri = uri
+                )
+            }
+        )
         state.reset()
     }
 
     LaunchedEffect(stateValue) {
         when (val value = stateValue) {
-            is FilePickerValue.Displayed -> {
-                launcher.launch(
-                    value.config.mimeTypes.toTypedArray()
-                )
+            is FilePickerValue.Launched -> {
+                val config = value.config
+                val mimeTypes = config.mimeTypes.toTypedArray()
+                if (config.isMultiselect) {
+                    multipleFileLauncher.launch(mimeTypes)
+                } else {
+                    singleFileLauncher.launch(mimeTypes)
+                }
             }
+
             is FilePickerValue.Closed -> Unit
         }
     }

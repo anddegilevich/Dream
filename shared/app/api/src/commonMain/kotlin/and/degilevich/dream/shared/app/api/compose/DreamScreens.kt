@@ -64,6 +64,7 @@ fun DreamScreens(
                             filePickerState.launch(
                                 FilePickerConfig(
                                     key = "profileIconKey",
+                                    isMultiselect = false,
                                     mimeTypes = setOf(
                                         "image/png",
                                         "image/jpeg",
@@ -77,12 +78,14 @@ fun DreamScreens(
 
                 FilePicker(
                     state = filePickerState,
-                    onFilePicked = { pickedFile ->
-                        screenComponent.handleIntent(
-                            ProfileIntent.OnPhotoPicked(
-                                pickedFile.url
+                    onFilesPicked = { pickedFiles ->
+                        pickedFiles.firstOrNull()?.let { pickedFile ->
+                            screenComponent.handleIntent(
+                                ProfileIntent.OnPhotoPicked(
+                                    uri = pickedFile.uri
+                                )
                             )
-                        )
+                        }
                     }
                 )
             }
