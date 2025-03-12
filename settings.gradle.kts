@@ -106,6 +106,10 @@ include(":shared:feature:album:model:artifact")
 include(":shared:feature:track:model:artifact")
 include(":shared:feature:track:model:core")
 
+// User
+include(":shared:feature:user:component:profile:api")
+include(":shared:feature:user:component:profile:impl")
+
 // =====================================================================================================================
 // Navigation
 

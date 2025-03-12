@@ -6,7 +6,10 @@ import and.degilevich.dream.shared.feature.artist.component.list.api.component.m
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistCard
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.Res
+import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
+import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
@@ -21,6 +24,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -33,6 +37,8 @@ fun ArtistListScreen(
     onIntent: (ArtistListIntent) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val profileIconInteractionSource = remember { MutableInteractionSource() }
+
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
@@ -48,7 +54,14 @@ fun ArtistListScreen(
     ) {
         item {
             Icon(
-                modifier = Modifier.size(65.dp),
+                modifier = Modifier
+                    .scaleOnClick(interactionSource = profileIconInteractionSource)
+                    .clickableWithDebounce(
+                        interactionSource = profileIconInteractionSource
+                    ) {
+                        onIntent(ArtistListIntent.OnProfileClicked)
+                    }
+                    .size(65.dp),
                 painter = painterResource(Res.images.ic_duck),
                 tint = Theme.colors.brandGreen,
                 contentDescription = null,

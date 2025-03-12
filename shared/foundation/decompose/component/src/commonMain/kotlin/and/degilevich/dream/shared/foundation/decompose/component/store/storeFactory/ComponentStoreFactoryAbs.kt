@@ -8,8 +8,8 @@ import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 
 abstract class ComponentStoreFactoryAbs<State : Any, in Intent : Any, out SideEffect : Any>(
-    private val storeName: String,
     private val storeFactory: StoreFactory,
+    private val storeName: String,
     private val executorFactory: (Lifecycle) -> Executor<Intent, Nothing, State, ReduceMessage<State>, SideEffect>,
 ) : ComponentStoreFactory<State, Intent, SideEffect> {
     final override fun create(

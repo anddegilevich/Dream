@@ -11,6 +11,7 @@ kotlin {
             api(projects.shared.resource.api)
             api(projects.shared.core.toast.api)
             api(projects.shared.design.system)
+            api(projects.shared.navigation.api)
         }
     }
 }

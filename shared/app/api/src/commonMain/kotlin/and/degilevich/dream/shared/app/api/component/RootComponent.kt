@@ -3,6 +3,7 @@ package and.degilevich.dream.shared.app.api.component
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.ArtistListComponent
+import and.degilevich.dream.shared.feature.user.component.profile.api.componen.ProfileComponent
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
@@ -25,5 +26,9 @@ interface RootComponent {
         class ArtistDetails(
             component: ArtistDetailsComponent
         ) : Child, ArtistDetailsComponent by component
+
+        class Profile(
+            component: ProfileComponent
+        ) : Child, ProfileComponent by component
     }
 }

@@ -52,6 +52,8 @@ kotlin {
             implementation(projects.shared.feature.artist.component.details.impl)
             implementation(projects.shared.feature.artist.component.list.impl)
 
+            implementation(projects.shared.feature.user.component.profile.impl)
+
             api(projects.shared.app.api)
         }
     }

@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.core.toast.api.channel.ToastChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
+import and.degilevich.dream.shared.feature.user.component.profile.impl.component.ProfileComponentImpl
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.impl.DreamNavigationComponent
@@ -70,6 +71,15 @@ class RootComponentImpl(
                         componentContext = componentContext,
                         storeFactory = storeFactory,
                         navArgs = screenConfig.navArgs
+                    )
+                )
+            }
+
+            ScreenConfig.Profile -> {
+                RootComponent.Child.Profile(
+                    component = ProfileComponentImpl(
+                        componentContext = componentContext,
+                        storeFactory = storeFactory
                     )
                 )
             }
