@@ -1,8 +1,16 @@
 package and.degilevich.dream.shared.foundation.filepicker.state
 
 sealed interface FilePickerValue {
-    data object Closed : FilePickerValue
+
+    val key: String
+
+    data object Closed : FilePickerValue {
+        override val key: String = ""
+    }
+
     data class Displayed(
-        val config: FilePickerConfig
-    ) : FilePickerValue
+        val config: FilePickerConfig,
+    ) : FilePickerValue {
+        override val key: String = config.key
+    }
 }
