@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
-import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
+import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.template.component.DreamStoreComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.store.StoreFactory
@@ -11,7 +11,7 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 internal class ArtistDetailsStoreComponent(
     componentContext: ComponentContext,
     storeFactory: StoreFactory,
-    config: ScreenConfig.ArtistDetails
+    navArgs: ArtistDetailsNavArgs
 ) : DreamStoreComponent<
     ArtistDetailsState,
     ArtistDetailsIntent,
@@ -20,6 +20,6 @@ internal class ArtistDetailsStoreComponent(
     componentContext = componentContext,
     storeFactory = ArtistDetailsStoreFactory(storeFactory = storeFactory),
     stateConservator = ArtistDetailsStateConservator(
-        config = config
+        navArgs = navArgs
     )
 )

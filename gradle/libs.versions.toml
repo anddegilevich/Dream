@@ -9,7 +9,7 @@ android-target-sdk = "35"
 agp = "8.8.2" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
 
 # JVM version
-java = "17"
+java = "21"
 
 # Kotlin
 kotlin = "2.1.10" # https://kotlinlang.org/docs/releases.html#release-details

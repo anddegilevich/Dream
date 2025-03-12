@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.core.client.impl.logger
 
-import and.degilevich.dream.shared.core.logger.Log
+import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.foundation.primitive.stringBuilder.appendSpace
 import io.ktor.client.plugins.logging.Logger

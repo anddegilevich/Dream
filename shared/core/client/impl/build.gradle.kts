@@ -12,9 +12,9 @@ kotlin {
             implementation(projects.shared.foundation.abstraction)
             implementation(projects.shared.foundation.serialization)
             implementation(projects.shared.config)
+            implementation(projects.shared.logger)
             api(projects.shared.core.client.api)
             implementation(projects.shared.core.storage.api)
-            implementation(projects.shared.core.logger)
         }
     }
 }
