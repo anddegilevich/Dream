@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.feature.user.component.profile.impl.store.mod
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerResult
+import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerSource
 import and.degilevich.dream.shared.navigation.api.DreamNavigator
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.essenty.lifecycle.Lifecycle
@@ -73,11 +74,7 @@ internal class ProfileExecutor(
         val request = FilePickerRequest(
             key = PROFILE_ICON_FILE_PICKER_KEY,
             isMultiselect = false,
-            mimeTypes = setOf(
-                "image/png",
-                "image/jpeg",
-                "image/jpg"
-            )
+            source = FilePickerSource.GALLERY
         )
         scope.launch {
             filePickerManager.openFilePicker(request)
@@ -88,6 +85,7 @@ internal class ProfileExecutor(
         val request = FilePickerRequest(
             key = PROFILE_PHOTOS_FILE_PICKER_KEY,
             isMultiselect = true,
+            source = FilePickerSource.FILES,
             mimeTypes = setOf(
                 "image/png",
                 "image/jpeg",
