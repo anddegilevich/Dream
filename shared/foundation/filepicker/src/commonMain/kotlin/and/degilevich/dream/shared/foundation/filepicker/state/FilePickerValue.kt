@@ -1,6 +1,8 @@
 package and.degilevich.dream.shared.foundation.filepicker.state
 
-sealed interface FilePickerValue {
+import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
+
+internal sealed interface FilePickerValue {
 
     val key: String
 
@@ -9,8 +11,8 @@ sealed interface FilePickerValue {
     }
 
     data class Launched(
-        val config: FilePickerConfig,
+        val request: FilePickerRequest,
     ) : FilePickerValue {
-        override val key: String = config.key
+        override val key: String = request.key
     }
 }

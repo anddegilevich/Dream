@@ -65,6 +65,9 @@ include(":shared:core:db:impl")
 include(":shared:core:toast:api")
 include(":shared:core:toast:impl")
 
+include(":shared:core:filepicker:api")
+include(":shared:core:filepicker:impl")
+
 // =====================================================================================================================
 // Design
 

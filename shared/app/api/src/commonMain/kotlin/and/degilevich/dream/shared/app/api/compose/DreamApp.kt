@@ -5,6 +5,8 @@ import and.degilevich.dream.shared.app.api.compose.ext.showToast
 import and.degilevich.dream.shared.design.system.snackbar.DreamSnackbar
 import and.degilevich.dream.shared.design.theme.api.DreamTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
+import and.degilevich.dream.shared.foundation.filepicker.FilePicker
+import and.degilevich.dream.shared.foundation.filepicker.state.rememberFilePickerState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -26,10 +28,16 @@ fun DreamApp(
     modifier: Modifier = Modifier
 ) {
     val snackBarHostState = remember { SnackbarHostState() }
+    val filePickerState = rememberFilePickerState()
 
     LaunchedEffect(Unit) {
         rootComponent.toasts.collect { toast ->
             snackBarHostState.showToast(toast)
+        }
+    }
+    LaunchedEffect(Unit) {
+        rootComponent.filePickerRequests.collect { request ->
+            filePickerState.launch(request)
         }
     }
 
@@ -57,4 +65,9 @@ fun DreamApp(
             }
         }
     }
+
+    FilePicker(
+        state = filePickerState,
+        onResult = rootComponent::handleFilePickerResult
+    )
 }

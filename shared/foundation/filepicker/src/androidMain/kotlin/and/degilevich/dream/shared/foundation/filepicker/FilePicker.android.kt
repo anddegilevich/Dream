@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.foundation.filepicker
 
-import and.degilevich.dream.shared.foundation.filepicker.file.PickedFile
-import and.degilevich.dream.shared.foundation.filepicker.file.PickedFileImpl
+import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerResult
 import and.degilevich.dream.shared.foundation.filepicker.state.FilePickerState
 import and.degilevich.dream.shared.foundation.filepicker.state.FilePickerValue
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -10,51 +9,61 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 
 @Composable
 actual fun FilePicker(
     state: FilePickerState,
-    onFilesPicked: (List<PickedFile>) -> Unit
+    onResult: (FilePickerResult) -> Unit
 ) {
     val stateValue by remember { state.value }
+    var lastKey by rememberSaveable { mutableStateOf(stateValue.key) }
+
+    LaunchedEffect(stateValue) {
+        when (stateValue) {
+            is FilePickerValue.Closed -> return@LaunchedEffect
+            is FilePickerValue.Launched -> {
+                lastKey = stateValue.key
+            }
+        }
+    }
 
     val singleFileLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument()
-    ) { uri ->
-        onFilesPicked(
-            buildList {
-                uri?.let {
-                    val file = PickedFileImpl(
-                        key = stateValue.key,
-                        androidUri = uri
-                    )
-                    add(file)
-                }
+    ) { pickedUri ->
+        val result = FilePickerResult(
+            key = lastKey,
+            uris = listOfNotNull(pickedUri).map { uri ->
+                uri.toString()
             }
         )
+        onResult(result)
+        lastKey = ""
         state.reset()
     }
     val multipleFileLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenMultipleDocuments()
-    ) { uris ->
-        onFilesPicked(
-            uris.map { uri ->
-                PickedFileImpl(
-                    key = stateValue.key,
-                    androidUri = uri
-                )
+    ) { pickedUris ->
+        val result = FilePickerResult(
+            key = lastKey,
+            uris = pickedUris.map { uri ->
+                uri.toString()
             }
         )
+        onResult(result)
+        lastKey = ""
         state.reset()
     }
 
     LaunchedEffect(stateValue) {
         when (val value = stateValue) {
             is FilePickerValue.Launched -> {
-                val config = value.config
-                val mimeTypes = config.mimeTypes.toTypedArray()
-                if (config.isMultiselect) {
+                val request = value.request
+                val mimeTypes = request.mimeTypes.toTypedArray()
+                if (request.isMultiselect) {
                     multipleFileLauncher.launch(mimeTypes)
                 } else {
                     singleFileLauncher.launch(mimeTypes)

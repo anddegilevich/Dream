@@ -8,12 +8,11 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.resource.api)
-            api(projects.shared.core.toast.api)
+            api(projects.shared.core.filepicker.api)
         }
     }
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.core.toast.impl"
+    namespace = "and.degilevich.dream.shared.core.filepicker.impl"
 }

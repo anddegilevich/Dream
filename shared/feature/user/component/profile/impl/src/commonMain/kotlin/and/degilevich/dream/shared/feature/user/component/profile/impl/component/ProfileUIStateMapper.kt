@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 internal class ProfileUIStateMapper : Mapper<ProfileState, ProfileUIState> {
     override fun map(item: ProfileState): ProfileUIState {
         return ProfileUIState(
-            iconUrl = item.iconUrl
+            iconUri = item.iconUri
         )
     }
 }

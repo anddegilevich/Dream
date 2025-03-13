@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ProfileState(
-    val iconUrl: String = ""
+    val iconUri: String = ""
 )

@@ -4,5 +4,5 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class ProfileUIState(
-    val iconUrl: String = ""
+    val iconUri: String = ""
 )

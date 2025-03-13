@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.app.impl.di
 
+import and.degilevcih.dream.shared.core.filepicker.impl.di.filePickerModule
 import and.degilevich.dream.shared.core.client.impl.di.clientModule
 import and.degilevich.dream.shared.core.db.impl.di.dbModule
 import and.degilevich.dream.shared.core.service.impl.di.serviceModule
@@ -13,4 +14,5 @@ internal fun coreModule() = module {
     includes(serviceModule())
     includes(dbModule())
     includes(toastModule())
+    includes(filePickerModule())
 }

@@ -11,7 +11,8 @@ kotlin {
             implementation(libs.decompose.extensions.compose)
 
             implementation(projects.shared.foundation.decompose.compose)
-            implementation(projects.shared.foundation.filepicker)
+            implementation(projects.shared.core.toast.api)
+            implementation(projects.shared.core.filepicker.api)
 
             api(projects.shared.navigation.api)
 

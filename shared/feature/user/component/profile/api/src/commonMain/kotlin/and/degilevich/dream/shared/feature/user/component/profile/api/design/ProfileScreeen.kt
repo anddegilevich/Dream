@@ -49,7 +49,7 @@ fun ProfileScreen(
                 }
                 .size(300.dp)
                 .background(Theme.colors.iconPlaceholderBackground),
-            model = state.iconUrl,
+            model = state.iconUri,
             contentDescription = null,
             contentScale = ContentScale.Crop
         )

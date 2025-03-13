@@ -28,4 +28,13 @@ abstract class ValueHolderAbs<T>(
             valueMutable.value = valueFactory()
         }
     }
+
+    override fun trySetValue(valueFactory: () -> T) {
+        if (mutex.isLocked) return
+        valueMutable.value = valueFactory()
+    }
+
+    override fun tryClear() {
+        trySetValue(defaultValueFactory)
+    }
 }
