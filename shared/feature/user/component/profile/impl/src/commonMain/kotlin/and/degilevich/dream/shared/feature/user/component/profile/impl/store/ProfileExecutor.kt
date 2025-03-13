@@ -1,12 +1,10 @@
 package and.degilevich.dream.shared.feature.user.component.profile.impl.store
 
-import and.degilevich.dream.shared.core.filepicker.api.FilePickerRequestChannel
-import and.degilevich.dream.shared.core.filepicker.api.FilePickerResultChannel
+import and.degilevich.dream.shared.core.filepicker.api.FilePickerManager
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileIntent
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileSideEffect
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.model.ProfileState
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
-import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerResult
 import and.degilevich.dream.shared.navigation.api.DreamNavigator
@@ -24,8 +22,7 @@ internal class ProfileExecutor(
 ) : ExecutorAbs<ProfileState, ProfileIntent, ProfileSideEffect>(lifecycle = lifecycle), KoinComponent {
 
     private val navigator: DreamNavigator by inject()
-    private val filePickerRequestChannel: FilePickerRequestChannel by inject()
-    private val filePickerResultChannel: FilePickerResultChannel by inject()
+    private val filePickerManager: FilePickerManager by inject()
 
     init {
         subscribeToLifecycle()
@@ -45,34 +42,34 @@ internal class ProfileExecutor(
     override fun executeIntent(intent: ProfileIntent) {
         when (intent) {
             is ProfileIntent.OnBackClicked -> navigateBack()
-            is ProfileIntent.OnIconClicked -> openImagePicker()
+            is ProfileIntent.OnIconClicked -> openProfileIconImagePicker()
+            is ProfileIntent.OnAddPhotoClicked -> openProfilePhotosImagePicker()
         }
     }
 
     private fun collectFilePickerResult() {
         collectFilePickerResultJob?.cancel()
         collectFilePickerResultJob = scope.launch {
-            filePickerResultChannel.value.flowOnBackground().collect { result ->
+            filePickerManager.subscribeToResult { result ->
                 handleFilePickerResult(result)
             }
         }
     }
 
     private fun handleFilePickerResult(result: FilePickerResult) {
-        if (result.key != PROFILE_ICON_FILE_PICKER_KEY) return
-        val uri = result.uris.firstOrNull() ?: return
-        setIconUri(uri)
-    }
+        when (result.key) {
+            PROFILE_ICON_FILE_PICKER_KEY -> {
+                val uri = result.uris.firstOrNull() ?: return
+                setIconUri(uri)
+            }
 
-    private fun setIconUri(uri: String) {
-        reduce { state ->
-            state.copy(
-                iconUri = uri
-            )
+            PROFILE_PHOTOS_FILE_PICKER_KEY -> {
+                setPhotosUris(result.uris)
+            }
         }
     }
 
-    private fun openImagePicker() {
+    private fun openProfileIconImagePicker() {
         val request = FilePickerRequest(
             key = PROFILE_ICON_FILE_PICKER_KEY,
             isMultiselect = false,
@@ -83,7 +80,36 @@ internal class ProfileExecutor(
             )
         )
         scope.launch {
-            filePickerRequestChannel.send(request)
+            filePickerManager.openFilePicker(request)
+        }
+    }
+
+    private fun openProfilePhotosImagePicker() {
+        val request = FilePickerRequest(
+            key = PROFILE_PHOTOS_FILE_PICKER_KEY,
+            isMultiselect = true,
+            mimeTypes = setOf(
+                "image/png",
+                "image/jpeg",
+                "image/jpg"
+            )
+        )
+        scope.launch {
+            filePickerManager.openFilePicker(request)
+        }
+    }
+
+    private fun setIconUri(uri: String) {
+        reduce { state ->
+            state.copy(
+                iconUri = uri
+            )
+        }
+    }
+
+    private fun setPhotosUris(uris: List<String>) {
+        reduce { state ->
+            state.copy(profilePhotosUris = uris)
         }
     }
 
@@ -93,5 +119,6 @@ internal class ProfileExecutor(
 
     private companion object {
         const val PROFILE_ICON_FILE_PICKER_KEY = "profileIconKey"
+        const val PROFILE_PHOTOS_FILE_PICKER_KEY = "profilePhotosKey"
     }
 }

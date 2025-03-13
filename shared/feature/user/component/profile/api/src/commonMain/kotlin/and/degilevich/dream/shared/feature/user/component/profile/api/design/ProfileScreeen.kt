@@ -10,10 +10,14 @@ import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickab
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -36,10 +40,10 @@ fun ProfileScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Theme.colors.background)
-            .padding(16.dp),
+            .background(Theme.colors.background),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        Space(height = 16.dp)
         AsyncImage(
             modifier = Modifier
                 .scaleOnClick(interactionSource = iconInteractionSource)
@@ -53,6 +57,35 @@ fun ProfileScreen(
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
+        Space(height = 16.dp)
+        PrimaryButton(
+            text = "Add photos",
+            onClicked = {
+                onIntent(ProfileIntent.OnAddPhotoClicked)
+            }
+        )
+        Space(height = 16.dp)
+        LazyRow(
+            modifier = Modifier.fillMaxWidth(),
+            contentPadding = PaddingValues(
+                start = 16.dp
+            ),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            items(
+                items = state.profilePhotos,
+                key = { it.id }
+            ) { item ->
+                AsyncImage(
+                    modifier = Modifier
+                        .size(64.dp)
+                        .background(Theme.colors.iconPlaceholderBackground),
+                    model = item.uri,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop
+                )
+            }
+        }
         Space(height = 16.dp)
         PrimaryButton(
             text = stringResource(Res.strings.button_back),

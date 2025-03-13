@@ -4,5 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ProfileState(
-    val iconUri: String = ""
+    val iconUri: String = "",
+    val profilePhotosUris: List<String> = emptyList()
 )

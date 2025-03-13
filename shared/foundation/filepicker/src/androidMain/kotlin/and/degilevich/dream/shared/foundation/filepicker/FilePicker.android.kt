@@ -20,14 +20,15 @@ actual fun FilePicker(
     onResult: (FilePickerResult) -> Unit
 ) {
     val stateValue by remember { state.value }
-    var lastKey by rememberSaveable { mutableStateOf(stateValue.key) }
+    var lastKey by rememberSaveable { mutableStateOf("") }
 
     LaunchedEffect(stateValue) {
-        when (stateValue) {
-            is FilePickerValue.Closed -> return@LaunchedEffect
+        when (val value = stateValue) {
             is FilePickerValue.Launched -> {
-                lastKey = stateValue.key
+                lastKey = value.request.key
             }
+
+            is FilePickerValue.Closed -> Unit
         }
     }
 

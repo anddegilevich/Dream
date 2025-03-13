@@ -7,17 +7,23 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 @Stable
 class FilePickerState internal constructor() {
     private var valueMutable: MutableState<FilePickerValue> = mutableStateOf(FilePickerValue.Closed)
     internal val value: State<FilePickerValue> = valueMutable
 
-    fun launch(request: FilePickerRequest) {
-        if (valueMutable.value is FilePickerValue.Launched) return
-        valueMutable.value = FilePickerValue.Launched(
-            request = request
-        )
+    private val mutex = Mutex()
+
+    suspend fun launch(request: FilePickerRequest) {
+        mutex.withLock {
+            if (valueMutable.value is FilePickerValue.Launched) return
+            valueMutable.value = FilePickerValue.Launched(
+                request = request
+            )
+        }
     }
 
     internal fun reset() {
