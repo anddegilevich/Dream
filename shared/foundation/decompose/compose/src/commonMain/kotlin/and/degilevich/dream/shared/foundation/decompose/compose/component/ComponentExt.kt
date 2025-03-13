@@ -8,9 +8,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 
 @Composable
-fun <SideEffect> MVIComponent<*, *, SideEffect>.ComponentSideEffect(handler: (SideEffect) -> Unit) {
+fun <SideEffect> ComponentSideEffect(
+    component: MVIComponent<*, *, SideEffect>,
+    handler: suspend (SideEffect) -> Unit
+) {
     LaunchedEffect(Unit) {
-        sideEffect.collect(handler)
+        component.sideEffect.collect(handler)
     }
 }
 

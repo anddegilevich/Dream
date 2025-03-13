@@ -28,6 +28,7 @@ include(":shared:foundation:serialization")
 include(":shared:foundation:abstraction")
 include(":shared:foundation:dispatcher")
 include(":shared:foundation:compose")
+include(":shared:foundation:filepicker")
 
 include(":shared:foundation:decompose:navigation")
 include(":shared:foundation:decompose:compose")
@@ -63,6 +64,9 @@ include(":shared:core:db:impl")
 
 include(":shared:core:toast:api")
 include(":shared:core:toast:impl")
+
+include(":shared:core:filepicker:api")
+include(":shared:core:filepicker:impl")
 
 // =====================================================================================================================
 // Design
@@ -104,6 +108,10 @@ include(":shared:feature:album:model:artifact")
 // Track
 include(":shared:feature:track:model:artifact")
 include(":shared:feature:track:model:core")
+
+// User
+include(":shared:feature:user:component:profile:api")
+include(":shared:feature:user:component:profile:impl")
 
 // =====================================================================================================================
 // Navigation

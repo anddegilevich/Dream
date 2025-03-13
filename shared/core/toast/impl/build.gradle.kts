@@ -8,7 +8,6 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.foundation.abstraction)
             implementation(projects.shared.resource.api)
             api(projects.shared.core.toast.api)
         }

@@ -40,8 +40,9 @@ kotlin {
             implementation(projects.shared.core.storage.impl)
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.service.impl)
-            implementation(projects.shared.core.toast.impl)
             implementation(projects.shared.core.db.impl)
+            implementation(projects.shared.core.toast.impl)
+            implementation(projects.shared.core.filepicker.impl)
 
             // Navigation
             implementation(projects.shared.navigation.impl)
@@ -51,6 +52,8 @@ kotlin {
             implementation(projects.shared.feature.artist.design.impl)
             implementation(projects.shared.feature.artist.component.details.impl)
             implementation(projects.shared.feature.artist.component.list.impl)
+
+            implementation(projects.shared.feature.user.component.profile.impl)
 
             api(projects.shared.app.api)
         }

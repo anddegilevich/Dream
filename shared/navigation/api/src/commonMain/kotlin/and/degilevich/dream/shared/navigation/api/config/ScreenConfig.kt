@@ -5,6 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 sealed interface ScreenConfig {
+
+    // Artist
     @Serializable
     data object ArtistList : ScreenConfig
 
@@ -12,4 +14,8 @@ sealed interface ScreenConfig {
     data class ArtistDetails(
         val navArgs: ArtistDetailsNavArgs
     ) : ScreenConfig
+
+    // User
+    @Serializable
+    data object Profile : ScreenConfig
 }

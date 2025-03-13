@@ -15,13 +15,13 @@ abstract class DreamUIStoreComponent<
     >(
     componentContext: ComponentContext,
     storeComponentFactory: (childComponentContext: ComponentContext) -> MVIComponent<State, Intent, SideEffect>,
-    initialUIState: UIState,
-    uiStateMapper: Mapper<State, UIState>
+    uiStateMapper: Mapper<State, UIState>,
+    initialUIState: UIState
 ) : UIStoreComponent<UIState, Intent, SideEffect, State>(
     componentContext = componentContext,
-    initialUIState = initialUIState,
+    storeComponentFactory = storeComponentFactory,
     uiStateMapper = uiStateMapper,
-    storeComponentFactory = storeComponentFactory
+    initialUIState = initialUIState
 ) {
 
     init {

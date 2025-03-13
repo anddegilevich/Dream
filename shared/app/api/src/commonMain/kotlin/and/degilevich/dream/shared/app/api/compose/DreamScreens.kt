@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.artist.component.list.api.design.ArtistListScreen
+import and.degilevich.dream.shared.feature.user.component.profile.api.design.ProfileScreen
 import and.degilevich.dream.shared.foundation.decompose.compose.animation.defaultStackAnimation
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,6 +37,13 @@ fun DreamScreens(
 
             is RootComponent.Child.ArtistDetails -> {
                 ArtistDetailsScreen(
+                    state = screenComponent.collectState(),
+                    onIntent = screenComponent::handleIntent
+                )
+            }
+
+            is RootComponent.Child.Profile -> {
+                ProfileScreen(
                     state = screenComponent.collectState(),
                     onIntent = screenComponent::handleIntent
                 )

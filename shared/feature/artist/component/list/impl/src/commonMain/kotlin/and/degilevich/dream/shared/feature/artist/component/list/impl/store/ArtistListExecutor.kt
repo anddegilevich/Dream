@@ -48,6 +48,10 @@ internal class ArtistListExecutor(
             is ArtistListIntent.OnArtistClicked -> {
                 navigateToArtist(intent.id)
             }
+
+            ArtistListIntent.OnProfileClicked -> {
+                navigateToProfile()
+            }
         }
     }
 
@@ -103,5 +107,9 @@ internal class ArtistListExecutor(
                 )
             )
         )
+    }
+
+    private fun navigateToProfile() {
+        navigator.screenNavigator.pushNew(ScreenConfig.Profile)
     }
 }

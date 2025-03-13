@@ -19,8 +19,8 @@ abstract class UIStoreComponent<
     >(
     componentContext: ComponentContext,
     storeComponentFactory: (childComponentContext: ComponentContext) -> MVIComponent<State, Intent, SideEffect>,
-    initialUIState: UIState,
     uiStateMapper: Mapper<State, UIState>,
+    initialUIState: UIState,
 ) : MVIComponentAbs<UIState, Intent, SideEffect>(componentContext) {
 
     private val storeComponent: MVIComponent<State, Intent, SideEffect> = storeComponentFactory(

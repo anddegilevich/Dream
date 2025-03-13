@@ -55,11 +55,12 @@ dependencies {
 androidComponents {
     onVariants { variant ->
         val artifactsLoader = variant.artifacts.getBuiltArtifactsLoader()
+        val applicationIdProvider = variant.testedApks.map { testedApk ->
+            artifactsLoader.load(testedApk)?.applicationId.orEmpty()
+        }
         variant.instrumentationRunnerArguments.put(
             "targetAppId",
-            variant.testedApks.map { testedApk ->
-                artifactsLoader.load(testedApk)?.applicationId
-            }
+            applicationIdProvider
         )
     }
 }

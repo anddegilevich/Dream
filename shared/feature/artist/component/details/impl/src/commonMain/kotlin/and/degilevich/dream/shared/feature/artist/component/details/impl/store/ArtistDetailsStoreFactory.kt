@@ -14,7 +14,7 @@ internal class ArtistDetailsStoreFactory(
     ArtistDetailsIntent,
     ArtistDetailsSideEffect
     >(
-    storeName = ArtistDetailsStore::class.className(),
     storeFactory = storeFactory,
+    storeName = ArtistDetailsStore::class.className(),
     executorFactory = { lifecycle -> ArtistDetailsExecutor(lifecycle = lifecycle) }
 )

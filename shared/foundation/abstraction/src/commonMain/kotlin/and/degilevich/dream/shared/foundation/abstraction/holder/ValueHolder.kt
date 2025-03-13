@@ -8,4 +8,7 @@ interface ValueHolder<T> {
 
     suspend fun setValue(valueFactory: () -> T)
     suspend fun clear()
+
+    fun trySetValue(valueFactory: () -> T)
+    fun tryClear()
 }

@@ -10,7 +10,7 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 internal class ArtistListStoreFactory(
     storeFactory: StoreFactory
 ) : ComponentStoreFactoryAbs<ArtistListState, ArtistListIntent, ArtistListSideEffect>(
-    storeName = ArtistListStore::class.className(),
     storeFactory = storeFactory,
+    storeName = ArtistListStore::class.className(),
     executorFactory = { lifecycle -> ArtistListExecutor(lifecycle = lifecycle) },
 )
