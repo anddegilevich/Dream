@@ -88,7 +88,8 @@ Here is the list of frameworks, that were used in this project:
 | | |- 2.8.2 album
 | | |- ...
 | |- 2.9 navigation
-| |- 2.10 app
+| |- 2.10 di
+| |- 2.11 app
 |- 3. android
 | |- 3.1 app
 | |- 3.2 baseline
@@ -242,7 +243,12 @@ Can implement feature model modules.
 Navigation manager;
 Configs with navigation arguments;
 
-### 2.10 shared.app
+### 2.10 shared.di
+
+Provides app's dependency injection module.
+Combines all of the other di modules.
+
+### 2.11 shared.app
 
 Entry point for platforms to shared app code.
 Implementation submodule is used for ios app ui view controller generation.

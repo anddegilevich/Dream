@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.app.impl.di
+package and.degilevich.dream.shared.di
 
 import and.degilevich.dream.shared.resource.impl.di.resourceModule
 import org.koin.dsl.module

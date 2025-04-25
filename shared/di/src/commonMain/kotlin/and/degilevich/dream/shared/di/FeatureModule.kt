@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.app.impl.di
+package and.degilevich.dream.shared.di
 
 import and.degilevich.dream.shared.feature.artist.core.impl.di.artistCoreModule
 import and.degilevich.dream.shared.feature.artist.design.api.di.artistDesignModule

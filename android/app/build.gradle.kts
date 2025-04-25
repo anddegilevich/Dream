@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.bundles.decompose)
     implementation(libs.decompose.extensions.android)
 
+    implementation(projects.shared.di)
     implementation(projects.shared.app.impl)
 
     implementation(libs.androidx.profileinstaller)

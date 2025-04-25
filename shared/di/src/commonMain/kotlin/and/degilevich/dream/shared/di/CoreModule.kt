@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.app.impl.di
+package and.degilevich.dream.shared.di
 
 import and.degilevcih.dream.shared.core.filepicker.impl.di.filePickerModule
 import and.degilevich.dream.shared.core.client.impl.di.clientModule

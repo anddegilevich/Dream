@@ -1,9 +1,9 @@
-package and.degilevich.dream.shared.app.impl.di
+package and.degilevich.dream.shared.di
 
 import android.content.Context
+import org.junit.Test
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.test.verify.verify
-import kotlin.test.Test
 
 @OptIn(KoinExperimentalAPI::class)
 class AppModuleTest {

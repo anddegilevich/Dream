@@ -21,6 +21,7 @@ kotlin {
                 export(libs.bundles.decompose)
                 export(libs.moko.resources)
                 export(projects.shared.app.api)
+                export(projects.shared.di)
                 export(projects.shared.logger)
             }
         }
@@ -34,22 +35,19 @@ kotlin {
             // Foundation
             implementation(projects.shared.foundation.dispatcher)
 
-            // Core
+            // Logger
             api(projects.shared.logger)
-            implementation(projects.shared.resource.impl)
-            implementation(projects.shared.core.storage.impl)
-            implementation(projects.shared.core.client.impl)
-            implementation(projects.shared.core.service.impl)
-            implementation(projects.shared.core.db.impl)
-            implementation(projects.shared.core.toast.impl)
-            implementation(projects.shared.core.filepicker.impl)
+
+            // Core
+            implementation(projects.shared.core.filepicker.api)
 
             // Navigation
             implementation(projects.shared.navigation.impl)
 
+            // DI
+            api(projects.shared.di)
+
             // Feature
-            implementation(projects.shared.feature.artist.core.impl)
-            implementation(projects.shared.feature.artist.design.impl)
             implementation(projects.shared.feature.artist.component.details.impl)
             implementation(projects.shared.feature.artist.component.list.impl)
 
