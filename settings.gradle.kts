@@ -134,3 +134,4 @@ include(":shared:app:impl")
 
 include(":android:app")
 include(":android:baseline")
+include(":android:widget")

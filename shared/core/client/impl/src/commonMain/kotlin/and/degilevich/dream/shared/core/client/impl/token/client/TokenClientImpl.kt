@@ -6,7 +6,6 @@ import and.degilevich.dream.shared.core.client.impl.logger.ClientLogger
 import and.degilevich.dream.shared.core.client.impl.token.model.Tokens
 import and.degilevich.dream.shared.core.client.impl.token.model.request.TokenResponse
 import and.degilevich.dream.shared.core.client.impl.token.storage.TokensStorage
-import and.degilevich.dream.shared.foundation.primitive.result.foldTry
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.HttpTimeout
@@ -54,7 +53,7 @@ internal class TokenClientImpl(
     }
 
     override suspend fun getToken(): Result<Tokens> {
-        return foldTry {
+        return runCatching {
             val response = client.post {
                 url(SharedBuildConfig.AUTH_BASE_URL)
                 header(HttpHeaders.ContentType, HEADER_CONTENT_TYPE_VALUE)

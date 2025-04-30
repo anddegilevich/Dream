@@ -187,7 +187,7 @@ sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 # Glance - https://developer.android.com/develop/ui/compose/glance
-glance = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
+glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
 
 [bundles]
 
