@@ -26,7 +26,7 @@ class ArtistDetailsComponentImpl(
             navArgs = navArgs
         )
     },
-    initialUIState = ArtistDetailsUIState(),
+    initialUIState = ArtistDetailsUIState.empty(),
     uiStateMapper = ArtistDetailsUIStateMapper()
 ),
     ArtistDetailsComponent

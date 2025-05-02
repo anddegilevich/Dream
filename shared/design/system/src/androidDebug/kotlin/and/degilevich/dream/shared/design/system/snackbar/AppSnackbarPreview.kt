@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.design.system.snackbar
 
-import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import androidx.compose.material.SnackbarData
 import androidx.compose.material.SnackbarDuration
 import androidx.compose.runtime.Composable
@@ -8,11 +8,11 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
-private fun DreamSnackbarDarkPreview() {
-    DreamTheme(
+private fun AppSnackbarDarkPreview() {
+    ComposeAppTheme(
         isDarkMode = true
     ) {
-        DreamSnackbar(
+        AppSnackbar(
             data = providePreviewSnackbarData()
         )
     }
@@ -20,11 +20,11 @@ private fun DreamSnackbarDarkPreview() {
 
 @Preview
 @Composable
-private fun DreamSnackbarLightPreview() {
-    DreamTheme(
+private fun AppSnackbarLightPreview() {
+    ComposeAppTheme(
         isDarkMode = false
     ) {
-        DreamSnackbar(
+        AppSnackbar(
             data = providePreviewSnackbarData()
         )
     }

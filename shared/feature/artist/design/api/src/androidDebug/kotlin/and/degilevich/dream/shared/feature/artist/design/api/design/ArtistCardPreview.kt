@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
-import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Preview
 @Composable
 fun ArtistCardDarkPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = true
     ) {
         ArtistCard(
@@ -21,7 +21,7 @@ fun ArtistCardDarkPreview() {
 @Preview
 @Composable
 fun ArtistCardLightPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = false
     ) {
         ArtistCard(

@@ -23,7 +23,7 @@ class ArtistListComponentImpl(
             componentContext = childComponentContext
         )
     },
-    initialUIState = ArtistListUIState(),
+    initialUIState = ArtistListUIState.empty(),
     uiStateMapper = ArtistListUIStateMapper()
 ),
     ArtistListComponent

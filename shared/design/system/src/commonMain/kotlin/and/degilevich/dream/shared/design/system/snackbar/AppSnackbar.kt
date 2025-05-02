@@ -20,7 +20,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DreamSnackbar(
+fun AppSnackbar(
     data: SnackbarData,
     modifier: Modifier = Modifier
 ) {

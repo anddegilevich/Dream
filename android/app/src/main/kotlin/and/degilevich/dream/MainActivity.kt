@@ -1,6 +1,6 @@
 package and.degilevich.dream
 
-import and.degilevich.dream.shared.app.api.compose.DreamApp
+import and.degilevich.dream.shared.app.api.compose.ComposeApp
 import and.degilevich.dream.shared.app.impl.component.RootComponentImpl
 import android.graphics.Color
 import android.os.Bundle
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
             CompositionLocalProvider(
                 LocalOverscrollConfiguration provides null
             ) {
-                DreamApp(
+                ComposeApp(
                     rootComponent = rootComponent
                 )
             }

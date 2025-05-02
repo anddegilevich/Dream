@@ -7,6 +7,9 @@ import kotlinx.serialization.KSerializer
 
 internal class ProfileStateConservator : StoreStateConservator<ProfileState> {
     override val key: String = ProfileState::class.className()
-    override val initialState: ProfileState = ProfileState()
+    override val initialState: ProfileState = ProfileState(
+        iconUri = "",
+        profilePhotosUris = emptyList()
+    )
     override val serializer: KSerializer<ProfileState> = ProfileState.serializer()
 }

@@ -1,13 +1,13 @@
 package and.degilevich.dream.shared.design.system.button
 
-import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
 private fun PrimaryButtonDarkPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = true
     ) {
         PrimaryButton(
@@ -19,7 +19,7 @@ private fun PrimaryButtonDarkPreview() {
 @Preview
 @Composable
 private fun PrimaryButtonLightPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = false
     ) {
         PrimaryButton(

@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ArtistListState(
-    val isLoading: Boolean = false,
-    val artists: List<ArtistData> = emptyList()
+    val isLoading: Boolean,
+    val artists: List<ArtistData>
 )

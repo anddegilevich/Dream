@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.design.theme.api
 
-import and.degilevich.dream.shared.design.theme.api.colors.DreamColors
-import and.degilevich.dream.shared.design.theme.impl.color.DarkThemeDreamColors
-import and.degilevich.dream.shared.design.theme.impl.color.LightThemeDreamColors
+import and.degilevich.dream.shared.design.theme.api.colors.ThemeColors
+import and.degilevich.dream.shared.design.theme.impl.color.DarkThemeColors
+import and.degilevich.dream.shared.design.theme.impl.color.LightThemeColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ProvidableCompositionLocal
@@ -10,15 +10,15 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 
 @Composable
-fun DreamTheme(
+fun ComposeAppTheme(
     isDarkMode: Boolean,
     content: @Composable () -> Unit
 ) {
-    val colors: DreamColors = remember(isDarkMode) {
+    val colors: ThemeColors = remember(isDarkMode) {
         if (isDarkMode) {
-            DarkThemeDreamColors()
+            DarkThemeColors()
         } else {
-            LightThemeDreamColors()
+            LightThemeColors()
         }
     }
 
@@ -29,4 +29,4 @@ fun DreamTheme(
 }
 
 @Suppress("CompositionLocalAllowlist")
-internal val LocalColors: ProvidableCompositionLocal<DreamColors> = compositionLocalOf { DarkThemeDreamColors() }
+internal val LocalColors: ProvidableCompositionLocal<ThemeColors> = compositionLocalOf { DarkThemeColors() }

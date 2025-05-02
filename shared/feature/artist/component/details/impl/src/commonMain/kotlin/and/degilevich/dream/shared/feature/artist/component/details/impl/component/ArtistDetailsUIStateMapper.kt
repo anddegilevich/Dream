@@ -20,12 +20,17 @@ internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDet
             ArtistDetailsUIState(
                 artistIconUrl = artist.images.firstOrNull()?.url.orEmpty(),
                 artistName = resourceManager.getString(Res.strings.mask_artist_name, artist.name),
-                similarArtists = similarArtists.map { artist ->
-                    artistCardUIStateMapper.map(
-                        artist = artist,
-                        isEnabled = !isLoading
-                    )
-                }.toImmutableList()
+                similarArtists = similarArtists
+                    .sortedBy { artist ->
+                        artist.name
+                    }
+                    .map { artist ->
+                        artistCardUIStateMapper.map(
+                            artist = artist,
+                            isEnabled = !isLoading
+                        )
+                    }
+                    .toImmutableList()
             )
         }
     }

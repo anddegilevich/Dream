@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
-import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 @Preview
 @Composable
 fun ArtistIconDarkPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = true
     ) {
         ArtistIcon(
@@ -23,7 +23,7 @@ fun ArtistIconDarkPreview() {
 @Preview
 @Composable
 fun ArtistIconLightPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = false
     ) {
         ArtistIcon(

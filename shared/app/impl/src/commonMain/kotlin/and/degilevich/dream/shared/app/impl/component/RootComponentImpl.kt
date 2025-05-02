@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.app.impl.component
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
+import and.degilevich.dream.shared.app.api.component.children.Screen
 import and.degilevich.dream.shared.core.filepicker.api.FilePickerRequestChannel
 import and.degilevich.dream.shared.core.filepicker.api.FilePickerResultChannel
 import and.degilevich.dream.shared.feature.artist.component.list.impl.component.ArtistListComponentImpl
@@ -43,7 +44,7 @@ class RootComponentImpl(
     private val filePickerRequestChannel: FilePickerRequestChannel by inject()
     private val filePickerResultChannel: FilePickerResultChannel by inject()
 
-    override val screenStack: Value<ChildStack<ScreenConfig, RootComponent.Child>> = childStack(
+    override val screenStack: Value<ChildStack<ScreenConfig, Screen>> = childStack(
         source = navigationComponent.screenNavigationSource,
         serializer = ScreenConfig.serializer(),
         initialConfiguration = ScreenConfig.ArtistList,
@@ -63,11 +64,11 @@ class RootComponentImpl(
     private fun screenFactory(
         screenConfig: ScreenConfig,
         componentContext: ComponentContext
-    ): RootComponent.Child {
+    ): Screen {
         Log.info("Navigate to -> $screenConfig")
         return when (screenConfig) {
             is ScreenConfig.ArtistList -> {
-                RootComponent.Child.ArtistList(
+                Screen.ArtistList(
                     component = ArtistListComponentImpl(
                         componentContext = componentContext
                     )
@@ -75,7 +76,7 @@ class RootComponentImpl(
             }
 
             is ScreenConfig.ArtistDetails -> {
-                RootComponent.Child.ArtistDetails(
+                Screen.ArtistDetails(
                     component = ArtistDetailsComponentImpl(
                         componentContext = componentContext,
                         navArgs = screenConfig.navArgs
@@ -84,7 +85,7 @@ class RootComponentImpl(
             }
 
             ScreenConfig.Profile -> {
-                RootComponent.Child.Profile(
+                Screen.Profile(
                     component = ProfileComponentImpl(
                         componentContext = componentContext
                     )

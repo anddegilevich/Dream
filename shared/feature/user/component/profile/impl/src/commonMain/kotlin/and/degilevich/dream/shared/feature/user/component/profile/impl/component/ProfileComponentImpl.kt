@@ -19,6 +19,6 @@ class ProfileComponentImpl(
         )
     },
     uiStateMapper = ProfileUIStateMapper(),
-    initialUIState = ProfileUIState()
+    initialUIState = ProfileUIState.empty()
 ),
     ProfileComponent

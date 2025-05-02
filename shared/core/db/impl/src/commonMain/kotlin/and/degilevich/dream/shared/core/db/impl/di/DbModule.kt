@@ -1,17 +1,17 @@
 package and.degilevich.dream.shared.core.db.impl.di
 
-import and.degilevich.dream.shared.core.db.api.database.DreamDatabase
-import and.degilevich.dream.shared.core.db.impl.database.factory.DreamDatabaseFactory
-import and.degilevich.dream.shared.core.db.impl.database.factory.DreamDatabaseFactoryImpl
+import and.degilevich.dream.shared.core.db.api.database.AppDatabase
+import and.degilevich.dream.shared.core.db.impl.database.factory.AppDatabaseFactory
+import and.degilevich.dream.shared.core.db.impl.database.factory.AppDatabaseFactoryImpl
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun dbModule() = module {
     includes(dbPlatformModule())
-    factoryOf(::DreamDatabaseFactoryImpl) bind DreamDatabaseFactory::class
+    factoryOf(::AppDatabaseFactoryImpl) bind AppDatabaseFactory::class
     single {
-        val databaseFactory: DreamDatabaseFactory = get()
+        val databaseFactory: AppDatabaseFactory = get()
         databaseFactory.create()
-    } bind DreamDatabase::class
+    } bind AppDatabase::class
 }

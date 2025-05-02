@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ArtistDetailsState(
     val navArgs: ArtistDetailsNavArgs,
-    val isLoading: Boolean = false,
-    val artist: ArtistData = ArtistData.empty(),
-    val similarArtists: List<ArtistData> = emptyList()
+    val isLoading: Boolean,
+    val artist: ArtistData,
+    val similarArtists: List<ArtistData>,
 )

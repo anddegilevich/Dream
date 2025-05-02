@@ -2,8 +2,8 @@ package and.degilevich.dream.shared.app.api.compose
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.api.compose.ext.showToast
-import and.degilevich.dream.shared.design.system.snackbar.DreamSnackbar
-import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.system.snackbar.AppSnackbar
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.filepicker.FilePicker
 import and.degilevich.dream.shared.foundation.filepicker.state.rememberFilePickerState
@@ -23,7 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DreamApp(
+fun ComposeApp(
     rootComponent: RootComponent,
     modifier: Modifier = Modifier
 ) {
@@ -41,7 +41,7 @@ fun DreamApp(
         }
     }
 
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = isSystemInDarkTheme()
     ) {
         Box(
@@ -49,7 +49,7 @@ fun DreamApp(
                 .fillMaxSize()
                 .background(Theme.colors.background),
         ) {
-            DreamScreens(
+            ComposeScreens(
                 screens = rootComponent.screenStack
             )
             SnackbarHost(
@@ -58,7 +58,7 @@ fun DreamApp(
                     .navigationBarsPadding(),
                 hostState = snackBarHostState
             ) { snackbarData ->
-                DreamSnackbar(
+                AppSnackbar(
                     modifier = Modifier.padding(16.dp),
                     data = snackbarData
                 )

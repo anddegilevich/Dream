@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.design
 
-import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
 import androidx.compose.runtime.Composable
@@ -10,7 +10,7 @@ import kotlinx.collections.immutable.toImmutableList
 @Preview
 @Composable
 fun ArtistDetailsScreenDarkPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = true
     ) {
         ArtistDetailsScreen(
@@ -23,7 +23,7 @@ fun ArtistDetailsScreenDarkPreview() {
 @Preview
 @Composable
 fun ArtistDetailsScreenLightPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = false
     ) {
         ArtistDetailsScreen(
@@ -37,6 +37,7 @@ fun ArtistDetailsScreenLightPreview() {
 private fun providePreviewArtistDetailsUIState(): ArtistDetailsUIState {
     return ArtistDetailsUIState(
         artistName = "Artist name: Name",
+        artistIconUrl = "",
         similarArtists = buildList {
             for (i in 1..10) {
                 add(

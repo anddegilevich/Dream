@@ -1,11 +1,10 @@
 package and.degilevich.dream.shared.core.db.api.feature.artist.entity
 
-import and.degilevich.dream.shared.core.db.api.feature.artist.entity.ArtistEntity.Companion.TABLE_NAME
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = TABLE_NAME)
+@Entity(tableName = ArtistEntity.TABLE_NAME)
 data class ArtistEntity(
     @PrimaryKey
     @ColumnInfo(name = ID)

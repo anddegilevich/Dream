@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.user.component.profile.api.design
 
-import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileUIState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
@@ -8,9 +8,9 @@ import androidx.compose.ui.tooling.preview.Preview
 @Preview
 @Composable
 private fun ProfileScreenDarkPreview() {
-    DreamTheme(isDarkMode = true) {
+    ComposeAppTheme(isDarkMode = true) {
         ProfileScreen(
-            state = ProfileUIState(),
+            state = ProfileUIState.empty(),
             onIntent = { }
         )
     }
@@ -19,9 +19,9 @@ private fun ProfileScreenDarkPreview() {
 @Preview
 @Composable
 private fun ProfileScreenLightPreview() {
-    DreamTheme(isDarkMode = false) {
+    ComposeAppTheme(isDarkMode = false) {
         ProfileScreen(
-            state = ProfileUIState(),
+            state = ProfileUIState.empty(),
             onIntent = { }
         )
     }

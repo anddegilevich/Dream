@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.list.api.design
 
-import and.degilevich.dream.shared.design.theme.api.DreamTheme
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListUIState
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
 import androidx.compose.runtime.Composable
@@ -10,7 +10,7 @@ import kotlinx.collections.immutable.toImmutableList
 @Preview
 @Composable
 private fun ArtistListScreenDarkPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = true
     ) {
         ArtistListScreen(
@@ -23,7 +23,7 @@ private fun ArtistListScreenDarkPreview() {
 @Preview
 @Composable
 private fun ArtistListScreenLightPreview() {
-    DreamTheme(
+    ComposeAppTheme(
         isDarkMode = false
     ) {
         ArtistListScreen(

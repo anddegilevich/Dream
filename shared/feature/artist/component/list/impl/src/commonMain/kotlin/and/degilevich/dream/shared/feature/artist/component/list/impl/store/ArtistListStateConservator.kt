@@ -7,6 +7,9 @@ import kotlinx.serialization.KSerializer
 
 internal class ArtistListStateConservator : StoreStateConservator<ArtistListState> {
     override val key: String = ArtistListState::class.className()
-    override val initialState: ArtistListState = ArtistListState()
+    override val initialState: ArtistListState = ArtistListState(
+        isLoading = true,
+        artists = emptyList()
+    )
     override val serializer: KSerializer<ArtistListState> = ArtistListState.serializer()
 }

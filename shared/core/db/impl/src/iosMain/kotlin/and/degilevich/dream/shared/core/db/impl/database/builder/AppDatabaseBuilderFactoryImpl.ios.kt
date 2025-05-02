@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.core.db.impl.database.builder
 
-import and.degilevich.dream.shared.core.db.impl.database.DreamDatabaseAbs
-import and.degilevich.dream.shared.core.db.impl.database.DreamDatabaseConst
+import and.degilevich.dream.shared.core.db.impl.database.AppDatabaseAbs
+import and.degilevich.dream.shared.core.db.impl.database.AppDatabaseConst
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -9,14 +9,14 @@ import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 
-internal actual class DreamDatabaseBuilderFactoryImpl : DreamDatabaseBuilderFactory {
-    override fun create(): RoomDatabase.Builder<DreamDatabaseAbs> {
+internal actual class AppDatabaseBuilderFactoryImpl : AppDatabaseBuilderFactory {
+    override fun create(): RoomDatabase.Builder<AppDatabaseAbs> {
         val dbFilePath = buildString {
             append(documentDirectory())
             append("/")
-            append(DreamDatabaseConst.DATABASE_FILE_NAME)
+            append(AppDatabaseConst.DATABASE_FILE_NAME)
         }
-        return Room.databaseBuilder<DreamDatabaseAbs>(
+        return Room.databaseBuilder<AppDatabaseAbs>(
             name = dbFilePath,
         )
     }

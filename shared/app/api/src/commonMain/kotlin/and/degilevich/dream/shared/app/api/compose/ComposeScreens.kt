@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.app.api.compose
 
-import and.degilevich.dream.shared.app.api.component.RootComponent
+import and.degilevich.dream.shared.app.api.component.children.Screen
 import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.artist.component.list.api.design.ArtistListScreen
@@ -16,8 +16,8 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
 
 @Composable
-fun DreamScreens(
-    screens: Value<ChildStack<ScreenConfig, RootComponent.Child>>,
+fun ComposeScreens(
+    screens: Value<ChildStack<ScreenConfig, Screen>>,
     modifier: Modifier = Modifier
 ) {
     Children(
@@ -28,21 +28,21 @@ fun DreamScreens(
         val screenComponent = remember(screen.configuration) { screen.instance }
 
         when (screenComponent) {
-            is RootComponent.Child.ArtistList -> {
+            is Screen.ArtistList -> {
                 ArtistListScreen(
                     state = screenComponent.collectState(),
                     onIntent = screenComponent::handleIntent
                 )
             }
 
-            is RootComponent.Child.ArtistDetails -> {
+            is Screen.ArtistDetails -> {
                 ArtistDetailsScreen(
                     state = screenComponent.collectState(),
                     onIntent = screenComponent::handleIntent
                 )
             }
 
-            is RootComponent.Child.Profile -> {
+            is Screen.Profile -> {
                 ProfileScreen(
                     state = screenComponent.collectState(),
                     onIntent = screenComponent::handleIntent
