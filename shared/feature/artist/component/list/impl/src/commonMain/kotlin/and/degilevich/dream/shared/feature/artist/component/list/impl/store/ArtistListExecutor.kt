@@ -8,7 +8,7 @@ import and.degilevich.dream.shared.feature.artist.component.list.api.component.m
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.feature.artist.core.api.logic.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs

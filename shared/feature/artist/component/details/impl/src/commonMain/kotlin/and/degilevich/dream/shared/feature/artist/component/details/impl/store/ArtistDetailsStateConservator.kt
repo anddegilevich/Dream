@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
-import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.StoreStateConservator
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs

@@ -9,7 +9,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.foundation.abstraction)
             api(projects.shared.design.system)
-            api(projects.shared.feature.artist.model.core)
+            api(projects.shared.feature.artist.model.core.api)
         }
     }
 }

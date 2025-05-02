@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.feature.artist.core.api.logic.usecase.GetArti
 import and.degilevich.dream.shared.feature.artist.core.api.source.local.ArtistLocalDataSource
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.remote.ArtistRemoteDataSource
-import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

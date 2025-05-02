@@ -23,6 +23,9 @@ kotlin {
             implementation(projects.shared.template.component)
 
             // Feature
+            implementation(projects.shared.feature.image.model.artifact.impl)
+
+            implementation(projects.shared.feature.artist.model.core.impl)
             implementation(projects.shared.feature.artist.core.impl)
             implementation(projects.shared.feature.artist.design.impl)
         }

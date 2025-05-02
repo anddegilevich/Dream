@@ -1,7 +1,7 @@
 package and.degilevich.dream
 
 import and.degilevich.dream.shared.di.appModule
-import and.degilevich.dream.shared.logger.DILogger
+import and.degilevich.dream.shared.di.logger.DILogger
 import and.degilevich.dream.shared.logger.Log
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

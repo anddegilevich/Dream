@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.design.api.mapper
 
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
-import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 
 internal class ArtistCardUIStateMapperImpl : ArtistCardUIStateMapper {
     override fun map(
