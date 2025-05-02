@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIData
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -31,8 +31,8 @@ fun ArtistCardLightPreview() {
     }
 }
 
-private fun providePreviewArtistUIItem(): ArtistCardUIState {
-    return ArtistCardUIState(
+private fun providePreviewArtistUIItem(): ArtistCardUIData {
+    return ArtistCardUIData(
         id = "1",
         name = "Artist Name"
     )

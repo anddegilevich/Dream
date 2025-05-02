@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
 import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIData
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ArtistCard(
-    state: ArtistCardUIState,
+    state: ArtistCardUIData,
     modifier: Modifier = Modifier,
     onCardClicked: (String) -> Unit
 ) {

@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.artist.design.api.mapper
 
-import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIData
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 
-internal class ArtistCardUIStateMapperImpl : ArtistCardUIStateMapper {
+internal class ArtistCardUIDataMapperImpl : ArtistCardUIDataMapper {
     override fun map(
         artist: ArtistData,
         isEnabled: Boolean
-    ): ArtistCardUIState {
+    ): ArtistCardUIData {
         return with(artist) {
-            ArtistCardUIState(
+            ArtistCardUIData(
                 id = id,
                 name = name,
                 iconUrl = artist.images.firstOrNull()?.url.orEmpty(),

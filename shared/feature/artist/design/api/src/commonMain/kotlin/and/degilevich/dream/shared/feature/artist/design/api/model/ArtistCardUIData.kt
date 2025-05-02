@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 import androidx.compose.runtime.Immutable
 
 @Immutable
-data class ArtistCardUIState(
+data class ArtistCardUIData(
     override val id: String = "",
     val name: String = "",
     val iconUrl: String = "",

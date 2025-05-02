@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.component.model
 
-import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIState
+import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
@@ -10,7 +10,7 @@ import kotlinx.collections.immutable.persistentListOf
 data class ArtistDetailsUIState(
     val artistIconUrl: String,
     val artistName: String,
-    val similarArtists: ImmutableList<ArtistCardUIState>
+    val similarArtists: ImmutableList<ArtistCardUIData>
 ) {
     companion object : EmptyFactory<ArtistDetailsUIState> {
         override fun empty(): ArtistDetailsUIState {
