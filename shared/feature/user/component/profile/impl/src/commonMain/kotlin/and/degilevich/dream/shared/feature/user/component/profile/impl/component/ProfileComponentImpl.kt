@@ -6,19 +6,16 @@ import and.degilevich.dream.shared.feature.user.component.profile.api.componen.m
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileUIState
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.ProfileStoreComponent
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.model.ProfileState
-import and.degilevich.dream.shared.template.component.DreamUIStoreComponent
+import and.degilevich.dream.shared.template.component.UIStoreComponentTemplate
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.mvikotlin.core.store.StoreFactory
 
 class ProfileComponentImpl(
-    componentContext: ComponentContext,
-    storeFactory: StoreFactory
-) : DreamUIStoreComponent<ProfileUIState, ProfileIntent, ProfileSideEffect, ProfileState>(
+    componentContext: ComponentContext
+) : UIStoreComponentTemplate<ProfileUIState, ProfileIntent, ProfileSideEffect, ProfileState>(
     componentContext = componentContext,
     storeComponentFactory = { childComponentContext ->
         ProfileStoreComponent(
-            componentContext = childComponentContext,
-            storeFactory = storeFactory
+            componentContext = childComponentContext
         )
     },
     uiStateMapper = ProfileUIStateMapper(),

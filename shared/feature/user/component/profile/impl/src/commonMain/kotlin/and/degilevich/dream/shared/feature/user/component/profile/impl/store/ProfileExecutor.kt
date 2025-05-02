@@ -8,7 +8,7 @@ import and.degilevich.dream.shared.foundation.decompose.component.store.executor
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerResult
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerSource
-import and.degilevich.dream.shared.navigation.api.DreamNavigator
+import and.degilevich.dream.shared.navigation.api.AppNavigator
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnStart
@@ -22,7 +22,7 @@ internal class ProfileExecutor(
     lifecycle: Lifecycle
 ) : ExecutorAbs<ProfileState, ProfileIntent, ProfileSideEffect>(lifecycle = lifecycle), KoinComponent {
 
-    private val navigator: DreamNavigator by inject()
+    private val navigator: AppNavigator by inject()
     private val filePickerManager: FilePickerManager by inject()
 
     init {
@@ -98,16 +98,16 @@ internal class ProfileExecutor(
     }
 
     private fun setIconUri(uri: String) {
-        reduce { state ->
-            state.copy(
+        reduce {
+            copy(
                 iconUri = uri
             )
         }
     }
 
     private fun setPhotosUris(uris: List<String>) {
-        reduce { state ->
-            state.copy(profilePhotosUris = uris)
+        reduce {
+            copy(profilePhotosUris = uris)
         }
     }
 

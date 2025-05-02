@@ -193,7 +193,7 @@ glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = 
 
 mvikotlin = ["mvikotlin", "mvikotlin-main", "mvikotlin-logging", "mvikotlin-timetravel", "mvikotlin-extensions-coroutines"]
 coil = ["coil-core", "coil-compose", "coil-network-ktor3"]
-decompose = ["decompose", "essenty-lifecycle", "essenty-lifecycle-coroutines", "essenty-state-keaper"]
+decompose = ["decompose", "essenty-lifecycle", "essenty-lifecycle-coroutines", "essenty-state-keaper", "decompose-extensions-compose"]
 
 [plugins]
 

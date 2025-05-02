@@ -10,7 +10,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.decompose.extensions.compose)
 
-            implementation(projects.shared.foundation.decompose.compose)
+            implementation(projects.shared.foundation.decompose)
             implementation(projects.shared.core.toast.api)
             implementation(projects.shared.core.filepicker.api)
 

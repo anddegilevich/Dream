@@ -3,19 +3,17 @@ package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
-import and.degilevich.dream.shared.template.component.DreamStoreComponent
+import and.degilevich.dream.shared.template.component.StoreComponentTemplate
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.mvikotlin.core.store.StoreFactory
 
 internal class ArtistListStoreComponent(
-    componentContext: ComponentContext,
-    storeFactory: StoreFactory
-) : DreamStoreComponent<
+    componentContext: ComponentContext
+) : StoreComponentTemplate<
     ArtistListState,
     ArtistListIntent,
     ArtistListSideEffect
     >(
     componentContext = componentContext,
-    storeFactory = ArtistListStoreFactory(storeFactory = storeFactory),
+    storeFactory = ArtistListStoreFactory(),
     stateConservator = ArtistListStateConservator()
 )

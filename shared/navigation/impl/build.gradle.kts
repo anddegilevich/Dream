@@ -9,7 +9,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.navigation.api)
-            implementation(projects.shared.foundation.dispatcher)
+            implementation(projects.shared.foundation.coroutine)
         }
     }
 }

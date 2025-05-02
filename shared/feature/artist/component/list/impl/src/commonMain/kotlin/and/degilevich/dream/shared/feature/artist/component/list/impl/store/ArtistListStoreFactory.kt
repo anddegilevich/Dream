@@ -1,16 +1,13 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
-import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactoryAbs
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import com.arkivanov.mvikotlin.core.store.StoreFactory
+import and.degilevich.dream.shared.template.component.ComponentStoreFactoryTemplate
 
-internal class ArtistListStoreFactory(
-    storeFactory: StoreFactory
-) : ComponentStoreFactoryAbs<ArtistListState, ArtistListIntent, ArtistListSideEffect>(
-    storeFactory = storeFactory,
-    storeName = ArtistListStore::class.className(),
-    executorFactory = { lifecycle -> ArtistListExecutor(lifecycle = lifecycle) },
-)
+internal class ArtistListStoreFactory :
+    ComponentStoreFactoryTemplate<ArtistListState, ArtistListIntent, ArtistListSideEffect>(
+        storeName = ArtistListStore::class.className(),
+        executorFactory = { lifecycle -> ArtistListExecutor(lifecycle = lifecycle) },
+    )

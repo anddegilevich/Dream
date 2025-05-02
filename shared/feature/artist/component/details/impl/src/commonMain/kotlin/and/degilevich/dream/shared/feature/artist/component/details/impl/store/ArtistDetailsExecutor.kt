@@ -9,10 +9,10 @@ import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
-import and.degilevich.dream.shared.foundation.dispatcher.ext.flow.flowOnBackground
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
-import and.degilevich.dream.shared.navigation.api.DreamNavigator
+import and.degilevich.dream.shared.navigation.api.AppNavigator
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
@@ -26,7 +26,7 @@ internal class ArtistDetailsExecutor(
 ) : ExecutorAbs<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect>(lifecycle),
     KoinComponent {
 
-    private val navigator: DreamNavigator by inject()
+    private val navigator: AppNavigator by inject()
     private val getArtistFlowUseCase: GetArtistFlowUseCase by inject()
     private val getArtistsFlowUseCase: GetArtistsFlowUseCase by inject()
 
@@ -68,8 +68,8 @@ internal class ArtistDetailsExecutor(
     }
 
     private fun setArtist(artist: ArtistData) {
-        reduce { state ->
-            state.copy(
+        reduce {
+            copy(
                 artist = artist
             )
         }
@@ -99,16 +99,16 @@ internal class ArtistDetailsExecutor(
     }
 
     private fun setSimilarArtists(artists: List<ArtistData>) {
-        reduce { state ->
-            state.copy(
+        reduce {
+            copy(
                 similarArtists = artists
             )
         }
     }
 
     private fun setLoading(isLoading: Boolean) {
-        reduce { state ->
-            state.copy(
+        reduce {
+            copy(
                 isLoading = isLoading
             )
         }

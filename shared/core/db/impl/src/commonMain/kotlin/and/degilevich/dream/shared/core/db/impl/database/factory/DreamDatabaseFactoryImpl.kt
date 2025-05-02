@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.core.db.impl.database.factory
 
 import and.degilevich.dream.shared.core.db.api.database.DreamDatabase
 import and.degilevich.dream.shared.core.db.impl.database.builder.DreamDatabaseBuilderFactory
-import and.degilevich.dream.shared.foundation.dispatcher.DefaultKMPDispatchers
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.DefaultKMPDispatchers
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 
 internal class DreamDatabaseFactoryImpl(

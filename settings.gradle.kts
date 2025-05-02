@@ -26,13 +26,9 @@ include(":shared:foundation:primitive")
 include(":shared:foundation:coroutine")
 include(":shared:foundation:serialization")
 include(":shared:foundation:abstraction")
-include(":shared:foundation:dispatcher")
+include(":shared:foundation:decompose")
 include(":shared:foundation:compose")
 include(":shared:foundation:filepicker")
-
-include(":shared:foundation:decompose:navigation")
-include(":shared:foundation:decompose:compose")
-include(":shared:foundation:decompose:component")
 
 // =====================================================================================================================
 // Config

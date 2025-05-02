@@ -7,15 +7,13 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.ArtistDetailsStoreComponent
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
-import and.degilevich.dream.shared.template.component.DreamUIStoreComponent
+import and.degilevich.dream.shared.template.component.UIStoreComponentTemplate
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.mvikotlin.core.store.StoreFactory
 
 class ArtistDetailsComponentImpl(
     componentContext: ComponentContext,
-    storeFactory: StoreFactory,
     navArgs: ArtistDetailsNavArgs
-) : DreamUIStoreComponent<
+) : UIStoreComponentTemplate<
     ArtistDetailsUIState,
     ArtistDetailsIntent,
     ArtistDetailsSideEffect,
@@ -25,7 +23,6 @@ class ArtistDetailsComponentImpl(
     storeComponentFactory = { childComponentContext ->
         ArtistDetailsStoreComponent(
             componentContext = childComponentContext,
-            storeFactory = storeFactory,
             navArgs = navArgs
         )
     },

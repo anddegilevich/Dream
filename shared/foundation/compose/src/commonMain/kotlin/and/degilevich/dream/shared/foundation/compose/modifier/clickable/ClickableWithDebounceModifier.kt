@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.compose.modifier.clickable
 
 import and.degilevich.dream.shared.foundation.coroutine.mutex.withLockOrReturn
-import and.degilevich.dream.shared.foundation.dispatcher.ext.coroutine.withBackgroundContext
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

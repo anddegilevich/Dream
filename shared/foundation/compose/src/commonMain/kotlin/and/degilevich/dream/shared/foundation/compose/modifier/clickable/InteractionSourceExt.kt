@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.foundation.compose.modifier.clickable
 
-import and.degilevich.dream.shared.foundation.dispatcher.ext.coroutine.withBackgroundContext
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.runtime.Composable

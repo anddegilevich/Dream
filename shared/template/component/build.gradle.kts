@@ -1,12 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
+    alias(libs.plugins.project.koin)
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.foundation.decompose.component)
+            api(projects.shared.foundation.decompose)
             api(projects.shared.logger)
             api(projects.shared.resource.api)
             api(projects.shared.core.toast.api)

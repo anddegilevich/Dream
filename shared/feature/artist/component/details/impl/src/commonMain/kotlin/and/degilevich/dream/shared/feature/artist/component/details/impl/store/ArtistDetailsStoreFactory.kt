@@ -3,18 +3,14 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
-import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactoryAbs
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import com.arkivanov.mvikotlin.core.store.StoreFactory
+import and.degilevich.dream.shared.template.component.ComponentStoreFactoryTemplate
 
-internal class ArtistDetailsStoreFactory(
-    storeFactory: StoreFactory
-) : ComponentStoreFactoryAbs<
+internal class ArtistDetailsStoreFactory : ComponentStoreFactoryTemplate<
     ArtistDetailsState,
     ArtistDetailsIntent,
     ArtistDetailsSideEffect
     >(
-    storeFactory = storeFactory,
     storeName = ArtistDetailsStore::class.className(),
     executorFactory = { lifecycle -> ArtistDetailsExecutor(lifecycle = lifecycle) }
 )

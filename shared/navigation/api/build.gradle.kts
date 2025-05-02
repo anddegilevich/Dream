@@ -7,7 +7,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.foundation.decompose.navigation)
+            api(projects.shared.foundation.decompose)
             api(projects.shared.foundation.abstraction)
         }
     }
