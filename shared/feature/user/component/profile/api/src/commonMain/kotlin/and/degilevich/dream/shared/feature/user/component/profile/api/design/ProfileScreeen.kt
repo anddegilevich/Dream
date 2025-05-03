@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.feature.user.component.profile.api.design
 
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.system.button.PrimaryButton
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileIntent
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileUIState
@@ -41,7 +42,7 @@ fun ProfileScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Theme.colors.background)
+            .themeBackground()
             .safeContentPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

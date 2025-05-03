@@ -23,6 +23,7 @@ kotlin {
                 export(projects.shared.app.api)
                 export(projects.shared.di)
                 export(projects.shared.logger)
+                export(projects.shared.widget.impl)
             }
         }
     }
@@ -52,6 +53,9 @@ kotlin {
             implementation(projects.shared.feature.artist.component.list.impl)
 
             implementation(projects.shared.feature.user.component.profile.impl)
+
+            // Widget
+            api(projects.shared.widget.impl)
 
             api(projects.shared.app.api)
         }

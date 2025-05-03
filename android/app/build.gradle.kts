@@ -51,6 +51,7 @@ dependencies {
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
     implementation(libs.koin.android)
+    implementation(libs.bundles.glance)
 
     implementation(libs.androidx.activity.compose)
 
@@ -62,6 +63,7 @@ dependencies {
     implementation(projects.shared.di)
     implementation(projects.shared.app.impl)
 
+    // Baseline profile
     implementation(libs.androidx.profileinstaller)
     baselineProfile(projects.android.baseline)
 }

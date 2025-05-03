@@ -7,8 +7,8 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistCard
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.Res
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistIcon
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -34,7 +34,7 @@ fun ArtistDetailsScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Theme.colors.background)
+            .themeBackground()
             .statusBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

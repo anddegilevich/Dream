@@ -6,9 +6,9 @@ import and.degilevich.dream.shared.feature.artist.component.list.api.component.m
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistCard
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.Res
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
-import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -42,7 +42,7 @@ fun ArtistListScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(Theme.colors.background),
+            .themeBackground(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(all = 16.dp)

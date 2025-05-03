@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Dream</string>
     <string name="title_artists">Artists</string>
     <string name="title_similar_artists">Similar artists</string>
     <string name="button_back">Back</string>

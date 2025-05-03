@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIData
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -42,9 +42,7 @@ fun ArtistCard(
                 color = Theme.colors.outline,
                 shape = RoundedCornerShape(corner = CornerSize(8.dp)),
             )
-            .background(
-                color = Theme.colors.background
-            )
+            .themeBackground()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

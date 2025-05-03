@@ -2,12 +2,11 @@ package and.degilevich.dream.shared.app.api.compose
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.api.compose.ext.showToast
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.system.snackbar.AppSnackbar
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.filepicker.FilePicker
 import and.degilevich.dream.shared.foundation.filepicker.state.rememberFilePickerState
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,7 +46,7 @@ fun ComposeApp(
         Box(
             modifier = modifier
                 .fillMaxSize()
-                .background(Theme.colors.background),
+                .themeBackground(),
         ) {
             ComposeScreens(
                 screens = rootComponent.screenStack

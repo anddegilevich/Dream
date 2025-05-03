@@ -128,8 +128,13 @@ include(":shared:app:api")
 include(":shared:app:impl")
 
 // =====================================================================================================================
+// Widget
+
+include(":shared:widget:api")
+include(":shared:widget:impl")
+
+// =====================================================================================================================
 // Android
 
 include(":android:app")
 include(":android:baseline")
-include(":android:widget")

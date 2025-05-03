@@ -186,6 +186,7 @@ sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 # Glance - https://developer.android.com/develop/ui/compose/glance
+glance = { module = "androidx.glance:glance", version.ref = "glance" }
 glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
 
 [bundles]
@@ -193,6 +194,7 @@ glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = 
 mvikotlin = ["mvikotlin", "mvikotlin-main", "mvikotlin-logging", "mvikotlin-timetravel", "mvikotlin-extensions-coroutines"]
 coil = ["coil-core", "coil-compose", "coil-network-ktor3"]
 decompose = ["decompose", "essenty-lifecycle", "essenty-lifecycle-coroutines", "essenty-state-keaper", "decompose-extensions-compose"]
+glance = ["glance", "glance-appwidget"]
 
 [plugins]
 
