@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.core.client.impl.logger.ClientLogger
 import and.degilevich.dream.shared.core.client.impl.token.client.TokenClient
 import and.degilevich.dream.shared.core.client.impl.token.mappers.mapToBearer
 import and.degilevich.dream.shared.core.client.impl.token.storage.TokensStorage
+import and.degilevich.dream.shared.foundation.serialization.format.JsonSerialFormat
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpTimeout
@@ -16,7 +17,6 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.serialization.json.Json
 import kotlin.time.Duration.Companion.seconds
 
 internal class RemoteClientImpl(
@@ -36,12 +36,7 @@ internal class RemoteClientImpl(
         }
         install(ContentNegotiation) {
             json(
-                json = Json {
-                    prettyPrint = true
-                    isLenient = true
-                    ignoreUnknownKeys = true
-                    useAlternativeNames = false
-                }
+                json = JsonSerialFormat.json
             )
         }
         install(DefaultRequest) {

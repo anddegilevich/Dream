@@ -9,7 +9,12 @@ import kotlinx.serialization.modules.SerializersModule
 
 object JsonSerialFormat : StringFormat {
 
-    private val json: Json = Json { ignoreUnknownKeys = true }
+    val json: Json = Json {
+        prettyPrint = true
+        isLenient = true
+        ignoreUnknownKeys = true
+        useAlternativeNames = false
+    }
 
     override val serializersModule: SerializersModule = json.serializersModule
 

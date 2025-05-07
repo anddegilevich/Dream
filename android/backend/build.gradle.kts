@@ -25,4 +25,5 @@ dependencies {
     testImplementation(libs.kotlin.test.junit)
 
     implementation(projects.shared.core.service.api)
+    implementation(projects.shared.foundation.serialization)
 }

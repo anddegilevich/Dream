@@ -79,12 +79,12 @@ buildkonfig {
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = authBaseUrlField,
-            value = "http://127.0.0.1:8080/token"
+            value = "http://10.0.2.2:8080/token"
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = apiBaseUrlField,
-            value = "http://127.0.0.1:8080"
+            value = "http://10.0.2.2:8080"
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
