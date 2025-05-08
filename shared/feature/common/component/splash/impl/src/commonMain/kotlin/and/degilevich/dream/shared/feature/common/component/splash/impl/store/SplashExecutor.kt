@@ -35,11 +35,11 @@ internal class SplashExecutor(
     private fun processNavigation() {
         scope.launch {
             withBackgroundContext { delay(1.seconds) }
-            navigateToDashboard()
+            navigateToHomePage()
         }
     }
 
-    private fun navigateToDashboard() {
-        navigator.screenNavigator.replaceCurrent(ScreenConfig.Dashboard)
+    private fun navigateToHomePage() {
+        navigator.screenNavigator.replaceCurrent(ScreenConfig.ArtistList)
     }
 }

@@ -61,7 +61,7 @@ fun ArtistListScreen(
                     ) {
                         onIntent(ArtistListIntent.OnProfileClicked)
                     }
-                    .size(65.dp),
+                    .size(64.dp),
                 painter = painterResource(Res.images.ic_duck),
                 tint = Theme.colors.brandGreen,
                 contentDescription = null,

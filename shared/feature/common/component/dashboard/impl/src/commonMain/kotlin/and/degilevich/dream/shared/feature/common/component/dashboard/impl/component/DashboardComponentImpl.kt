@@ -15,7 +15,8 @@ class DashboardComponentImpl(
     componentContext: ComponentContext
 ) : MVIComponentTemplate<DashboardUIState, DashboardIntent, DashboardSideEffect>(
     componentContext = componentContext
-), DashboardComponent {
+),
+    DashboardComponent {
     override val state: StateFlow<DashboardUIState> = MutableStateFlow(DashboardUIState())
     override val sideEffect: Flow<DashboardSideEffect> = emptyFlow()
 
