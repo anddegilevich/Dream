@@ -49,6 +49,9 @@ kotlin {
             api(projects.shared.di)
 
             // Feature
+            implementation(projects.shared.feature.common.component.splash.impl)
+            implementation(projects.shared.feature.common.component.dashboard.impl)
+
             implementation(projects.shared.feature.artist.component.details.impl)
             implementation(projects.shared.feature.artist.component.list.impl)
 

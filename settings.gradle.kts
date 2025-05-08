@@ -79,12 +79,20 @@ include(":shared:template:component")
 // =====================================================================================================================
 // Feature
 
+// Common
+include(":shared:feature:common:component:splash:api")
+include(":shared:feature:common:component:splash:impl")
+
+include(":shared:feature:common:component:dashboard:api")
+include(":shared:feature:common:component:dashboard:impl")
+
 // Image
 include(":shared:feature:image:model:artifact:api")
 include(":shared:feature:image:model:artifact:impl")
 
 // Artist
 include(":shared:feature:artist:model:artifact:api")
+
 include(":shared:feature:artist:model:core:api")
 include(":shared:feature:artist:model:core:impl")
 
@@ -105,6 +113,7 @@ include(":shared:feature:album:model:artifact:api")
 
 // Track
 include(":shared:feature:track:model:artifact:api")
+
 include(":shared:feature:track:model:core:api")
 
 // User

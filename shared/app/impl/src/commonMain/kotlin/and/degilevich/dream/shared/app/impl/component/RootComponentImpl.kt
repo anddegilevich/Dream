@@ -9,6 +9,8 @@ import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.core.toast.api.channel.ToastChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
+import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
+import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
 import and.degilevich.dream.shared.feature.user.component.profile.impl.component.ProfileComponentImpl
 import and.degilevich.dream.shared.foundation.coroutine.dispatcher.DefaultKMPDispatchers
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
@@ -47,7 +49,7 @@ class RootComponentImpl(
     override val screenStack: Value<ChildStack<ScreenConfig, Screen>> = childStack(
         source = navigationComponent.screenNavigationSource,
         serializer = ScreenConfig.serializer(),
-        initialConfiguration = ScreenConfig.ArtistList,
+        initialConfiguration = ScreenConfig.Splash,
         handleBackButton = true,
         childFactory = ::screenFactory,
     )
@@ -67,6 +69,18 @@ class RootComponentImpl(
     ): Screen {
         Log.info("Navigate to -> $screenConfig")
         return when (screenConfig) {
+            is ScreenConfig.Splash -> Screen.Splash(
+                component = SplashComponentImpl(
+                    componentContext = componentContext
+                )
+            )
+
+            is ScreenConfig.Dashboard -> Screen.Dashboard(
+                component = DashboardComponentImpl(
+                    componentContext = componentContext
+                )
+            )
+
             is ScreenConfig.ArtistList -> {
                 Screen.ArtistList(
                     component = ArtistListComponentImpl(
@@ -84,7 +98,7 @@ class RootComponentImpl(
                 )
             }
 
-            ScreenConfig.Profile -> {
+            is ScreenConfig.Profile -> {
                 Screen.Profile(
                     component = ProfileComponentImpl(
                         componentContext = componentContext

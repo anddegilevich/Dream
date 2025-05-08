@@ -6,6 +6,13 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed interface ScreenConfig {
 
+    // Common
+    @Serializable
+    data object Splash : ScreenConfig
+
+    @Serializable
+    data object Dashboard : ScreenConfig
+
     // Artist
     @Serializable
     data object ArtistList : ScreenConfig

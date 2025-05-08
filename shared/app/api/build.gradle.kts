@@ -18,6 +18,9 @@ kotlin {
 
             api(projects.shared.template.component)
 
+            api(projects.shared.feature.common.component.splash.api)
+            api(projects.shared.feature.common.component.dashboard.api)
+
             api(projects.shared.feature.artist.component.details.api)
             api(projects.shared.feature.artist.component.list.api)
 

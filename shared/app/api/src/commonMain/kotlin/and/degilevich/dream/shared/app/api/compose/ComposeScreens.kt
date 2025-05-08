@@ -4,6 +4,8 @@ import and.degilevich.dream.shared.app.api.component.children.Screen
 import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.artist.component.list.api.design.ArtistListScreen
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
+import and.degilevich.dream.shared.feature.common.component.splash.api.design.SplashScreen
 import and.degilevich.dream.shared.feature.user.component.profile.api.design.ProfileScreen
 import and.degilevich.dream.shared.foundation.decompose.compose.animation.defaultStackAnimation
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
@@ -28,6 +30,15 @@ fun ComposeScreens(
         val screenComponent = remember(screen.configuration) { screen.instance }
 
         when (screenComponent) {
+            is Screen.Splash -> {
+                SplashScreen()
+            }
+
+            is Screen.Dashboard -> DashboardScreen(
+                state = screenComponent.collectState(),
+                onIntent = screenComponent::handleIntent
+            )
+
             is Screen.ArtistList -> {
                 ArtistListScreen(
                     state = screenComponent.collectState(),
