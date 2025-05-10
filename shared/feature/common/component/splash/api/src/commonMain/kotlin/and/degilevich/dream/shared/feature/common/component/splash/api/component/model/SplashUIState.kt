@@ -4,10 +4,8 @@ import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFac
 import androidx.compose.runtime.Immutable
 
 @Immutable
-class SplashUIState {
-    companion object : EmptyFactory<SplashUIState> {
-        override fun empty(): SplashUIState {
-            return SplashUIState()
-        }
+data object SplashUIState : EmptyFactory<SplashUIState> {
+    override fun empty(): SplashUIState {
+        return SplashUIState
     }
 }

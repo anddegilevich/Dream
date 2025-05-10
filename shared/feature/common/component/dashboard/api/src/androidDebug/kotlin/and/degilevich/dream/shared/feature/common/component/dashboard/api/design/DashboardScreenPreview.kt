@@ -32,5 +32,7 @@ private fun DashboardScreenLightPreview() {
 }
 
 private fun provideDashboardUIState(): DashboardUIState {
-    return DashboardUIState()
+    return DashboardUIState(
+        isLoading = false
+    )
 }

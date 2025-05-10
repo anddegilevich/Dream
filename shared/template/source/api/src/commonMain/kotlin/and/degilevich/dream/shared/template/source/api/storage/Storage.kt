@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.template.source.storage
+package and.degilevich.dream.shared.template.source.api.storage
 
 interface Storage<T> {
     fun save(value: T)

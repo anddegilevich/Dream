@@ -4,10 +4,14 @@ import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFac
 import androidx.compose.runtime.Immutable
 
 @Immutable
-class DashboardUIState {
+data class DashboardUIState(
+    val isLoading: Boolean
+) {
     companion object : EmptyFactory<DashboardUIState> {
         override fun empty(): DashboardUIState {
-            return DashboardUIState()
+            return DashboardUIState(
+                isLoading = false
+            )
         }
     }
 }

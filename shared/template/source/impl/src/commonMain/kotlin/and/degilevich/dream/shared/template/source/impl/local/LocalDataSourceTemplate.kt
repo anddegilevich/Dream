@@ -1,10 +1,10 @@
-package and.degilevich.dream.shared.template.source.local
+package and.degilevich.dream.shared.template.source.impl.local
 
 import and.degilevich.dream.shared.core.db.api.database.AppDatabase
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-abstract class LocalDataSourceTemplate : LocalDataSource, KoinComponent {
+abstract class LocalDataSourceTemplate : KoinComponent {
     protected val database: AppDatabase by inject()
 
     protected fun <T> T?.foldNullableEntity(): Result<T> {

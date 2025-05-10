@@ -73,7 +73,9 @@ include(":shared:design:system")
 // =====================================================================================================================
 // Template
 
-include(":shared:template:source")
+include(":shared:template:source:api")
+include(":shared:template:source:impl")
+
 include(":shared:template:component:api")
 include(":shared:template:component:impl")
 

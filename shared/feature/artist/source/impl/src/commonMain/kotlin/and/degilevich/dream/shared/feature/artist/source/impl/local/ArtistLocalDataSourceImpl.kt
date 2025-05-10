@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.source.impl.local
 
 import and.degilevich.dream.shared.core.db.api.feature.artist.dao.ArtistDao
-import and.degilevich.dream.shared.template.source.local.LocalDataSourceTemplate
+import and.degilevich.dream.shared.template.source.impl.local.LocalDataSourceTemplate
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.source.api.local.ArtistLocalDataSource

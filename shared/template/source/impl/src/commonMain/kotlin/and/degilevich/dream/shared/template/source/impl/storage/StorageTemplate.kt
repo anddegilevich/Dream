@@ -1,8 +1,9 @@
-package and.degilevich.dream.shared.template.source.storage
+package and.degilevich.dream.shared.template.source.impl.storage
 
 import and.degilevich.dream.shared.core.storage.api.PreferenceStorage
 import and.degilevich.dream.shared.foundation.serialization.decodeFromJson
 import and.degilevich.dream.shared.foundation.serialization.encodeToJsonOrNull
+import and.degilevich.dream.shared.template.source.api.storage.Storage
 import kotlinx.serialization.KSerializer
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

@@ -8,7 +8,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.foundation.abstraction)
-            api(projects.shared.template.source)
+            implementation(projects.shared.template.source.api)
             api(projects.shared.feature.artist.model.core.api)
             api(projects.shared.feature.track.model.core.api)
         }
