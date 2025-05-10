@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.compon
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardIntent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardSideEffect
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardUIState
-import and.degilevich.dream.shared.template.component.MVIComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.MVIComponentTemplate
 import com.arkivanov.decompose.ComponentContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

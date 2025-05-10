@@ -1,10 +1,10 @@
-package and.degilevich.dream.shared.template.component
+package and.degilevich.dream.shared.template.component.impl
 
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.StoreStateConservator
 import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactory
 import and.degilevich.dream.shared.foundation.decompose.component.store.StoreComponent
-import and.degilevich.dream.shared.template.component.logger.LoggerComponentLifecycleCallbacks
+import and.degilevich.dream.shared.template.component.impl.logger.LoggerComponentLifecycleCallbacks
 import com.arkivanov.decompose.ComponentContext
 import kotlin.reflect.KClass
 

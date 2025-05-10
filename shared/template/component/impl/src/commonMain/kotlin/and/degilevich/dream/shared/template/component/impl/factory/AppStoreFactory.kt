@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.template.component.factory
+package and.degilevich.dream.shared.template.component.impl.factory
 
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory

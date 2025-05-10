@@ -41,6 +41,7 @@ kotlin {
 
             // Core
             implementation(projects.shared.core.filepicker.api)
+            implementation(projects.shared.core.toast.api)
 
             // Navigation
             implementation(projects.shared.navigation.impl)

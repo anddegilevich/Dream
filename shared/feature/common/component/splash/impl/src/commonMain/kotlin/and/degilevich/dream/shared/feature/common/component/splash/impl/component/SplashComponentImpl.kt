@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.common.component.splash.api.component
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashUIState
 import and.degilevich.dream.shared.feature.common.component.splash.impl.store.SplashStoreComponent
 import and.degilevich.dream.shared.feature.common.component.splash.impl.store.model.SplashState
-import and.degilevich.dream.shared.template.component.UIStoreComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.UIStoreComponentTemplate
 import com.arkivanov.decompose.ComponentContext
 
 class SplashComponentImpl(

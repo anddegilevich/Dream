@@ -16,8 +16,6 @@ kotlin {
 
             api(projects.shared.navigation.api)
 
-            api(projects.shared.template.component)
-
             api(projects.shared.feature.common.component.splash.api)
             api(projects.shared.feature.common.component.dashboard.api)
 

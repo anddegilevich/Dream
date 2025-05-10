@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.user.component.profile.api.componen.m
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileUIState
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.ProfileStoreComponent
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.model.ProfileState
-import and.degilevich.dream.shared.template.component.UIStoreComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.UIStoreComponentTemplate
 import com.arkivanov.decompose.ComponentContext
 
 class ProfileComponentImpl(

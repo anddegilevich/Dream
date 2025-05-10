@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.template.component.logger
+package and.degilevich.dream.shared.template.component.impl.logger
 
 import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent

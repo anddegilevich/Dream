@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.component
 
-import and.degilevich.dream.shared.template.component.UIStoreComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.UIStoreComponentTemplate
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.ArtistListComponent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect

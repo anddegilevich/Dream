@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.template.component
+package and.degilevich.dream.shared.template.component.impl
 
 import and.degilevich.dream.shared.foundation.decompose.component.store.reducer.DefaultReducer
 import and.degilevich.dream.shared.foundation.decompose.component.store.reducer.ReduceMessage

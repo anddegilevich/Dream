@@ -8,6 +8,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(projects.shared.template.component.impl)
             api(projects.shared.feature.common.component.splash.api)
         }
     }

@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.feature.artist.component.list.api.component.m
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import and.degilevich.dream.shared.template.component.ComponentStoreFactoryTemplate
+import and.degilevich.dream.shared.template.component.impl.ComponentStoreFactoryTemplate
 
 internal class ArtistListStoreFactory :
     ComponentStoreFactoryTemplate<ArtistListState, ArtistListIntent, ArtistListSideEffect>(

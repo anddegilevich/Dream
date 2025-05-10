@@ -9,6 +9,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(projects.shared.template.component.impl)
             api(projects.shared.feature.user.component.profile.api)
             implementation(projects.shared.core.filepicker.api)
         }

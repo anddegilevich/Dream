@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.common.component.splash.impl.store
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashIntent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
 import and.degilevich.dream.shared.feature.common.component.splash.impl.store.model.SplashState
-import and.degilevich.dream.shared.template.component.StoreComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.StoreComponentTemplate
 import com.arkivanov.decompose.ComponentContext
 
 internal class SplashStoreComponent(

@@ -20,7 +20,7 @@ kotlin {
             implementation(projects.shared.core.filepicker.impl)
 
             // Template
-            implementation(projects.shared.template.component)
+            implementation(projects.shared.template.component.impl)
 
             // Feature
             implementation(projects.shared.feature.image.model.artifact.impl)

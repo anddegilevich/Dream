@@ -51,7 +51,9 @@ internal class ArtistRemoteDataSourceImpl(
             }
     }
 
-    override suspend fun getArtistRelatedArtists(params: GetArtistRelatedArtistsParams): Result<GetArtistRelatedArtistsResult> {
+    override suspend fun getArtistRelatedArtists(
+        params: GetArtistRelatedArtistsParams
+    ): Result<GetArtistRelatedArtistsResult> {
         return service.getArtistRelatedArtists(params.mapWith(getArtistsRelatedArtistsParamsToRequestMapper))
             .foldResultSuccess { response ->
                 response.mapWith(getArtistsRelatedArtistsResponseToResultMapper)
