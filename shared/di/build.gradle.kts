@@ -35,6 +35,7 @@ kotlin {
 
             implementation(projects.shared.feature.track.model.artifact.impl)
             implementation(projects.shared.feature.track.model.core.impl)
+            implementation(projects.shared.feature.track.source.impl)
         }
     }
 }

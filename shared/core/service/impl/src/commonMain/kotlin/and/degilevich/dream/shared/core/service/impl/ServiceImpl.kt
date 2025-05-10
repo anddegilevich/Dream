@@ -20,6 +20,8 @@ import and.degilevich.dream.shared.core.service.api.requests.getRecommendations.
 import and.degilevich.dream.shared.core.service.api.requests.getRecommendations.GetRecommendationsResponse
 import and.degilevich.dream.shared.core.service.api.requests.getTrack.GetTrackRequest
 import and.degilevich.dream.shared.core.service.api.requests.getTrack.GetTrackResponse
+import and.degilevich.dream.shared.core.service.api.requests.search.SearchRequest
+import and.degilevich.dream.shared.core.service.api.requests.search.SearchResponse
 import io.ktor.client.request.parameter
 import io.ktor.client.request.url
 
@@ -77,6 +79,16 @@ internal class ServiceImpl(
         return remoteClient.safeGet {
             url("recommendations")
             parameter("limit", request.limit)
+        }.foldResponse()
+    }
+
+    override suspend fun search(request: SearchRequest): Result<SearchResponse> {
+        return remoteClient.safeGet {
+            url("search")
+            parameter("q", request.q)
+            parameter("limit", request.limit)
+            parameter("offset", request.offset)
+            parameter("type", request.type)
         }.foldResponse()
     }
 }

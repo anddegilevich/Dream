@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage") // Fixes dependencyResolutionManagement.repositories warning
+
 rootProject.name = "Dream"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
@@ -125,6 +127,9 @@ include(":shared:feature:track:model:artifact:impl")
 
 include(":shared:feature:track:model:core:api")
 include(":shared:feature:track:model:core:impl")
+
+include(":shared:feature:track:source:api")
+include(":shared:feature:track:source:impl")
 
 // User
 include(":shared:feature:user:component:profile:api")

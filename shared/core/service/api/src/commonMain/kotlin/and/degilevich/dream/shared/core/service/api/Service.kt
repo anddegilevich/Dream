@@ -16,6 +16,8 @@ import and.degilevich.dream.shared.core.service.api.requests.getRecommendations.
 import and.degilevich.dream.shared.core.service.api.requests.getRecommendations.GetRecommendationsResponse
 import and.degilevich.dream.shared.core.service.api.requests.getTrack.GetTrackRequest
 import and.degilevich.dream.shared.core.service.api.requests.getTrack.GetTrackResponse
+import and.degilevich.dream.shared.core.service.api.requests.search.SearchRequest
+import and.degilevich.dream.shared.core.service.api.requests.search.SearchResponse
 
 interface Service {
     // Artist
@@ -33,4 +35,7 @@ interface Service {
     // Track
     suspend fun getTrack(request: GetTrackRequest): Result<GetTrackResponse>
     suspend fun getRecommendations(request: GetRecommendationsRequest): Result<GetRecommendationsResponse>
+
+    // Search
+    suspend fun search(request: SearchRequest): Result<SearchResponse>
 }
