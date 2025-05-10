@@ -3,9 +3,9 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.artist.core.api.source.remote.ArtistRemoteDataSource
+import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs

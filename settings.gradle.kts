@@ -97,8 +97,8 @@ include(":shared:feature:artist:model:artifact:impl")
 include(":shared:feature:artist:model:core:api")
 include(":shared:feature:artist:model:core:impl")
 
-include(":shared:feature:artist:core:api")
-include(":shared:feature:artist:core:impl")
+include(":shared:feature:artist:source:api")
+include(":shared:feature:artist:source:impl")
 
 include(":shared:feature:artist:design:api")
 include(":shared:feature:artist:design:impl")

@@ -27,7 +27,7 @@ kotlin {
 
             implementation(projects.shared.feature.artist.model.artifact.impl)
             implementation(projects.shared.feature.artist.model.core.impl)
-            implementation(projects.shared.feature.artist.core.impl)
+            implementation(projects.shared.feature.artist.source.impl)
             implementation(projects.shared.feature.artist.design.impl)
 
             implementation(projects.shared.feature.album.model.artifact.impl)

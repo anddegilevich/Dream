@@ -6,14 +6,14 @@ import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
-import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.Res
-import and.degilevich.dream.shared.feature.artist.core.api.source.remote.ArtistRemoteDataSource
+import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle

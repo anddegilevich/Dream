@@ -1,6 +1,6 @@
 package and.degilevich.dream
 
-import and.degilevich.dream.shared.app.api.compose.ComposeApp
+import and.degilevich.dream.shared.app.api.design.ComposeApp
 import and.degilevich.dream.shared.app.impl.component.RootComponentImpl
 import android.graphics.Color
 import android.os.Bundle
@@ -9,29 +9,35 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.LocalOverscrollConfiguration
+import androidx.compose.foundation.LocalOverscrollFactory
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.arkivanov.decompose.defaultComponentContext
 
 class MainActivity : ComponentActivity() {
+
+    private val rootComponent by lazy {
+        RootComponentImpl(
+            componentContext = defaultComponentContext()
+        )
+    }
+
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        installSplashScreen()
+        installSplashScreen().apply {
+            setOnExitAnimationListener { splashScreen ->
+                splashScreen.remove()
+            }
+        }
         enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.dark(Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.dark(Color.TRANSPARENT)
-        )
-
-        val rootComponent = RootComponentImpl(
-            componentContext = defaultComponentContext()
+            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT)
         )
 
         setContent {
             CompositionLocalProvider(
-                LocalOverscrollConfiguration provides null
+                LocalOverscrollFactory provides null
             ) {
                 ComposeApp(
                     rootComponent = rootComponent

@@ -9,7 +9,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.feature.artist.component.list.api)
-            implementation(projects.shared.feature.artist.core.api)
+            implementation(projects.shared.feature.artist.source.api)
         }
     }
 }
