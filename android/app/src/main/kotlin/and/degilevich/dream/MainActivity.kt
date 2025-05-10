@@ -25,16 +25,8 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen().apply {
-            setOnExitAnimationListener { splashScreen ->
-                splashScreen.remove()
-            }
-        }
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
-            navigationBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT)
-        )
-
+        initSplash()
+        initEdgeToEdge()
         setContent {
             CompositionLocalProvider(
                 LocalOverscrollFactory provides null
@@ -42,6 +34,21 @@ class MainActivity : ComponentActivity() {
                 ComposeApp(
                     rootComponent = rootComponent
                 )
+            }
+        }
+    }
+
+    private fun initEdgeToEdge() {
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT)
+        )
+    }
+
+    private fun initSplash() {
+        installSplashScreen().apply {
+            setOnExitAnimationListener { splashScreen ->
+                splashScreen.remove()
             }
         }
     }

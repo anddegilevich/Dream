@@ -6,8 +6,16 @@ import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getA
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtists.GetArtistsResult
 import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
+import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtistRelatedArtists.GetArtistRelatedArtistsParams
+import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtistRelatedArtists.GetArtistRelatedArtistsResult
+import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtistTopTracks.GetArtistTopTracksParams
+import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtistTopTracks.GetArtistTopTracksResult
 import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistRelatedArtistsParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistRelatedArtistsResponseToResultMapper
 import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistTopTracksParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistTopTracksResponseToResultMapper
 import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistsParamsToRequestMapper
 import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistsResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
@@ -17,8 +25,13 @@ internal class ArtistRemoteDataSourceImpl(
     private val getArtistParamsToRequestMapper: GetArtistParamsToRequestMapper,
     private val getArtistResponseToResultMapper: GetArtistResponseToResultMapper,
     private val getArtistsParamsToRequestMapper: GetArtistsParamsToRequestMapper,
-    private val getArtistsResponseToResultMapper: GetArtistsResponseToResultMapper
+    private val getArtistsResponseToResultMapper: GetArtistsResponseToResultMapper,
+    private val getArtistsTopTracksParamsToRequestMapper: GetArtistTopTracksParamsToRequestMapper,
+    private val getArtistsTopTracksResponseToResultMapper: GetArtistTopTracksResponseToResultMapper,
+    private val getArtistsRelatedArtistsParamsToRequestMapper: GetArtistRelatedArtistsParamsToRequestMapper,
+    private val getArtistsRelatedArtistsResponseToResultMapper: GetArtistRelatedArtistsResponseToResultMapper
 ) : ArtistRemoteDataSource, RemoteDataSourceTemplate() {
+
     override suspend fun getArtist(params: GetArtistParams): Result<GetArtistResult> {
         return service.getArtist(params.mapWith(getArtistParamsToRequestMapper)).foldResultSuccess { response ->
             response.mapWith(getArtistResponseToResultMapper)
@@ -29,5 +42,19 @@ internal class ArtistRemoteDataSourceImpl(
         return service.getArtists(params.mapWith(getArtistsParamsToRequestMapper)).foldResultSuccess { response ->
             response.mapWith(getArtistsResponseToResultMapper)
         }
+    }
+
+    override suspend fun getArtistTopTracks(params: GetArtistTopTracksParams): Result<GetArtistTopTracksResult> {
+        return service.getArtistTopTracks(params.mapWith(getArtistsTopTracksParamsToRequestMapper))
+            .foldResultSuccess { response ->
+                response.mapWith(getArtistsTopTracksResponseToResultMapper)
+            }
+    }
+
+    override suspend fun getArtistRelatedArtists(params: GetArtistRelatedArtistsParams): Result<GetArtistRelatedArtistsResult> {
+        return service.getArtistRelatedArtists(params.mapWith(getArtistsRelatedArtistsParamsToRequestMapper))
+            .foldResultSuccess { response ->
+                response.mapWith(getArtistsRelatedArtistsResponseToResultMapper)
+            }
     }
 }
