@@ -22,7 +22,7 @@ internal class ArtistOutputToDataMapperImpl(
             ArtistData(
                 id = id.orEmpty(),
                 name = name.orEmpty(),
-                artistType = getEnumValueByIdOrElse(id = artistType) { ArtistType.UNKNOWN },
+                artistType = getEnumValueByIdOrElse(id = type) { ArtistType.UNKNOWN },
                 popularity = popularity.orZero(),
                 genres = genres.orEmpty(),
                 followers = followers?.mapWith(artistFollowersOutputToDataMapper).orEmpty(ArtistFollowersData),

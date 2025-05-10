@@ -20,9 +20,6 @@ internal class ArtistListUIStateMapper : Mapper<ArtistListState, ArtistListUISta
             ArtistListUIState(
                 artistCount = resourceManager.getString(Res.plurals.plural_artist, artists.count()),
                 artists = artists
-                    .sortedBy { artist ->
-                        artist.name
-                    }
                     .map { artist ->
                         artistCardUIDataMapper.map(
                             artist = artist,

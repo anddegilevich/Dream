@@ -6,15 +6,15 @@ import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
-import and.degilevich.dream.shared.feature.artist.core.api.logic.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.Res
+import and.degilevich.dream.shared.feature.artist.core.api.source.remote.ArtistRemoteDataSource
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
@@ -28,7 +28,7 @@ internal class ArtistListExecutor(
     KoinComponent {
 
     private val navigator: AppNavigator by inject()
-    private val getArtistsFlowUseCase: GetArtistsFlowUseCase by inject()
+    private val artistRemoteDataSource: ArtistRemoteDataSource by inject()
     private val toastController: ToastController by inject()
     private val toastFactory: ToastFactory by inject()
     private val resourceManager: ResourceManager by inject()
@@ -58,29 +58,24 @@ internal class ArtistListExecutor(
     private fun fetchArtists() {
         scope.launch {
             setLoading(true)
-            getArtistsFlowUseCase(
-                params = GetArtistsParams(
-                    ids = listOf(
-                        "2CIMQHirSU0MQqyYHq0eOx",
-                        "57dN52uHvrHOxijzpIgu3E",
-                        "1vCWHaC5f2uS3yhpwWbIA6"
-                    )
+            val params = GetArtistsParams(
+                ids = listOf(
+                    "2CIMQHirSU0MQqyYHq0eOx",
+                    "57dN52uHvrHOxijzpIgu3E",
+                    "1vCWHaC5f2uS3yhpwWbIA6"
                 )
             )
-                .flowOnBackground()
-                .collect { result ->
-                    result
-                        .onSuccess { artists ->
-                            setArtists(artists)
-                        }
-                        .onFailure {
-                            toastController.showToast(
-                                toast = toastFactory.createRepeatToast(
-                                    message = resourceManager.getString(Res.strings.error_fetch_artists),
-                                    onRepeat = ::fetchArtists
-                                )
-                            )
-                        }
+            withBackgroundContext { artistRemoteDataSource.getArtists(params) }
+                .onSuccess { result ->
+                    setArtists(artists = result.artists)
+                }
+                .onFailure {
+                    toastController.showToast(
+                        toast = toastFactory.createRepeatToast(
+                            message = resourceManager.getString(Res.strings.error_fetch_artists),
+                            onRepeat = ::fetchArtists
+                        )
+                    )
                 }
         }.invokeOnCompletion {
             setLoading(false)

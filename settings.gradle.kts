@@ -92,6 +92,7 @@ include(":shared:feature:image:model:artifact:impl")
 
 // Artist
 include(":shared:feature:artist:model:artifact:api")
+include(":shared:feature:artist:model:artifact:impl")
 
 include(":shared:feature:artist:model:core:api")
 include(":shared:feature:artist:model:core:impl")
@@ -110,11 +111,14 @@ include(":shared:feature:artist:component:list:impl")
 
 // Album
 include(":shared:feature:album:model:artifact:api")
+include(":shared:feature:album:model:artifact:impl")
 
 // Track
 include(":shared:feature:track:model:artifact:api")
+include(":shared:feature:track:model:artifact:impl")
 
 include(":shared:feature:track:model:core:api")
+include(":shared:feature:track:model:core:impl")
 
 // User
 include(":shared:feature:user:component:profile:api")

@@ -17,7 +17,7 @@ fun Application.configureRouting() {
                         ArtistOutput(
                             id = "1",
                             name = "Name",
-                            artistType = "type",
+                            type = "type",
                             popularity = 1,
                             genres = listOf("rock"),
                             followers = ArtistFollowersOutput(

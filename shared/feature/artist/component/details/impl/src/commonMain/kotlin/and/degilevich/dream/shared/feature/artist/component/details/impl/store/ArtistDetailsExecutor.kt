@@ -3,13 +3,12 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
-import and.degilevich.dream.shared.feature.artist.core.api.logic.usecase.GetArtistFlowUseCase
-import and.degilevich.dream.shared.feature.artist.core.api.logic.usecase.GetArtistsFlowUseCase
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.core.api.source.model.request.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.artist.core.api.source.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.flow.flowOnBackground
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
@@ -27,8 +26,7 @@ internal class ArtistDetailsExecutor(
     KoinComponent {
 
     private val navigator: AppNavigator by inject()
-    private val getArtistFlowUseCase: GetArtistFlowUseCase by inject()
-    private val getArtistsFlowUseCase: GetArtistsFlowUseCase by inject()
+    private val artistRemoteDataSource: ArtistRemoteDataSource by inject()
 
     init {
         subscribeToLifecycle()
@@ -51,16 +49,12 @@ internal class ArtistDetailsExecutor(
     private fun fetchArtist() {
         scope.launch {
             setLoading(true)
-            getArtistFlowUseCase(
-                params = GetArtistParams(
-                    id = state().navArgs.artistId
-                )
+            val params = GetArtistParams(
+                id = state().navArgs.artistId
             )
-                .flowOnBackground()
-                .collect { result ->
-                    result.onSuccess { artist ->
-                        setArtist(artist)
-                    }
+            withBackgroundContext { artistRemoteDataSource.getArtist(params = params) }
+                .onSuccess { result ->
+                    setArtist(artist = result.artist)
                 }
         }.invokeOnCompletion {
             setLoading(false)
@@ -78,20 +72,16 @@ internal class ArtistDetailsExecutor(
     private fun fetchSimilarArtists() {
         scope.launch {
             setLoading(true)
-            getArtistsFlowUseCase(
-                params = GetArtistsParams(
-                    ids = listOf(
-                        "2CIMQHirSU0MQqyYHq0eOx",
-                        "57dN52uHvrHOxijzpIgu3E",
-                        "1vCWHaC5f2uS3yhpwWbIA6"
-                    )
+            val params = GetArtistsParams(
+                ids = listOf(
+                    "2CIMQHirSU0MQqyYHq0eOx",
+                    "57dN52uHvrHOxijzpIgu3E",
+                    "1vCWHaC5f2uS3yhpwWbIA6"
                 )
             )
-                .flowOnBackground()
-                .collect { result ->
-                    result.onSuccess { artists ->
-                        setSimilarArtists(artists)
-                    }
+            withBackgroundContext { artistRemoteDataSource.getArtists(params = params) }
+                .onSuccess { result ->
+                    setSimilarArtists(artists = result.artists)
                 }
         }.invokeOnCompletion {
             setLoading(false)

@@ -11,7 +11,7 @@ data class ArtistOutput(
     @SerialName("name")
     val name: String?,
     @SerialName("type")
-    val artistType: String?,
+    val type: String?,
     @SerialName("popularity")
     val popularity: Int?,
     @SerialName("genres")
