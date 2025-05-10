@@ -15,6 +15,5 @@ internal class GetTrackResponseToResultMapper(
         return GetTrackResult(
             track = item?.mapWith(trackOutputToDataMapper).orEmpty(TrackData)
         )
-
     }
 }

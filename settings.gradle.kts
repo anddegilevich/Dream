@@ -135,6 +135,12 @@ include(":shared:feature:track:source:impl")
 include(":shared:feature:user:component:profile:api")
 include(":shared:feature:user:component:profile:impl")
 
+// Search
+include(":shared:feature:search:model:core:api")
+
+include(":shared:feature:search:source:api")
+include(":shared:feature:search:source:impl")
+
 // =====================================================================================================================
 // Navigation
 
