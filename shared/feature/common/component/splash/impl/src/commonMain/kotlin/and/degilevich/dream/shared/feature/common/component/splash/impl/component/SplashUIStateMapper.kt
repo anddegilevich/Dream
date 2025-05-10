@@ -6,6 +6,6 @@ import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 
 internal class SplashUIStateMapper : Mapper<SplashState, SplashUIState> {
     override fun map(item: SplashState): SplashUIState {
-        return SplashUIState()
+        return SplashUIState.empty()
     }
 }

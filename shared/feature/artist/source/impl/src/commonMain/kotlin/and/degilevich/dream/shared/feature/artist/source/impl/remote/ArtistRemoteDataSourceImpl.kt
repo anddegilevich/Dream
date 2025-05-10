@@ -33,30 +33,36 @@ internal class ArtistRemoteDataSourceImpl(
 ) : ArtistRemoteDataSource, RemoteDataSourceTemplate() {
 
     override suspend fun getArtist(params: GetArtistParams): Result<GetArtistResult> {
-        return service.getArtist(params.mapWith(getArtistParamsToRequestMapper)).foldResultSuccess { response ->
+        return service.getArtist(
+            request = params.mapWith(getArtistParamsToRequestMapper)
+        ).foldResultSuccess { response ->
             response.mapWith(getArtistResponseToResultMapper)
         }
     }
 
     override suspend fun getArtists(params: GetArtistsParams): Result<GetArtistsResult> {
-        return service.getArtists(params.mapWith(getArtistsParamsToRequestMapper)).foldResultSuccess { response ->
+        return service.getArtists(
+            request = params.mapWith(getArtistsParamsToRequestMapper)
+        ).foldResultSuccess { response ->
             response.mapWith(getArtistsResponseToResultMapper)
         }
     }
 
     override suspend fun getArtistTopTracks(params: GetArtistTopTracksParams): Result<GetArtistTopTracksResult> {
-        return service.getArtistTopTracks(params.mapWith(getArtistsTopTracksParamsToRequestMapper))
-            .foldResultSuccess { response ->
-                response.mapWith(getArtistsTopTracksResponseToResultMapper)
-            }
+        return service.getArtistTopTracks(
+            request = params.mapWith(getArtistsTopTracksParamsToRequestMapper)
+        ).foldResultSuccess { response ->
+            response.mapWith(getArtistsTopTracksResponseToResultMapper)
+        }
     }
 
     override suspend fun getArtistRelatedArtists(
         params: GetArtistRelatedArtistsParams
     ): Result<GetArtistRelatedArtistsResult> {
-        return service.getArtistRelatedArtists(params.mapWith(getArtistsRelatedArtistsParamsToRequestMapper))
-            .foldResultSuccess { response ->
-                response.mapWith(getArtistsRelatedArtistsResponseToResultMapper)
-            }
+        return service.getArtistRelatedArtists(
+            request = params.mapWith(getArtistsRelatedArtistsParamsToRequestMapper)
+        ).foldResultSuccess { response ->
+            response.mapWith(getArtistsRelatedArtistsResponseToResultMapper)
+        }
     }
 }

@@ -17,7 +17,7 @@ class DashboardComponentImpl(
     componentContext = componentContext
 ),
     DashboardComponent {
-    override val state: StateFlow<DashboardUIState> = MutableStateFlow(DashboardUIState())
+    override val state: StateFlow<DashboardUIState> = MutableStateFlow(DashboardUIState.empty())
     override val sideEffect: Flow<DashboardSideEffect> = emptyFlow()
 
     override fun handleIntent(intent: DashboardIntent) {
