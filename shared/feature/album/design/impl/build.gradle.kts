@@ -7,12 +7,12 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.feature.artist.design.api)
-            implementation(projects.shared.feature.artist.model.core.api)
+            api(projects.shared.feature.album.design.api)
+            implementation(projects.shared.feature.album.model.artifact.api)
         }
     }
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.feature.artist.design.impl"
+    namespace = "and.degilevich.dream.shared.feature.album.design.impl"
 }

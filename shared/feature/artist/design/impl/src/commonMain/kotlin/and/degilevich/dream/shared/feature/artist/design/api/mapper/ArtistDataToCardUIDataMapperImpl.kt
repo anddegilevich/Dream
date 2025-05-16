@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.artist.design.api.mapper
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIData
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 
-internal class ArtistCardUIDataMapperImpl : ArtistCardUIDataMapper {
+internal class ArtistDataToCardUIDataMapperImpl : ArtistDataToCardUIDataMapper {
     override fun map(
         artist: ArtistData,
         isEnabled: Boolean

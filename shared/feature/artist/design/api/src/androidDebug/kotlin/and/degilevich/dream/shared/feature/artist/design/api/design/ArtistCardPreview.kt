@@ -32,8 +32,7 @@ fun ArtistCardLightPreview() {
 }
 
 private fun providePreviewArtistUIItem(): ArtistCardUIData {
-    return ArtistCardUIData(
-        id = "1",
-        name = "Artist Name"
+    return ArtistCardUIData.empty().copy(
+        name = "Artist"
     )
 }

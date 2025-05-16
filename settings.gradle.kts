@@ -121,6 +121,9 @@ include(":shared:feature:album:model:artifact:impl")
 include(":shared:feature:album:source:api")
 include(":shared:feature:album:source:impl")
 
+include(":shared:feature:album:design:api")
+include(":shared:feature:album:design:impl")
+
 // Track
 include(":shared:feature:track:model:artifact:api")
 include(":shared:feature:track:model:artifact:impl")

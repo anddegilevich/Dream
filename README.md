@@ -36,7 +36,7 @@ Here is the list of frameworks, that were used in this project:
 
 * **Architecture** - [Decompose](https://arkivanov.github.io/Decompose), [MVIKotlin](https://arkivanov.github.io/MVIKotlin)
 * **UI** - [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform)
-* **Async** - [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
+* **Concurrency** - [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
 * **Serialization** - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization)
 * **Gradle** - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html),
   [Gradle Convention Plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html#compiling_convention_plugins),

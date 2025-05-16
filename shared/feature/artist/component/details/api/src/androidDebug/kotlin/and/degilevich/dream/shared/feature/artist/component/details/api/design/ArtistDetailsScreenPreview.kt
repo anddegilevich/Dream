@@ -41,7 +41,7 @@ private fun providePreviewArtistDetailsUIState(): ArtistDetailsUIState {
         similarArtists = buildList {
             for (i in 1..10) {
                 add(
-                    ArtistCardUIData(
+                    ArtistCardUIData.empty().copy(
                         id = i.toString(),
                         name = "Artist $i"
                     )
