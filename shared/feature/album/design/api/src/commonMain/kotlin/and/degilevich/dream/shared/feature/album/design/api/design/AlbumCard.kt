@@ -6,14 +6,11 @@ import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIDat
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
-import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
@@ -25,7 +22,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AlbumCard(
-    state: AlbumCardUIData,
+    data: AlbumCardUIData,
     modifier: Modifier = Modifier,
     onCardClicked: (String) -> Unit
 ) {
@@ -34,40 +31,35 @@ fun AlbumCard(
     Column(
         modifier = modifier
             .clickableWithDebounce(
-                isEnabled = state.isEnabled,
+                isEnabled = data.isEnabled,
                 interactionSource = interactionSource,
                 indication = ripple(color = Theme.colors.ripple)
             ) {
-                onCardClicked(state.id)
+                onCardClicked(data.id)
             }
             .scaleOnClick(
-                isEnabled = state.isEnabled,
+                isEnabled = data.isEnabled,
                 interactionSource = interactionSource
             )
-            .border(
-                width = 2.dp,
-                color = Theme.colors.outline,
-                shape = RoundedCornerShape(corner = CornerSize(8.dp)),
-            )
             .themeBackground()
-            .padding(16.dp)
-            .width(152.dp),
+            .width(152.dp)
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AlbumIcon(
             modifier = Modifier.size(152.dp),
-            iconUrl = state.iconUrl
+            iconUrl = data.iconUrl
         )
         Space(height = 8.dp)
         Text(
-            text = state.name,
+            text = data.name,
             color = Theme.colors.textPrimary,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )
         Space(height = 8.dp)
         Text(
-            text = state.artists,
+            text = data.artists,
             color = Theme.colors.textLabel,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1

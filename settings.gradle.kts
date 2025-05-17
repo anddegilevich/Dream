@@ -118,11 +118,20 @@ include(":shared:feature:artist:component:list:impl")
 include(":shared:feature:album:model:artifact:api")
 include(":shared:feature:album:model:artifact:impl")
 
+include(":shared:feature:album:model:core:api")
+include(":shared:feature:album:model:core:impl")
+
 include(":shared:feature:album:source:api")
 include(":shared:feature:album:source:impl")
 
 include(":shared:feature:album:design:api")
 include(":shared:feature:album:design:impl")
+
+include(":shared:feature:album:component:releases:api")
+include(":shared:feature:album:component:releases:impl")
+
+include(":shared:feature:album:component:details:api")
+include(":shared:feature:album:component:details:impl")
 
 // Track
 include(":shared:feature:track:model:artifact:api")

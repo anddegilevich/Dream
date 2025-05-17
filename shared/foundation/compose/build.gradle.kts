@@ -9,6 +9,7 @@ kotlin {
         commonMain.dependencies {
             api(libs.kotlinx.collections.immutable)
             api(projects.shared.foundation.coroutine)
+            api(projects.shared.foundation.abstraction)
         }
     }
 }

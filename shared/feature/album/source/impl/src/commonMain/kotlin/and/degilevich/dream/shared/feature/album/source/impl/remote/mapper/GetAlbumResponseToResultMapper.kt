@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.feature.album.source.impl.remote.mapper
 
 import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumResponse
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumData
-import and.degilevich.dream.shared.feature.album.model.artifact.api.mapper.AlbumOutputToDataMapper
+import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
+import and.degilevich.dream.shared.feature.album.model.core.api.data.mapper.AlbumOutputToDataMapper
 import and.degilevich.dream.shared.feature.album.source.api.remote.request.getAlbum.GetAlbumResult
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper

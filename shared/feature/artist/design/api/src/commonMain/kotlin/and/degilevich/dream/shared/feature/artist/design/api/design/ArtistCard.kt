@@ -24,18 +24,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ArtistCard(
-    state: ArtistCardUIData,
+    data: ArtistCardUIData,
     modifier: Modifier = Modifier,
     onCardClicked: (String) -> Unit
 ) {
     Column(
         modifier = modifier
             .clickable(
-                enabled = state.isEnabled,
+                enabled = data.isEnabled,
                 interactionSource = remember { MutableInteractionSource() },
                 indication = ripple(color = Theme.colors.ripple)
             ) {
-                onCardClicked(state.id)
+                onCardClicked(data.id)
             }
             .border(
                 width = 2.dp,
@@ -48,12 +48,12 @@ fun ArtistCard(
     ) {
         ArtistIcon(
             modifier = Modifier.size(80.dp),
-            iconUrl = state.iconUrl
+            iconUrl = data.iconUrl
         )
         Space(height = 8.dp)
         Text(
             modifier = Modifier.widthIn(max = 100.dp),
-            text = state.name,
+            text = data.name,
             color = Theme.colors.textPrimary,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1

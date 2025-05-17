@@ -8,6 +8,7 @@ import and.degilevich.dream.shared.feature.artist.component.list.impl.component.
 import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.core.toast.api.channel.ToastChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
+import and.degilevich.dream.shared.feature.album.component.details.impl.component.AlbumDetailsComponentImpl
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
@@ -102,6 +103,15 @@ class RootComponentImpl(
                 Screen.Profile(
                     component = ProfileComponentImpl(
                         componentContext = componentContext
+                    )
+                )
+            }
+
+            is ScreenConfig.AlbumDetails -> {
+                Screen.AlbumDetails(
+                    component = AlbumDetailsComponentImpl(
+                        componentContext = componentContext,
+                        navArgs = screenConfig.navArgs
                     )
                 )
             }

@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.core.service.api.requests.getArtistTopTracks
 
-import and.degilevich.dream.shared.core.service.api.core.track.TrackOutput
+import and.degilevich.dream.shared.core.service.api.model.track.TrackOutput
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

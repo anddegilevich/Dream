@@ -31,6 +31,7 @@ kotlin {
             implementation(projects.shared.feature.artist.design.impl)
 
             implementation(projects.shared.feature.album.model.artifact.impl)
+            implementation(projects.shared.feature.album.model.core.impl)
             implementation(projects.shared.feature.album.source.impl)
             implementation(projects.shared.feature.album.design.impl)
 

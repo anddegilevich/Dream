@@ -1,6 +1,5 @@
 package and.degilevich.dream.shared.feature.artist.component.list.impl.store
 
-import and.degilevich.dream.shared.resource.api.ResourceManager
 import and.degilevich.dream.shared.core.toast.api.controller.ToastController
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
@@ -12,7 +11,6 @@ import and.degilevich.dream.shared.foundation.decompose.component.store.executor
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
-import and.degilevich.dream.Res
 import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import com.arkivanov.decompose.router.stack.pushNew
@@ -31,7 +29,6 @@ internal class ArtistListExecutor(
     private val artistRemoteDataSource: ArtistRemoteDataSource by inject()
     private val toastController: ToastController by inject()
     private val toastFactory: ToastFactory by inject()
-    private val resourceManager: ResourceManager by inject()
 
     init {
         subscribeToLifecycle()
@@ -69,10 +66,10 @@ internal class ArtistListExecutor(
                 .onSuccess { result ->
                     setArtists(artists = result.artists)
                 }
-                .onFailure {
+                .onFailure { error ->
                     toastController.showToast(
                         toast = toastFactory.createRepeatToast(
-                            message = resourceManager.getString(Res.strings.error_fetch_artists),
+                            error = error,
                             onRepeat = ::fetchArtists
                         )
                     )

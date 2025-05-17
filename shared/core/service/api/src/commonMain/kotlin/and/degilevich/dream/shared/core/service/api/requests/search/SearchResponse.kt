@@ -1,11 +1,12 @@
 package and.degilevich.dream.shared.core.service.api.requests.search
 
-import and.degilevich.dream.shared.core.service.api.core.album.AlbumOutput
-import and.degilevich.dream.shared.core.service.api.core.artist.ArtistOutput
-import and.degilevich.dream.shared.core.service.api.core.track.TrackOutput
+import and.degilevich.dream.shared.core.service.api.model.album.AlbumSimplifiedOutput
+import and.degilevich.dream.shared.core.service.api.model.artist.ArtistOutput
+import and.degilevich.dream.shared.core.service.api.model.track.TrackOutput
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+//FIXME: Update scheme
 @Serializable
 data class SearchResponse(
     @SerialName("tracks")
@@ -13,5 +14,5 @@ data class SearchResponse(
     @SerialName("artists")
     val artists: List<ArtistOutput>?,
     @SerialName("albums")
-    val albums: List<AlbumOutput>?,
+    val albums: List<AlbumSimplifiedOutput>?,
 )

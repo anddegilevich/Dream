@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistCard
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -20,7 +21,6 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -77,12 +77,11 @@ fun ArtistListScreen(
                 color = Theme.colors.textSecondary
             )
         }
-        items(
-            items = state.artists,
-            key = { item -> item.id }
+        identifiedItems(
+            items = state.artists
         ) { item ->
             ArtistCard(
-                state = item,
+                data = item,
                 onCardClicked = { id ->
                     onIntent(ArtistListIntent.OnArtistClicked(id))
                 }

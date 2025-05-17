@@ -8,4 +8,8 @@ interface ToastFactory {
         message: String,
         onRepeat: () -> Unit
     ): ToastData
+    fun createRepeatToast(
+        error: Throwable,
+        onRepeat: () -> Unit
+    ): ToastData
 }

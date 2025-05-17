@@ -8,7 +8,7 @@ abstract class MVIComponentAbs<out State : Any, in Intent, out SideEffect>(
     componentContext: ComponentContext
 ) : MVIComponent<State, Intent, SideEffect>, ComponentContext by componentContext {
 
-    protected val coroutineScope by lazy {
+    protected val componentScope by lazy {
         coroutineScope(
             context = DefaultKMPDispatchers.main
         )

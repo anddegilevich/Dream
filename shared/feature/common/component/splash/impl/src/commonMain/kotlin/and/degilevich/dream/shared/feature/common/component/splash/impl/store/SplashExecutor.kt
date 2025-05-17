@@ -40,6 +40,6 @@ internal class SplashExecutor(
     }
 
     private fun navigateToHomePage() {
-        navigator.screenNavigator.replaceCurrent(ScreenConfig.ArtistList)
+        navigator.screenNavigator.replaceCurrent(ScreenConfig.Dashboard)
     }
 }

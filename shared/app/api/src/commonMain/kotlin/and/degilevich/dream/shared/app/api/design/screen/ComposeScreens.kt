@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.app.api.design.screen
 
 import and.degilevich.dream.shared.app.api.component.children.Screen
 import and.degilevich.dream.shared.app.api.design.screen.animation.screensStackAnimation
+import and.degilevich.dream.shared.feature.album.component.details.api.design.AlbumDetailsScreen
 import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.artist.component.list.api.design.ArtistListScreen
@@ -57,6 +58,12 @@ fun ComposeScreens(
                 ProfileScreen(
                     state = screenComponent.collectState(),
                     onIntent = screenComponent::handleIntent
+                )
+            }
+
+            is Screen.AlbumDetails -> {
+                AlbumDetailsScreen(
+                    state = screenComponent.collectState(),
                 )
             }
         }

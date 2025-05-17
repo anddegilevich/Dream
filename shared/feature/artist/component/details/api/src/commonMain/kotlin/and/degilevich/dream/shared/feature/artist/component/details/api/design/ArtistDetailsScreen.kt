@@ -64,7 +64,7 @@ fun ArtistDetailsScreen(
                 key = { item -> item.id }
             ) { item ->
                 ArtistCard(
-                    state = item,
+                    data = item,
                     onCardClicked = { id ->
                         onIntent(ArtistDetailsIntent.OnSimilarArtistClicked(id))
                     }

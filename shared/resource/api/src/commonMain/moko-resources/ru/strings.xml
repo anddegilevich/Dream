@@ -2,11 +2,14 @@
 <resources>
     <string name="title_artists">Артисты</string>
     <string name="title_similar_artists">Похожие артисты</string>
+    <string name="title_new_releases">Новинки</string>
+
     <string name="button_back">Назад</string>
     <string name="button_subscribe">Подписаться</string>
+    <string name="button_repeat">Повторить</string>
+
     <string name="mask_artist_name">Имя артиста: %s</string>
+
     <string name="error">Ошибка</string>
     <string name="error_forbidden_resource">Сервис не доступен</string>
-    <string name="button_repeat">Повторить</string>
-    <string name="error_fetch_artists">Ошибка при загрузке списка артистов</string>
 </resources>

@@ -1,7 +1,7 @@
 package and.degilevich.dream.backend
 
-import and.degilevich.dream.shared.core.service.api.core.artist.ArtistFollowersOutput
-import and.degilevich.dream.shared.core.service.api.core.artist.ArtistOutput
+import and.degilevich.dream.shared.core.service.api.model.artist.ArtistFollowersOutput
+import and.degilevich.dream.shared.core.service.api.model.artist.ArtistOutput
 import and.degilevich.dream.shared.core.service.api.requests.getArtists.GetArtistsResponse
 import io.ktor.server.application.Application
 import io.ktor.server.response.respond

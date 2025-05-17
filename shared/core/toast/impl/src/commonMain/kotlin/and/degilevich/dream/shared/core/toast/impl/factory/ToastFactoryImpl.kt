@@ -34,4 +34,14 @@ internal class ToastFactoryImpl(
             duration = ToastDurationData.LONG
         )
     }
+
+    override fun createRepeatToast(
+        error: Throwable,
+        onRepeat: () -> Unit
+    ): ToastData {
+        return createRepeatToast(
+            message = error.message ?: resourceManager.getString(Res.strings.error),
+            onRepeat = onRepeat
+        )
+    }
 }

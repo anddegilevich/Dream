@@ -30,7 +30,7 @@ abstract class StoreComponent<
     )
 
     override val state: StateFlow<State> = store.stateFlow(
-        scope = coroutineScope,
+        scope = componentScope,
         started = SharingStarted.Lazily
     )
 

@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.app.api.component.children
 
+import and.degilevich.dream.shared.feature.album.component.details.api.component.AlbumDetailsComponent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.ArtistListComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
@@ -25,6 +26,11 @@ sealed interface Screen {
     class ArtistDetails(
         component: ArtistDetailsComponent
     ) : Screen, ArtistDetailsComponent by component
+
+    // Album
+    class AlbumDetails(
+        component: AlbumDetailsComponent
+    ) : Screen, AlbumDetailsComponent by component
 
     // User
     class Profile(

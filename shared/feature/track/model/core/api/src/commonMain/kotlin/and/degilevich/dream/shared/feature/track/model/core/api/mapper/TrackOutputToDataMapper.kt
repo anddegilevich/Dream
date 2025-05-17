@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.track.model.core.api.mapper
 
-import and.degilevich.dream.shared.core.service.api.core.track.TrackOutput
+import and.degilevich.dream.shared.core.service.api.model.track.TrackOutput
 import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 

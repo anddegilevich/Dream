@@ -32,7 +32,7 @@ abstract class UIStoreComponent<
     override val state: StateFlow<UIState> = storeComponent.state
         .map(uiStateMapper::map)
         .stateIn(
-            scope = coroutineScope,
+            scope = componentScope,
             started = SharingStarted.Lazily,
             initialValue = initialUIState
         )

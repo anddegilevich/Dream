@@ -9,6 +9,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.shared.template.component.impl)
+            implementation(projects.shared.feature.album.component.releases.impl)
             api(projects.shared.feature.common.component.dashboard.api)
         }
     }

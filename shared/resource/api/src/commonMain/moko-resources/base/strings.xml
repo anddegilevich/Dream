@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Dream</string>
+
     <string name="title_artists">Artists</string>
     <string name="title_similar_artists">Similar artists</string>
+    <string name="title_new_releases">New releases</string>
+
     <string name="button_back">Back</string>
     <string name="button_subscribe">Subscribe</string>
+    <string name="button_repeat">Repeat</string>
+
     <string name="mask_artist_name">Artist name: %s</string>
+
     <string name="error">Error</string>
     <string name="error_forbidden_resource">Requested resource is forbidden</string>
-    <string name="button_repeat">Repeat</string>
-    <string name="error_fetch_artists">Failed to load artists</string>
 </resources>
