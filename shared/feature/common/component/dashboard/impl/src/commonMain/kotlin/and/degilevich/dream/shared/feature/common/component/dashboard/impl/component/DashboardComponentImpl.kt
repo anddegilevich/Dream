@@ -9,6 +9,7 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.compon
 import and.degilevich.dream.shared.template.component.impl.MVIComponentTemplate
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
+import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -23,6 +24,8 @@ class DashboardComponentImpl(
 ),
     DashboardComponent {
 
+    private val coroutineScope = coroutineScope()
+
     private val albumReleasesComponent: AlbumReleasesComponent = AlbumReleasesComponentImpl(
         componentContext = childContext(
             key = ALBUM_RELEASES_KEY
@@ -34,7 +37,7 @@ class DashboardComponentImpl(
             albumReleasesCarousel = albumReleasesState
         )
     }.stateIn(
-        scope = componentScope,
+        scope = coroutineScope,
         started = SharingStarted.Lazily,
         initialValue = DashboardUIState.empty()
     )

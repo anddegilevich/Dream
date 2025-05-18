@@ -3,7 +3,6 @@ package and.degilevich.dream.shared.feature.common.component.splash.impl.store
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashIntent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
 import and.degilevich.dream.shared.feature.common.component.splash.impl.store.model.SplashState
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
@@ -34,7 +33,7 @@ internal class SplashExecutor(
 
     private fun processNavigation() {
         scope.launch {
-            withBackgroundContext { delay(1.seconds) }
+            delay(1.seconds)
             navigateToHomePage()
         }
     }

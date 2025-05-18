@@ -2,8 +2,9 @@ package and.degilevich.dream.shared.core.db.impl.database.factory
 
 import and.degilevich.dream.shared.core.db.api.database.AppDatabase
 import and.degilevich.dream.shared.core.db.impl.database.builder.AppDatabaseBuilderFactory
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.DefaultKMPDispatchers
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 
 internal class AppDatabaseFactoryImpl(
     private val databaseBuilderFactory: AppDatabaseBuilderFactory
@@ -14,7 +15,7 @@ internal class AppDatabaseFactoryImpl(
     override fun create(): AppDatabase {
         return databaseBuilder
             .setDriver(driver = BundledSQLiteDriver())
-            .setQueryCoroutineContext(context = DefaultKMPDispatchers.background)
+            .setQueryCoroutineContext(context = Dispatchers.IO)
             .build()
     }
 }

@@ -1,10 +1,12 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store
 
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.flowOnDefault
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponentAbs
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
+import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +23,9 @@ abstract class UIStoreComponent<
     storeComponentFactory: (childComponentContext: ComponentContext) -> MVIComponent<State, Intent, SideEffect>,
     uiStateMapper: Mapper<State, UIState>,
     initialUIState: UIState,
-) : MVIComponentAbs<UIState, Intent, SideEffect>(componentContext) {
+) : MVIComponent<UIState, Intent, SideEffect>, ComponentContext by componentContext {
+
+    private val coroutineScope: CoroutineScope = coroutineScope()
 
     private val storeComponent: MVIComponent<State, Intent, SideEffect> = storeComponentFactory(
         childContext(
@@ -31,8 +35,9 @@ abstract class UIStoreComponent<
 
     override val state: StateFlow<UIState> = storeComponent.state
         .map(uiStateMapper::map)
+        .flowOnDefault()
         .stateIn(
-            scope = componentScope,
+            scope = coroutineScope,
             started = SharingStarted.Lazily,
             initialValue = initialUIState
         )

@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store
 
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponentAbs
+import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.StoreStateConservator
 import and.degilevich.dream.shared.foundation.decompose.component.store.storeFactory.ComponentStoreFactory
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.store.Store
-import com.arkivanov.mvikotlin.extensions.coroutines.labels
+import com.arkivanov.mvikotlin.extensions.coroutines.labelsChannel
 import com.arkivanov.mvikotlin.extensions.coroutines.stateFlow
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 
 abstract class StoreComponent<
     out State : Any,
@@ -19,7 +19,7 @@ abstract class StoreComponent<
     componentContext: ComponentContext,
     storeFactory: ComponentStoreFactory<State, Intent, SideEffect>,
     stateConservator: StoreStateConservator<State>,
-) : MVIComponentAbs<State, Intent, SideEffect>(componentContext) {
+) : MVIComponent<State, Intent, SideEffect>, ComponentContext by componentContext {
 
     private val store: Store<Intent, State, SideEffect> = storeFactory.create(
         initialState = componentContext.stateKeeper.consume(
@@ -30,11 +30,12 @@ abstract class StoreComponent<
     )
 
     override val state: StateFlow<State> = store.stateFlow(
-        scope = componentScope,
-        started = SharingStarted.Lazily
+        lifecycle = lifecycle
     )
 
-    override val sideEffect: Flow<SideEffect> = store.labels
+    override val sideEffect: Flow<SideEffect> = store.labelsChannel(
+        lifecycle = lifecycle
+    ).receiveAsFlow()
 
     override fun handleIntent(intent: Intent) {
         store.accept(intent)

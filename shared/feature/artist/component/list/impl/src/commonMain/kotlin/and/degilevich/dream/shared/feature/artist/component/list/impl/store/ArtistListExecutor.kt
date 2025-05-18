@@ -12,7 +12,7 @@ import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.withIOContext
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
@@ -62,7 +62,7 @@ internal class ArtistListExecutor(
                     "1vCWHaC5f2uS3yhpwWbIA6"
                 )
             )
-            withBackgroundContext { artistRemoteDataSource.getArtists(params) }
+            withIOContext { artistRemoteDataSource.getArtists(params) }
                 .onSuccess { result ->
                     setArtists(artists = result.artists)
                 }

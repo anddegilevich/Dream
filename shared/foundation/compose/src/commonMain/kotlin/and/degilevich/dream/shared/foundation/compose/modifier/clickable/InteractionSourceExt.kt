@@ -1,6 +1,5 @@
 package and.degilevich.dream.shared.foundation.compose.modifier.clickable
 
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.runtime.Composable
@@ -26,11 +25,12 @@ fun InteractionSource.isPressedWithDelay(
         interactions.collectLatest { interaction ->
             mutex.withLock {
                 isPressed.value = when (interaction) {
-                    is PressInteraction.Press -> true
+                    is PressInteraction.Press -> {
+                        true
+                    }
+
                     else -> {
-                        withBackgroundContext {
-                            delay(delay)
-                        }
+                        delay(delay)
                         false
                     }
                 }

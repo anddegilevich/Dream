@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getA
 import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtistRelatedArtists.GetArtistRelatedArtistsParams
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.withIOContext
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
@@ -52,7 +52,7 @@ internal class ArtistDetailsExecutor(
             val params = GetArtistParams(
                 id = state().navArgs.artistId
             )
-            withBackgroundContext { artistRemoteDataSource.getArtist(params = params) }
+            withIOContext { artistRemoteDataSource.getArtist(params = params) }
                 .onSuccess { result ->
                     setArtist(artist = result.artist)
                 }
@@ -75,7 +75,7 @@ internal class ArtistDetailsExecutor(
             val params = GetArtistRelatedArtistsParams(
                 id = state().navArgs.artistId
             )
-            withBackgroundContext { artistRemoteDataSource.getArtistRelatedArtists(params = params) }
+            withIOContext { artistRemoteDataSource.getArtistRelatedArtists(params = params) }
                 .onSuccess { result ->
                     setRelatedArtists(artists = result.artists)
                 }

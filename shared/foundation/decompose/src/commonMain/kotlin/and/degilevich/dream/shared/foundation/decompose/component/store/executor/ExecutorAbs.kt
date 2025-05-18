@@ -1,11 +1,11 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store.executor
 
 import and.degilevich.dream.shared.foundation.decompose.component.store.reducer.ReduceMessage
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.DefaultKMPDispatchers
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.essenty.lifecycle.doOnStop
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancelChildren
 
 abstract class ExecutorAbs<State : Any, in Intent : Any, SideEffect : Any>(
@@ -16,7 +16,7 @@ abstract class ExecutorAbs<State : Any, in Intent : Any, SideEffect : Any>(
     State,
     ReduceMessage<State>,
     SideEffect
-    >(mainContext = DefaultKMPDispatchers.main),
+    >(mainContext = Dispatchers.Main),
     LifecycleOwner {
 
     init {

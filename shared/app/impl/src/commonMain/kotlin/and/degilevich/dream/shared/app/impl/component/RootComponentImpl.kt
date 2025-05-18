@@ -13,7 +13,6 @@ import and.degilevich.dream.shared.feature.artist.component.details.impl.compone
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
 import and.degilevich.dream.shared.feature.user.component.profile.impl.component.ProfileComponentImpl
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.DefaultKMPDispatchers
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerResult
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
@@ -35,7 +34,7 @@ class RootComponentImpl(
     componentContext: ComponentContext
 ) : RootComponent, KoinComponent, ComponentContext by componentContext {
 
-    private val coroutineScope = coroutineScope(DefaultKMPDispatchers.main)
+    private val coroutineScope = coroutineScope()
 
     private val navigationComponent: AppNavigationComponent = AppNavigationComponentImpl(
         componentContext = childContext(

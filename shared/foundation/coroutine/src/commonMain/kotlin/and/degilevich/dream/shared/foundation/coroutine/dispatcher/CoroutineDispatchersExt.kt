@@ -1,8 +1,9 @@
-package and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine
+package and.degilevich.dream.shared.foundation.coroutine.dispatcher
 
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.DefaultKMPDispatchers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -11,16 +12,25 @@ suspend fun <T> withMainContext(
     block: suspend CoroutineScope.() -> T
 ): T {
     return withContext(
-        context = DefaultKMPDispatchers.main,
+        context = Dispatchers.Main,
         block = block
     )
 }
 
-suspend fun <T> withBackgroundContext(
+suspend fun <T> withDefaultContext(
     block: suspend CoroutineScope.() -> T
 ): T {
     return withContext(
-        context = DefaultKMPDispatchers.background,
+        context = Dispatchers.Default,
+        block = block
+    )
+}
+
+suspend fun <T> withIOContext(
+    block: suspend CoroutineScope.() -> T
+): T {
+    return withContext(
+        context = Dispatchers.IO,
         block = block
     )
 }
@@ -30,18 +40,29 @@ fun CoroutineScope.launchOnMain(
     block: suspend CoroutineScope.() -> Unit
 ): Job {
     return launch(
-        context = DefaultKMPDispatchers.main,
+        context = Dispatchers.Main,
         start = start,
         block = block
     )
 }
 
-fun CoroutineScope.launchOnBackground(
+fun CoroutineScope.launchOnDefault(
     start: CoroutineStart = CoroutineStart.DEFAULT,
     block: suspend CoroutineScope.() -> Unit
 ): Job {
     return launch(
-        context = DefaultKMPDispatchers.background,
+        context = Dispatchers.Default,
+        start = start,
+        block = block
+    )
+}
+
+fun CoroutineScope.launchOnIO(
+    start: CoroutineStart = CoroutineStart.DEFAULT,
+    block: suspend CoroutineScope.() -> Unit
+): Job {
+    return launch(
+        context = Dispatchers.IO,
         start = start,
         block = block
     )

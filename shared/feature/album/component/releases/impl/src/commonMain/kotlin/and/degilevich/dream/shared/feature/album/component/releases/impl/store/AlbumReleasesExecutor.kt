@@ -8,7 +8,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.impl.store.m
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
 import and.degilevich.dream.shared.feature.album.source.api.remote.request.getNewReleases.GetNewReleasesParams
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.ext.coroutine.withBackgroundContext
+import and.degilevich.dream.shared.foundation.coroutine.dispatcher.withIOContext
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.args.AlbumDetailsNavArgs
@@ -56,7 +56,7 @@ internal class AlbumReleasesExecutor(
                 limit = 10,
                 offset = 0
             )
-            withBackgroundContext { albumRemoteDataSource.getNewReleases(params) }
+            withIOContext { albumRemoteDataSource.getNewReleases(params) }
                 .onSuccess { result ->
                     setReleases(albums = result.albums.albums)
                 }
