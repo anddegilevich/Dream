@@ -7,7 +7,7 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -42,7 +42,7 @@ abstract class UIStoreComponent<
             initialValue = initialUIState
         )
 
-    override val sideEffect: Flow<SideEffect> = storeComponent.sideEffect
+    override val sideEffect: ReceiveChannel<SideEffect> = storeComponent.sideEffect
 
     override fun handleIntent(intent: Intent) {
         storeComponent.handleIntent(intent)

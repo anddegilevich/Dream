@@ -2,11 +2,11 @@ package and.degilevich.dream.shared.app.impl.component
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.api.component.children.Screen
-import and.degilevich.dream.shared.core.filepicker.api.FilePickerRequestChannel
-import and.degilevich.dream.shared.core.filepicker.api.FilePickerResultChannel
+import and.degilevich.dream.shared.core.filepicker.api.channel.request.FilePickerRequestReceiveChannel
+import and.degilevich.dream.shared.core.filepicker.api.channel.result.FilePickerResultSendChannel
 import and.degilevich.dream.shared.feature.artist.component.list.impl.component.ArtistListComponentImpl
 import and.degilevich.dream.shared.logger.Log
-import and.degilevich.dream.shared.core.toast.api.channel.ToastChannel
+import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.AlbumDetailsComponentImpl
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
@@ -26,6 +26,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -42,9 +43,9 @@ class RootComponentImpl(
         )
     )
 
-    private val toastChannel: ToastChannel by inject()
-    private val filePickerRequestChannel: FilePickerRequestChannel by inject()
-    private val filePickerResultChannel: FilePickerResultChannel by inject()
+    private val toastChannel: ToastReceiveChannel by inject()
+    private val filePickerRequestChannel: FilePickerRequestReceiveChannel by inject()
+    private val filePickerResultChannel: FilePickerResultSendChannel by inject()
 
     override val screenStack: Value<ChildStack<ScreenConfig, Screen>> = childStack(
         source = navigationComponent.screenNavigationSource,
@@ -54,8 +55,8 @@ class RootComponentImpl(
         childFactory = ::screenFactory,
     )
 
-    override val toasts: Flow<ToastData> = toastChannel.value
-    override val filePickerRequests: Flow<FilePickerRequest> = filePickerRequestChannel.value
+    override val toasts: Flow<ToastData> = toastChannel.receiveAsFlow()
+    override val filePickerRequests: Flow<FilePickerRequest> = filePickerRequestChannel.receiveAsFlow()
 
     override fun handleFilePickerResult(result: FilePickerResult) {
         coroutineScope.launch {

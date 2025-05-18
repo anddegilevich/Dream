@@ -1,0 +1,3 @@
+package and.degilevich.dream.shared.core.filepicker.api.channel.request
+
+interface FilePickerRequestChannel : FilePickerRequestSendChannel, FilePickerRequestReceiveChannel
