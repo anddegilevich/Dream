@@ -10,7 +10,6 @@ import kotlinx.serialization.modules.SerializersModule
 object JsonSerialFormat : StringFormat {
 
     val json: Json = Json {
-        prettyPrint = true
         isLenient = true
         ignoreUnknownKeys = true
         useAlternativeNames = false

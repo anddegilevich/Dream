@@ -1,24 +1,17 @@
 package and.degilevich.dream.shared.foundation.serialization
 
 import and.degilevich.dream.shared.foundation.serialization.format.JsonSerialFormat
-import kotlinx.serialization.SerializationException
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.serializer
+import kotlinx.serialization.json.encodeToJsonElement
 
 fun <T> T.encodeToJsonElement(serializer: SerializationStrategy<T>): Result<JsonElement> {
-    return try {
-        Result.success(
-            JsonSerialFormat.encodeToJsonElement(
-                serializer = serializer,
-                value = this
-            )
+    return runCatching {
+        JsonSerialFormat.encodeToJsonElement(
+            serializer = serializer,
+            value = this
         )
-    } catch (error: SerializationException) {
-        Result.failure(error)
-    } catch (error: IllegalArgumentException) {
-        Result.failure(error)
     }
 }
 
@@ -31,9 +24,9 @@ fun <T> T.encodeToJsonElementOrEmpty(serializer: SerializationStrategy<T>): Json
 }
 
 inline fun <reified T> T.encodeToJsonElement(): Result<JsonElement> {
-    return encodeToJsonElement(
-        serializer = JsonSerialFormat.serializersModule.serializer()
-    )
+    return runCatching {
+        JsonSerialFormat.json.encodeToJsonElement(this)
+    }
 }
 
 inline fun <reified T> T.encodeToJsonElementOrNull(): JsonElement? {
