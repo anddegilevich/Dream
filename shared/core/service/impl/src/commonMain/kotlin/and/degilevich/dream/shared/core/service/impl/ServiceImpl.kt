@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.core.service.impl
 
 import and.degilevich.dream.shared.core.client.api.RemoteClient
-import and.degilevich.dream.shared.core.client.api.ext.foldResponse
-import and.degilevich.dream.shared.core.client.api.ext.safeGet
+import and.degilevich.dream.shared.core.client.api.ext.foldBody
+import and.degilevich.dream.shared.core.client.api.ext.getCatching
 import and.degilevich.dream.shared.core.service.api.Service
 import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumRequest
 import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumResponse
@@ -29,66 +29,66 @@ internal class ServiceImpl(
     private val remoteClient: RemoteClient
 ) : Service {
     override suspend fun getArtists(request: GetArtistsRequest): Result<GetArtistsResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("artists")
             parameter("ids", request.ids)
-        }.foldResponse()
+        }.foldBody()
     }
 
     override suspend fun getArtist(request: GetArtistRequest): Result<GetArtistResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("artists/${request.id}")
-        }.foldResponse()
+        }.foldBody()
     }
 
     override suspend fun getArtistTopTracks(request: GetArtistTopTracksRequest): Result<GetArtistTopTracksResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("artists/${request.id}/top-tracks")
-        }.foldResponse()
+        }.foldBody()
     }
 
     override suspend fun getArtistRelatedArtists(
         request: GetArtistRelatedArtistsRequest
     ): Result<GetArtistRelatedArtistsResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("artists/${request.id}/related-artists")
-        }.foldResponse()
+        }.foldBody()
     }
 
     override suspend fun getAlbum(request: GetAlbumRequest): Result<GetAlbumResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("albums/${request.id}")
-        }.foldResponse()
+        }.foldBody()
     }
 
     override suspend fun getNewReleases(request: GetNewReleasesRequest): Result<GetNewReleasesResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("browse/new-releases")
             parameter("limit", request.limit)
             parameter("offset", request.offset)
-        }.foldResponse()
+        }.foldBody()
     }
 
     override suspend fun getTrack(request: GetTrackRequest): Result<GetTrackResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("tracks/${request.id}")
-        }.foldResponse()
+        }.foldBody()
     }
 
     override suspend fun getRecommendations(request: GetRecommendationsRequest): Result<GetRecommendationsResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("recommendations")
             parameter("limit", request.limit)
-        }.foldResponse()
+        }.foldBody()
     }
 
     override suspend fun search(request: SearchRequest): Result<SearchResponse> {
-        return remoteClient.safeGet {
+        return remoteClient.getCatching {
             url("search")
             parameter("q", request.q)
             parameter("limit", request.limit)
             parameter("offset", request.offset)
             parameter("type", request.type)
-        }.foldResponse()
+        }.foldBody()
     }
 }

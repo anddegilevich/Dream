@@ -26,7 +26,7 @@ abstract class StoreComponent<
             key = stateConservator.key,
             strategy = stateConservator.serializer
         ) ?: stateConservator.initialState,
-        lifecycle = componentContext.lifecycle
+        lifecycle = lifecycle
     )
 
     override val state: StateFlow<State> = store.stateFlow(

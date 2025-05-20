@@ -6,13 +6,13 @@ import io.ktor.client.request.get
 import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
 
-suspend inline fun RemoteClient.safeGet(
+suspend inline fun RemoteClient.getCatching(
     block: HttpRequestBuilder.() -> Unit
 ): Result<HttpResponse> {
     return runCatching { client.get(block) }
 }
 
-suspend inline fun RemoteClient.safePost(
+suspend inline fun RemoteClient.postCatching(
     block: HttpRequestBuilder.() -> Unit
 ): Result<HttpResponse> {
     return runCatching { client.post(block) }
