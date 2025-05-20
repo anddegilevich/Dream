@@ -21,7 +21,7 @@ struct iOSApp: App {
     
     private func initLogger() {
         #if DEBUG
-            LoggerHelperKt.doInitLogger()
+            Log().doInit()
         #endif
     }
     

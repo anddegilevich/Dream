@@ -6,13 +6,13 @@ android-min-sdk = "26"
 android-target-sdk = "36"
 
 # Android gradle plugin
-agp = "8.9.2" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
+agp = "8.9.3" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
 
 # JVM version
 java = "21"
 
 # Kotlin
-kotlin = "2.1.10" # https://kotlinlang.org/docs/releases.html#release-details
+kotlin = "2.1.20" # https://kotlinlang.org/docs/releases.html#release-details
 
 # Compose
 compose-multiplatform = "1.8.0" # https://mvnrepository.com/artifact/org.jetbrains.compose/compose-gradle-plugin
@@ -72,7 +72,7 @@ buildkonfig = "0.17.0" # https://github.com/yshrsmz/BuildKonfig/releases
 room = "2.7.1" # https://developer.android.com/jetpack/androidx/releases/room
 
 # SQLite
-sqlite = "2.5.0" # https://mvnrepository.com/artifact/androidx.sqlite
+sqlite = "2.5.1" # https://mvnrepository.com/artifact/androidx.sqlite
 
 # Glance
 glance = "1.1.1" # https://mvnrepository.com/artifact/androidx.glance/glance-appwidget

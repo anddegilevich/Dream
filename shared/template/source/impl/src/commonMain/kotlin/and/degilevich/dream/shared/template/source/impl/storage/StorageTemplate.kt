@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.template.source.impl.storage
 
 import and.degilevich.dream.shared.core.storage.api.PreferenceStorage
 import and.degilevich.dream.shared.foundation.serialization.decodeFromJson
-import and.degilevich.dream.shared.foundation.serialization.encodeToJsonOrNull
+import and.degilevich.dream.shared.foundation.serialization.encodeToJson
 import and.degilevich.dream.shared.template.source.api.storage.Storage
 import kotlinx.serialization.KSerializer
 import org.koin.core.component.KoinComponent
@@ -16,11 +16,12 @@ abstract class StorageTemplate<T>(
     private val preferenceStorage: PreferenceStorage by inject()
 
     override fun save(value: T) {
-        val encodedValue = value.encodeToJsonOrNull(serializer = serializer) ?: return
-        preferenceStorage.save(
-            key = key,
-            value = encodedValue
-        )
+        value.encodeToJson(serializer = serializer).onSuccess { encodedValue ->
+            preferenceStorage.save(
+                key = key,
+                value = encodedValue
+            )
+        }
     }
 
     override fun clear(): Boolean {
