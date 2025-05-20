@@ -9,11 +9,15 @@ inline fun <reified T> NavigationResultManager.sendResult(
     navKey: String,
     result: T
 ) {
-    sendResult(
-        navKey = navKey,
-        serializer = JsonSerialFormat.serializersModule.serializer(),
-        result = result
-    )
+    runCatching {
+        JsonSerialFormat.serializersModule.serializer<T>()
+    }.onSuccess { serializer ->
+        sendResult(
+            navKey = navKey,
+            serializer = serializer,
+            result = result
+        )
+    }
 }
 
 inline fun <reified T> NavigationResultManager.subscribeToResult(
@@ -21,10 +25,14 @@ inline fun <reified T> NavigationResultManager.subscribeToResult(
     lifecycle: Lifecycle,
     noinline onResult: (T) -> Unit
 ) {
-    subscribeToResult(
-        navKey = navKey,
-        lifecycle = lifecycle,
-        deserializer = JsonSerialFormat.serializersModule.serializer(),
-        onResult = onResult
-    )
+    runCatching {
+        JsonSerialFormat.serializersModule.serializer<T>()
+    }.onSuccess { serializer ->
+        subscribeToResult(
+            navKey = navKey,
+            lifecycle = lifecycle,
+            deserializer = serializer,
+            onResult = onResult
+        )
+    }
 }

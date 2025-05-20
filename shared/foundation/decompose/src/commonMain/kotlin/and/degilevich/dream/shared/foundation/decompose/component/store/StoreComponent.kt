@@ -7,8 +7,9 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.extensions.coroutines.labelsChannel
 import com.arkivanov.mvikotlin.extensions.coroutines.stateFlow
-import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 
 abstract class StoreComponent<
     out State : Any,
@@ -32,9 +33,9 @@ abstract class StoreComponent<
         lifecycle = lifecycle
     )
 
-    override val sideEffect: ReceiveChannel<SideEffect> = store.labelsChannel(
+    override val sideEffect: Flow<SideEffect> = store.labelsChannel(
         lifecycle = lifecycle
-    )
+    ).receiveAsFlow()
 
     override fun handleIntent(intent: Intent) {
         store.accept(intent)

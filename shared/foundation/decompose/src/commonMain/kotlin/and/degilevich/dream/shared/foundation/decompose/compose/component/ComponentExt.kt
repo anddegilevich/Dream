@@ -6,7 +6,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.receiveAsFlow
 
 @Composable
 fun <SideEffect> ComponentSideEffect(
@@ -14,7 +13,7 @@ fun <SideEffect> ComponentSideEffect(
     handler: suspend (SideEffect) -> Unit
 ) {
     LaunchedEffect(Unit) {
-        component.sideEffect.receiveAsFlow().collect(handler)
+        component.sideEffect.collect(handler)
     }
 }
 

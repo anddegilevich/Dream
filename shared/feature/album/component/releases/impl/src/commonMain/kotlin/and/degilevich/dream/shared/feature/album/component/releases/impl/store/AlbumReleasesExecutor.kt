@@ -8,7 +8,6 @@ import and.degilevich.dream.shared.feature.album.component.releases.impl.store.m
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
 import and.degilevich.dream.shared.feature.album.source.api.remote.request.getNewReleases.GetNewReleasesParams
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.withIOContext
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.args.AlbumDetailsNavArgs
@@ -16,7 +15,10 @@ import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.getValue
@@ -56,7 +58,7 @@ internal class AlbumReleasesExecutor(
                 limit = 10,
                 offset = 0
             )
-            withIOContext { albumRemoteDataSource.getNewReleases(params) }
+            withContext(context = Dispatchers.IO) { albumRemoteDataSource.getNewReleases(params) }
                 .onSuccess { result ->
                     setReleases(albums = result.albums.albums)
                 }

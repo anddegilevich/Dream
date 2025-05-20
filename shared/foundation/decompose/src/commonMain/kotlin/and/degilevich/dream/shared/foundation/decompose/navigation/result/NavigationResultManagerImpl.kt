@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.decompose.navigation.result
 
 import and.degilevich.dream.shared.foundation.serialization.decodeFromJson
-import and.degilevich.dream.shared.foundation.serialization.encodeToJsonOrNull
+import and.degilevich.dream.shared.foundation.serialization.encodeToJson
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.serialization.DeserializationStrategy
@@ -26,11 +26,12 @@ internal class NavigationResultManagerImpl(
         serializer: SerializationStrategy<T>,
         result: T
     ) {
-        val serializedResult = result.encodeToJsonOrNull(serializer = serializer) ?: return
-        sendSerializedResult(
-            navKey = navKey,
-            result = serializedResult
-        )
+        result.encodeToJson(serializer = serializer).onSuccess { serializedResult ->
+            sendSerializedResult(
+                navKey = navKey,
+                result = serializedResult
+            )
+        }
     }
 
     override fun <T> subscribeToResult(

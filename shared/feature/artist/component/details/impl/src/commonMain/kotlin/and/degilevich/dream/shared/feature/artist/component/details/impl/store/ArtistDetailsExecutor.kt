@@ -7,7 +7,6 @@ import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getA
 import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtistRelatedArtists.GetArtistRelatedArtistsParams
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.withIOContext
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
@@ -16,7 +15,10 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -52,7 +54,7 @@ internal class ArtistDetailsExecutor(
             val params = GetArtistParams(
                 id = state().navArgs.artistId
             )
-            withIOContext { artistRemoteDataSource.getArtist(params = params) }
+            withContext(context = Dispatchers.IO) { artistRemoteDataSource.getArtist(params = params) }
                 .onSuccess { result ->
                     setArtist(artist = result.artist)
                 }
@@ -75,7 +77,7 @@ internal class ArtistDetailsExecutor(
             val params = GetArtistRelatedArtistsParams(
                 id = state().navArgs.artistId
             )
-            withIOContext { artistRemoteDataSource.getArtistRelatedArtists(params = params) }
+            withContext(context = Dispatchers.IO) { artistRemoteDataSource.getArtistRelatedArtists(params = params) }
                 .onSuccess { result ->
                     setRelatedArtists(artists = result.artists)
                 }

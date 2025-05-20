@@ -1,15 +1,16 @@
 package and.degilevich.dream.shared.foundation.decompose.component.store
 
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.flowOnDefault
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -35,14 +36,14 @@ abstract class UIStoreComponent<
 
     override val state: StateFlow<UIState> = storeComponent.state
         .map(uiStateMapper::map)
-        .flowOnDefault()
+        .flowOn(context = Dispatchers.Default)
         .stateIn(
             scope = coroutineScope,
             started = SharingStarted.Lazily,
             initialValue = initialUIState
         )
 
-    override val sideEffect: ReceiveChannel<SideEffect> = storeComponent.sideEffect
+    override val sideEffect: Flow<SideEffect> = storeComponent.sideEffect
 
     override fun handleIntent(intent: Intent) {
         storeComponent.handleIntent(intent)

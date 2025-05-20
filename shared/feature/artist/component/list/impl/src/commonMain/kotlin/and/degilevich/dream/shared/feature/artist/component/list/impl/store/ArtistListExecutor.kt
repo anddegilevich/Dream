@@ -12,11 +12,13 @@ import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.withIOContext
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -62,7 +64,7 @@ internal class ArtistListExecutor(
                     "1vCWHaC5f2uS3yhpwWbIA6"
                 )
             )
-            withIOContext { artistRemoteDataSource.getArtists(params) }
+            withContext(context = Dispatchers.IO) { artistRemoteDataSource.getArtists(params) }
                 .onSuccess { result ->
                     setArtists(artists = result.artists)
                 }

@@ -6,11 +6,13 @@ import and.degilevich.dream.shared.feature.album.component.details.impl.store.mo
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
 import and.degilevich.dream.shared.feature.album.source.api.remote.request.getAlbum.GetAlbumParams
-import and.degilevich.dream.shared.foundation.coroutine.dispatcher.withIOContext
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.getValue
@@ -38,7 +40,7 @@ internal class AlbumDetailsExecutor(
             val params = GetAlbumParams(
                 id = state().navArgs.albumId
             )
-            withIOContext { albumRemoteDataSource.getAlbum(params = params) }
+            withContext(context = Dispatchers.IO) { albumRemoteDataSource.getAlbum(params = params) }
                 .onSuccess { result ->
                     setAlbum(album = result.album)
                 }
