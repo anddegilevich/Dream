@@ -1,16 +1,15 @@
 package and.degilevich.dream.shared.di
 
 import android.content.Context
-import org.junit.Test
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.test.verify.verify
+import kotlin.test.Test
 
 @OptIn(KoinExperimentalAPI::class)
-class AppModuleTest {
+actual class AppModuleTest {
 
-    //FIXME: Add verify for iOS
     @Test
-    fun checkKoinModule() {
+    actual fun verifyAppModule() {
         appModule().verify(
             extraTypes = listOf(Context::class)
         )
