@@ -1,6 +1,5 @@
 package and.degilevich.dream.shared.foundation.compose.modifier.clickable
 
-import and.degilevich.dream.shared.foundation.coroutine.mutex.withLockOrReturn
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -35,11 +34,15 @@ fun Modifier.clickableWithDebounce(
             indication = indication
         ) {
             coroutineScope.launch {
-                mutex.withLockOrReturn {
-                    isDebounce = true
-                    onClicked()
-                    delay(debounceDuration)
-                    isDebounce = false
+                if (mutex.tryLock()) {
+                    try {
+                        isDebounce = true
+                        onClicked()
+                        delay(debounceDuration)
+                        isDebounce = false
+                    } finally {
+                        mutex.unlock()
+                    }
                 }
             }
         }

@@ -25,7 +25,6 @@ dependencyResolutionManagement {
 // Foundation
 
 include(":shared:foundation:primitive")
-include(":shared:foundation:coroutine")
 include(":shared:foundation:serialization")
 include(":shared:foundation:abstraction")
 include(":shared:foundation:decompose")
@@ -161,6 +160,7 @@ include(":shared:navigation:impl")
 
 // =====================================================================================================================
 // Di
+
 include(":shared:di")
 
 // =====================================================================================================================

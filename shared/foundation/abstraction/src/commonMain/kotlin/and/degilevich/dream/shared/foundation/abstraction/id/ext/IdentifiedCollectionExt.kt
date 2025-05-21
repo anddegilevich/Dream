@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.abstraction.id.ext
 
-import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orNullIfNegative
 import and.degilevich.dream.shared.foundation.abstraction.id.Identified
+import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orNullIfNegative
 
 fun <T : Identified> Iterable<T>.distinctById(): List<T> {
     return this.distinctBy { item -> item.id }

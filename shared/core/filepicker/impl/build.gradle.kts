@@ -9,7 +9,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.core.filepicker.api)
-            implementation(projects.shared.foundation.coroutine)
         }
     }
 }

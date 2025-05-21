@@ -33,9 +33,6 @@ kotlin {
             // Libs
             implementation(libs.decompose.extensions.compose)
 
-            // Foundation
-            implementation(projects.shared.foundation.coroutine)
-
             // Logger
             api(projects.shared.logger)
 
