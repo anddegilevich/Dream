@@ -24,9 +24,9 @@ class MainActivity : ComponentActivity() {
 
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         initSplash()
         initEdgeToEdge()
+        super.onCreate(savedInstanceState)
         setContent {
             CompositionLocalProvider(
                 LocalOverscrollFactory provides null

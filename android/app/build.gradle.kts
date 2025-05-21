@@ -22,6 +22,7 @@ android {
         }
         getByName("release") {
             isMinifyEnabled = true
+            isDebuggable = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug") //FIXME: Add signing
             matchingFallbacks.add("debug")
@@ -48,18 +49,23 @@ android {
 }
 
 dependencies {
+    // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
     implementation(libs.koin.android)
-    implementation(libs.bundles.glance)
 
+    // Androidx
     implementation(libs.androidx.activity.compose)
-
     implementation(libs.androidx.core.splashscreen)
 
+    // Glance
+    implementation(libs.bundles.glance)
+
+    // Decompose
     implementation(libs.bundles.decompose)
     implementation(libs.decompose.extensions.android)
 
+    // App
     implementation(projects.shared.app.impl)
 
     // Baseline profile
