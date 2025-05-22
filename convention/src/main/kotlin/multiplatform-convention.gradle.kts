@@ -1,5 +1,4 @@
 import and.degilevich.dream.convention.common.libs
-import org.gradle.kotlin.dsl.withType
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
@@ -18,7 +17,6 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
-            linkerOpts.add("-lsqlite3")
         }
     }
 
@@ -31,11 +29,5 @@ kotlin {
         androidUnitTest.dependencies {
             implementation(libs().kotlin.test.junit)
         }
-    }
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    compilerOptions {
-        freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 }
