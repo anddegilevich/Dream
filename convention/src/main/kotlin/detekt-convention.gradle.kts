@@ -1,3 +1,6 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import org.gradle.kotlin.dsl.withType
+
 plugins {
     id("io.gitlab.arturbosch.detekt")
 }
@@ -10,6 +13,12 @@ detekt {
 
 tasks.matching { it.name == "check" }.configureEach {
     dependsOn(detekt)
+}
+
+tasks.withType<Detekt>().configureEach {
+    exclude {
+        it.file.absolutePath.contains("build/")
+    }
 }
 
 dependencies {

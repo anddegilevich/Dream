@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         initSplash()
         initEdgeToEdge()
+
         super.onCreate(savedInstanceState)
         setContent {
             CompositionLocalProvider(
