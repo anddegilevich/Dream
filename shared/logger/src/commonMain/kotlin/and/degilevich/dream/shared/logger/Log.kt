@@ -30,6 +30,13 @@ object Log : Logger {
         )
     }
 
+    override fun error(throwable: Throwable) {
+        error(
+            message = throwable.message.orEmpty(),
+            throwable = throwable
+        )
+    }
+
     @Suppress("MemberNameEqualsClassName")
     private fun log(
         priority: LogLevel,

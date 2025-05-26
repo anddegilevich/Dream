@@ -7,7 +7,11 @@ internal actual object ThreadTracer {
         val stackTrace = Thread.currentThread().stackTrace
         val callingElement = stackTrace.getOrNull(THREAD_TRACER_DEPTH) ?: return ""
         return buildString {
-            append(callingElement.className)
+            callingElement.className
+                .split(".")
+                .lastOrNull()?.let { className ->
+                    append(className)
+                }
             append(".")
             append(callingElement.methodName)
             appendSpace()

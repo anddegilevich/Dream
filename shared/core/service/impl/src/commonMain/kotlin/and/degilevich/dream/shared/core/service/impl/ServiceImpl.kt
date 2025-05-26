@@ -2,7 +2,6 @@ package and.degilevich.dream.shared.core.service.impl
 
 import and.degilevich.dream.shared.core.client.api.RemoteClient
 import and.degilevich.dream.shared.core.client.api.ext.foldBody
-import and.degilevich.dream.shared.core.client.api.ext.getCatching
 import and.degilevich.dream.shared.core.service.api.Service
 import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumRequest
 import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumResponse

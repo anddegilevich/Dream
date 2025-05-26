@@ -18,5 +18,5 @@ kotlin {
 }
 
 android {
-    namespace = "and.degilevich.dream.shared.template.source.api"
+    namespace = "and.degilevich.dream.shared.template.source.impl"
 }

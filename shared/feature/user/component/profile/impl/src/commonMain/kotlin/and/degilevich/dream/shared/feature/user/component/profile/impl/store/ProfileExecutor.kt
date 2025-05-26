@@ -6,7 +6,6 @@ import and.degilevich.dream.shared.feature.user.component.profile.api.componen.m
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.model.ProfileState
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
-import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerResult
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerSource
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import com.arkivanov.decompose.router.stack.pop
@@ -51,21 +50,16 @@ internal class ProfileExecutor(
     private fun collectFilePickerResult() {
         collectFilePickerResultJob?.cancel()
         collectFilePickerResultJob = scope.launch {
-            filePickerManager.subscribeToResult { result ->
-                handleFilePickerResult(result)
-            }
-        }
-    }
-
-    private fun handleFilePickerResult(result: FilePickerResult) {
-        when (result.key) {
-            PROFILE_ICON_FILE_PICKER_KEY -> {
-                val uri = result.uris.firstOrNull() ?: return
+            filePickerManager.subscribeToResult(
+                key = PROFILE_ICON_FILE_PICKER_KEY
+            ) { uris ->
+                val uri = uris.firstOrNull() ?: return@subscribeToResult
                 setIconUri(uri)
             }
-
-            PROFILE_PHOTOS_FILE_PICKER_KEY -> {
-                setPhotosUris(result.uris)
+            filePickerManager.subscribeToResult(
+                key = PROFILE_PHOTOS_FILE_PICKER_KEY
+            ) { uris ->
+                setPhotosUris(uris)
             }
         }
     }

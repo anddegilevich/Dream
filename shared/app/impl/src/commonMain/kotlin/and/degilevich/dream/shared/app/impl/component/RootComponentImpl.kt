@@ -37,7 +37,7 @@ class RootComponentImpl(
 
     private val coroutineScope = coroutineScope()
 
-    private val navigationComponent: AppNavigationComponent = AppNavigationComponentImpl(
+    private val navigationComponent = AppNavigationComponentImpl(
         componentContext = childContext(
             key = AppNavigationComponent::class.className()
         )

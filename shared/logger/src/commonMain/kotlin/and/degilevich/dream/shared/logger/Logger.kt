@@ -6,4 +6,5 @@ interface Logger {
         message: String,
         throwable: Throwable? = null
     )
+    fun error(throwable: Throwable)
 }
