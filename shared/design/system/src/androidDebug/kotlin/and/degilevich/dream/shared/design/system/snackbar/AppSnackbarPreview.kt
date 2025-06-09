@@ -1,8 +1,7 @@
 package and.degilevich.dream.shared.design.system.snackbar
 
+import and.degilevich.dream.shared.design.system.snackbar.provider.SnackbarDataPreviewProvider
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import androidx.compose.material.SnackbarData
-import androidx.compose.material.SnackbarDuration
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -13,7 +12,7 @@ private fun AppSnackbarDarkPreview() {
         isDarkMode = true
     ) {
         AppSnackbar(
-            data = providePreviewSnackbarData()
+            data = SnackbarDataPreviewProvider.provide()
         )
     }
 }
@@ -25,18 +24,7 @@ private fun AppSnackbarLightPreview() {
         isDarkMode = false
     ) {
         AppSnackbar(
-            data = providePreviewSnackbarData()
+            data = SnackbarDataPreviewProvider.provide()
         )
-    }
-}
-
-private fun providePreviewSnackbarData(): SnackbarData {
-    return object : SnackbarData {
-        override val actionLabel: String = "Action"
-        override val duration: SnackbarDuration = SnackbarDuration.Short
-        override val message: String = "Message"
-
-        override fun dismiss() = Unit
-        override fun performAction() = Unit
     }
 }

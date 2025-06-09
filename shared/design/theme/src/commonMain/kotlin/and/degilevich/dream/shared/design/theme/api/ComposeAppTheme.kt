@@ -46,9 +46,6 @@ fun ComposeAppTheme(
 
 internal val LocalColors: ProvidableCompositionLocal<ThemeColors> = compositionLocalOf { DarkThemeColors() }
 internal val LocalFonts: ProvidableCompositionLocal<ThemeFonts> = staticCompositionLocalOf { ThemeFontsImpl() }
-internal val LocalTypography: ProvidableCompositionLocal<ThemeTypography> =
-    staticCompositionLocalOf {
-        ThemeTypographyImpl(
-            fonts = ThemeFonts.Empty()
-        )
-    }
+internal val LocalTypography: ProvidableCompositionLocal<ThemeTypography> = staticCompositionLocalOf {
+    ThemeTypographyImpl(fonts = ThemeFontsImpl())
+}

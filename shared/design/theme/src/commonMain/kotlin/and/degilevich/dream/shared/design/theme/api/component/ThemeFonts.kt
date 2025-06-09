@@ -9,10 +9,4 @@ interface ThemeFonts {
     val avenir: FontFamily
         @Composable
         get
-
-    class Empty : ThemeFonts {
-        override val avenir: FontFamily
-            @Composable
-            get() = FontFamily.Default
-    }
 }

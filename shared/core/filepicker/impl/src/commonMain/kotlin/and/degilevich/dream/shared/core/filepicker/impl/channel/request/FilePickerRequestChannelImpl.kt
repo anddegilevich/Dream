@@ -1,4 +1,4 @@
-package and.degilevcih.dream.shared.core.filepicker.impl.channel.request
+package and.degilevich.dream.shared.core.filepicker.impl.channel.request
 
 import and.degilevich.dream.shared.core.filepicker.api.channel.request.FilePickerRequestChannel
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
