@@ -8,11 +8,13 @@ import kotlinx.collections.immutable.persistentListOf
 
 @Immutable
 data class AlbumReleasesUIState(
+    val isLoading: Boolean,
     val releases: ImmutableList<AlbumCardUIData>
 ) {
     companion object : EmptyFactory<AlbumReleasesUIState> {
         override fun empty(): AlbumReleasesUIState {
             return AlbumReleasesUIState(
+                isLoading = false,
                 releases = persistentListOf()
             )
         }

@@ -9,6 +9,7 @@ object AlbumReleasesUIStatePreviewProvider {
 
     fun provide(): AlbumReleasesUIState {
         return AlbumReleasesUIState(
+            isLoading = false,
             releases = buildList {
                 for (i in 1..10) {
                     add(

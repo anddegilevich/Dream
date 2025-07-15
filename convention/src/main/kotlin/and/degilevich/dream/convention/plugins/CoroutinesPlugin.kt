@@ -15,13 +15,13 @@ internal class CoroutinesPlugin : Plugin<Project> {
                 implementation(libs().kotlinx.coroutines.core)
             }
 
-//            androidMainDependencies {
-//                implementation(libs().kotlinx.coroutines.android)
-//            }
-//
-//            commonTestDependencies {
-//                implementation(libs().kotlinx.coroutines.test)
-//            }
+            androidMainDependencies {
+                implementation(libs().kotlinx.coroutines.android)
+            }
+
+            commonTestDependencies {
+                implementation(libs().kotlinx.coroutines.test)
+            }
         }
     }
 }

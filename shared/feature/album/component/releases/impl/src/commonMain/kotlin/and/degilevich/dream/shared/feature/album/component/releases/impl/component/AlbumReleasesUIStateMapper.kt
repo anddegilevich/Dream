@@ -15,6 +15,7 @@ internal class AlbumReleasesUIStateMapper : Mapper<AlbumReleasesState, AlbumRele
     override fun map(item: AlbumReleasesState): AlbumReleasesUIState {
         return with(item) {
             AlbumReleasesUIState(
+                isLoading = isLoading,
                 releases = releases.map { release ->
                     albumInfoToCardUIDataMapper.map(
                         album = release,

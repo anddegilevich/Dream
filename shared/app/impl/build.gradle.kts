@@ -32,6 +32,8 @@ kotlin {
         commonMain.dependencies {
             // Libs
             implementation(libs.decompose.extensions.compose)
+            api(libs.bundles.decompose)
+            api(libs.moko.resources)
 
             // Logger
             api(projects.shared.logger)

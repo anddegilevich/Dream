@@ -18,7 +18,7 @@ android {
         targetSdk = libs.versions.android.target.sdk.get().toInt()
     }
 
-    targetProjectPath = projects.android.app.identityPath.path
+    targetProjectPath = projects.android.app.path
 
     val variantFlavorDimension = "variant"
     flavorDimensions += variantFlavorDimension
