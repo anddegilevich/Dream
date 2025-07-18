@@ -6,12 +6,12 @@ import and.degilevich.dream.shared.feature.user.component.profile.api.componen.m
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileUIState
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.ProfileStoreComponent
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.model.ProfileState
-import and.degilevich.dream.shared.template.component.impl.UIStoreComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.BaseUIStoreComponent
 import com.arkivanov.decompose.ComponentContext
 
 class ProfileComponentImpl(
     componentContext: ComponentContext
-) : UIStoreComponentTemplate<ProfileUIState, ProfileIntent, ProfileSideEffect, ProfileState>(
+) : BaseUIStoreComponent<ProfileUIState, ProfileIntent, ProfileSideEffect, ProfileState>(
     componentContext = componentContext,
     storeComponentFactory = { childComponentContext ->
         ProfileStoreComponent(

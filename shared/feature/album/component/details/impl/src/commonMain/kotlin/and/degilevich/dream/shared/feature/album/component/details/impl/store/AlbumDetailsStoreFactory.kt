@@ -4,9 +4,9 @@ import and.degilevich.dream.shared.feature.album.component.details.api.component
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsSideEffect
 import and.degilevich.dream.shared.feature.album.component.details.impl.store.model.AlbumDetailsState
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import and.degilevich.dream.shared.template.component.impl.ComponentStoreFactoryTemplate
+import and.degilevich.dream.shared.template.component.impl.BaseComponentStoreFactory
 
-internal class AlbumDetailsStoreFactory : ComponentStoreFactoryTemplate<
+internal class AlbumDetailsStoreFactory : BaseComponentStoreFactory<
     AlbumDetailsState,
     AlbumDetailsIntent,
     AlbumDetailsSideEffect

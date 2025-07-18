@@ -11,14 +11,14 @@ import and.degilevich.dream.shared.feature.album.source.impl.remote.mapper.GetNe
 import and.degilevich.dream.shared.feature.album.source.impl.remote.mapper.GetNewReleasesResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
-import and.degilevich.dream.shared.template.source.impl.remote.RemoteDataSourceTemplate
+import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource
 
 internal class AlbumRemoteDataSourceImpl(
     private val getAlbumParamsToRequestMapper: GetAlbumParamsToRequestMapper,
     private val getAlbumResponseToResultMapper: GetAlbumResponseToResultMapper,
     private val getNewReleasesParamsToRequestMapper: GetNewReleasesParamsToRequestMapper,
     private val getNewReleasesResponseToResultMapper: GetNewReleasesResponseToResultMapper,
-) : RemoteDataSourceTemplate(), AlbumRemoteDataSource {
+) : BaseRemoteDataSource(), AlbumRemoteDataSource {
     override suspend fun getAlbum(params: GetAlbumParams): Result<GetAlbumResult> {
         return service.getAlbum(
             request = params.mapWith(getAlbumParamsToRequestMapper)

@@ -4,9 +4,9 @@ import and.degilevich.dream.shared.feature.user.component.profile.api.componen.m
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileSideEffect
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.model.ProfileState
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import and.degilevich.dream.shared.template.component.impl.ComponentStoreFactoryTemplate
+import and.degilevich.dream.shared.template.component.impl.BaseComponentStoreFactory
 
-internal class ProfileStoreFactory : ComponentStoreFactoryTemplate<ProfileState, ProfileIntent, ProfileSideEffect>(
+internal class ProfileStoreFactory : BaseComponentStoreFactory<ProfileState, ProfileIntent, ProfileSideEffect>(
     storeName = ProfileStore::class.className(),
     executorFactory = { lifecycle ->
         ProfileExecutor(lifecycle = lifecycle)

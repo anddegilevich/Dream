@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.source.impl.remote
 
-import and.degilevich.dream.shared.template.source.impl.remote.RemoteDataSourceTemplate
+import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtist.GetArtistResult
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtists.GetArtistsParams
@@ -30,7 +30,7 @@ internal class ArtistRemoteDataSourceImpl(
     private val getArtistsTopTracksResponseToResultMapper: GetArtistTopTracksResponseToResultMapper,
     private val getArtistsRelatedArtistsParamsToRequestMapper: GetArtistRelatedArtistsParamsToRequestMapper,
     private val getArtistsRelatedArtistsResponseToResultMapper: GetArtistRelatedArtistsResponseToResultMapper
-) : ArtistRemoteDataSource, RemoteDataSourceTemplate() {
+) : ArtistRemoteDataSource, BaseRemoteDataSource() {
 
     override suspend fun getArtist(params: GetArtistParams): Result<GetArtistResult> {
         return service.getArtist(

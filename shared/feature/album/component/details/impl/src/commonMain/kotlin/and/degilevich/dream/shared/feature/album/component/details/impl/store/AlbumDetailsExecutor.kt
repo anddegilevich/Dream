@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.album.component.details.impl.store.mo
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
 import and.degilevich.dream.shared.feature.album.source.api.remote.request.getAlbum.GetAlbumParams
-import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ import kotlin.getValue
 
 internal class AlbumDetailsExecutor(
     lifecycle: Lifecycle
-) : ExecutorAbs<AlbumDetailsState, AlbumDetailsIntent, AlbumDetailsSideEffect>(lifecycle),
+) : AbstractExecutor<AlbumDetailsState, AlbumDetailsIntent, AlbumDetailsSideEffect>(lifecycle),
     KoinComponent {
 
     private val albumRemoteDataSource: AlbumRemoteDataSource by inject()
@@ -44,24 +44,15 @@ internal class AlbumDetailsExecutor(
                 .onSuccess { result ->
                     setAlbum(album = result.album)
                 }
-        }.invokeOnCompletion {
             setLoading(false)
         }
     }
 
     private fun setAlbum(album: AlbumData) {
-        reduce {
-            copy(
-                album = album
-            )
-        }
+        reduce { copy(album = album) }
     }
 
     private fun setLoading(isLoading: Boolean) {
-        reduce {
-            copy(
-                isLoading = isLoading
-            )
-        }
+        reduce { copy(isLoading = isLoading) }
     }
 }

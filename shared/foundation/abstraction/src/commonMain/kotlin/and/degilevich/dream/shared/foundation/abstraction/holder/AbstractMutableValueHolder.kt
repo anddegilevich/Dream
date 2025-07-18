@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-abstract class MutableValueHolderAbs<T>(
+abstract class AbstractMutableValueHolder<T>(
     initialValue: T
 ) : MutableValueHolder<T> {
 

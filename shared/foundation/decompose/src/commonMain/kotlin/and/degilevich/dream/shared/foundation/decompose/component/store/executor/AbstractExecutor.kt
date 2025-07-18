@@ -8,7 +8,7 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancelChildren
 
-abstract class ExecutorAbs<State : Any, in Intent : Any, SideEffect : Any>(
+abstract class AbstractExecutor<State : Any, in Intent : Any, SideEffect : Any>(
     override val lifecycle: Lifecycle
 ) : CoroutineExecutor<
     Intent,

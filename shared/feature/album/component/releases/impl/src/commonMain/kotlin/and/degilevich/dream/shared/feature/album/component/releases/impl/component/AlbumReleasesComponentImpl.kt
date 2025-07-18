@@ -6,12 +6,12 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
 import and.degilevich.dream.shared.feature.album.component.releases.impl.store.AlbumReleasesStoreComponent
 import and.degilevich.dream.shared.feature.album.component.releases.impl.store.model.AlbumReleasesState
-import and.degilevich.dream.shared.template.component.impl.UIStoreComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.BaseUIStoreComponent
 import com.arkivanov.decompose.ComponentContext
 
 class AlbumReleasesComponentImpl(
     componentContext: ComponentContext
-) : UIStoreComponentTemplate<
+) : BaseUIStoreComponent<
     AlbumReleasesUIState,
     AlbumReleasesIntent,
     AlbumReleasesSideEffect,

@@ -8,7 +8,7 @@ import and.degilevich.dream.shared.template.component.impl.logger.LoggerComponen
 import com.arkivanov.decompose.ComponentContext
 import kotlin.reflect.KClass
 
-abstract class StoreComponentTemplate<out State : Any, in Intent : Any, out SideEffect : Any>(
+abstract class BaseStoreComponent<out State : Any, in Intent : Any, out SideEffect : Any>(
     componentContext: ComponentContext,
     storeFactory: ComponentStoreFactory<State, Intent, SideEffect>,
     stateConservator: StoreStateConservator<State>,

@@ -4,13 +4,13 @@ import and.degilevich.dream.shared.feature.album.component.details.api.component
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsSideEffect
 import and.degilevich.dream.shared.feature.album.component.details.impl.store.model.AlbumDetailsState
 import and.degilevich.dream.shared.navigation.api.args.AlbumDetailsNavArgs
-import and.degilevich.dream.shared.template.component.impl.StoreComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.BaseStoreComponent
 import com.arkivanov.decompose.ComponentContext
 
 internal class AlbumDetailsStoreComponent(
     componentContext: ComponentContext,
     navArgs: AlbumDetailsNavArgs
-) : StoreComponentTemplate<
+) : BaseStoreComponent<
     AlbumDetailsState,
     AlbumDetailsIntent,
     AlbumDetailsSideEffect

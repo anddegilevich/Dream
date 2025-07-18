@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.template.component.impl.logger.LoggerComponen
 import com.arkivanov.decompose.ComponentContext
 import kotlin.reflect.KClass
 
-abstract class UIStoreComponentTemplate<
+abstract class BaseUIStoreComponent<
     out UIState : Any,
     in Intent : Any,
     out SideEffect : Any,

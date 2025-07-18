@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.template.component.impl.logger.LoggerComponen
 import com.arkivanov.decompose.ComponentContext
 import kotlin.reflect.KClass
 
-abstract class MVIComponentTemplate<out State : Any, in Intent, out SideEffect>(
+abstract class BaseMVIComponent<out State : Any, in Intent, out SideEffect>(
     componentContext: ComponentContext
 ) : MVIComponent<State, Intent, SideEffect>, ComponentContext by componentContext {
 

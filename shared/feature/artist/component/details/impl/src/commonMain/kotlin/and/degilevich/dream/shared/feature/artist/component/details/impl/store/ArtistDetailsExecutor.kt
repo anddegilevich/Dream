@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getA
 import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtistRelatedArtists.GetArtistRelatedArtistsParams
-import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
@@ -24,7 +24,7 @@ import org.koin.core.component.inject
 
 internal class ArtistDetailsExecutor(
     lifecycle: Lifecycle
-) : ExecutorAbs<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect>(lifecycle),
+) : AbstractExecutor<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect>(lifecycle),
     KoinComponent {
 
     private val navigator: AppNavigator by inject()
@@ -58,16 +58,7 @@ internal class ArtistDetailsExecutor(
                 .onSuccess { result ->
                     setArtist(artist = result.artist)
                 }
-        }.invokeOnCompletion {
             setLoading(false)
-        }
-    }
-
-    private fun setArtist(artist: ArtistData) {
-        reduce {
-            copy(
-                artist = artist
-            )
         }
     }
 
@@ -81,24 +72,7 @@ internal class ArtistDetailsExecutor(
                 .onSuccess { result ->
                     setRelatedArtists(artists = result.artists)
                 }
-        }.invokeOnCompletion {
             setLoading(false)
-        }
-    }
-
-    private fun setRelatedArtists(artists: List<ArtistData>) {
-        reduce {
-            copy(
-                similarArtists = artists
-            )
-        }
-    }
-
-    private fun setLoading(isLoading: Boolean) {
-        reduce {
-            copy(
-                isLoading = isLoading
-            )
         }
     }
 
@@ -114,5 +88,17 @@ internal class ArtistDetailsExecutor(
                 )
             )
         )
+    }
+
+    private fun setArtist(artist: ArtistData) {
+        reduce { copy(artist = artist) }
+    }
+
+    private fun setRelatedArtists(artists: List<ArtistData>) {
+        reduce { copy(similarArtists = artists) }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        reduce { copy(isLoading = isLoading) }
     }
 }

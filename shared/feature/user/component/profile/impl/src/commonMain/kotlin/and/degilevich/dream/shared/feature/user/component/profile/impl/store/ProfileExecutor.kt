@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.filepicker.api.FilePickerManager
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileIntent
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.model.ProfileSideEffect
 import and.degilevich.dream.shared.feature.user.component.profile.impl.store.model.ProfileState
-import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerSource
 import and.degilevich.dream.shared.navigation.api.AppNavigator
@@ -19,7 +19,7 @@ import org.koin.core.component.inject
 
 internal class ProfileExecutor(
     lifecycle: Lifecycle
-) : ExecutorAbs<ProfileState, ProfileIntent, ProfileSideEffect>(lifecycle = lifecycle), KoinComponent {
+) : AbstractExecutor<ProfileState, ProfileIntent, ProfileSideEffect>(lifecycle = lifecycle), KoinComponent {
 
     private val navigator: AppNavigator by inject()
     private val filePickerManager: FilePickerManager by inject()
@@ -91,22 +91,16 @@ internal class ProfileExecutor(
         }
     }
 
+    private fun navigateBack() {
+        navigator.screenNavigator.pop()
+    }
+
     private fun setIconUri(uri: String) {
-        reduce {
-            copy(
-                iconUri = uri
-            )
-        }
+        reduce { copy(iconUri = uri) }
     }
 
     private fun setPhotosUris(uris: List<String>) {
-        reduce {
-            copy(profilePhotosUris = uris)
-        }
-    }
-
-    private fun navigateBack() {
-        navigator.screenNavigator.pop()
+        reduce { copy(profilePhotosUris = uris) }
     }
 
     private companion object {

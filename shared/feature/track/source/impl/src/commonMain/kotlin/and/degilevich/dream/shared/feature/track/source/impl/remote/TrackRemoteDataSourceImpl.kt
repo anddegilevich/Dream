@@ -11,14 +11,14 @@ import and.degilevich.dream.shared.feature.track.source.impl.remote.mapper.GetTr
 import and.degilevich.dream.shared.feature.track.source.impl.remote.mapper.GetTrackResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
-import and.degilevich.dream.shared.template.source.impl.remote.RemoteDataSourceTemplate
+import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource
 
 internal class TrackRemoteDataSourceImpl(
     private val getRecommendationsParamsToRequestMapper: GetRecommendationsParamsToRequestMapper,
     private val getRecommendationsResponseToResultMapper: GetRecommendationsResponseToResultMapper,
     private val getTrackParamsToRequestMapper: GetTrackParamsToRequestMapper,
     private val getTrackResponseToResultMapper: GetTrackResponseToResultMapper,
-) : RemoteDataSourceTemplate(), TrackRemoteDataSource {
+) : BaseRemoteDataSource(), TrackRemoteDataSource {
 
     override suspend fun getRecommendations(params: GetRecommendationsParams): Result<GetRecommendationsResult> {
         return service.getRecommendations(

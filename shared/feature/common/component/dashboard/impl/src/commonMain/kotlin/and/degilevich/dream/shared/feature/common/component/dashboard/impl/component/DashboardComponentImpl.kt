@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.compon
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardIntent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardSideEffect
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardUIState
-import and.degilevich.dream.shared.template.component.impl.MVIComponentTemplate
+import and.degilevich.dream.shared.template.component.impl.BaseMVIComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.stateIn
 
 class DashboardComponentImpl(
     componentContext: ComponentContext
-) : MVIComponentTemplate<DashboardUIState, DashboardIntent, DashboardSideEffect>(
+) : BaseMVIComponent<DashboardUIState, DashboardIntent, DashboardSideEffect>(
     componentContext = componentContext
 ),
     DashboardComponent {

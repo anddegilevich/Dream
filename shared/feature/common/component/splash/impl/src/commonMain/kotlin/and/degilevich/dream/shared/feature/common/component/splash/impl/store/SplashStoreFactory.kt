@@ -4,9 +4,9 @@ import and.degilevich.dream.shared.feature.common.component.splash.api.component
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
 import and.degilevich.dream.shared.feature.common.component.splash.impl.store.model.SplashState
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import and.degilevich.dream.shared.template.component.impl.ComponentStoreFactoryTemplate
+import and.degilevich.dream.shared.template.component.impl.BaseComponentStoreFactory
 
-internal class SplashStoreFactory : ComponentStoreFactoryTemplate<SplashState, SplashIntent, SplashSideEffect>(
+internal class SplashStoreFactory : BaseComponentStoreFactory<SplashState, SplashIntent, SplashSideEffect>(
     storeName = SplashStore::class.className(),
     executorFactory = { lifecycle ->
         SplashExecutor(lifecycle = lifecycle)

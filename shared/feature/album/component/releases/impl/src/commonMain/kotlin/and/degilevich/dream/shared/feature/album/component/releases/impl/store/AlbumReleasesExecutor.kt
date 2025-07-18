@@ -8,7 +8,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.impl.store.m
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
 import and.degilevich.dream.shared.feature.album.source.api.remote.request.getNewReleases.GetNewReleasesParams
-import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
@@ -25,7 +25,7 @@ import kotlin.getValue
 
 internal class AlbumReleasesExecutor(
     lifecycle: Lifecycle
-) : ExecutorAbs<AlbumReleasesState, AlbumReleasesIntent, AlbumReleasesSideEffect>(lifecycle),
+) : AbstractExecutor<AlbumReleasesState, AlbumReleasesIntent, AlbumReleasesSideEffect>(lifecycle),
     KoinComponent {
 
     private val navigator: AppNavigator by inject()
@@ -45,9 +45,7 @@ internal class AlbumReleasesExecutor(
 
     override fun executeIntent(intent: AlbumReleasesIntent) {
         when (intent) {
-            is AlbumReleasesIntent.OnAlbumClicked -> {
-                navigateToAlbum(albumId = intent.id)
-            }
+            is AlbumReleasesIntent.OnAlbumClicked -> navigateToAlbum(albumId = intent.id)
         }
     }
 
@@ -70,20 +68,7 @@ internal class AlbumReleasesExecutor(
                         )
                     )
                 }
-        }.invokeOnCompletion {
             setLoading(false)
-        }
-    }
-
-    private fun setReleases(albums: List<AlbumSimplifiedData>) {
-        reduce {
-            copy(releases = albums)
-        }
-    }
-
-    private fun setLoading(isLoading: Boolean) {
-        reduce {
-            copy(isLoading = isLoading)
         }
     }
 
@@ -95,5 +80,13 @@ internal class AlbumReleasesExecutor(
                 )
             )
         )
+    }
+
+    private fun setReleases(albums: List<AlbumSimplifiedData>) {
+        reduce { copy(releases = albums) }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        reduce { copy(isLoading = isLoading) }
     }
 }

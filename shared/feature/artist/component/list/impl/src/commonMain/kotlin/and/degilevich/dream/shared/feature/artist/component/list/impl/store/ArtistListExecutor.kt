@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.feature.artist.component.list.api.component.m
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
 import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
-import and.degilevich.dream.shared.foundation.decompose.component.store.executor.ExecutorAbs
+import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
@@ -24,7 +24,7 @@ import org.koin.core.component.inject
 
 internal class ArtistListExecutor(
     lifecycle: Lifecycle
-) : ExecutorAbs<ArtistListState, ArtistListIntent, ArtistListSideEffect>(lifecycle),
+) : AbstractExecutor<ArtistListState, ArtistListIntent, ArtistListSideEffect>(lifecycle),
     KoinComponent {
 
     private val navigator: AppNavigator by inject()
@@ -44,13 +44,8 @@ internal class ArtistListExecutor(
 
     override fun executeIntent(intent: ArtistListIntent) {
         when (intent) {
-            is ArtistListIntent.OnArtistClicked -> {
-                navigateToArtist(intent.id)
-            }
-
-            ArtistListIntent.OnProfileClicked -> {
-                navigateToProfile()
-            }
+            is ArtistListIntent.OnArtistClicked -> navigateToArtist(intent.id)
+            ArtistListIntent.OnProfileClicked -> navigateToProfile()
         }
     }
 
@@ -76,20 +71,7 @@ internal class ArtistListExecutor(
                         )
                     )
                 }
-        }.invokeOnCompletion {
             setLoading(false)
-        }
-    }
-
-    private fun setArtists(artists: List<ArtistData>) {
-        reduce {
-            copy(artists = artists)
-        }
-    }
-
-    private fun setLoading(isLoading: Boolean) {
-        reduce {
-            copy(isLoading = isLoading)
         }
     }
 
@@ -105,5 +87,13 @@ internal class ArtistListExecutor(
 
     private fun navigateToProfile() {
         navigator.screenNavigator.pushNew(ScreenConfig.Profile)
+    }
+
+    private fun setArtists(artists: List<ArtistData>) {
+        reduce { copy(artists = artists) }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        reduce { copy(isLoading = isLoading) }
     }
 }

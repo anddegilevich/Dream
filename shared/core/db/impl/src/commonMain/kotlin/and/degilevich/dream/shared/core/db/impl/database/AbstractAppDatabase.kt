@@ -16,4 +16,4 @@ import androidx.room.RoomDatabase
     exportSchema = false
 )
 @ConstructedBy(AppDatabaseConstructor::class)
-internal abstract class AppDatabaseAbs : RoomDatabase(), AppDatabase
+internal abstract class AbstractAppDatabase : RoomDatabase(), AppDatabase

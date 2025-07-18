@@ -8,7 +8,7 @@ import kotlinx.serialization.KSerializer
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-abstract class StorageTemplate<T>(
+abstract class BaseStorage<T>(
     private val key: String,
     private val serializer: KSerializer<T>
 ) : Storage<T>, KoinComponent {
