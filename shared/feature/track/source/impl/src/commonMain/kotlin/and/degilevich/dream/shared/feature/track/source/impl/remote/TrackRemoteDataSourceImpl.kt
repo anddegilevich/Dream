@@ -1,14 +1,14 @@
 package and.degilevich.dream.shared.feature.track.source.impl.remote
 
 import and.degilevich.dream.shared.feature.track.source.api.remote.TrackRemoteDataSource
-import and.degilevich.dream.shared.feature.track.source.api.remote.request.getRecommendations.GetRecommendationsParams
-import and.degilevich.dream.shared.feature.track.source.api.remote.request.getRecommendations.GetRecommendationsResult
-import and.degilevich.dream.shared.feature.track.source.api.remote.request.getTrack.GetTrackParams
-import and.degilevich.dream.shared.feature.track.source.api.remote.request.getTrack.GetTrackResult
-import and.degilevich.dream.shared.feature.track.source.impl.remote.mapper.GetRecommendationsParamsToRequestMapper
-import and.degilevich.dream.shared.feature.track.source.impl.remote.mapper.GetRecommendationsResponseToResultMapper
-import and.degilevich.dream.shared.feature.track.source.impl.remote.mapper.GetTrackParamsToRequestMapper
-import and.degilevich.dream.shared.feature.track.source.impl.remote.mapper.GetTrackResponseToResultMapper
+import and.degilevich.dream.shared.feature.track.model.core.api.request.getRecommendations.GetRecommendationsParams
+import and.degilevich.dream.shared.feature.track.model.core.api.request.getRecommendations.GetRecommendationsResult
+import and.degilevich.dream.shared.feature.track.model.core.api.request.getTrack.GetTrackParams
+import and.degilevich.dream.shared.feature.track.model.core.api.request.getTrack.GetTrackResult
+import and.degilevich.dream.shared.feature.track.model.core.api.mapper.GetRecommendationsParamsToRequestMapper
+import and.degilevich.dream.shared.feature.track.model.core.api.mapper.GetRecommendationsResponseToResultMapper
+import and.degilevich.dream.shared.feature.track.model.core.api.mapper.GetTrackParamsToRequestMapper
+import and.degilevich.dream.shared.feature.track.model.core.api.mapper.GetTrackResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource

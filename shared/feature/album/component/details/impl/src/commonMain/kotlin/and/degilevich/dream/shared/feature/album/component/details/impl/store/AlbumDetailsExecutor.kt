@@ -3,9 +3,9 @@ package and.degilevich.dream.shared.feature.album.component.details.impl.store
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsIntent
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsSideEffect
 import and.degilevich.dream.shared.feature.album.component.details.impl.store.model.AlbumDetailsState
+import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchAlbumUseCase
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
-import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
-import and.degilevich.dream.shared.feature.album.source.api.remote.request.getAlbum.GetAlbumParams
+import and.degilevich.dream.shared.feature.album.model.core.api.request.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
@@ -22,7 +22,7 @@ internal class AlbumDetailsExecutor(
 ) : AbstractExecutor<AlbumDetailsState, AlbumDetailsIntent, AlbumDetailsSideEffect>(lifecycle),
     KoinComponent {
 
-    private val albumRemoteDataSource: AlbumRemoteDataSource by inject()
+    private val fetchAlbumUseCase: FetchAlbumUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -40,7 +40,7 @@ internal class AlbumDetailsExecutor(
             val params = GetAlbumParams(
                 id = state().navArgs.albumId
             )
-            withContext(context = Dispatchers.IO) { albumRemoteDataSource.getAlbum(params = params) }
+            withContext(context = Dispatchers.IO) { fetchAlbumUseCase(params = params) }
                 .onSuccess { result ->
                     setAlbum(album = result.album)
                 }

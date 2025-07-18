@@ -11,6 +11,7 @@ kotlin {
             implementation(projects.shared.core.db.api)
             api(projects.shared.feature.artist.model.artifact.api)
             api(projects.shared.feature.image.model.artifact.api)
+            api(projects.shared.feature.track.model.core.api)
         }
     }
 }

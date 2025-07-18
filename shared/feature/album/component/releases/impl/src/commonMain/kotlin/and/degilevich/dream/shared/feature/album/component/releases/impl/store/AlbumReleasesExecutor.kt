@@ -5,9 +5,9 @@ import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.impl.store.model.AlbumReleasesState
+import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchNewReleasesUseCase
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
-import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
-import and.degilevich.dream.shared.feature.album.source.api.remote.request.getNewReleases.GetNewReleasesParams
+import and.degilevich.dream.shared.feature.album.model.core.api.request.getNewReleases.GetNewReleasesParams
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.args.AlbumDetailsNavArgs
@@ -29,7 +29,7 @@ internal class AlbumReleasesExecutor(
     KoinComponent {
 
     private val navigator: AppNavigator by inject()
-    private val albumRemoteDataSource: AlbumRemoteDataSource by inject()
+    private val fetchNewReleasesUseCase: FetchNewReleasesUseCase by inject()
     private val toastController: ToastController by inject()
     private val toastFactory: ToastFactory by inject()
 
@@ -56,7 +56,7 @@ internal class AlbumReleasesExecutor(
                 limit = 10,
                 offset = 0
             )
-            withContext(context = Dispatchers.IO) { albumRemoteDataSource.getNewReleases(params) }
+            withContext(context = Dispatchers.IO) { fetchNewReleasesUseCase(params) }
                 .onSuccess { result ->
                     setReleases(albums = result.albums.albums)
                 }

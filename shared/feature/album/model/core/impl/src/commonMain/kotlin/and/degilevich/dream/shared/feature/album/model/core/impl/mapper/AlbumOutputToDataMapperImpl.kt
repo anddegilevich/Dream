@@ -4,8 +4,8 @@ import and.degilevich.dream.shared.core.service.api.model.album.AlbumOutput
 import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumTracksData
-import and.degilevich.dream.shared.feature.album.model.core.api.data.mapper.AlbumOutputToDataMapper
-import and.degilevich.dream.shared.feature.album.model.core.api.data.mapper.AlbumTracksOutputToDataMapper
+import and.degilevich.dream.shared.feature.album.model.core.api.mapper.AlbumOutputToDataMapper
+import and.degilevich.dream.shared.feature.album.model.core.api.mapper.AlbumTracksOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.model.artifact.api.mapper.ArtistSimplifiedOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.model.artifact.api.mapper.ImageObjectOutputToDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty

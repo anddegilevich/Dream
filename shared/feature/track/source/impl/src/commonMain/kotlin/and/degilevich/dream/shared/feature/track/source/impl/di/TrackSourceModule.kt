@@ -8,5 +8,4 @@ import org.koin.dsl.module
 
 fun trackSourceModule() = module {
     singleOf(::TrackRemoteDataSourceImpl) bind TrackRemoteDataSource::class
-    includes(trackSourceMapperModule())
 }

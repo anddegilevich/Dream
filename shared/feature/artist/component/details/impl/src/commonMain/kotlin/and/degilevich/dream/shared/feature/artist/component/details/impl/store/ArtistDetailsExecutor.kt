@@ -3,10 +3,11 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
-import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtist.GetArtistParams
-import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistRelatedArtistsUseCase
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
-import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtistRelatedArtists.GetArtistRelatedArtistsParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistRelatedArtists.GetArtistRelatedArtistsParams
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
@@ -28,7 +29,8 @@ internal class ArtistDetailsExecutor(
     KoinComponent {
 
     private val navigator: AppNavigator by inject()
-    private val artistRemoteDataSource: ArtistRemoteDataSource by inject()
+    private val fetchArtistUseCase: FetchArtistUseCase by inject()
+    private val fetchArtistRelatedArtistsUseCase: FetchArtistRelatedArtistsUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -54,7 +56,7 @@ internal class ArtistDetailsExecutor(
             val params = GetArtistParams(
                 id = state().navArgs.artistId
             )
-            withContext(context = Dispatchers.IO) { artistRemoteDataSource.getArtist(params = params) }
+            withContext(context = Dispatchers.IO) { fetchArtistUseCase(params = params) }
                 .onSuccess { result ->
                     setArtist(artist = result.artist)
                 }
@@ -68,7 +70,7 @@ internal class ArtistDetailsExecutor(
             val params = GetArtistRelatedArtistsParams(
                 id = state().navArgs.artistId
             )
-            withContext(context = Dispatchers.IO) { artistRemoteDataSource.getArtistRelatedArtists(params = params) }
+            withContext(context = Dispatchers.IO) { fetchArtistRelatedArtistsUseCase(params = params) }
                 .onSuccess { result ->
                     setRelatedArtists(artists = result.artists)
                 }

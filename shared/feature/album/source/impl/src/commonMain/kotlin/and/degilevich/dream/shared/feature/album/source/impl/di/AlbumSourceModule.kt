@@ -8,5 +8,4 @@ import org.koin.dsl.module
 
 fun albumSourceModule() = module {
     singleOf(::AlbumRemoteDataSourceImpl) bind AlbumRemoteDataSource::class
-    includes(albumSourceMapperModule())
 }

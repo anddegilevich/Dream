@@ -5,13 +5,13 @@ import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListIntent
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListSideEffect
 import and.degilevich.dream.shared.feature.artist.component.list.impl.store.model.ArtistListState
-import and.degilevich.dream.shared.feature.artist.source.api.remote.request.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistsUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtists.GetArtistsParams
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
-import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
@@ -28,7 +28,7 @@ internal class ArtistListExecutor(
     KoinComponent {
 
     private val navigator: AppNavigator by inject()
-    private val artistRemoteDataSource: ArtistRemoteDataSource by inject()
+    private val fetchArtistsUseCase: FetchArtistsUseCase by inject()
     private val toastController: ToastController by inject()
     private val toastFactory: ToastFactory by inject()
 
@@ -59,7 +59,7 @@ internal class ArtistListExecutor(
                     "1vCWHaC5f2uS3yhpwWbIA6"
                 )
             )
-            withContext(context = Dispatchers.IO) { artistRemoteDataSource.getArtists(params) }
+            withContext(context = Dispatchers.IO) { fetchArtistsUseCase(params) }
                 .onSuccess { result ->
                     setArtists(artists = result.artists)
                 }

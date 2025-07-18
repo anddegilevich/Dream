@@ -11,5 +11,4 @@ import org.koin.dsl.module
 fun artistSourceModule() = module {
     singleOf(::ArtistRemoteDataSourceImpl) bind ArtistRemoteDataSource::class
     singleOf(::ArtistLocalDataSourceImpl) bind ArtistLocalDataSource::class
-    includes(artistSourceMapperModule())
 }

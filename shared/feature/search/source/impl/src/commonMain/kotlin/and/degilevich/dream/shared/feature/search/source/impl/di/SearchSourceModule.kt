@@ -8,5 +8,4 @@ import org.koin.dsl.module
 
 fun searchSourceModule() = module {
     singleOf(::SearchRemoteDataSourceImpl) bind SearchRemoteDataSource::class
-    includes(searchSourceMapperModule())
 }
