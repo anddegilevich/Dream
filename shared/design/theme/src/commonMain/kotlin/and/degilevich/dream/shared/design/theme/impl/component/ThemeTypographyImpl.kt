@@ -17,39 +17,47 @@ class ThemeTypographyImpl(
         get() = TextStyle(
             fontFamily = fonts.avenir,
             fontWeight = FontWeight.Bold,
-            fontSize = 28.sp,
-            lineHeight = 36.sp
+            fontSize = 26.sp,
+            lineHeight = 32.sp
         )
     override val h2: TextStyle
         @Composable
         get() = TextStyle(
             fontFamily = fonts.avenir,
-            fontWeight = FontWeight.Bold,
-            fontSize = 28.sp,
-            lineHeight = 36.sp
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 24.sp,
+            lineHeight = 32.sp
         )
     override val h3: TextStyle
         @Composable
         get() = TextStyle(
             fontFamily = fonts.avenir,
             fontWeight = FontWeight.Bold,
-            fontSize = 28.sp,
-            lineHeight = 36.sp
+            fontSize = 20.sp,
+            lineHeight = 28.sp
+        )
+    override val h4: TextStyle
+        @Composable
+        get() = TextStyle(
+            fontFamily = fonts.avenir,
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 14.sp,
+            lineHeight = 20.sp
         )
     override val main: TextStyle
         @Composable
         get() = TextStyle(
             fontFamily = fonts.avenir,
-            fontWeight = FontWeight.Bold,
-            fontSize = 28.sp,
-            lineHeight = 36.sp
+            fontWeight = FontWeight.Medium,
+            fontSize = 16.sp,
+            lineHeight = 24.sp
         )
     override val label: TextStyle
         @Composable
         get() = TextStyle(
             fontFamily = fonts.avenir,
-            fontWeight = FontWeight.Bold,
-            fontSize = 28.sp,
-            lineHeight = 36.sp
+            fontWeight = FontWeight.Medium,
+            fontSize = 14.sp,
+            lineHeight = 18.sp
         )
 }

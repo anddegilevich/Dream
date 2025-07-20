@@ -14,7 +14,7 @@ fun AlbumDetailsScreenDarkPreview() {
     ) {
         AlbumDetailsScreen(
             state = AlbumDetailsUIStatePreviewProvider.provide()
-        )
+        ) { }
     }
 }
 
@@ -26,6 +26,6 @@ fun AlbumDetailsScreenLightPreview() {
     ) {
         AlbumDetailsScreen(
             state = AlbumDetailsUIStatePreviewProvider.provide()
-        )
+        ) { }
     }
 }

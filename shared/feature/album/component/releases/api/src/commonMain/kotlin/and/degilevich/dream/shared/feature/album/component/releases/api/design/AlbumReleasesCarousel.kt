@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
@@ -36,7 +37,8 @@ fun AlbumReleasesCarousel(
         Text(
             modifier = Modifier.padding(start = 16.dp),
             text = stringResource(Res.strings.title_new_releases),
-            color = Theme.colors.text.primary
+            color = Theme.colors.text.primary,
+            style = Theme.typography.h1
         )
         Space(8.dp)
         LazyRow(
@@ -46,6 +48,7 @@ fun AlbumReleasesCarousel(
                 vertical = 8.dp
             ),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             identifiedItems(
                 items = state.releases

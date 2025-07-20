@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.album.component.releases.api.preview
 
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
 import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
-import kotlinx.collections.immutable.toImmutableList
+import and.degilevich.dream.shared.foundation.primitive.collections.persistentList.buildPersistentList
 
 @Suppress("MagicNumber")
 object AlbumReleasesUIStatePreviewProvider {
@@ -10,7 +10,7 @@ object AlbumReleasesUIStatePreviewProvider {
     fun provide(): AlbumReleasesUIState {
         return AlbumReleasesUIState(
             isLoading = false,
-            releases = buildList {
+            releases = buildPersistentList {
                 for (i in 1..10) {
                     add(
                         AlbumCardUIData.Companion.empty().copy(
@@ -20,7 +20,7 @@ object AlbumReleasesUIStatePreviewProvider {
                         )
                     )
                 }
-            }.toImmutableList()
+            }
         )
     }
 }

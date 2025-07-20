@@ -64,6 +64,7 @@ fun ComposeScreens(
             is Screen.AlbumDetails -> {
                 AlbumDetailsScreen(
                     state = screenComponent.collectState(),
+                    onIntent = screenComponent::handleIntent
                 )
             }
         }

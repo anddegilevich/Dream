@@ -2,14 +2,14 @@ package and.degilevich.dream.shared.feature.artist.component.list.api.preview.pr
 
 import and.degilevich.dream.shared.feature.artist.component.list.api.component.model.ArtistListUIState
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIData
-import kotlinx.collections.immutable.toImmutableList
+import and.degilevich.dream.shared.foundation.primitive.collections.persistentList.buildPersistentList
 
 @Suppress("MagicNumber")
 object ArtistListUIStatePreviewProvider {
     fun provide(): ArtistListUIState {
         return ArtistListUIState(
             artistCount = "10 Artists",
-            artists = buildList {
+            artists = buildPersistentList {
                 for (i in 1..10) {
                     add(
                         ArtistCardUIData.empty().copy(
@@ -18,7 +18,7 @@ object ArtistListUIStatePreviewProvider {
                         )
                     )
                 }
-            }.toImmutableList()
+            }
         )
     }
 }

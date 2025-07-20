@@ -15,6 +15,9 @@ interface ThemeTypography {
     val h3: TextStyle
         @Composable
         get
+    val h4: TextStyle
+        @Composable
+        get
     val main: TextStyle
         @Composable
         get

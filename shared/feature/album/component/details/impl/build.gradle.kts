@@ -11,6 +11,7 @@ kotlin {
             implementation(projects.shared.template.component.impl)
             api(projects.shared.feature.album.component.details.api)
             implementation(projects.shared.feature.album.domain.api)
+            implementation(projects.shared.feature.artist.domain.api)
         }
     }
 }

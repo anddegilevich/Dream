@@ -1,6 +1,5 @@
 package and.degilevich.dream.shared.feature.album.design.api.design
 
-import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
 import and.degilevich.dream.shared.foundation.compose.ext.Space
@@ -8,9 +7,7 @@ import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickab
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -38,27 +35,26 @@ fun AlbumCard(
             .scaleOnClick(
                 isEnabled = data.isEnabled,
                 interactionSource = interactionSource
-            )
-            .themeBackground()
-            .width(152.dp)
-            .padding(16.dp),
+            ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AlbumIcon(
-            modifier = Modifier.size(152.dp),
+            modifier = Modifier.size(120.dp),
             iconUrl = data.iconUrl
         )
         Space(height = 8.dp)
         Text(
             text = data.name,
             color = Theme.colors.text.primary,
+            style = Theme.typography.h3,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )
-        Space(height = 8.dp)
+        Space(height = 4.dp)
         Text(
             text = data.artists,
-            color = Theme.colors.text.label,
+            color = Theme.colors.text.secondary,
+            style = Theme.typography.main,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )

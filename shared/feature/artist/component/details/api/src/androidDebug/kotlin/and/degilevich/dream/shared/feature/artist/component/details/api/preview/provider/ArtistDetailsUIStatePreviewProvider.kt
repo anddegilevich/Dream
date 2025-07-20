@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.artist.component.details.api.preview
 
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistCardUIData
-import kotlinx.collections.immutable.toImmutableList
+import and.degilevich.dream.shared.foundation.primitive.collections.persistentList.buildPersistentList
 
 @Suppress("MagicNumber")
 object ArtistDetailsUIStatePreviewProvider {
@@ -11,7 +11,7 @@ object ArtistDetailsUIStatePreviewProvider {
         return ArtistDetailsUIState(
             artistName = "Artist name: Name",
             artistIconUrl = "",
-            similarArtists = buildList {
+            similarArtists = buildPersistentList {
                 for (i in 1..10) {
                     add(
                         ArtistCardUIData.empty().copy(
@@ -20,7 +20,7 @@ object ArtistDetailsUIStatePreviewProvider {
                         )
                     )
                 }
-            }.toImmutableList()
+            }
         )
     }
 }
