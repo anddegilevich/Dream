@@ -6,10 +6,9 @@ import and.degilevich.dream.shared.feature.album.model.artifact.api.abstraction.
 
 internal class AlbumInfoToCardUIDataMapperImpl : AlbumInfoToCardUIDataMapper {
     override fun map(
-        album: AlbumInfo,
-        isEnabled: Boolean
+        item: AlbumInfo
     ): AlbumCardUIData {
-        return with(album) {
+        return with(item) {
             AlbumCardUIData(
                 id = id,
                 iconUrl = images.firstOrNull()?.url.orEmpty(),
@@ -21,8 +20,7 @@ internal class AlbumInfoToCardUIDataMapperImpl : AlbumInfoToCardUIDataMapper {
                         }
                         append(artist)
                     }
-                },
-                isEnabled = isEnabled
+                }
             )
         }
     }

@@ -32,6 +32,9 @@ sealed interface Screen {
         component: AlbumDetailsComponent
     ) : Screen, AlbumDetailsComponent by component
 
+    // Track
+    class TrackDetails : Screen
+
     // User
     class Profile(
         component: ProfileComponent

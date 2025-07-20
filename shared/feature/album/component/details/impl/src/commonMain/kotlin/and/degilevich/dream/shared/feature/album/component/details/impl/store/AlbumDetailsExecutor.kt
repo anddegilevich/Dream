@@ -13,6 +13,12 @@ import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArti
 import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtists.GetArtistsResult
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
+import and.degilevich.dream.shared.navigation.api.AppNavigator
+import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.args.TrackDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
+import com.arkivanov.decompose.router.stack.pop
+import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.Dispatchers
@@ -28,11 +34,20 @@ internal class AlbumDetailsExecutor(
 ) : AbstractExecutor<AlbumDetailsState, AlbumDetailsIntent, AlbumDetailsSideEffect>(lifecycle),
     KoinComponent {
 
+    private val navigator: AppNavigator by inject()
     private val fetchAlbumUseCase: FetchAlbumUseCase by inject()
     private val fetchArtistsUseCase: FetchArtistsUseCase by inject()
 
     init {
         subscribeToLifecycle()
+    }
+
+    override fun executeIntent(intent: AlbumDetailsIntent) {
+        when (intent) {
+            is AlbumDetailsIntent.OnBackClicked -> navigateBack()
+            is AlbumDetailsIntent.OnArtistClicked -> navigateToArtistDetails(intent.id)
+            is AlbumDetailsIntent.OnTrackClicked -> navigateToTrackDetails(intent.id)
+        }
     }
 
     private fun subscribeToLifecycle() {
@@ -71,6 +86,30 @@ internal class AlbumDetailsExecutor(
             .onSuccess { result ->
                 setArtists(artists = result.artists)
             }
+    }
+
+    private fun navigateBack() {
+        navigator.screenNavigator.pop()
+    }
+
+    private fun navigateToArtistDetails(artistId: String) {
+        navigator.screenNavigator.pushNew(
+            ScreenConfig.ArtistDetails(
+                navArgs = ArtistDetailsNavArgs(
+                    artistId = artistId
+                )
+            )
+        )
+    }
+
+    private fun navigateToTrackDetails(trackId: String) {
+        navigator.screenNavigator.pushNew(
+            ScreenConfig.TrackDetails(
+                navArgs = TrackDetailsNavArgs(
+                    trackId = trackId
+                )
+            )
+        )
     }
 
     private fun setAlbum(album: AlbumData) {

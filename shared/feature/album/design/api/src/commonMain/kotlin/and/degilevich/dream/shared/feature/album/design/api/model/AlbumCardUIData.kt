@@ -10,7 +10,6 @@ data class AlbumCardUIData(
     val iconUrl: String,
     val name: String,
     val artists: String,
-    val isEnabled: Boolean
 ) : Identified {
     companion object : EmptyFactory<AlbumCardUIData> {
         override fun empty(): AlbumCardUIData {
@@ -18,8 +17,7 @@ data class AlbumCardUIData(
                 id = "",
                 iconUrl = "",
                 name = "",
-                artists = "",
-                isEnabled = false
+                artists = ""
             )
         }
     }

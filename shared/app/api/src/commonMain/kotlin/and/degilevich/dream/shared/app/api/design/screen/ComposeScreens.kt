@@ -67,6 +67,8 @@ fun ComposeScreens(
                     onIntent = screenComponent::handleIntent
                 )
             }
+
+            is Screen.TrackDetails -> { } // FIXME: Implement later
         }
     }
 }

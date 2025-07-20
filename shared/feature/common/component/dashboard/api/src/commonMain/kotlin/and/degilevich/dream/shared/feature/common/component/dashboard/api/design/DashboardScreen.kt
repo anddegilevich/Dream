@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,9 +23,10 @@ fun DashboardScreen(
     LazyColumn(
         modifier = modifier
             .themeBackground()
-            .fillMaxSize()
-            .statusBarsPadding(),
-        contentPadding = WindowInsets.statusBars.asPaddingValues() + WindowInsets.navigationBars.asPaddingValues()
+            .fillMaxSize(),
+        contentPadding = WindowInsets.statusBars.asPaddingValues()
+            .plus(WindowInsets.navigationBars.asPaddingValues())
+            .plus(WindowInsets.navigationBars.asPaddingValues())
     ) {
         item {
             AlbumReleasesCarousel(

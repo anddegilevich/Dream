@@ -1,0 +1,27 @@
+package and.degilevich.dream.shated.feature.track.design.impl.mapper
+
+import and.degilevich.dream.shared.feature.track.model.artifact.api.abstraction.TrackInfo
+import and.degilevich.dream.shated.feature.track.design.api.mapper.TrackInfoToTrackCardUIDataMapper
+import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
+
+internal class TrackInfoToTrackCardUIDataMapperImpl : TrackInfoToTrackCardUIDataMapper {
+    override fun map(item: TrackInfo): TrackCardUIData {
+        return with(item) {
+            TrackCardUIData(
+                id = id,
+                name = name,
+                artists = artists
+                    .map { artist -> artist.name }
+                    .fold(
+                        initial = ""
+                    ) { acc, name ->
+                        acc.apply {
+                            if (isNotEmpty())
+                                plus(" . ")
+                            plus(name)
+                        }
+                    }
+            )
+        }
+    }
+}

@@ -4,6 +4,8 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.album.component.releases.impl.store.model.AlbumReleasesState
 import and.degilevich.dream.shared.feature.album.design.api.mapper.AlbumInfoToCardUIDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
+import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.collections.immutable.toPersistentList
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -16,12 +18,7 @@ internal class AlbumReleasesUIStateMapper : Mapper<AlbumReleasesState, AlbumRele
         return with(item) {
             AlbumReleasesUIState(
                 isLoading = isLoading,
-                releases = releases.map { release ->
-                    albumInfoToCardUIDataMapper.map(
-                        album = release,
-                        isEnabled = !isLoading
-                    )
-                }.toPersistentList()
+                releases = releases.mapWith(albumInfoToCardUIDataMapper).toImmutableList()
             )
         }
     }

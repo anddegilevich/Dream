@@ -41,6 +41,7 @@ kotlin {
             implementation(projects.shared.feature.track.model.core.impl)
             implementation(projects.shared.feature.track.source.impl)
             implementation(projects.shared.feature.track.domain.impl)
+            implementation(projects.shared.feature.track.design.impl)
 
             implementation(projects.shared.feature.search.model.core.impl)
             implementation(projects.shared.feature.search.source.impl)

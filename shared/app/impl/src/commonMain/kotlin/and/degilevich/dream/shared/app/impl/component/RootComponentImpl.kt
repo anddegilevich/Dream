@@ -115,6 +115,9 @@ class RootComponentImpl(
                     )
                 )
             }
+            is ScreenConfig.TrackDetails -> {
+                Screen.TrackDetails()
+            }
         }
     }
 }

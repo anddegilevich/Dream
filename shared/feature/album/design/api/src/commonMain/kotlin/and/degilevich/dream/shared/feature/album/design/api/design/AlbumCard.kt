@@ -27,13 +27,11 @@ fun AlbumCard(
     Column(
         modifier = modifier
             .clickableWithDebounce(
-                isEnabled = data.isEnabled,
                 interactionSource = interactionSource,
             ) {
                 onCardClicked(data.id)
             }
             .scaleOnClick(
-                isEnabled = data.isEnabled,
                 interactionSource = interactionSource
             ),
         horizontalAlignment = Alignment.CenterHorizontally

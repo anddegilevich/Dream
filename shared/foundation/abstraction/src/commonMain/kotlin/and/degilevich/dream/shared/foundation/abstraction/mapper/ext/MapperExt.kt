@@ -12,6 +12,10 @@ fun <From, To> Iterable<From>.mapWith(mapper: Mapper<From, To>): List<To> {
     return mapper.map(this)
 }
 
+fun <From, To> Sequence<From>.mapWith(mapper: Mapper<From, To>): Sequence<To> {
+    return map { mapper.map(it) }
+}
+
 fun <From, To> Flow<From>.mapWith(mapper: Mapper<From, To>): Flow<To> {
     return map { mapper.map(it) }
 }
