@@ -4,7 +4,12 @@ import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.feature.album.component.releases.api.design.AlbumReleasesCarousel
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardIntent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardUIState
+import and.degilevich.dream.shared.foundation.compose.ext.plus
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -20,7 +25,8 @@ fun DashboardScreen(
         modifier = modifier
             .themeBackground()
             .fillMaxSize()
-            .statusBarsPadding()
+            .statusBarsPadding(),
+        contentPadding = WindowInsets.statusBars.asPaddingValues() + WindowInsets.navigationBars.asPaddingValues()
     ) {
         item {
             AlbumReleasesCarousel(

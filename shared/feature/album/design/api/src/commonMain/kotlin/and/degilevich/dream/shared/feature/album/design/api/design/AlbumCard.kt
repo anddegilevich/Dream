@@ -51,14 +51,14 @@ fun AlbumCard(
         Space(height = 8.dp)
         Text(
             text = data.name,
-            color = Theme.colors.textPrimary,
+            color = Theme.colors.text.primary,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )
         Space(height = 8.dp)
         Text(
             text = data.artists,
-            color = Theme.colors.textLabel,
+            color = Theme.colors.text.label,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )

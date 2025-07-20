@@ -36,7 +36,7 @@ fun AlbumReleasesCarousel(
         Text(
             modifier = Modifier.padding(start = 16.dp),
             text = stringResource(Res.strings.title_new_releases),
-            color = Theme.colors.textPrimary
+            color = Theme.colors.text.primary
         )
         Space(8.dp)
         LazyRow(

@@ -5,7 +5,8 @@ import and.degilevich.dream.shared.feature.album.component.details.api.component
 object AlbumDetailsUIStatePreviewProvider {
     fun provide(): AlbumDetailsUIState {
         return AlbumDetailsUIState(
-            name = "Album"
+            name = "Album",
+            iconUrl = ""
         )
     }
 }

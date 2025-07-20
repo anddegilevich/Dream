@@ -9,7 +9,8 @@ internal class AlbumDetailsUIStateMapper : Mapper<AlbumDetailsState, AlbumDetail
     override fun map(item: AlbumDetailsState): AlbumDetailsUIState {
         return with(item) {
             AlbumDetailsUIState(
-                name = album.name
+                name = album.name,
+                iconUrl = album.images.firstOrNull()?.url.orEmpty()
             )
         }
     }

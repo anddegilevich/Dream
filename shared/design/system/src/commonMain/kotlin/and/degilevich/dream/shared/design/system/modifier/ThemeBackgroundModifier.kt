@@ -7,6 +7,6 @@ import androidx.compose.ui.composed
 
 fun Modifier.themeBackground(): Modifier {
     return this.composed {
-        background(Theme.colors.background)
+        background(Theme.colors.common.background)
     }
 }

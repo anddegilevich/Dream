@@ -7,8 +7,8 @@ import and.degilevich.dream.shared.design.theme.api.component.ThemeTypography
 import and.degilevich.dream.shared.design.theme.api.component.color.ThemeColors
 import and.degilevich.dream.shared.design.theme.impl.component.ThemeFontsImpl
 import and.degilevich.dream.shared.design.theme.impl.component.ThemeTypographyImpl
-import and.degilevich.dream.shared.design.theme.impl.component.color.DarkThemeColors
-import and.degilevich.dream.shared.design.theme.impl.component.color.LightThemeColors
+import and.degilevich.dream.shared.design.theme.impl.component.color.dark.DarkThemeColors
+import and.degilevich.dream.shared.design.theme.impl.component.color.light.LightThemeColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ProvidableCompositionLocal

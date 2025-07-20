@@ -29,7 +29,7 @@ fun AppSnackbar(
             .fillMaxWidth()
             .border(
                 width = 2.dp,
-                color = Theme.colors.outline
+                color = Theme.colors.common.outline
             )
             .themeBackground()
             .padding(12.dp),
@@ -39,7 +39,7 @@ fun AppSnackbar(
         Text(
             modifier = Modifier.weight(1f),
             text = data.message,
-            color = Theme.colors.textPrimary,
+            color = Theme.colors.text.primary,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
         )
@@ -47,13 +47,13 @@ fun AppSnackbar(
             Space(width = 12.dp)
             Text(
                 modifier = Modifier.clickableWithDebounce(
-                    indication = ripple(color = Theme.colors.ripple)
+                    indication = ripple(color = Theme.colors.common.ripple)
                 ) {
                     data.performAction()
                 },
                 text = action,
                 textDecoration = TextDecoration.Underline,
-                color = Theme.colors.buttonBorderlessText,
+                color = Theme.colors.text.secondary,
                 maxLines = 1
             )
         }

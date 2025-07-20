@@ -45,12 +45,12 @@ fun ArtistDetailsScreen(
         Space(height = 12.dp)
         Text(
             text = state.artistName,
-            color = Theme.colors.textPrimary
+            color = Theme.colors.text.primary
         )
         Space(height = 32.dp)
         Text(
             text = stringResource(Res.strings.title_similar_artists),
-            color = Theme.colors.textPrimary
+            color = Theme.colors.text.primary
         )
         Space(height = 12.dp)
         LazyRow(

@@ -5,12 +5,14 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AlbumDetailsUIState(
-    val name: String
+    val name: String,
+    val iconUrl: String
 ) {
     companion object : EmptyFactory<AlbumDetailsUIState> {
         override fun empty(): AlbumDetailsUIState {
             return AlbumDetailsUIState(
-                name = ""
+                name = "",
+                iconUrl = ""
             )
         }
     }

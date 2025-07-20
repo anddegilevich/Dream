@@ -33,13 +33,13 @@ fun ArtistCard(
             .clickable(
                 enabled = data.isEnabled,
                 interactionSource = remember { MutableInteractionSource() },
-                indication = ripple(color = Theme.colors.ripple)
+                indication = ripple(color = Theme.colors.common.ripple)
             ) {
                 onCardClicked(data.id)
             }
             .border(
                 width = 2.dp,
-                color = Theme.colors.outline,
+                color = Theme.colors.common.outline,
                 shape = RoundedCornerShape(corner = CornerSize(8.dp)),
             )
             .themeBackground()
@@ -54,7 +54,7 @@ fun ArtistCard(
         Text(
             modifier = Modifier.widthIn(max = 100.dp),
             text = data.name,
-            color = Theme.colors.textPrimary,
+            color = Theme.colors.text.primary,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )

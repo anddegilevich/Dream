@@ -63,18 +63,18 @@ fun ArtistListScreen(
                     }
                     .size(64.dp),
                 painter = painterResource(Res.images.ic_duck),
-                tint = Theme.colors.brandGreen,
+                tint = Theme.colors.common.brandGreen,
                 contentDescription = null,
             )
         }
         item {
             Text(
                 text = stringResource(Res.strings.title_artists),
-                color = Theme.colors.textPrimary
+                color = Theme.colors.text.primary
             )
             Text(
                 text = state.artistCount,
-                color = Theme.colors.textSecondary
+                color = Theme.colors.text.secondary
             )
         }
         identifiedItems(

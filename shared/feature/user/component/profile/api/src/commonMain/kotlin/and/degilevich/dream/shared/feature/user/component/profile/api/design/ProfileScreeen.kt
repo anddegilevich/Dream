@@ -55,7 +55,7 @@ fun ProfileScreen(
                     onIntent(ProfileIntent.OnIconClicked)
                 }
                 .size(300.dp)
-                .background(Theme.colors.iconPlaceholderBackground),
+                .background(Theme.colors.common.iconPlaceholderBackground),
             model = state.iconUri,
             contentDescription = null,
             contentScale = ContentScale.Crop
@@ -82,7 +82,7 @@ fun ProfileScreen(
                 AsyncImage(
                     modifier = Modifier
                         .size(64.dp)
-                        .background(Theme.colors.iconPlaceholderBackground),
+                        .background(Theme.colors.common.iconPlaceholderBackground),
                     model = item.uri,
                     contentDescription = null,
                     contentScale = ContentScale.Crop
