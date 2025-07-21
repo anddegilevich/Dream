@@ -4,11 +4,13 @@ import and.degilevich.dream.shared.foundation.primitive.collections.persistentLi
 import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
 import kotlinx.collections.immutable.ImmutableList
 
+@Suppress("MagicNumber")
 object TrackCardUIDataPreviewProvider {
     fun provide(): TrackCardUIData {
         return TrackCardUIData.empty().copy(
+            number = "1",
             name = "Track",
-            artists = "Artist"
+            artists = "Artist",
         )
     }
 
@@ -18,6 +20,7 @@ object TrackCardUIDataPreviewProvider {
                 add(
                     TrackCardUIData.empty().copy(
                         id = i.toString(),
+                        number = i.toString(),
                         name = "Track $i",
                         artists = "Artist"
                     )

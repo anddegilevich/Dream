@@ -8,6 +8,7 @@ import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOn
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -33,7 +34,8 @@ fun AlbumCard(
             }
             .scaleOnClick(
                 interactionSource = interactionSource
-            ),
+            )
+            .width(120.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AlbumIcon(

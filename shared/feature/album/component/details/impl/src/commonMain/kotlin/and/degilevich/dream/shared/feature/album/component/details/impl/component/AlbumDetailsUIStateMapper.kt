@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.feature.album.component.details.impl.compone
 
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsUIState
 import and.degilevich.dream.shared.feature.album.component.details.impl.store.model.AlbumDetailsState
+import and.degilevich.dream.shared.feature.album.design.api.mapper.AlbumTypeToUITextMapper
 import and.degilevich.dream.shared.feature.artist.design.api.mapper.ArtistDataToLabelUIDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
@@ -14,6 +15,7 @@ internal class AlbumDetailsUIStateMapper : Mapper<AlbumDetailsState, AlbumDetail
 
     private val artistDataToLabelUIDataMapper: ArtistDataToLabelUIDataMapper by inject()
     private val trackInfoToTrackCardUIDataMapper: TrackInfoToTrackCardUIDataMapper by inject()
+    private val albumTypeToUITextMapper: AlbumTypeToUITextMapper by inject()
 
     override fun map(item: AlbumDetailsState): AlbumDetailsUIState {
         return with(item) {
@@ -21,8 +23,8 @@ internal class AlbumDetailsUIStateMapper : Mapper<AlbumDetailsState, AlbumDetail
                 name = album.name,
                 iconUrl = album.images.firstOrNull()?.url.orEmpty(),
                 artists = artists.mapWith(artistDataToLabelUIDataMapper).toImmutableList(),
-                type = album.albumType.name,
-                year = album.releaseDate,
+                type = albumTypeToUITextMapper.map(album.albumType),
+                year = album.releaseDate.take(YEAR_LENGTH), // FIXME: Parse and format date
                 tracks = album.tracks.items
                     .asSequence()
                     .sortedBy { track -> track.trackNumber }
@@ -30,5 +32,9 @@ internal class AlbumDetailsUIStateMapper : Mapper<AlbumDetailsState, AlbumDetail
                     .toImmutableList()
             )
         }
+    }
+
+    private companion object {
+        const val YEAR_LENGTH = 4
     }
 }

@@ -6,7 +6,6 @@ import and.degilevich.dream.shared.feature.album.design.api.mapper.AlbumInfoToCa
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.collections.immutable.toPersistentList
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

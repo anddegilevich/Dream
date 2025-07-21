@@ -9,18 +9,21 @@ internal class AlbumInfoToCardUIDataMapperImpl : AlbumInfoToCardUIDataMapper {
         item: AlbumInfo
     ): AlbumCardUIData {
         return with(item) {
+            val artists = artists
+                .map { artist -> artist.name }
+                .fold(
+                    initial = ""
+                ) { acc, name ->
+                    acc.run {
+                        if (isNotEmpty()) plus(" . ")
+                        plus(name)
+                    }
+                }
             AlbumCardUIData(
                 id = id,
                 iconUrl = images.firstOrNull()?.url.orEmpty(),
                 name = name,
-                artists = buildString {
-                    artists.forEach { artist ->
-                        if (isNotEmpty()) {
-                            append(" . ")
-                        }
-                        append(artist)
-                    }
-                }
+                artists = artists
             )
         }
     }

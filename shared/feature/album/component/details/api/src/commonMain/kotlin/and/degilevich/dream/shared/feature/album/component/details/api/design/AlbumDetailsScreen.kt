@@ -93,7 +93,8 @@ fun AlbumDetailsScreen(
                 }
                 Space(height = 8.dp)
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(space = 4.dp)
+                    horizontalArrangement = Arrangement.spacedBy(space = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
                         text = state.type,

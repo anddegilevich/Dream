@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="album_type_album">Альбом</string>
+    <string name="album_type_single">Сингл</string>
+    <string name="album_type_compilation">Компиляция</string>
+
     <string name="title_artists">Артисты</string>
     <string name="title_similar_artists">Похожие артисты</string>
     <string name="title_new_releases">Новинки</string>

@@ -10,14 +10,14 @@ internal class TrackInfoToTrackCardUIDataMapperImpl : TrackInfoToTrackCardUIData
             TrackCardUIData(
                 id = id,
                 name = name,
+                number = trackNumber.toString(),
                 artists = artists
                     .map { artist -> artist.name }
                     .fold(
                         initial = ""
                     ) { acc, name ->
-                        acc.apply {
-                            if (isNotEmpty())
-                                plus(" . ")
+                        acc.run {
+                            if (isNotEmpty()) plus(" . ")
                             plus(name)
                         }
                     }

@@ -7,6 +7,7 @@ import androidx.compose.runtime.Immutable
 @Immutable
 data class TrackCardUIData(
     override val id: String,
+    val number: String,
     val name: String,
     val artists: String
 ) : Identified {
@@ -14,6 +15,7 @@ data class TrackCardUIData(
         override fun empty(): TrackCardUIData {
             return TrackCardUIData(
                 id = "",
+                number = "",
                 name = "",
                 artists = ""
             )

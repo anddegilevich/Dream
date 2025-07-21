@@ -2,6 +2,10 @@
 <resources>
     <string name="app_name">Dream</string>
 
+    <string name="album_type_album">Album</string>
+    <string name="album_type_single">Single</string>
+    <string name="album_type_compilation">Compilation</string>
+
     <string name="title_artists">Artists</string>
     <string name="title_similar_artists">Similar artists</string>
     <string name="title_new_releases">New releases</string>
