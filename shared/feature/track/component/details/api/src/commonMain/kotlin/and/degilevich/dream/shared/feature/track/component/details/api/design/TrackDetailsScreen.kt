@@ -41,11 +41,11 @@ fun TrackDetailsScreen(
     ) {
         Spacer(
             modifier = Modifier
-                .padding(12.dp)
+                .padding(top = 12.dp)
                 .statusBarsPadding()
         )
         IconButton(
-            modifier = Modifier.size(16.dp),
+            modifier = Modifier.size(24.dp),
             painter = painterResource(Res.images.ic_back)
         ) {
             onIntent(TrackDetailsIntent.OnBackClicked)
@@ -81,7 +81,7 @@ fun TrackDetailsScreen(
         )
         Spacer(
             modifier = Modifier
-                .padding(20.dp)
+                .padding(bottom = 20.dp)
                 .navigationBarsPadding()
         )
     }

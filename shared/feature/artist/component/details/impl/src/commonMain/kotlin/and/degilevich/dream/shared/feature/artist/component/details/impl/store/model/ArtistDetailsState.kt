@@ -8,6 +8,5 @@ import kotlinx.serialization.Serializable
 data class ArtistDetailsState(
     val navArgs: ArtistDetailsNavArgs,
     val isLoading: Boolean,
-    val artist: ArtistData,
-    val similarArtists: List<ArtistData>,
+    val artist: ArtistData
 )

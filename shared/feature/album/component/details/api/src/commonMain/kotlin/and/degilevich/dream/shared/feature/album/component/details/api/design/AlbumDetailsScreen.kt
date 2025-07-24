@@ -56,7 +56,7 @@ fun AlbumDetailsScreen(
         item {
             Column {
                 IconButton(
-                    modifier = Modifier.size(16.dp),
+                    modifier = Modifier.size(24.dp),
                     painter = painterResource(Res.images.ic_back)
                 ) {
                     onIntent(AlbumDetailsIntent.OnBackClicked)
