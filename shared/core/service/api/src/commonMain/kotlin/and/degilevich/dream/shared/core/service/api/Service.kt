@@ -4,6 +4,8 @@ import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumRe
 import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumResponse
 import and.degilevich.dream.shared.core.service.api.requests.getArtist.GetArtistRequest
 import and.degilevich.dream.shared.core.service.api.requests.getArtist.GetArtistResponse
+import and.degilevich.dream.shared.core.service.api.requests.getArtistAlbums.GetArtistAlbumsRequest
+import and.degilevich.dream.shared.core.service.api.requests.getArtistAlbums.GetArtistAlbumsResponse
 import and.degilevich.dream.shared.core.service.api.requests.getArtistRelatedArtists.GetArtistRelatedArtistsRequest
 import and.degilevich.dream.shared.core.service.api.requests.getArtistRelatedArtists.GetArtistRelatedArtistsResponse
 import and.degilevich.dream.shared.core.service.api.requests.getArtistTopTracks.GetArtistTopTracksRequest
@@ -24,6 +26,7 @@ interface Service {
     suspend fun getArtists(request: GetArtistsRequest): Result<GetArtistsResponse>
     suspend fun getArtist(request: GetArtistRequest): Result<GetArtistResponse>
     suspend fun getArtistTopTracks(request: GetArtistTopTracksRequest): Result<GetArtistTopTracksResponse>
+    suspend fun getArtistAlbums(request: GetArtistAlbumsRequest): Result<GetArtistAlbumsResponse>
     suspend fun getArtistRelatedArtists(
         request: GetArtistRelatedArtistsRequest
     ): Result<GetArtistRelatedArtistsResponse>

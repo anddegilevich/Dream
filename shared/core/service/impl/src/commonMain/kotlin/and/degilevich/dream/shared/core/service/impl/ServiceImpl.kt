@@ -7,6 +7,8 @@ import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumRe
 import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumResponse
 import and.degilevich.dream.shared.core.service.api.requests.getArtist.GetArtistRequest
 import and.degilevich.dream.shared.core.service.api.requests.getArtist.GetArtistResponse
+import and.degilevich.dream.shared.core.service.api.requests.getArtistAlbums.GetArtistAlbumsRequest
+import and.degilevich.dream.shared.core.service.api.requests.getArtistAlbums.GetArtistAlbumsResponse
 import and.degilevich.dream.shared.core.service.api.requests.getArtistRelatedArtists.GetArtistRelatedArtistsRequest
 import and.degilevich.dream.shared.core.service.api.requests.getArtistRelatedArtists.GetArtistRelatedArtistsResponse
 import and.degilevich.dream.shared.core.service.api.requests.getArtistTopTracks.GetArtistTopTracksRequest
@@ -27,6 +29,7 @@ import io.ktor.client.request.url
 internal class ServiceImpl(
     private val remoteClient: RemoteClient
 ) : Service {
+
     override suspend fun getArtists(request: GetArtistsRequest): Result<GetArtistsResponse> {
         return remoteClient.getCatching {
             url("artists")
@@ -43,6 +46,14 @@ internal class ServiceImpl(
     override suspend fun getArtistTopTracks(request: GetArtistTopTracksRequest): Result<GetArtistTopTracksResponse> {
         return remoteClient.getCatching {
             url("artists/${request.id}/top-tracks")
+        }.foldBody()
+    }
+
+    override suspend fun getArtistAlbums(request: GetArtistAlbumsRequest): Result<GetArtistAlbumsResponse> {
+        return remoteClient.getCatching {
+            url("artists/${request.id}/albums")
+            parameter("limit", request.limit)
+            parameter("offset", request.offset)
         }.foldBody()
     }
 

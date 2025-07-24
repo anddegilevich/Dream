@@ -117,6 +117,7 @@ fun AlbumDetailsScreen(
             items = state.tracks
         ) { track ->
             TrackCard(
+                modifier = Modifier.fillMaxWidth(),
                 data = track
             ) { trackId ->
                 onIntent(AlbumDetailsIntent.OnTrackClicked(id = trackId))

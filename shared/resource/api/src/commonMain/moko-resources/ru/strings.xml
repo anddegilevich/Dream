@@ -7,6 +7,8 @@
     <string name="title_artists">Артисты</string>
     <string name="title_similar_artists">Похожие артисты</string>
     <string name="title_new_releases">Новинки</string>
+    <string name="title_top_tracks">Популярные треки</string>
+    <string name="title_albums">Альбомы</string>
 
     <string name="button_back">Назад</string>
     <string name="button_subscribe">Подписаться</string>

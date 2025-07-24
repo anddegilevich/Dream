@@ -17,7 +17,12 @@ internal class AlbumReleasesUIStateMapper : Mapper<AlbumReleasesState, AlbumRele
         return with(item) {
             AlbumReleasesUIState(
                 isLoading = isLoading,
-                releases = releases.mapWith(albumInfoToCardUIDataMapper).toImmutableList()
+                releases = releases
+                    .asSequence()
+                    .sortedBy { album -> album.releaseDate }
+                    .mapWith(albumInfoToCardUIDataMapper)
+                    .toImmutableList()
+
             )
         }
     }

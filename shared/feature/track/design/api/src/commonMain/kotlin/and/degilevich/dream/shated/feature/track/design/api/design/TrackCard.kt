@@ -3,14 +3,12 @@ package and.degilevich.dream.shated.feature.track.design.api.design
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
-import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text
+import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -21,18 +19,13 @@ fun TrackCard(
     modifier: Modifier = Modifier,
     onClicked: (String) -> Unit
 ) {
-    val interactionSource = remember { MutableInteractionSource() }
-
     Row(
         modifier = modifier
             .clickableWithDebounce(
-                interactionSource = interactionSource,
+                indication = ripple(color = Theme.colors.common.ripple)
             ) {
                 onClicked(data.id)
-            }
-            .scaleOnClick(
-                interactionSource = interactionSource
-            ),
+            },
         verticalAlignment = Alignment.Top
     ) {
         Text(

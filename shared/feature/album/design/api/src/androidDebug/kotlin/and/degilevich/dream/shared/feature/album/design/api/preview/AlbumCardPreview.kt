@@ -17,8 +17,7 @@ fun AlbumCardDarkPreview() {
         AlbumCard(
             modifier = Modifier.themeBackground(),
             data = AlbumCardUIDataPreviewProvider.provide(),
-            onCardClicked = {}
-        )
+        ) {}
     }
 }
 
@@ -31,7 +30,6 @@ fun AlbumCardLightPreview() {
         AlbumCard(
             modifier = Modifier.themeBackground(),
             data = AlbumCardUIDataPreviewProvider.provide(),
-            onCardClicked = {}
-        )
+        ) {}
     }
 }

@@ -7,24 +7,33 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.feature.album.design.api.design.AlbumCard
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistIcon
+import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
+import and.degilevich.dream.shared.foundation.compose.ext.identifiedItemsIndexed
+import and.degilevich.dream.shared.foundation.compose.ext.plus
+import and.degilevich.dream.shated.feature.track.design.api.design.TrackCard
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun ArtistDetailsScreen(
@@ -32,45 +41,101 @@ fun ArtistDetailsScreen(
     onIntent: (ArtistDetailsIntent) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(
+    LazyColumn(
         modifier = modifier
             .themeBackground()
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 16.dp)
+            .fillMaxSize(),
+        contentPadding = PaddingValues(
+            top = 12.dp,
+            bottom = 20.dp
+        )
+            .plus(WindowInsets.statusBars.asPaddingValues())
+            .plus(WindowInsets.navigationBars.asPaddingValues())
     ) {
-        Spacer(
-            modifier = Modifier
-                .padding(top = 12.dp)
-                .statusBarsPadding()
-        )
-        IconButton(
-            modifier = Modifier.size(24.dp),
-            painter = painterResource(Res.images.ic_back)
-        ) {
-            onIntent(ArtistDetailsIntent.OnBackClicked)
+        item {
+            Column(
+                modifier = Modifier.padding(horizontal = 16.dp)
+            ) {
+                IconButton(
+                    modifier = Modifier.size(24.dp),
+                    painter = painterResource(Res.images.ic_back)
+                ) {
+                    onIntent(ArtistDetailsIntent.OnBackClicked)
+                }
+                Space(height = 12.dp)
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    ArtistIcon(
+                        modifier = Modifier
+                            .size(120.dp),
+                        iconUrl = state.iconUrl
+                    )
+                    Space(width = 20.dp)
+                    Text(
+                        text = state.name,
+                        color = Theme.colors.text.primary,
+                        style = Theme.typography.h2
+                    )
+                }
+                Space(height = 20.dp)
+                Text(
+                    text = stringResource(Res.strings.title_top_tracks),
+                    color = Theme.colors.text.primary,
+                    style = Theme.typography.h3
+                )
+                Space(height = 16.dp)
+            }
         }
-        Space(height = 12.dp)
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            ArtistIcon(
+        identifiedItemsIndexed(
+            items = state.topTracks
+        ) { index, track ->
+            TrackCard(
                 modifier = Modifier
-                    .size(120.dp),
-                iconUrl = state.iconUrl
-            )
-            Space(width = 20.dp)
-            Text(
-                text = state.name,
-                color = Theme.colors.text.primary,
-                style = Theme.typography.h2
-            )
+                    .padding(top = if (index == 0) 0.dp else 12.dp)
+                    .padding(horizontal = 16.dp)
+                    .fillMaxWidth(),
+                data = track
+            ) { id ->
+                onIntent(
+                    ArtistDetailsIntent.OnTrackClicked(id = id)
+                )
+            }
         }
-        Spacer(
-            modifier = Modifier
-                .padding(bottom = 20.dp)
-                .navigationBarsPadding()
-        )
+        item {
+            Column {
+                Space(height = 20.dp)
+                Text(
+                    modifier = Modifier.padding(start = 16.dp),
+                    text = stringResource(Res.strings.title_albums),
+                    color = Theme.colors.text.primary,
+                    style = Theme.typography.h3
+                )
+                Space(height = 8.dp)
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentPadding = PaddingValues(
+                        horizontal = 16.dp,
+                        vertical = 8.dp
+                    ),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    identifiedItems(
+                        items = state.albums
+                    ) { album ->
+                        AlbumCard(
+                            data = album,
+                            onClicked = { id ->
+                                onIntent(
+                                    ArtistDetailsIntent.OnAlbumClicked(id = id)
+                                )
+                            }
+                        )
+                    }
+                }
+            }
+        }
     }
 }

@@ -54,13 +54,12 @@ fun AlbumReleasesCarousel(
                 items = state.releases
             ) { album ->
                 AlbumCard(
-                    data = album,
-                    onCardClicked = { id ->
-                        onIntent(
-                            AlbumReleasesIntent.OnAlbumClicked(id = id)
-                        )
-                    }
-                )
+                    data = album
+                ) { id ->
+                    onIntent(
+                        AlbumReleasesIntent.OnAlbumClicked(id = id)
+                    )
+                }
             }
             if (state.isLoading) {
                 item {

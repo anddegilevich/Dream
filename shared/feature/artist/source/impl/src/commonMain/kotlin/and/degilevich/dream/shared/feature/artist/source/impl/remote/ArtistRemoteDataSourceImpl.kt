@@ -1,5 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.source.impl.remote
 
+import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistAlbumsParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistAlbumsResponseToResultMapper
 import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtist.GetArtistResult
@@ -18,6 +20,8 @@ import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtis
 import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistTopTracksResponseToResultMapper
 import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistsParamsToRequestMapper
 import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistsResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistAlbums.GetArtistAlbumsParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistAlbums.GetArtistAlbumsResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 
@@ -29,7 +33,9 @@ internal class ArtistRemoteDataSourceImpl(
     private val getArtistsTopTracksParamsToRequestMapper: GetArtistTopTracksParamsToRequestMapper,
     private val getArtistsTopTracksResponseToResultMapper: GetArtistTopTracksResponseToResultMapper,
     private val getArtistsRelatedArtistsParamsToRequestMapper: GetArtistRelatedArtistsParamsToRequestMapper,
-    private val getArtistsRelatedArtistsResponseToResultMapper: GetArtistRelatedArtistsResponseToResultMapper
+    private val getArtistsRelatedArtistsResponseToResultMapper: GetArtistRelatedArtistsResponseToResultMapper,
+    private val getArtistAlbumsParamsToRequestMapper: GetArtistAlbumsParamsToRequestMapper,
+    private val getArtistAlbumsResponseToResultMapper: GetArtistAlbumsResponseToResultMapper,
 ) : ArtistRemoteDataSource, BaseRemoteDataSource() {
 
     override suspend fun getArtist(params: GetArtistParams): Result<GetArtistResult> {
@@ -53,6 +59,14 @@ internal class ArtistRemoteDataSourceImpl(
             request = params.mapWith(getArtistsTopTracksParamsToRequestMapper)
         ).foldResultSuccess { response ->
             response.mapWith(getArtistsTopTracksResponseToResultMapper)
+        }
+    }
+
+    override suspend fun getArtistAlbums(params: GetArtistAlbumsParams): Result<GetArtistAlbumsResult> {
+        return service.getArtistAlbums(
+            request = params.mapWith(getArtistAlbumsParamsToRequestMapper)
+        ).foldResultSuccess { response ->
+            response.mapWith(getArtistAlbumsResponseToResultMapper)
         }
     }
 

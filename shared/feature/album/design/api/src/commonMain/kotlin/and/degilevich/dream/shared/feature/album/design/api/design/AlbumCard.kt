@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 fun AlbumCard(
     data: AlbumCardUIData,
     modifier: Modifier = Modifier,
-    onCardClicked: (String) -> Unit
+    onClicked: (String) -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
 
@@ -30,31 +30,30 @@ fun AlbumCard(
             .clickableWithDebounce(
                 interactionSource = interactionSource,
             ) {
-                onCardClicked(data.id)
+                onClicked(data.id)
             }
             .scaleOnClick(
                 interactionSource = interactionSource
             )
-            .width(120.dp),
+            .width(140.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AlbumIcon(
-            modifier = Modifier.size(120.dp),
+            modifier = Modifier.size(140.dp),
             iconUrl = data.iconUrl
-        )
-        Space(height = 8.dp)
-        Text(
-            text = data.name,
-            color = Theme.colors.text.primary,
-            style = Theme.typography.h3,
-            overflow = TextOverflow.Ellipsis,
-            maxLines = 1
         )
         Space(height = 4.dp)
         Text(
+            text = data.name,
+            color = Theme.colors.text.primary,
+            style = Theme.typography.h4,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1
+        )
+        Text(
             text = data.artists,
             color = Theme.colors.text.secondary,
-            style = Theme.typography.main,
+            style = Theme.typography.label,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )
