@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.album.component.releases.api.design
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.shared.design.system.loading.LoadingIndicator
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
@@ -15,7 +16,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -64,8 +64,8 @@ fun AlbumReleasesCarousel(
             }
             if (state.isLoading) {
                 item {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(64.dp)
+                    LoadingIndicator(
+                        modifier = Modifier.size(40.dp)
                     )
                 }
             }

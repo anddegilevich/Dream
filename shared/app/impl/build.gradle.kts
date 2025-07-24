@@ -53,7 +53,6 @@ kotlin {
             implementation(projects.shared.feature.common.component.dashboard.impl)
 
             implementation(projects.shared.feature.artist.component.details.impl)
-            implementation(projects.shared.feature.artist.component.list.impl)
 
             implementation(projects.shared.feature.album.component.details.impl)
 

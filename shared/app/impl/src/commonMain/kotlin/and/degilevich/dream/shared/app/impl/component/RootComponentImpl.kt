@@ -4,7 +4,6 @@ import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.api.component.children.Screen
 import and.degilevich.dream.shared.core.filepicker.api.channel.request.FilePickerRequestReceiveChannel
 import and.degilevich.dream.shared.core.filepicker.api.channel.result.FilePickerResultSendChannel
-import and.degilevich.dream.shared.feature.artist.component.list.impl.component.ArtistListComponentImpl
 import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
@@ -81,14 +80,6 @@ class RootComponentImpl(
                     componentContext = componentContext
                 )
             )
-
-            is ScreenConfig.ArtistList -> {
-                Screen.ArtistList(
-                    component = ArtistListComponentImpl(
-                        componentContext = componentContext
-                    )
-                )
-            }
 
             is ScreenConfig.ArtistDetails -> {
                 Screen.ArtistDetails(

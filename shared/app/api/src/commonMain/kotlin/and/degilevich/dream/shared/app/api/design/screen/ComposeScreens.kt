@@ -5,7 +5,6 @@ import and.degilevich.dream.shared.app.api.design.screen.animation.screensStackA
 import and.degilevich.dream.shared.feature.album.component.details.api.design.AlbumDetailsScreen
 import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
-import and.degilevich.dream.shared.feature.artist.component.list.api.design.ArtistListScreen
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
 import and.degilevich.dream.shared.feature.common.component.splash.api.design.SplashScreen
 import and.degilevich.dream.shared.feature.user.component.profile.api.design.ProfileScreen
@@ -39,13 +38,6 @@ fun ComposeScreens(
                 state = screenComponent.collectState(),
                 onIntent = screenComponent::handleIntent
             )
-
-            is Screen.ArtistList -> {
-                ArtistListScreen(
-                    state = screenComponent.collectState(),
-                    onIntent = screenComponent::handleIntent
-                )
-            }
 
             is Screen.ArtistDetails -> {
                 ArtistDetailsScreen(

@@ -20,7 +20,6 @@ kotlin {
             api(projects.shared.feature.common.component.dashboard.api)
 
             api(projects.shared.feature.artist.component.details.api)
-            api(projects.shared.feature.artist.component.list.api)
 
             api(projects.shared.feature.album.component.details.api)
 

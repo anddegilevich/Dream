@@ -16,8 +16,6 @@ sealed interface ScreenConfig {
     data object Dashboard : ScreenConfig
 
     // Artist
-    @Serializable
-    data object ArtistList : ScreenConfig
 
     @Serializable
     data class ArtistDetails(
