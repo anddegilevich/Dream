@@ -58,6 +58,8 @@ kotlin {
 
             implementation(projects.shared.feature.user.component.profile.impl)
 
+            implementation(projects.shared.feature.track.component.details.impl)
+
             // Widget
             api(projects.shared.widget.impl)
 

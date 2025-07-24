@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.feature.album.component.details.api.component
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
+import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.ProfileComponent
 
 sealed interface Screen {
@@ -29,7 +30,9 @@ sealed interface Screen {
     ) : Screen, AlbumDetailsComponent by component
 
     // Track
-    class TrackDetails : Screen
+    class TrackDetails(
+        component: TrackDetailsComponent
+    ) : Screen, TrackDetailsComponent by component
 
     // User
     class Profile(

@@ -154,6 +154,9 @@ include(":shared:feature:track:domain:impl")
 include(":shared:feature:track:design:api")
 include(":shared:feature:track:design:impl")
 
+include(":shared:feature:track:component:details:api")
+include(":shared:feature:track:component:details:impl")
+
 // User
 include(":shared:feature:user:component:profile:api")
 include(":shared:feature:user:component:profile:impl")

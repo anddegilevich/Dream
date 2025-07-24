@@ -5,7 +5,9 @@ import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.Artist
 import and.degilevich.dream.shared.feature.track.model.artifact.api.abstraction.TrackInfo
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.id.AbstractIdentified
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TrackData(
     override val id: String,
     override val name: String,

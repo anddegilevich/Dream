@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.foundation.decompose.compose.component.collec
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
 import and.degilevich.dream.shared.feature.common.component.splash.api.design.SplashScreen
+import and.degilevich.dream.shared.feature.track.component.details.api.design.TrackDetailsScreen
 import and.degilevich.dream.shared.feature.user.component.profile.api.design.ProfileScreen
 import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,10 +35,12 @@ fun ComposeScreens(
                 SplashScreen()
             }
 
-            is Screen.Dashboard -> DashboardScreen(
-                state = screenComponent.collectState(),
-                onIntent = screenComponent::handleIntent
-            )
+            is Screen.Dashboard -> {
+                DashboardScreen(
+                    state = screenComponent.collectState(),
+                    onIntent = screenComponent::handleIntent
+                )
+            }
 
             is Screen.ArtistDetails -> {
                 ArtistDetailsScreen(
@@ -60,7 +63,12 @@ fun ComposeScreens(
                 )
             }
 
-            is Screen.TrackDetails -> { } // FIXME: Implement later
+            is Screen.TrackDetails -> {
+                TrackDetailsScreen(
+                    state = screenComponent.collectState(),
+                    onIntent = screenComponent::handleIntent
+                )
+            }
         }
     }
 }

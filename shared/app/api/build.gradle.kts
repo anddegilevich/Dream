@@ -24,6 +24,8 @@ kotlin {
             api(projects.shared.feature.album.component.details.api)
 
             api(projects.shared.feature.user.component.profile.api)
+
+            api(projects.shared.feature.track.component.details.api)
         }
     }
 }

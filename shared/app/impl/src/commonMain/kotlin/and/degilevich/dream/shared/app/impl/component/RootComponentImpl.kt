@@ -11,6 +11,7 @@ import and.degilevich.dream.shared.feature.album.component.details.impl.componen
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
+import and.degilevich.dream.shared.feature.track.component.details.impl.component.TrackDetailsComponentImpl
 import and.degilevich.dream.shared.feature.user.component.profile.impl.component.ProfileComponentImpl
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerResult
@@ -106,8 +107,14 @@ class RootComponentImpl(
                     )
                 )
             }
+
             is ScreenConfig.TrackDetails -> {
-                Screen.TrackDetails()
+                Screen.TrackDetails(
+                    component = TrackDetailsComponentImpl(
+                        componentContext = componentContext,
+                        navArgs = screenConfig.navArgs
+                    )
+                )
             }
         }
     }
