@@ -18,6 +18,9 @@
 
     <string name="mask_artist_name">Artist name: %s</string>
 
+    <string name="navbar_item_home">Home</string>
+    <string name="navbar_item_search">Search</string>
+
     <string name="error">Error</string>
     <string name="error_forbidden_resource">Requested resource is forbidden</string>
 </resources>

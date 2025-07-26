@@ -24,6 +24,11 @@ internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDet
                     .asSequence()
                     .sortedBy { track -> track.popularity }
                     .mapWith(trackInfoToTrackCardUIDataMapper)
+                    .mapIndexed { index, cardData ->
+                        cardData.copy(
+                            number = index.inc().toString()
+                        )
+                    }
                     .toImmutableList(),
                 albums = albums
                     .asSequence()

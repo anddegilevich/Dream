@@ -9,4 +9,5 @@ interface ThemeColors {
     val text: TextThemeColors
 
     val button: ButtonThemeColors
+    val icon: IconThemeColors
 }

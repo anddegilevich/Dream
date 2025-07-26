@@ -16,6 +16,9 @@
 
     <string name="mask_artist_name">Имя артиста: %s</string>
 
+    <string name="navbar_item_home">Главная</string>
+    <string name="navbar_item_search">Поиск</string>
+
     <string name="error">Ошибка</string>
     <string name="error_forbidden_resource">Сервис не доступен</string>
 </resources>

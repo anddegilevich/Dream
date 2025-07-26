@@ -93,6 +93,9 @@ include(":shared:feature:common:component:splash:impl")
 include(":shared:feature:common:component:dashboard:api")
 include(":shared:feature:common:component:dashboard:impl")
 
+include(":shared:feature:common:component:navbar:api")
+include(":shared:feature:common:component:navbar:impl")
+
 // Image
 include(":shared:feature:image:model:artifact:api")
 include(":shared:feature:image:model:artifact:impl")

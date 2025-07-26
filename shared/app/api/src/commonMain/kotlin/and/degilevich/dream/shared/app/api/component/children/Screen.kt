@@ -38,4 +38,7 @@ sealed interface Screen {
     class Profile(
         component: ProfileComponent
     ) : Screen, ProfileComponent by component
+
+    // Search
+    class Search : Screen
 }

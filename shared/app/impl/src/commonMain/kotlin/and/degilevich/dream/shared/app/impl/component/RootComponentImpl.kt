@@ -10,6 +10,8 @@ import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.AlbumDetailsComponentImpl
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.NavbarComponentImpl
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.TrackDetailsComponentImpl
 import and.degilevich.dream.shared.feature.user.component.profile.impl.component.ProfileComponentImpl
@@ -53,6 +55,9 @@ class RootComponentImpl(
         initialConfiguration = ScreenConfig.Splash,
         handleBackButton = true,
         childFactory = ::screenFactory,
+    )
+    override val navbar: NavbarComponent = NavbarComponentImpl(
+        componentContext = childContext(key = "navbar")
     )
 
     override val toasts: Flow<ToastData> = toastChannel.receiveAsFlow()
@@ -115,6 +120,10 @@ class RootComponentImpl(
                         navArgs = screenConfig.navArgs
                     )
                 )
+            }
+
+            is ScreenConfig.Search -> {
+                Screen.Search()
             }
         }
     }

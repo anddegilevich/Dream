@@ -6,10 +6,14 @@ import and.degilevich.dream.shared.app.api.design.screen.ComposeScreens
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.system.snackbar.AppSnackbar
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
+import and.degilevich.dream.shared.feature.common.component.navbar.api.design.AppNavbar
+import and.degilevich.dream.shared.foundation.compose.modifier.expandable.expandable
+import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
 import and.degilevich.dream.shared.foundation.filepicker.FilePicker
 import and.degilevich.dream.shared.foundation.filepicker.state.rememberFilePickerState
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -29,6 +33,7 @@ fun ComposeApp(
 ) {
     val snackBarHostState = remember { SnackbarHostState() }
     val filePickerState = rememberFilePickerState()
+    val navbarState = rootComponent.navbar.collectState()
 
     LaunchedEffect(Unit) {
         rootComponent.toasts.collect { toast ->
@@ -49,9 +54,20 @@ fun ComposeApp(
                 .fillMaxSize()
                 .themeBackground(),
         ) {
-            ComposeScreens(
-                screens = rootComponent.screenStack
-            )
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                ComposeScreens(
+                    screens = rootComponent.screenStack
+                )
+                AppNavbar(
+                    modifier = Modifier.expandable(
+                        isExpanded = navbarState.isVisible
+                    ),
+                    state = navbarState,
+                    onIntent = rootComponent.navbar::handleIntent
+                )
+            }
             SnackbarHost(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)

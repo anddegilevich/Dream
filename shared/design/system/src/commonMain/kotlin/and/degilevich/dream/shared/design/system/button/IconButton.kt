@@ -18,7 +18,7 @@ fun IconButton(
     painter: Painter,
     modifier: Modifier = Modifier,
     isEnabled: Boolean = true,
-    tint: Color = Theme.colors.common.icon,
+    tint: Color = Theme.colors.icon.primary,
     onClicked: () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }

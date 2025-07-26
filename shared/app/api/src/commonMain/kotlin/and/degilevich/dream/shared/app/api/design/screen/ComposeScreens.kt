@@ -69,6 +69,9 @@ fun ComposeScreens(
                     onIntent = screenComponent::handleIntent
                 )
             }
+            is Screen.Search -> {
+                // FIXME: Implement later
+            }
         }
     }
 }

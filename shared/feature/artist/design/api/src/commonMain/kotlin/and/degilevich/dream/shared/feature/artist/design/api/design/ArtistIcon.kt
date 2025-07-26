@@ -21,7 +21,7 @@ fun ArtistIcon(
     AsyncImage(
         modifier = modifier
             .clip(CircleShape)
-            .background(Theme.colors.common.iconPlaceholderBackground),
+            .background(Theme.colors.icon.placeholderBackground),
         model = iconUrl,
         placeholder = placeholderPainter,
         error = placeholderPainter,

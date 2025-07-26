@@ -16,12 +16,6 @@ internal class DarkCommonThemeColors : CommonThemeColors {
     override val ripple: Color
         @Composable
         get() = brandGreen
-    override val icon: Color
-        @Composable
-        get() = colorResource(Res.colors.white)
-    override val iconPlaceholderBackground: Color
-        @Composable
-        get() = colorResource(Res.colors.black)
     override val outline: Color
         @Composable
         get() = colorResource(Res.colors.white)

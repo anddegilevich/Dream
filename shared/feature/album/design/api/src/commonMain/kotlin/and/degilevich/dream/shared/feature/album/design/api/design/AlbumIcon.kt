@@ -17,7 +17,7 @@ fun AlbumIcon(
     val placeholderPainter = painterResource(Res.images.ic_duck)
 
     AsyncImage(
-        modifier = modifier.background(Theme.colors.common.iconPlaceholderBackground),
+        modifier = modifier.background(Theme.colors.icon.placeholderBackground),
         model = iconUrl,
         placeholder = placeholderPainter,
         error = placeholderPainter,

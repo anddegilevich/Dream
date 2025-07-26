@@ -13,12 +13,6 @@ interface CommonThemeColors {
     val ripple: Color
         @Composable
         get
-    val icon: Color
-        @Composable
-        get
-    val iconPlaceholderBackground: Color
-        @Composable
-        get
     val outline: Color
         @Composable
         get
