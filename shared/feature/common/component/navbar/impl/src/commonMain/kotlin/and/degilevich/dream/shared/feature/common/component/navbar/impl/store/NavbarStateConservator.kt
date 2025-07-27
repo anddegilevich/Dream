@@ -9,7 +9,6 @@ import kotlinx.serialization.KSerializer
 internal class NavbarStateConservator : StoreStateConservator<NavbarState> {
     override val key: String = NavbarState::class.className()
     override val initialState: NavbarState = NavbarState(
-        isVisible = false,
         items = NavbarItem.entries,
         selectedItem = NavbarItem.HOME
     )

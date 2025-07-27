@@ -1,8 +1,8 @@
-package and.degilevich.dream.shared.navigation.api.config
+package and.degilevich.dream.shared.navigation.api.model.config
 
-import and.degilevich.dream.shared.navigation.api.args.AlbumDetailsNavArgs
-import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
-import and.degilevich.dream.shared.navigation.api.args.TrackDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import kotlinx.serialization.Serializable
 
 @Serializable

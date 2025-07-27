@@ -26,7 +26,7 @@ fun SplashScreen(
         Icon(
             modifier = Modifier.size(144.dp),
             painter = painterResource(Res.images.ic_duck),
-            tint = Theme.colors.common.brandGreen,
+            tint = Theme.colors.common.brand,
             contentDescription = null,
         )
     }

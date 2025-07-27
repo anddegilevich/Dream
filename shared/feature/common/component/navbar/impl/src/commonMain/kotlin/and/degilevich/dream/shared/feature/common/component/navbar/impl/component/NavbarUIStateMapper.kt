@@ -20,7 +20,6 @@ internal class NavbarUIStateMapper : Mapper<NavbarState, NavbarUIState>, KoinCom
     override fun map(item: NavbarState): NavbarUIState {
         return with(item) {
             NavbarUIState(
-                isVisible = isVisible,
                 items = mapToItems(state = item)
             )
         }
@@ -50,9 +49,9 @@ internal class NavbarUIStateMapper : Mapper<NavbarState, NavbarUIState>, KoinCom
         return when (item) {
             NavbarItem.HOME -> {
                 if (isSelected) {
-                    Res.images.ic_home
-                } else {
                     Res.images.ic_home_filled
+                } else {
+                    Res.images.ic_home
                 }
             }
 

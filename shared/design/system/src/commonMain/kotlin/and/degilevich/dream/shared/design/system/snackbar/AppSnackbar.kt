@@ -29,7 +29,7 @@ fun AppSnackbar(
             .fillMaxWidth()
             .border(
                 width = 2.dp,
-                color = Theme.colors.common.outline
+                color = Theme.colors.common.line
             )
             .themeBackground()
             .padding(12.dp),

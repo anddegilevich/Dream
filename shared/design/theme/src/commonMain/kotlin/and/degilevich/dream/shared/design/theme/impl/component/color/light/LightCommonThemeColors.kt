@@ -11,13 +11,13 @@ internal class LightCommonThemeColors : CommonThemeColors {
     override val background: Color
         @Composable
         get() = colorResource(Res.colors.white)
-    override val brandGreen: Color
+    override val brand: Color
         @Composable
         get() = colorResource(Res.colors.malachite)
     override val ripple: Color
         @Composable
-        get() = brandGreen
-    override val outline: Color
+        get() = brand
+    override val line: Color
         @Composable
-        get() = colorResource(Res.colors.black)
+        get() = colorResource(Res.colors.philippine_silver)
 }

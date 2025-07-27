@@ -7,13 +7,11 @@ import kotlinx.collections.immutable.persistentListOf
 
 @Immutable
 data class NavbarUIState(
-    val isVisible: Boolean,
     val items: ImmutableList<NavbarItemUIData>
 ) {
     companion object : EmptyFactory<NavbarUIState> {
         override fun empty(): NavbarUIState {
             return NavbarUIState(
-                isVisible = false,
                 items = persistentListOf()
             )
         }

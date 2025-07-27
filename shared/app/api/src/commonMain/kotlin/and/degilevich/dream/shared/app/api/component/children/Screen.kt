@@ -6,7 +6,9 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.compon
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.ProfileComponent
+import androidx.compose.runtime.Immutable
 
+@Immutable
 sealed interface Screen {
 
     // Common

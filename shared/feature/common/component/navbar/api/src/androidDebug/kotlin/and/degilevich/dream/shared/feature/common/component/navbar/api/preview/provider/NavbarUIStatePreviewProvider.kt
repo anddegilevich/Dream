@@ -5,7 +5,6 @@ import and.degilevich.dream.shared.feature.common.component.navbar.api.component
 object NavbarUIStatePreviewProvider {
     fun provide(): NavbarUIState {
         return NavbarUIState(
-            isVisible = true,
             items = NavbarItemUIDataPreviewProvider.provideList()
         )
     }

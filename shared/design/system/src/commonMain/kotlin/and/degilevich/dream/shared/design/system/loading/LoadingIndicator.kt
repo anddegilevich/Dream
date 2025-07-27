@@ -12,7 +12,7 @@ fun LoadingIndicator(
 ) {
     CircularProgressIndicator(
         modifier = modifier,
-        color = Theme.colors.common.brandGreen,
+        color = Theme.colors.common.brand,
         strokeCap = StrokeCap.Round
     )
 }

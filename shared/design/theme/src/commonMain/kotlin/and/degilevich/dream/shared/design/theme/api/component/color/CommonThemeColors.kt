@@ -7,13 +7,13 @@ interface CommonThemeColors {
     val background: Color
         @Composable
         get
-    val brandGreen: Color
+    val brand: Color
         @Composable
         get
     val ripple: Color
         @Composable
         get
-    val outline: Color
+    val line: Color
         @Composable
         get
 }

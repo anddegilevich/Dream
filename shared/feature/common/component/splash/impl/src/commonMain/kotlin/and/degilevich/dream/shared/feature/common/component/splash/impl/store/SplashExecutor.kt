@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.feature.common.component.splash.api.component
 import and.degilevich.dream.shared.feature.common.component.splash.impl.store.model.SplashState
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.AppNavigator
-import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
+import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnStart

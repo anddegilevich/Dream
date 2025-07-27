@@ -9,8 +9,7 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.design
 import and.degilevich.dream.shared.feature.common.component.splash.api.design.SplashScreen
 import and.degilevich.dream.shared.feature.track.component.details.api.design.TrackDetailsScreen
 import and.degilevich.dream.shared.feature.user.component.profile.api.design.ProfileScreen
-import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
-import androidx.compose.foundation.layout.fillMaxSize
+import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -24,7 +23,7 @@ fun ComposeScreens(
     modifier: Modifier = Modifier
 ) {
     Children(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier,
         stack = screens,
         animation = screensStackAnimation()
     ) { screen ->

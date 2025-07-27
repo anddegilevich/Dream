@@ -14,9 +14,9 @@ import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArti
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.AppNavigator
-import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
-import and.degilevich.dream.shared.navigation.api.args.TrackDetailsNavArgs
-import and.degilevich.dream.shared.navigation.api.config.ScreenConfig
+import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle

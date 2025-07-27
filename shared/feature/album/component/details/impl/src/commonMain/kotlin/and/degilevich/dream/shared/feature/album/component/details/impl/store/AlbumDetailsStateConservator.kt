@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.feature.album.component.details.impl.store.mo
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.StoreStateConservator
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import and.degilevich.dream.shared.navigation.api.args.AlbumDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import kotlinx.serialization.KSerializer
 
 internal class AlbumDetailsStateConservator(

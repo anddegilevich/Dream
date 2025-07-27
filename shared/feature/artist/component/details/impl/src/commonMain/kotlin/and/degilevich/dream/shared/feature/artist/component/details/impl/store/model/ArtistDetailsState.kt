@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.store.
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
-import and.degilevich.dream.shared.navigation.api.args.ArtistDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import kotlinx.serialization.Serializable
 
 @Serializable

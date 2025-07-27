@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.feature.track.component.details.impl.store.mo
 import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 import and.degilevich.dream.shared.foundation.decompose.component.store.conservator.StoreStateConservator
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import and.degilevich.dream.shared.navigation.api.args.TrackDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import kotlinx.serialization.KSerializer
 
 internal class TrackDetailsStateConservator(

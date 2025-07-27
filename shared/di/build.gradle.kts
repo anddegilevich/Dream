@@ -22,6 +22,9 @@ kotlin {
             // Template
             implementation(projects.shared.template.component.impl)
 
+            // Navigation
+            implementation(projects.shared.navigation.impl)
+
             // Feature
             implementation(projects.shared.feature.image.model.artifact.impl)
 
