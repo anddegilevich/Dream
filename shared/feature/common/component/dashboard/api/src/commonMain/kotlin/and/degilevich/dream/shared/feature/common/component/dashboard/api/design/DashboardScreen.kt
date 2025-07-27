@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.design.A
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardIntent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardUIState
 import and.degilevich.dream.shared.foundation.compose.ext.plus
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun DashboardScreen(
@@ -24,8 +26,8 @@ fun DashboardScreen(
         modifier = modifier
             .themeBackground()
             .fillMaxSize(),
-        contentPadding = WindowInsets.statusBars.asPaddingValues()
-            .plus(WindowInsets.navigationBars.asPaddingValues())
+        contentPadding = PaddingValues(top = 20.dp)
+            .plus(WindowInsets.statusBars.asPaddingValues())
             .plus(WindowInsets.navigationBars.asPaddingValues())
     ) {
         item {

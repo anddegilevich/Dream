@@ -11,16 +11,7 @@ internal class TrackInfoToTrackCardUIDataMapperImpl : TrackInfoToTrackCardUIData
                 id = id,
                 name = name,
                 number = trackNumber.toString(),
-                artists = artists
-                    .map { artist -> artist.name }
-                    .fold(
-                        initial = ""
-                    ) { acc, name ->
-                        acc.run {
-                            if (isNotEmpty()) plus(" . ")
-                            plus(name)
-                        }
-                    }
+                artists = artists.joinToString(separator = ", ") { artist -> artist.name }
             )
         }
     }

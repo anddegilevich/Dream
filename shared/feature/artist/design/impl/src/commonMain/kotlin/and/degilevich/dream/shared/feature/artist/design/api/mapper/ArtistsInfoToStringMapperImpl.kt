@@ -4,15 +4,6 @@ import and.degilevich.dream.shared.feature.artist.model.artifact.api.abstraction
 
 internal class ArtistsInfoToStringMapperImpl : ArtistsInfoToStringMapper {
     override fun map(artists: List<ArtistInfo>): String {
-        return artists
-            .map { artist -> artist.name }
-            .fold(
-                initial = ""
-            ) { acc, name ->
-                acc.run {
-                    if (isNotEmpty()) plus(" . ")
-                    plus(name)
-                }
-            }
+        return artists.joinToString(separator = ", ") { artist -> artist.name }
     }
 }

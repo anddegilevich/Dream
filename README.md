@@ -72,18 +72,20 @@ Here is the list of frameworks, that were used in this project:
 | | |- 2.6.1 theme
 | | |- 2.6.2 system
 | |- 2.7 template
-| | |- 2.7.1 component
-| | |- 2.7.2 source
+| | |- 2.7.1 source
+| | |- 2.7.2 component
+| | |- ...
 | |- 2.8 feature
 | | |- 2.8.1 artist
 | | | |- 2.8.1.1 model
 | | | | |- 2.8.1.1.1 artifact
 | | | | |- 2.8.1.1.2 core
-| | | |- 2.8.1.2 core
-| | | |- 2.8.1.3 design
-| | | |- 2.8.1.4 component
-| | | | |- 2.8.1.4.1 list
-| | | | |- 2.8.1.4.2 details
+| | | |- 2.8.1.2 source
+| | | |- 2.8.1.3 domain
+| | | |- 2.8.1.4 design
+| | | |- 2.8.1.5 component
+| | | | |- 2.8.1.5.1 list
+| | | | |- 2.8.1.5.2 details
 | | | | |- ...
 | | |- 2.8.2 album
 | | |- ...
@@ -195,25 +197,38 @@ Mappers for mapping data layer entities to the domain models.
 ### 2.8.1.1.2 shared.feature.artist.model.core
 
 Feature specific models.
-Can not be imported in other features model modules.
+Mostly are not supposed to be imported in other features model modules.
 
 ***Contains:***
 Data classes;
+Request classes;
 Enum dictionaries;
 Mappers for mapping data layer entities to the domain models.
 
-### 2.8.1.2 shared.feature.artist.core
+### 2.8.1.2 shared.feature.artist.source
 
-Feature specific domain classes
+Feature specific sources of data.
 
 ***Contains:***
-Data sources (local, remote, storage, paging and any combination of them);
-Value holders;
-Managers;
-Validators;
+Local data sources;
+Remote data sources;
+Paging data sources;
+Paging data sources;
+Storages;
 etc.
 
-### 2.8.1.3 shared.feature.artist.design
+### 2.8.1.3 shared.feature.artist.domain
+
+Feature specific domain logic classes that accumulate logic for concise calls from components.
+
+***Contains:***
+Use cases;
+Managers;
+Validators;
+Value holders;
+etc.
+
+### 2.8.1.4 shared.feature.artist.design
 
 Feature ui elements.
 
@@ -222,11 +237,11 @@ UI models;
 Compose functions;
 Mappers to map domain models to ui.
 
-### 2.8.1.4 shared.feature.artist.component
+### 2.8.1.5 shared.feature.artist.component
 
 Feature components (i.e. screens, bottom sheets, dialogs).
 
-### 2.8.1.4.1 shared.feature.artist.component.list
+### 2.8.1.5.1 shared.feature.artist.component.list
 
 Component, its logic and ui.
 
@@ -246,7 +261,7 @@ Configs with navigation arguments;
 ### 2.10 shared.di
 
 Provides app's dependency injection module.
-Combines all of the other di modules.
+Combines all other di modules (from impl modules).
 
 ### 2.11 shared.app
 
