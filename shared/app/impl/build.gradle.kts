@@ -61,6 +61,8 @@ kotlin {
 
             implementation(projects.shared.feature.track.component.details.impl)
 
+            implementation(projects.shared.feature.search.component.search.impl)
+
             // Widget
             api(projects.shared.widget.impl)
 

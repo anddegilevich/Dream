@@ -174,6 +174,9 @@ include(":shared:feature:search:source:impl")
 include(":shared:feature:search:domain:api")
 include(":shared:feature:search:domain:impl")
 
+include(":shared:feature:search:component:search:api")
+include(":shared:feature:search:component:search:impl")
+
 // =====================================================================================================================
 // Navigation
 

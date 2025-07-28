@@ -13,6 +13,7 @@ import and.degilevich.dream.shared.feature.artist.component.details.impl.compone
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.NavbarComponentImpl
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
+import and.degilevich.dream.shared.feature.search.component.search.impl.component.SearchComponentImpl
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.TrackDetailsComponentImpl
 import and.degilevich.dream.shared.feature.user.component.profile.impl.component.ProfileComponentImpl
 import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
@@ -135,7 +136,11 @@ class RootComponentImpl(
             }
 
             is ScreenConfig.Search -> {
-                Screen.Search()
+                Screen.Search(
+                    component = SearchComponentImpl(
+                        componentContext = componentContext
+                    )
+                )
             }
         }
     }

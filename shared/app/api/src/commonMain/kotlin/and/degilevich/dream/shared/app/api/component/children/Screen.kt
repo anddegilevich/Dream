@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.feature.album.component.details.api.component
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
+import and.degilevich.dream.shared.feature.search.component.search.api.component.SearchComponent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.ProfileComponent
 import androidx.compose.runtime.Immutable
@@ -42,5 +43,7 @@ sealed interface Screen {
     ) : Screen, ProfileComponent by component
 
     // Search
-    class Search : Screen
+    class Search(
+        component: SearchComponent
+    ) : Screen, SearchComponent by component
 }

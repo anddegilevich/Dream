@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.foundation.decompose.compose.component.collec
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
 import and.degilevich.dream.shared.feature.common.component.splash.api.design.SplashScreen
+import and.degilevich.dream.shared.feature.search.component.search.api.design.SearchScreen
 import and.degilevich.dream.shared.feature.track.component.details.api.design.TrackDetailsScreen
 import and.degilevich.dream.shared.feature.user.component.profile.api.design.ProfileScreen
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
@@ -69,7 +70,10 @@ fun ComposeScreens(
                 )
             }
             is Screen.Search -> {
-                // FIXME: Implement later
+                SearchScreen(
+                    state = screenComponent.collectState(),
+                    onIntent = screenComponent::handleIntent
+                )
             }
         }
     }
