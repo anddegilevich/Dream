@@ -5,12 +5,12 @@ import and.degilevich.dream.shared.feature.album.component.details.api.component
 import and.degilevich.dream.shared.feature.album.component.details.impl.store.model.AlbumDetailsState
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchAlbumUseCase
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
-import and.degilevich.dream.shared.feature.album.model.core.api.request.getAlbum.GetAlbumParams
-import and.degilevich.dream.shared.feature.album.model.core.api.request.getAlbum.GetAlbumResult
+import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
+import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumResult
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistsUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtists.GetArtistsResult
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsResult
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.AppNavigator

@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.artist.source.api.remote
 
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtist.GetArtistParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtist.GetArtistResult
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistAlbums.GetArtistAlbumsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistAlbums.GetArtistAlbumsResult
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistRelatedArtists.GetArtistRelatedArtistsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistRelatedArtists.GetArtistRelatedArtistsResult
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistTopTracks.GetArtistTopTracksParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistTopTracks.GetArtistTopTracksResult
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtists.GetArtistsResult
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistResult
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistRelatedArtists.GetArtistRelatedArtistsParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistRelatedArtists.GetArtistRelatedArtistsResult
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistTopTracks.GetArtistTopTracksParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistTopTracks.GetArtistTopTracksResult
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsResult
 
 interface ArtistRemoteDataSource {
     suspend fun getArtist(params: GetArtistParams): Result<GetArtistResult>

@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.track.model.core.impl.mapper
 
-import and.degilevich.dream.shared.core.service.api.model.track.TrackOutput
+import and.degilevich.dream.shared.core.service.api.model.data.track.TrackOutput
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.album.model.artifact.api.mapper.AlbumSimplifiedOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.model.artifact.api.mapper.ArtistSimplifiedOutputToDataMapper

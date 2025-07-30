@@ -8,9 +8,9 @@ import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtist
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistTopTracksUseCase
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtist.GetArtistParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistAlbums.GetArtistAlbumsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtistTopTracks.GetArtistTopTracksParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistTopTracks.GetArtistTopTracksParams
 import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.AppNavigator

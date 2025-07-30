@@ -1,10 +1,10 @@
 package and.degilevich.dream.shared.feature.search.model.core.impl.mapper
 
-import and.degilevich.dream.shared.core.service.api.requests.search.SearchResponse
+import and.degilevich.dream.shared.core.service.api.model.method.search.SearchResponse
 import and.degilevich.dream.shared.feature.album.model.artifact.api.mapper.AlbumSimplifiedOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.ArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.search.model.core.api.mapper.SearchResponseToResultMapper
-import and.degilevich.dream.shared.feature.search.model.core.api.request.search.SearchResult
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
 import and.degilevich.dream.shared.feature.track.model.core.api.mapper.TrackOutputToDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import kotlin.collections.orEmpty

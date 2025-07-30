@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.artist.model.core.impl.mapper
 
-import and.degilevich.dream.shared.core.service.api.requests.getArtists.GetArtistsResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsResponse
 import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.ArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistsResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.request.getArtists.GetArtistsResult
+import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 
 internal class GetArtistsResponseToResultMapperImpl(

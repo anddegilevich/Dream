@@ -5,10 +5,10 @@ import and.degilevich.dream.shared.feature.album.model.core.api.mapper.GetAlbumR
 import and.degilevich.dream.shared.feature.album.model.core.api.mapper.GetNewReleasesParamsToRequestMapper
 import and.degilevich.dream.shared.feature.album.model.core.api.mapper.GetNewReleasesResponseToResultMapper
 import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
-import and.degilevich.dream.shared.feature.album.model.core.api.request.getAlbum.GetAlbumParams
-import and.degilevich.dream.shared.feature.album.model.core.api.request.getAlbum.GetAlbumResult
-import and.degilevich.dream.shared.feature.album.model.core.api.request.getNewReleases.GetNewReleasesParams
-import and.degilevich.dream.shared.feature.album.model.core.api.request.getNewReleases.GetNewReleasesResult
+import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
+import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumResult
+import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesParams
+import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource

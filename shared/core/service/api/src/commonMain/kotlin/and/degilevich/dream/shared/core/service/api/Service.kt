@@ -1,25 +1,25 @@
 package and.degilevich.dream.shared.core.service.api
 
-import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumRequest
-import and.degilevich.dream.shared.core.service.api.requests.getAlbum.GetAlbumResponse
-import and.degilevich.dream.shared.core.service.api.requests.getArtist.GetArtistRequest
-import and.degilevich.dream.shared.core.service.api.requests.getArtist.GetArtistResponse
-import and.degilevich.dream.shared.core.service.api.requests.getArtistAlbums.GetArtistAlbumsRequest
-import and.degilevich.dream.shared.core.service.api.requests.getArtistAlbums.GetArtistAlbumsResponse
-import and.degilevich.dream.shared.core.service.api.requests.getArtistRelatedArtists.GetArtistRelatedArtistsRequest
-import and.degilevich.dream.shared.core.service.api.requests.getArtistRelatedArtists.GetArtistRelatedArtistsResponse
-import and.degilevich.dream.shared.core.service.api.requests.getArtistTopTracks.GetArtistTopTracksRequest
-import and.degilevich.dream.shared.core.service.api.requests.getArtistTopTracks.GetArtistTopTracksResponse
-import and.degilevich.dream.shared.core.service.api.requests.getArtists.GetArtistsRequest
-import and.degilevich.dream.shared.core.service.api.requests.getArtists.GetArtistsResponse
-import and.degilevich.dream.shared.core.service.api.requests.getNewReleases.GetNewReleasesRequest
-import and.degilevich.dream.shared.core.service.api.requests.getNewReleases.GetNewReleasesResponse
-import and.degilevich.dream.shared.core.service.api.requests.getRecommendations.GetRecommendationsRequest
-import and.degilevich.dream.shared.core.service.api.requests.getRecommendations.GetRecommendationsResponse
-import and.degilevich.dream.shared.core.service.api.requests.getTrack.GetTrackRequest
-import and.degilevich.dream.shared.core.service.api.requests.getTrack.GetTrackResponse
-import and.degilevich.dream.shared.core.service.api.requests.search.SearchRequest
-import and.degilevich.dream.shared.core.service.api.requests.search.SearchResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getAlbum.GetAlbumRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getAlbum.GetAlbumResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getArtist.GetArtistRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getArtist.GetArtistResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getArtistAlbums.GetArtistAlbumsRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getArtistAlbums.GetArtistAlbumsResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getArtistRelatedArtists.GetArtistRelatedArtistsRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getArtistRelatedArtists.GetArtistRelatedArtistsResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getArtistTopTracks.GetArtistTopTracksRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getArtistTopTracks.GetArtistTopTracksResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getNewReleases.GetNewReleasesRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getNewReleases.GetNewReleasesResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getRecommendations.GetRecommendationsRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getRecommendations.GetRecommendationsResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getTrack.GetTrackRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getTrack.GetTrackResponse
+import and.degilevich.dream.shared.core.service.api.model.method.search.SearchRequest
+import and.degilevich.dream.shared.core.service.api.model.method.search.SearchResponse
 
 interface Service {
     // Artist

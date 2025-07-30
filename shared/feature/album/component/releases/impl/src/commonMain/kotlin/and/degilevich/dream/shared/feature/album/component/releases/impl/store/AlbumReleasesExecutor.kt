@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.album.component.releases.impl.store.model.AlbumReleasesState
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchNewReleasesUseCase
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
-import and.degilevich.dream.shared.feature.album.model.core.api.request.getNewReleases.GetNewReleasesParams
+import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesParams
 import and.degilevich.dream.shared.foundation.decompose.component.store.executor.AbstractExecutor
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
