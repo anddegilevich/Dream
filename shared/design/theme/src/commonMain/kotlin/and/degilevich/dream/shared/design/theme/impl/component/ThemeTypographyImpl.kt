@@ -60,4 +60,12 @@ class ThemeTypographyImpl(
             fontSize = 14.sp,
             lineHeight = 18.sp
         )
+    override val field: TextStyle
+        @Composable
+        get() = TextStyle(
+            fontFamily = fonts.avenir,
+            fontWeight = FontWeight.Medium,
+            fontSize = 16.sp,
+            lineHeight = 20.sp
+        )
 }

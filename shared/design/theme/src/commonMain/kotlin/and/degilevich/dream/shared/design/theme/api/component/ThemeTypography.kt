@@ -24,4 +24,7 @@ interface ThemeTypography {
     val label: TextStyle
         @Composable
         get
+    val field: TextStyle
+        @Composable
+        get
 }
