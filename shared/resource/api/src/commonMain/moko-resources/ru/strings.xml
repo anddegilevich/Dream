@@ -16,6 +16,10 @@
     <string name="button_subscribe">Подписаться</string>
     <string name="button_repeat">Повторить</string>
 
+    <string name="label_artist">Артист</string>
+    <string name="label_album">Альбом</string>
+    <string name="label_track">Трек</string>
+
     <string name="mask_artist_name">Имя артиста: %s</string>
 
     <string name="navbar_item_home">Главная</string>

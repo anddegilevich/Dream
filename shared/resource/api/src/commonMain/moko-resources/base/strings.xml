@@ -18,6 +18,10 @@
     <string name="button_subscribe">Subscribe</string>
     <string name="button_repeat">Repeat</string>
 
+    <string name="label_artist">Artist</string>
+    <string name="label_album">Album</string>
+    <string name="label_track">Track</string>
+
     <string name="mask_artist_name">Artist name: %s</string>
 
     <string name="navbar_item_home">Home</string>

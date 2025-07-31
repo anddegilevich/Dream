@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.feature.track.component.details.impl.store
 
+import and.degilevich.dream.shared.core.toast.api.controller.ToastController
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsIntent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsSideEffect
 import and.degilevich.dream.shared.feature.track.component.details.impl.store.model.TrackDetailsState
@@ -11,6 +12,7 @@ import and.degilevich.dream.shared.navigation.api.AppNavigator
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
@@ -24,7 +26,8 @@ internal class TrackDetailsExecutor(
 ) : AbstractExecutor<TrackDetailsState, TrackDetailsIntent, TrackDetailsSideEffect>(lifecycle),
     KoinComponent {
 
-    private val navigator: AppNavigator by inject()
+    private val appNavigator: AppNavigator by inject()
+    private val toastController: ToastController by inject()
     private val fetchTrackUseCase: FetchTrackUseCase by inject()
 
     init {
@@ -41,6 +44,9 @@ internal class TrackDetailsExecutor(
         doOnCreate {
             fetchTrack()
         }
+        doOnStop {
+            setLoading(false)
+        }
     }
 
     private fun fetchTrack() {
@@ -53,12 +59,18 @@ internal class TrackDetailsExecutor(
                 .onSuccess { result ->
                     setTrack(track = result.track)
                 }
+                .onFailure { error ->
+                    toastController.showRepeatToast(
+                        error = error,
+                        onRepeat = ::fetchTrack
+                    )
+                }
             setLoading(false)
         }
     }
 
     private fun navigateBack() {
-        navigator.screenNavigator.pop()
+        appNavigator.screenNavigator.pop()
     }
 
     private fun setLoading(isLoading: Boolean) {

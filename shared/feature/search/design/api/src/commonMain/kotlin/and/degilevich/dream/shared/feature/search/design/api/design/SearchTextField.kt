@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.feature.search.component.search.api.design
+package and.degilevich.dream.shared.feature.search.design.api.design
 
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.theme.api.Theme

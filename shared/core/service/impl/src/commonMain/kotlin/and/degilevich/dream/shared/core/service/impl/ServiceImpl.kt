@@ -98,7 +98,7 @@ internal class ServiceImpl(
             parameter("q", request.q)
             parameter("limit", request.limit)
             parameter("offset", request.offset)
-            parameter("type", request.type)
+            parameter("type", request.type?.joinToString(","))
         }.foldBody()
     }
 }

@@ -1,25 +1,28 @@
 package and.degilevich.dream.shared.feature.search.model.core.impl.mapper
 
 import and.degilevich.dream.shared.core.service.api.model.method.search.SearchResponse
-import and.degilevich.dream.shared.feature.album.model.artifact.api.mapper.AlbumSimplifiedOutputToDataMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.ArtistOutputToDataMapper
+import and.degilevich.dream.shared.feature.search.model.core.api.mapper.SearchAlbumsOutputToDataMapper
+import and.degilevich.dream.shared.feature.search.model.core.api.mapper.SearchArtistsOutputToDataMapper
 import and.degilevich.dream.shared.feature.search.model.core.api.mapper.SearchResponseToResultMapper
+import and.degilevich.dream.shared.feature.search.model.core.api.mapper.SearchTracksOutputToDataMapper
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchAlbumsData
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchArtistsData
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
-import and.degilevich.dream.shared.feature.track.model.core.api.mapper.TrackOutputToDataMapper
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchTracksData
+import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import kotlin.collections.orEmpty
 
 internal class SearchResponseToResultMapperImpl(
-    private val trackOutputToDataMapper: TrackOutputToDataMapper,
-    private val artistOutputToDataMapper: ArtistOutputToDataMapper,
-    private val albumSimplifiedOutputToDataMapper: AlbumSimplifiedOutputToDataMapper
+    private val searchTracksOutputToDataMapper: SearchTracksOutputToDataMapper,
+    private val searchArtistsOutputToDataMapper: SearchArtistsOutputToDataMapper,
+    private val searchAlbumsOutputToDataMapper: SearchAlbumsOutputToDataMapper,
 ) : SearchResponseToResultMapper {
     override fun map(item: SearchResponse): SearchResult {
         return with(item) {
             SearchResult(
-                tracks = tracks?.mapWith(trackOutputToDataMapper).orEmpty(),
-                artists = artists?.mapWith(artistOutputToDataMapper).orEmpty(),
-                albums = albums?.mapWith(albumSimplifiedOutputToDataMapper).orEmpty()
+                tracks = tracks?.mapWith(searchTracksOutputToDataMapper).orEmpty(SearchTracksData),
+                artists = artists?.mapWith(searchArtistsOutputToDataMapper).orEmpty(SearchArtistsData),
+                albums = albums?.mapWith(searchAlbumsOutputToDataMapper).orEmpty(SearchAlbumsData)
             )
         }
     }

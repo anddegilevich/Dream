@@ -1,5 +1,6 @@
 package and.degilevich.dream.shated.feature.track.design.api.design
 
+import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
@@ -7,7 +8,6 @@ import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIDat
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text
-import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +22,7 @@ fun TrackCard(
     Row(
         modifier = modifier
             .clickableWithDebounce(
-                indication = ripple(color = Theme.colors.common.ripple)
+                indication = themeRipple()
             ) {
                 onClicked(data.id)
             },

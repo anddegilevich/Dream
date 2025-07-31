@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.design.system.snackbar
 
+import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
@@ -11,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.SnackbarData
 import androidx.compose.material.Text
-import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,7 +47,7 @@ fun AppSnackbar(
             Space(width = 12.dp)
             Text(
                 modifier = Modifier.clickableWithDebounce(
-                    indication = ripple(color = Theme.colors.common.ripple)
+                    indication = themeRipple()
                 ) {
                     data.performAction()
                 },

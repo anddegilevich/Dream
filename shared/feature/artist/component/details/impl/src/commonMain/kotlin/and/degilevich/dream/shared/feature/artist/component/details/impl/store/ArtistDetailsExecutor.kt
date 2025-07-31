@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.impl.store
 
+import and.degilevich.dream.shared.core.toast.api.controller.ToastController
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
@@ -21,6 +22,7 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
@@ -34,7 +36,8 @@ internal class ArtistDetailsExecutor(
 ) : AbstractExecutor<ArtistDetailsState, ArtistDetailsIntent, ArtistDetailsSideEffect>(lifecycle),
     KoinComponent {
 
-    private val navigator: AppNavigator by inject()
+    private val appNavigator: AppNavigator by inject()
+    private val toastController: ToastController by inject()
     private val fetchArtistUseCase: FetchArtistUseCase by inject()
     private val fetchArtistTopTracksUseCase: FetchArtistTopTracksUseCase by inject()
     private val fetchArtistAlbumsUseCase: FetchArtistAlbumsUseCase by inject()
@@ -54,6 +57,9 @@ internal class ArtistDetailsExecutor(
     private fun subscribeToLifecycle() {
         doOnCreate {
             fetchScreenData()
+        }
+        doOnStop {
+            setLoading(false)
         }
     }
 
@@ -77,6 +83,9 @@ internal class ArtistDetailsExecutor(
             .onSuccess { result ->
                 setArtist(artist = result.artist)
             }
+            .onFailure { error ->
+                toastController.showMessageToast(error)
+            }
     }
 
     private suspend fun fetchTopTracks() {
@@ -86,6 +95,9 @@ internal class ArtistDetailsExecutor(
         withContext(context = Dispatchers.IO) { fetchArtistTopTracksUseCase(params = params) }
             .onSuccess { result ->
                 setTopTracks(tracks = result.tracks)
+            }
+            .onFailure { error ->
+                toastController.showMessageToast(error)
             }
     }
 
@@ -99,14 +111,17 @@ internal class ArtistDetailsExecutor(
             .onSuccess { result ->
                 setAlbums(albums = result.items)
             }
+            .onFailure { error ->
+                toastController.showMessageToast(error)
+            }
     }
 
     private fun navigateBack() {
-        navigator.screenNavigator.pop()
+        appNavigator.screenNavigator.pop()
     }
 
     private fun navigateToTrack(trackId: String) {
-        navigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushNew(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(trackId = trackId)
             )
@@ -114,7 +129,7 @@ internal class ArtistDetailsExecutor(
     }
 
     private fun navigateToAlbum(albumId: String) {
-        navigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushNew(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(albumId = albumId)
             )

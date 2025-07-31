@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.feature.album.component.details.impl.store
 
+import and.degilevich.dream.shared.core.toast.api.controller.ToastController
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsIntent
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsSideEffect
 import and.degilevich.dream.shared.feature.album.component.details.impl.store.model.AlbumDetailsState
@@ -21,6 +22,7 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
@@ -34,7 +36,8 @@ internal class AlbumDetailsExecutor(
 ) : AbstractExecutor<AlbumDetailsState, AlbumDetailsIntent, AlbumDetailsSideEffect>(lifecycle),
     KoinComponent {
 
-    private val navigator: AppNavigator by inject()
+    private val appNavigator: AppNavigator by inject()
+    private val toastController: ToastController by inject()
     private val fetchAlbumUseCase: FetchAlbumUseCase by inject()
     private val fetchArtistsUseCase: FetchArtistsUseCase by inject()
 
@@ -53,6 +56,9 @@ internal class AlbumDetailsExecutor(
     private fun subscribeToLifecycle() {
         doOnCreate {
             fetchScreenData()
+        }
+        doOnStop {
+            setLoading(false)
         }
     }
 
@@ -76,6 +82,12 @@ internal class AlbumDetailsExecutor(
             .onSuccess { result ->
                 setAlbum(album = result.album)
             }
+            .onFailure { error ->
+                toastController.showRepeatToast(
+                    error = error,
+                    onRepeat = ::fetchScreenData
+                )
+            }
     }
 
     private suspend fun fetchArtists(artistsIds: List<String>): Result<GetArtistsResult> {
@@ -86,14 +98,20 @@ internal class AlbumDetailsExecutor(
             .onSuccess { result ->
                 setArtists(artists = result.artists)
             }
+            .onFailure { error ->
+                toastController.showRepeatToast(
+                    error = error,
+                    onRepeat = ::fetchScreenData
+                )
+            }
     }
 
     private fun navigateBack() {
-        navigator.screenNavigator.pop()
+        appNavigator.screenNavigator.pop()
     }
 
     private fun navigateToArtistDetails(artistId: String) {
-        navigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushNew(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(
                     artistId = artistId
@@ -103,7 +121,7 @@ internal class AlbumDetailsExecutor(
     }
 
     private fun navigateToTrackDetails(trackId: String) {
-        navigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushNew(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(
                     trackId = trackId

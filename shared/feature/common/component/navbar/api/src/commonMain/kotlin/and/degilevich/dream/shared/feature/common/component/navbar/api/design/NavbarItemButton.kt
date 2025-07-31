@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.api.design
 
+import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItemUIData
 import and.degilevich.dream.shared.foundation.compose.ext.Space
@@ -10,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -35,7 +35,7 @@ fun NavbarItemButton(
     Column(
         modifier = modifier
             .clickableWithDebounce(
-                indication = ripple(color = Theme.colors.common.ripple)
+                indication = themeRipple()
             ) {
                 onClicked(data.id)
             }

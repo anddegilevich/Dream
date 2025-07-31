@@ -6,6 +6,7 @@ import and.degilevich.dream.shared.core.toast.api.model.ToastActionData
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.core.toast.api.model.ToastDurationData
 import and.degilevich.dream.Res
+import dev.icerock.moko.resources.StringResource
 
 internal class ToastFactoryImpl(
     private val resourceManager: ResourceManager
@@ -17,6 +18,18 @@ internal class ToastFactoryImpl(
             onDismiss = {},
             actionData = ToastActionData.Empty(),
             duration = ToastDurationData.SHORT
+        )
+    }
+
+    override fun createMessageToast(resource: StringResource): ToastData {
+        return createMessageToast(
+            message = resourceManager.getString(resource)
+        )
+    }
+
+    override fun createMessageToast(error: Throwable): ToastData {
+        return createMessageToast(
+            message = mapErrorToMessage(error)
         )
     }
 
@@ -40,8 +53,12 @@ internal class ToastFactoryImpl(
         onRepeat: () -> Unit
     ): ToastData {
         return createRepeatToast(
-            message = error.message ?: resourceManager.getString(Res.strings.error),
+            message = mapErrorToMessage(error),
             onRepeat = onRepeat
         )
+    }
+
+    private fun mapErrorToMessage(error: Throwable): String {
+        return error.message ?: resourceManager.getString(Res.strings.error)
     }
 }

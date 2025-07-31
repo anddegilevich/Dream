@@ -49,6 +49,7 @@ kotlin {
             implementation(projects.shared.feature.search.model.core.impl)
             implementation(projects.shared.feature.search.source.impl)
             implementation(projects.shared.feature.search.domain.impl)
+            implementation(projects.shared.feature.search.design.impl)
         }
     }
 }

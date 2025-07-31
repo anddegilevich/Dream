@@ -8,6 +8,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.foundation.abstraction)
+            api(projects.shared.resource.api)
         }
     }
 }

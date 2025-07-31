@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.feature.album.component.releases.impl.store
 
 import and.degilevich.dream.shared.core.toast.api.controller.ToastController
-import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.impl.store.model.AlbumReleasesState
@@ -15,6 +14,7 @@ import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
+import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
@@ -28,10 +28,9 @@ internal class AlbumReleasesExecutor(
 ) : AbstractExecutor<AlbumReleasesState, AlbumReleasesIntent, AlbumReleasesSideEffect>(lifecycle),
     KoinComponent {
 
-    private val navigator: AppNavigator by inject()
-    private val fetchNewReleasesUseCase: FetchNewReleasesUseCase by inject()
+    private val appNavigator: AppNavigator by inject()
     private val toastController: ToastController by inject()
-    private val toastFactory: ToastFactory by inject()
+    private val fetchNewReleasesUseCase: FetchNewReleasesUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -40,6 +39,9 @@ internal class AlbumReleasesExecutor(
     private fun subscribeToLifecycle() {
         doOnCreate {
             fetchNewReleases()
+        }
+        doOnStop {
+            setLoading(false)
         }
     }
 
@@ -61,11 +63,9 @@ internal class AlbumReleasesExecutor(
                     setReleases(albums = result.albums.albums)
                 }
                 .onFailure { error ->
-                    toastController.showToast(
-                        toast = toastFactory.createRepeatToast(
-                            error = error,
-                            onRepeat = ::fetchNewReleases
-                        )
+                    toastController.showRepeatToast(
+                        error = error,
+                        onRepeat = ::fetchNewReleases
                     )
                 }
             setLoading(false)
@@ -73,7 +73,7 @@ internal class AlbumReleasesExecutor(
     }
 
     private fun navigateToAlbum(albumId: String) {
-        navigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushNew(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(
                     albumId = albumId

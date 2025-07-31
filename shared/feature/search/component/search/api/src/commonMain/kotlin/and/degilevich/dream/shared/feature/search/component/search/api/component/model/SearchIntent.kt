@@ -2,4 +2,5 @@ package and.degilevich.dream.shared.feature.search.component.search.api.componen
 
 sealed interface SearchIntent {
     data class OnQueryChanged(val value: String) : SearchIntent
+    data class OnItemClicked(val id: String) : SearchIntent
 }
