@@ -11,7 +11,7 @@ import and.degilevich.dream.shared.foundation.decompose.component.store.executor
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import com.arkivanov.decompose.router.stack.pushNew
+import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import com.arkivanov.essenty.lifecycle.doOnStop
@@ -73,7 +73,7 @@ internal class AlbumReleasesExecutor(
     }
 
     private fun navigateToAlbum(albumId: String) {
-        appNavigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(
                     albumId = albumId

@@ -6,10 +6,11 @@ import and.degilevich.dream.shared.feature.search.component.search.api.component
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
 import and.degilevich.dream.shared.feature.search.design.api.design.SearchCard
 import and.degilevich.dream.shared.feature.search.design.api.design.SearchTextField
+import and.degilevich.dream.shared.feature.search.design.api.design.skeleton.SkeletonSearchCard
 import and.degilevich.dream.shared.foundation.compose.draggable.OnDragLaunchedEffect
-import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.ime.controller.rememberImeController
+import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -62,17 +63,24 @@ fun SearchScreen(
                 .plus(WindowInsets.navigationBars.asPaddingValues()),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            identifiedItems(state.items) { item ->
-                SearchCard(
-                    modifier = Modifier
-                        .animateItem()
-                        .fillMaxWidth(),
-                    data = item,
-                    onClicked = { id ->
-                        onIntent(SearchIntent.OnItemClicked(id))
-                    }
-                )
-            }
+            identifiedSkeletonItems(
+                skeleton = state.items,
+                loadingItemsCount = 8,
+                loadingItemContent = {
+                    SkeletonSearchCard()
+                },
+                itemContent = { item ->
+                    SearchCard(
+                        modifier = Modifier
+                            .animateItem()
+                            .fillMaxWidth(),
+                        data = item,
+                        onClicked = { id ->
+                            onIntent(SearchIntent.OnItemClicked(id))
+                        }
+                    )
+                }
+            )
         }
     }
 }

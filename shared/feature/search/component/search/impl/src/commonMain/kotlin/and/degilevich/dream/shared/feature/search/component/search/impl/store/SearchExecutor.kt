@@ -15,7 +15,7 @@ import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import com.arkivanov.decompose.router.stack.pushNew
+import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
@@ -102,7 +102,7 @@ internal class SearchExecutor(
     }
 
     private fun navigateToArtist(artistId: String) {
-        appNavigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushToFront(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(artistId = artistId)
             )
@@ -110,7 +110,7 @@ internal class SearchExecutor(
     }
 
     private fun navigateToAlbum(albumId: String) {
-        appNavigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(albumId = albumId)
             )
@@ -118,7 +118,7 @@ internal class SearchExecutor(
     }
 
     private fun navigateToTrack(trackId: String) {
-        appNavigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushToFront(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(trackId = trackId)
             )

@@ -9,7 +9,7 @@ import and.degilevich.dream.shared.foundation.decompose.component.store.executor
 import and.degilevich.dream.shared.navigation.api.ActiveScreenConfigValueHolder
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import com.arkivanov.decompose.router.stack.pushToFront
+import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnStart
 import kotlinx.coroutines.flow.launchIn
@@ -69,7 +69,7 @@ internal class NavbarExecutor(
             NavbarItem.HOME -> ScreenConfig.Dashboard
             NavbarItem.SEARCH -> ScreenConfig.Search
         }
-        navigator.screenNavigator.pushToFront(destination)
+        navigator.screenNavigator.bringToFront(destination)
     }
 
     private fun setSelectedItem(item: NavbarItem) {

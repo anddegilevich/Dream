@@ -8,6 +8,7 @@ import and.degilevich.dream.shared.feature.search.design.api.mapper.TrackDataToS
 import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
+import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import org.koin.core.component.KoinComponent
@@ -30,16 +31,22 @@ internal class SearchUIStateMapper : Mapper<SearchState, SearchUIState>, KoinCom
         }
     }
 
-    private fun mapToItems(state: SearchState): ImmutableList<SearchCardUIData> {
-        return with(state.searchResult) {
-            listOf(
-                albums.items.mapWith(albumDataToSearchCardUIDataMapper),
-                artists.items.mapWith(artistDataToSearchCardUIDataMapper),
-                tracks.items.mapWith(trackDataToSearchCardUIDataMapper)
-            )
-                .flatten()
-                .shuffled(random = Random(0)) // FIXME: Sort more deliberately
-                .toImmutableList()
+    private fun mapToItems(state: SearchState): Skeleton<ImmutableList<SearchCardUIData>> {
+        return with(state) {
+            if (isLoading && searchResult.isEmpty()) {
+                Skeleton.Loading
+            } else {
+                Skeleton.Value(
+                    value = listOf(
+                        searchResult.albums.items.mapWith(albumDataToSearchCardUIDataMapper),
+                        searchResult.artists.items.mapWith(artistDataToSearchCardUIDataMapper),
+                        searchResult.tracks.items.mapWith(trackDataToSearchCardUIDataMapper)
+                    )
+                        .flatten()
+                        .shuffled(random = Random(0)) // FIXME: Sort more deliberately
+                        .toImmutableList()
+                )
+            }
         }
     }
 }

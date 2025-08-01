@@ -19,7 +19,7 @@ import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArg
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.router.stack.pop
-import com.arkivanov.decompose.router.stack.pushNew
+import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import com.arkivanov.essenty.lifecycle.doOnStop
@@ -111,7 +111,7 @@ internal class AlbumDetailsExecutor(
     }
 
     private fun navigateToArtistDetails(artistId: String) {
-        appNavigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushToFront(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(
                     artistId = artistId
@@ -121,7 +121,7 @@ internal class AlbumDetailsExecutor(
     }
 
     private fun navigateToTrackDetails(trackId: String) {
-        appNavigator.screenNavigator.pushNew(
+        appNavigator.screenNavigator.pushToFront(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(
                     trackId = trackId

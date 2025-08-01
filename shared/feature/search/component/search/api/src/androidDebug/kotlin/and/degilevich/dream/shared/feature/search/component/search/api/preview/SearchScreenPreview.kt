@@ -25,3 +25,23 @@ private fun SearchScreenLightPreview() {
         ) { }
     }
 }
+
+@Preview
+@Composable
+private fun SkeletonSearchScreenDarkPreview() {
+    ComposeAppTheme(isDarkMode = true) {
+        SearchScreen(
+            state = SearchUIStatePreviewProvider.provideSkeleton()
+        ) { }
+    }
+}
+
+@Preview
+@Composable
+private fun SkeletonSearchScreenLightPreview() {
+    ComposeAppTheme(isDarkMode = false) {
+        SearchScreen(
+            state = SearchUIStatePreviewProvider.provideSkeleton()
+        ) { }
+    }
+}

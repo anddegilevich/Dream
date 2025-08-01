@@ -22,7 +22,7 @@ fun SkeletonAlbumCard(
         Spacer(
             modifier = Modifier
                 .themeShimmer()
-                .size(size = 140.dp),
+                .size(size = 140.dp)
         )
         Space(height = 4.dp)
         Spacer(
@@ -31,7 +31,7 @@ fun SkeletonAlbumCard(
                 .size(
                     width = 132.dp,
                     height = 20.dp
-                ),
+                )
         )
         Space(height = 2.dp)
         Spacer(
@@ -40,7 +40,7 @@ fun SkeletonAlbumCard(
                 .size(
                     width = 100.dp,
                     height = 16.dp
-                ),
+                )
         )
     }
 }

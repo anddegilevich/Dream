@@ -2,20 +2,20 @@ package and.degilevich.dream.shared.feature.search.component.search.api.componen
 
 import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
+import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 
 @Immutable
 data class SearchUIState(
     val query: String,
-    val items: ImmutableList<SearchCardUIData>
+    val items: Skeleton<ImmutableList<SearchCardUIData>>
 ) {
     companion object : EmptyFactory<SearchUIState> {
         override fun empty(): SearchUIState {
             return SearchUIState(
                 query = "",
-                items = persistentListOf()
+                items = Skeleton.Loading
             )
         }
     }
