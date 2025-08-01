@@ -7,42 +7,54 @@ import and.degilevich.dream.shared.feature.common.component.splash.api.component
 import and.degilevich.dream.shared.feature.search.component.search.api.component.SearchComponent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
 import and.degilevich.dream.shared.feature.user.component.profile.api.componen.ProfileComponent
-import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 
-@Immutable
+@Stable
 sealed interface Screen {
 
     // Common
+
+    @Stable
     class Splash(
         component: SplashComponent
     ) : Screen, SplashComponent by component
 
+    @Stable
     class Dashboard(
         component: DashboardComponent
     ) : Screen, DashboardComponent by component
 
     // Artist
 
+    @Stable
     class ArtistDetails(
         component: ArtistDetailsComponent
     ) : Screen, ArtistDetailsComponent by component
 
     // Album
+
+    @Stable
     class AlbumDetails(
         component: AlbumDetailsComponent
     ) : Screen, AlbumDetailsComponent by component
 
     // Track
+
+    @Stable
     class TrackDetails(
         component: TrackDetailsComponent
     ) : Screen, TrackDetailsComponent by component
 
     // User
+
+    @Stable
     class Profile(
         component: ProfileComponent
     ) : Screen, ProfileComponent by component
 
     // Search
+
+    @Stable
     class Search(
         component: SearchComponent
     ) : Screen, SearchComponent by component

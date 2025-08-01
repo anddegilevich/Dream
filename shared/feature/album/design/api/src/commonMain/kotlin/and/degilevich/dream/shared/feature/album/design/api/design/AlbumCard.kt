@@ -50,6 +50,7 @@ fun AlbumCard(
             overflow = TextOverflow.Ellipsis,
             maxLines = 1
         )
+        Space(height = 2.dp)
         Text(
             text = data.artists,
             color = Theme.colors.text.secondary,

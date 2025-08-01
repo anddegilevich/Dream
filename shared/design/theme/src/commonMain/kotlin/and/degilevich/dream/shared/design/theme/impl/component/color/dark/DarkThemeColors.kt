@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.design.theme.impl.component.color.dark
 
 import and.degilevich.dream.shared.design.theme.api.component.color.CommonThemeColors
 import and.degilevich.dream.shared.design.theme.api.component.color.IconThemeColors
+import and.degilevich.dream.shared.design.theme.api.component.color.ShimmerThemeColors
 import and.degilevich.dream.shared.design.theme.api.component.color.TextThemeColors
 import and.degilevich.dream.shared.design.theme.api.component.color.ThemeColors
 import and.degilevich.dream.shared.design.theme.api.component.color.button.ButtonThemeColors
@@ -17,4 +18,5 @@ internal class DarkThemeColors : ThemeColors {
     override val button: ButtonThemeColors = DarkButtonThemeColors()
     override val icon: IconThemeColors = DarkIconThemeColors()
     override val field: FieldThemeColors = DarkFieldThemeColors()
+    override val shimmer: ShimmerThemeColors = DarkShimmerThemeColors()
 }

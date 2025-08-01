@@ -12,4 +12,5 @@ interface ThemeColors {
     val button: ButtonThemeColors
     val icon: IconThemeColors
     val field: FieldThemeColors
+    val shimmer: ShimmerThemeColors
 }

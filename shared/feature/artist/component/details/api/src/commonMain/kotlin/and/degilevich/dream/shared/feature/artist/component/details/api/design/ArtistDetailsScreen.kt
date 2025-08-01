@@ -8,15 +8,16 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumCard
-import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistIcon
-import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
-import and.degilevich.dream.shared.foundation.compose.ext.identifiedItemsIndexed
+import and.degilevich.dream.shared.feature.album.design.api.design.skeleton.SkeletonAlbumCard
+import and.degilevich.dream.shared.feature.artist.component.details.api.design.skeleton.SkeletonArtistInfoCard
 import and.degilevich.dream.shared.foundation.compose.ext.plus
+import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
+import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
 import and.degilevich.dream.shated.feature.track.design.api.design.TrackCard
+import and.degilevich.dream.shated.feature.track.design.api.design.skeleton.SkeletonTrackCard
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -63,46 +64,53 @@ fun ArtistDetailsScreen(
                     onIntent(ArtistDetailsIntent.OnBackClicked)
                 }
                 Space(height = 12.dp)
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    ArtistIcon(
-                        modifier = Modifier
-                            .size(120.dp),
-                        iconUrl = state.iconUrl
-                    )
-                    Space(width = 20.dp)
-                    Text(
-                        text = state.name,
-                        color = Theme.colors.text.primary,
-                        style = Theme.typography.h2
-                    )
-                }
+                SkeletonCrossfade(
+                    skeleton = state.info,
+                    loadingContent = {
+                        SkeletonArtistInfoCard(
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    },
+                    content = { data ->
+                        ArtistInfoCard(
+                            modifier = Modifier.fillMaxWidth(),
+                            data = data
+                        )
+                    }
+                )
                 Space(height = 20.dp)
                 Text(
                     text = stringResource(Res.strings.title_top_tracks),
                     color = Theme.colors.text.primary,
                     style = Theme.typography.h3
                 )
-                Space(height = 16.dp)
+                Space(height = 4.dp)
             }
         }
-        identifiedItemsIndexed(
-            items = state.topTracks
-        ) { index, track ->
-            TrackCard(
-                modifier = Modifier
-                    .padding(top = if (index == 0) 0.dp else 12.dp)
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
-                data = track
-            ) { id ->
-                onIntent(
-                    ArtistDetailsIntent.OnTrackClicked(id = id)
+        identifiedSkeletonItems(
+            skeleton = state.topTracks,
+            loadingItemsCount = 5,
+            loadingItemContent = {
+                SkeletonTrackCard(
+                    modifier = Modifier
+                        .padding(top = 12.dp)
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth(),
                 )
+            },
+            itemContent = { track ->
+                TrackCard(
+                    modifier = Modifier
+                        .animateItem()
+                        .padding(top = 12.dp)
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth(),
+                    data = track
+                ) { id ->
+                    onIntent(ArtistDetailsIntent.OnTrackClicked(id = id))
+                }
             }
-        }
+        )
         item {
             Column {
                 Space(height = 20.dp)
@@ -122,19 +130,22 @@ fun ArtistDetailsScreen(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    identifiedItems(
-                        items = state.albums
-                    ) { album ->
-                        AlbumCard(
-                            modifier = Modifier.animateItem(),
-                            data = album,
-                            onClicked = { id ->
-                                onIntent(
-                                    ArtistDetailsIntent.OnAlbumClicked(id = id)
-                                )
-                            }
-                        )
-                    }
+                    identifiedSkeletonItems(
+                        skeleton = state.albums,
+                        loadingItemsCount = 5,
+                        loadingItemContent = { SkeletonAlbumCard() },
+                        itemContent = { album ->
+                            AlbumCard(
+                                modifier = Modifier.animateItem(),
+                                data = album,
+                                onClicked = { id ->
+                                    onIntent(
+                                        ArtistDetailsIntent.OnAlbumClicked(id = id)
+                                    )
+                                }
+                            )
+                        }
+                    )
                 }
             }
         }

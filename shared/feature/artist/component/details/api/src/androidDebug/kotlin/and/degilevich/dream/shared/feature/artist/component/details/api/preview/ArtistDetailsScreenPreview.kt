@@ -31,3 +31,29 @@ fun ArtistDetailsScreenLightPreview() {
         )
     }
 }
+
+@Preview
+@Composable
+fun ArtistDetailsScreenSkeletonDarkPreview() {
+    ComposeAppTheme(
+        isDarkMode = true
+    ) {
+        ArtistDetailsScreen(
+            state = ArtistDetailsUIStatePreviewProvider.provideSkeleton(),
+            onIntent = { }
+        )
+    }
+}
+
+@Preview
+@Composable
+fun ArtistDetailsScreenSkeletonLightPreview() {
+    ComposeAppTheme(
+        isDarkMode = false
+    ) {
+        ArtistDetailsScreen(
+            state = ArtistDetailsUIStatePreviewProvider.provideSkeleton(),
+            onIntent = { }
+        )
+    }
+}

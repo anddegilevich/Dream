@@ -22,6 +22,7 @@ Design is also inspired by [Spotify Mobile App](https://apps.apple.com/us/app/sp
   * Shared localised resources; 
   * Multiplatform build config with multiple flavors;
   * Custom compose theme (with dark and light modes) for uniform and flexible UI;
+  * Skeleton display during ui loading;
   * //TODO Mock local rest api on Ktor;
   * //TODO Custom file templates for convenient feature entities creation;
   * //TODO Multiplatform widget;

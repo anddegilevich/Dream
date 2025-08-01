@@ -16,7 +16,7 @@ object TrackCardUIDataPreviewProvider {
 
     fun provideList(): ImmutableList<TrackCardUIData> {
         return buildPersistentList {
-            for (i in 1..10) {
+            for (i in 1..5) {
                 add(
                     TrackCardUIData.empty().copy(
                         id = i.toString(),
