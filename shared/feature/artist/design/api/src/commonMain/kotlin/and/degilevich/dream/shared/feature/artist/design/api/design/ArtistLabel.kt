@@ -25,7 +25,7 @@ fun ArtistLabel(
                 onClicked(data.id)
             }
             .padding(all = 4.dp),
-        verticalAlignment = Alignment.Bottom,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         ArtistIcon(
             modifier = Modifier.size(24.dp),

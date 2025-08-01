@@ -24,7 +24,7 @@ fun SkeletonTrackCard(
                 .roundedThemeShimmer()
                 .size(
                     width = 12.dp,
-                    height = 24.dp
+                    height = 16.dp
                 )
         )
         Space(width = 8.dp)
@@ -34,7 +34,7 @@ fun SkeletonTrackCard(
                     .roundedThemeShimmer()
                     .size(
                         width = 120.dp,
-                        height = 24.dp
+                        height = 16.dp
                     )
             )
             Space(height = 4.dp)
@@ -43,7 +43,7 @@ fun SkeletonTrackCard(
                     .roundedThemeShimmer()
                     .size(
                         width = 80.dp,
-                        height = 16.dp
+                        height = 12.dp
                     )
             )
         }

@@ -34,7 +34,7 @@ fun SkeletonArtistInfoCard(
                     .roundedThemeShimmer()
                     .size(
                         width = 100.dp,
-                        height = 32.dp
+                        height = 24.dp
                     )
             )
         }

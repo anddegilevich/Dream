@@ -51,7 +51,7 @@ fun AlbumReleasesCarousel(
         ) {
             identifiedSkeletonItems(
                 skeleton = state.releases,
-                loadingItemsCount = 5,
+                loadingItemsCount = 10,
                 loadingItemContent = {
                     SkeletonAlbumCard()
                 },

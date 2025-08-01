@@ -29,3 +29,27 @@ fun AlbumDetailsScreenLightPreview() {
         ) { }
     }
 }
+
+@Preview
+@Composable
+fun SkeletonAlbumDetailsScreenDarkPreview() {
+    ComposeAppTheme(
+        isDarkMode = true
+    ) {
+        AlbumDetailsScreen(
+            state = AlbumDetailsUIStatePreviewProvider.provideSkeleton()
+        ) { }
+    }
+}
+
+@Preview
+@Composable
+fun SkeletonAlbumDetailsScreenLightPreview() {
+    ComposeAppTheme(
+        isDarkMode = false
+    ) {
+        AlbumDetailsScreen(
+            state = AlbumDetailsUIStatePreviewProvider.provideSkeleton()
+        ) { }
+    }
+}

@@ -21,13 +21,11 @@ internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDet
     private val albumInfoToCardUIDataMapper: AlbumInfoToCardUIDataMapper by inject()
 
     override fun map(item: ArtistDetailsState): ArtistDetailsUIState {
-        return with(item) {
-            ArtistDetailsUIState(
-                info = mapToInfo(state = item),
-                topTracks = mapToTopTracks(state = item),
-                albums = mapToAlbums(state = item)
-            )
-        }
+        return ArtistDetailsUIState(
+            info = mapToInfo(state = item),
+            topTracks = mapToTopTracks(state = item),
+            albums = mapToAlbums(state = item)
+        )
     }
 
     private fun mapToInfo(state: ArtistDetailsState): Skeleton<ArtistInfoLayoutUIData> {

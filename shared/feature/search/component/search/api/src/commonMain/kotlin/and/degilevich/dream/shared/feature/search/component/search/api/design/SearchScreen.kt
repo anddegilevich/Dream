@@ -65,7 +65,7 @@ fun SearchScreen(
         ) {
             identifiedSkeletonItems(
                 skeleton = state.items,
-                loadingItemsCount = 8,
+                loadingItemsCount = 16,
                 loadingItemContent = {
                     SkeletonSearchCard()
                 },

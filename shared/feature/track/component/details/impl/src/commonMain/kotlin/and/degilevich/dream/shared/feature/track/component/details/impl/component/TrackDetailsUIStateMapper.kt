@@ -14,11 +14,9 @@ internal class TrackDetailsUIStateMapper : Mapper<TrackDetailsState, TrackDetail
     private val artistsInfoToStringMapper: ArtistsInfoToStringMapper by inject()
 
     override fun map(item: TrackDetailsState): TrackDetailsUIState {
-        return with(item) {
-            TrackDetailsUIState(
-                info = mapToInfo(state = item)
-            )
-        }
+        return TrackDetailsUIState(
+            info = mapToInfo(state = item)
+        )
     }
 
     private fun mapToInfo(state: TrackDetailsState): Skeleton<TrackDetailsInfoLayoutUIData> {

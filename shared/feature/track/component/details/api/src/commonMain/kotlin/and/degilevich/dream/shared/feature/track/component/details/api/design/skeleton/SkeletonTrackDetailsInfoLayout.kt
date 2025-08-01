@@ -26,7 +26,7 @@ fun SkeletonTrackDetailsInfoLayout(
                 .roundedThemeShimmer()
                 .size(
                     width = 80.dp,
-                    height = 20.dp
+                    height = 12.dp
                 )
         )
         Space(height = 20.dp)
@@ -43,8 +43,8 @@ fun SkeletonTrackDetailsInfoLayout(
             modifier = Modifier
                 .roundedThemeShimmer()
                 .size(
-                    height = 32.dp,
-                    width = 160.dp
+                    width = 160.dp,
+                    height = 24.dp
                 )
         )
         Space(height = 4.dp)
@@ -52,8 +52,8 @@ fun SkeletonTrackDetailsInfoLayout(
             modifier = Modifier
                 .roundedThemeShimmer()
                 .size(
-                    height = 24.dp,
-                    width = 120.dp
+                    width = 120.dp,
+                    height = 16.dp
                 )
         )
     }

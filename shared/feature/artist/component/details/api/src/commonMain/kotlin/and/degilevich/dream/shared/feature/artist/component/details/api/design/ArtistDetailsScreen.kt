@@ -89,7 +89,7 @@ fun ArtistDetailsScreen(
         }
         identifiedSkeletonItems(
             skeleton = state.topTracks,
-            loadingItemsCount = 5,
+            loadingItemsCount = 10,
             loadingItemContent = {
                 SkeletonTrackCard(
                     modifier = Modifier

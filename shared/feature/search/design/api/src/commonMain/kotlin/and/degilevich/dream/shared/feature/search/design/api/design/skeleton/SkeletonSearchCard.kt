@@ -33,7 +33,7 @@ fun SkeletonSearchCard(
                     .roundedThemeShimmer()
                     .size(
                         width = 160.dp,
-                        height = 24.dp
+                        height = 16.dp
                     )
             )
             Space(4.dp)
@@ -42,7 +42,7 @@ fun SkeletonSearchCard(
                     .roundedThemeShimmer()
                     .size(
                         width = 120.dp,
-                        height = 16.dp
+                        height = 12.dp
                     )
             )
         }

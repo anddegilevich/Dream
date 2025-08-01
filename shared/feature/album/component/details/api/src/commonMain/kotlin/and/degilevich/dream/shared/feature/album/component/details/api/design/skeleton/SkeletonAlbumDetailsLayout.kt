@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.feature.album.design.api.design.skeleton
+package and.degilevich.dream.shared.feature.album.component.details.api.design.skeleton
 
 import and.degilevich.dream.shared.design.system.modifier.roundedThemeShimmer
 import and.degilevich.dream.shared.design.system.modifier.themeShimmer
@@ -12,33 +12,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SkeletonAlbumCard(
+fun SkeletonAlbumDetailsLayout(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = modifier
     ) {
         Spacer(
             modifier = Modifier
+                .align(Alignment.CenterHorizontally)
                 .themeShimmer()
-                .size(size = 140.dp)
+                .size(size = 260.dp)
         )
-        Space(height = 4.dp)
+        Space(height = 40.dp)
         Spacer(
             modifier = Modifier
                 .roundedThemeShimmer()
                 .size(
-                    width = 132.dp,
-                    height = 16.dp
+                    width = 140.dp,
+                    height = 24.dp
                 )
         )
-        Space(height = 2.dp)
+        Space(height = 12.dp)
         Spacer(
             modifier = Modifier
                 .roundedThemeShimmer()
                 .size(
-                    width = 100.dp,
+                    width = 160.dp,
                     height = 12.dp
                 )
         )

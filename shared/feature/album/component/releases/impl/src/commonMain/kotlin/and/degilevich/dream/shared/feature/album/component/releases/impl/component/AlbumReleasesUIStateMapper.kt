@@ -17,11 +17,9 @@ internal class AlbumReleasesUIStateMapper : Mapper<AlbumReleasesState, AlbumRele
     private val albumInfoToCardUIDataMapper: AlbumInfoToCardUIDataMapper by inject()
 
     override fun map(item: AlbumReleasesState): AlbumReleasesUIState {
-        return with(item) {
-            AlbumReleasesUIState(
-                releases = mapToReleases(state = item)
-            )
-        }
+        return AlbumReleasesUIState(
+            releases = mapToReleases(state = item)
+        )
     }
 
     private fun mapToReleases(state: AlbumReleasesState): Skeleton<ImmutableList<AlbumCardUIData>> {

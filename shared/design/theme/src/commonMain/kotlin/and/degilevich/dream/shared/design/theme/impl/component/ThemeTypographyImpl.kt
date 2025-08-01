@@ -41,7 +41,7 @@ class ThemeTypographyImpl(
         get() = TextStyle(
             fontFamily = fonts.avenir,
             fontWeight = FontWeight.SemiBold,
-            fontSize = 14.sp,
+            fontSize = 16.sp,
             lineHeight = 20.sp
         )
     override val main: TextStyle
