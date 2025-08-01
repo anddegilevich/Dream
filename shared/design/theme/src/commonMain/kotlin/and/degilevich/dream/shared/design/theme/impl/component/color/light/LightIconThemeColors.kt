@@ -15,5 +15,5 @@ internal class LightIconThemeColors : IconThemeColors {
         get() = colorResource(Res.colors.philippine_silver)
     override val placeholderBackground: Color
         @Composable
-        get() = colorResource(Res.colors.philippine_silver)
+        get() = colorResource(Res.colors.spanish_gray)
 }

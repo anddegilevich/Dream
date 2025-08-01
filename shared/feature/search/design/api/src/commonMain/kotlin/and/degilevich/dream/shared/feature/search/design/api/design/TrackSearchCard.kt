@@ -24,7 +24,7 @@ import dev.icerock.moko.resources.compose.stringResource
 fun TrackSearchCard(
     data: TrackSearchCardUIData,
     modifier: Modifier = Modifier,
-    onClicked: (String) -> Unit
+    onClicked: (id: String) -> Unit
 ) {
     Row(
         modifier = modifier

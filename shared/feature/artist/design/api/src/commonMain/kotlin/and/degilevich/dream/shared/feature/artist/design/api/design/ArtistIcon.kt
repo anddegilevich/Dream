@@ -1,32 +1,53 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
-import and.degilevich.dream.Res
-import and.degilevich.dream.shared.design.theme.api.Theme
-import androidx.compose.foundation.background
+import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import coil3.compose.AsyncImage
-import dev.icerock.moko.resources.compose.painterResource
+import coil3.compose.AsyncImagePainter
+import coil3.compose.rememberAsyncImagePainter
 
 @Composable
 fun ArtistIcon(
     iconUrl: String,
     modifier: Modifier = Modifier
 ) {
-    val placeholderPainter = painterResource(Res.images.ic_duck)
+    val painter = rememberAsyncImagePainter(model = iconUrl)
+    val asyncImageState by painter.state.collectAsState()
 
-    AsyncImage(
+    Box(
         modifier = modifier
-            .clip(CircleShape)
-            .background(Theme.colors.icon.placeholderBackground),
-        model = iconUrl,
-        placeholder = placeholderPainter,
-        error = placeholderPainter,
-        fallback = placeholderPainter,
-        contentScale = ContentScale.Crop,
-        contentDescription = null
-    )
+            .clip(CircleShape),
+        contentAlignment = Alignment.Center
+    ) {
+        Crossfade(
+            modifier = Modifier.matchParentSize(),
+            targetState = asyncImageState
+        ) { imageState ->
+            when (imageState) {
+                is AsyncImagePainter.State.Success -> {
+                    Image(
+                        modifier = Modifier.fillMaxSize(),
+                        painter = painter,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
+                else -> {
+                    ArtistIconPlaceholder(
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+            }
+        }
+    }
 }

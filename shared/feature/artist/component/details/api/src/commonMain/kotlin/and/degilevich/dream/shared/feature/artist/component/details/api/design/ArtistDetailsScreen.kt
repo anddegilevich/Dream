@@ -126,6 +126,7 @@ fun ArtistDetailsScreen(
                         items = state.albums
                     ) { album ->
                         AlbumCard(
+                            modifier = Modifier.animateItem(),
                             data = album,
                             onClicked = { id ->
                                 onIntent(

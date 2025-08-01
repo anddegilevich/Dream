@@ -22,7 +22,7 @@ import dev.icerock.moko.resources.compose.painterResource
 fun NavbarItemButton(
     data: NavbarItemUIData,
     modifier: Modifier = Modifier,
-    onClicked: (String) -> Unit
+    onClicked: (id: String) -> Unit
 ) {
     val iconColor by animateColorAsState(
         targetValue = if (data.isSelected) {

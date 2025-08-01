@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 fun ArtistLabel(
     data: ArtistLabelUIData,
     modifier: Modifier = Modifier,
-    onClicked: (String) -> Unit
+    onClicked: (id: String) -> Unit
 ) {
     Row(
         modifier = modifier

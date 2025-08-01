@@ -12,7 +12,7 @@ internal class LightSearchFieldThemeColors : SearchFieldThemeColors {
         get() = colorResource(Res.colors.black)
     override val placeholder: Color
         @Composable
-        get() = colorResource(Res.colors.spanish_gray)
+        get() = colorResource(Res.colors.davys_gray)
     override val cursor: Color
         @Composable
         get() = colorResource(Res.colors.malachite)

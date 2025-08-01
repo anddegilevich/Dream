@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 fun TrackCard(
     data: TrackCardUIData,
     modifier: Modifier = Modifier,
-    onClicked: (String) -> Unit
+    onClicked: (id: String) -> Unit
 ) {
     Row(
         modifier = modifier

@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.feature.album.component.releases.api.design
 
 import and.degilevich.dream.Res
-import and.degilevich.dream.shared.design.system.loading.LoadingIndicator
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
@@ -14,7 +13,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -35,7 +33,7 @@ fun AlbumReleasesCarousel(
             .fillMaxWidth(),
     ) {
         Text(
-            modifier = Modifier.padding(start = 16.dp),
+            modifier = Modifier.padding(horizontal = 16.dp),
             text = stringResource(Res.strings.title_new_releases),
             color = Theme.colors.text.primary,
             style = Theme.typography.h1
@@ -54,17 +52,11 @@ fun AlbumReleasesCarousel(
                 items = state.releases
             ) { album ->
                 AlbumCard(
+                    modifier = Modifier.animateItem(),
                     data = album
                 ) { id ->
                     onIntent(
                         AlbumReleasesIntent.OnAlbumClicked(id = id)
-                    )
-                }
-            }
-            if (state.isLoading) {
-                item {
-                    LoadingIndicator(
-                        modifier = Modifier.size(40.dp)
                     )
                 }
             }

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 fun AlbumCard(
     data: AlbumCardUIData,
     modifier: Modifier = Modifier,
-    onClicked: (String) -> Unit
+    onClicked: (id: String) -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
 

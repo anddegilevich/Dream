@@ -83,6 +83,7 @@ fun AlbumDetailsScreen(
                         items = state.artists
                     ) { artist ->
                         ArtistLabel(
+                            modifier = Modifier.animateItem(),
                             data = artist
                         ) { artistId ->
                             onIntent(
@@ -117,7 +118,9 @@ fun AlbumDetailsScreen(
             items = state.tracks
         ) { track ->
             TrackCard(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .animateItem()
+                    .fillMaxWidth(),
                 data = track
             ) { trackId ->
                 onIntent(AlbumDetailsIntent.OnTrackClicked(id = trackId))
