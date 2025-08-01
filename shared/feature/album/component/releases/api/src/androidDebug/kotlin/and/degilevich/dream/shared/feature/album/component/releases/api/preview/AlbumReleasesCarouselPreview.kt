@@ -31,3 +31,29 @@ private fun AlbumReleasesCarouselLightPreview() {
         )
     }
 }
+
+@Preview
+@Composable
+private fun SkeletonAlbumReleasesCarouselDarkPreview() {
+    ComposeAppTheme(
+        isDarkMode = true
+    ) {
+        AlbumReleasesCarousel(
+            state = AlbumReleasesUIStatePreviewProvider.provideSkeleton(),
+            onIntent = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun SkeletonAlbumReleasesCarouselLightPreview() {
+    ComposeAppTheme(
+        isDarkMode = false
+    ) {
+        AlbumReleasesCarousel(
+            state = AlbumReleasesUIStatePreviewProvider.provideSkeleton(),
+            onIntent = {}
+        )
+    }
+}

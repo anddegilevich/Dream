@@ -72,7 +72,7 @@ fun ArtistDetailsScreen(
                         )
                     },
                     content = { data ->
-                        ArtistInfoCard(
+                        ArtistInfoLayout(
                             modifier = Modifier.fillMaxWidth(),
                             data = data
                         )

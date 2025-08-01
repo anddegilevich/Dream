@@ -34,7 +34,7 @@ fun ArtistDetailsScreenLightPreview() {
 
 @Preview
 @Composable
-fun ArtistDetailsScreenSkeletonDarkPreview() {
+fun SkeletonArtistDetailsScreenDarkPreview() {
     ComposeAppTheme(
         isDarkMode = true
     ) {
@@ -47,7 +47,7 @@ fun ArtistDetailsScreenSkeletonDarkPreview() {
 
 @Preview
 @Composable
-fun ArtistDetailsScreenSkeletonLightPreview() {
+fun SkeletonArtistDetailsScreenLightPreview() {
     ComposeAppTheme(
         isDarkMode = false
     ) {

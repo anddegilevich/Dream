@@ -25,3 +25,22 @@ private fun TrackDetailsScreenLightPreview() {
         ) { }
     }
 }
+@Preview
+@Composable
+private fun SkeletonTrackDetailsScreenDarkPreview() {
+    ComposeAppTheme(isDarkMode = true) {
+        TrackDetailsScreen(
+            state = TrackDetailsUIStatePreviewProvider.provideSkeleton()
+        ) { }
+    }
+}
+
+@Preview
+@Composable
+private fun SkeletonTrackDetailsScreenLightPreview() {
+    ComposeAppTheme(isDarkMode = false) {
+        TrackDetailsScreen(
+            state = TrackDetailsUIStatePreviewProvider.provideSkeleton()
+        ) { }
+    }
+}

@@ -9,7 +9,7 @@ import kotlinx.collections.immutable.ImmutableList
 
 @Immutable
 data class ArtistDetailsUIState(
-    val info: Skeleton<ArtistInfoCardUIData>,
+    val info: Skeleton<ArtistInfoLayoutUIData>,
     val topTracks: Skeleton<ImmutableList<TrackCardUIData>>,
     val albums: Skeleton<ImmutableList<AlbumCardUIData>>
 ) {

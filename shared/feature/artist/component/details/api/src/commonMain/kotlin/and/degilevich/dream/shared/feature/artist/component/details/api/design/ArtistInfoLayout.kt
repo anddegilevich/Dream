@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.design
 
 import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistInfoCardUIData
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistInfoLayoutUIData
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistIcon
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.layout.Column
@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ArtistInfoCard(
-    data: ArtistInfoCardUIData,
+fun ArtistInfoLayout(
+    data: ArtistInfoLayoutUIData,
     modifier: Modifier = Modifier
 ) {
     Column(

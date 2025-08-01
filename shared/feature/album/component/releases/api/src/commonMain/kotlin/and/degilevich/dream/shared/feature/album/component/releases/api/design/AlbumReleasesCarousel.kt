@@ -6,8 +6,9 @@ import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumCard
+import and.degilevich.dream.shared.feature.album.design.api.design.skeleton.SkeletonAlbumCard
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
+import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -48,18 +49,23 @@ fun AlbumReleasesCarousel(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            identifiedItems(
-                items = state.releases
-            ) { album ->
-                AlbumCard(
-                    modifier = Modifier.animateItem(),
-                    data = album
-                ) { id ->
-                    onIntent(
-                        AlbumReleasesIntent.OnAlbumClicked(id = id)
-                    )
+            identifiedSkeletonItems(
+                skeleton = state.releases,
+                loadingItemsCount = 5,
+                loadingItemContent = {
+                    SkeletonAlbumCard()
+                },
+                itemContent = { album ->
+                    AlbumCard(
+                        modifier = Modifier.animateItem(),
+                        data = album
+                    ) { id ->
+                        onIntent(
+                            AlbumReleasesIntent.OnAlbumClicked(id = id)
+                        )
+                    }
                 }
-            }
+            )
         }
     }
 }

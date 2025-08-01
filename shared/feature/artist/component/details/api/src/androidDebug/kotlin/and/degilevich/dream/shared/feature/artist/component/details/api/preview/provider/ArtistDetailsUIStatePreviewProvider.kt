@@ -8,7 +8,7 @@ import and.degilevich.dream.shated.feature.track.design.api.preview.provider.Tra
 object ArtistDetailsUIStatePreviewProvider {
     fun provide(): ArtistDetailsUIState {
         return ArtistDetailsUIState(
-            info = Skeleton.Value(ArtistInfoCardUIDataPreviewProvider.provide()),
+            info = Skeleton.Value(ArtistInfoLayoutUIDataPreviewProvider.provide()),
             topTracks = Skeleton.Value(TrackCardUIDataPreviewProvider.provideList()),
             albums = Skeleton.Value(AlbumCardUIDataPreviewProvider.provideList())
         )

@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.compon
 import and.degilevich.dream.shared.feature.album.design.api.mapper.AlbumInfoToCardUIDataMapper
 import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistInfoCardUIData
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistInfoLayoutUIData
 import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
@@ -30,13 +30,13 @@ internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDet
         }
     }
 
-    private fun mapToInfo(state: ArtistDetailsState): Skeleton<ArtistInfoCardUIData> {
+    private fun mapToInfo(state: ArtistDetailsState): Skeleton<ArtistInfoLayoutUIData> {
         return with(state) {
             if (artist.isEmpty()) {
                 Skeleton.Loading
             } else {
                 Skeleton.Value(
-                    ArtistInfoCardUIData(
+                    ArtistInfoLayoutUIData(
                         iconUrl = artist.images.firstOrNull()?.url.orEmpty(),
                         name = artist.name,
                     )

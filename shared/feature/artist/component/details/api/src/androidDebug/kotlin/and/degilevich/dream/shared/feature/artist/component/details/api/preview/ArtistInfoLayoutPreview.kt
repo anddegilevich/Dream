@@ -2,34 +2,34 @@ package and.degilevich.dream.shared.feature.artist.component.details.api.preview
 
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistInfoCard
-import and.degilevich.dream.shared.feature.artist.component.details.api.preview.provider.ArtistInfoCardUIDataPreviewProvider
+import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistInfoLayout
+import and.degilevich.dream.shared.feature.artist.component.details.api.preview.provider.ArtistInfoLayoutUIDataPreviewProvider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
-private fun ArtistInfoCardDarkPreview() {
+private fun ArtistInfoLayoutDarkPreview() {
     ComposeAppTheme(
         isDarkMode = true
     ) {
-        ArtistInfoCard(
+        ArtistInfoLayout(
             modifier = Modifier.themeBackground(),
-            data = ArtistInfoCardUIDataPreviewProvider.provide()
+            data = ArtistInfoLayoutUIDataPreviewProvider.provide()
         )
     }
 }
 
 @Preview
 @Composable
-private fun ArtistInfoCardLightPreview() {
+private fun ArtistInfoLayoutLightPreview() {
     ComposeAppTheme(
         isDarkMode = true
     ) {
-        ArtistInfoCard(
+        ArtistInfoLayout(
             modifier = Modifier.themeBackground(),
-            data = ArtistInfoCardUIDataPreviewProvider.provide()
+            data = ArtistInfoLayoutUIDataPreviewProvider.provide()
         )
     }
 }
