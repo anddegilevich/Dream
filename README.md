@@ -3,9 +3,9 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 <div style="display: flex; justify-content: center;">
-  <img src="screenshot/screen_album.png" alt="Screenshot Album" style="width: 33%; object-fit: cover; padding: 0 4px;"/>
-  <img src="screenshot/screen_artist.png" alt="Screenshot Artist" style="width: 33%; object-fit: cover; padding: 0 4px;"/>
-  <img src="screenshot/screen_search.png" alt="Screenshot Search" style="width: 33%; object-fit: cover; padding: 0 4px;"/>
+  <img src="screenshot/screen_album.png" alt="Screenshot Album" style="width: 30%; object-fit: cover; padding: 0 4px;"/>
+  <img src="screenshot/screen_artist.png" alt="Screenshot Artist" style="width: 30%; object-fit: cover; padding: 0 4px;"/>
+  <img src="screenshot/screen_search.png" alt="Screenshot Search" style="width: 30%; object-fit: cover; padding: 0 4px;"/>
 </div>
 
 **Dream** is a sample multimodal **Kotlin Multiplatform Mobile** app with shared **Compose Multiplatform** UI.<br>
