@@ -40,7 +40,7 @@ detekt-compose = "0.0.26" # https://github.com/twitter/compose-rules/releases
 koin-bom = "4.1.0" # https://github.com/InsertKoinIO/koin/releases
 
 # Ktor
-ktor = "3.2.2" # https://github.com/ktorio/ktor/releases
+ktor = "3.2.3" # https://github.com/ktorio/ktor/releases
 
 # Logpack
 logback = "1.5.18"
@@ -58,7 +58,7 @@ mvikotlin = "4.3.0" # https://github.com/arkivanov/MVIKotlin/releases
 kvault = "1.12.0" # https://github.com/Liftric/KVault/releases
 
 # Coil
-coil = "3.2.0" # https://github.com/coil-kt/coil/releases
+coil = "3.3.0" # https://github.com/coil-kt/coil/releases
 
 # Napier
 napier = "2.7.1" # https://github.com/AAkira/Napier/releases
@@ -79,12 +79,12 @@ sqlite = "2.5.2" # https://mvnrepository.com/artifact/androidx.sqlite
 glance = "1.1.1" # https://mvnrepository.com/artifact/androidx.glance/glance-appwidget
 
 # Baseline profile
-baselineprofile = "1.3.4" # https://mvnrepository.com/artifact/androidx.baselineprofile
+baselineprofile = "1.4.0" # https://mvnrepository.com/artifact/androidx.baselineprofile
 profileinstaller = "1.4.1" # https://mvnrepository.com/artifact/androidx.profileinstaller/profileinstaller
-junit = "1.2.1" # https://mvnrepository.com/artifact/androidx.test.ext/junit
-espresso-core = "3.6.1" # https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
+junit = "1.3.0" # https://mvnrepository.com/artifact/androidx.test.ext/junit
+espresso-core = "3.7.0" # https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
 uiautomator = "2.3.0" # https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
-benchmark-macro-junit4 = "1.3.4" # https://mvnrepository.com/artifact/androidx.benchmark/benchmark-macro-junit4
+benchmark-macro-junit4 = "1.4.0" # https://mvnrepository.com/artifact/androidx.benchmark/benchmark-macro-junit4
 
 # Project
 project-plugin = "1.0.0"

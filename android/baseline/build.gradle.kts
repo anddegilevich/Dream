@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.ManagedVirtualDevice
 import kotlin.math.max
 
 plugins {
@@ -7,8 +6,6 @@ plugins {
     alias(libs.plugins.project.android)
     alias(libs.plugins.baselineprofile)
 }
-
-val virtualDeviceName = "pixel8Api35"
 
 android {
     namespace = "and.degilevich.dream.baseline"
@@ -30,18 +27,9 @@ android {
             dimension = variantFlavorDimension
         }
     }
-
-    testOptions.managedDevices.devices {
-        create<ManagedVirtualDevice>(virtualDeviceName) {
-            device = "Pixel 8"
-            apiLevel = 35
-            systemImageSource = "google"
-        }
-    }
 }
 
 baselineProfile {
-    managedDevices += virtualDeviceName
     useConnectedDevices = false
 }
 

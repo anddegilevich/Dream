@@ -24,19 +24,16 @@ class StartupBenchmarks {
     fun startupCompilationBaselineProfiles() = benchmark(CompilationMode.Partial(BaselineProfileMode.Require))
 
     private fun benchmark(compilationMode: CompilationMode) {
+        val packageName = InstrumentationRegistry.getArguments().getString("targetAppId")
+            ?: throw Exception("targetAppId not passed as instrumentation runner arg")
         rule.measureRepeated(
-            packageName = InstrumentationRegistry.getArguments().getString("targetAppId")
-                ?: throw Exception("targetAppId not passed as instrumentation runner arg"),
+            packageName = packageName,
             metrics = listOf(StartupTimingMetric()),
             compilationMode = compilationMode,
             startupMode = StartupMode.COLD,
             iterations = 10,
-            setupBlock = {
-                pressHome()
-            },
-            measureBlock = {
-                startActivityAndWait()
-            }
+            setupBlock = { pressHome() },
+            measureBlock = { startActivityAndWait() }
         )
     }
 }
