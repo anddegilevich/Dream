@@ -26,4 +26,4 @@ fun ArtistIconPlaceholder(
     )
 }
 
-private const val ICON_FRACTION = 0.75f
+private const val ICON_FRACTION = 0.6f

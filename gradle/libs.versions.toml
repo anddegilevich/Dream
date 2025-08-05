@@ -16,7 +16,7 @@ java = "21"
 kotlin = "2.2.0" # https://kotlinlang.org/docs/releases.html#release-details
 
 # Compose
-compose-multiplatform = "1.8.2" # https://mvnrepository.com/artifact/org.jetbrains.compose/compose-gradle-plugin
+compose = "1.8.2" # https://mvnrepository.com/artifact/org.jetbrains.compose/compose-gradle-plugin
 
 # KSP
 ksp = "2.2.0-2.0.2" # https://github.com/google/ksp/releases
@@ -120,7 +120,12 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 
 # Compose
 compose-compiler-gradle = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
-compose-multiplatform-gradle = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-multiplatform" }
+compose-multiplatform-gradle = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
+compose-ui-backhandler = { module = "org.jetbrains.compose.ui:ui-backhandler", version.ref = "compose" }
+compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "compose" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
+compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "compose" }
 
 # Detekt
 detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
@@ -229,7 +234,7 @@ kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", vers
 
 # Compose
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 
 # Moko resources
 moko-multiplatfrom-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
