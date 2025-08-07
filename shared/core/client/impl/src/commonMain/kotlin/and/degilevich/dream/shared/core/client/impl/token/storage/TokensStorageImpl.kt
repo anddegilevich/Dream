@@ -17,7 +17,7 @@ internal class TokensStorageImpl(
     }
 
     override fun read(): Tokens? {
-        return preferenceStorage.readString(key = TOKENS_PREFERENCE_STORAGE_KEY)?.decodeFromJsonOrNull(
+        return preferenceStorage.read(key = TOKENS_PREFERENCE_STORAGE_KEY)?.decodeFromJsonOrNull(
             deserializer = Tokens.serializer()
         )
     }

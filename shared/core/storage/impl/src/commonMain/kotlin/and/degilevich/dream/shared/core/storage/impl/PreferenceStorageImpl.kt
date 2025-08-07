@@ -11,7 +11,7 @@ internal class PreferenceStorageImpl(
         kVault.set(key, value)
     }
 
-    override fun readString(key: String): String? {
+    override fun read(key: String): String? {
         return kVault.string(key)
     }
 

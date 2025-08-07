@@ -29,7 +29,7 @@ abstract class BaseStorage<T>(
     }
 
     override fun read(): Result<T> {
-        return preferenceStorage.readString(key = key)?.decodeFromJson(deserializer = serializer) ?: Result.failure(
+        return preferenceStorage.read(key = key)?.decodeFromJson(deserializer = serializer) ?: Result.failure(
             NullPointerException("There is no value with the key $key in preferences")
         )
     }
