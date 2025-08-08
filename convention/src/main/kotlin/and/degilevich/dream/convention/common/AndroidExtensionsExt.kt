@@ -25,10 +25,5 @@ internal fun Project.androidExtension(): AndroidExtensions {
     return extensions.findByType(BaseAppModuleExtension::class)
         ?: extensions.findByType(LibraryExtension::class)
         ?: extensions.findByType(TestExtension::class)
-        ?: error(
-            buildString {
-                append("\"Project.and.degilevich.dream.convention.getAndroidExtension\" ")
-                append("value may be called only from android application or android library gradle script")
-            }
-        )
+        ?: error("Android application/library/test plugin was not applied")
 }

@@ -1,7 +1,7 @@
 package and.degilevich.dream.convention.plugins
 
 import and.degilevich.dream.convention.common.apply
-import and.degilevich.dream.convention.common.commonMainDependencies
+import and.degilevich.dream.convention.common.kotlinMultiplatformConfig
 import and.degilevich.dream.convention.common.libs
 import and.degilevich.dream.convention.common.plugins
 import org.gradle.api.Plugin
@@ -14,9 +14,12 @@ internal class SerializationPlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.kotlinx.serialization)
             }
-
-            commonMainDependencies {
-                implementation(libs().kotlinx.serialization.json)
+            kotlinMultiplatformConfig {
+                with(sourceSets) {
+                    commonMain.dependencies {
+                        implementation(libs().kotlinx.serialization.json)
+                    }
+                }
             }
         }
     }

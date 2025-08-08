@@ -11,7 +11,7 @@ internal fun Project.androidConfig(block: AndroidExtensions.() -> Unit): Unit = 
 internal fun Project.kotlinMultiplatformConfig(block: KotlinMultiplatformExtension.() -> Unit) {
     extensions.findByType<KotlinMultiplatformExtension>()
         ?.apply(block)
-        ?: error("Kotlin multiplatform was not been added")
+        ?: error("Kotlin multiplatform plugin was not applied")
 }
 
 internal fun Project.libs(): LibrariesForLibs = the<LibrariesForLibs>()

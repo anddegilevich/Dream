@@ -1,9 +1,7 @@
 package and.degilevich.dream.convention.plugins
 
-import and.degilevich.dream.convention.common.androidMainDependencies
 import and.degilevich.dream.convention.common.apply
-import and.degilevich.dream.convention.common.commonMainDependencies
-import and.degilevich.dream.convention.common.commonTestDependencies
+import and.degilevich.dream.convention.common.kotlinMultiplatformConfig
 import and.degilevich.dream.convention.common.libs
 import and.degilevich.dream.convention.common.plugins
 import org.gradle.api.Plugin
@@ -17,21 +15,23 @@ internal class RoomPlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.ksp)
             }
-
-            commonMainDependencies {
-                implementation(libs().room.runtime)
-                implementation(libs().room.paging)
-                implementation(libs().sqlite)
-                implementation(libs().sqlite.bundled)
+            kotlinMultiplatformConfig {
+                with(sourceSets) {
+                    commonMain.dependencies {
+                        implementation(libs().room.runtime)
+                        implementation(libs().room.paging)
+                        implementation(libs().sqlite)
+                        implementation(libs().sqlite.bundled)
+                    }
+                    commonTest.dependencies {
+                        implementation(libs().room.testing)
+                    }
+                    androidMain.dependencies {
+                        implementation(libs().room.ktx)
+                    }
+                }
             }
 
-            commonTestDependencies {
-                implementation(libs().room.testing)
-            }
-
-            androidMainDependencies {
-                implementation(libs().room.ktx)
-            }
 
             dependencies {
                 add("kspAndroid", libs().room.compiler)

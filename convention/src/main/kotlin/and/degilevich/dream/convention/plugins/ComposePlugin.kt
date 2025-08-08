@@ -1,8 +1,7 @@
 package and.degilevich.dream.convention.plugins
 
-import and.degilevich.dream.convention.common.androidMainDependencies
 import and.degilevich.dream.convention.common.apply
-import and.degilevich.dream.convention.common.commonMainDependencies
+import and.degilevich.dream.convention.common.kotlinMultiplatformConfig
 import and.degilevich.dream.convention.common.libs
 import and.degilevich.dream.convention.common.plugins
 import org.gradle.api.Plugin
@@ -16,16 +15,20 @@ internal class ComposePlugin : Plugin<Project> {
                 apply(libs().plugins.compose.compiler)
                 apply(libs().plugins.compose.plugin)
             }
-            commonMainDependencies {
-                implementation(libs().compose.runtime)
-                implementation(libs().compose.material)
-                implementation(libs().compose.ui)
-                implementation(libs().compose.ui.backhandler)
-            }
-            androidMainDependencies {
-                implementation(libs().compose.ui.tooling)
-                implementation(libs().androidx.lifecycle.runtime.compose)
-                implementation(libs().androidx.activity.compose)
+            kotlinMultiplatformConfig {
+                with (sourceSets) {
+                    commonMain.dependencies {
+                        implementation(libs().compose.runtime)
+                        implementation(libs().compose.material)
+                        implementation(libs().compose.ui)
+                        implementation(libs().compose.ui.backhandler)
+                    }
+                    androidMain.dependencies {
+                        implementation(libs().compose.ui.tooling)
+                        implementation(libs().androidx.lifecycle.runtime.compose)
+                        implementation(libs().androidx.activity.compose)
+                    }
+                }
             }
         }
     }
