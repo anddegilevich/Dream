@@ -14,7 +14,7 @@ internal class ComposePlugin : Plugin<Project> {
         with(target) {
             plugins {
                 apply(libs().plugins.compose.compiler)
-                apply(libs().plugins.compose.multiplatform)
+                apply(libs().plugins.compose.plugin)
             }
             commonMainDependencies {
                 implementation(libs().compose.runtime)
