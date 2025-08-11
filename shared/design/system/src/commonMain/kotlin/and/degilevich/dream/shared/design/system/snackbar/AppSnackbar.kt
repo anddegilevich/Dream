@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.SnackbarData
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -29,9 +30,10 @@ fun AppSnackbar(
             .fillMaxWidth()
             .border(
                 width = 2.dp,
-                color = Theme.colors.common.line
+                color = Theme.colors.common.line,
+                shape = RoundedCornerShape(8.dp)
             )
-            .themeBackground()
+            .themeBackground(shape = RoundedCornerShape(8.dp))
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween

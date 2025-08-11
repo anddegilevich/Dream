@@ -11,7 +11,7 @@
 }
 
 # Serialization
--keepnames class * extends java.io.Serializable
+-keep @kotlinx.serialization.Serializable class * { *; }
 
 # Annotations
 -keepattributes *Annotation*
