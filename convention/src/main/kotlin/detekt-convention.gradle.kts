@@ -1,4 +1,6 @@
+import and.degilevich.dream.convention.common.javaVersion
 import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import org.gradle.kotlin.dsl.withType
 
 plugins {
@@ -11,14 +13,21 @@ detekt {
     source.from("src")
 }
 
-tasks.matching { it.name == "check" }.configureEach {
-    dependsOn(detekt)
+tasks.named { it == "check" }.configureEach {
+    dependsOn(tasks.named("detekt"))
 }
 
 tasks.withType<Detekt>().configureEach {
     exclude {
         it.file.absolutePath.contains("build/")
     }
+}
+
+tasks.withType<Detekt>().configureEach {
+    jvmTarget = javaVersion().toString()
+}
+tasks.withType<DetektCreateBaselineTask>().configureEach {
+    jvmTarget = javaVersion().toString()
 }
 
 dependencies {
