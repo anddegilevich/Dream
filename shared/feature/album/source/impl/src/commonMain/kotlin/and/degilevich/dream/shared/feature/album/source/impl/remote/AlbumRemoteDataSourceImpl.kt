@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.album.source.impl.remote
 
-import and.degilevich.dream.shared.feature.album.model.core.api.mapper.GetAlbumParamsToRequestMapper
-import and.degilevich.dream.shared.feature.album.model.core.api.mapper.GetAlbumResponseToResultMapper
-import and.degilevich.dream.shared.feature.album.model.core.api.mapper.GetNewReleasesParamsToRequestMapper
-import and.degilevich.dream.shared.feature.album.model.core.api.mapper.GetNewReleasesResponseToResultMapper
+import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.GetAlbumParamsToRequestMapper
+import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.GetAlbumResponseToResultMapper
+import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.GetNewReleasesParamsToRequestMapper
+import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.GetNewReleasesResponseToResultMapper
 import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumResult

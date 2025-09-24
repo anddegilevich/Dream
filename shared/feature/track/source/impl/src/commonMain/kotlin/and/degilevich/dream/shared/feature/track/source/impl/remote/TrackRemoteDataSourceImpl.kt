@@ -5,10 +5,10 @@ import and.degilevich.dream.shared.feature.track.model.core.api.method.getRecomm
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getRecommendations.GetRecommendationsResult
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackResult
-import and.degilevich.dream.shared.feature.track.model.core.api.mapper.GetRecommendationsParamsToRequestMapper
-import and.degilevich.dream.shared.feature.track.model.core.api.mapper.GetRecommendationsResponseToResultMapper
-import and.degilevich.dream.shared.feature.track.model.core.api.mapper.GetTrackParamsToRequestMapper
-import and.degilevich.dream.shared.feature.track.model.core.api.mapper.GetTrackResponseToResultMapper
+import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.GetRecommendationsParamsToRequestMapper
+import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.GetRecommendationsResponseToResultMapper
+import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.GetTrackParamsToRequestMapper
+import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.GetTrackResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource

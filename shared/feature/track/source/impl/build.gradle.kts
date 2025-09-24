@@ -10,6 +10,9 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.shared.template.source.impl)
             api(projects.shared.feature.track.source.api)
+            implementation(projects.shared.feature.track.source.api)
+            implementation(projects.shared.feature.album.source.api)
+            implementation(projects.shared.feature.artist.source.api)
         }
     }
 }

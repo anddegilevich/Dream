@@ -7,8 +7,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.core.service.api)
-            implementation(projects.shared.core.db.api)
+            api(projects.shared.template.model.api)
             api(projects.shared.feature.album.model.artifact.api)
         }
     }

@@ -9,8 +9,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.shared.foundation.serialization)
-            api(projects.shared.core.service.api)
-            api(projects.shared.core.db.api)
+            implementation(projects.shared.core.service.api)
+            implementation(projects.shared.core.db.api)
             implementation(projects.shared.core.storage.api)
             api(projects.shared.template.source.api)
         }

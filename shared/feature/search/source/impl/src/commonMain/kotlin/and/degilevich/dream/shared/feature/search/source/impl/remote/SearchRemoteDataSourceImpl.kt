@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.search.source.impl.remote
 import and.degilevich.dream.shared.feature.search.source.api.remote.SearchRemoteDataSource
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
-import and.degilevich.dream.shared.feature.search.model.core.api.mapper.SearchParamsToRequestMapper
-import and.degilevich.dream.shared.feature.search.model.core.api.mapper.SearchResponseToResultMapper
+import and.degilevich.dream.shared.feature.search.source.api.remote.mapper.SearchParamsToRequestMapper
+import and.degilevich.dream.shared.feature.search.source.api.remote.mapper.SearchResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource

@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.source.impl.remote
 
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistAlbumsParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistAlbumsResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistAlbumsParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistAlbumsResponseToResultMapper
 import and.degilevich.dream.shared.template.source.impl.remote.BaseRemoteDataSource
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistResult
@@ -12,14 +12,14 @@ import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtis
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistRelatedArtists.GetArtistRelatedArtistsResult
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistTopTracks.GetArtistTopTracksParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistTopTracks.GetArtistTopTracksResult
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistRelatedArtistsParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistRelatedArtistsResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistTopTracksParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistTopTracksResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistsParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.mapper.GetArtistsResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistRelatedArtistsParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistRelatedArtistsResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistTopTracksParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistTopTracksResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistsParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistsResponseToResultMapper
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
