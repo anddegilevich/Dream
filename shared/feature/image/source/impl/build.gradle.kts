@@ -1,14 +1,10 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.project.multiplatform)
-    alias(libs.plugins.project.coroutines)
-    alias(libs.plugins.project.koin)
+    alias(libs.plugins.project.template.source.impl)
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.template.source.impl)
             api(projects.shared.feature.image.source.api)
         }
     }

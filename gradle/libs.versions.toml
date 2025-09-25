@@ -257,3 +257,11 @@ project-coroutines = { id = "project.coroutines.plugin", version.ref = "project-
 project-koin = { id = "project.koin.plugin", version.ref = "project-plugin" }
 project-ktor = { id = "project.ktor.plugin", version.ref = "project-plugin" }
 project-room = { id = "project.room.plugin", version.ref = "project-plugin" }
+
+project-template-model-api = { id = "project.template.model.api", version.ref = "project-plugin" }
+project-template-source-api = { id = "project.template.source.api", version.ref = "project-plugin" }
+project-template-source-impl = { id = "project.template.source.impl", version.ref = "project-plugin" }
+project-template-domain-api = { id = "project.template.domain.api", version.ref = "project-plugin" }
+project-template-domain-impl = { id = "project.template.domain.impl", version.ref = "project-plugin" }
+project-template-component-api = { id = "project.template.component.api", version.ref = "project-plugin" }
+project-template-component-impl = { id = "project.template.component.impl", version.ref = "project-plugin" }

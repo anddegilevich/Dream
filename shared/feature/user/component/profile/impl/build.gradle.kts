@@ -1,15 +1,10 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.project.multiplatform)
-    alias(libs.plugins.project.koin)
-    alias(libs.plugins.project.serialization)
-    alias(libs.plugins.project.coroutines)
+    alias(libs.plugins.project.template.component.impl)
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.template.component.impl)
             api(projects.shared.feature.user.component.profile.api)
             implementation(projects.shared.core.filepicker.api)
         }

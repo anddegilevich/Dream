@@ -71,6 +71,48 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.RoomPlugin"
             }
         }
+        libs.plugins.project.template.model.api.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateModelApiPlugin"
+            }
+        }
+        libs.plugins.project.template.source.api.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateSourceApiPlugin"
+            }
+        }
+        libs.plugins.project.template.source.impl.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateSourceImplPlugin"
+            }
+        }
+        libs.plugins.project.template.domain.api.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDomainApiPlugin"
+            }
+        }
+        libs.plugins.project.template.domain.impl.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDomainImplPlugin"
+            }
+        }
+        libs.plugins.project.template.component.api.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateComponentApiPlugin"
+            }
+        }
+        libs.plugins.project.template.component.impl.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateComponentImplPlugin"
+            }
+        }
     }
 }
 

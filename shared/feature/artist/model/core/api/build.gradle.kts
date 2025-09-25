@@ -1,13 +1,10 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.project.multiplatform)
-    alias(libs.plugins.project.serialization)
+    alias(libs.plugins.project.template.model.api)
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.template.model.api)
             api(projects.shared.feature.artist.model.artifact.api)
             api(projects.shared.feature.image.model.artifact.api)
             api(projects.shared.feature.track.model.core.api)

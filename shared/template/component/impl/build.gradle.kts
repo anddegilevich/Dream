@@ -7,10 +7,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.logger)
-            api(projects.shared.core.toast.api)
-            api(projects.shared.navigation.api)
-            api(projects.shared.template.component.api)
+            implementation(projects.shared.logger)
+            implementation(projects.shared.foundation.decompose)
         }
     }
 }
