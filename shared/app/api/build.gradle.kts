@@ -12,7 +12,6 @@ kotlin {
 
             implementation(projects.shared.foundation.decompose)
             implementation(projects.shared.core.toast.api)
-            implementation(projects.shared.core.filepicker.api)
 
             api(projects.shared.navigation.api)
 
@@ -23,8 +22,6 @@ kotlin {
             api(projects.shared.feature.artist.component.details.api)
 
             api(projects.shared.feature.album.component.details.api)
-
-            api(projects.shared.feature.user.component.profile.api)
 
             api(projects.shared.feature.track.component.details.api)
 

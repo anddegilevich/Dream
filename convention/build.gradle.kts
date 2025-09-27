@@ -101,6 +101,18 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDomainImplPlugin"
             }
         }
+        libs.plugins.project.template.design.api.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDesignApiPlugin"
+            }
+        }
+        libs.plugins.project.template.design.impl.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDesignImplPlugin"
+            }
+        }
         libs.plugins.project.template.component.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId

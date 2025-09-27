@@ -9,7 +9,6 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.design
 import and.degilevich.dream.shared.feature.common.component.splash.api.design.SplashScreen
 import and.degilevich.dream.shared.feature.search.component.search.api.design.SearchScreen
 import and.degilevich.dream.shared.feature.track.component.details.api.design.TrackDetailsScreen
-import and.degilevich.dream.shared.feature.user.component.profile.api.design.ProfileScreen
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -44,13 +43,6 @@ fun ComposeScreens(
 
             is Screen.ArtistDetails -> {
                 ArtistDetailsScreen(
-                    state = screenComponent.collectState(),
-                    onIntent = screenComponent::handleIntent
-                )
-            }
-
-            is Screen.Profile -> {
-                ProfileScreen(
                     state = screenComponent.collectState(),
                     onIntent = screenComponent::handleIntent
                 )

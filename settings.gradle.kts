@@ -29,7 +29,6 @@ include(":shared:foundation:serialization")
 include(":shared:foundation:abstraction")
 include(":shared:foundation:decompose")
 include(":shared:foundation:compose")
-include(":shared:foundation:filepicker")
 
 // =====================================================================================================================
 // Config
@@ -61,9 +60,6 @@ include(":shared:core:db:impl")
 
 include(":shared:core:toast:api")
 include(":shared:core:toast:impl")
-
-include(":shared:core:filepicker:api")
-include(":shared:core:filepicker:impl")
 
 // =====================================================================================================================
 // Design
@@ -151,10 +147,6 @@ include(":shared:feature:track:design:impl")
 
 include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
-
-// User
-include(":shared:feature:user:component:profile:api")
-include(":shared:feature:user:component:profile:impl")
 
 // Search
 include(":shared:feature:search:model:core:api")

@@ -3,8 +3,6 @@ package and.degilevich.dream.shared.app.impl.component
 import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.api.component.children.Navbar
 import and.degilevich.dream.shared.app.api.component.children.Screen
-import and.degilevich.dream.shared.core.filepicker.api.channel.request.FilePickerRequestReceiveChannel
-import and.degilevich.dream.shared.core.filepicker.api.channel.result.FilePickerResultSendChannel
 import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
@@ -15,9 +13,6 @@ import and.degilevich.dream.shared.feature.common.component.navbar.impl.componen
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.SearchComponentImpl
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.TrackDetailsComponentImpl
-import and.degilevich.dream.shared.feature.user.component.profile.impl.component.ProfileComponentImpl
-import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerRequest
-import and.degilevich.dream.shared.foundation.filepicker.model.FilePickerResult
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.navigation.api.ActiveScreenConfigValueHolder
 import and.degilevich.dream.shared.navigation.api.model.config.NavbarConfig
@@ -54,8 +49,6 @@ class RootComponentImpl(
     )
 
     private val toastChannel: ToastReceiveChannel by inject()
-    private val filePickerRequestChannel: FilePickerRequestReceiveChannel by inject()
-    private val filePickerResultChannel: FilePickerResultSendChannel by inject()
     private val activeScreenConfigValueHolder: ActiveScreenConfigValueHolder by inject()
 
     override val screenStack: Value<ChildStack<ScreenConfig, Screen>> = childStack(
@@ -76,7 +69,6 @@ class RootComponentImpl(
     )
 
     override val toasts: Flow<ToastData> = toastChannel.receiveAsFlow()
-    override val filePickerRequests: Flow<FilePickerRequest> = filePickerRequestChannel.receiveAsFlow()
 
     init {
         subscribeToScreenStack()
@@ -105,14 +97,6 @@ class RootComponentImpl(
                     component = ArtistDetailsComponentImpl(
                         componentContext = componentContext,
                         navArgs = screenConfig.navArgs
-                    )
-                )
-            }
-
-            is ScreenConfig.Profile -> {
-                Screen.Profile(
-                    component = ProfileComponentImpl(
-                        componentContext = componentContext
                     )
                 )
             }
@@ -153,12 +137,6 @@ class RootComponentImpl(
                 componentContext = componentContext
             )
         )
-    }
-
-    override fun handleFilePickerResult(result: FilePickerResult) {
-        coroutineScope.launch {
-            filePickerResultChannel.send(result)
-        }
     }
 
     private fun subscribeToScreenStack() {

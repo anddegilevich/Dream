@@ -39,7 +39,6 @@ kotlin {
             api(projects.shared.logger)
 
             // Core
-            implementation(projects.shared.core.filepicker.api)
             implementation(projects.shared.core.toast.api)
 
             // Navigation
@@ -56,8 +55,6 @@ kotlin {
             implementation(projects.shared.feature.artist.component.details.impl)
 
             implementation(projects.shared.feature.album.component.details.impl)
-
-            implementation(projects.shared.feature.user.component.profile.impl)
 
             implementation(projects.shared.feature.track.component.details.impl)
 

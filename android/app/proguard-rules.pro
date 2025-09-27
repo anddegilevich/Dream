@@ -13,6 +13,9 @@
 # Serialization
 -keep @kotlinx.serialization.Serializable class * { *; }
 
+# Room
+-keep @androidx.room.Entity class * { *; }
+
 # Annotations
 -keepattributes *Annotation*
 -dontwarn com.google.errorprone.annotations.CanIgnoreReturnValue

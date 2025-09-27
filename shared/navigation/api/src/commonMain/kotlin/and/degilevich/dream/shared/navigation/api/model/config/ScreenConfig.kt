@@ -34,10 +34,6 @@ sealed interface ScreenConfig {
         val navArgs: TrackDetailsNavArgs
     ) : ScreenConfig
 
-    // User
-    @Serializable
-    data object Profile : ScreenConfig
-
     // Search
     @Serializable
     data object Search : ScreenConfig

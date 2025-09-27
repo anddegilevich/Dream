@@ -9,8 +9,6 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.common.component.navbar.api.design.AppNavbar
 import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
 import and.degilevich.dream.shared.foundation.decompose.compose.slot.AnimatedSlot
-import and.degilevich.dream.shared.foundation.filepicker.FilePicker
-import and.degilevich.dream.shared.foundation.filepicker.state.rememberFilePickerState
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -33,17 +31,11 @@ fun ComposeApp(
     modifier: Modifier = Modifier
 ) {
     val snackBarHostState = remember { SnackbarHostState() }
-    val filePickerState = rememberFilePickerState()
     val navbarSlot by rootComponent.navbar.subscribeAsState()
 
     LaunchedEffect(Unit) {
         rootComponent.toasts.collect { toast ->
             snackBarHostState.showToast(toast)
-        }
-    }
-    LaunchedEffect(Unit) {
-        rootComponent.filePickerRequests.collect { request ->
-            filePickerState.launch(request)
         }
     }
 
@@ -84,9 +76,4 @@ fun ComposeApp(
             )
         }
     }
-
-    FilePicker(
-        state = filePickerState,
-        onResult = rootComponent::handleFilePickerResult
-    )
 }

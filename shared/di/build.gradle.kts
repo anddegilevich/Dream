@@ -17,7 +17,6 @@ kotlin {
             implementation(projects.shared.core.service.impl)
             implementation(projects.shared.core.db.impl)
             implementation(projects.shared.core.toast.impl)
-            implementation(projects.shared.core.filepicker.impl)
 
             // Template
             implementation(projects.shared.template.component.impl)
