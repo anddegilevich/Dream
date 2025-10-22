@@ -2,6 +2,8 @@ package and.degilevich.dream.shared.resource.impl
 
 import and.degilevich.dream.shared.resource.api.ResourceManager
 import android.content.Context
+import androidx.compose.ui.graphics.Color
+import dev.icerock.moko.resources.ColorResource
 import dev.icerock.moko.resources.PluralsResource
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.desc.desc
@@ -30,5 +32,9 @@ internal actual class ResourceManagerImpl(
         number: Int
     ): String {
         return resource.format(number, number).toString(context = context)
+    }
+
+    override fun getColor(resource: ColorResource): Color {
+        return Color(resource.getColor(context = context))
     }
 }

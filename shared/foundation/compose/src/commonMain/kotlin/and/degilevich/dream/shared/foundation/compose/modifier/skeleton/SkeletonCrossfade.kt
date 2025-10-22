@@ -1,11 +1,14 @@
 package and.degilevich.dream.shared.foundation.compose.modifier.skeleton
 
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun <T> SkeletonCrossfade(
     skeleton: Skeleton<T>,
@@ -14,14 +17,17 @@ fun <T> SkeletonCrossfade(
     animationSpec: FiniteAnimationSpec<Float> = tween(),
     content: @Composable (T) -> Unit
 ) {
-    Crossfade(
+    val transition = updateTransition(skeleton)
+
+    transition.Crossfade(
         modifier = modifier,
         animationSpec = animationSpec,
-        targetState = skeleton
-    ) { skeleton ->
-        when (skeleton) {
-            is Skeleton.Loading -> loadingContent()
-            is Skeleton.Value<T> -> content(skeleton.value)
+        contentKey = { skeleton -> skeleton::class },
+        content = { skeleton ->
+            when (skeleton) {
+                is Skeleton.Loading -> loadingContent()
+                is Skeleton.Value<T> -> content(skeleton.value)
+            }
         }
-    }
+    )
 }

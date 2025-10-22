@@ -1,5 +1,7 @@
 package and.degilevich.dream.shared.resource.api
 
+import androidx.compose.ui.graphics.Color
+import dev.icerock.moko.resources.ColorResource
 import dev.icerock.moko.resources.PluralsResource
 import dev.icerock.moko.resources.StringResource
 
@@ -14,4 +16,6 @@ interface ResourceManager {
         resource: PluralsResource,
         number: Int
     ): String
+
+    fun getColor(resource: ColorResource): Color
 }
