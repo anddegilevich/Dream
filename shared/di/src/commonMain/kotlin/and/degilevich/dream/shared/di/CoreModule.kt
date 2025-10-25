@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.di
 
 import and.degilevich.dream.shared.core.client.impl.di.clientModule
+import and.degilevich.dream.shared.core.datetime.impl.di.datetimeModule
 import and.degilevich.dream.shared.core.db.impl.di.dbModule
 import and.degilevich.dream.shared.core.service.impl.di.serviceModule
 import and.degilevich.dream.shared.core.storage.impl.di.storageModule
@@ -11,6 +12,7 @@ internal fun coreModule() = module {
     includes(storageModule())
     includes(clientModule())
     includes(serviceModule())
+    includes(datetimeModule())
     includes(dbModule())
     includes(toastModule())
 }

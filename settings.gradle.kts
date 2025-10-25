@@ -29,6 +29,7 @@ include(":shared:foundation:serialization")
 include(":shared:foundation:abstraction")
 include(":shared:foundation:decompose")
 include(":shared:foundation:compose")
+include(":shared:foundation:datetime")
 
 // =====================================================================================================================
 // Config
@@ -45,6 +46,9 @@ include(":shared:resource:impl")
 
 // =====================================================================================================================
 // Core
+
+include(":shared:core:datetime:api")
+include(":shared:core:datetime:impl")
 
 include(":shared:core:client:api")
 include(":shared:core:client:impl")

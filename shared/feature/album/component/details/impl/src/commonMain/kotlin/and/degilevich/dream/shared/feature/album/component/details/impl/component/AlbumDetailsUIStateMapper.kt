@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.feature.album.component.details.impl.component
 
+import and.degilevich.dream.shared.core.datetime.api.DreamDateTimeFormat
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsLayoutUIData
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsUIState
 import and.degilevich.dream.shared.feature.album.component.details.impl.store.model.AlbumDetailsState
@@ -9,6 +10,8 @@ import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistLabelUI
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
+import and.degilevich.dream.shared.foundation.datetime.api.DateTime
+import and.degilevich.dream.shared.foundation.datetime.api.common.DateTimeInput
 import and.degilevich.dream.shated.feature.track.design.api.mapper.TrackInfoToTrackCardUIDataMapper
 import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
 import kotlinx.collections.immutable.ImmutableList
@@ -21,6 +24,7 @@ internal class AlbumDetailsUIStateMapper : Mapper<AlbumDetailsState, AlbumDetail
     private val artistDataToLabelUIDataMapper: ArtistDataToLabelUIDataMapper by inject()
     private val trackInfoToTrackCardUIDataMapper: TrackInfoToTrackCardUIDataMapper by inject()
     private val albumTypeToUITextMapper: AlbumTypeToUITextMapper by inject()
+    private val dateTime: DateTime by inject()
 
     override fun map(item: AlbumDetailsState): AlbumDetailsUIState {
         return AlbumDetailsUIState(
@@ -40,7 +44,15 @@ internal class AlbumDetailsUIStateMapper : Mapper<AlbumDetailsState, AlbumDetail
                         iconUrl = album.images.firstOrNull()?.url.orEmpty(),
                         name = album.name,
                         type = albumTypeToUITextMapper.map(album.albumType),
-                        year = album.releaseDate.take(YEAR_LENGTH) // FIXME: Parse and format date
+                        year = dateTime.formatter.format {
+                            setInput(
+                                DateTimeInput.FromString(
+                                    date = album.releaseDate,
+                                    format = DreamDateTimeFormat.YYYY_MM_DD
+                                )
+                            )
+                            setOutputFormat(DreamDateTimeFormat.YYYY)
+                        }
                     )
                 )
             }
@@ -73,9 +85,5 @@ internal class AlbumDetailsUIStateMapper : Mapper<AlbumDetailsState, AlbumDetail
                 )
             }
         }
-    }
-
-    private companion object {
-        const val YEAR_LENGTH = 4
     }
 }

@@ -10,8 +10,11 @@ kotlin {
             // Logger
             implementation(projects.shared.logger)
 
-            // Core
+            // Resource
             implementation(projects.shared.resource.impl)
+
+            // Core
+            implementation(projects.shared.core.datetime.impl)
             implementation(projects.shared.core.storage.impl)
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.service.impl)
