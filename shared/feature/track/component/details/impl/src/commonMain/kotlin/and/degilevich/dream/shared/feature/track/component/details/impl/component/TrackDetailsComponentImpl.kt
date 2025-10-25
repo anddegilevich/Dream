@@ -4,24 +4,23 @@ import and.degilevich.dream.shared.feature.track.component.details.api.component
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsIntent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsSideEffect
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsUIState
-import and.degilevich.dream.shared.feature.track.component.details.impl.store.TrackDetailsStoreComponent
-import and.degilevich.dream.shared.feature.track.component.details.impl.store.model.TrackDetailsState
+import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsState
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
-import and.degilevich.dream.shared.template.component.impl.BaseUIStoreComponent
+import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class TrackDetailsComponentImpl(
     componentContext: ComponentContext,
     navArgs: TrackDetailsNavArgs
-) : BaseUIStoreComponent<
+) : BaseBinderComponent<
     TrackDetailsUIState,
     TrackDetailsIntent,
     TrackDetailsSideEffect,
     TrackDetailsState,
     >(
     componentContext = componentContext,
-    storeComponentFactory = { childComponentContext ->
-        TrackDetailsStoreComponent(
+    domainComponentFactory = { childComponentContext ->
+        TrackDetailsDomainComponent(
             componentContext = childComponentContext,
             navArgs = navArgs
         )

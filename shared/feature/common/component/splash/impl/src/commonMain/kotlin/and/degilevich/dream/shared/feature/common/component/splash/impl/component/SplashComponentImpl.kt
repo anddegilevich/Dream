@@ -4,17 +4,16 @@ import and.degilevich.dream.shared.feature.common.component.splash.api.component
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashIntent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashUIState
-import and.degilevich.dream.shared.feature.common.component.splash.impl.store.SplashStoreComponent
-import and.degilevich.dream.shared.feature.common.component.splash.impl.store.model.SplashState
-import and.degilevich.dream.shared.template.component.impl.BaseUIStoreComponent
+import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashState
+import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class SplashComponentImpl(
     componentContext: ComponentContext
-) : BaseUIStoreComponent<SplashUIState, SplashIntent, SplashSideEffect, SplashState>(
+) : BaseBinderComponent<SplashUIState, SplashIntent, SplashSideEffect, SplashState>(
     componentContext = componentContext,
-    storeComponentFactory = { childComponentContext ->
-        SplashStoreComponent(componentContext = childComponentContext)
+    domainComponentFactory = { childComponentContext ->
+        SplashDomainComponent(componentContext = childComponentContext)
     },
     uiStateMapper = SplashUIStateMapper(),
     initialUIState = SplashUIState.empty()

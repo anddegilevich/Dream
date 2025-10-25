@@ -4,10 +4,10 @@ import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistLabelUI
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
+import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
-import kotlinx.serialization.Serializable
 
-@Serializable
+@Immutable
 data class AlbumDetailsUIState(
     val info: Skeleton<AlbumDetailsLayoutUIData>,
     val artists: Skeleton<ImmutableList<ArtistLabelUIData>>,

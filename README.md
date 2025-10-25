@@ -41,7 +41,7 @@ Design is also inspired by [Spotify Mobile App](https://apps.apple.com/us/app/sp
 
 Here is the list of frameworks, that were used in this project:
 
-* **Architecture** - [Decompose](https://arkivanov.github.io/Decompose), [MVIKotlin](https://arkivanov.github.io/MVIKotlin)
+* **Architecture** - [Decompose](https://arkivanov.github.io/Decompose) + MVI
 * **UI** - [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform)
 * **Concurrency** - [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
 * **Serialization** - [Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization)

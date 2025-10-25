@@ -1,13 +1,10 @@
 package and.degilevich.dream.shared.template.component.impl.logger
 
 import and.degilevich.dream.shared.logger.Log
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
-import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import com.arkivanov.essenty.lifecycle.Lifecycle
-import kotlin.reflect.KClass
 
-internal class LoggerComponentLifecycleCallbacks<out State : Any, in Intent, out SideEffect>(
-    private val componentKClass: KClass<out MVIComponent<State, Intent, SideEffect>>
+internal class LoggerComponentLifecycleCallbacks(
+    private val componentKey: String
 ) : Lifecycle.Callbacks {
 
     override fun onCreate() {
@@ -36,7 +33,7 @@ internal class LoggerComponentLifecycleCallbacks<out State : Any, in Intent, out
 
     private fun logLifecycleEvent(event: String) {
         Log.info(
-            message = "${componentKClass.className()} $event"
+            message = "$componentKey: $event"
         )
     }
 }

@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import kotlinx.coroutines.Dispatchers
 
 @Composable
-fun <SideEffect> ComponentSideEffect(
+fun <SideEffect : Any> ComponentSideEffect(
     component: MVIComponent<*, *, SideEffect>,
     handler: suspend (SideEffect) -> Unit
 ) {

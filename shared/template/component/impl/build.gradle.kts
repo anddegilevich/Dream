@@ -9,6 +9,8 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.shared.logger)
             implementation(projects.shared.foundation.decompose)
+            implementation(projects.shared.core.toast.api)
+            implementation(projects.shared.navigation.api)
         }
     }
 }

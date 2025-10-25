@@ -51,9 +51,6 @@ decompose = "3.4.0" # https://github.com/arkivanov/Decompose/releases
 # Essenty
 essenty = "2.5.0" # https://github.com/arkivanov/Essenty/releases
 
-# MVI Kotlin
-mvikotlin = "4.3.0" # https://github.com/arkivanov/MVIKotlin/releases
-
 # KVault
 kvault = "1.12.0" # https://github.com/Liftric/KVault/releases
 
@@ -171,13 +168,6 @@ essenty-lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = 
 essenty-lifecycle-coroutines = { module = "com.arkivanov.essenty:lifecycle-coroutines", version.ref = "essenty" }
 essenty-state-keaper = { module = "com.arkivanov.essenty:state-keeper", version.ref = "essenty" }
 
-# MVI Kotlin
-mvikotlin = { module = "com.arkivanov.mvikotlin:mvikotlin", version.ref = "mvikotlin" }
-mvikotlin-main = { module = "com.arkivanov.mvikotlin:mvikotlin-main", version.ref = "mvikotlin" }
-mvikotlin-logging = { module = "com.arkivanov.mvikotlin:mvikotlin-logging", version.ref = "mvikotlin" }
-mvikotlin-timetravel = { module = "com.arkivanov.mvikotlin:mvikotlin-timetravel", version.ref = "mvikotlin" }
-mvikotlin-extensions-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines", version.ref = "mvikotlin" }
-
 # KVault
 kvault = { module = "com.liftric:kvault", version.ref = "kvault" }
 
@@ -216,7 +206,6 @@ filekit-dialogs = { module = "io.github.vinceglb:filekit-dialogs", version.ref =
 
 [bundles]
 
-mvikotlin = ["mvikotlin", "mvikotlin-main", "mvikotlin-logging", "mvikotlin-timetravel", "mvikotlin-extensions-coroutines"]
 coil = ["coil-core", "coil-compose", "coil-network-ktor3"]
 decompose = ["decompose", "essenty-lifecycle", "essenty-lifecycle-coroutines", "essenty-state-keaper", "decompose-extensions-compose"]
 glance = ["glance", "glance-appwidget"]

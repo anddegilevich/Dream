@@ -4,22 +4,21 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
-import and.degilevich.dream.shared.feature.album.component.releases.impl.store.AlbumReleasesStoreComponent
-import and.degilevich.dream.shared.feature.album.component.releases.impl.store.model.AlbumReleasesState
-import and.degilevich.dream.shared.template.component.impl.BaseUIStoreComponent
+import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesState
+import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class AlbumReleasesComponentImpl(
     componentContext: ComponentContext
-) : BaseUIStoreComponent<
+) : BaseBinderComponent<
     AlbumReleasesUIState,
     AlbumReleasesIntent,
     AlbumReleasesSideEffect,
     AlbumReleasesState,
     >(
     componentContext = componentContext,
-    storeComponentFactory = { childComponentContext ->
-        AlbumReleasesStoreComponent(
+    domainComponentFactory = { childComponentContext ->
+        AlbumReleasesDomainComponent(
             componentContext = childComponentContext
         )
     },

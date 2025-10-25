@@ -36,8 +36,7 @@ fun ComposeScreens(
 
             is Screen.Dashboard -> {
                 DashboardScreen(
-                    state = screenComponent.collectState(),
-                    onIntent = screenComponent::handleIntent
+                    component = screenComponent
                 )
             }
 

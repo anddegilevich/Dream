@@ -4,24 +4,23 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
-import and.degilevich.dream.shared.feature.artist.component.details.impl.store.ArtistDetailsStoreComponent
-import and.degilevich.dream.shared.feature.artist.component.details.impl.store.model.ArtistDetailsState
+import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsState
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
-import and.degilevich.dream.shared.template.component.impl.BaseUIStoreComponent
+import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class ArtistDetailsComponentImpl(
     componentContext: ComponentContext,
     navArgs: ArtistDetailsNavArgs
-) : BaseUIStoreComponent<
+) : BaseBinderComponent<
     ArtistDetailsUIState,
     ArtistDetailsIntent,
     ArtistDetailsSideEffect,
     ArtistDetailsState,
     >(
     componentContext = componentContext,
-    storeComponentFactory = { childComponentContext ->
-        ArtistDetailsStoreComponent(
+    domainComponentFactory = { childComponentContext ->
+        ArtistDetailsDomainComponent(
             componentContext = childComponentContext,
             navArgs = navArgs
         )

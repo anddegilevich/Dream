@@ -4,22 +4,21 @@ import and.degilevich.dream.shared.feature.search.component.search.api.component
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchIntent
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchSideEffect
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
-import and.degilevich.dream.shared.feature.search.component.search.impl.store.SearchStoreComponent
-import and.degilevich.dream.shared.feature.search.component.search.impl.store.model.SearchState
-import and.degilevich.dream.shared.template.component.impl.BaseUIStoreComponent
+import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchState
+import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class SearchComponentImpl(
     componentContext: ComponentContext
-) : BaseUIStoreComponent<
+) : BaseBinderComponent<
     SearchUIState,
     SearchIntent,
     SearchSideEffect,
     SearchState,
     >(
     componentContext = componentContext,
-    storeComponentFactory = { childComponentContext ->
-        SearchStoreComponent(
+    domainComponentFactory = { childComponentContext ->
+        SearchDomainComponent(
             componentContext = childComponentContext
         )
     },

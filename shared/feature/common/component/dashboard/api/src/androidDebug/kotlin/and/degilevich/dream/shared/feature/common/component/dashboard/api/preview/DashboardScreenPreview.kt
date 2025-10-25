@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.api.previ
 
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.preview.provider.DashboardUIStatePreviewProvider
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.preview.component.DashboardPreviewComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -13,8 +13,7 @@ private fun DashboardScreenDarkPreview() {
         isDarkMode = true
     ) {
         DashboardScreen(
-            state = DashboardUIStatePreviewProvider.provide(),
-            onIntent = { }
+            component = DashboardPreviewComponent()
         )
     }
 }
@@ -26,8 +25,7 @@ private fun DashboardScreenLightPreview() {
         isDarkMode = false
     ) {
         DashboardScreen(
-            state = DashboardUIStatePreviewProvider.provide(),
-            onIntent = { }
+            component = DashboardPreviewComponent()
         )
     }
 }

@@ -19,6 +19,7 @@ import and.degilevich.dream.shared.navigation.api.model.config.NavbarConfig
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.impl.AppNavigationComponent
 import and.degilevich.dream.shared.navigation.impl.AppNavigationComponentImpl
+import and.degilevich.dream.shared.template.component.impl.BaseComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import com.arkivanov.decompose.router.slot.ChildSlot
@@ -38,7 +39,7 @@ import org.koin.core.component.inject
 
 class RootComponentImpl(
     componentContext: ComponentContext
-) : RootComponent, KoinComponent, ComponentContext by componentContext {
+) : BaseComponent(componentContext), RootComponent, KoinComponent {
 
     private val coroutineScope = coroutineScope()
 

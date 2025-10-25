@@ -15,6 +15,7 @@ internal class TemplateComponentApiPlugin : Plugin<Project> {
                 apply(libs().plugins.android.library)
                 apply(libs().plugins.project.multiplatform)
                 apply(libs().plugins.project.compose)
+                apply(libs().plugins.project.serialization)
             }
             kotlinMultiplatformConfig {
                 with(sourceSets) {

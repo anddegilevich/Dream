@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.common.component.navbar.impl.compone
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItemUIData
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarUIState
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.store.model.NavbarItem
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.store.model.NavbarState
+import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItem
+import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.resource.api.ResourceManager
 import dev.icerock.moko.resources.ImageResource

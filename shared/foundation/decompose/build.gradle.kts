@@ -10,7 +10,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(libs.bundles.decompose)
-            api(libs.bundles.mvikotlin)
             api(projects.shared.foundation.primitive)
             api(projects.shared.foundation.serialization)
             api(projects.shared.foundation.abstraction)

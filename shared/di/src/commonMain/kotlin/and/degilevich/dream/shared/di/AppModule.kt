@@ -7,7 +7,6 @@ import org.koin.dsl.module
 fun appModule() = module {
     includes(resourceModule())
     includes(coreModule())
-    includes(templateModule())
     includes(navigationModule())
     includes(featureModule())
 }

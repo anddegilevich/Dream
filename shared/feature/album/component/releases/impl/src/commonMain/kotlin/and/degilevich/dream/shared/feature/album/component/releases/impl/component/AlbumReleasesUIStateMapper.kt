@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.album.component.releases.impl.component
 
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
-import and.degilevich.dream.shared.feature.album.component.releases.impl.store.model.AlbumReleasesState
+import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesState
 import and.degilevich.dream.shared.feature.album.design.api.mapper.AlbumInfoToCardUIDataMapper
 import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper

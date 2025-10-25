@@ -4,22 +4,21 @@ import and.degilevich.dream.shared.feature.common.component.navbar.api.component
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarIntent
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarSideEffect
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarUIState
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.store.NavbarStoreComponent
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.store.model.NavbarState
-import and.degilevich.dream.shared.template.component.impl.BaseUIStoreComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState
+import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class NavbarComponentImpl(
     componentContext: ComponentContext
-) : BaseUIStoreComponent<
+) : BaseBinderComponent<
     NavbarUIState,
     NavbarIntent,
     NavbarSideEffect,
     NavbarState,
     >(
     componentContext = componentContext,
-    storeComponentFactory = { childComponentContext ->
-        NavbarStoreComponent(
+    domainComponentFactory = { childComponentContext ->
+        NavbarDomainComponent(
             componentContext = childComponentContext
         )
     },

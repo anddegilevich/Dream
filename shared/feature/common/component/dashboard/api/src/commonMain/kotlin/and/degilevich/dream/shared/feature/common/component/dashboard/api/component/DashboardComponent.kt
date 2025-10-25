@@ -1,8 +1,11 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.api.component
 
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardIntent
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardSideEffect
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardUIState
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.children.DashboardSection
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardSectionConfig
+import com.arkivanov.decompose.ExperimentalDecomposeApi
+import com.arkivanov.decompose.router.items.LazyChildItems
 
-interface DashboardComponent : MVIComponent<DashboardUIState, DashboardIntent, DashboardSideEffect>
+@OptIn(ExperimentalDecomposeApi::class)
+interface DashboardComponent {
+    val sections: LazyChildItems<DashboardSectionConfig, DashboardSection>
+}

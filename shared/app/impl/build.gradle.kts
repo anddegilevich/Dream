@@ -44,6 +44,9 @@ kotlin {
             // Navigation
             implementation(projects.shared.navigation.impl)
 
+            // Template
+            implementation(projects.shared.template.component.impl)
+
             // DI
             api(projects.shared.di)
 

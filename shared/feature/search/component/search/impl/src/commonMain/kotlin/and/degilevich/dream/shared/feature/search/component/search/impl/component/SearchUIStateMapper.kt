@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.search.component.search.impl.component
 
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
-import and.degilevich.dream.shared.feature.search.component.search.impl.store.model.SearchState
+import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchState
 import and.degilevich.dream.shared.feature.search.design.api.mapper.AlbumInfoToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.design.api.mapper.ArtistDataToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.design.api.mapper.TrackDataToSearchCardUIDataMapper

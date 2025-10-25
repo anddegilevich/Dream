@@ -21,9 +21,6 @@ kotlin {
             implementation(projects.shared.core.db.impl)
             implementation(projects.shared.core.toast.impl)
 
-            // Template
-            implementation(projects.shared.template.component.impl)
-
             // Navigation
             implementation(projects.shared.navigation.impl)
 

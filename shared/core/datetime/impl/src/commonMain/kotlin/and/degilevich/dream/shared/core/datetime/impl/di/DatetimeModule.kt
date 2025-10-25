@@ -6,7 +6,5 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun datetimeModule() = module {
-    single {
-        DateTimeHelper()
-    } bind DateTime::class
+    single { DateTimeHelper() } bind DateTime::class
 }
