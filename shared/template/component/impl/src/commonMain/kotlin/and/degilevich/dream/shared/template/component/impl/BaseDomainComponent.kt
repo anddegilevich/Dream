@@ -18,7 +18,7 @@ abstract class BaseDomainComponent<State : Any, in Intent : Any, SideEffect : An
 ),
     KoinComponent {
 
-    protected val appNavigator: AppNavigator by inject()
+    protected val navigator: AppNavigator by inject()
     protected val toastController: ToastController by inject()
 
     init {

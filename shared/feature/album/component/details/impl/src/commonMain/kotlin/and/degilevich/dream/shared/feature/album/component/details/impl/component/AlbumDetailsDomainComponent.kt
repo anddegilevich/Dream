@@ -111,11 +111,11 @@ internal class AlbumDetailsDomainComponent(
     }
 
     private fun navigateBack() {
-        appNavigator.screenNavigator.pop()
+        navigator.screenNavigator.pop()
     }
 
     private fun navigateToArtistDetails(artistId: String) {
-        appNavigator.screenNavigator.pushToFront(
+        navigator.screenNavigator.pushToFront(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(
                     artistId = artistId
@@ -125,7 +125,7 @@ internal class AlbumDetailsDomainComponent(
     }
 
     private fun navigateToTrackDetails(trackId: String) {
-        appNavigator.screenNavigator.pushToFront(
+        navigator.screenNavigator.pushToFront(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(
                     trackId = trackId

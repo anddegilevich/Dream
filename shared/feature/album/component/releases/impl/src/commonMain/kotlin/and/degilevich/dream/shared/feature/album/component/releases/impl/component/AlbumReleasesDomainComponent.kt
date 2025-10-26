@@ -69,7 +69,7 @@ internal class AlbumReleasesDomainComponent(
     }
 
     private fun navigateToAlbum(albumId: String) {
-        appNavigator.screenNavigator.pushToFront(
+        navigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(
                     albumId = albumId

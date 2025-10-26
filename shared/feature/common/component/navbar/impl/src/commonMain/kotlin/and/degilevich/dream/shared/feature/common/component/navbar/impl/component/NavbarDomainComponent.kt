@@ -71,7 +71,7 @@ internal class NavbarDomainComponent(
             NavbarItem.HOME -> ScreenConfig.Dashboard
             NavbarItem.SEARCH -> ScreenConfig.Search
         }
-        appNavigator.screenNavigator.bringToFront(destination)
+        navigator.screenNavigator.bringToFront(destination)
     }
 
     private fun setSelectedItem(item: NavbarItem) {

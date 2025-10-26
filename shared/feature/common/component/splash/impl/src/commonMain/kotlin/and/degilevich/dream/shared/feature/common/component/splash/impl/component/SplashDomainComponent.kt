@@ -37,6 +37,6 @@ internal class SplashDomainComponent(
     }
 
     private fun navigateToHomePage() {
-        appNavigator.screenNavigator.replaceCurrent(ScreenConfig.Dashboard)
+        navigator.screenNavigator.replaceCurrent(ScreenConfig.Dashboard)
     }
 }

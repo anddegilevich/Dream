@@ -103,7 +103,7 @@ internal class SearchDomainComponent(
     }
 
     private fun navigateToArtist(artistId: String) {
-        appNavigator.screenNavigator.pushToFront(
+        navigator.screenNavigator.pushToFront(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(artistId = artistId)
             )
@@ -111,7 +111,7 @@ internal class SearchDomainComponent(
     }
 
     private fun navigateToAlbum(albumId: String) {
-        appNavigator.screenNavigator.pushToFront(
+        navigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(albumId = albumId)
             )
@@ -119,7 +119,7 @@ internal class SearchDomainComponent(
     }
 
     private fun navigateToTrack(trackId: String) {
-        appNavigator.screenNavigator.pushToFront(
+        navigator.screenNavigator.pushToFront(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(trackId = trackId)
             )

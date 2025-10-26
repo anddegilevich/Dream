@@ -73,7 +73,7 @@ internal class TrackDetailsDomainComponent(
     }
 
     private fun navigateBack() {
-        appNavigator.screenNavigator.pop()
+        navigator.screenNavigator.pop()
     }
 
     private fun setLoading(isLoading: Boolean) {
