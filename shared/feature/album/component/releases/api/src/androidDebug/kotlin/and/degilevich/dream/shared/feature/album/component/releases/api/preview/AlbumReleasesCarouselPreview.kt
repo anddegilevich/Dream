@@ -3,15 +3,13 @@ package and.degilevich.dream.shared.feature.album.component.releases.api.preview
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.album.component.releases.api.design.AlbumReleasesCarousel
 import and.degilevich.dream.shared.feature.album.component.releases.api.preview.provider.AlbumReleasesUIStatePreviewProvider
+import and.degilevich.dream.shared.foundation.compose.preview.DayNightPreviews
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 
-@Preview
+@DayNightPreviews
 @Composable
-private fun AlbumReleasesCarouselDarkPreview() {
-    ComposeAppTheme(
-        isDarkMode = true
-    ) {
+private fun AlbumReleasesCarouselPreview() {
+    ComposeAppTheme {
         AlbumReleasesCarousel(
             state = AlbumReleasesUIStatePreviewProvider.provide(),
             onIntent = {}
@@ -19,38 +17,10 @@ private fun AlbumReleasesCarouselDarkPreview() {
     }
 }
 
-@Preview
+@DayNightPreviews
 @Composable
-private fun AlbumReleasesCarouselLightPreview() {
-    ComposeAppTheme(
-        isDarkMode = false
-    ) {
-        AlbumReleasesCarousel(
-            state = AlbumReleasesUIStatePreviewProvider.provide(),
-            onIntent = {}
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun SkeletonAlbumReleasesCarouselDarkPreview() {
-    ComposeAppTheme(
-        isDarkMode = true
-    ) {
-        AlbumReleasesCarousel(
-            state = AlbumReleasesUIStatePreviewProvider.provideSkeleton(),
-            onIntent = {}
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun SkeletonAlbumReleasesCarouselLightPreview() {
-    ComposeAppTheme(
-        isDarkMode = false
-    ) {
+private fun SkeletonAlbumReleasesCarouselPreview() {
+    ComposeAppTheme {
         AlbumReleasesCarousel(
             state = AlbumReleasesUIStatePreviewProvider.provideSkeleton(),
             onIntent = {}

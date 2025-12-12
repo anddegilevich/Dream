@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
-fun ScaleOnClickModifierPreview() {
+private fun ScaleOnClickModifierPreview() {
     val interactionSource = remember { MutableInteractionSource() }
 
     Box(

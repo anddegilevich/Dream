@@ -3,57 +3,25 @@ package and.degilevich.dream.shared.feature.artist.component.details.api.preview
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
 import and.degilevich.dream.shared.feature.artist.component.details.api.preview.provider.ArtistDetailsUIStatePreviewProvider
+import and.degilevich.dream.shared.foundation.compose.preview.DayNightPreviews
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 
-@Preview
+@DayNightPreviews
 @Composable
-fun ArtistDetailsScreenDarkPreview() {
-    ComposeAppTheme(
-        isDarkMode = true
-    ) {
+private fun ArtistDetailsScreenPreview() {
+    ComposeAppTheme {
         ArtistDetailsScreen(
-            state = ArtistDetailsUIStatePreviewProvider.provide(),
-            onIntent = { }
-        )
+            state = ArtistDetailsUIStatePreviewProvider.provide()
+        ) { }
     }
 }
 
-@Preview
+@DayNightPreviews
 @Composable
-fun ArtistDetailsScreenLightPreview() {
-    ComposeAppTheme(
-        isDarkMode = false
-    ) {
+private fun SkeletonArtistDetailsScreenPreview() {
+    ComposeAppTheme {
         ArtistDetailsScreen(
-            state = ArtistDetailsUIStatePreviewProvider.provide(),
-            onIntent = { }
-        )
-    }
-}
-
-@Preview
-@Composable
-fun SkeletonArtistDetailsScreenDarkPreview() {
-    ComposeAppTheme(
-        isDarkMode = true
-    ) {
-        ArtistDetailsScreen(
-            state = ArtistDetailsUIStatePreviewProvider.provideSkeleton(),
-            onIntent = { }
-        )
-    }
-}
-
-@Preview
-@Composable
-fun SkeletonArtistDetailsScreenLightPreview() {
-    ComposeAppTheme(
-        isDarkMode = false
-    ) {
-        ArtistDetailsScreen(
-            state = ArtistDetailsUIStatePreviewProvider.provideSkeleton(),
-            onIntent = { }
-        )
+            state = ArtistDetailsUIStatePreviewProvider.provideSkeleton()
+        ) { }
     }
 }

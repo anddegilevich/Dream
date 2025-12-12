@@ -2,27 +2,13 @@ package and.degilevich.dream.shared.design.system.snackbar
 
 import and.degilevich.dream.shared.design.system.snackbar.provider.SnackbarDataPreviewProvider
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
+import and.degilevich.dream.shared.foundation.compose.preview.DayNightPreviews
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 
-@Preview
+@DayNightPreviews
 @Composable
-private fun AppSnackbarDarkPreview() {
-    ComposeAppTheme(
-        isDarkMode = true
-    ) {
-        AppSnackbar(
-            data = SnackbarDataPreviewProvider.provide()
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun AppSnackbarLightPreview() {
-    ComposeAppTheme(
-        isDarkMode = false
-    ) {
+private fun AppSnackbarPreview() {
+    ComposeAppTheme {
         AppSnackbar(
             data = SnackbarDataPreviewProvider.provide()
         )

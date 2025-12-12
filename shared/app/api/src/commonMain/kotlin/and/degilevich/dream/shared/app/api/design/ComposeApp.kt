@@ -11,7 +11,6 @@ import and.degilevich.dream.shared.foundation.decompose.compose.component.collec
 import and.degilevich.dream.shared.foundation.decompose.compose.slot.AnimatedSlot
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,9 +38,7 @@ fun ComposeApp(
         }
     }
 
-    ComposeAppTheme(
-        isDarkMode = isSystemInDarkTheme()
-    ) {
+    ComposeAppTheme {
         Box(
             modifier = modifier
                 .fillMaxSize()

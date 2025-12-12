@@ -9,6 +9,7 @@ import and.degilevich.dream.shared.design.theme.impl.component.ThemeFontsImpl
 import and.degilevich.dream.shared.design.theme.impl.component.ThemeTypographyImpl
 import and.degilevich.dream.shared.design.theme.impl.component.color.dark.DarkThemeColors
 import and.degilevich.dream.shared.design.theme.impl.component.color.light.LightThemeColors
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ProvidableCompositionLocal
@@ -18,7 +19,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 
 @Composable
 fun ComposeAppTheme(
-    isDarkMode: Boolean,
+    isDarkMode: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val colors: ThemeColors = remember(isDarkMode) {

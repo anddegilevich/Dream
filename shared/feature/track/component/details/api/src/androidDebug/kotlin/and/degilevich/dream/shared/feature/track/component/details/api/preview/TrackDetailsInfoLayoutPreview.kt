@@ -4,25 +4,14 @@ import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.track.component.details.api.design.TrackDetailsInfoLayout
 import and.degilevich.dream.shared.feature.track.component.details.api.preview.provider.TrackDetailsInfoLayoutUIDataPreviewProvider
+import and.degilevich.dream.shared.foundation.compose.preview.DayNightPreviews
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 
-@Preview
+@DayNightPreviews
 @Composable
-private fun TrackDetailsInfoLayoutDarkPreview() {
-    ComposeAppTheme(isDarkMode = true) {
-        TrackDetailsInfoLayout(
-            modifier = Modifier.themeBackground(),
-            data = TrackDetailsInfoLayoutUIDataPreviewProvider.provide()
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun TrackDetailsInfoLayoutLightPreview() {
-    ComposeAppTheme(isDarkMode = false) {
+private fun TrackDetailsInfoLayoutPreview() {
+    ComposeAppTheme {
         TrackDetailsInfoLayout(
             modifier = Modifier.themeBackground(),
             data = TrackDetailsInfoLayoutUIDataPreviewProvider.provide()

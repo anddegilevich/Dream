@@ -2,14 +2,14 @@ package and.degilevich.dream.shared.feature.artist.component.details.api.design
 
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.system.button.IconButton
-import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
-import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumCard
 import and.degilevich.dream.shared.feature.album.design.api.design.skeleton.SkeletonAlbumCard
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.skeleton.SkeletonArtistInfoCard
+import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
@@ -39,8 +39,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun ArtistDetailsScreen(
     state: ArtistDetailsUIState,
-    onIntent: (ArtistDetailsIntent) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onIntent: (ArtistDetailsIntent) -> Unit
 ) {
     LazyColumn(
         modifier = modifier

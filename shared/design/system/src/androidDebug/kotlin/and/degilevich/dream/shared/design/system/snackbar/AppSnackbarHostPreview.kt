@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 @Preview
 @Composable
-fun AppSnackbarHostPreview() {
+private fun AppSnackbarHostPreview() {
     var toastCount by remember { mutableIntStateOf(0) }
     val snackBarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
