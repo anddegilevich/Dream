@@ -1,10 +1,9 @@
-package and.degilevich.dream.shared.app.api.component.children
+package and.degilevich.dream.shared.app.api.component.child
 
 import and.degilevich.dream.shared.feature.album.component.details.api.component.AlbumDetailsComponent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
-import and.degilevich.dream.shared.feature.search.component.search.api.component.SearchComponent
+import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
 import androidx.compose.runtime.Stable
 
@@ -19,9 +18,9 @@ sealed interface Screen {
     ) : Screen, SplashComponent by component
 
     @Stable
-    class Dashboard(
-        component: DashboardComponent
-    ) : Screen, DashboardComponent by component
+    class Home(
+        component: HomeComponent
+    ) : Screen, HomeComponent by component
 
     // Artist
 
@@ -43,11 +42,4 @@ sealed interface Screen {
     class TrackDetails(
         component: TrackDetailsComponent
     ) : Screen, TrackDetailsComponent by component
-
-    // Search
-
-    @Stable
-    class Search(
-        component: SearchComponent
-    ) : Screen, SearchComponent by component
 }

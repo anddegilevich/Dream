@@ -16,16 +16,13 @@ kotlin {
             api(projects.shared.navigation.api)
 
             api(projects.shared.feature.common.component.splash.api)
-            api(projects.shared.feature.common.component.dashboard.api)
-            api(projects.shared.feature.common.component.navbar.api)
+            api(projects.shared.feature.common.component.home.api)
 
             api(projects.shared.feature.artist.component.details.api)
 
             api(projects.shared.feature.album.component.details.api)
 
             api(projects.shared.feature.track.component.details.api)
-
-            api(projects.shared.feature.search.component.search.api)
         }
     }
 }

@@ -15,7 +15,6 @@ import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pushToFront
-import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.Job
@@ -40,20 +39,10 @@ internal class SearchDomainComponent(
 
     private var searchJob: Job? = null
 
-    init {
-        subscribeToLifecycle()
-    }
-
     override fun handleIntent(intent: SearchIntent) {
         when (intent) {
             is SearchIntent.OnQueryChanged -> onQueryChanged(intent.value)
             is SearchIntent.OnItemClicked -> onItemClicked(intent.id)
-        }
-    }
-
-    private fun subscribeToLifecycle() {
-        doOnStop {
-            setLoading(false)
         }
     }
 
@@ -63,15 +52,14 @@ internal class SearchDomainComponent(
         searchJob = scope.launch {
             delay(SEARCH_DELAY)
             if (query.isEmpty()) {
-                setSearchResult(SearchResult.Companion.empty())
+                setSearchResult(SearchResult.empty())
             } else {
-                search()
+                search().join()
             }
         }
     }
 
-    private suspend fun search() {
-        setLoading(isLoading = true)
+    private fun search() = scope.launch {
         val params = SearchParams(
             query = state().query,
             limit = SEARCH_LIMIT,
@@ -82,14 +70,18 @@ internal class SearchDomainComponent(
                 SearchType.TRACK
             )
         )
-        withContext(Dispatchers.IO) { searchUseCase(params) }
-            .onSuccess { result ->
-                setSearchResult(searchResult = result)
-            }
-            .onFailure { error ->
-                toastController.showMessageToast(error)
-            }
-        setLoading(isLoading = false)
+        try {
+            setLoading(true)
+            withContext(Dispatchers.IO) { searchUseCase(params) }
+                .onSuccess { result ->
+                    setSearchResult(searchResult = result)
+                }
+                .onFailure { error ->
+                    toastController.showMessageToast(error)
+                }
+        } finally {
+            setLoading(false)
+        }
     }
 
     private fun onItemClicked(searchItemId: String) {
@@ -126,16 +118,16 @@ internal class SearchDomainComponent(
         )
     }
 
-    private fun setLoading(isLoading: Boolean) {
-        reduce { copy(isLoading = isLoading) }
+    private fun setLoading(isLoading: Boolean) = reduce {
+        copy(isLoading = isLoading)
     }
 
-    private fun setQuery(query: String) {
-        reduce { copy(query = query) }
+    private fun setQuery(query: String) = reduce {
+        copy(query = query)
     }
 
-    private fun setSearchResult(searchResult: SearchResult) {
-        reduce { copy(searchResult = searchResult) }
+    private fun setSearchResult(searchResult: SearchResult) = reduce {
+        copy(searchResult = searchResult)
     }
 
     private companion object {

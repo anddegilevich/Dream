@@ -1,9 +1,9 @@
-package and.degilevich.dream.shared.app.api.component.children
+package and.degilevich.dream.shared.feature.common.home.api.component.child
 
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
-import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 
-@Immutable
-class Navbar(
+@Stable
+class HomeNavbar(
     component: NavbarComponent
 ) : NavbarComponent by component

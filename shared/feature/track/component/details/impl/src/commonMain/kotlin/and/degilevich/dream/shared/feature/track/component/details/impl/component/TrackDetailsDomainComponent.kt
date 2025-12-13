@@ -11,7 +11,6 @@ import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.essenty.lifecycle.doOnCreate
-import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
@@ -47,17 +46,14 @@ internal class TrackDetailsDomainComponent(
         doOnCreate {
             fetchTrack()
         }
-        doOnStop {
-            setLoading(false)
-        }
     }
 
-    private fun fetchTrack() {
-        scope.launch {
+    private fun fetchTrack() = scope.launch {
+        val params = GetTrackParams(
+            id = state().navArgs.trackId
+        )
+        try {
             setLoading(true)
-            val params = GetTrackParams(
-                id = state().navArgs.trackId
-            )
             withContext(Dispatchers.IO) { fetchTrackUseCase(params) }
                 .onSuccess { result ->
                     setTrack(track = result.track)
@@ -68,6 +64,7 @@ internal class TrackDetailsDomainComponent(
                         onRepeat = ::fetchTrack
                     )
                 }
+        } finally {
             setLoading(false)
         }
     }
@@ -76,11 +73,11 @@ internal class TrackDetailsDomainComponent(
         navigator.screenNavigator.pop()
     }
 
-    private fun setLoading(isLoading: Boolean) {
-        reduce { copy(isLoading = isLoading) }
+    private fun setLoading(isLoading: Boolean) = reduce {
+        copy(isLoading = isLoading)
     }
 
-    private fun setTrack(track: TrackData) {
-        reduce { copy(track = track) }
+    private fun setTrack(track: TrackData) = reduce {
+        copy(track = track)
     }
 }

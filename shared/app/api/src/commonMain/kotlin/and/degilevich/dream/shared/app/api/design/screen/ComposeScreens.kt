@@ -1,13 +1,12 @@
 package and.degilevich.dream.shared.app.api.design.screen
 
-import and.degilevich.dream.shared.app.api.component.children.Screen
+import and.degilevich.dream.shared.app.api.component.child.Screen
 import and.degilevich.dream.shared.app.api.design.screen.animation.screensStackAnimation
 import and.degilevich.dream.shared.feature.album.component.details.api.design.AlbumDetailsScreen
-import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
+import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.ArtistDetailsScreen
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
 import and.degilevich.dream.shared.feature.common.component.splash.api.design.SplashScreen
-import and.degilevich.dream.shared.feature.search.component.search.api.design.SearchScreen
+import and.degilevich.dream.shared.feature.common.home.api.design.HomeScreen
 import and.degilevich.dream.shared.feature.track.component.details.api.design.TrackDetailsScreen
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import androidx.compose.runtime.Composable
@@ -34,35 +33,29 @@ fun ComposeScreens(
                 SplashScreen()
             }
 
-            is Screen.Dashboard -> {
-                DashboardScreen(
+            is Screen.Home -> {
+                HomeScreen(
                     component = screenComponent
                 )
             }
 
             is Screen.ArtistDetails -> {
                 ArtistDetailsScreen(
-                    state = screenComponent.collectState(),
+                    state = screenComponent.state(),
                     onIntent = screenComponent::handleIntent
                 )
             }
 
             is Screen.AlbumDetails -> {
                 AlbumDetailsScreen(
-                    state = screenComponent.collectState(),
+                    state = screenComponent.state(),
                     onIntent = screenComponent::handleIntent
                 )
             }
 
             is Screen.TrackDetails -> {
                 TrackDetailsScreen(
-                    state = screenComponent.collectState(),
-                    onIntent = screenComponent::handleIntent
-                )
-            }
-            is Screen.Search -> {
-                SearchScreen(
-                    state = screenComponent.collectState(),
+                    state = screenComponent.state(),
                     onIntent = screenComponent::handleIntent
                 )
             }

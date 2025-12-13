@@ -21,9 +21,11 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.doOnCreate
-import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import kotlinx.coroutines.withContext
@@ -63,24 +65,32 @@ internal class ArtistDetailsDomainComponent(
         doOnCreate {
             fetchScreenData()
         }
-        doOnStop {
-            setLoading(false)
-        }
     }
 
-    private fun fetchScreenData() {
-        scope.launch {
+    private fun fetchScreenData() = scope.launch {
+        try {
             setLoading(true)
             supervisorScope {
-                launch { fetchArtist() }
-                launch { fetchTopTracks() }
-                launch { fetchAlbums() }
+                listOf(
+                    fetchArtist(),
+                    fetchTopTracks(),
+                    fetchAlbums(),
+                ).awaitAll().forEach { result ->
+                    result.onFailure { error ->
+                        toastController.showRepeatToast(
+                            error = error,
+                            onRepeat = ::fetchScreenData
+                        )
+                        cancel()
+                    }
+                }
             }
+        } finally {
             setLoading(false)
         }
     }
 
-    private suspend fun fetchArtist() {
+    private fun fetchArtist() = scope.async {
         val params = GetArtistParams(
             id = state().navArgs.artistId
         )
@@ -88,12 +98,9 @@ internal class ArtistDetailsDomainComponent(
             .onSuccess { result ->
                 setArtist(artist = result.artist)
             }
-            .onFailure { error ->
-                toastController.showMessageToast(error)
-            }
     }
 
-    private suspend fun fetchTopTracks() {
+    private fun fetchTopTracks() = scope.async {
         val params = GetArtistTopTracksParams(
             id = state().navArgs.artistId
         )
@@ -101,12 +108,9 @@ internal class ArtistDetailsDomainComponent(
             .onSuccess { result ->
                 setTopTracks(tracks = result.tracks)
             }
-            .onFailure { error ->
-                toastController.showMessageToast(error)
-            }
     }
 
-    private suspend fun fetchAlbums() {
+    private fun fetchAlbums() = scope.async {
         val params = GetArtistAlbumsParams(
             id = state().navArgs.artistId,
             limit = ALBUMS_LIMIT,
@@ -115,9 +119,6 @@ internal class ArtistDetailsDomainComponent(
         withContext(context = Dispatchers.IO) { fetchArtistAlbumsUseCase(params = params) }
             .onSuccess { result ->
                 setAlbums(albums = result.items)
-            }
-            .onFailure { error ->
-                toastController.showMessageToast(error)
             }
     }
 
@@ -141,20 +142,20 @@ internal class ArtistDetailsDomainComponent(
         )
     }
 
-    private fun setArtist(artist: ArtistData) {
-        reduce { copy(artist = artist) }
+    private fun setArtist(artist: ArtistData) = reduce {
+        copy(artist = artist)
     }
 
-    private fun setTopTracks(tracks: List<TrackData>) {
-        reduce { copy(topTracks = tracks) }
+    private fun setTopTracks(tracks: List<TrackData>) = reduce {
+        copy(topTracks = tracks)
     }
 
-    private fun setAlbums(albums: List<AlbumSimplifiedData>) {
-        reduce { copy(albums = albums) }
+    private fun setAlbums(albums: List<AlbumSimplifiedData>) = reduce {
+        copy(albums = albums)
     }
 
-    private fun setLoading(isLoading: Boolean) {
-        reduce { copy(isLoading = isLoading) }
+    private fun setLoading(isLoading: Boolean) = reduce {
+        copy(isLoading = isLoading)
     }
 
     private companion object {

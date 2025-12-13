@@ -18,7 +18,7 @@ fun <SideEffect : Any> ComponentSideEffect(
 }
 
 @Composable
-fun <State : Any> MVIComponent<State, *, *>.collectState(): State {
+fun <State : Any> MVIComponent<State, *, *>.state(): State {
     val state by this.state.collectAsState(
         context = Dispatchers.Main.immediate
     )

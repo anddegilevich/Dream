@@ -3,10 +3,10 @@ package and.degilevich.dream.shared.feature.album.component.details.api.preview
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.album.component.details.api.design.AlbumDetailsScreen
 import and.degilevich.dream.shared.feature.album.component.details.api.preview.provider.AlbumDetailsUIStatePreviewProvider
-import and.degilevich.dream.shared.foundation.compose.preview.DayNightPreviews
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.runtime.Composable
 
-@DayNightPreviews
+@PreviewLightDark
 @Composable
 private fun AlbumDetailsScreenPreview() {
     ComposeAppTheme {
@@ -16,7 +16,7 @@ private fun AlbumDetailsScreenPreview() {
     }
 }
 
-@DayNightPreviews
+@PreviewLightDark
 @Composable
 private fun SkeletonAlbumDetailsScreenPreview() {
     ComposeAppTheme {

@@ -116,7 +116,7 @@ style:
   UnusedPrivateMember:
     ignoreAnnotated:
       - 'Preview'
-      - 'DayNightPreviews'
+      - 'PreviewLightDark'
     excludes: *excludePatterns
   NewLineAtEndOfFile:
     active: false

@@ -12,7 +12,6 @@ import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.doOnCreate
-import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
@@ -42,18 +41,15 @@ internal class AlbumReleasesDomainComponent(
         doOnCreate {
             fetchNewReleases()
         }
-        doOnStop {
-            setLoading(false)
-        }
     }
 
-    private fun fetchNewReleases() {
-        scope.launch {
+    private fun fetchNewReleases() = scope.launch {
+        val params = GetNewReleasesParams(
+            limit = ALBUM_RELEASES_LIMIT,
+            offset = 0
+        )
+        try {
             setLoading(true)
-            val params = GetNewReleasesParams(
-                limit = 10,
-                offset = 0
-            )
             withContext(context = Dispatchers.IO) { fetchNewReleasesUseCase(params) }
                 .onSuccess { result ->
                     setReleases(albums = result.albums.albums)
@@ -64,6 +60,7 @@ internal class AlbumReleasesDomainComponent(
                         onRepeat = ::fetchNewReleases
                     )
                 }
+        } finally {
             setLoading(false)
         }
     }
@@ -78,11 +75,15 @@ internal class AlbumReleasesDomainComponent(
         )
     }
 
-    private fun setReleases(albums: List<AlbumSimplifiedData>) {
-        reduce { copy(releases = albums) }
+    private fun setReleases(albums: List<AlbumSimplifiedData>) = reduce {
+        copy(releases = albums)
     }
 
-    private fun setLoading(isLoading: Boolean) {
-        reduce { copy(isLoading = isLoading) }
+    private fun setLoading(isLoading: Boolean) = reduce {
+        copy(isLoading = isLoading)
+    }
+
+    private companion object {
+        const val ALBUM_RELEASES_LIMIT = 10
     }
 }

@@ -6,11 +6,9 @@ import and.degilevich.dream.shared.feature.album.component.details.impl.componen
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchAlbumUseCase
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumResult
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistsUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsResult
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
@@ -21,9 +19,10 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.doOnCreate
-import com.arkivanov.essenty.lifecycle.doOnStop
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.inject
@@ -61,52 +60,46 @@ internal class AlbumDetailsDomainComponent(
         doOnCreate {
             fetchScreenData()
         }
-        doOnStop {
-            setLoading(false)
-        }
     }
 
-    private fun fetchScreenData() {
-        scope.launch {
+    private fun fetchScreenData() = scope.launch {
+        try {
             setLoading(true)
-            fetchAlbum().onSuccess { result ->
-                fetchArtists(
-                    artistsIds = result.album.artists.ids()
+            fetchAlbum().await().onFailure { error ->
+                toastController.showRepeatToast(
+                    error = error,
+                    onRepeat = ::fetchScreenData
+                )
+                cancel()
+            }
+            fetchArtists().await().onFailure { error ->
+                toastController.showRepeatToast(
+                    error = error,
+                    onRepeat = ::fetchScreenData
                 )
             }
+        } finally {
             setLoading(false)
         }
     }
 
-    private suspend fun fetchAlbum(): Result<GetAlbumResult> {
+    private fun fetchAlbum() = scope.async {
         val params = GetAlbumParams(
             id = state().navArgs.albumId
         )
-        return withContext(context = Dispatchers.IO) { fetchAlbumUseCase(params = params) }
+        withContext(context = Dispatchers.IO) { fetchAlbumUseCase(params = params) }
             .onSuccess { result ->
                 setAlbum(album = result.album)
             }
-            .onFailure { error ->
-                toastController.showRepeatToast(
-                    error = error,
-                    onRepeat = ::fetchScreenData
-                )
-            }
     }
 
-    private suspend fun fetchArtists(artistsIds: List<String>): Result<GetArtistsResult> {
+    private fun fetchArtists() = scope.async {
         val params = GetArtistsParams(
-            ids = artistsIds
+            ids = state().album.artists.ids()
         )
-        return withContext(context = Dispatchers.IO) { fetchArtistsUseCase(params = params) }
+        withContext(context = Dispatchers.IO) { fetchArtistsUseCase(params = params) }
             .onSuccess { result ->
                 setArtists(artists = result.artists)
-            }
-            .onFailure { error ->
-                toastController.showRepeatToast(
-                    error = error,
-                    onRepeat = ::fetchScreenData
-                )
             }
     }
 
@@ -134,15 +127,15 @@ internal class AlbumDetailsDomainComponent(
         )
     }
 
-    private fun setAlbum(album: AlbumData) {
-        reduce { copy(album = album) }
+    private fun setAlbum(album: AlbumData) = reduce {
+        copy(album = album)
     }
 
-    private fun setArtists(artists: List<ArtistData>) {
-        reduce { copy(artists = artists) }
+    private fun setArtists(artists: List<ArtistData>) = reduce {
+        copy(artists = artists)
     }
 
-    private fun setLoading(isLoading: Boolean) {
-        reduce { copy(isLoading = isLoading) }
+    private fun setLoading(isLoading: Boolean) = reduce {
+        copy(isLoading = isLoading)
     }
 }

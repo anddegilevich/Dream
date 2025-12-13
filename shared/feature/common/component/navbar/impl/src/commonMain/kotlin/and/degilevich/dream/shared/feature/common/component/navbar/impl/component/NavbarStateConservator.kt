@@ -10,7 +10,7 @@ internal class NavbarStateConservator : ComponentStateConservator<NavbarState> {
     override val key: String = NavbarState::class.className()
     override val initialState: NavbarState = NavbarState(
         items = NavbarItem.entries,
-        selectedItem = NavbarItem.HOME
+        activeItem = NavbarItem.HOME
     )
     override val serializer: KSerializer<NavbarState> = NavbarState.serializer()
 }

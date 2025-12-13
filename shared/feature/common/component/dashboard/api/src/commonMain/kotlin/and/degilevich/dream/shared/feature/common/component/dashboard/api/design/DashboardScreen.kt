@@ -3,10 +3,10 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.api.desig
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.feature.album.component.releases.api.design.AlbumReleasesCarousel
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.children.DashboardSection
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
 import and.degilevich.dream.shared.foundation.compose.ext.plus
-import and.degilevich.dream.shared.foundation.decompose.compose.component.collectState
+import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
@@ -31,7 +31,7 @@ fun DashboardScreen(
     modifier: Modifier = Modifier
 ) {
 
-    val sections by component.sections.subscribeAsState()
+    val items by component.items.subscribeAsState()
     val lazyListState = rememberLazyListState()
 
     LazyColumn(
@@ -43,14 +43,14 @@ fun DashboardScreen(
             .plus(WindowInsets.statusBars.asPaddingValues())
             .plus(WindowInsets.navigationBars.asPaddingValues())
     ) {
-        identifiedItems(items = sections.items) { config ->
-            val sectionComponent = remember(config) { component.sections[config] }
+        identifiedItems(items = items.items) { config ->
+            val itemComponent = remember(config) { component.items[config] }
 
-            when (sectionComponent) {
-                is DashboardSection.AlbumReleases -> {
+            when (itemComponent) {
+                is DashboardItem.AlbumReleases -> {
                     AlbumReleasesCarousel(
-                        state = sectionComponent.collectState(),
-                        onIntent = sectionComponent::handleIntent
+                        state = itemComponent.state(),
+                        onIntent = itemComponent::handleIntent
                     )
                 }
             }
@@ -58,10 +58,8 @@ fun DashboardScreen(
     }
 
     ChildItemsLifecycleController(
-        items = component.sections,
+        items = component.items,
         lazyListState = lazyListState,
-        forwardPreloadCount = 5,
-        backwardPreloadCount = 5,
-        itemIndexConverter = { it },
+        itemIndexConverter = { it }
     )
 }

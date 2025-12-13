@@ -2,8 +2,8 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.api.previ
 
 import and.degilevich.dream.shared.feature.album.component.releases.api.preview.component.AlbumReleasesPreviewComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.children.DashboardSection
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardSectionConfig
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.foundation.decompose.preview.PreviewComponentContext
 import and.degilevich.dream.shared.foundation.decompose.preview.PreviewLazyChildItems
 import com.arkivanov.decompose.ComponentContext
@@ -15,11 +15,11 @@ class DashboardPreviewComponent :
     DashboardComponent,
     ComponentContext by PreviewComponentContext() {
 
-    override val sections: LazyChildItems<DashboardSectionConfig, DashboardSection> = PreviewLazyChildItems(
+    override val items: LazyChildItems<DashboardItemConfig, DashboardItem> = PreviewLazyChildItems(
         items = configs.associateWith { config ->
             when (config) {
-                DashboardSectionConfig.AlbumReleases -> {
-                    DashboardSection.AlbumReleases(
+                DashboardItemConfig.AlbumReleases -> {
+                    DashboardItem.AlbumReleases(
                         component = AlbumReleasesPreviewComponent()
                     )
                 }
@@ -29,7 +29,7 @@ class DashboardPreviewComponent :
 
     private companion object {
         private val configs = listOf(
-            DashboardSectionConfig.AlbumReleases
+            DashboardItemConfig.AlbumReleases
         )
     }
 }

@@ -29,14 +29,12 @@ internal class SplashDomainComponent(
         }
     }
 
-    private fun processNavigation() {
-        scope.launch {
-            delay(1.seconds)
-            navigateToHomePage()
-        }
+    private fun processNavigation() = scope.launch {
+        delay(1.seconds)
+        navigateToHome()
     }
 
-    private fun navigateToHomePage() {
-        navigator.screenNavigator.replaceCurrent(ScreenConfig.Dashboard)
+    private fun navigateToHome() {
+        navigator.screenNavigator.replaceCurrent(ScreenConfig.Home)
     }
 }

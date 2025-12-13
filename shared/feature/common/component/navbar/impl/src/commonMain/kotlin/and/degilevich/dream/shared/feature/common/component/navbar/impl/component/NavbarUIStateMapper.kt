@@ -28,7 +28,7 @@ internal class NavbarUIStateMapper : Mapper<NavbarState, NavbarUIState>, KoinCom
     private fun mapToItems(state: NavbarState): ImmutableList<NavbarItemUIData> {
         return with(state) {
             items.map { item ->
-                val isSelected = item == selectedItem
+                val isSelected = item == activeItem
                 NavbarItemUIData(
                     id = item.id,
                     icon = mapItemToIcon(

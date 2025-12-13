@@ -4,8 +4,8 @@ import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed interface DashboardSectionConfig : Identified {
-    data object AlbumReleases : DashboardSectionConfig {
+sealed interface DashboardItemConfig : Identified {
+    data object AlbumReleases : DashboardItemConfig {
         override val id: String = "albumReleases"
     }
 }

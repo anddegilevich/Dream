@@ -13,7 +13,7 @@ sealed interface ScreenConfig {
     data object Splash : ScreenConfig
 
     @Serializable
-    data object Dashboard : ScreenConfig
+    data object Home : ScreenConfig
 
     // Artist
 
@@ -33,8 +33,4 @@ sealed interface ScreenConfig {
     data class TrackDetails(
         val navArgs: TrackDetailsNavArgs
     ) : ScreenConfig
-
-    // Search
-    @Serializable
-    data object Search : ScreenConfig
 }

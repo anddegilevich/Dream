@@ -2,10 +2,10 @@ package and.degilevich.dream.shared.feature.album.design.api.preview.skeleton
 
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.album.design.api.design.skeleton.SkeletonAlbumCard
-import and.degilevich.dream.shared.foundation.compose.preview.DayNightPreviews
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.runtime.Composable
 
-@DayNightPreviews
+@PreviewLightDark
 @Composable
 private fun SkeletonAlbumCardPreview() {
     ComposeAppTheme {

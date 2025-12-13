@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFac
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
 @Immutable
 data class SearchUIState(
@@ -15,7 +16,7 @@ data class SearchUIState(
         override fun empty(): SearchUIState {
             return SearchUIState(
                 query = "",
-                items = Skeleton.Loading
+                items = Skeleton.Value(persistentListOf())
             )
         }
     }

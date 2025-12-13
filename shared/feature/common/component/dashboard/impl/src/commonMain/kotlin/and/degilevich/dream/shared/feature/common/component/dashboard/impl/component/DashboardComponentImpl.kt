@@ -2,8 +2,8 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.impl.comp
 
 import and.degilevich.dream.shared.feature.album.component.releases.impl.component.AlbumReleasesComponentImpl
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.children.DashboardSection
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardSectionConfig
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.template.component.impl.BaseComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
@@ -20,26 +20,27 @@ class DashboardComponentImpl(
 ),
     DashboardComponent {
 
-    private val sectionsNavigation = ItemsNavigation<DashboardSectionConfig>()
+    private val itemsNavigation = ItemsNavigation<DashboardItemConfig>()
 
-    override val sections: LazyChildItems<DashboardSectionConfig, DashboardSection> = childItems(
-        source = sectionsNavigation,
-        serializer = DashboardSectionConfig.serializer(),
+    override val items: LazyChildItems<DashboardItemConfig, DashboardItem> = childItems(
+        source = itemsNavigation,
+        serializer = DashboardItemConfig.serializer(),
         initialItems = {
             Items(
-                items = listOf(DashboardSectionConfig.AlbumReleases)
+                items = listOf(DashboardItemConfig.AlbumReleases)
             )
         },
-        childFactory = ::sectionFactory
+        key = "items",
+        childFactory = ::itemFactory
     )
 
-    private fun sectionFactory(
-        config: DashboardSectionConfig,
+    private fun itemFactory(
+        config: DashboardItemConfig,
         componentContext: ComponentContext
-    ): DashboardSection {
+    ): DashboardItem {
         return when (config) {
-            DashboardSectionConfig.AlbumReleases -> {
-                DashboardSection.AlbumReleases(
+            DashboardItemConfig.AlbumReleases -> {
+                DashboardItem.AlbumReleases(
                     component = AlbumReleasesComponentImpl(
                         componentContext = componentContext
                     )

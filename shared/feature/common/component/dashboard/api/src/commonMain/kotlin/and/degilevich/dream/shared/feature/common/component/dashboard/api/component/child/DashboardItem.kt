@@ -1,13 +1,13 @@
-package and.degilevich.dream.shared.feature.common.component.dashboard.api.component.children
+package and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child
 
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesComponent
 import androidx.compose.runtime.Stable
 
 @Stable
-sealed interface DashboardSection {
+sealed interface DashboardItem {
 
     @Stable
     class AlbumReleases(
         component: AlbumReleasesComponent
-    ) : DashboardSection, AlbumReleasesComponent by component
+    ) : DashboardItem, AlbumReleasesComponent by component
 }

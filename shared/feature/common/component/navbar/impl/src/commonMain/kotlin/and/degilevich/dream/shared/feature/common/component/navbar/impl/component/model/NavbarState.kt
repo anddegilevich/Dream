@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class NavbarState(
     val items: List<NavbarItem>,
-    val selectedItem: NavbarItem
+    val activeItem: NavbarItem
 )
