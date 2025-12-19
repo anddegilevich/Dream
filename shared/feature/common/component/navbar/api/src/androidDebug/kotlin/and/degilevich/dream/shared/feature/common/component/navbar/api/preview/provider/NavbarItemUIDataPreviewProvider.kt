@@ -2,10 +2,16 @@ package and.degilevich.dream.shared.feature.common.component.navbar.api.preview.
 
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItemUIData
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
-object NavbarItemUIDataPreviewProvider {
+class NavbarItemUIDataPreviewProvider : PreviewParameterProvider<NavbarItemUIData> {
+
+    override val values: Sequence<NavbarItemUIData> = sequenceOf(
+        provide()
+    )
+
     fun provide(): NavbarItemUIData {
         return NavbarItemUIData.empty().copy(
             text = "Home",

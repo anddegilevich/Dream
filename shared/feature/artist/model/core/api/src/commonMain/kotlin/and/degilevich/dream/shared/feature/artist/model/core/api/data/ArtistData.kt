@@ -25,7 +25,7 @@ data class ArtistData(
                 artistType = ArtistType.UNKNOWN,
                 popularity = 0,
                 genres = emptyList(),
-                followers = ArtistFollowersData.Companion.empty(),
+                followers = ArtistFollowersData.empty(),
                 images = emptyList()
             )
         }

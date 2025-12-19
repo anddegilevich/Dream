@@ -14,7 +14,7 @@ internal class ArtistDetailsStateConservator(
     override val initialState: ArtistDetailsState = ArtistDetailsState(
         navArgs = navArgs,
         isLoading = true,
-        artist = ArtistData.Companion.empty(),
+        artist = ArtistData.empty(),
         topTracks = emptyList(),
         albums = emptyList()
     )

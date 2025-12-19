@@ -14,7 +14,7 @@ internal class AlbumDetailsStateConservator(
     override val initialState: AlbumDetailsState = AlbumDetailsState(
         navArgs = navArgs,
         isLoading = true,
-        album = AlbumData.Companion.empty(),
+        album = AlbumData.empty(),
         artists = emptyList()
     )
     override val serializer: KSerializer<AlbumDetailsState> = AlbumDetailsState.serializer()

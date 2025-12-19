@@ -25,8 +25,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun AlbumReleasesCarousel(
     state: AlbumReleasesUIState,
-    onIntent: (AlbumReleasesIntent) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onIntent: (AlbumReleasesIntent) -> Unit
 ) {
     Column(
         modifier = modifier

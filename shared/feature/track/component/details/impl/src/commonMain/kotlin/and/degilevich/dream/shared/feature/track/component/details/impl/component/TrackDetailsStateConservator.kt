@@ -14,7 +14,7 @@ internal class TrackDetailsStateConservator(
     override val initialState: TrackDetailsState = TrackDetailsState(
         navArgs = navArgs,
         isLoading = false,
-        track = TrackData.Companion.empty()
+        track = TrackData.empty()
     )
     override val serializer: KSerializer<TrackDetailsState> = TrackDetailsState.serializer()
 }

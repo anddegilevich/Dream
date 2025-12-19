@@ -9,6 +9,6 @@ import and.degilevich.dream.shared.foundation.decompose.preview.PreviewMVICompon
 
 class AlbumReleasesPreviewComponent :
     PreviewMVIComponent<AlbumReleasesUIState, AlbumReleasesIntent, AlbumReleasesSideEffect>(
-        state = AlbumReleasesUIStatePreviewProvider.provide()
+        state = AlbumReleasesUIStatePreviewProvider().provide()
     ),
     AlbumReleasesComponent

@@ -2,10 +2,16 @@ package and.degilevich.dream.shated.feature.track.design.api.preview.provider
 
 import and.degilevich.dream.shared.foundation.primitive.collections.persistentList.buildPersistentList
 import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
 
 @Suppress("MagicNumber")
-object TrackCardUIDataPreviewProvider {
+class TrackCardUIDataPreviewProvider : PreviewParameterProvider<TrackCardUIData> {
+
+    override val values: Sequence<TrackCardUIData> = sequenceOf(
+        provide()
+    )
+
     fun provide(): TrackCardUIData {
         return TrackCardUIData.empty().copy(
             number = "1",

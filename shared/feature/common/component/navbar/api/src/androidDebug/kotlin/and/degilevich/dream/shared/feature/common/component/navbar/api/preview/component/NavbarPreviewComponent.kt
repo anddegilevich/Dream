@@ -9,6 +9,6 @@ import and.degilevich.dream.shared.foundation.decompose.preview.PreviewMVICompon
 
 class NavbarPreviewComponent :
     PreviewMVIComponent<NavbarUIState, NavbarIntent, NavbarSideEffect>(
-        state = NavbarUIStatePreviewProvider.provide()
+        state = NavbarUIStatePreviewProvider().provide()
     ),
     NavbarComponent

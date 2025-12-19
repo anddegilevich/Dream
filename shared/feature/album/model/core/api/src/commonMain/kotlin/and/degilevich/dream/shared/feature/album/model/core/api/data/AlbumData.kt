@@ -32,7 +32,7 @@ data class AlbumData(
                 releaseDate = "",
                 artists = emptyList(),
                 images = emptyList(),
-                tracks = AlbumTracksData.Companion.empty(),
+                tracks = AlbumTracksData.empty(),
                 label = "",
                 popularity = 0
             )

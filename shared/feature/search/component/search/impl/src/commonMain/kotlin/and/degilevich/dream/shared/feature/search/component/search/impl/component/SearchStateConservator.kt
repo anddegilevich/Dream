@@ -11,7 +11,7 @@ internal class SearchStateConservator : ComponentStateConservator<SearchState> {
     override val initialState: SearchState = SearchState(
         isLoading = false,
         query = "",
-        searchResult = SearchResult.Companion.empty()
+        searchResult = SearchResult.empty()
     )
     override val serializer: KSerializer<SearchState> = SearchState.serializer()
 }
