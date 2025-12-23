@@ -6,6 +6,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.feature.album.component.releases.api)
+            api(projects.shared.feature.category.component.list.api)
         }
     }
 }

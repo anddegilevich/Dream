@@ -170,6 +170,18 @@ include(":shared:feature:search:design:impl")
 include(":shared:feature:search:component:search:api")
 include(":shared:feature:search:component:search:impl")
 
+// Category
+include(":shared:feature:category:model:core:api")
+
+include(":shared:feature:category:source:api")
+include(":shared:feature:category:source:impl")
+
+include(":shared:feature:category:domain:api")
+include(":shared:feature:category:domain:impl")
+
+include(":shared:feature:category:component:list:api")
+include(":shared:feature:category:component:list:impl")
+
 // =====================================================================================================================
 // Navigation
 

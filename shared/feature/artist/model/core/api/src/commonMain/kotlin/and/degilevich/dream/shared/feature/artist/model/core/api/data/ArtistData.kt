@@ -17,6 +17,7 @@ data class ArtistData(
     val followers: ArtistFollowersData,
     val images: List<ImageObjectData>
 ) : AbstractIdentified(), ArtistInfo {
+
     companion object : EmptyFactory<ArtistData> {
         override fun empty(): ArtistData {
             return ArtistData(

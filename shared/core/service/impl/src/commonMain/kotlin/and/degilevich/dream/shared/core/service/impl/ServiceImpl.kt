@@ -15,6 +15,10 @@ import and.degilevich.dream.shared.core.service.api.model.method.getArtistTopTra
 import and.degilevich.dream.shared.core.service.api.model.method.getArtistTopTracks.GetArtistTopTracksResponse
 import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsRequest
 import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getCategories.GetCategoriesRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getCategories.GetCategoriesResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getCategory.GetCategoryRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getCategory.GetCategoryResponse
 import and.degilevich.dream.shared.core.service.api.model.method.getNewReleases.GetNewReleasesRequest
 import and.degilevich.dream.shared.core.service.api.model.method.getNewReleases.GetNewReleasesResponse
 import and.degilevich.dream.shared.core.service.api.model.method.getRecommendations.GetRecommendationsRequest
@@ -99,6 +103,20 @@ internal class ServiceImpl(
             parameter("limit", request.limit)
             parameter("offset", request.offset)
             parameter("type", request.type?.joinToString(","))
+        }.foldBody()
+    }
+
+    override suspend fun getCategories(request: GetCategoriesRequest): Result<GetCategoriesResponse> {
+        return remoteClient.getCatching {
+            url("browse/categories")
+            parameter("limit", request.limit)
+            parameter("offset", request.offset)
+        }.foldBody()
+    }
+
+    override suspend fun getCategory(request: GetCategoryRequest): Result<GetCategoryResponse> {
+        return remoteClient.getCatching {
+            url("browse/categories/${request.categoryId}")
         }.foldBody()
     }
 }

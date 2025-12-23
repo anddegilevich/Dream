@@ -12,6 +12,10 @@ import and.degilevich.dream.shared.core.service.api.model.method.getArtistTopTra
 import and.degilevich.dream.shared.core.service.api.model.method.getArtistTopTracks.GetArtistTopTracksResponse
 import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsRequest
 import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getCategories.GetCategoriesRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getCategories.GetCategoriesResponse
+import and.degilevich.dream.shared.core.service.api.model.method.getCategory.GetCategoryRequest
+import and.degilevich.dream.shared.core.service.api.model.method.getCategory.GetCategoryResponse
 import and.degilevich.dream.shared.core.service.api.model.method.getNewReleases.GetNewReleasesRequest
 import and.degilevich.dream.shared.core.service.api.model.method.getNewReleases.GetNewReleasesResponse
 import and.degilevich.dream.shared.core.service.api.model.method.getRecommendations.GetRecommendationsRequest
@@ -21,6 +25,7 @@ import and.degilevich.dream.shared.core.service.api.model.method.getTrack.GetTra
 import and.degilevich.dream.shared.core.service.api.model.method.search.SearchRequest
 import and.degilevich.dream.shared.core.service.api.model.method.search.SearchResponse
 
+@Suppress("TooManyFunctions")
 interface Service {
     // Artist
     suspend fun getArtists(request: GetArtistsRequest): Result<GetArtistsResponse>
@@ -41,4 +46,8 @@ interface Service {
 
     // Search
     suspend fun search(request: SearchRequest): Result<SearchResponse>
+
+    // Category
+    suspend fun getCategories(request: GetCategoriesRequest): Result<GetCategoriesResponse>
+    suspend fun getCategory(request: GetCategoryRequest): Result<GetCategoryResponse>
 }
