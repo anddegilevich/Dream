@@ -6,11 +6,9 @@ import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.GetTra
 
 internal class GetTrackParamsToRequestMapperImpl : GetTrackParamsToRequestMapper {
 
-    override fun map(item: GetTrackParams): GetTrackRequest {
-        return with(item) {
-            GetTrackRequest(
-                id = id
-            )
-        }
+    override fun map(item: GetTrackParams): GetTrackRequest = with(item) {
+        GetTrackRequest(
+            id = id.id
+        )
     }
 }

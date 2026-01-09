@@ -1,5 +1,5 @@
 package and.degilevich.dream.shared.foundation.abstraction.id
 
 interface Identified {
-    val id: String
+    val id: Identifier
 }

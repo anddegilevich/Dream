@@ -17,7 +17,7 @@ fun <T : Identified> LazyListScope.identifiedItems(
 ) {
     items(
         items = items,
-        key = { item -> item.id }
+        key = { item -> item.id.id }
     ) { item ->
         itemContent(item)
     }
@@ -29,7 +29,7 @@ fun <T : Identified> LazyListScope.identifiedItemsIndexed(
 ) {
     itemsIndexed(
         items = items,
-        key = { _, item -> item.id }
+        key = { _, item -> item.id.id }
     ) { index, item ->
         itemContent(index, item)
     }
@@ -41,7 +41,7 @@ fun <T : Identified> LazyGridScope.identifiedItems(
 ) {
     items(
         items = items,
-        key = { item -> item.id }
+        key = { item -> item.id.id }
     ) { item ->
         itemContent(item)
     }
@@ -53,7 +53,7 @@ fun <T : Identified> LazyGridScope.identifiedItemsIndexed(
 ) {
     itemsIndexed(
         items = items,
-        key = { _, item -> item.id }
+        key = { _, item -> item.id.id }
     ) { index, item ->
         itemContent(index, item)
     }

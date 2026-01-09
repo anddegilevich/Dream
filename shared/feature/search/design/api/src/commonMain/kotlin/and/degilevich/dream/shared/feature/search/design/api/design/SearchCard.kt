@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.feature.search.design.api.model.card.AlbumSea
 import and.degilevich.dream.shared.feature.search.design.api.model.card.ArtistSearchCardUIData
 import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.feature.search.design.api.model.card.TrackSearchCardUIData
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,7 +13,7 @@ import androidx.compose.ui.Modifier
 fun SearchCard(
     data: SearchCardUIData,
     modifier: Modifier = Modifier,
-    onClicked: (id: String) -> Unit
+    onClicked: (id: Identifier) -> Unit
 ) {
     when (data) {
         is AlbumSearchCardUIData -> {

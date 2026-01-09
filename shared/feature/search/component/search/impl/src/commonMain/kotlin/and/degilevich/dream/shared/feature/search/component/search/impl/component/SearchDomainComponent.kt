@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.feature.search.domain.api.usecase.SearchUseCa
 import and.degilevich.dream.shared.feature.search.model.core.api.dictionary.SearchType
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
@@ -84,7 +85,7 @@ internal class SearchDomainComponent(
         }
     }
 
-    private fun onItemClicked(searchItemId: String) {
+    private fun onItemClicked(searchItemId: Identifier) {
         with(state().searchResult) {
             when {
                 artists.items.ids().contains(searchItemId) -> navigateToArtist(artistId = searchItemId)
@@ -94,7 +95,7 @@ internal class SearchDomainComponent(
         }
     }
 
-    private fun navigateToArtist(artistId: String) {
+    private fun navigateToArtist(artistId: Identifier) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(artistId = artistId)
@@ -102,7 +103,7 @@ internal class SearchDomainComponent(
         )
     }
 
-    private fun navigateToAlbum(albumId: String) {
+    private fun navigateToAlbum(albumId: Identifier) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(albumId = albumId)
@@ -110,7 +111,7 @@ internal class SearchDomainComponent(
         )
     }
 
-    private fun navigateToTrack(trackId: String) {
+    private fun navigateToTrack(trackId: Identifier) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(trackId = trackId)

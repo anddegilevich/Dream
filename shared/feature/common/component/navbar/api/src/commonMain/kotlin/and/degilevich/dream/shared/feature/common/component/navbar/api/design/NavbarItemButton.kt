@@ -3,6 +3,7 @@ package and.degilevich.dream.shared.feature.common.component.navbar.api.design
 import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItemUIData
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import androidx.compose.animation.animateColorAsState
@@ -22,7 +23,7 @@ import dev.icerock.moko.resources.compose.painterResource
 fun NavbarItemButton(
     data: NavbarItemUIData,
     modifier: Modifier = Modifier,
-    onClicked: (id: String) -> Unit
+    onClicked: (id: Identifier) -> Unit
 ) {
     val iconColor by animateColorAsState(
         targetValue = if (data.isSelected) {

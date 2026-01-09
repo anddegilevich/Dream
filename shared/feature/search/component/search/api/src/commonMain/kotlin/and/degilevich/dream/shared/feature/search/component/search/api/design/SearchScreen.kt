@@ -37,7 +37,7 @@ fun SearchScreen(
     val lazyListState = rememberLazyListState()
     val imeController = rememberImeController()
 
-    OnDragLaunchedEffect(lazyListState.interactionSource) {
+    OnDragLaunchedEffect(interactionSource = lazyListState.interactionSource) {
         imeController.hide()
     }
 

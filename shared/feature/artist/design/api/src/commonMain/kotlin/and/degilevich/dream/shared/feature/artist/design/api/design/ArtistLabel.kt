@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.feature.artist.design.api.design
 
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistLabelUIData
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import androidx.compose.foundation.layout.Row
@@ -17,7 +18,7 @@ import androidx.compose.ui.unit.dp
 fun ArtistLabel(
     data: ArtistLabelUIData,
     modifier: Modifier = Modifier,
-    onClicked: (id: String) -> Unit
+    onClicked: (id: Identifier) -> Unit
 ) {
     Row(
         modifier = modifier

@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.core.service.api.model.data.track.TrackSimpli
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.ArtistSimplifiedOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackSimplifiedData
 import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.TrackSimplifiedOutputToDataMapper
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZero
 
@@ -14,7 +15,7 @@ internal class TrackSimplifiedOutputToDataMapperImpl(
     override fun map(item: TrackSimplifiedOutput): TrackSimplifiedData {
         return with(item) {
             TrackSimplifiedData(
-                id = id.orEmpty(),
+                id = Identifier(id = id.orEmpty()),
                 name = name.orEmpty(),
                 trackNumber = trackNumber.orZero(),
                 durationMs = durationMs.orZero(),

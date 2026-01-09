@@ -9,6 +9,7 @@ import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.AlbumT
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.ArtistSimplifiedOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.source.api.remote.mapper.ImageObjectOutputToDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueByIdOrElse
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZero
@@ -18,12 +19,15 @@ internal class AlbumOutputToDataMapperImpl(
     private val imageObjectOutputToDataMapper: ImageObjectOutputToDataMapper,
     private val albumTracksOutputToDataMapper: AlbumTracksOutputToDataMapper,
 ) : AlbumOutputToDataMapper {
+
     override fun map(item: AlbumOutput): AlbumData {
         return with(item) {
             AlbumData(
-                id = id.orEmpty(),
+                id = Identifier(id = id.orEmpty()),
                 name = name.orEmpty(),
-                albumType = getEnumValueByIdOrElse(albumType) { AlbumType.UNKNOWN },
+                albumType = getEnumValueByIdOrElse(
+                    id = Identifier(id = albumType.orEmpty())
+                ) { AlbumType.UNKNOWN },
                 totalTracks = totalTracks.orZero(),
                 releaseDate = releaseDate.orEmpty(),
                 artists = artists?.mapWith(artistSimplifiedOutputToDataMapper).orEmpty(),

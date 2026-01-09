@@ -6,6 +6,7 @@ import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumIcon
 import and.degilevich.dream.shared.feature.search.design.api.model.card.AlbumSearchCardUIData
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import androidx.compose.foundation.layout.Column
@@ -24,7 +25,7 @@ import dev.icerock.moko.resources.compose.stringResource
 fun AlbumSearchCard(
     data: AlbumSearchCardUIData,
     modifier: Modifier = Modifier,
-    onClicked: (id: String) -> Unit
+    onClicked: (id: Identifier) -> Unit
 ) {
     Row(
         modifier = modifier

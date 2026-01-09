@@ -8,7 +8,7 @@ internal class GetAlbumParamsToRequestMapperImpl : GetAlbumParamsToRequestMapper
     override fun map(item: GetAlbumParams): GetAlbumRequest {
         return with(item) {
             GetAlbumRequest(
-                id = id
+                id = id.id
             )
         }
     }

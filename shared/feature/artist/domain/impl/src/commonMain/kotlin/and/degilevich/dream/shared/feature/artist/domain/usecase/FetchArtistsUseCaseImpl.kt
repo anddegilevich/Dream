@@ -8,6 +8,7 @@ import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemote
 internal class FetchArtistsUseCaseImpl(
     private val artistRemoteDataSource: ArtistRemoteDataSource
 ) : FetchArtistsUseCase {
+
     override suspend fun invoke(params: GetArtistsParams): Result<GetArtistsResult> {
         return artistRemoteDataSource.getArtists(params)
     }

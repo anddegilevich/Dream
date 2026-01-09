@@ -5,11 +5,12 @@ import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.Artist
 import and.degilevich.dream.shared.feature.track.model.artifact.api.abstraction.TrackInfo
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.id.AbstractIdentified
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class TrackData(
-    override val id: String,
+    override val id: Identifier,
     override val name: String,
     val album: AlbumSimplifiedData,
     val popularity: Int,
@@ -21,7 +22,7 @@ data class TrackData(
     companion object : EmptyFactory<TrackData> {
         override fun empty(): TrackData {
             return TrackData(
-                id = "",
+                id = Identifier.empty(),
                 name = "",
                 album = AlbumSimplifiedData.empty(),
                 popularity = 0,

@@ -36,7 +36,7 @@ internal class ArtistLocalDataSourceImpl(
     }
 
     override suspend fun getArtists(params: GetArtistsParams): List<ArtistData> {
-        return artistDao.getByIds(ids = params.ids).map { entity ->
+        return artistDao.getByIds(ids = params.ids.map { it.id }).map { entity ->
             entity.mapWith(artistEntityToDataMapper)
         }
     }

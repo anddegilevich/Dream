@@ -5,11 +5,12 @@ import and.degilevich.dream.shared.feature.artist.model.artifact.api.dictionary.
 import and.degilevich.dream.shared.feature.image.model.artifact.api.data.ImageObjectData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.id.AbstractIdentified
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class ArtistData(
-    override val id: String,
+    override val id: Identifier,
     override val name: String,
     override val artistType: ArtistType,
     val popularity: Int,
@@ -19,9 +20,10 @@ data class ArtistData(
 ) : AbstractIdentified(), ArtistInfo {
 
     companion object : EmptyFactory<ArtistData> {
+
         override fun empty(): ArtistData {
             return ArtistData(
-                id = "",
+                id = Identifier.empty(),
                 name = "",
                 artistType = ArtistType.UNKNOWN,
                 popularity = 0,

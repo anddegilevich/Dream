@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.Artis
 import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.TrackOutputToDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZero
 
@@ -18,7 +19,7 @@ internal class TrackOutputToDataMapperImpl(
     override fun map(item: TrackOutput): TrackData {
         return with(item) {
             TrackData(
-                id = id.orEmpty(),
+                id = Identifier(id = id.orEmpty()),
                 name = name.orEmpty(),
                 album = album?.mapWith(albumSimplifiedOutputToDataMapper).orEmpty(AlbumSimplifiedData),
                 popularity = popularity.orZero(),

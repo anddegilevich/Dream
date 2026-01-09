@@ -9,6 +9,7 @@ import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistsUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
@@ -107,7 +108,7 @@ internal class AlbumDetailsDomainComponent(
         navigator.screenNavigator.pop()
     }
 
-    private fun navigateToArtistDetails(artistId: String) {
+    private fun navigateToArtistDetails(artistId: Identifier) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(
@@ -117,7 +118,7 @@ internal class AlbumDetailsDomainComponent(
         )
     }
 
-    private fun navigateToTrackDetails(trackId: String) {
+    private fun navigateToTrackDetails(trackId: Identifier) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(

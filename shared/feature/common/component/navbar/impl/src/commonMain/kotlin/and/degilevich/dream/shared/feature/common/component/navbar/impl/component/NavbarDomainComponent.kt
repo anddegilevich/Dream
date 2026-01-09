@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.feature.common.component.navbar.api.component
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarSideEffect
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItem
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueById
 import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
@@ -25,7 +26,7 @@ internal class NavbarDomainComponent(
         }
     }
 
-    private fun onItemClicked(id: String) {
+    private fun onItemClicked(id: Identifier) {
         val item = getEnumValueById<NavbarItem>(id = id) ?: return
         setActiveItem(item = item)
     }

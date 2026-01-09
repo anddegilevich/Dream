@@ -5,11 +5,10 @@ import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetAr
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistTopTracks.GetArtistTopTracksParams
 
 internal class GetArtistTopTracksParamsToRequestMapperImpl : GetArtistTopTracksParamsToRequestMapper {
-    override fun map(item: GetArtistTopTracksParams): GetArtistTopTracksRequest {
-        return with(item) {
-            GetArtistTopTracksRequest(
-                id = id
-            )
-        }
+
+    override fun map(item: GetArtistTopTracksParams): GetArtistTopTracksRequest = with(item) {
+        GetArtistTopTracksRequest(
+            id = id.id
+        )
     }
 }

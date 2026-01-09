@@ -2,6 +2,7 @@ package and.degilevich.dream.shated.feature.track.design.api.design
 
 import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.theme.api.Theme
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
@@ -17,7 +18,7 @@ import androidx.compose.ui.unit.dp
 fun TrackCard(
     data: TrackCardUIData,
     modifier: Modifier = Modifier,
-    onClicked: (id: String) -> Unit
+    onClicked: (id: Identifier) -> Unit
 ) {
     Row(
         modifier = modifier

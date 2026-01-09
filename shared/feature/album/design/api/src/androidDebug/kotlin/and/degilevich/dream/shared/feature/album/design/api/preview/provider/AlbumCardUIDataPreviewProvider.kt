@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.album.design.api.preview.provider
 
 import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.primitive.collections.persistentList.buildPersistentList
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
@@ -23,7 +24,7 @@ class AlbumCardUIDataPreviewProvider : PreviewParameterProvider<AlbumCardUIData>
         for (i in 1..10) {
             add(
                 AlbumCardUIData.empty().copy(
-                    id = i.toString(),
+                    id = Identifier(id = i.toString()),
                     name = "Album $i",
                     artists = "Artist $i"
                 )

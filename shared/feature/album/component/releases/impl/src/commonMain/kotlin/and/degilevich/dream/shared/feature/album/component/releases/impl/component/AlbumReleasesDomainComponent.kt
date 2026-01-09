@@ -6,6 +6,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.impl.compone
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchNewReleasesUseCase
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesParams
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
@@ -65,7 +66,7 @@ internal class AlbumReleasesDomainComponent(
         }
     }
 
-    private fun navigateToAlbum(albumId: String) {
+    private fun navigateToAlbum(albumId: Identifier) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(

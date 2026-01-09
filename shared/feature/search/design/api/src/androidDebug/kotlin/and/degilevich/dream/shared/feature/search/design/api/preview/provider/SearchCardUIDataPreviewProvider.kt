@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.feature.search.design.api.model.card.AlbumSea
 import and.degilevich.dream.shared.feature.search.design.api.model.card.ArtistSearchCardUIData
 import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.feature.search.design.api.model.card.TrackSearchCardUIData
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
@@ -39,16 +40,16 @@ class SearchCardUIDataPreviewProvider : PreviewParameterProvider<SearchCardUIDat
     fun provideList(): ImmutableList<SearchCardUIData> {
         return persistentListOf(
             ArtistSearchCardUIData.empty().copy(
-                id = "1",
+                id = Identifier(id = "1"),
                 name = "Artist"
             ),
             AlbumSearchCardUIData.empty().copy(
-                id = "2",
+                id = Identifier(id = "2"),
                 name = "Album",
                 artistName = "Artist"
             ),
             TrackSearchCardUIData.empty().copy(
-                id = "3",
+                id = Identifier(id = "3"),
                 name = "Track",
                 artistName = "Artist"
             )

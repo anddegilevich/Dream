@@ -56,7 +56,7 @@ fun <T : Identified> LazyListScope.identifiedSkeletonItems(
 ) {
     skeletonItems(
         skeleton = skeleton,
-        key = { item -> item.id },
+        key = { item -> item.id.id },
         loadingContent = loadingContent,
         itemContent = itemContent
     )
@@ -70,7 +70,7 @@ fun <T : Identified> LazyListScope.identifiedSkeletonItems(
 ) {
     skeletonItems(
         skeleton = skeleton,
-        key = { item -> item.id },
+        key = { item -> item.id.id },
         loadingItemsCount = loadingItemsCount,
         loadingItemContent = loadingItemContent,
         itemContent = itemContent
