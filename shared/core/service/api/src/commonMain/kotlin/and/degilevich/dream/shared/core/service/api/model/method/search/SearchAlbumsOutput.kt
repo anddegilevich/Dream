@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SearchAlbumsOutput(
+
     @SerialName("items")
     val items: List<AlbumSimplifiedOutput>?
 )

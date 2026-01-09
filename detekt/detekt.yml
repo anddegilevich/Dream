@@ -138,6 +138,8 @@ TwitterCompose:
     active: true
   ModifierMissing:
     active: true
+    ignoreAnnotated:
+      - 'Preview'
   ModifierReused:
     active: true
   ModifierWithoutDefault:

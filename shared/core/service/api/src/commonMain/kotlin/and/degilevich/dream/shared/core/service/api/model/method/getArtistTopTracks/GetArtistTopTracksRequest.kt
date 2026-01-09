@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GetArtistTopTracksRequest(
+
     @SerialName("id")
     val id: String
 )

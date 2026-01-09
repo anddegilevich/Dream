@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GetArtistTopTracksResponse(
+
     @SerialName("tracks")
     val tracks: List<TrackOutput>?
 )

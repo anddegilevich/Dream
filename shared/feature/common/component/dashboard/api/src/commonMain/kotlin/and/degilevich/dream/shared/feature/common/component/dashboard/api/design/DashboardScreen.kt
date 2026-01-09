@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.api.desig
 
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.feature.album.component.releases.api.design.AlbumReleasesCarousel
+import and.degilevich.dream.shared.feature.category.component.list.api.design.CategoryListCarousel
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
@@ -49,6 +50,13 @@ fun DashboardScreen(
             when (itemComponent) {
                 is DashboardItem.AlbumReleases -> {
                     AlbumReleasesCarousel(
+                        state = itemComponent.state(),
+                        onIntent = itemComponent::handleIntent
+                    )
+                }
+
+                is DashboardItem.CategoryList -> {
+                    CategoryListCarousel(
                         state = itemComponent.state(),
                         onIntent = itemComponent::handleIntent
                     )

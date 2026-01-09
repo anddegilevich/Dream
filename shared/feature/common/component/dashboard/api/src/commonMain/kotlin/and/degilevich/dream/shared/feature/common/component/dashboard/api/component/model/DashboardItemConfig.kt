@@ -6,7 +6,14 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 sealed interface DashboardItemConfig : Identified {
+
+    @Serializable
     data object AlbumReleases : DashboardItemConfig {
         override val id: Identifier = Identifier("albumReleases")
+    }
+
+    @Serializable
+    data object CategoryList : DashboardItemConfig {
+        override val id: Identifier = Identifier("categoryList")
     }
 }

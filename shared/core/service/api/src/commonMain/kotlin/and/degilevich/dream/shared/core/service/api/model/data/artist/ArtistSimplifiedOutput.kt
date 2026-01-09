@@ -5,10 +5,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ArtistSimplifiedOutput(
+
     @SerialName("id")
     val id: String?,
+
     @SerialName("name")
     val name: String?,
+
     @SerialName("type")
     val artistType: String?
 )

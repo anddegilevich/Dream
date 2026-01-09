@@ -12,7 +12,7 @@ internal class GetCategoriesResponseToResultMapperImpl(
 
     override fun map(item: GetCategoriesResponse): GetCategoriesResult = with(item) {
         GetCategoriesResult(
-            categories = items?.mapWith(categoryOutputToDataMapper).orEmpty()
+            categories = categories?.items?.mapWith(categoryOutputToDataMapper).orEmpty()
         )
     }
 }

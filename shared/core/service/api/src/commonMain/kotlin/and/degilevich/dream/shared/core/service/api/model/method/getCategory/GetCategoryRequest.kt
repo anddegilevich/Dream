@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GetCategoryRequest(
+
     @SerialName("category_id")
     val categoryId: String
 )

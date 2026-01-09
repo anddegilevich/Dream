@@ -10,4 +10,8 @@
     <color name="spanish_gray">#9C9C9C</color>
     <color name="philippine_silver">#B3B3B3</color>
     <color name="charleston_grey">#282828</color>
+
+    <color name="pallet_purple">#9854B2</color>
+    <color name="pallet_orange">#CF4321</color>
+    <color name="pallet_blue">#3371E4</color>
 </resources>

@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.feature.album.component.releases.api.design
 
 import and.degilevich.dream.Res
-import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
@@ -29,9 +28,7 @@ fun AlbumReleasesCarousel(
     onIntent: (AlbumReleasesIntent) -> Unit
 ) {
     Column(
-        modifier = modifier
-            .themeBackground()
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
     ) {
         Text(
             modifier = Modifier.padding(horizontal = 16.dp),

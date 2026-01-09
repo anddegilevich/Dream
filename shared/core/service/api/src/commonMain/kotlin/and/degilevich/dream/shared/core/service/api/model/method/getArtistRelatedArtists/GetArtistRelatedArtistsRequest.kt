@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GetArtistRelatedArtistsRequest(
+
     @SerialName("id")
     val id: String
 )

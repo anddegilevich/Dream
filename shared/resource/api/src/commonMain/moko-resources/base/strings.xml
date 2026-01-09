@@ -13,6 +13,7 @@
     <string name="title_new_releases">New releases</string>
     <string name="title_top_tracks">Top tracks</string>
     <string name="title_albums">Albums</string>
+    <string name="title_categories">Categories</string>
 
     <string name="button_back">Back</string>
     <string name="button_subscribe">Subscribe</string>

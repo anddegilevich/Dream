@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.api.preview.component
 
 import and.degilevich.dream.shared.feature.album.component.releases.api.preview.component.AlbumReleasesPreviewComponent
+import and.degilevich.dream.shared.feature.category.component.list.api.preview.component.CategoryListPreviewComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
@@ -18,11 +19,13 @@ class DashboardPreviewComponent :
     override val items: LazyChildItems<DashboardItemConfig, DashboardItem> = PreviewLazyChildItems(
         items = configs.associateWith { config ->
             when (config) {
-                DashboardItemConfig.AlbumReleases -> {
-                    DashboardItem.AlbumReleases(
-                        component = AlbumReleasesPreviewComponent()
-                    )
-                }
+                is DashboardItemConfig.AlbumReleases -> DashboardItem.AlbumReleases(
+                    component = AlbumReleasesPreviewComponent()
+                )
+
+                is DashboardItemConfig.CategoryList -> DashboardItem.CategoryList(
+                    component = CategoryListPreviewComponent()
+                )
             }
         }
     )

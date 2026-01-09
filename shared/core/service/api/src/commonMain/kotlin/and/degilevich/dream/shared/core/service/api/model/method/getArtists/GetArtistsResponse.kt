@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GetArtistsResponse(
+
     @SerialName("artists")
     val artists: List<ArtistOutput>?
 )

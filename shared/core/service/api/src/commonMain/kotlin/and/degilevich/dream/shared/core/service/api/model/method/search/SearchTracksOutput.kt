@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SearchTracksOutput(
+
     @SerialName("items")
     val items: List<TrackOutput>?
 )

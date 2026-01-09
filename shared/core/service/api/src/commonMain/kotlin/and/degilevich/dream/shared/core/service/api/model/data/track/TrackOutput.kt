@@ -7,18 +7,25 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TrackOutput(
+
     @SerialName("id")
     val id: String?,
+
     @SerialName("name")
     val name: String?,
+
     @SerialName("album")
     val album: AlbumSimplifiedOutput?,
+
     @SerialName("popularity")
     val popularity: Int?,
+
     @SerialName("track_number")
     val trackNumber: Int?,
+
     @SerialName("duration_ms")
     val durationMs: Int?,
+
     @SerialName("artists")
     val artists: List<ArtistSimplifiedOutput>?
 )

@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AlbumTracksOutput(
+
     @SerialName("items")
     val items: List<TrackSimplifiedOutput>?
 )

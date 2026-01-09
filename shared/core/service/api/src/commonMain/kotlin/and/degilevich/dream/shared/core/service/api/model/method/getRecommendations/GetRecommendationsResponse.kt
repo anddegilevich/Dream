@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GetRecommendationsResponse(
+
     @SerialName("tracks")
     val tracks: List<TrackOutput>?
 )

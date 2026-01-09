@@ -6,10 +6,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CategoryOutput(
+
     @SerialName("id")
     val id: String?,
+
     @SerialName("name")
     val name: String?,
+
     @SerialName("icons")
     val icons: List<ImageObjectOutput>?
 )

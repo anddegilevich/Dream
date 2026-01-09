@@ -6,8 +6,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class NewReleasesAlbumsOutput(
+
     @SerialName("total")
     val total: Int?,
+
     @SerialName("items")
     val items: List<AlbumSimplifiedOutput>?
 )
