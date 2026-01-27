@@ -14,6 +14,7 @@ internal class TemplateSourceImplPlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.android.library)
                 apply(libs().plugins.project.multiplatform)
+                apply(libs().plugins.project.coroutines)
                 apply(libs().plugins.project.serialization)
                 apply(libs().plugins.project.koin)
             }

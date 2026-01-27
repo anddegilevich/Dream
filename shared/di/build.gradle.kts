@@ -16,6 +16,7 @@ kotlin {
             // Core
             implementation(projects.shared.core.datetime.impl)
             implementation(projects.shared.core.storage.impl)
+            implementation(projects.shared.core.crypto.impl)
             implementation(projects.shared.core.client.impl)
             implementation(projects.shared.core.service.impl)
             implementation(projects.shared.core.db.impl)

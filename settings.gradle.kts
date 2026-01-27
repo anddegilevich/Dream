@@ -59,6 +59,9 @@ include(":shared:core:service:impl")
 include(":shared:core:storage:api")
 include(":shared:core:storage:impl")
 
+include(":shared:core:crypto:api")
+include(":shared:core:crypto:impl")
+
 include(":shared:core:db:api")
 include(":shared:core:db:impl")
 

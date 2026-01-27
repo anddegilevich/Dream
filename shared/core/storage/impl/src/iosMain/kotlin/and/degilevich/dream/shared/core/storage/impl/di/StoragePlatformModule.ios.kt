@@ -1,11 +1,11 @@
 package and.degilevich.dream.shared.core.storage.impl.di
 
-import and.degilevich.dream.shared.core.storage.impl.vault.KVaultFactory
-import and.degilevich.dream.shared.core.storage.impl.vault.KVaultFactoryImpl
-import org.koin.core.module.dsl.factoryOf
+import and.degilevich.dream.shared.core.storage.impl.dataStore.DataStoreFactory
+import and.degilevich.dream.shared.core.storage.impl.dataStore.DataStoreFactoryImpl
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 internal actual fun storagePlatformModule() = module {
-    factoryOf(::KVaultFactoryImpl) bind KVaultFactory::class
+    singleOf(::DataStoreFactoryImpl) bind DataStoreFactory::class
 }

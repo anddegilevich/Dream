@@ -52,7 +52,7 @@ Here is the list of frameworks, that were used in this project:
 * **Dependency Injection** - [Koin](https://insert-koin.io)
 * **HTTP Client** - [Ktor](https://ktor.io)
 * **Local Database** - [Room](https://developer.android.com/kotlin/multiplatform/room)
-* **Preference Storage** - [KVault](https://github.com/Liftric/KVault)
+* **Preference Storage** - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
 * **Resources** - [MOKO resources](https://github.com/icerockdev/moko-resources)
 * **Logger** - [Napier](https://github.com/AAkira/Napier)
 * **Image Loading** - [Coil](https://github.com/coil-kt/coil)

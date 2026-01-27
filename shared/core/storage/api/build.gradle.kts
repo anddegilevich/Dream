@@ -1,14 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
-}
-
-kotlin {
-    sourceSets {
-        commonMain.dependencies {
-
-        }
-    }
+    alias(libs.plugins.project.coroutines)
+    alias(libs.plugins.project.serialization)
 }
 
 android {

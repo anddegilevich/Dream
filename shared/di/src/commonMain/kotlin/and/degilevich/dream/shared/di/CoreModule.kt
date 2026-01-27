@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.di
 
 import and.degilevich.dream.shared.core.client.impl.di.clientModule
+import and.degilevich.dream.shared.core.crypto.impl.di.cryptoModule
 import and.degilevich.dream.shared.core.datetime.impl.di.datetimeModule
 import and.degilevich.dream.shared.core.db.impl.di.dbModule
 import and.degilevich.dream.shared.core.service.impl.di.serviceModule
@@ -10,6 +11,7 @@ import org.koin.dsl.module
 
 internal fun coreModule() = module {
     includes(storageModule())
+    includes(cryptoModule())
     includes(clientModule())
     includes(serviceModule())
     includes(datetimeModule())

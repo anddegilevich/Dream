@@ -1,9 +1,8 @@
 package and.degilevich.dream.shared.template.source.impl.storage
 
 import and.degilevich.dream.shared.core.storage.api.PreferenceStorage
-import and.degilevich.dream.shared.foundation.serialization.decodeFromJson
-import and.degilevich.dream.shared.foundation.serialization.encodeToJson
 import and.degilevich.dream.shared.template.source.api.storage.Storage
+import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.KSerializer
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -15,26 +14,29 @@ abstract class BaseStorage<T>(
 
     private val preferenceStorage: PreferenceStorage by inject()
 
-    override fun save(value: T) {
-        value.encodeToJson(serializer = serializer).onSuccess { encodedValue ->
-            preferenceStorage.save(
-                key = key,
-                value = encodedValue
-            )
-        }
-    }
-
-    override fun clear(): Boolean {
-        return preferenceStorage.clear(key = key)
-    }
-
-    override fun read(): Result<T> {
-        return preferenceStorage.read(key = key)?.decodeFromJson(deserializer = serializer) ?: Result.failure(
-            NullPointerException("There is no value with the key $key in preferences")
+    override suspend fun save(value: T) {
+        preferenceStorage.save(
+            key = key,
+            value = value,
+            serializer = serializer
         )
     }
 
-    override fun readOrNull(): T? {
-        return read().getOrNull()
+    override suspend fun clear() {
+        preferenceStorage.clear(key = key)
+    }
+
+    override suspend fun read(): T? {
+        return preferenceStorage.read(
+            key = key,
+            serializer = serializer
+        )
+    }
+
+    override fun observe(): Flow<T?> {
+        return preferenceStorage.observe(
+            key = key,
+            serializer = serializer
+        )
     }
 }

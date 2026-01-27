@@ -70,7 +70,7 @@ internal class TokenClientImpl(
         }
     }
 
-    private fun handleSuccessGetToken(tokens: Tokens) {
+    private suspend fun handleSuccessGetToken(tokens: Tokens) {
         tokensStorage.save(tokens)
     }
 
