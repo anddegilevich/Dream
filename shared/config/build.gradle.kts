@@ -4,13 +4,14 @@ import java.util.Properties
 import java.util.regex.Pattern
 
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.buildkonfig)
     alias(libs.plugins.project.multiplatform)
 }
 
-android {
-    namespace = "and.degilevich.dream.shared.config"
+kotlin {
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.config"
+    }
 }
 
 val prodFlavor = "prod"
@@ -70,6 +71,7 @@ buildkonfig {
         )
     }
 
+    // FIXME: Add proper mock implementation
     defaultConfigs(mockFlavor) {
         buildConfigField(
             type = FieldSpec.Type.STRING,

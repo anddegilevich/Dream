@@ -10,8 +10,8 @@ kotlin {
             implementation(projects.shared.feature.album.design.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.search.design.api"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.search.design.api"
+    }
 }

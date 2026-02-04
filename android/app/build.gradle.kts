@@ -1,25 +1,34 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.project.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.baselineprofile)
 }
 
 android {
     namespace = "and.degilevich.dream"
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
 
     defaultConfig {
         applicationId = "and.degilevich.dream"
         targetSdk = libs.versions.android.target.sdk.get().toInt()
+        minSdk = libs.versions.android.min.sdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    compileOptions {
+        val javaVersion = JavaVersion.toVersion(libs.versions.java.get().toInt())
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+    }
+
     buildTypes {
-        getByName("debug") {
+        debug {
             isDefault = true
             isDebuggable = true
         }
-        getByName("release") {
+        release {
             isMinifyEnabled = true
             isDebuggable = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -42,8 +51,10 @@ android {
             manifestPlaceholders["applicationName"] = "@string/app_name_mock"
         }
     }
+
     buildFeatures {
         buildConfig = true
+        compose = true
     }
 }
 

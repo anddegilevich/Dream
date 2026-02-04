@@ -11,8 +11,8 @@ kotlin {
             api(projects.shared.feature.common.component.home.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.common.component.home.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.common.component.home.impl"
+    }
 }

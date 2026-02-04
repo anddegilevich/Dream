@@ -8,8 +8,8 @@ kotlin {
             api(projects.shared.feature.search.model.core.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.search.domain.api"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.search.domain.api"
+    }
 }

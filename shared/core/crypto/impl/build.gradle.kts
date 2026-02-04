@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.koin)
 }
@@ -11,8 +10,7 @@ kotlin {
             api(projects.shared.core.crypto.api)
         }
     }
-}
-
-android {
-    namespace = "and.degilevich.dream.shared.core.crypto.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.core.crypto.impl"
+    }
 }

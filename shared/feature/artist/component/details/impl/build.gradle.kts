@@ -9,8 +9,8 @@ kotlin {
             api(projects.shared.feature.artist.component.details.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.artist.component.details.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.artist.component.details.impl"
+    }
 }

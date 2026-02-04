@@ -8,8 +8,8 @@ kotlin {
             api(projects.shared.feature.common.component.navbar.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.common.component.navbar.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.common.component.navbar.impl"
+    }
 }

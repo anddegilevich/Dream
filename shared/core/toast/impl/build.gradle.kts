@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.coroutines)
     alias(libs.plugins.project.koin)
@@ -12,8 +11,8 @@ kotlin {
             api(projects.shared.core.toast.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.core.toast.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.core.toast.impl"
+    }
 }

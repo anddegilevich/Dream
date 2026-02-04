@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.koin)
 }
@@ -48,8 +47,8 @@ kotlin {
             implementation(projects.shared.feature.category.domain.impl)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.di"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.di"
+    }
 }

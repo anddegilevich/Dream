@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
 }
 
@@ -10,8 +9,8 @@ kotlin {
             implementation(projects.shared.foundation.primitive)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.foundation.datetime"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.foundation.datetime"
+    }
 }

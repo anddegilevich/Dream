@@ -1,9 +1,10 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.coroutines)
 }
 
-android {
-    namespace = "and.degilevich.dream.shared.template.source.api"
+kotlin {
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.template.source.api"
+    }
 }

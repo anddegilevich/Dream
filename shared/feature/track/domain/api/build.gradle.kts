@@ -8,8 +8,8 @@ kotlin {
             api(projects.shared.feature.track.model.core.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.track.domain.api"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.track.domain.api"
+    }
 }

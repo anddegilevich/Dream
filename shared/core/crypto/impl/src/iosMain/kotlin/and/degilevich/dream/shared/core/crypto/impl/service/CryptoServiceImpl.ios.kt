@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.core.crypto.impl.service
 
 import and.degilevich.dream.shared.core.crypto.api.service.CryptoService
 
-// TODO: Implement proper encryption
+// FIXME: Implement proper encryption
 internal actual class CryptoServiceImpl : CryptoService {
 
     override fun encrypt(value: String): Result<String> {

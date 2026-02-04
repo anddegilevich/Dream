@@ -10,8 +10,8 @@ kotlin {
             api(projects.shared.feature.image.model.artifact.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.album.model.artifact.api"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.album.model.artifact.api"
+    }
 }

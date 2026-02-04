@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.compose)
     alias(libs.plugins.project.koin)
@@ -23,7 +22,6 @@ kotlin {
                 export(projects.shared.app.api)
                 export(projects.shared.di)
                 export(projects.shared.logger)
-                export(projects.shared.widget.impl)
             }
         }
     }
@@ -60,14 +58,11 @@ kotlin {
 
             implementation(projects.shared.feature.track.component.details.impl)
 
-            // Widget
-            api(projects.shared.widget.impl)
-
             api(projects.shared.app.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.app.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.app.impl"
+    }
 }

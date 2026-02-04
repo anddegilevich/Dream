@@ -8,8 +8,8 @@ kotlin {
             api(projects.shared.feature.common.component.splash.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.common.component.splash.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.common.component.splash.impl"
+    }
 }

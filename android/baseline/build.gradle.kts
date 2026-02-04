@@ -2,16 +2,23 @@ import kotlin.math.max
 
 plugins {
     alias(libs.plugins.android.test)
-    alias(libs.plugins.project.android)
     alias(libs.plugins.baselineprofile)
 }
 
 android {
     namespace = "and.degilevich.dream.baseline"
 
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
+
     defaultConfig {
-        minSdk = max(28, libs.versions.android.min.sdk.get().toInt())
         targetSdk = libs.versions.android.target.sdk.get().toInt()
+        minSdk = max(28, libs.versions.android.min.sdk.get().toInt())
+    }
+
+    compileOptions {
+        val javaVersion = JavaVersion.toVersion(libs.versions.java.get().toInt())
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
     }
 
     targetProjectPath = projects.android.app.path

@@ -9,8 +9,8 @@ kotlin {
             api(projects.shared.feature.album.domain.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.album.domain.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.album.domain.impl"
+    }
 }

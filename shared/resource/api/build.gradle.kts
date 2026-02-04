@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.compose)
     alias(libs.plugins.moko.multiplatfrom.resources)
@@ -16,14 +15,14 @@ kotlin {
             implementation(libs.moko.resources.test)
         }
     }
+
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.resource.api"
+    }
 }
 
 multiplatformResources {
     resourcesPackage = "and.degilevich.dream"
     resourcesClassName = "Res"
     iosBaseLocalizationRegion = "en"
-}
-
-android {
-    namespace = "and.degilevich.dream.shared.resource.api"
 }

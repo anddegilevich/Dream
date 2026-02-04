@@ -6,8 +6,6 @@ import org.gradle.kotlin.dsl.findByType
 import org.gradle.kotlin.dsl.the
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
-internal fun Project.androidConfig(block: AndroidExtensions.() -> Unit): Unit = block(androidExtension())
-
 internal fun Project.kotlinMultiplatformConfig(block: KotlinMultiplatformExtension.() -> Unit) {
     extensions.findByType<KotlinMultiplatformExtension>()
         ?.apply(block)

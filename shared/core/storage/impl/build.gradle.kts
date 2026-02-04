@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.coroutines)
     alias(libs.plugins.project.serialization)
@@ -23,8 +22,8 @@ kotlin {
             implementation(libs.multiplatform.settings.test)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.core.storage.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.core.storage.impl"
+    }
 }

@@ -12,7 +12,7 @@ internal class TemplateSourceImplPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             plugins {
-                apply(libs().plugins.android.library)
+                apply(libs().plugins.kmp.library)
                 apply(libs().plugins.project.multiplatform)
                 apply(libs().plugins.project.coroutines)
                 apply(libs().plugins.project.serialization)

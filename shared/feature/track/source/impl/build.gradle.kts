@@ -11,8 +11,8 @@ kotlin {
             implementation(projects.shared.feature.artist.source.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.track.source.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.track.source.impl"
+    }
 }

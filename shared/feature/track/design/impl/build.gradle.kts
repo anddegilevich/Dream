@@ -9,8 +9,8 @@ kotlin {
             implementation(projects.shared.feature.track.model.core.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.track.design.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.track.design.impl"
+    }
 }

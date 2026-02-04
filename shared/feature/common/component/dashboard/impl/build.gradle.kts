@@ -10,8 +10,8 @@ kotlin {
             api(projects.shared.feature.common.component.dashboard.api)
         }
     }
-}
 
-android {
-    namespace = "and.degilevich.dream.shared.feature.common.component.dashboard.impl"
+    androidLibrary {
+        namespace = "and.degilevich.dream.shared.feature.common.component.dashboard.impl"
+    }
 }
