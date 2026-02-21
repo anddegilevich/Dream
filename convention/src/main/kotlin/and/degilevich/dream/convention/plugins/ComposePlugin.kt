@@ -14,6 +14,7 @@ internal class ComposePlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.compose.compiler)
                 apply(libs().plugins.compose.multiplatform)
+                apply(libs().plugins.compose.stability.analyzer)
             }
             kotlinMultiplatformConfig {
                 with (sourceSets) {

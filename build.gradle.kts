@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.buildkonfig) apply false
     alias(libs.plugins.baselineprofile) apply false
     alias(libs.plugins.ktor) apply false
+    alias(libs.plugins.compose.stability.analyzer) apply false
 }
 
 buildscript {
