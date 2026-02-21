@@ -13,9 +13,6 @@ data class ArtistData(
     override val id: Identifier,
     override val name: String,
     override val artistType: ArtistType,
-    val popularity: Int,
-    val genres: List<String>,
-    val followers: ArtistFollowersData,
     val images: List<ImageObjectData>
 ) : AbstractIdentified(), ArtistInfo {
 
@@ -26,9 +23,6 @@ data class ArtistData(
                 id = Identifier.empty(),
                 name = "",
                 artistType = ArtistType.UNKNOWN,
-                popularity = 0,
-                genres = emptyList(),
-                followers = ArtistFollowersData.empty(),
                 images = emptyList()
             )
         }

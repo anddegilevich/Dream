@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 data class SearchArtistsOutput(
 
     @SerialName("items")
-    val items: List<ArtistOutput>?
+    val items: List<ArtistOutput>? = null
 )

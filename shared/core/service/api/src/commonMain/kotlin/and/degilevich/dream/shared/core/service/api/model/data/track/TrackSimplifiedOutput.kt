@@ -8,17 +8,17 @@ import kotlinx.serialization.Serializable
 data class TrackSimplifiedOutput(
 
     @SerialName("id")
-    val id: String?,
+    val id: String? = null,
 
     @SerialName("name")
-    val name: String?,
+    val name: String? = null,
 
     @SerialName("track_number")
-    val trackNumber: Int?,
+    val trackNumber: Int? = null,
 
     @SerialName("duration_ms")
-    val durationMs: Int?,
+    val durationMs: Int? = null,
 
     @SerialName("artists")
-    val artists: List<ArtistSimplifiedOutput>?
+    val artists: List<ArtistSimplifiedOutput>? = null
 )

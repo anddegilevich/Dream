@@ -9,32 +9,26 @@ import kotlinx.serialization.Serializable
 data class AlbumOutput(
 
     @SerialName("id")
-    val id: String?,
+    val id: String? = null,
 
     @SerialName("name")
-    val name: String?,
+    val name: String? = null,
 
     @SerialName("album_type")
-    val albumType: String?,
+    val albumType: String? = null,
 
     @SerialName("total_tracks")
-    val totalTracks: Int?,
+    val totalTracks: Int? = null,
 
     @SerialName("release_date")
-    val releaseDate: String?,
+    val releaseDate: String? = null,
 
     @SerialName("artists")
-    val artists: List<ArtistSimplifiedOutput>?,
+    val artists: List<ArtistSimplifiedOutput>? = null,
 
     @SerialName("images")
-    val images: List<ImageObjectOutput>?,
+    val images: List<ImageObjectOutput>? = null,
 
     @SerialName("tracks")
-    val tracks: AlbumTracksOutput?,
-
-    @SerialName("label")
-    val label: String?,
-
-    @SerialName("popularity")
-    val popularity: Int?
+    val tracks: AlbumTracksOutput? = null,
 )

@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class GetNewReleasesResponse(
 
     @SerialName("albums")
-    val albums: NewReleasesAlbumsOutput?,
+    val albums: NewReleasesAlbumsOutput? = null,
 )

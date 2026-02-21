@@ -7,11 +7,11 @@ import kotlinx.serialization.Serializable
 data class ImageObjectOutput(
 
     @SerialName("url")
-    val url: String?,
+    val url: String? = null,
 
     @SerialName("height")
-    val height: String?,
+    val height: Int? = null,
 
     @SerialName("width")
-    val width: String?,
+    val width: Int? = null,
 )

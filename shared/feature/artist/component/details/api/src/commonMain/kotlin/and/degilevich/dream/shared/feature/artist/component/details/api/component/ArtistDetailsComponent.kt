@@ -4,5 +4,7 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
+import androidx.compose.runtime.Stable
 
+@Stable
 interface ArtistDetailsComponent : MVIComponent<ArtistDetailsUIState, ArtistDetailsIntent, ArtistDetailsSideEffect>

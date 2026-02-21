@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 data class AlbumTracksOutput(
 
     @SerialName("items")
-    val items: List<TrackSimplifiedOutput>?
+    val items: List<TrackSimplifiedOutput>? = null
 )

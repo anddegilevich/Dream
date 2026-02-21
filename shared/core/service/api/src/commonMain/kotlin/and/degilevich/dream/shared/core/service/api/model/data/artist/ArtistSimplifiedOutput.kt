@@ -7,11 +7,11 @@ import kotlinx.serialization.Serializable
 data class ArtistSimplifiedOutput(
 
     @SerialName("id")
-    val id: String?,
+    val id: String? = null,
 
     @SerialName("name")
-    val name: String?,
+    val name: String? = null,
 
     @SerialName("type")
-    val artistType: String?
+    val artistType: String? = null
 )

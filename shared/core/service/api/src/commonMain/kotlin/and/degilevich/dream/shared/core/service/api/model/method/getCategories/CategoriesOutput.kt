@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 data class CategoriesOutput(
 
     @SerialName("items")
-    val items: List<CategoryOutput>?
+    val items: List<CategoryOutput>? = null
 )

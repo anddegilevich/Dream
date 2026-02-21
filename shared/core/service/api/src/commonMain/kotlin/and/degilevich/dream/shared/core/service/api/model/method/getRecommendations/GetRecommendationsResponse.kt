@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 data class GetRecommendationsResponse(
 
     @SerialName("tracks")
-    val tracks: List<TrackOutput>?
+    val tracks: List<TrackOutput>? = null
 )

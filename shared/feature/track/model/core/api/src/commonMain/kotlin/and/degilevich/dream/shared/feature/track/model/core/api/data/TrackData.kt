@@ -13,7 +13,6 @@ data class TrackData(
     override val id: Identifier,
     override val name: String,
     val album: AlbumSimplifiedData,
-    val popularity: Int,
     override val trackNumber: Int,
     override val durationMs: Int,
     override val artists: List<ArtistSimplifiedData>
@@ -25,7 +24,6 @@ data class TrackData(
                 id = Identifier.empty(),
                 name = "",
                 album = AlbumSimplifiedData.empty(),
-                popularity = 0,
                 trackNumber = 0,
                 durationMs = 0,
                 artists = emptyList()

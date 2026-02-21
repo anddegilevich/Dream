@@ -7,11 +7,11 @@ import kotlinx.serialization.Serializable
 data class SearchResponse(
 
     @SerialName("tracks")
-    val tracks: SearchTracksOutput?,
+    val tracks: SearchTracksOutput? = null,
 
     @SerialName("artists")
-    val artists: SearchArtistsOutput?,
+    val artists: SearchArtistsOutput? = null,
 
     @SerialName("albums")
-    val albums: SearchAlbumsOutput?,
+    val albums: SearchAlbumsOutput? = null,
 )

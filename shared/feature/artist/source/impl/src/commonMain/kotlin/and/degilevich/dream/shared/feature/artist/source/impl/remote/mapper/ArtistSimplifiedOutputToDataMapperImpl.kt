@@ -4,17 +4,17 @@ import and.degilevich.dream.shared.core.service.api.model.data.artist.ArtistSimp
 import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.artist.model.artifact.api.dictionary.ArtistType
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.ArtistSimplifiedOutputToDataMapper
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.ext.asId
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueByIdOrElse
 
 internal class ArtistSimplifiedOutputToDataMapperImpl : ArtistSimplifiedOutputToDataMapper {
     override fun map(item: ArtistSimplifiedOutput): ArtistSimplifiedData {
         return with(item) {
             ArtistSimplifiedData(
-                id = Identifier(id = id.orEmpty()),
+                id = id.asId(),
                 name = name.orEmpty(),
                 artistType = getEnumValueByIdOrElse(
-                    id = Identifier(id = artistType.orEmpty())
+                    id = artistType.asId()
                 ) { ArtistType.UNKNOWN }
             )
         }

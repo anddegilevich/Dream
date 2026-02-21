@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.source.api.local.mapper
 
-import and.degilevich.dream.shared.core.db.api.feature.artist.entity.ArtistEntity
+import and.degilevich.dream.shared.core.db.api.entity.ArtistEntity
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 

@@ -6,11 +6,10 @@ import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.A
 import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.AlbumSimplifiedOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.ArtistSimplifiedOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.source.api.remote.mapper.ImageObjectOutputToDataMapper
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.ext.asId
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueByIdOrElse
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZero
-import kotlin.collections.orEmpty
 
 internal class AlbumSimplifiedOutputToDataMapperImpl(
     private val artistSimplifiedOutputToDataMapper: ArtistSimplifiedOutputToDataMapper,
@@ -20,10 +19,10 @@ internal class AlbumSimplifiedOutputToDataMapperImpl(
     override fun map(item: AlbumSimplifiedOutput): AlbumSimplifiedData {
         return with(item) {
             AlbumSimplifiedData(
-                id = Identifier(id = id.orEmpty()),
+                id = id.asId(),
                 name = name.orEmpty(),
                 albumType = getEnumValueByIdOrElse(
-                    id = Identifier(id = albumType.orEmpty())
+                    id = albumType.asId()
                 ) { AlbumType.UNKNOWN },
                 totalTracks = totalTracks.orZero(),
                 releaseDate = releaseDate.orEmpty(),

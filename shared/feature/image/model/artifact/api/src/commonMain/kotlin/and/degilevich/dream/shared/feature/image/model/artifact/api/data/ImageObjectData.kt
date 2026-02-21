@@ -7,8 +7,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ImageObjectData(
     val url: String,
-    val height: String,
-    val width: String
+    val height: Int,
+    val width: Int
 ) : EmptyState {
 
     override fun isEmpty(): Boolean {
@@ -19,8 +19,8 @@ data class ImageObjectData(
         override fun empty(): ImageObjectData {
             return ImageObjectData(
                 url = "",
-                height = "",
-                width = ""
+                height = 0,
+                width = 0
             )
         }
     }

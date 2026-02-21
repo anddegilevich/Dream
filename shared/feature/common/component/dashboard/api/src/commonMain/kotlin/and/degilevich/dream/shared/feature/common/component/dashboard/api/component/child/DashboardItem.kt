@@ -11,6 +11,7 @@ sealed interface DashboardItem {
     class AlbumReleases(
         component: AlbumReleasesComponent
     ) : DashboardItem, AlbumReleasesComponent by component
+
     @Stable
     class CategoryList(
         component: CategoryListComponent

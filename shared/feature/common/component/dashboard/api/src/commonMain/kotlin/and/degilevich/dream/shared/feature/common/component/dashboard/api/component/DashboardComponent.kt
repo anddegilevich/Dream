@@ -2,9 +2,11 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.api.compo
 
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
+import androidx.compose.runtime.Stable
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.router.items.LazyChildItems
 
+@Stable
 @OptIn(ExperimentalDecomposeApi::class)
 interface DashboardComponent {
     val items: LazyChildItems<DashboardItemConfig, DashboardItem>

@@ -19,11 +19,10 @@ data class AlbumData(
     override val artists: List<ArtistSimplifiedData>,
     override val images: List<ImageObjectData>,
     val tracks: AlbumTracksData,
-    val label: String,
-    val popularity: Int
 ) : AbstractIdentified(), AlbumInfo {
 
     companion object : EmptyFactory<AlbumData> {
+
         override fun empty(): AlbumData {
             return AlbumData(
                 id = Identifier.empty(),
@@ -33,9 +32,7 @@ data class AlbumData(
                 releaseDate = "",
                 artists = emptyList(),
                 images = emptyList(),
-                tracks = AlbumTracksData.empty(),
-                label = "",
-                popularity = 0
+                tracks = AlbumTracksData.empty()
             )
         }
     }

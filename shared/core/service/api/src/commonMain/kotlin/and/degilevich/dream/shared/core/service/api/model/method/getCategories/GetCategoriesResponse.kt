@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class GetCategoriesResponse(
 
     @SerialName("categories")
-    val categories: CategoriesOutput?,
+    val categories: CategoriesOutput? = null,
 )

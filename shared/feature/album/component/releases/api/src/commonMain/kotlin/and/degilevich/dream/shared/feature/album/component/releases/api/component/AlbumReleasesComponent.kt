@@ -4,5 +4,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
+import androidx.compose.runtime.Stable
 
+@Stable
 interface AlbumReleasesComponent : MVIComponent<AlbumReleasesUIState, AlbumReleasesIntent, AlbumReleasesSideEffect>

@@ -51,7 +51,6 @@ internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDet
                 Skeleton.Value(
                     topTracks
                         .asSequence()
-                        .sortedBy { track -> track.popularity }
                         .mapWith(trackInfoToTrackCardUIDataMapper)
                         .mapIndexed { index, cardData ->
                             cardData.copy(

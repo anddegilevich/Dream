@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 data class SearchTracksOutput(
 
     @SerialName("items")
-    val items: List<TrackOutput>?
+    val items: List<TrackOutput>? = null
 )

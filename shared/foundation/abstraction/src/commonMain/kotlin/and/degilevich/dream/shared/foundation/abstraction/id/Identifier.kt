@@ -15,6 +15,8 @@ value class Identifier(val id: String) : EmptyState {
         return id.isEmpty()
     }
 
+    override fun toString(): String = id
+
     companion object : EmptyFactory<Identifier> {
 
         override fun empty(): Identifier {

@@ -8,3 +8,7 @@ inline fun <T> List<T>.indexOfFirstOrNull(predicate: (T) -> Boolean): Int? {
     val index = indexOfFirst(predicate)
     return if (index == -1) null else index
 }
+
+fun <T> List<T>.takeUnlessEmpty(): List<T>? {
+    return this.takeUnless { it.isEmpty() }
+}

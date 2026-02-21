@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.feature.search.source.impl.remote
 
-import and.degilevich.dream.shared.feature.search.source.api.remote.SearchRemoteDataSource
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.source.api.remote.SearchRemoteDataSource
 import and.degilevich.dream.shared.feature.search.source.api.remote.mapper.SearchParamsToRequestMapper
 import and.degilevich.dream.shared.feature.search.source.api.remote.mapper.SearchResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
@@ -13,6 +13,7 @@ internal class SearchRemoteDataSourceImpl(
     private val searchParamsToRequestMapper: SearchParamsToRequestMapper,
     private val searchResponseToResultMapper: SearchResponseToResultMapper,
 ) : BaseRemoteDataSource(), SearchRemoteDataSource {
+
     override suspend fun search(params: SearchParams): Result<SearchResult> {
         return service.search(
             request = params.mapWith(searchParamsToRequestMapper)

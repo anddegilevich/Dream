@@ -8,8 +8,8 @@ import kotlinx.serialization.Serializable
 data class GetArtistAlbumsResponse(
 
     @SerialName("total")
-    val total: Int?,
+    val total: Int? = null,
 
     @SerialName("items")
-    val items: List<AlbumSimplifiedOutput>?
+    val items: List<AlbumSimplifiedOutput>? = null
 )

@@ -8,11 +8,11 @@ import kotlinx.serialization.Serializable
 data class CategoryOutput(
 
     @SerialName("id")
-    val id: String?,
+    val id: String? = null,
 
     @SerialName("name")
-    val name: String?,
+    val name: String? = null,
 
     @SerialName("icons")
-    val icons: List<ImageObjectOutput>?
+    val icons: List<ImageObjectOutput>? = null
 )

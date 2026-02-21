@@ -8,23 +8,14 @@ import kotlinx.serialization.Serializable
 data class ArtistOutput(
 
     @SerialName("id")
-    val id: String?,
+    val id: String? = null,
 
     @SerialName("name")
-    val name: String?,
+    val name: String? = null,
 
     @SerialName("type")
-    val type: String?,
-
-    @SerialName("popularity")
-    val popularity: Int?,
-
-    @SerialName("genres")
-    val genres: List<String>?,
-
-    @SerialName("followers")
-    val followers: ArtistFollowersOutput?,
+    val type: String? = null,
 
     @SerialName("images")
-    val images: List<ImageObjectOutput>?
+    val images: List<ImageObjectOutput>? = null
 )
