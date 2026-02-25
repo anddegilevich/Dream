@@ -1,9 +1,11 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.api.design
 
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarIntent
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarUIState
+import and.degilevich.dream.shared.feature.common.component.navbar.api.provider.NavbarUIStatePreviewProvider
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -37,4 +41,15 @@ fun AppNavbar(
             }
         }
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun AppNavbarPreview(
+    @PreviewParameter(NavbarUIStatePreviewProvider::class)
+    state: NavbarUIState
+) = ComposeAppTheme {
+    AppNavbar(
+        state = state
+    ) { }
 }

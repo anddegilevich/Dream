@@ -3,9 +3,11 @@ package and.degilevich.dream.shared.feature.track.component.details.api.design
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsIntent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsUIState
 import and.degilevich.dream.shared.feature.track.component.details.api.design.skeleton.SkeletonTrackDetailsInfoLayout
+import and.degilevich.dream.shared.feature.track.component.details.api.provider.TrackDetailsUIStatePreviewProvider
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import androidx.compose.foundation.layout.Column
@@ -20,6 +22,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 
@@ -68,4 +72,15 @@ fun TrackDetailsScreen(
                 .navigationBarsPadding()
         )
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun TrackDetailsScreenPreview(
+    @PreviewParameter(TrackDetailsUIStatePreviewProvider::class)
+    state: TrackDetailsUIState
+) = ComposeAppTheme {
+    TrackDetailsScreen(
+        state = state
+    ) { }
 }

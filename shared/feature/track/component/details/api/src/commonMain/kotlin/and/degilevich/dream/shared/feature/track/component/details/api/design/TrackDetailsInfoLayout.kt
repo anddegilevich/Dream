@@ -1,8 +1,11 @@
 package and.degilevich.dream.shared.feature.track.component.details.api.design
 
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumIcon
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsInfoLayoutUIData
+import and.degilevich.dream.shared.feature.track.component.details.api.provider.TrackDetailsInfoLayoutUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -12,6 +15,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -51,4 +56,16 @@ fun TrackDetailsInfoLayout(
             color = Theme.colors.text.secondary
         )
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun TrackDetailsInfoLayoutPreview(
+    @PreviewParameter(TrackDetailsInfoLayoutUIDataPreviewProvider::class)
+    data: TrackDetailsInfoLayoutUIData
+) = ComposeAppTheme {
+    TrackDetailsInfoLayout(
+        modifier = Modifier.themeBackground(),
+        data = data
+    )
 }

@@ -2,6 +2,8 @@ package and.degilevich.dream.shared.design.system.snackbar
 
 import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.system.snackbar.provider.SnackbarDataPreviewProvider
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
@@ -18,6 +20,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -60,4 +64,15 @@ fun AppSnackbar(
             )
         }
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun AppSnackbarPreview(
+    @PreviewParameter(SnackbarDataPreviewProvider::class)
+    data: SnackbarData
+) = ComposeAppTheme {
+    AppSnackbar(
+        data = data
+    )
 }

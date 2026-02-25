@@ -1,9 +1,12 @@
 package and.degilevich.dream.shared.design.system.button
 
+import and.degilevich.dream.Res
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
@@ -12,6 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.painterResource
 
 @Composable
 fun IconButton(
@@ -39,4 +45,13 @@ fun IconButton(
         tint = tint,
         contentDescription = null
     )
+}
+
+@LightDarkPreviews
+@Composable
+private fun IconButtonPreview() = ComposeAppTheme {
+    IconButton(
+        modifier = Modifier.size(24.dp),
+        painter = painterResource(Res.images.ic_back)
+    ) { }
 }

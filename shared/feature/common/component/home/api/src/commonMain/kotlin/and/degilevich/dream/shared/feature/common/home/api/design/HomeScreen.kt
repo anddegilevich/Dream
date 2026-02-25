@@ -1,11 +1,14 @@
 package and.degilevich.dream.shared.feature.common.home.api.design
 
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
 import and.degilevich.dream.shared.feature.common.component.navbar.api.design.AppNavbar
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
+import and.degilevich.dream.shared.feature.common.home.api.component.HomePreviewComponent
 import and.degilevich.dream.shared.feature.common.home.api.component.child.HomePage
 import and.degilevich.dream.shared.feature.search.component.search.api.design.SearchScreen
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -66,4 +69,12 @@ fun HomeScreen(
             onIntent = component.navbar::handleIntent
         )
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun HomeScreenPreview() = ComposeAppTheme {
+    HomeScreen(
+        component = HomePreviewComponent()
+    )
 }

@@ -1,8 +1,11 @@
 package and.degilevich.dream.shared.feature.album.component.details.api.design
 
 import and.degilevich.dream.shared.design.system.divider.TextCircleDivider
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsLayoutUIData
+import and.degilevich.dream.shared.feature.album.component.details.api.provider.AlbumDetailsLayoutUIDataPreviewProvider
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumIcon
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +16,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -55,4 +60,16 @@ fun AlbumDetailsLayout(
             )
         }
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun AlbumDetailsLayoutPreview(
+    @PreviewParameter(AlbumDetailsLayoutUIDataPreviewProvider::class)
+    data: AlbumDetailsLayoutUIData
+) = ComposeAppTheme {
+    AlbumDetailsLayout(
+        modifier = Modifier.themeBackground(),
+        data = data
+    )
 }

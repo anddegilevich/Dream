@@ -3,12 +3,14 @@ package and.degilevich.dream.shared.feature.artist.component.details.api.design
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumCard
 import and.degilevich.dream.shared.feature.album.design.api.design.skeleton.SkeletonAlbumCard
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.skeleton.SkeletonArtistInfoCard
+import and.degilevich.dream.shared.feature.artist.component.details.api.provider.ArtistDetailsUIStatePreviewProvider
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
@@ -32,6 +34,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -150,4 +154,15 @@ fun ArtistDetailsScreen(
             }
         }
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun ArtistDetailsScreenPreview(
+    @PreviewParameter(ArtistDetailsUIStatePreviewProvider::class)
+    state: ArtistDetailsUIState
+) = ComposeAppTheme {
+    ArtistDetailsScreen(
+        state = state
+    ) { }
 }

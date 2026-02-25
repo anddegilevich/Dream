@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.design.system.button
 
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -60,4 +62,12 @@ fun PrimaryButton(
         text = text,
         color = textColor
     )
+}
+
+@LightDarkPreviews
+@Composable
+private fun PrimaryButtonPreview() = ComposeAppTheme {
+    PrimaryButton(
+        text = "Button"
+    ) { }
 }

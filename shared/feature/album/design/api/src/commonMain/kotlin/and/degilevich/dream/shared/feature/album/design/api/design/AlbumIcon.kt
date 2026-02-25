@@ -1,15 +1,19 @@
 package and.degilevich.dream.shared.feature.album.design.api.design
 
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
 
@@ -47,4 +51,13 @@ fun AlbumIcon(
             }
         }
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun AlbumIconPreview() = ComposeAppTheme {
+    AlbumIcon(
+        modifier = Modifier.size(152.dp),
+        iconUrl = ""
+    )
 }

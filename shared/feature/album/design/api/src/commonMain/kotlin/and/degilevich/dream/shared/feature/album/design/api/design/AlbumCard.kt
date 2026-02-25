@@ -1,11 +1,15 @@
 package and.degilevich.dream.shared.feature.album.design.api.design
 
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
+import and.degilevich.dream.shared.feature.album.design.api.provider.AlbumCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
@@ -16,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -60,4 +65,16 @@ fun AlbumCard(
             maxLines = 1
         )
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun AlbumCardPreview(
+    @PreviewParameter(AlbumCardUIDataPreviewProvider::class)
+    data: AlbumCardUIData
+) = ComposeAppTheme {
+    AlbumCard(
+        modifier = Modifier.themeBackground(),
+        data = data,
+    ) {}
 }

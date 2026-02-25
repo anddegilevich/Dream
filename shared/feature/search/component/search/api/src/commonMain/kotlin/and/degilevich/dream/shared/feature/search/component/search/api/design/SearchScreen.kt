@@ -2,8 +2,10 @@ package and.degilevich.dream.shared.feature.search.component.search.api.design
 
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchIntent
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
+import and.degilevich.dream.shared.feature.search.component.search.api.provider.SearchUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.search.design.api.design.SearchCard
 import and.degilevich.dream.shared.feature.search.design.api.design.SearchTextField
 import and.degilevich.dream.shared.feature.search.design.api.design.skeleton.SkeletonSearchCard
@@ -25,6 +27,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
 
@@ -83,4 +87,15 @@ fun SearchScreen(
             )
         }
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun SearchScreenPreview(
+    @PreviewParameter(SearchUIStatePreviewProvider::class)
+    state: SearchUIState
+) = ComposeAppTheme {
+    SearchScreen(
+        state = state
+    ) { }
 }

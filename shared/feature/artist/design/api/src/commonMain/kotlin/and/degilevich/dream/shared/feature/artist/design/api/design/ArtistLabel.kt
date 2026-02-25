@@ -1,7 +1,10 @@
 package and.degilevich.dream.shared.feature.artist.design.api.design
 
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistLabelUIData
+import and.degilevich.dream.shared.feature.artist.design.api.provider.ArtistLabelUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
@@ -12,6 +15,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -39,4 +44,16 @@ fun ArtistLabel(
             style = Theme.typography.h4
         )
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun ArtistLabelPreview(
+    @PreviewParameter(ArtistLabelUIDataPreviewProvider::class)
+    data: ArtistLabelUIData
+) = ComposeAppTheme {
+    ArtistLabel(
+        modifier = Modifier.themeBackground(),
+        data = data
+    ) { }
 }

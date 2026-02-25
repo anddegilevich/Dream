@@ -3,9 +3,11 @@ package and.degilevich.dream.shared.feature.album.component.details.api.design
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsIntent
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsUIState
 import and.degilevich.dream.shared.feature.album.component.details.api.design.skeleton.SkeletonAlbumDetailsLayout
+import and.degilevich.dream.shared.feature.album.component.details.api.provider.AlbumDetailsUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistLabel
 import and.degilevich.dream.shared.feature.artist.design.api.design.skeleton.SkeletonArtistLabel
 import and.degilevich.dream.shared.foundation.compose.ext.Space
@@ -29,6 +31,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 
@@ -130,4 +134,15 @@ fun AlbumDetailsScreen(
             }
         )
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun AlbumDetailsScreenPreview(
+    @PreviewParameter(AlbumDetailsUIStatePreviewProvider::class)
+    state: AlbumDetailsUIState
+) = ComposeAppTheme {
+    AlbumDetailsScreen(
+        state = state
+    ) { }
 }

@@ -117,6 +117,7 @@ style:
     ignoreAnnotated:
       - 'Preview'
       - 'PreviewLightDark'
+      - 'LightDarkPreviews'
     excludes: *excludePatterns
   NewLineAtEndOfFile:
     active: false

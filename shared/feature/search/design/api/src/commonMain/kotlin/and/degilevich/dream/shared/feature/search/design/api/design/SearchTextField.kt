@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.search.design.api.design
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.focus.clearFocusOnImeDismiss
@@ -32,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 
@@ -146,3 +148,11 @@ fun SearchTextField(
 }
 
 private const val PLACEHOLDER_FADE_OUT_DURATION = 200
+
+@LightDarkPreviews
+@Composable
+private fun SearchTextFieldPreview() = ComposeAppTheme {
+    SearchTextField(
+        value = "Search",
+    ) { }
+}

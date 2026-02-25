@@ -1,9 +1,12 @@
 package and.degilevich.dream.shared.feature.album.component.releases.api.design
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
+import and.degilevich.dream.shared.feature.album.component.releases.api.provider.AlbumReleasesUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumCard
 import and.degilevich.dream.shared.feature.album.design.api.design.skeleton.SkeletonAlbumCard
 import and.degilevich.dream.shared.foundation.compose.ext.Space
@@ -18,6 +21,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
 
@@ -64,5 +69,19 @@ fun AlbumReleasesCarousel(
                 }
             )
         }
+    }
+}
+
+@LightDarkPreviews
+@Composable
+private fun AlbumReleasesCarouselPreview(
+    @PreviewParameter(AlbumReleasesUIStatePreviewProvider::class)
+    state: AlbumReleasesUIState
+) {
+    ComposeAppTheme {
+        AlbumReleasesCarousel(
+            modifier = Modifier.themeBackground(),
+            state = state
+        ) {}
     }
 }

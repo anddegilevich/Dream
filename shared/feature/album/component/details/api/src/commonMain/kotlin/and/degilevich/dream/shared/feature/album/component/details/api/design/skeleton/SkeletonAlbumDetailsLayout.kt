@@ -1,7 +1,9 @@
 package and.degilevich.dream.shared.feature.album.component.details.api.design.skeleton
 
 import and.degilevich.dream.shared.design.system.modifier.roundedThemeShimmer
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.system.modifier.themeShimmer
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -43,4 +46,12 @@ fun SkeletonAlbumDetailsLayout(
                 )
         )
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun SkeletonAlbumDetailsLayoutPreview() = ComposeAppTheme {
+    SkeletonAlbumDetailsLayout(
+        modifier = Modifier.themeBackground()
+    )
 }

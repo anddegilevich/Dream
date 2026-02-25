@@ -1,8 +1,10 @@
 package and.degilevich.dream.shared.feature.category.component.list.api.design
 
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumIcon
 import and.degilevich.dream.shared.feature.category.component.list.api.component.model.CategoryCardUIData
+import and.degilevich.dream.shared.feature.category.component.list.api.provider.CategoryCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
@@ -20,6 +22,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -66,3 +70,14 @@ fun CategoryCard(
 }
 
 private const val ALBUM_ROTATION = 12f
+
+@LightDarkPreviews
+@Composable
+private fun CategoryCardPreview(
+    @PreviewParameter(CategoryCardUIDataPreviewProvider::class)
+    data: CategoryCardUIData
+) = ComposeAppTheme {
+    CategoryCard(
+        data = data
+    ) {}
+}

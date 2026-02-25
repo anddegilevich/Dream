@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.design.skeleton
 
 import and.degilevich.dream.shared.design.system.modifier.roundedThemeShimmer
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -39,4 +41,10 @@ fun SkeletonArtistInfoCard(
             )
         }
     }
+}
+
+@LightDarkPreviews
+@Composable
+private fun SkeletonArtistInfoCardPreview() = ComposeAppTheme {
+    SkeletonArtistInfoCard()
 }

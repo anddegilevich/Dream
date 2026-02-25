@@ -23,9 +23,10 @@ internal class ComposePlugin : Plugin<Project> {
                         implementation(libs().compose.material)
                         implementation(libs().compose.ui)
                         implementation(libs().compose.ui.backhandler)
+                        implementation(libs().compose.ui.tooling.preview)
                     }
                     androidMain.dependencies {
-                        implementation(libs().compose.ui.tooling)
+                        runtimeOnly(libs().compose.ui.tooling)
                         implementation(libs().androidx.lifecycle.runtime.compose)
                         implementation(libs().androidx.activity.compose)
                     }

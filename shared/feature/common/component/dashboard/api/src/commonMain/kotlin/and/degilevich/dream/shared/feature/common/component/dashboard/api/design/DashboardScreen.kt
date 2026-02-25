@@ -1,9 +1,11 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.api.design
 
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.album.component.releases.api.design.AlbumReleasesCarousel
 import and.degilevich.dream.shared.feature.category.component.list.api.design.CategoryListCarousel
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardPreviewComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
 import and.degilevich.dream.shared.foundation.compose.ext.plus
@@ -20,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.lazyitems.ChildItemsLifecycleController
@@ -69,5 +72,13 @@ fun DashboardScreen(
         items = component.items,
         lazyListState = lazyListState,
         itemIndexConverter = { it }
+    )
+}
+
+@LightDarkPreviews
+@Composable
+private fun DashboardScreenPreview() = ComposeAppTheme {
+    DashboardScreen(
+        component = DashboardPreviewComponent()
     )
 }
