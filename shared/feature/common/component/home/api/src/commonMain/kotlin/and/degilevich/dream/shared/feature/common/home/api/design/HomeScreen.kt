@@ -2,14 +2,9 @@ package and.degilevich.dream.shared.feature.common.home.api.design
 
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
-import and.degilevich.dream.shared.feature.common.component.navbar.api.design.AppNavbar
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
 import and.degilevich.dream.shared.feature.common.home.api.component.HomePreviewComponent
-import and.degilevich.dream.shared.feature.common.home.api.component.child.HomePage
-import and.degilevich.dream.shared.feature.search.component.search.api.design.SearchScreen
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
-import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -48,26 +43,9 @@ fun HomeScreen(
             key = { child -> child.configuration.id.id },
             scrollAnimation = PagesScrollAnimation.Default,
         ) { _, page ->
-            when (page) {
-                is HomePage.Dashboard -> {
-                    DashboardScreen(
-                        component = page
-                    )
-                }
-
-                is HomePage.Search -> {
-                    SearchScreen(
-                        state = page.state(),
-                        onIntent = page::handleIntent
-                    )
-                }
-            }
+            page.Render()
         }
-        AppNavbar(
-            modifier = Modifier.navigationBarsPadding(),
-            state = component.navbar.state(),
-            onIntent = component.navbar::handleIntent
-        )
+        component.navbar.Render(modifier = Modifier.navigationBarsPadding())
     }
 }
 

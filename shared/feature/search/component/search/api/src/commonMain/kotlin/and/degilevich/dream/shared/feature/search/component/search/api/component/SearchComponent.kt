@@ -3,8 +3,22 @@ package and.degilevich.dream.shared.feature.search.component.search.api.componen
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchIntent
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchSideEffect
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
-import and.degilevich.dream.shared.foundation.decompose.component.mvi.MVIComponent
+import and.degilevich.dream.shared.feature.search.component.search.api.design.SearchScreen
+import and.degilevich.dream.shared.foundation.decompose.component.render.RenderMVIComponent
+import and.degilevich.dream.shared.foundation.decompose.compose.component.state
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
+import androidx.compose.ui.Modifier
 
 @Stable
-interface SearchComponent : MVIComponent<SearchUIState, SearchIntent, SearchSideEffect>
+interface SearchComponent : RenderMVIComponent<SearchUIState, SearchIntent, SearchSideEffect> {
+
+    @Composable
+    override fun Render(modifier: Modifier) {
+        SearchScreen(
+            modifier = modifier,
+            state = state(),
+            onIntent = ::handleIntent
+        )
+    }
+}

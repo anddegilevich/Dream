@@ -2,14 +2,11 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.api.desig
 
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import and.degilevich.dream.shared.feature.album.component.releases.api.design.AlbumReleasesCarousel
-import and.degilevich.dream.shared.feature.category.component.list.api.design.CategoryListCarousel
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardPreviewComponent
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
 import and.degilevich.dream.shared.foundation.compose.ext.plus
-import and.degilevich.dream.shared.foundation.decompose.compose.component.state
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
@@ -22,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.lazyitems.ChildItemsLifecycleController
@@ -34,7 +30,6 @@ fun DashboardScreen(
     component: DashboardComponent,
     modifier: Modifier = Modifier
 ) {
-
     val items by component.items.subscribeAsState()
     val lazyListState = rememberLazyListState()
 
@@ -47,24 +42,11 @@ fun DashboardScreen(
             .plus(WindowInsets.statusBars.asPaddingValues())
             .plus(WindowInsets.navigationBars.asPaddingValues())
     ) {
-        identifiedItems(items = items.items) { config ->
-            val itemComponent = remember(config) { component.items[config] }
-
-            when (itemComponent) {
-                is DashboardItem.AlbumReleases -> {
-                    AlbumReleasesCarousel(
-                        state = itemComponent.state(),
-                        onIntent = itemComponent::handleIntent
-                    )
-                }
-
-                is DashboardItem.CategoryList -> {
-                    CategoryListCarousel(
-                        state = itemComponent.state(),
-                        onIntent = itemComponent::handleIntent
-                    )
-                }
-            }
+        identifiedItems(
+            items = items.items
+        ) { config ->
+            val item = remember(config) { component.items[config] }
+            item.Render()
         }
     }
 

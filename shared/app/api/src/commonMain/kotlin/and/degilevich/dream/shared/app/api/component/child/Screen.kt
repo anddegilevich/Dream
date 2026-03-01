@@ -5,10 +5,11 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
+import and.degilevich.dream.shared.foundation.decompose.component.render.RenderComponent
 import androidx.compose.runtime.Stable
 
 @Stable
-sealed interface Screen {
+sealed interface Screen : RenderComponent {
 
     // Common
 
