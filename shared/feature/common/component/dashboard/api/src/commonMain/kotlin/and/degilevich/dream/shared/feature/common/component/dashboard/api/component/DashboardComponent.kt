@@ -6,7 +6,6 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.design
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
-import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.router.items.LazyChildItems
 
@@ -16,9 +15,8 @@ interface DashboardComponent : RenderComponent {
     val items: LazyChildItems<DashboardItemConfig, DashboardItem>
 
     @Composable
-    override fun Render(modifier: Modifier) {
+    override fun Render() {
         DashboardScreen(
-            modifier = modifier,
             component = this
         )
     }

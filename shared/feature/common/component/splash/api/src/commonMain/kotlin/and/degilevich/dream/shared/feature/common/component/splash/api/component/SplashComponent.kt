@@ -7,13 +7,12 @@ import and.degilevich.dream.shared.feature.common.component.splash.api.design.Sp
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderMVIComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
-import androidx.compose.ui.Modifier
 
 @Stable
 interface SplashComponent : RenderMVIComponent<SplashUIState, SplashIntent, SplashSideEffect> {
 
     @Composable
-    override fun Render(modifier: Modifier) {
-        SplashScreen(modifier = modifier)
+    override fun Render() {
+        SplashScreen()
     }
 }

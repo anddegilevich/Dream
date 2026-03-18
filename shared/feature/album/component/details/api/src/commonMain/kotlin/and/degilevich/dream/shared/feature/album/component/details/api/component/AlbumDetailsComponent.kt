@@ -8,15 +8,13 @@ import and.degilevich.dream.shared.foundation.decompose.component.render.RenderM
 import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
-import androidx.compose.ui.Modifier
 
 @Stable
 interface AlbumDetailsComponent : RenderMVIComponent<AlbumDetailsUIState, AlbumDetailsIntent, AlbumDetailsSideEffect> {
 
     @Composable
-    override fun Render(modifier: Modifier) {
+    override fun Render() {
         AlbumDetailsScreen(
-            modifier = modifier,
             state = state(),
             onIntent = ::handleIntent
         )

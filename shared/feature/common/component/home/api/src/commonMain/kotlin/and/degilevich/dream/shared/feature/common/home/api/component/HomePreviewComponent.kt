@@ -5,9 +5,6 @@ import and.degilevich.dream.shared.feature.common.component.navbar.api.component
 import and.degilevich.dream.shared.feature.common.home.api.component.child.HomeNavbar
 import and.degilevich.dream.shared.feature.common.home.api.component.child.HomePage
 import and.degilevich.dream.shared.feature.common.home.api.component.model.HomePageConfig
-import and.degilevich.dream.shared.feature.common.home.api.design.HomeScreen
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.router.pages.ChildPages
@@ -35,12 +32,4 @@ class HomePreviewComponent : HomeComponent {
             selectedIndex = 0
         )
     )
-
-    @Composable
-    override fun Render(modifier: Modifier) {
-        HomeScreen(
-            modifier = modifier,
-            component = this
-        )
-    }
 }

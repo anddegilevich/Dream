@@ -6,14 +6,15 @@ import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarIntent
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarUIState
 import and.degilevich.dream.shared.feature.common.component.navbar.api.provider.NavbarUIStatePreviewProvider
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -25,6 +26,7 @@ fun AppNavbar(
 ) {
     Row(
         modifier = modifier
+            .navigationBarsPadding()
             .background(Theme.colors.common.line)
             .padding(top = 1.dp)
             .themeBackground()
