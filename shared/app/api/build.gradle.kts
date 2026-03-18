@@ -25,7 +25,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.app.api"
     }
 }

@@ -26,7 +26,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.core.db.impl"
     }
 }

@@ -15,7 +15,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    androidLibrary {
+    android {
         compileSdk = compileSdk()
         minSdk = minSdk()
         compileSdk = compileSdk()
@@ -44,10 +44,6 @@ kotlin {
         commonTest.dependencies {
             implementation(libs().kotlin.test.common)
             implementation(libs().kotlin.test.annotations.common)
-        }
-
-        androidUnitTest.dependencies {
-            implementation(libs().kotlin.test.junit)
         }
     }
 }

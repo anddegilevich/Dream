@@ -12,7 +12,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.feature.track.source.impl"
     }
 }

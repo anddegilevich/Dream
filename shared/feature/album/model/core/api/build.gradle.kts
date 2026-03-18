@@ -9,7 +9,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.feature.album.model.core.api"
     }
 }

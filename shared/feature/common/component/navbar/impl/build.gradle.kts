@@ -9,7 +9,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.feature.common.component.navbar.impl"
     }
 }

@@ -23,7 +23,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.core.storage.impl"
     }
 }

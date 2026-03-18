@@ -11,7 +11,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.feature.artist.model.core.api"
     }
 }

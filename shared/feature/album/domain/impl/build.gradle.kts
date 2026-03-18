@@ -10,7 +10,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.feature.album.domain.impl"
     }
 }

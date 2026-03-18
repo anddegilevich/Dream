@@ -10,7 +10,7 @@ kotlin {
             api(projects.shared.core.crypto.api)
         }
     }
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.core.crypto.impl"
     }
 }

@@ -30,6 +30,9 @@ internal class ComposePlugin : Plugin<Project> {
                         implementation(libs().androidx.lifecycle.runtime.compose)
                         implementation(libs().androidx.activity.compose)
                     }
+                    commonTest.dependencies {
+                        implementation(libs().compose.ui.test)
+                    }
                 }
             }
         }

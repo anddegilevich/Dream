@@ -9,7 +9,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "and.degilevich.dream.shared.feature.search.domain.api"
     }
 }

@@ -6,7 +6,7 @@ android-min-sdk = "26"
 android-target-sdk = "36"
 
 # Android gradle plugin
-agp = "9.0.1" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
+agp = "9.1.0" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
 
 # JVM version
 java = "21"
@@ -16,16 +16,16 @@ java = "21"
 kotlin = "2.3.10" # https://kotlinlang.org/docs/releases.html#release-details
 
 # Compose
-compose = "1.10.1" # https://mvnrepository.com/artifact/org.jetbrains.compose/compose-gradle-plugin
+compose = "1.10.2" # https://mvnrepository.com/artifact/org.jetbrains.compose/compose-gradle-plugin
 
 # KSP
 ksp = "2.3.4" # https://github.com/google/ksp/releases
 
 # Androidx
-androidx-activity-compose = "1.12.4" # https://mvnrepository.com/artifact/androidx.activity/activity-compose
+androidx-activity-compose = "1.13.0" # https://mvnrepository.com/artifact/androidx.activity/activity-compose
 androidx-lifecycle = "2.9.6" # https://mvnrepository.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-runtime-compose
 androidx-core-splashscreen = "1.2.0" # https://mvnrepository.com/artifact/androidx.core/core-splashscreen
-androidx-datastore = "1.2.0"
+androidx-datastore = "1.2.1"
 
 # Kotlinx
 kotlinx-coroutines = "1.10.2" # https://github.com/Kotlin/kotlinx.coroutines/releases
@@ -41,7 +41,7 @@ detekt-compose = "0.0.26" # https://github.com/twitter/compose-rules/releases
 koin-bom = "4.1.1" # https://github.com/InsertKoinIO/koin/releases
 
 # Ktor
-ktor = "3.4.0" # https://github.com/ktorio/ktor/releases
+ktor = "3.4.1" # https://github.com/ktorio/ktor/releases
 
 # Logpack
 logback = "1.5.32"
@@ -56,7 +56,7 @@ essenty = "2.5.0" # https://github.com/arkivanov/Essenty/releases
 multiplatform-settings = "1.3.0" # https://github.com/russhwolf/multiplatform-settings/releases
 
 # Coil
-coil = "3.3.0" # https://github.com/coil-kt/coil/releases
+coil = "3.4.0" # https://github.com/coil-kt/coil/releases
 
 # Napier
 napier = "2.7.1" # https://github.com/AAkira/Napier/releases
@@ -77,12 +77,12 @@ sqlite = "2.6.2" # https://mvnrepository.com/artifact/androidx.sqlite
 glance = "1.1.1" # https://mvnrepository.com/artifact/androidx.glance/glance-appwidget
 
 # FileKit
-filekit = "0.12.0" # https://github.com/vinceglb/FileKit/releases
+filekit = "0.13.0" # https://github.com/vinceglb/FileKit/releases
 
 compose-stability-analyzer = "0.7.0" # https://github.com/skydoves/compose-stability-analyzer/releases
 
 # Baseline profile
-baselineprofile = "1.5.0-alpha03" # https://mvnrepository.com/artifact/androidx.baselineprofile
+baselineprofile = "1.5.0-alpha04" # https://mvnrepository.com/artifact/androidx.baselineprofile
 profileinstaller = "1.4.1" # https://mvnrepository.com/artifact/androidx.profileinstaller/profileinstaller
 junit = "1.3.0" # https://mvnrepository.com/artifact/androidx.test.ext/junit
 espresso-core = "3.7.0" # https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
@@ -130,6 +130,7 @@ compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
 compose-ui-backhandler = { module = "org.jetbrains.compose.ui:ui-backhandler", version.ref = "compose" }
 compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "compose" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
 compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "compose" }
 
