@@ -18,13 +18,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Gradle setup
-        uses: ./.github/actions/gradle-setup
-
-      - name: Create local.properties
-        run: |
-          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> local.properties
-          echo "CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> local.properties
+      - name: Setup
+        uses: ./.github/actions/setup
 
       - name: Run static code analysis
         run: ./gradlew detekt
@@ -46,8 +41,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Gradle setup
-        uses: ./.github/actions/gradle-setup
+      - name: Setup
+        uses: ./.github/actions/setup
 
       - name: Build Android debug APK
         run: ./gradlew :android:app:assembleDebug
@@ -66,8 +61,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Gradle setup
-        uses: ./.github/actions/gradle-setup
+      - name: Setup
+        uses: ./.github/actions/setup
 
       - name: Build iOS simulator app
         run: |
