@@ -1,18 +1,25 @@
 name: setup
-description: Setup project
+description: Setup
+
+inputs:
+  client-id:
+    required: true
+    description: Client ID
+  client-secret:
+    required: true
+    description: Client Secret
+
 runs:
   using: "composite"
   steps:
     - name: Setup Java
-      uses: actions/setup-java@v4.0.0
-      with:
-        java-version: "21"
-        distribution: "temurin"
+      uses: ./.github/actions/setup-java
 
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v5.0.0
+      uses: ./.github/actions/setup-gralde
 
-    - name: Create local.properties
-      run: |
-        echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> local.properties
-        echo "CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> local.properties
+    - name: Setup Secrets
+      uses: ./.github/actions/create-local-properties
+      with:
+        client-id: ${{ inputs.client-id }}
+        client-secret: ${{ inputs.client-id }}
