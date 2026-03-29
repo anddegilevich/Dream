@@ -16,7 +16,7 @@ runs:
       uses: ./.github/actions/setup-java
 
     - name: Setup Gradle
-      uses: ./.github/actions/setup-gralde
+      uses: ./.github/actions/setup-gradle
 
     - name: Setup Secrets
       uses: ./.github/actions/create-local-properties
