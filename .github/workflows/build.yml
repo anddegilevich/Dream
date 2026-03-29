@@ -21,6 +21,12 @@ jobs:
       - name: Gradle setup
         uses: ./.github/actions/gradle-setup
 
+      - name: Create local.properties
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" >> local.properties
+          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> local.properties
+          echo "CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> local.properties
+
       - name: Run unit tests
         run: ./gradlew jvmTest
 
