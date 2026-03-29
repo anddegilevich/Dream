@@ -18,8 +18,8 @@ runs:
     - name: Setup Gradle
       uses: ./.github/actions/setup-gradle
 
-    - name: Setup Secrets
-      uses: ./.github/actions/create-local-properties
+    - name: Setup local.properties
+      uses: ./.github/actions/setup-local-properties
       with:
         client-id: ${{ inputs.client-id }}
         client-secret: ${{ inputs.client-id }}
