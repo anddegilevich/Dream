@@ -1,0 +1,25 @@
+name: setup
+description: Setup
+
+inputs:
+  client-id:
+    required: true
+    description: Client ID
+  client-secret:
+    required: true
+    description: Client Secret
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Java
+      uses: ./.github/actions/setup-java
+
+    - name: Setup Gradle
+      uses: ./.github/actions/setup-gradle
+
+    - name: Setup local.properties
+      uses: ./.github/actions/setup-local-properties
+      with:
+        client-id: ${{ inputs.client-id }}
+        client-secret: ${{ inputs.client-id }}
