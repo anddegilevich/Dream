@@ -66,12 +66,6 @@ jobs:
       - name: Build Android debug APK
         run: ./gradlew :android:app:assembleDebug
 
-      - name: Upload Android debug APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-apk
-          path: android/app/build/outputs/apk/debug/*.apk
-
   build-ios:
     name: Build iOS simulator app
     runs-on: macos-latest
@@ -95,9 +89,3 @@ jobs:
           -sdk iphonesimulator \
           -derivedDataPath ./build \
           -verbose
-
-      - name: Upload app folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: iphonesimulator-app
-          path: build/Build/Products/Debug-iphonesimulator/*
