@@ -8,7 +8,7 @@ internal class GetTrackParamsToRequestMapperImpl : GetTrackParamsToRequestMapper
 
     override fun map(item: GetTrackParams): GetTrackRequest = with(item) {
         GetTrackRequest(
-            id = id.id
+            id = id.value
         )
     }
 }

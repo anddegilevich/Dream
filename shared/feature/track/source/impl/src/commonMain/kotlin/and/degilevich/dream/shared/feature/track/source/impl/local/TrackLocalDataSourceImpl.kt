@@ -49,8 +49,8 @@ internal class TrackLocalDataSourceImpl(
                 .flatMap { album ->
                     album.artists.map { artist ->
                         ArtistToAlbumCrossRefEntity(
-                            artistId = artist.id.id,
-                            albumId = album.id.id
+                            artistId = artist.id.value,
+                            albumId = album.id.value
                         )
                     }
                 }
@@ -59,8 +59,8 @@ internal class TrackLocalDataSourceImpl(
             tracks.flatMap { track ->
                 track.artists.map { artist ->
                     ArtistToTrackCrossRefEntity(
-                        artistId = artist.id.id,
-                        trackId = track.id.id
+                        artistId = artist.id.value,
+                        trackId = track.id.value
                     )
                 }
             }
@@ -74,16 +74,16 @@ internal class TrackLocalDataSourceImpl(
         artistToAlbumCrossRefDao.upsertAll(
             track.album.artists.map { artist ->
                 ArtistToAlbumCrossRefEntity(
-                    artistId = artist.id.id,
-                    albumId = track.album.id.id
+                    artistId = artist.id.value,
+                    albumId = track.album.id.value
                 )
             }
         )
         artistToTrackCrossRefDao.upsertAll(
             track.artists.map { artist ->
                 ArtistToTrackCrossRefEntity(
-                    artistId = artist.id.id,
-                    trackId = track.id.id
+                    artistId = artist.id.value,
+                    trackId = track.id.value
                 )
             }
         )

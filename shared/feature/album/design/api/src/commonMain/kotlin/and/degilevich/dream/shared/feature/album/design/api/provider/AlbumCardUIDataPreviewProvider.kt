@@ -24,7 +24,7 @@ class AlbumCardUIDataPreviewProvider : PreviewParameterProvider<AlbumCardUIData>
         for (i in 1..10) {
             add(
                 AlbumCardUIData.empty().copy(
-                    id = Identifier(id = i.toString()),
+                    id = Identifier(value = i.toString()),
                     name = "Album $i",
                     artists = "Artist $i"
                 )

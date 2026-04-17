@@ -26,7 +26,7 @@ class TrackCardUIDataPreviewProvider : PreviewParameterProvider<TrackCardUIData>
             for (i in 1..5) {
                 add(
                     TrackCardUIData.empty().copy(
-                        id = Identifier(id = i.toString()),
+                        id = Identifier(value = i.toString()),
                         number = i.toString(),
                         name = "Track $i",
                         artists = "Artist"

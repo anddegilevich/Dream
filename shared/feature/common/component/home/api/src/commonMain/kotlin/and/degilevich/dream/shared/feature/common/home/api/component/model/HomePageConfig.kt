@@ -9,11 +9,11 @@ sealed interface HomePageConfig : Identified {
 
     @Serializable
     data object Dashboard : HomePageConfig {
-        override val id: Identifier = Identifier(id = "dashboard")
+        override val id: Identifier = Identifier(value = "dashboard")
     }
 
     @Serializable
     data object Search : HomePageConfig {
-        override val id: Identifier = Identifier(id = "search")
+        override val id: Identifier = Identifier(value = "search")
     }
 }

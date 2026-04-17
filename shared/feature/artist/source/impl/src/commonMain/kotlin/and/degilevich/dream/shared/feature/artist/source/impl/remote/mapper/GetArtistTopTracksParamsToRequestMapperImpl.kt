@@ -8,7 +8,7 @@ internal class GetArtistTopTracksParamsToRequestMapperImpl : GetArtistTopTracksP
 
     override fun map(item: GetArtistTopTracksParams): GetArtistTopTracksRequest = with(item) {
         GetArtistTopTracksRequest(
-            id = id.id
+            id = id.value
         )
     }
 }

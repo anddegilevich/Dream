@@ -39,7 +39,7 @@ fun HomeScreen(
                     userScrollEnabled = false
                 )
             },
-            key = { child -> child.configuration.id.id },
+            key = { child -> child.configuration.id.value },
             scrollAnimation = PagesScrollAnimation.Default,
         ) { _, page ->
             page.Render()

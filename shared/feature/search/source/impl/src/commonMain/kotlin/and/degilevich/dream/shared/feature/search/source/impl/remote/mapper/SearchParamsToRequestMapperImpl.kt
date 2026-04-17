@@ -13,7 +13,7 @@ internal class SearchParamsToRequestMapperImpl : SearchParamsToRequestMapper {
                 q = query,
                 limit = limit,
                 offset = offset,
-                type = types.orNullIfEmpty()?.ids()?.map { type -> type.id }
+                type = types.orNullIfEmpty()?.ids()?.map { type -> type.value }
             )
         }
     }

@@ -8,9 +8,9 @@ internal class ArtistSimplifiedDataToEntityMapperImpl : ArtistSimplifiedDataToEn
 
     override fun map(item: ArtistSimplifiedData): ArtistEntity = with(item) {
         ArtistEntity(
-            id = id.id,
+            id = id.value,
             name = name,
-            artistType = artistType.id.id
+            artistType = artistType.id.value
         )
     }
 }

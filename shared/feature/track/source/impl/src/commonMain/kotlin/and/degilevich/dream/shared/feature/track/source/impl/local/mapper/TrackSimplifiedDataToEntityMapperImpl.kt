@@ -8,7 +8,7 @@ internal class TrackSimplifiedDataToEntityMapperImpl : TrackSimplifiedDataToEnti
 
     override fun map(item: TrackSimplifiedData): TrackEntity = with(item) {
         TrackEntity(
-            id = id.id,
+            id = id.value,
             name = name,
             albumId = null,
             trackNumber = trackNumber,

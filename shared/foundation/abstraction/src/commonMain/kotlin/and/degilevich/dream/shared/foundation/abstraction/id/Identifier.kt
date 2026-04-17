@@ -9,24 +9,24 @@ import kotlin.uuid.Uuid
 
 @JvmInline
 @Serializable
-value class Identifier(val id: String) : EmptyState {
+value class Identifier(val value: String) : EmptyState {
 
     override fun isEmpty(): Boolean {
-        return id.isEmpty()
+        return value.isEmpty()
     }
 
-    override fun toString(): String = id
+    override fun toString(): String = value
 
     companion object : EmptyFactory<Identifier> {
 
         override fun empty(): Identifier {
-            return Identifier(id = "")
+            return Identifier(value = "")
         }
 
         @OptIn(ExperimentalUuidApi::class)
         fun uuid(): Identifier {
             return Identifier(
-                id = Uuid.random().toString()
+                value = Uuid.random().toString()
             )
         }
     }

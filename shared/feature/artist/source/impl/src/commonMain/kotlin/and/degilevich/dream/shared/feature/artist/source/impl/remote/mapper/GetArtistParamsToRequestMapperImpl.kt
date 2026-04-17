@@ -8,7 +8,7 @@ internal class GetArtistParamsToRequestMapperImpl : GetArtistParamsToRequestMapp
 
     override fun map(item: GetArtistParams): GetArtistRequest = with(item) {
         GetArtistRequest(
-            id = id.id
+            id = id.value
         )
     }
 }

@@ -8,9 +8,9 @@ internal class TrackDataToEntityMapperImpl : TrackDataToEntityMapper {
 
     override fun map(item: TrackData): TrackEntity = with(item) {
         TrackEntity(
-            id = id.id,
+            id = id.value,
             name = name,
-            albumId = album.id.id,
+            albumId = album.id.value,
             trackNumber = trackNumber,
             durationMs = durationMs
         )

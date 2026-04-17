@@ -23,7 +23,7 @@ class ArtistLabelUIDataPreviewProvider : PreviewParameterProvider<ArtistLabelUID
             for (i in 1..2) {
                 add(
                     ArtistLabelUIData.empty().copy(
-                        id = Identifier(id = i.toString()),
+                        id = Identifier(value = i.toString()),
                         name = "Artist $i"
                     )
                 )

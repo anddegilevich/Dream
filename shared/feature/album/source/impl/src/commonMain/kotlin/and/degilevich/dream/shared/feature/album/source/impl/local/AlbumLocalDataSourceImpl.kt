@@ -43,22 +43,22 @@ internal class AlbumLocalDataSourceImpl(
             album.tracks.items
                 .mapWith(trackSimplifiedDataToEntityMapper)
                 .map { entity ->
-                    entity.copy(albumId = album.id.id)
+                    entity.copy(albumId = album.id.value)
                 }
         )
         artistToAlbumCrossRefDao.upsertAll(
             album.artists.map { artist ->
                 ArtistToAlbumCrossRefEntity(
-                    artistId = artist.id.id,
-                    albumId = album.id.id
+                    artistId = artist.id.value,
+                    albumId = album.id.value
                 )
             }
         )
         val entities = album.tracks.items.flatMap { track ->
             track.artists.map { artist ->
                 ArtistToTrackCrossRefEntity(
-                    artistId = artist.id.id,
-                    trackId = track.id.id
+                    artistId = artist.id.value,
+                    trackId = track.id.value
                 )
             }
         }
@@ -67,8 +67,8 @@ internal class AlbumLocalDataSourceImpl(
             album.tracks.items.flatMap { track ->
                 track.artists.map { artist ->
                     ArtistToTrackCrossRefEntity(
-                        artistId = artist.id.id,
-                        trackId = track.id.id
+                        artistId = artist.id.value,
+                        trackId = track.id.value
                     )
                 }
             }
@@ -86,8 +86,8 @@ internal class AlbumLocalDataSourceImpl(
             albums.flatMap { album ->
                 album.artists.map { artist ->
                     ArtistToAlbumCrossRefEntity(
-                        artistId = artist.id.id,
-                        albumId = album.id.id
+                        artistId = artist.id.value,
+                        albumId = album.id.value
                     )
                 }
             }

@@ -8,7 +8,7 @@ internal class GetArtistAlbumsParamsToRequestMapperImpl : GetArtistAlbumsParamsT
 
     override fun map(item: GetArtistAlbumsParams): GetArtistAlbumsRequest = with(item) {
         GetArtistAlbumsRequest(
-            id = id.id,
+            id = id.value,
             limit = limit,
             offset = offset
         )

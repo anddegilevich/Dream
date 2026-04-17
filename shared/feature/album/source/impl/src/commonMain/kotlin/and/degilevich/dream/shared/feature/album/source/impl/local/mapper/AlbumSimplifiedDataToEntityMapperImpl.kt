@@ -8,9 +8,9 @@ internal class AlbumSimplifiedDataToEntityMapperImpl : AlbumSimplifiedDataToEnti
 
     override fun map(item: AlbumSimplifiedData): AlbumEntity = with(item) {
         AlbumEntity(
-            id = id.id,
+            id = id.value,
             name = name,
-            albumType = albumType.id.id,
+            albumType = albumType.id.value,
             totalTracks = totalTracks,
             releaseDate = releaseDate
         )

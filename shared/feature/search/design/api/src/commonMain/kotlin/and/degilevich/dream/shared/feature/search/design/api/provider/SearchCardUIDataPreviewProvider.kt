@@ -40,16 +40,16 @@ class SearchCardUIDataPreviewProvider : PreviewParameterProvider<SearchCardUIDat
     fun provideList(): ImmutableList<SearchCardUIData> {
         return persistentListOf(
             ArtistSearchCardUIData.empty().copy(
-                id = Identifier(id = "1"),
+                id = Identifier(value = "1"),
                 name = "Artist"
             ),
             AlbumSearchCardUIData.empty().copy(
-                id = Identifier(id = "2"),
+                id = Identifier(value = "2"),
                 name = "Album",
                 artistName = "Artist"
             ),
             TrackSearchCardUIData.empty().copy(
-                id = Identifier(id = "3"),
+                id = Identifier(value = "3"),
                 name = "Track",
                 artistName = "Artist"
             )
