@@ -42,9 +42,6 @@ kotlin {
             implementation(projects.shared.feature.search.source.impl)
             implementation(projects.shared.feature.search.domain.impl)
             implementation(projects.shared.feature.search.design.impl)
-
-            implementation(projects.shared.feature.category.source.impl)
-            implementation(projects.shared.feature.category.domain.impl)
         }
     }
 

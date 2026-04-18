@@ -9,20 +9,6 @@ import and.degilevich.dream.shared.core.service.api.model.method.getArtist.GetAr
 import and.degilevich.dream.shared.core.service.api.model.method.getArtist.GetArtistResponse
 import and.degilevich.dream.shared.core.service.api.model.method.getArtistAlbums.GetArtistAlbumsRequest
 import and.degilevich.dream.shared.core.service.api.model.method.getArtistAlbums.GetArtistAlbumsResponse
-import and.degilevich.dream.shared.core.service.api.model.method.getArtistRelatedArtists.GetArtistRelatedArtistsRequest
-import and.degilevich.dream.shared.core.service.api.model.method.getArtistRelatedArtists.GetArtistRelatedArtistsResponse
-import and.degilevich.dream.shared.core.service.api.model.method.getArtistTopTracks.GetArtistTopTracksRequest
-import and.degilevich.dream.shared.core.service.api.model.method.getArtistTopTracks.GetArtistTopTracksResponse
-import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsRequest
-import and.degilevich.dream.shared.core.service.api.model.method.getArtists.GetArtistsResponse
-import and.degilevich.dream.shared.core.service.api.model.method.getCategories.GetCategoriesRequest
-import and.degilevich.dream.shared.core.service.api.model.method.getCategories.GetCategoriesResponse
-import and.degilevich.dream.shared.core.service.api.model.method.getCategory.GetCategoryRequest
-import and.degilevich.dream.shared.core.service.api.model.method.getCategory.GetCategoryResponse
-import and.degilevich.dream.shared.core.service.api.model.method.getNewReleases.GetNewReleasesRequest
-import and.degilevich.dream.shared.core.service.api.model.method.getNewReleases.GetNewReleasesResponse
-import and.degilevich.dream.shared.core.service.api.model.method.getRecommendations.GetRecommendationsRequest
-import and.degilevich.dream.shared.core.service.api.model.method.getRecommendations.GetRecommendationsResponse
 import and.degilevich.dream.shared.core.service.api.model.method.getTrack.GetTrackRequest
 import and.degilevich.dream.shared.core.service.api.model.method.getTrack.GetTrackResponse
 import and.degilevich.dream.shared.core.service.api.model.method.search.SearchRequest
@@ -34,22 +20,9 @@ internal class ServiceImpl(
     private val remoteClient: RemoteClient
 ) : Service {
 
-    override suspend fun getArtists(request: GetArtistsRequest): Result<GetArtistsResponse> {
-        return remoteClient.getCatching {
-            url("artists")
-            parameter("ids", request.ids)
-        }.foldBody()
-    }
-
     override suspend fun getArtist(request: GetArtistRequest): Result<GetArtistResponse> {
         return remoteClient.getCatching {
             url("artists/${request.id}")
-        }.foldBody()
-    }
-
-    override suspend fun getArtistTopTracks(request: GetArtistTopTracksRequest): Result<GetArtistTopTracksResponse> {
-        return remoteClient.getCatching {
-            url("artists/${request.id}/top-tracks")
         }.foldBody()
     }
 
@@ -61,38 +34,15 @@ internal class ServiceImpl(
         }.foldBody()
     }
 
-    override suspend fun getArtistRelatedArtists(
-        request: GetArtistRelatedArtistsRequest
-    ): Result<GetArtistRelatedArtistsResponse> {
-        return remoteClient.getCatching {
-            url("artists/${request.id}/related-artists")
-        }.foldBody()
-    }
-
     override suspend fun getAlbum(request: GetAlbumRequest): Result<GetAlbumResponse> {
         return remoteClient.getCatching {
             url("albums/${request.id}")
         }.foldBody()
     }
 
-    override suspend fun getNewReleases(request: GetNewReleasesRequest): Result<GetNewReleasesResponse> {
-        return remoteClient.getCatching {
-            url("browse/new-releases")
-            parameter("limit", request.limit)
-            parameter("offset", request.offset)
-        }.foldBody()
-    }
-
     override suspend fun getTrack(request: GetTrackRequest): Result<GetTrackResponse> {
         return remoteClient.getCatching {
             url("tracks/${request.id}")
-        }.foldBody()
-    }
-
-    override suspend fun getRecommendations(request: GetRecommendationsRequest): Result<GetRecommendationsResponse> {
-        return remoteClient.getCatching {
-            url("recommendations")
-            parameter("limit", request.limit)
         }.foldBody()
     }
 
@@ -103,20 +53,6 @@ internal class ServiceImpl(
             parameter("limit", request.limit)
             parameter("offset", request.offset)
             parameter("type", request.type?.joinToString(","))
-        }.foldBody()
-    }
-
-    override suspend fun getCategories(request: GetCategoriesRequest): Result<GetCategoriesResponse> {
-        return remoteClient.getCatching {
-            url("browse/categories")
-            parameter("limit", request.limit)
-            parameter("offset", request.offset)
-        }.foldBody()
-    }
-
-    override suspend fun getCategory(request: GetCategoryRequest): Result<GetCategoryResponse> {
-        return remoteClient.getCatching {
-            url("browse/categories/${request.categoryId}")
         }.foldBody()
     }
 }

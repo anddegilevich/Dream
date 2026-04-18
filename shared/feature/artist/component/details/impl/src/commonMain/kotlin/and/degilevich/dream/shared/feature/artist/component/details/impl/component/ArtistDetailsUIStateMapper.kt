@@ -8,22 +8,17 @@ import and.degilevich.dream.shared.feature.artist.component.details.impl.compone
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
-import and.degilevich.dream.shated.feature.track.design.api.mapper.TrackInfoToTrackCardUIDataMapper
-import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDetailsUIState>, KoinComponent {
-
-    private val trackInfoToTrackCardUIDataMapper: TrackInfoToTrackCardUIDataMapper by inject()
     private val albumInfoToCardUIDataMapper: AlbumInfoToCardUIDataMapper by inject()
 
     override fun map(item: ArtistDetailsState): ArtistDetailsUIState {
         return ArtistDetailsUIState(
             info = mapToInfo(state = item),
-            topTracks = mapToTopTracks(state = item),
             albums = mapToAlbums(state = item)
         )
     }
@@ -38,26 +33,6 @@ internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDet
                         iconUrl = artist.images.firstOrNull()?.url.orEmpty(),
                         name = artist.name,
                     )
-                )
-            }
-        }
-    }
-
-    private fun mapToTopTracks(state: ArtistDetailsState): Skeleton<ImmutableList<TrackCardUIData>> {
-        return with(state) {
-            if (topTracks.isEmpty()) {
-                Skeleton.Loading
-            } else {
-                Skeleton.Value(
-                    topTracks
-                        .asSequence()
-                        .mapWith(trackInfoToTrackCardUIDataMapper)
-                        .mapIndexed { index, cardData ->
-                            cardData.copy(
-                                number = index.inc().toString()
-                            )
-                        }
-                        .toImmutableList()
                 )
             }
         }
