@@ -3,6 +3,7 @@ package and.degilevich.dream.shared.feature.album.design.api.model
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.identifier
 import androidx.compose.runtime.Immutable
 
 @Immutable
@@ -15,7 +16,7 @@ data class AlbumCardUIData(
     companion object : EmptyFactory<AlbumCardUIData> {
         override fun empty(): AlbumCardUIData {
             return AlbumCardUIData(
-                id = Identifier(""),
+                id = identifier(""),
                 iconUrl = "",
                 name = "",
                 artists = ""

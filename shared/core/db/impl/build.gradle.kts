@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
-import kotlin.apply
 
 plugins {
     alias(libs.plugins.project.multiplatform)

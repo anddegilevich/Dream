@@ -10,11 +10,9 @@ internal class SearchAlbumsOutputToDataMapperImpl(
     private val albumSimplifiedOutputToDataMapper: AlbumSimplifiedOutputToDataMapper,
 ) : SearchAlbumsOutputToDataMapper {
 
-    override fun map(item: SearchAlbumsOutput): SearchAlbumsData {
-        return with(item) {
-            SearchAlbumsData(
-                items = items?.mapWith(albumSimplifiedOutputToDataMapper).orEmpty()
-            )
-        }
+    override fun map(item: SearchAlbumsOutput): SearchAlbumsData = with(item) {
+        SearchAlbumsData(
+            items = items?.mapWith(albumSimplifiedOutputToDataMapper).orEmpty()
+        )
     }
 }

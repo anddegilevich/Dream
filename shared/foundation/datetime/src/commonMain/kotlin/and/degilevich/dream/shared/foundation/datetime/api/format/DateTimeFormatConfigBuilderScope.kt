@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.datetime.api.format
 
-import and.degilevich.dream.shared.foundation.datetime.api.common.DateTimeInput
 import and.degilevich.dream.shared.foundation.datetime.api.common.DateTimeFormat
+import and.degilevich.dream.shared.foundation.datetime.api.common.DateTimeInput
 
 /**
  * Builder scope for configuring date and time formatting.

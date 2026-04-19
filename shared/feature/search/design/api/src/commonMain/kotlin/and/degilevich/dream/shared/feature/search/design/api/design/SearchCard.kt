@@ -8,10 +8,9 @@ import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCa
 import and.degilevich.dream.shared.feature.search.design.api.model.card.TrackSearchCardUIData
 import and.degilevich.dream.shared.feature.search.design.api.provider.SearchCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
-
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.tooling.preview.PreviewParameter
 
 @Composable

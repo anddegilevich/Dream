@@ -8,10 +8,6 @@ import com.arkivanov.decompose.router.items.ItemsNavigation
 import com.arkivanov.decompose.router.items.ItemsNavigator
 import com.arkivanov.decompose.router.items.LazyChildItems
 import com.arkivanov.decompose.value.MutableValue
-import kotlin.collections.getValue
-import kotlin.collections.mapValues
-import kotlin.collections.toList
-import kotlin.to
 
 @OptIn(ExperimentalDecomposeApi::class)
 class PreviewLazyChildItems<C : Any, T : Any>(

@@ -1,6 +1,6 @@
 package and.degilevich.dream.shated.feature.track.design.api.provider
 
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.identifier
 import and.degilevich.dream.shared.foundation.primitive.collections.persistentList.buildPersistentList
 import and.degilevich.dream.shated.feature.track.design.api.model.TrackCardUIData
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
@@ -26,7 +26,7 @@ class TrackCardUIDataPreviewProvider : PreviewParameterProvider<TrackCardUIData>
             for (i in 1..5) {
                 add(
                     TrackCardUIData.empty().copy(
-                        id = Identifier(value = i.toString()),
+                        id = identifier(value = i.toString()),
                         number = i.toString(),
                         name = "Track $i",
                         artists = "Artist"

@@ -17,29 +17,25 @@ internal class NavbarUIStateMapper : Mapper<NavbarState, NavbarUIState>, KoinCom
 
     private val resourceManager: ResourceManager by inject()
 
-    override fun map(item: NavbarState): NavbarUIState {
-        return with(item) {
-            NavbarUIState(
-                items = mapToItems(state = item)
-            )
-        }
+    override fun map(item: NavbarState): NavbarUIState = with(item) {
+        NavbarUIState(
+            items = mapToItems(state = this)
+        )
     }
 
-    private fun mapToItems(state: NavbarState): ImmutableList<NavbarItemUIData> {
-        return with(state) {
-            items.map { item ->
-                val isSelected = item == activeItem
-                NavbarItemUIData(
-                    id = item.id,
-                    icon = mapItemToIcon(
-                        item = item,
-                        isSelected = isSelected
-                    ),
-                    text = mapItemToLabel(item = item),
+    private fun mapToItems(state: NavbarState): ImmutableList<NavbarItemUIData> = with(state) {
+        items.map { item ->
+            val isSelected = item == activeItem
+            NavbarItemUIData(
+                id = item.id,
+                icon = mapItemToIcon(
+                    item = item,
                     isSelected = isSelected
-                )
-            }.toImmutableList()
-        }
+                ),
+                text = mapItemToLabel(item = item),
+                isSelected = isSelected
+            )
+        }.toImmutableList()
     }
 
     private fun mapItemToIcon(

@@ -12,9 +12,9 @@ internal class GetTrackResponseToResultMapperImpl(
     private val trackOutputToDataMapper: TrackOutputToDataMapper
 ) : GetTrackResponseToResultMapper {
 
-    override fun map(item: GetTrackResponse): GetTrackResult {
-        return GetTrackResult(
-            track = item?.mapWith(trackOutputToDataMapper).orEmpty(TrackData)
+    override fun map(item: GetTrackResponse): GetTrackResult = with(item) {
+        GetTrackResult(
+            track = this?.mapWith(trackOutputToDataMapper).orEmpty(TrackData)
         )
     }
 }

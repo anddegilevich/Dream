@@ -4,6 +4,7 @@ import and.degilevich.dream.Res
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.emptyIdentifier
 import androidx.compose.runtime.Immutable
 import dev.icerock.moko.resources.ImageResource
 
@@ -17,7 +18,7 @@ data class NavbarItemUIData(
     companion object : EmptyFactory<NavbarItemUIData> {
         override fun empty(): NavbarItemUIData {
             return NavbarItemUIData(
-                id = Identifier.empty(),
+                id = emptyIdentifier(),
                 icon = Res.images.ic_home,
                 text = "",
                 isSelected = false

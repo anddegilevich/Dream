@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.album.source.impl.remote.mapper
 
 import and.degilevich.dream.shared.core.service.api.model.data.album.AlbumOutput
+import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
 import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumTracksData
@@ -9,8 +10,8 @@ import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.AlbumT
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.ArtistSimplifiedOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.source.api.remote.mapper.ImageObjectOutputToDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueByIdOrElse
+import and.degilevich.dream.shared.foundation.abstraction.id.identifier
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZero
 
@@ -20,20 +21,16 @@ internal class AlbumOutputToDataMapperImpl(
     private val albumTracksOutputToDataMapper: AlbumTracksOutputToDataMapper,
 ) : AlbumOutputToDataMapper {
 
-    override fun map(item: AlbumOutput): AlbumData {
-        return with(item) {
-            AlbumData(
-                id = id?.let(::Identifier).orEmpty(Identifier),
-                name = name.orEmpty(),
-                albumType = getEnumValueByIdOrElse(
-                    id = albumType?.let(::Identifier).orEmpty(Identifier)
-                ) { AlbumType.UNKNOWN },
-                totalTracks = totalTracks.orZero(),
-                releaseDate = releaseDate.orEmpty(),
-                artists = artists?.mapWith(artistSimplifiedOutputToDataMapper).orEmpty(),
-                images = images?.mapWith(imageObjectOutputToDataMapper).orEmpty(),
-                tracks = tracks?.mapWith(albumTracksOutputToDataMapper).orEmpty(AlbumTracksData),
-            )
-        }
+    override fun map(item: AlbumOutput): AlbumData = with(item) {
+        AlbumData(
+            id = id?.let(::AlbumId).orEmpty(AlbumId),
+            name = name.orEmpty(),
+            albumType = getEnumValueByIdOrElse(id = albumType?.let(::identifier)) { AlbumType.UNKNOWN },
+            totalTracks = totalTracks.orZero(),
+            releaseDate = releaseDate.orEmpty(),
+            artists = artists?.mapWith(artistSimplifiedOutputToDataMapper).orEmpty(),
+            images = images?.mapWith(imageObjectOutputToDataMapper).orEmpty(),
+            tracks = tracks?.mapWith(albumTracksOutputToDataMapper).orEmpty(AlbumTracksData),
+        )
     }
 }

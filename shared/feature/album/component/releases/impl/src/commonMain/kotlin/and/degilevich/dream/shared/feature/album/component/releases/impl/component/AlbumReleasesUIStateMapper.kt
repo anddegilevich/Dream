@@ -16,25 +16,21 @@ internal class AlbumReleasesUIStateMapper : Mapper<AlbumReleasesState, AlbumRele
 
     private val albumInfoToCardUIDataMapper: AlbumInfoToCardUIDataMapper by inject()
 
-    override fun map(item: AlbumReleasesState): AlbumReleasesUIState {
-        return AlbumReleasesUIState(
-            releases = mapToReleases(state = item)
+    override fun map(item: AlbumReleasesState): AlbumReleasesUIState = with(item) {
+        AlbumReleasesUIState(
+            releases = mapToReleases(state = this)
         )
     }
 
-    private fun mapToReleases(state: AlbumReleasesState): Skeleton<ImmutableList<AlbumCardUIData>> {
-        return with(state) {
-            if (releases.isEmpty()) {
-                Skeleton.Loading
-            } else {
-                Skeleton.Value(
-                    value = releases
-                        .asSequence()
-                        .sortedBy { album -> album.releaseDate }
-                        .mapWith(albumInfoToCardUIDataMapper)
-                        .toImmutableList()
-                )
-            }
+    private fun mapToReleases(state: AlbumReleasesState): Skeleton<ImmutableList<AlbumCardUIData>> = with(state) {
+        Skeleton.from(
+            isLoading = releases.isEmpty()
+        ) {
+            releases
+                .asSequence()
+                .sortedBy { album -> album.releaseDate }
+                .mapWith(albumInfoToCardUIDataMapper)
+                .toImmutableList()
         }
     }
 }

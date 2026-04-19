@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.api.compo
 
 import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.identifier
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,6 +10,6 @@ sealed interface DashboardItemConfig : Identified {
 
     @Serializable
     data object AlbumReleases : DashboardItemConfig {
-        override val id: Identifier = Identifier("albumReleases")
+        override val id: Identifier = identifier("albumReleases")
     }
 }

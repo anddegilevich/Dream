@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.foundation.abstraction.equalizer.ext
 
-import and.degilevich.dream.shared.foundation.abstraction.equalizer.collection.CollectionEqualizer
 import and.degilevich.dream.shared.foundation.abstraction.equalizer.Equalizer
+import and.degilevich.dream.shared.foundation.abstraction.equalizer.collection.CollectionEqualizer
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 

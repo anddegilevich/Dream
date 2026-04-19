@@ -7,13 +7,11 @@ import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.or
 
 internal class ImageObjectOutputToDataMapperImpl : ImageObjectOutputToDataMapper {
 
-    override fun map(item: ImageObjectOutput): ImageObjectData {
-        return with(item) {
-            ImageObjectData(
-                url = url.orEmpty(),
-                height = height.orZero(),
-                width = width.orZero()
-            )
-        }
+    override fun map(item: ImageObjectOutput): ImageObjectData = with(item) {
+        ImageObjectData(
+            url = url.orEmpty(),
+            height = height.orZero(),
+            width = width.orZero()
+        )
     }
 }

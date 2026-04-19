@@ -14,6 +14,7 @@ import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shated.feature.track.design.api.design.TrackCard
 import and.degilevich.dream.shated.feature.track.design.api.design.skeleton.SkeletonTrackCard
 import androidx.compose.foundation.layout.Arrangement
@@ -31,7 +32,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource

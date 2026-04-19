@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.navigation.api.model.args
 
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class TrackDetailsNavArgs(
-    val trackId: Identifier
+    val trackId: TrackId
 )

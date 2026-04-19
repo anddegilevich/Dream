@@ -1,15 +1,14 @@
 package and.degilevich.dream.shared.feature.album.source.impl.remote.mapper
 
 import and.degilevich.dream.shared.core.service.api.model.method.getAlbum.GetAlbumRequest
-import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.GetAlbumParamsToRequestMapper
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
+import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.GetAlbumParamsToRequestMapper
 
 internal class GetAlbumParamsToRequestMapperImpl : GetAlbumParamsToRequestMapper {
-    override fun map(item: GetAlbumParams): GetAlbumRequest {
-        return with(item) {
-            GetAlbumRequest(
-                id = id.value
-            )
-        }
+
+    override fun map(item: GetAlbumParams): GetAlbumRequest = with(item) {
+        GetAlbumRequest(
+            id = id.value
+        )
     }
 }

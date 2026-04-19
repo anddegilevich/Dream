@@ -4,9 +4,11 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesState
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchNewReleasesUseCase
+import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesParams
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
@@ -34,7 +36,7 @@ internal class AlbumReleasesDomainComponent(
 
     override fun handleIntent(intent: AlbumReleasesIntent) {
         when (intent) {
-            is AlbumReleasesIntent.OnAlbumClicked -> navigateToAlbum(albumId = intent.id)
+            is AlbumReleasesIntent.OnAlbumClicked -> onAlbumClicked(intent.id)
         }
     }
 
@@ -66,7 +68,12 @@ internal class AlbumReleasesDomainComponent(
         }
     }
 
-    private fun navigateToAlbum(albumId: Identifier) {
+    private fun onAlbumClicked(id: Identifier) {
+        val album = state().releases.getById(id) ?: return
+        navigateToAlbum(albumId = album.id)
+    }
+
+    private fun navigateToAlbum(albumId: AlbumId) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(
