@@ -1,16 +1,16 @@
 package and.degilevich.dream.shared.design.system.snackbar.provider
 
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 import androidx.compose.material.SnackbarData
 import androidx.compose.material.SnackbarDuration
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 
-class SnackbarDataPreviewProvider : PreviewParameterProvider<SnackbarData> {
+class SnackbarDataPreviewProvider : LabeledPreviewParameterProvider<SnackbarData>() {
 
-    override val values: Sequence<SnackbarData> = sequenceOf(
-        provide()
+    override val labeledValues = listOf(
+        "Default" to provideDefault()
     )
 
-    fun provide(): SnackbarData {
+    fun provideDefault(): SnackbarData {
         return object : SnackbarData {
             override val actionLabel: String = "Action"
             override val duration: SnackbarDuration = SnackbarDuration.Short

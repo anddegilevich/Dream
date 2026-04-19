@@ -5,16 +5,16 @@ import and.degilevich.dream.shared.feature.search.design.api.model.card.ArtistSe
 import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.feature.search.design.api.model.card.TrackSearchCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.id.identifier
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
-class SearchCardUIDataPreviewProvider : PreviewParameterProvider<SearchCardUIData> {
+class SearchCardUIDataPreviewProvider : LabeledPreviewParameterProvider<SearchCardUIData>() {
 
-    override val values: Sequence<SearchCardUIData> = sequenceOf(
-        provideTrack(),
-        provideArtist(),
-        provideAlbum()
+    override val labeledValues = listOf(
+        "Track" to provideTrack(),
+        "Artist" to provideArtist(),
+        "Album" to provideAlbum()
     )
 
     fun provideArtist(): ArtistSearchCardUIData {

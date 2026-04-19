@@ -3,13 +3,13 @@ package and.degilevich.dream.shared.feature.search.component.search.api.provider
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
 import and.degilevich.dream.shared.feature.search.design.api.provider.SearchCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 
-class SearchUIStatePreviewProvider : PreviewParameterProvider<SearchUIState> {
+class SearchUIStatePreviewProvider : LabeledPreviewParameterProvider<SearchUIState>() {
 
-    override val values: Sequence<SearchUIState> = sequenceOf(
-        provideSkeleton(),
-        provide()
+    override val labeledValues = listOf(
+        "Skeleton" to provideSkeleton(),
+        "Default" to provideDefault()
     )
 
     fun provideSkeleton(): SearchUIState {
@@ -19,7 +19,7 @@ class SearchUIStatePreviewProvider : PreviewParameterProvider<SearchUIState> {
         )
     }
 
-    fun provide(): SearchUIState {
+    fun provideDefault(): SearchUIState {
         return SearchUIState(
             query = "Query",
             items = Skeleton.Value(SearchCardUIDataPreviewProvider().provideList())

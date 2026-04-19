@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.api.provider
 
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarUIState
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 
-class NavbarUIStatePreviewProvider : PreviewParameterProvider<NavbarUIState> {
+class NavbarUIStatePreviewProvider : LabeledPreviewParameterProvider<NavbarUIState>() {
 
-    override val values: Sequence<NavbarUIState> = sequenceOf(
-        provide()
+    override val labeledValues = listOf(
+        "Default" to provideDefault()
     )
 
-    fun provide(): NavbarUIState {
+    fun provideDefault(): NavbarUIState {
         return NavbarUIState(
             items = NavbarItemUIDataPreviewProvider().provideList()
         )

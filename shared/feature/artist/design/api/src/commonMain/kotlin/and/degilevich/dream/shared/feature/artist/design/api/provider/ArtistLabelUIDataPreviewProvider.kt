@@ -2,17 +2,17 @@ package and.degilevich.dream.shared.feature.artist.design.api.provider
 
 import and.degilevich.dream.shared.feature.artist.design.api.model.ArtistLabelUIData
 import and.degilevich.dream.shared.foundation.abstraction.id.identifier
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 import and.degilevich.dream.shared.foundation.primitive.collections.persistentList.buildPersistentList
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
 
-class ArtistLabelUIDataPreviewProvider : PreviewParameterProvider<ArtistLabelUIData> {
+class ArtistLabelUIDataPreviewProvider : LabeledPreviewParameterProvider<ArtistLabelUIData>() {
 
-    override val values: Sequence<ArtistLabelUIData> = sequenceOf(
-        provide()
+    override val labeledValues = listOf(
+        "Default" to provideDefault()
     )
 
-    fun provide(): ArtistLabelUIData {
+    fun provideDefault(): ArtistLabelUIData {
         return ArtistLabelUIData.empty().copy(
             name = "Artist"
         )
