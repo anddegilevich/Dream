@@ -53,7 +53,7 @@ internal class AlbumReleasesDomainComponent(
             setLoading(true)
             withContext(context = Dispatchers.IO) { fetchNewReleasesUseCase(params) }
                 .onSuccess { result ->
-                    setReleases(albums = result.albums.albums)
+                    setReleases(albums = result.albums)
                 }
                 .onFailure { error ->
                     toastController.showRepeatToast(

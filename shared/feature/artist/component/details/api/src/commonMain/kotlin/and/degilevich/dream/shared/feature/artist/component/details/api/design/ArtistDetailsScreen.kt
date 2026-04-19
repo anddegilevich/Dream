@@ -15,8 +15,7 @@ import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
-import and.degilevich.dream.shated.feature.track.design.api.design.TrackCard
-import and.degilevich.dream.shated.feature.track.design.api.design.skeleton.SkeletonTrackCard
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -34,7 +33,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -82,39 +80,8 @@ fun ArtistDetailsScreen(
                         )
                     }
                 )
-                Space(height = 20.dp)
-                Text(
-                    text = stringResource(Res.strings.title_top_tracks),
-                    color = Theme.colors.text.primary,
-                    style = Theme.typography.h3
-                )
-                Space(height = 4.dp)
             }
         }
-        identifiedSkeletonItems(
-            skeleton = state.topTracks,
-            loadingItemsCount = 10,
-            loadingItemContent = {
-                SkeletonTrackCard(
-                    modifier = Modifier
-                        .padding(top = 12.dp)
-                        .padding(horizontal = 16.dp)
-                        .fillMaxWidth(),
-                )
-            },
-            itemContent = { track ->
-                TrackCard(
-                    modifier = Modifier
-                        .animateItem()
-                        .padding(top = 12.dp)
-                        .padding(horizontal = 16.dp)
-                        .fillMaxWidth(),
-                    data = track
-                ) { id ->
-                    onIntent(ArtistDetailsIntent.OnTrackClicked(id = id))
-                }
-            }
-        )
         item {
             Column {
                 Space(height = 20.dp)

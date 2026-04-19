@@ -15,7 +15,6 @@ internal class ArtistDetailsStateConservator(
         navArgs = navArgs,
         isLoading = true,
         artist = ArtistData.empty(),
-        topTracks = emptyList(),
         albums = emptyList()
     )
     override val serializer: KSerializer<ArtistDetailsState> = ArtistDetailsState.serializer()

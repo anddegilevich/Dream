@@ -9,13 +9,7 @@ import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.Artis
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistAlbumsParamsToRequestMapper
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistAlbumsResponseToResultMapper
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistRelatedArtistsParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistRelatedArtistsResponseToResultMapper
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistTopTracksParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistTopTracksResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistsParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.GetArtistsResponseToResultMapper
 import and.degilevich.dream.shared.feature.artist.source.impl.local.ArtistLocalDataSourceImpl
 import and.degilevich.dream.shared.feature.artist.source.impl.local.mapper.ArtistDataToEntityMapperImpl
 import and.degilevich.dream.shared.feature.artist.source.impl.local.mapper.ArtistSimplifiedDataToEntityMapperImpl
@@ -25,13 +19,7 @@ import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.Arti
 import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistAlbumsParamsToRequestMapperImpl
 import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistAlbumsResponseToResultMapperImpl
 import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistParamsToRequestMapperImpl
-import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistRelatedArtistsParamsToRequestMapperImpl
-import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistRelatedArtistsResponseToResultMapperImpl
 import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistResponseToResultMapperImpl
-import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistTopTracksParamsToRequestMapperImpl
-import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistTopTracksResponseToResultMapperImpl
-import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistsParamsToRequestMapperImpl
-import and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper.GetArtistsResponseToResultMapperImpl
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
@@ -51,25 +39,6 @@ fun artistSourceModule() = module {
     factoryOf(::GetArtistParamsToRequestMapperImpl) bind GetArtistParamsToRequestMapper::class
     factoryOf(::GetArtistResponseToResultMapperImpl) bind GetArtistResponseToResultMapper::class
 
-    factoryOf(::GetArtistsParamsToRequestMapperImpl) bind GetArtistsParamsToRequestMapper::class
-    factoryOf(::GetArtistsResponseToResultMapperImpl) bind GetArtistsResponseToResultMapper::class
-
-    factoryOf(
-        ::GetArtistTopTracksParamsToRequestMapperImpl
-    ) bind GetArtistTopTracksParamsToRequestMapper::class
-    factoryOf(
-        ::GetArtistTopTracksResponseToResultMapperImpl
-    ) bind GetArtistTopTracksResponseToResultMapper::class
-
-    factoryOf(
-        ::GetArtistRelatedArtistsParamsToRequestMapperImpl
-    ) bind GetArtistRelatedArtistsParamsToRequestMapper::class
-    factoryOf(
-        ::GetArtistRelatedArtistsResponseToResultMapperImpl
-    ) bind GetArtistRelatedArtistsResponseToResultMapper::class
-
     factoryOf(::GetArtistAlbumsParamsToRequestMapperImpl) bind GetArtistAlbumsParamsToRequestMapper::class
-    factoryOf(
-        ::GetArtistAlbumsResponseToResultMapperImpl
-    ) bind GetArtistAlbumsResponseToResultMapper::class
+    factoryOf(::GetArtistAlbumsResponseToResultMapperImpl) bind GetArtistAlbumsResponseToResultMapper::class
 }

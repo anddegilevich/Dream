@@ -5,13 +5,10 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsState
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistAlbumsUseCase
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistTopTracksUseCase
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistTopTracks.GetArtistTopTracksParams
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
@@ -47,7 +44,6 @@ internal class ArtistDetailsDomainComponent(
 ) {
 
     private val fetchArtistUseCase: FetchArtistUseCase by inject()
-    private val fetchArtistTopTracksUseCase: FetchArtistTopTracksUseCase by inject()
     private val fetchArtistAlbumsUseCase: FetchArtistAlbumsUseCase by inject()
 
     init {
@@ -74,7 +70,6 @@ internal class ArtistDetailsDomainComponent(
             supervisorScope {
                 listOf(
                     fetchArtist(),
-                    fetchTopTracks(),
                     fetchAlbums(),
                 ).awaitAll().forEach { result ->
                     result.onFailure { error ->
@@ -98,16 +93,6 @@ internal class ArtistDetailsDomainComponent(
         withContext(context = Dispatchers.IO) { fetchArtistUseCase(params = params) }
             .onSuccess { result ->
                 setArtist(artist = result.artist)
-            }
-    }
-
-    private fun fetchTopTracks() = scope.async {
-        val params = GetArtistTopTracksParams(
-            id = state().navArgs.artistId
-        )
-        withContext(context = Dispatchers.IO) { fetchArtistTopTracksUseCase(params = params) }
-            .onSuccess { result ->
-                setTopTracks(tracks = result.tracks)
             }
     }
 
@@ -145,10 +130,6 @@ internal class ArtistDetailsDomainComponent(
 
     private fun setArtist(artist: ArtistData) = reduce {
         copy(artist = artist)
-    }
-
-    private fun setTopTracks(tracks: List<TrackData>) = reduce {
-        copy(topTracks = tracks)
     }
 
     private fun setAlbums(albums: List<AlbumSimplifiedData>) = reduce {

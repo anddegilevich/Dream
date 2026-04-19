@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child
 
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesComponent
-import and.degilevich.dream.shared.feature.category.component.list.api.component.CategoryListComponent
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderComponent
 import androidx.compose.runtime.Stable
 
@@ -12,9 +11,4 @@ sealed interface DashboardItem : RenderComponent {
     class AlbumReleases(
         component: AlbumReleasesComponent
     ) : DashboardItem, AlbumReleasesComponent by component
-
-    @Stable
-    class CategoryList(
-        component: CategoryListComponent
-    ) : DashboardItem, CategoryListComponent by component
 }

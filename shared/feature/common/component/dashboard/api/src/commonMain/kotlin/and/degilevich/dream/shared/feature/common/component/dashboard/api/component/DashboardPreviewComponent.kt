@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.api.component
 
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesPreviewComponent
-import and.degilevich.dream.shared.feature.category.component.list.api.component.CategoryListPreviewComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.foundation.decompose.compose.preview.PreviewComponentContext
@@ -20,10 +19,6 @@ class DashboardPreviewComponent :
             when (config) {
                 is DashboardItemConfig.AlbumReleases -> DashboardItem.AlbumReleases(
                     component = AlbumReleasesPreviewComponent()
-                )
-
-                is DashboardItemConfig.CategoryList -> DashboardItem.CategoryList(
-                    component = CategoryListPreviewComponent()
                 )
             }
         }
