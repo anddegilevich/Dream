@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.focus.clearFocusOnImeDismiss
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.fadeIn
@@ -33,7 +34,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 

@@ -1,17 +1,17 @@
 package and.degilevich.dream.shared.feature.album.model.core.api.data
 
 import and.degilevich.dream.shared.feature.album.model.artifact.api.abstraction.AlbumInfo
+import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
 import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
 import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistSimplifiedData
 import and.degilevich.dream.shared.feature.image.model.artifact.api.data.ImageObjectData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.id.AbstractIdentified
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class AlbumData(
-    override val id: Identifier,
+    override val id: AlbumId,
     override val name: String,
     override val albumType: AlbumType,
     override val totalTracks: Int,
@@ -25,7 +25,7 @@ data class AlbumData(
 
         override fun empty(): AlbumData {
             return AlbumData(
-                id = Identifier.empty(),
+                id = AlbumId.empty(),
                 name = "",
                 albumType = AlbumType.UNKNOWN,
                 totalTracks = 0,

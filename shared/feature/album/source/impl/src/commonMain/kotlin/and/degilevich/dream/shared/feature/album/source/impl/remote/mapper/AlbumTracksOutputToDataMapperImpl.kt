@@ -9,11 +9,10 @@ import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 internal class AlbumTracksOutputToDataMapperImpl(
     private val trackSimplifiedOutputToDataMapper: TrackSimplifiedOutputToDataMapper
 ) : AlbumTracksOutputToDataMapper {
-    override fun map(item: AlbumTracksOutput): AlbumTracksData {
-        return with(item) {
-            AlbumTracksData(
-                items = items?.mapWith(trackSimplifiedOutputToDataMapper).orEmpty()
-            )
-        }
+
+    override fun map(item: AlbumTracksOutput): AlbumTracksData = with(item) {
+        AlbumTracksData(
+            items = items?.mapWith(trackSimplifiedOutputToDataMapper).orEmpty()
+        )
     }
 }

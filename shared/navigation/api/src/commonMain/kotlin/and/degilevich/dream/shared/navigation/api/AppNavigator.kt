@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.navigation.api
 
-import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.foundation.decompose.navigation.result.NavigationResultManager
 import and.degilevich.dream.shared.navigation.api.model.config.NavbarConfig
+import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.router.slot.SlotNavigator
 import com.arkivanov.decompose.router.stack.StackNavigator
 

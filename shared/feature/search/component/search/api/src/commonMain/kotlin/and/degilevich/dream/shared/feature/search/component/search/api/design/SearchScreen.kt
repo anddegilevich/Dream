@@ -13,6 +13,7 @@ import and.degilevich.dream.shared.foundation.compose.draggable.OnDragLaunchedEf
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.ime.controller.rememberImeController
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -27,7 +28,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource

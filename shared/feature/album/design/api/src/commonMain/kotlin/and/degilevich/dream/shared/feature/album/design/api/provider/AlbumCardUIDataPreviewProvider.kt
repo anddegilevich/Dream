@@ -1,19 +1,19 @@
 package and.degilevich.dream.shared.feature.album.design.api.provider
 
 import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.identifier
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 import and.degilevich.dream.shared.foundation.primitive.collections.persistentList.buildPersistentList
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
 
 @Suppress("MagicNumber")
-class AlbumCardUIDataPreviewProvider : PreviewParameterProvider<AlbumCardUIData> {
+class AlbumCardUIDataPreviewProvider : LabeledPreviewParameterProvider<AlbumCardUIData>() {
 
-    override val values: Sequence<AlbumCardUIData> = sequenceOf(
-        provide()
+    override val labeledValues = listOf(
+        "Default" to provideDefault()
     )
 
-    fun provide(): AlbumCardUIData {
+    fun provideDefault(): AlbumCardUIData {
         return AlbumCardUIData.empty().copy(
             name = "Album",
             artists = "Artist"
@@ -24,7 +24,7 @@ class AlbumCardUIDataPreviewProvider : PreviewParameterProvider<AlbumCardUIData>
         for (i in 1..10) {
             add(
                 AlbumCardUIData.empty().copy(
-                    id = Identifier(value = i.toString()),
+                    id = identifier(value = i.toString()),
                     name = "Album $i",
                     artists = "Artist $i"
                 )

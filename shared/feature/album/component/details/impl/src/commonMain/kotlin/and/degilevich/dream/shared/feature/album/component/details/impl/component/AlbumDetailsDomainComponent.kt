@@ -7,9 +7,12 @@ import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchAlbumUs
 import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistsUseCase
+import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistId
 import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
@@ -52,8 +55,8 @@ internal class AlbumDetailsDomainComponent(
     override fun handleIntent(intent: AlbumDetailsIntent) {
         when (intent) {
             is AlbumDetailsIntent.OnBackClicked -> navigateBack()
-            is AlbumDetailsIntent.OnArtistClicked -> navigateToArtistDetails(intent.id)
-            is AlbumDetailsIntent.OnTrackClicked -> navigateToTrackDetails(intent.id)
+            is AlbumDetailsIntent.OnArtistClicked -> onArtistClicked(id = intent.id)
+            is AlbumDetailsIntent.OnTrackClicked -> onTrackClicked(id = intent.id)
         }
     }
 
@@ -104,11 +107,21 @@ internal class AlbumDetailsDomainComponent(
             }
     }
 
+    private fun onArtistClicked(id: Identifier) {
+        val artist = state().artists.getById(id = id) ?: return
+        navigateToArtistDetails(artistId = artist.id)
+    }
+
+    private fun onTrackClicked(id: Identifier) {
+        val track = state().album.tracks.items.getById(id) ?: return
+        navigateToTrackDetails(trackId = track.id)
+    }
+
     private fun navigateBack() {
         navigator.screenNavigator.pop()
     }
 
-    private fun navigateToArtistDetails(artistId: Identifier) {
+    private fun navigateToArtistDetails(artistId: ArtistId) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(
@@ -118,7 +131,7 @@ internal class AlbumDetailsDomainComponent(
         )
     }
 
-    private fun navigateToTrackDetails(trackId: Identifier) {
+    private fun navigateToTrackDetails(trackId: TrackId) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(

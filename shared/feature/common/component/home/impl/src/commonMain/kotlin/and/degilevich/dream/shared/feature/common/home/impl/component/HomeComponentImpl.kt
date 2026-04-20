@@ -32,7 +32,7 @@ class HomeComponentImpl(
 
     override val navbar: HomeNavbar = HomeNavbar(
         component = NavbarComponentImpl(
-            componentContext = childContext(key = "navbar")
+            componentContext = childContext(key = NAVBAR_KEY)
         )
     )
 
@@ -50,7 +50,7 @@ class HomeComponentImpl(
                 selectedIndex = 0
             )
         },
-        key = "pages",
+        key = PAGES_KEY,
         handleBackButton = false,
         childFactory = ::pageFactory
     )
@@ -91,5 +91,10 @@ class HomeComponentImpl(
                 index = activePageIndex
             )
         }
+    }
+
+    private companion object {
+        const val PAGES_KEY = "pages"
+        const val NAVBAR_KEY = "navbar"
     }
 }

@@ -4,9 +4,9 @@ import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEm
 import and.degilevich.dream.shared.foundation.decompose.navigation.result.NavigationResultManager
 import and.degilevich.dream.shared.foundation.decompose.navigation.result.NavigationResultManagerState
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
-import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.api.AppNavigator
 import and.degilevich.dream.shared.navigation.api.model.config.NavbarConfig
+import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.children.NavigationSource
 import com.arkivanov.decompose.router.slot.SlotNavigation

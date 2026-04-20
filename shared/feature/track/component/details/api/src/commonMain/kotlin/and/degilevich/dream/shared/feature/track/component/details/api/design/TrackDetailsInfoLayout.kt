@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.feature.album.design.api.design.AlbumIcon
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsInfoLayoutUIData
 import and.degilevich.dream.shared.feature.track.component.details.api.provider.TrackDetailsInfoLayoutUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.compose.ext.Space
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +16,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 

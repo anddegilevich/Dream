@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -15,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 

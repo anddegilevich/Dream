@@ -1,8 +1,7 @@
 import and.degilevich.dream.convention.common.compileSdk
 import and.degilevich.dream.convention.common.javaVersion
-import and.degilevich.dream.convention.common.minSdk
 import and.degilevich.dream.convention.common.libs
-import org.gradle.kotlin.dsl.withType
+import and.degilevich.dream.convention.common.minSdk
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinBasePlugin
 

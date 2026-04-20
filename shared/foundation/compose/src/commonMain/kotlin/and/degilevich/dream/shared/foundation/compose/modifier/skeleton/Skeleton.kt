@@ -10,4 +10,13 @@ sealed interface Skeleton<out T> {
 
     @Stable
     data object Loading : Skeleton<Nothing>
+
+    companion object {
+        inline fun <T> from(
+            isLoading: Boolean,
+            crossinline block: () -> T
+        ): Skeleton<T> {
+            return if (isLoading) Loading else Value(block())
+        }
+    }
 }

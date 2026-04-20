@@ -10,6 +10,7 @@ import and.degilevich.dream.shared.feature.track.component.details.api.design.sk
 import and.degilevich.dream.shared.feature.track.component.details.api.provider.TrackDetailsUIStatePreviewProvider
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,7 +23,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource

@@ -6,12 +6,11 @@ import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.Artist
 import and.degilevich.dream.shared.feature.image.model.artifact.api.data.ImageObjectData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.id.AbstractIdentified
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class AlbumSimplifiedData(
-    override val id: Identifier,
+    override val id: AlbumId,
     override val name: String,
     override val albumType: AlbumType,
     override val totalTracks: Int,
@@ -19,10 +18,12 @@ data class AlbumSimplifiedData(
     override val artists: List<ArtistSimplifiedData>,
     override val images: List<ImageObjectData>,
 ) : AbstractIdentified(), AlbumInfo {
+
     companion object : EmptyFactory<AlbumSimplifiedData> {
+
         override fun empty(): AlbumSimplifiedData {
             return AlbumSimplifiedData(
-                id = Identifier.empty(),
+                id = AlbumId.empty(),
                 name = "",
                 albumType = AlbumType.UNKNOWN,
                 totalTracks = 0,

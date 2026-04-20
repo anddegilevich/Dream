@@ -30,7 +30,7 @@ class DashboardComponentImpl(
                 items = listOf(DashboardItemConfig.AlbumReleases)
             )
         },
-        key = "items",
+        key = ITEMS_KEY,
         childFactory = ::itemFactory
     )
 
@@ -47,5 +47,9 @@ class DashboardComponentImpl(
                 )
             }
         }
+    }
+
+    private companion object {
+        const val ITEMS_KEY = "items"
     }
 }

@@ -18,13 +18,11 @@ internal class SearchResponseToResultMapperImpl(
     private val searchAlbumsOutputToDataMapper: SearchAlbumsOutputToDataMapper,
 ) : SearchResponseToResultMapper {
 
-    override fun map(item: SearchResponse): SearchResult {
-        return with(item) {
-            SearchResult(
-                tracks = tracks?.mapWith(searchTracksOutputToDataMapper).orEmpty(SearchTracksData),
-                artists = artists?.mapWith(searchArtistsOutputToDataMapper).orEmpty(SearchArtistsData),
-                albums = albums?.mapWith(searchAlbumsOutputToDataMapper).orEmpty(SearchAlbumsData)
-            )
-        }
+    override fun map(item: SearchResponse): SearchResult = with(item) {
+        SearchResult(
+            tracks = tracks?.mapWith(searchTracksOutputToDataMapper).orEmpty(SearchTracksData),
+            artists = artists?.mapWith(searchArtistsOutputToDataMapper).orEmpty(SearchArtistsData),
+            albums = albums?.mapWith(searchAlbumsOutputToDataMapper).orEmpty(SearchAlbumsData)
+        )
     }
 }

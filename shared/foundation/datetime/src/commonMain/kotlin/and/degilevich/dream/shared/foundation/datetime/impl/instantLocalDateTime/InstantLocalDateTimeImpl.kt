@@ -4,8 +4,8 @@ import and.degilevich.dream.shared.foundation.datetime.api.common.DateTimeInput
 import and.degilevich.dream.shared.foundation.datetime.api.instant.InstantWrapper
 import and.degilevich.dream.shared.foundation.datetime.api.instantLocalDateTime.InstantLocalDateTime
 import and.degilevich.dream.shared.foundation.datetime.api.localDateTime.LocalDateTimeWrapper
-import and.degilevich.dream.shared.foundation.primitive.result.foldResult
 import and.degilevich.dream.shared.foundation.datetime.impl.instant.InstantLocalDateTimeOutput
+import and.degilevich.dream.shared.foundation.primitive.result.foldResult
 import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)

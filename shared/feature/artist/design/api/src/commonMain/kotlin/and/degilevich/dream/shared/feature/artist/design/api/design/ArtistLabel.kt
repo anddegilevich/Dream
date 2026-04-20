@@ -8,6 +8,7 @@ import and.degilevich.dream.shared.feature.artist.design.api.provider.ArtistLabe
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -15,7 +16,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 

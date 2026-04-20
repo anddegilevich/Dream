@@ -4,17 +4,17 @@ import and.degilevich.dream.shared.feature.search.design.api.model.card.AlbumSea
 import and.degilevich.dream.shared.feature.search.design.api.model.card.ArtistSearchCardUIData
 import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.feature.search.design.api.model.card.TrackSearchCardUIData
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import and.degilevich.dream.shared.foundation.abstraction.id.identifier
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
-class SearchCardUIDataPreviewProvider : PreviewParameterProvider<SearchCardUIData> {
+class SearchCardUIDataPreviewProvider : LabeledPreviewParameterProvider<SearchCardUIData>() {
 
-    override val values: Sequence<SearchCardUIData> = sequenceOf(
-        provideTrack(),
-        provideArtist(),
-        provideAlbum()
+    override val labeledValues = listOf(
+        "Track" to provideTrack(),
+        "Artist" to provideArtist(),
+        "Album" to provideAlbum()
     )
 
     fun provideArtist(): ArtistSearchCardUIData {
@@ -40,16 +40,16 @@ class SearchCardUIDataPreviewProvider : PreviewParameterProvider<SearchCardUIDat
     fun provideList(): ImmutableList<SearchCardUIData> {
         return persistentListOf(
             ArtistSearchCardUIData.empty().copy(
-                id = Identifier(value = "1"),
+                id = identifier(value = "1"),
                 name = "Artist"
             ),
             AlbumSearchCardUIData.empty().copy(
-                id = Identifier(value = "2"),
+                id = identifier(value = "2"),
                 name = "Album",
                 artistName = "Artist"
             ),
             TrackSearchCardUIData.empty().copy(
-                id = Identifier(value = "3"),
+                id = identifier(value = "3"),
                 name = "Track",
                 artistName = "Artist"
             )

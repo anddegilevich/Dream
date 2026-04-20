@@ -16,41 +16,33 @@ import org.koin.core.component.inject
 internal class ArtistDetailsUIStateMapper : Mapper<ArtistDetailsState, ArtistDetailsUIState>, KoinComponent {
     private val albumInfoToCardUIDataMapper: AlbumInfoToCardUIDataMapper by inject()
 
-    override fun map(item: ArtistDetailsState): ArtistDetailsUIState {
-        return ArtistDetailsUIState(
-            info = mapToInfo(state = item),
-            albums = mapToAlbums(state = item)
+    override fun map(item: ArtistDetailsState): ArtistDetailsUIState = with(item) {
+        ArtistDetailsUIState(
+            info = mapToInfo(state = this),
+            albums = mapToAlbums(state = this)
         )
     }
 
-    private fun mapToInfo(state: ArtistDetailsState): Skeleton<ArtistInfoLayoutUIData> {
-        return with(state) {
-            if (artist.isEmpty()) {
-                Skeleton.Loading
-            } else {
-                Skeleton.Value(
-                    ArtistInfoLayoutUIData(
-                        iconUrl = artist.images.firstOrNull()?.url.orEmpty(),
-                        name = artist.name,
-                    )
-                )
-            }
+    private fun mapToInfo(state: ArtistDetailsState): Skeleton<ArtistInfoLayoutUIData> = with(state) {
+        Skeleton.from(
+            isLoading = artist.isEmpty()
+        ) {
+            ArtistInfoLayoutUIData(
+                iconUrl = artist.images.firstOrNull()?.url.orEmpty(),
+                name = artist.name,
+            )
         }
     }
 
-    private fun mapToAlbums(state: ArtistDetailsState): Skeleton<ImmutableList<AlbumCardUIData>> {
-        return with(state) {
-            if (albums.isEmpty()) {
-                Skeleton.Loading
-            } else {
-                Skeleton.Value(
-                    albums
-                        .asSequence()
-                        .sortedBy { album -> album.releaseDate }
-                        .mapWith(albumInfoToCardUIDataMapper)
-                        .toImmutableList(),
-                )
-            }
+    private fun mapToAlbums(state: ArtistDetailsState): Skeleton<ImmutableList<AlbumCardUIData>> = with(state) {
+        Skeleton.from(
+            isLoading = albums.isEmpty()
+        ) {
+            albums
+                .asSequence()
+                .sortedBy { album -> album.releaseDate }
+                .mapWith(albumInfoToCardUIDataMapper)
+                .toImmutableList()
         }
     }
 }
