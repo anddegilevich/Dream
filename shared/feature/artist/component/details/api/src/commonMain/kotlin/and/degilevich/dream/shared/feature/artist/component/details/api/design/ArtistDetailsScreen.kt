@@ -99,7 +99,7 @@ fun ArtistDetailsScreen(
                         vertical = 8.dp
                     ),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.Top
                 ) {
                     identifiedSkeletonItems(
                         skeleton = state.albums,
