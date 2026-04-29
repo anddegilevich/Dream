@@ -25,7 +25,7 @@ internal class ComposePlugin : Plugin<Project> {
                         implementation(libs().compose.ui)
                         implementation(libs().compose.ui.backhandler)
                         implementation(libs().compose.ui.tooling.preview)
-                        api(libs().moko.resources)
+                        implementation(libs().moko.resources)
                         implementation(libs().moko.resources.compose)
                     }
                     androidMain.dependencies {

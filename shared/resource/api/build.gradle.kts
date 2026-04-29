@@ -6,6 +6,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            api(libs.moko.resources)
             api(projects.shared.foundation.abstraction)
         }
     }
