@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import kotlinx.coroutines.Dispatchers
 
 @Composable
@@ -12,7 +13,9 @@ fun <SideEffect : Any> ComponentSideEffect(
     component: MVIComponent<*, *, SideEffect>,
     handler: suspend (SideEffect) -> Unit
 ) {
-    LaunchedEffect(Unit) {
+    val handler by rememberUpdatedState(handler)
+
+    LaunchedEffect(component) {
         component.sideEffect.collect(handler)
     }
 }

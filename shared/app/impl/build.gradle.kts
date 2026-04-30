@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.project.compose)
     alias(libs.plugins.project.koin)
     alias(libs.plugins.project.coroutines)
-    alias(libs.plugins.moko.multiplatfrom.resources)
 }
 
 kotlin {
