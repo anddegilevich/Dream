@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsIntent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsUIState
 import and.degilevich.dream.shared.feature.track.component.details.api.design.skeleton.SkeletonTrackDetailsInfoLayout
+import and.degilevich.dream.shared.feature.track.component.details.api.design.semantic.TrackDetailsScreenSemantic
 import and.degilevich.dream.shared.feature.track.component.details.api.provider.TrackDetailsUIStatePreviewProvider
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
@@ -23,6 +24,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -56,12 +58,16 @@ fun TrackDetailsScreen(
             skeleton = state.info,
             loadingContent = {
                 SkeletonTrackDetailsInfoLayout(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .testTag(TrackDetailsScreenSemantic.TEST_TAG_INFO_SKELETON)
+                        .fillMaxWidth()
                 )
             },
             content = { data ->
                 TrackDetailsInfoLayout(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .testTag(TrackDetailsScreenSemantic.TEST_TAG_INFO)
+                        .fillMaxWidth(),
                     data = data
                 )
             }

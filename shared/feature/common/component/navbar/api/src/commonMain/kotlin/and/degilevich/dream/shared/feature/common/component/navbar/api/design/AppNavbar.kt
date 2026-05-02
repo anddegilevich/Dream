@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarIntent
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarUIState
+import and.degilevich.dream.shared.feature.common.component.navbar.api.design.semantic.AppNavbarSemantic
 import and.degilevich.dream.shared.feature.common.component.navbar.api.provider.NavbarUIStatePreviewProvider
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.background
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -35,7 +37,9 @@ fun AppNavbar(
         state.items.forEach { item ->
             key(item.id) {
                 NavbarItemButton(
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .testTag(AppNavbarSemantic.TEST_TAG_ITEM)
+                        .weight(1f),
                     data = item
                 ) {
                     onIntent(NavbarIntent.OnItemClicked(item.id))

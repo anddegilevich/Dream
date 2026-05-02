@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchIntent
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
+import and.degilevich.dream.shared.feature.search.component.search.api.design.semantic.SearchScreenSemantic
 import and.degilevich.dream.shared.feature.search.component.search.api.provider.SearchUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.search.design.api.design.SearchCard
 import and.degilevich.dream.shared.feature.search.design.api.design.SearchTextField
@@ -28,6 +29,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
@@ -53,6 +55,7 @@ fun SearchScreen(
     ) {
         SearchTextField(
             modifier = Modifier
+                .testTag(SearchScreenSemantic.TEST_TAG_SEARCH_FIELD)
                 .padding(16.dp)
                 .fillMaxWidth(),
             value = state.query,
@@ -71,11 +74,14 @@ fun SearchScreen(
                 skeleton = state.items,
                 loadingItemsCount = 16,
                 loadingItemContent = {
-                    SkeletonSearchCard()
+                    SkeletonSearchCard(
+                        modifier = Modifier.testTag(SearchScreenSemantic.TEST_TAG_ITEM_SKELETON)
+                    )
                 },
                 itemContent = { item ->
                     SearchCard(
                         modifier = Modifier
+                            .testTag(SearchScreenSemantic.TEST_TAG_ITEM)
                             .animateItem()
                             .fillMaxWidth(),
                         data = item,

@@ -6,6 +6,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
+import and.degilevich.dream.shared.feature.album.component.releases.api.design.semantic.AlbumReleasesCarouselSemantic
 import and.degilevich.dream.shared.feature.album.component.releases.api.provider.AlbumReleasesUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumCard
 import and.degilevich.dream.shared.feature.album.design.api.design.skeleton.SkeletonAlbumCard
@@ -18,6 +19,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.ui.platform.testTag
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,7 +38,9 @@ fun AlbumReleasesCarousel(
         modifier = modifier.fillMaxWidth(),
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier
+                .testTag(AlbumReleasesCarouselSemantic.TEST_TAG_TITLE)
+                .padding(horizontal = 16.dp),
             text = stringResource(Res.strings.title_new_releases),
             color = Theme.colors.text.primary,
             style = Theme.typography.h1
@@ -55,11 +59,15 @@ fun AlbumReleasesCarousel(
                 skeleton = state.releases,
                 loadingItemsCount = 10,
                 loadingItemContent = {
-                    SkeletonAlbumCard()
+                    SkeletonAlbumCard(
+                        modifier = Modifier.testTag(AlbumReleasesCarouselSemantic.TEST_TAG_ITEM_SKELETON)
+                    )
                 },
                 itemContent = { album ->
                     AlbumCard(
-                        modifier = Modifier.animateItem(),
+                        modifier = Modifier
+                            .testTag(AlbumReleasesCarouselSemantic.TEST_TAG_ITEM)
+                            .animateItem(),
                         data = album
                     ) { id ->
                         onIntent(

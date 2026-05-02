@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.design.api.design.AlbumIcon
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsInfoLayoutUIData
+import and.degilevich.dream.shared.feature.track.component.details.api.design.semantic.TrackDetailsInfoLayoutSemantic
 import and.degilevich.dream.shared.feature.track.component.details.api.provider.TrackDetailsInfoLayoutUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
@@ -16,6 +17,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -45,6 +47,7 @@ fun TrackDetailsInfoLayout(
         )
         Space(height = 48.dp)
         Text(
+            modifier = Modifier.testTag(TrackDetailsInfoLayoutSemantic.TEST_TAG_NAME),
             text = data.name,
             style = Theme.typography.h2,
             color = Theme.colors.text.primary

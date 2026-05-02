@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsIntent
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsUIState
 import and.degilevich.dream.shared.feature.album.component.details.api.design.skeleton.SkeletonAlbumDetailsLayout
+import and.degilevich.dream.shared.feature.album.component.details.api.design.semantic.AlbumDetailsScreenSemantic
 import and.degilevich.dream.shared.feature.album.component.details.api.provider.AlbumDetailsUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistLabel
 import and.degilevich.dream.shared.feature.artist.design.api.design.skeleton.SkeletonArtistLabel
@@ -32,6 +33,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -69,12 +71,16 @@ fun AlbumDetailsScreen(
                     skeleton = state.info,
                     loadingContent = {
                         SkeletonAlbumDetailsLayout(
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier
+                                .testTag(AlbumDetailsScreenSemantic.TEST_TAG_INFO_SKELETON)
+                                .fillMaxWidth()
                         )
                     },
                     content = { data ->
                         AlbumDetailsLayout(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .testTag(AlbumDetailsScreenSemantic.TEST_TAG_INFO)
+                                .fillMaxWidth(),
                             data = data
                         )
                     }
@@ -118,12 +124,15 @@ fun AlbumDetailsScreen(
             loadingItemsCount = 5,
             loadingItemContent = {
                 SkeletonTrackCard(
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier
+                        .testTag(AlbumDetailsScreenSemantic.TEST_TAG_ITEM_SKELETON)
+                        .padding(horizontal = 16.dp)
                 )
             },
             itemContent = { track ->
                 TrackCard(
                     modifier = Modifier
+                        .testTag(AlbumDetailsScreenSemantic.TEST_TAG_ITEM)
                         .padding(horizontal = 16.dp)
                         .animateItem()
                         .fillMaxWidth(),
