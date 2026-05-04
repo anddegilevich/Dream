@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistInfoLayoutUIData
+import and.degilevich.dream.shared.feature.artist.component.details.api.design.semantic.ArtistInfoLayoutSemantic
 import and.degilevich.dream.shared.feature.artist.component.details.api.provider.ArtistInfoLayoutUIDataPreviewProvider
 import and.degilevich.dream.shared.feature.artist.design.api.design.ArtistIcon
 import and.degilevich.dream.shared.foundation.compose.ext.Space
@@ -16,6 +17,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -38,6 +40,7 @@ fun ArtistInfoLayout(
             )
             Space(width = 20.dp)
             Text(
+                modifier = Modifier.testTag(ArtistInfoLayoutSemantic.TEST_TAG_NAME),
                 text = data.name,
                 color = Theme.colors.text.primary,
                 style = Theme.typography.h2

@@ -10,6 +10,7 @@ import and.degilevich.dream.shared.feature.album.design.api.design.skeleton.Skel
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.component.details.api.design.skeleton.SkeletonArtistInfoCard
+import and.degilevich.dream.shared.feature.artist.component.details.api.design.semantic.ArtistDetailsScreenSemantic
 import and.degilevich.dream.shared.feature.artist.component.details.api.provider.ArtistDetailsUIStatePreviewProvider
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.ext.plus
@@ -33,6 +34,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -70,12 +72,16 @@ fun ArtistDetailsScreen(
                     skeleton = state.info,
                     loadingContent = {
                         SkeletonArtistInfoCard(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .testTag(ArtistDetailsScreenSemantic.TEST_TAG_INFO_SKELETON)
+                                .fillMaxWidth(),
                         )
                     },
                     content = { data ->
                         ArtistInfoLayout(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .testTag(ArtistDetailsScreenSemantic.TEST_TAG_INFO)
+                                .fillMaxWidth(),
                             data = data
                         )
                     }
@@ -104,10 +110,16 @@ fun ArtistDetailsScreen(
                     identifiedSkeletonItems(
                         skeleton = state.albums,
                         loadingItemsCount = 5,
-                        loadingItemContent = { SkeletonAlbumCard() },
+                        loadingItemContent = {
+                            SkeletonAlbumCard(
+                                modifier = Modifier.testTag(ArtistDetailsScreenSemantic.TEST_TAG_ITEM_SKELETON)
+                            )
+                        },
                         itemContent = { album ->
                             AlbumCard(
-                                modifier = Modifier.animateItem(),
+                                modifier = Modifier
+                                    .testTag(ArtistDetailsScreenSemantic.TEST_TAG_ITEM)
+                                    .animateItem(),
                                 data = album,
                                 onClicked = { id ->
                                     onIntent(

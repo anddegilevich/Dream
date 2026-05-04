@@ -80,6 +80,9 @@ jobs:
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
 
+      - name: Run UI tests
+        run: ./gradlew iosSimulatorArm64Test
+
       - name: Build iOS simulator app
         run: |
           xcodebuild build \
