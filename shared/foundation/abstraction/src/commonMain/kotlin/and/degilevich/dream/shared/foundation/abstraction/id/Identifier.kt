@@ -8,10 +8,10 @@ interface Identifier : EmptyState {
     override fun isEmpty() = value.isEmpty()
 }
 
-fun identifier(value: String): Identifier {
-    return IdentifierImpl(value = value)
+fun identifier(value: String): AnyIdentifier {
+    return AnyIdentifier(value = value)
 }
 
-fun emptyIdentifier(): Identifier {
-    return IdentifierImpl.empty()
+fun emptyIdentifier(): AnyIdentifier {
+    return AnyIdentifier.empty()
 }

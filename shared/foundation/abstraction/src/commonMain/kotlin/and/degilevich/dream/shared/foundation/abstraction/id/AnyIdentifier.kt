@@ -6,12 +6,12 @@ import kotlin.jvm.JvmInline
 
 @JvmInline
 @Serializable
-internal value class IdentifierImpl(override val value: String) : Identifier {
+value class AnyIdentifier(override val value: String) : Identifier {
 
-    companion object : EmptyFactory<IdentifierImpl> {
+    companion object : EmptyFactory<AnyIdentifier> {
 
-        override fun empty(): IdentifierImpl {
-            return IdentifierImpl(value = "")
+        override fun empty(): AnyIdentifier {
+            return AnyIdentifier(value = "")
         }
     }
 }
