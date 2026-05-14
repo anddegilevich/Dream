@@ -1,11 +1,11 @@
 package and.degilevich.dream.shared.feature.album.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchNewReleasesUseCase
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesParams
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesResult
+import and.degilevich.dream.shared.feature.album.model.core.method.getNewReleases.GetNewReleasesParams
+import and.degilevich.dream.shared.feature.album.model.core.method.getNewReleases.GetNewReleasesResult
 import and.degilevich.dream.shared.feature.album.source.api.local.AlbumLocalDataSource
-import and.degilevich.dream.shared.feature.search.model.core.api.dictionary.SearchType
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.model.core.dictionary.SearchType
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchParams
 import and.degilevich.dream.shared.feature.search.source.api.remote.SearchRemoteDataSource
 
 internal class FetchNewReleasesUseCaseImpl(

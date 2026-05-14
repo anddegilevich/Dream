@@ -6,7 +6,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.feature.track.design.api)
-            implementation(projects.shared.feature.track.model.core.api)
+            implementation(projects.shared.feature.track.model.core)
         }
     }
 

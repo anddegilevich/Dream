@@ -1,10 +1,10 @@
 package and.degilevich.dream.shared.feature.album.source.impl.remote.mapper
 
 import and.degilevich.dream.shared.core.service.api.model.data.album.AlbumOutput
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
-import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumTracksData
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
+import and.degilevich.dream.shared.feature.album.model.artifact.dictionary.AlbumType
+import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
+import and.degilevich.dream.shared.feature.album.model.core.data.AlbumTracksData
 import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.AlbumOutputToDataMapper
 import and.degilevich.dream.shared.feature.album.source.api.remote.mapper.AlbumTracksOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.ArtistSimplifiedOutputToDataMapper

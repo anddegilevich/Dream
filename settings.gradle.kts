@@ -99,15 +99,15 @@ include(":shared:feature:common:component:home:api")
 include(":shared:feature:common:component:home:impl")
 
 // Image
-include(":shared:feature:image:model:artifact:api")
+include(":shared:feature:image:model:artifact")
 
 include(":shared:feature:image:source:api")
 include(":shared:feature:image:source:impl")
 
 // Artist
-include(":shared:feature:artist:model:artifact:api")
+include(":shared:feature:artist:model:artifact")
 
-include(":shared:feature:artist:model:core:api")
+include(":shared:feature:artist:model:core")
 
 include(":shared:feature:artist:source:api")
 include(":shared:feature:artist:source:impl")
@@ -122,9 +122,9 @@ include(":shared:feature:artist:component:details:api")
 include(":shared:feature:artist:component:details:impl")
 
 // Album
-include(":shared:feature:album:model:artifact:api")
+include(":shared:feature:album:model:artifact")
 
-include(":shared:feature:album:model:core:api")
+include(":shared:feature:album:model:core")
 
 include(":shared:feature:album:source:api")
 include(":shared:feature:album:source:impl")
@@ -142,9 +142,9 @@ include(":shared:feature:album:component:details:api")
 include(":shared:feature:album:component:details:impl")
 
 // Track
-include(":shared:feature:track:model:artifact:api")
+include(":shared:feature:track:model:artifact")
 
-include(":shared:feature:track:model:core:api")
+include(":shared:feature:track:model:core")
 
 include(":shared:feature:track:source:api")
 include(":shared:feature:track:source:impl")
@@ -159,7 +159,7 @@ include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
 
 // Search
-include(":shared:feature:search:model:core:api")
+include(":shared:feature:search:model:core")
 
 include(":shared:feature:search:source:api")
 include(":shared:feature:search:source:impl")

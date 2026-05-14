@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.artist.source.impl.remote.mapper
 
 import and.degilevich.dream.shared.core.service.api.model.data.artist.ArtistOutput
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistId
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.dictionary.ArtistType
-import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistId
+import and.degilevich.dream.shared.feature.artist.model.artifact.dictionary.ArtistType
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.ArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.source.api.remote.mapper.ImageObjectOutputToDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty

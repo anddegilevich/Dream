@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.search.source.impl.remote.mapper
 
 import and.degilevich.dream.shared.core.service.api.model.method.search.SearchRequest
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchParams
 import and.degilevich.dream.shared.feature.search.source.api.remote.mapper.SearchParamsToRequestMapper
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.foundation.primitive.collections.list.orNullIfEmpty

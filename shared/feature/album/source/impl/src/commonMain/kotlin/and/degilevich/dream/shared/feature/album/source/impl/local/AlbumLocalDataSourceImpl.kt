@@ -7,8 +7,8 @@ import and.degilevich.dream.shared.core.db.api.dao.ArtistToTrackCrossRefDao
 import and.degilevich.dream.shared.core.db.api.dao.TrackDao
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToAlbumCrossRefEntity
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCrossRefEntity
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
+import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
 import and.degilevich.dream.shared.feature.album.source.api.local.AlbumLocalDataSource
 import and.degilevich.dream.shared.feature.album.source.api.local.mapper.AlbumDataToEntityMapper
 import and.degilevich.dream.shared.feature.album.source.api.local.mapper.AlbumSimplifiedDataToEntityMapper

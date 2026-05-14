@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.artist.domain.usecase
 
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistsUseCase
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsResult
+import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.model.core.method.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.artist.model.core.method.getArtists.GetArtistsResult
 import and.degilevich.dream.shared.feature.artist.source.api.local.ArtistLocalDataSource
 import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
 

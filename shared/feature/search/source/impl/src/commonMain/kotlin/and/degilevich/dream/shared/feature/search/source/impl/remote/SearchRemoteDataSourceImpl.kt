@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.search.source.impl.remote
 
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchResult
 import and.degilevich.dream.shared.feature.search.source.api.remote.SearchRemoteDataSource
 import and.degilevich.dream.shared.feature.search.source.api.remote.mapper.SearchParamsToRequestMapper
 import and.degilevich.dream.shared.feature.search.source.api.remote.mapper.SearchResponseToResultMapper

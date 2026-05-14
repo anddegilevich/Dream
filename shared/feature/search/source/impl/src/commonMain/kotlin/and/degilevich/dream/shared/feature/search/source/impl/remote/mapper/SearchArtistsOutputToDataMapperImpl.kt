@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.search.source.impl.remote.mapper
 
 import and.degilevich.dream.shared.core.service.api.model.method.search.SearchArtistsOutput
 import and.degilevich.dream.shared.feature.artist.source.api.remote.mapper.ArtistOutputToDataMapper
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchArtistsData
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchArtistsData
 import and.degilevich.dream.shared.feature.search.source.api.remote.mapper.SearchArtistsOutputToDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 

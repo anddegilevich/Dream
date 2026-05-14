@@ -65,10 +65,10 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.RoomPlugin"
             }
         }
-        libs.plugins.project.template.model.api.get().let { plugin ->
+        libs.plugins.project.template.model.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateModelApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateModelPlugin"
             }
         }
         libs.plugins.project.template.source.api.get().let { plugin ->

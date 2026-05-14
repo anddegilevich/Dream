@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.track.source.impl.remote
 
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackResult
+import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackParams
+import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackResult
 import and.degilevich.dream.shared.feature.track.source.api.remote.TrackRemoteDataSource
 import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.GetTrackParamsToRequestMapper
 import and.degilevich.dream.shared.feature.track.source.api.remote.mapper.GetTrackResponseToResultMapper

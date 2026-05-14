@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.search.design.impl.mapper
 
-import and.degilevich.dream.shared.feature.album.model.artifact.api.abstraction.AlbumInfo
+import and.degilevich.dream.shared.feature.album.model.artifact.abstraction.AlbumInfo
 import and.degilevich.dream.shared.feature.artist.design.api.mapper.ArtistsInfoToStringMapper
 import and.degilevich.dream.shared.feature.search.design.api.mapper.AlbumInfoToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.design.api.model.card.AlbumSearchCardUIData

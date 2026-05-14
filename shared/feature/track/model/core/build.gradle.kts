@@ -1,0 +1,17 @@
+plugins {
+    alias(libs.plugins.project.template.model)
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            api(projects.shared.feature.track.model.artifact)
+            api(projects.shared.feature.image.model.artifact)
+            api(projects.shared.feature.album.model.artifact)
+        }
+    }
+
+    android {
+        namespace = "and.degilevich.dream.shared.feature.track.model.core"
+    }
+}

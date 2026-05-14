@@ -5,7 +5,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.feature.track.model.core.api)
+            implementation(projects.shared.feature.track.model.core)
         }
     }
 

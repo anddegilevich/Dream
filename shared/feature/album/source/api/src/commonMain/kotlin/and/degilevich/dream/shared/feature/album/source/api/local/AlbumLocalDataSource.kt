@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.album.source.api.local
 
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
+import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
 
 interface AlbumLocalDataSource {
     suspend fun saveAlbum(album: AlbumData)

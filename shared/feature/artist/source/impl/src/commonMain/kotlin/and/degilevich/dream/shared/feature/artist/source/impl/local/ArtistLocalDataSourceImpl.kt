@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.source.impl.local
 
 import and.degilevich.dream.shared.core.db.api.dao.ArtistDao
-import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.source.api.local.ArtistLocalDataSource
 import and.degilevich.dream.shared.feature.artist.source.api.local.mapper.ArtistDataToEntityMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith

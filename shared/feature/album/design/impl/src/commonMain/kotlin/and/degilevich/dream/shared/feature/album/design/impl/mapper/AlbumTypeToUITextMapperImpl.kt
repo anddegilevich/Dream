@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.album.design.impl.mapper
 
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.feature.album.design.api.mapper.AlbumTypeToUITextMapper
-import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
+import and.degilevich.dream.shared.feature.album.model.artifact.dictionary.AlbumType
 import and.degilevich.dream.shared.resource.api.ResourceManager
 
 internal class AlbumTypeToUITextMapperImpl(

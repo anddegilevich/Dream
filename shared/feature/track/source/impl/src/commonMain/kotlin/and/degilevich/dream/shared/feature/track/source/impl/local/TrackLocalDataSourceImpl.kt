@@ -9,7 +9,7 @@ import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToAlbumCros
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCrossRefEntity
 import and.degilevich.dream.shared.feature.album.source.api.local.mapper.AlbumSimplifiedDataToEntityMapper
 import and.degilevich.dream.shared.feature.artist.source.api.local.mapper.ArtistSimplifiedDataToEntityMapper
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
 import and.degilevich.dream.shared.feature.track.source.api.local.TrackLocalDataSource
 import and.degilevich.dream.shared.feature.track.source.api.local.mapper.TrackDataToEntityMapper
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.distinctById
