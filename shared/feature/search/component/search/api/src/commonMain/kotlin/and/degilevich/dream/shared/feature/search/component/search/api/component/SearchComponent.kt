@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.search.component.search.api.componen
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchIntent
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchSideEffect
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
-import and.degilevich.dream.shared.feature.search.component.search.api.ui.SearchScreen
+import and.degilevich.dream.shared.feature.search.component.search.api.view.SearchScreen
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderMVIComponent
 import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.runtime.Composable

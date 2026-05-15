@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.track.component.details.api.componen
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsIntent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsSideEffect
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsUIState
-import and.degilevich.dream.shared.feature.track.component.details.api.ui.TrackDetailsScreen
+import and.degilevich.dream.shared.feature.track.component.details.api.view.TrackDetailsScreen
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderMVIComponent
 import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.runtime.Composable

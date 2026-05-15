@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.common.home.api.component
 import and.degilevich.dream.shared.feature.common.home.api.component.child.HomeNavbar
 import and.degilevich.dream.shared.feature.common.home.api.component.child.HomePage
 import and.degilevich.dream.shared.feature.common.home.api.component.model.HomePageConfig
-import and.degilevich.dream.shared.feature.common.home.api.ui.HomeScreen
+import and.degilevich.dream.shared.feature.common.home.api.view.HomeScreen
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
