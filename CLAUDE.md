@@ -91,7 +91,7 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 * `model/core` - feature domain models
 * `data/api|impl`- data access (remote, local, storage), mappers to domain models
 * `domain/api|impl` - use cases, managers, validators, value holders, etc.
-* `design/api|impl` - ui models, compose functions, mappers from to ui models
+* `ui/api|impl` - ui models, compose functions, mappers from to ui models
 * `component/<component_name>/api|impl` - screens/views (component, component models, compose functions)
 
 ### Platform entry points

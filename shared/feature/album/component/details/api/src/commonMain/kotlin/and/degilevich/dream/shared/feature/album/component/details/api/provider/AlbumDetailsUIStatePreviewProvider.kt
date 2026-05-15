@@ -1,10 +1,10 @@
 package and.degilevich.dream.shared.feature.album.component.details.api.provider
 
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsUIState
-import and.degilevich.dream.shared.feature.artist.design.api.provider.ArtistLabelUIDataPreviewProvider
+import and.degilevich.dream.shared.feature.artist.ui.api.provider.ArtistLabelUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
-import and.degilevich.dream.shated.feature.track.design.api.provider.TrackCardUIDataPreviewProvider
+import and.degilevich.dream.shated.feature.track.ui.api.provider.TrackCardUIDataPreviewProvider
 
 class AlbumDetailsUIStatePreviewProvider : LabeledPreviewParameterProvider<AlbumDetailsUIState>() {
 

@@ -88,7 +88,7 @@ Here is the list of frameworks, that were used in this project:
 | | | | |- 2.8.1.1.2 core
 | | | |- 2.8.1.2 data
 | | | |- 2.8.1.3 domain
-| | | |- 2.8.1.4 design
+| | | |- 2.8.1.4 ui
 | | | |- 2.8.1.5 component
 | | | | |- 2.8.1.5.1 list
 | | | | |- 2.8.1.5.2 details
@@ -234,7 +234,7 @@ Validators;
 Value holders;
 etc.
 
-### 2.8.1.4 shared.feature.artist.design
+### 2.8.1.4 shared.feature.artist.ui
 
 Feature ui elements.
 

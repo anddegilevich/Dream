@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.common.component.dashboard.api.compo
 
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.design.DashboardScreen
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.ui.DashboardScreen
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable

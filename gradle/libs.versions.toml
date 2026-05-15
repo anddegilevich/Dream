@@ -275,7 +275,7 @@ project-template-data-api = { id = "project.template.data.api", version.ref = "p
 project-template-data-impl = { id = "project.template.data.impl", version.ref = "project-plugin" }
 project-template-domain-api = { id = "project.template.domain.api", version.ref = "project-plugin" }
 project-template-domain-impl = { id = "project.template.domain.impl", version.ref = "project-plugin" }
-project-template-design-api = { id = "project.template.design.api", version.ref = "project-plugin" }
-project-template-design-impl = { id = "project.template.design.impl", version.ref = "project-plugin" }
+project-template-ui-api = { id = "project.template.ui.api", version.ref = "project-plugin" }
+project-template-ui-impl = { id = "project.template.ui.impl", version.ref = "project-plugin" }
 project-template-component-api = { id = "project.template.component.api", version.ref = "project-plugin" }
 project-template-component-impl = { id = "project.template.component.impl", version.ref = "project-plugin" }

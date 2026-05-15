@@ -1,0 +1,95 @@
+package and.degilevich.dream.shared.feature.album.component.releases.api.ui
+
+import and.degilevich.dream.Res
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
+import and.degilevich.dream.shared.design.theme.api.Theme
+import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
+import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
+import and.degilevich.dream.shared.feature.album.component.releases.api.ui.semantic.AlbumReleasesCarouselSemantic
+import and.degilevich.dream.shared.feature.album.component.releases.api.provider.AlbumReleasesUIStatePreviewProvider
+import and.degilevich.dream.shared.feature.album.ui.api.ui.AlbumCard
+import and.degilevich.dream.shared.feature.album.ui.api.ui.skeleton.SkeletonAlbumCard
+import and.degilevich.dream.shared.foundation.compose.ext.Space
+import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.ui.platform.testTag
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.stringResource
+
+@Composable
+fun AlbumReleasesCarousel(
+    state: AlbumReleasesUIState,
+    modifier: Modifier = Modifier,
+    onIntent: (AlbumReleasesIntent) -> Unit
+) {
+    Column(
+        modifier = modifier.fillMaxWidth(),
+    ) {
+        Text(
+            modifier = Modifier
+                .testTag(AlbumReleasesCarouselSemantic.TEST_TAG_TITLE)
+                .padding(horizontal = 16.dp),
+            text = stringResource(Res.strings.title_new_releases),
+            color = Theme.colors.text.primary,
+            style = Theme.typography.h1
+        )
+        Space(8.dp)
+        LazyRow(
+            modifier = Modifier.fillMaxWidth(),
+            contentPadding = PaddingValues(
+                horizontal = 16.dp,
+                vertical = 8.dp
+            ),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.Top
+        ) {
+            identifiedSkeletonItems(
+                skeleton = state.releases,
+                loadingItemsCount = 10,
+                loadingItemContent = {
+                    SkeletonAlbumCard(
+                        modifier = Modifier.testTag(AlbumReleasesCarouselSemantic.TEST_TAG_ITEM_SKELETON)
+                    )
+                },
+                itemContent = { album ->
+                    AlbumCard(
+                        modifier = Modifier
+                            .testTag(AlbumReleasesCarouselSemantic.TEST_TAG_ITEM)
+                            .animateItem(),
+                        data = album
+                    ) { id ->
+                        onIntent(
+                            AlbumReleasesIntent.OnAlbumClicked(id = id)
+                        )
+                    }
+                }
+            )
+        }
+    }
+}
+
+@LightDarkPreviews
+@Composable
+private fun AlbumReleasesCarouselPreview(
+    @PreviewParameter(AlbumReleasesUIStatePreviewProvider::class)
+    state: AlbumReleasesUIState
+) {
+    ComposeAppTheme {
+        AlbumReleasesCarousel(
+            modifier = Modifier.themeBackground(),
+            state = state
+        ) {}
+    }
+}

@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.track.component.details.impl.component
 
-import and.degilevich.dream.shared.feature.artist.design.api.mapper.ArtistsInfoToStringMapper
+import and.degilevich.dream.shared.feature.artist.ui.api.mapper.ArtistsInfoToStringMapper
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsInfoLayoutUIData
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsUIState
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsState

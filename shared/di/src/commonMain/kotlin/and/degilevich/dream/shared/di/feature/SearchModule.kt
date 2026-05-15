@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.di.feature
 
-import and.degilevich.dream.shared.feature.search.design.impl.di.searchDesignModule
+import and.degilevich.dream.shared.feature.search.ui.impl.di.searchUiModule
 import and.degilevich.dream.shared.feature.search.domain.impl.di.searchDomainModule
 import and.degilevich.dream.shared.feature.search.data.impl.di.searchDataModule
 import org.koin.dsl.module
@@ -8,5 +8,5 @@ import org.koin.dsl.module
 fun searchModule() = module {
     includes(searchDataModule())
     includes(searchDomainModule())
-    includes(searchDesignModule())
+    includes(searchUiModule())
 }

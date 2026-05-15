@@ -115,8 +115,8 @@ include(":shared:feature:artist:data:impl")
 include(":shared:feature:artist:domain:api")
 include(":shared:feature:artist:domain:impl")
 
-include(":shared:feature:artist:design:api")
-include(":shared:feature:artist:design:impl")
+include(":shared:feature:artist:ui:api")
+include(":shared:feature:artist:ui:impl")
 
 include(":shared:feature:artist:component:details:api")
 include(":shared:feature:artist:component:details:impl")
@@ -132,8 +132,8 @@ include(":shared:feature:album:data:impl")
 include(":shared:feature:album:domain:api")
 include(":shared:feature:album:domain:impl")
 
-include(":shared:feature:album:design:api")
-include(":shared:feature:album:design:impl")
+include(":shared:feature:album:ui:api")
+include(":shared:feature:album:ui:impl")
 
 include(":shared:feature:album:component:releases:api")
 include(":shared:feature:album:component:releases:impl")
@@ -152,8 +152,8 @@ include(":shared:feature:track:data:impl")
 include(":shared:feature:track:domain:api")
 include(":shared:feature:track:domain:impl")
 
-include(":shared:feature:track:design:api")
-include(":shared:feature:track:design:impl")
+include(":shared:feature:track:ui:api")
+include(":shared:feature:track:ui:impl")
 
 include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
@@ -167,8 +167,8 @@ include(":shared:feature:search:data:impl")
 include(":shared:feature:search:domain:api")
 include(":shared:feature:search:domain:impl")
 
-include(":shared:feature:search:design:api")
-include(":shared:feature:search:design:impl")
+include(":shared:feature:search:ui:api")
+include(":shared:feature:search:ui:impl")
 
 include(":shared:feature:search:component:search:api")
 include(":shared:feature:search:component:search:impl")

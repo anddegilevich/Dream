@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.component.model
 
-import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
+import and.degilevich.dream.shared.feature.album.ui.api.model.AlbumCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import androidx.compose.runtime.Immutable
