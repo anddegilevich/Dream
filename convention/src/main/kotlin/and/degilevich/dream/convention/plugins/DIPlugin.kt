@@ -5,7 +5,7 @@ import and.degilevich.dream.convention.common.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-internal class KoinPlugin : Plugin<Project> {
+internal class DIPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
         with(target) {

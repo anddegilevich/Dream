@@ -13,7 +13,7 @@ internal class TemplateDesignImplPlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.kmp.library)
                 apply(libs().plugins.project.multiplatform)
-                apply(libs().plugins.project.koin)
+                apply(libs().plugins.project.di)
             }
         }
     }

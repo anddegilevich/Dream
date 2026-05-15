@@ -266,7 +266,7 @@ project-multiplatform = { id = "project.multiplatform.plugin", version.ref = "pr
 project-compose = { id = "project.compose.plugin", version.ref = "project-plugin" }
 project-serialization = { id = "project.serialization.plugin", version.ref = "project-plugin" }
 project-coroutines = { id = "project.coroutines.plugin", version.ref = "project-plugin" }
-project-koin = { id = "project.koin.plugin", version.ref = "project-plugin" }
+project-di = { id = "project.di.plugin", version.ref = "project-plugin" }
 project-ktor = { id = "project.ktor.plugin", version.ref = "project-plugin" }
 project-room = { id = "project.room.plugin", version.ref = "project-plugin" }
 

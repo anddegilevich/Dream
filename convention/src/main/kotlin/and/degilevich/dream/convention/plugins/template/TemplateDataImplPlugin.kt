@@ -16,7 +16,7 @@ internal class TemplateDataImplPlugin : Plugin<Project> {
                 apply(libs().plugins.project.multiplatform)
                 apply(libs().plugins.project.coroutines)
                 apply(libs().plugins.project.serialization)
-                apply(libs().plugins.project.koin)
+                apply(libs().plugins.project.di)
             }
             kotlinMultiplatformConfig {
                 with(sourceSets) {
