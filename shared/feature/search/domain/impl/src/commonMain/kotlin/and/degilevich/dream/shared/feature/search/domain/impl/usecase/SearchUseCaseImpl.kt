@@ -1,12 +1,12 @@
 package and.degilevich.dream.shared.feature.search.domain.impl.usecase
 
-import and.degilevich.dream.shared.feature.album.source.api.local.AlbumLocalDataSource
-import and.degilevich.dream.shared.feature.artist.source.api.local.ArtistLocalDataSource
+import and.degilevich.dream.shared.feature.album.data.api.local.AlbumLocalDataSource
+import and.degilevich.dream.shared.feature.artist.data.api.local.ArtistLocalDataSource
 import and.degilevich.dream.shared.feature.search.domain.api.usecase.SearchUseCase
 import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchParams
 import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchResult
-import and.degilevich.dream.shared.feature.search.source.api.remote.SearchRemoteDataSource
-import and.degilevich.dream.shared.feature.track.source.api.local.TrackLocalDataSource
+import and.degilevich.dream.shared.feature.search.data.api.remote.SearchRemoteDataSource
+import and.degilevich.dream.shared.feature.track.data.api.local.TrackLocalDataSource
 
 internal class SearchUseCaseImpl(
     private val searchRemoteDataSource: SearchRemoteDataSource,

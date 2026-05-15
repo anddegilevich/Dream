@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.album.domain.impl.usecase
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchAlbumUseCase
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumResult
-import and.degilevich.dream.shared.feature.album.source.api.local.AlbumLocalDataSource
-import and.degilevich.dream.shared.feature.album.source.api.remote.AlbumRemoteDataSource
+import and.degilevich.dream.shared.feature.album.data.api.local.AlbumLocalDataSource
+import and.degilevich.dream.shared.feature.album.data.api.remote.AlbumRemoteDataSource
 
 internal class FetchAlbumUseCaseImpl(
     private val albumRemoteDataSource: AlbumRemoteDataSource,

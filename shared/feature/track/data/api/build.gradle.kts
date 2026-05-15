@@ -1,0 +1,15 @@
+plugins {
+    alias(libs.plugins.project.template.data.api)
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            api(projects.shared.feature.track.model.core)
+        }
+    }
+
+    android {
+        namespace = "and.degilevich.dream.shared.feature.track.data.api"
+    }
+}

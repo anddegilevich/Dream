@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.artist.domain.usecase
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistResult
-import and.degilevich.dream.shared.feature.artist.source.api.local.ArtistLocalDataSource
-import and.degilevich.dream.shared.feature.artist.source.api.remote.ArtistRemoteDataSource
+import and.degilevich.dream.shared.feature.artist.data.api.local.ArtistLocalDataSource
+import and.degilevich.dream.shared.feature.artist.data.api.remote.ArtistRemoteDataSource
 
 internal class FetchArtistUseCaseImpl(
     private val artistRemoteDataSource: ArtistRemoteDataSource,

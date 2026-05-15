@@ -78,7 +78,7 @@ Here is the list of frameworks, that were used in this project:
 | | |- 2.6.1 theme
 | | |- 2.6.2 system
 | |- 2.7 template
-| | |- 2.7.1 source
+| | |- 2.7.1 data
 | | |- 2.7.2 component
 | | |- ...
 | |- 2.8 feature
@@ -86,7 +86,7 @@ Here is the list of frameworks, that were used in this project:
 | | | |- 2.8.1.1 model
 | | | | |- 2.8.1.1.1 artifact
 | | | | |- 2.8.1.1.2 core
-| | | |- 2.8.1.2 source
+| | | |- 2.8.1.2 data
 | | | |- 2.8.1.3 domain
 | | | |- 2.8.1.4 design
 | | | |- 2.8.1.5 component
@@ -211,7 +211,7 @@ Request classes;
 Enum dictionaries;
 Mappers for mapping data layer entities to the domain models.
 
-### 2.8.1.2 shared.feature.artist.source
+### 2.8.1.2 shared.feature.artist.data
 
 Feature specific sources of data.
 

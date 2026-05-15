@@ -71,16 +71,16 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateModelPlugin"
             }
         }
-        libs.plugins.project.template.source.api.get().let { plugin ->
+        libs.plugins.project.template.data.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateSourceApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataApiPlugin"
             }
         }
-        libs.plugins.project.template.source.impl.get().let { plugin ->
+        libs.plugins.project.template.data.impl.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateSourceImplPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataImplPlugin"
             }
         }
         libs.plugins.project.template.domain.api.get().let { plugin ->

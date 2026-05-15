@@ -271,8 +271,8 @@ project-ktor = { id = "project.ktor.plugin", version.ref = "project-plugin" }
 project-room = { id = "project.room.plugin", version.ref = "project-plugin" }
 
 project-template-model = { id = "project.template.model", version.ref = "project-plugin" }
-project-template-source-api = { id = "project.template.source.api", version.ref = "project-plugin" }
-project-template-source-impl = { id = "project.template.source.impl", version.ref = "project-plugin" }
+project-template-data-api = { id = "project.template.data.api", version.ref = "project-plugin" }
+project-template-data-impl = { id = "project.template.data.impl", version.ref = "project-plugin" }
 project-template-domain-api = { id = "project.template.domain.api", version.ref = "project-plugin" }
 project-template-domain-impl = { id = "project.template.domain.impl", version.ref = "project-plugin" }
 project-template-design-api = { id = "project.template.design.api", version.ref = "project-plugin" }

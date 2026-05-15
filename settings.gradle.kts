@@ -77,8 +77,8 @@ include(":shared:design:system")
 // =====================================================================================================================
 // Template
 
-include(":shared:template:source:api")
-include(":shared:template:source:impl")
+include(":shared:template:data:api")
+include(":shared:template:data:impl")
 
 include(":shared:template:component:impl")
 
@@ -101,16 +101,16 @@ include(":shared:feature:common:component:home:impl")
 // Image
 include(":shared:feature:image:model:artifact")
 
-include(":shared:feature:image:source:api")
-include(":shared:feature:image:source:impl")
+include(":shared:feature:image:data:api")
+include(":shared:feature:image:data:impl")
 
 // Artist
 include(":shared:feature:artist:model:artifact")
 
 include(":shared:feature:artist:model:core")
 
-include(":shared:feature:artist:source:api")
-include(":shared:feature:artist:source:impl")
+include(":shared:feature:artist:data:api")
+include(":shared:feature:artist:data:impl")
 
 include(":shared:feature:artist:domain:api")
 include(":shared:feature:artist:domain:impl")
@@ -126,8 +126,8 @@ include(":shared:feature:album:model:artifact")
 
 include(":shared:feature:album:model:core")
 
-include(":shared:feature:album:source:api")
-include(":shared:feature:album:source:impl")
+include(":shared:feature:album:data:api")
+include(":shared:feature:album:data:impl")
 
 include(":shared:feature:album:domain:api")
 include(":shared:feature:album:domain:impl")
@@ -146,8 +146,8 @@ include(":shared:feature:track:model:artifact")
 
 include(":shared:feature:track:model:core")
 
-include(":shared:feature:track:source:api")
-include(":shared:feature:track:source:impl")
+include(":shared:feature:track:data:api")
+include(":shared:feature:track:data:impl")
 
 include(":shared:feature:track:domain:api")
 include(":shared:feature:track:domain:impl")
@@ -161,8 +161,8 @@ include(":shared:feature:track:component:details:impl")
 // Search
 include(":shared:feature:search:model:core")
 
-include(":shared:feature:search:source:api")
-include(":shared:feature:search:source:impl")
+include(":shared:feature:search:data:api")
+include(":shared:feature:search:data:impl")
 
 include(":shared:feature:search:domain:api")
 include(":shared:feature:search:domain:impl")
