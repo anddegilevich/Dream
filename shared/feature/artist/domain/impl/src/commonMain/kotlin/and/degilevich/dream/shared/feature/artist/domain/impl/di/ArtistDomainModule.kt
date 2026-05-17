@@ -1,17 +1,17 @@
 package and.degilevich.dream.shared.feature.artist.domain.impl.di
 
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistAlbumsUseCase
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistUseCase
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistsUseCase
-import and.degilevich.dream.shared.feature.artist.domain.usecase.FetchArtistAlbumsUseCaseImpl
-import and.degilevich.dream.shared.feature.artist.domain.usecase.FetchArtistUseCaseImpl
-import and.degilevich.dream.shared.feature.artist.domain.usecase.FetchArtistsUseCaseImpl
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistAlbumsUseCase
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistUseCase
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistsUseCase
+import and.degilevich.dream.shared.feature.artist.domain.usecase.GetArtistAlbumsUseCaseImpl
+import and.degilevich.dream.shared.feature.artist.domain.usecase.GetArtistUseCaseImpl
+import and.degilevich.dream.shared.feature.artist.domain.usecase.GetArtistsUseCaseImpl
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun artistDomainModule() = module {
-    factoryOf(::FetchArtistsUseCaseImpl) bind FetchArtistsUseCase::class
-    factoryOf(::FetchArtistUseCaseImpl) bind FetchArtistUseCase::class
-    factoryOf(::FetchArtistAlbumsUseCaseImpl) bind FetchArtistAlbumsUseCase::class
+    factoryOf(::GetArtistsUseCaseImpl) bind GetArtistsUseCase::class
+    factoryOf(::GetArtistUseCaseImpl) bind GetArtistUseCase::class
+    factoryOf(::GetArtistAlbumsUseCaseImpl) bind GetArtistAlbumsUseCase::class
 }

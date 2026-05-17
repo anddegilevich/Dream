@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.artist.domain.usecase
 
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistUseCase
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistResult
 import and.degilevich.dream.shared.feature.artist.data.api.local.ArtistLocalDataSource
 import and.degilevich.dream.shared.feature.artist.data.api.remote.ArtistRemoteDataSource
 
-internal class FetchArtistUseCaseImpl(
+internal class GetArtistUseCaseImpl(
     private val artistRemoteDataSource: ArtistRemoteDataSource,
     private val artistLocalDataSource: ArtistLocalDataSource
-) : FetchArtistUseCase {
+) : GetArtistUseCase {
 
     override suspend fun invoke(params: GetArtistParams): Result<GetArtistResult> {
         return artistRemoteDataSource.getArtist(params = params).onSuccess { result ->

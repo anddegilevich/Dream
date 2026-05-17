@@ -5,8 +5,8 @@ import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimpli
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsState
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistAlbumsUseCase
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistUseCase
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistAlbumsUseCase
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtistAlbums.GetArtistAlbumsParams
@@ -44,8 +44,8 @@ internal class ArtistDetailsDomainComponent(
     )
 ) {
 
-    private val fetchArtistUseCase: FetchArtistUseCase by inject()
-    private val fetchArtistAlbumsUseCase: FetchArtistAlbumsUseCase by inject()
+    private val getArtistUseCase: GetArtistUseCase by inject()
+    private val getArtistAlbumsUseCase: GetArtistAlbumsUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -60,22 +60,22 @@ internal class ArtistDetailsDomainComponent(
 
     private fun subscribeToLifecycle() {
         doOnCreate {
-            fetchScreenData()
+            getScreenData()
         }
     }
 
-    private fun fetchScreenData() = scope.launch {
+    private fun getScreenData() = scope.launch {
         try {
             setLoading(true)
             supervisorScope {
                 listOf(
-                    fetchArtist(),
-                    fetchAlbums(),
+                    getArtist(),
+                    getAlbums(),
                 ).awaitAll().forEach { result ->
                     result.onFailure { error ->
                         toastController.showRepeatToast(
                             error = error,
-                            onRepeat = ::fetchScreenData
+                            onRepeat = ::getScreenData
                         )
                         cancel()
                     }
@@ -86,23 +86,23 @@ internal class ArtistDetailsDomainComponent(
         }
     }
 
-    private fun fetchArtist() = scope.async {
+    private fun getArtist() = scope.async {
         val params = GetArtistParams(
             id = state().navArgs.artistId
         )
-        withContext(context = Dispatchers.IO) { fetchArtistUseCase(params = params) }
+        withContext(context = Dispatchers.IO) { getArtistUseCase(params = params) }
             .onSuccess { result ->
                 setArtist(artist = result.artist)
             }
     }
 
-    private fun fetchAlbums() = scope.async {
+    private fun getAlbums() = scope.async {
         val params = GetArtistAlbumsParams(
             id = state().navArgs.artistId,
             limit = ALBUMS_LIMIT,
             offset = 0
         )
-        withContext(context = Dispatchers.IO) { fetchArtistAlbumsUseCase(params = params) }
+        withContext(context = Dispatchers.IO) { getArtistAlbumsUseCase(params = params) }
             .onSuccess { result ->
                 setAlbums(albums = result.items)
             }

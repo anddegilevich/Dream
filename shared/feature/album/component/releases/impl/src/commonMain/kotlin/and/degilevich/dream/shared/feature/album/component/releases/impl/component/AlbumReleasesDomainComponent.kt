@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.album.component.releases.impl.compon
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesState
-import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchNewReleasesUseCase
+import and.degilevich.dream.shared.feature.album.domain.api.usecase.GetNewReleasesUseCase
 import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
 import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.album.model.core.method.getNewReleases.GetNewReleasesParams
@@ -28,7 +28,7 @@ internal class AlbumReleasesDomainComponent(
     stateConservator = AlbumReleasesStateConservator()
 ) {
 
-    private val fetchNewReleasesUseCase: FetchNewReleasesUseCase by inject()
+    private val getNewReleasesUseCase: GetNewReleasesUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -42,25 +42,25 @@ internal class AlbumReleasesDomainComponent(
 
     private fun subscribeToLifecycle() {
         doOnCreate {
-            fetchNewReleases()
+            getNewReleases()
         }
     }
 
-    private fun fetchNewReleases() = scope.launch {
+    private fun getNewReleases() = scope.launch {
         val params = GetNewReleasesParams(
             limit = ALBUM_RELEASES_LIMIT,
             offset = 0
         )
         try {
             setLoading(true)
-            withContext(context = Dispatchers.IO) { fetchNewReleasesUseCase(params) }
+            withContext(context = Dispatchers.IO) { getNewReleasesUseCase(params) }
                 .onSuccess { result ->
                     setReleases(albums = result.albums)
                 }
                 .onFailure { error ->
                     toastController.showRepeatToast(
                         error = error,
-                        onRepeat = ::fetchNewReleases
+                        onRepeat = ::getNewReleases
                     )
                 }
         } finally {
