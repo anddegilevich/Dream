@@ -5,7 +5,6 @@ import android.security.keystore.KeyProperties
 import java.security.KeyStore
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
-import kotlin.getValue
 
 internal class KeyStoreManagerImpl : KeyStoreManager {
 

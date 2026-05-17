@@ -3,9 +3,8 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 plugins {
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.compose)
-    alias(libs.plugins.project.koin)
+    alias(libs.plugins.project.di)
     alias(libs.plugins.project.coroutines)
-    alias(libs.plugins.moko.multiplatfrom.resources)
 }
 
 kotlin {

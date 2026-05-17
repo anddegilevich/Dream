@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.track.component.details.impl.component
 
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsState
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.conservator.ComponentStateConservator
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs

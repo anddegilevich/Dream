@@ -8,6 +8,9 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.foundation.decompose)
             api(projects.shared.foundation.abstraction)
+            api(projects.shared.feature.album.domain.model.artifact)
+            api(projects.shared.feature.artist.domain.model.artifact)
+            api(projects.shared.feature.track.domain.model.artifact)
         }
     }
 

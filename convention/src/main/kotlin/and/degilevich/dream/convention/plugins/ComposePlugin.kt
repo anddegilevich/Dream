@@ -15,6 +15,7 @@ internal class ComposePlugin : Plugin<Project> {
                 apply(libs().plugins.compose.compiler)
                 apply(libs().plugins.compose.multiplatform)
                 apply(libs().plugins.compose.stability.analyzer)
+                apply(libs().plugins.moko.multiplatfrom.resources)
             }
             kotlinMultiplatformConfig {
                 with (sourceSets) {
@@ -24,6 +25,8 @@ internal class ComposePlugin : Plugin<Project> {
                         implementation(libs().compose.ui)
                         implementation(libs().compose.ui.backhandler)
                         implementation(libs().compose.ui.tooling.preview)
+                        implementation(libs().moko.resources)
+                        implementation(libs().moko.resources.compose)
                     }
                     androidMain.dependencies {
                         runtimeOnly(libs().compose.ui.tooling)
@@ -32,6 +35,13 @@ internal class ComposePlugin : Plugin<Project> {
                     }
                     commonTest.dependencies {
                         implementation(libs().compose.ui.test)
+                        implementation(libs().moko.resources.test)
+                    }
+                    getByName("androidDeviceTest") {
+                        dependencies {
+                            implementation(libs().compose.ui.test.junit4.android)
+                            runtimeOnly(libs().compose.ui.test.manifest)
+                        }
                     }
                 }
             }

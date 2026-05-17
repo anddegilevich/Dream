@@ -2,7 +2,6 @@ package and.degilevich.dream.shared.app.impl.component
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
 import and.degilevich.dream.shared.app.api.component.child.Screen
-import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.AlbumDetailsComponentImpl
@@ -11,6 +10,7 @@ import and.degilevich.dream.shared.feature.common.component.splash.impl.componen
 import and.degilevich.dream.shared.feature.common.home.impl.component.HomeComponentImpl
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.TrackDetailsComponentImpl
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
+import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.impl.AppNavigationComponent
 import and.degilevich.dream.shared.navigation.impl.AppNavigationComponentImpl

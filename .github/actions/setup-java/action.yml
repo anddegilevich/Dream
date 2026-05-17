@@ -1,0 +1,10 @@
+name: setup-java
+description: Setup Java environment
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Java
+      uses: actions/setup-java@v4.0.0
+      with:
+        java-version: "21"
+        distribution: "temurin"

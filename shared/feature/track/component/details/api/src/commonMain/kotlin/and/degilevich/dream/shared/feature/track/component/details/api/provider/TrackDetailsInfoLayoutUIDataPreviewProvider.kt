@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.track.component.details.api.provider
 
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsInfoLayoutUIData
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 
-class TrackDetailsInfoLayoutUIDataPreviewProvider : PreviewParameterProvider<TrackDetailsInfoLayoutUIData> {
+class TrackDetailsInfoLayoutUIDataPreviewProvider : LabeledPreviewParameterProvider<TrackDetailsInfoLayoutUIData>() {
 
-    override val values: Sequence<TrackDetailsInfoLayoutUIData> = sequenceOf(
-        provide()
+    override val labeledValues = listOf(
+        "Default" to provideDefault()
     )
 
-    fun provide(): TrackDetailsInfoLayoutUIData {
+    fun provideDefault(): TrackDetailsInfoLayoutUIData {
         return TrackDetailsInfoLayoutUIData.empty().copy(
             album = "Album",
             name = "Track",

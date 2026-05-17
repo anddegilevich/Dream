@@ -3,9 +3,9 @@ package and.degilevich.dream.shared.feature.track.component.details.impl.compone
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsIntent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsSideEffect
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsState
-import and.degilevich.dream.shared.feature.track.domain.api.usecase.FetchTrackUseCase
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
+import and.degilevich.dream.shared.feature.track.domain.api.usecase.GetTrackUseCase
+import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
+import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackParams
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
@@ -30,7 +30,7 @@ internal class TrackDetailsDomainComponent(
         navArgs = navArgs
     )
 ) {
-    private val fetchTrackUseCase: FetchTrackUseCase by inject()
+    private val getTrackUseCase: GetTrackUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -44,24 +44,24 @@ internal class TrackDetailsDomainComponent(
 
     private fun subscribeToLifecycle() {
         doOnCreate {
-            fetchTrack()
+            getTrack()
         }
     }
 
-    private fun fetchTrack() = scope.launch {
+    private fun getTrack() = scope.launch {
         val params = GetTrackParams(
             id = state().navArgs.trackId
         )
         try {
             setLoading(true)
-            withContext(Dispatchers.IO) { fetchTrackUseCase(params) }
+            withContext(Dispatchers.IO) { getTrackUseCase(params) }
                 .onSuccess { result ->
                     setTrack(track = result.track)
                 }
                 .onFailure { error ->
                     toastController.showRepeatToast(
                         error = error,
-                        onRepeat = ::fetchTrack
+                        onRepeat = ::getTrack
                     )
                 }
         } finally {

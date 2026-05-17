@@ -1,0 +1,66 @@
+package and.degilevich.dream.shared.feature.common.component.dashboard.api.view
+
+import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardPreviewComponent
+import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
+import and.degilevich.dream.shared.foundation.compose.ext.plus
+import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.arkivanov.decompose.ExperimentalDecomposeApi
+import com.arkivanov.decompose.extensions.compose.lazyitems.ChildItemsLifecycleController
+import com.arkivanov.decompose.extensions.compose.subscribeAsState
+
+@OptIn(ExperimentalDecomposeApi::class)
+@Composable
+fun DashboardScreen(
+    component: DashboardComponent,
+    modifier: Modifier = Modifier
+) {
+    val items by component.items.subscribeAsState()
+    val lazyListState = rememberLazyListState()
+
+    LazyColumn(
+        modifier = modifier
+            .fillMaxSize()
+            .themeBackground(),
+        state = lazyListState,
+        contentPadding = PaddingValues(top = 20.dp)
+            .plus(WindowInsets.statusBars.asPaddingValues())
+            .plus(WindowInsets.navigationBars.asPaddingValues())
+    ) {
+        identifiedItems(
+            items = items.items
+        ) { config ->
+            val item = remember(config) { component.items[config] }
+            item.Render()
+        }
+    }
+
+    ChildItemsLifecycleController(
+        items = component.items,
+        lazyListState = lazyListState,
+        itemIndexConverter = { it }
+    )
+}
+
+@LightDarkPreviews
+@Composable
+private fun DashboardScreenPreview() = ComposeAppTheme {
+    DashboardScreen(
+        component = DashboardPreviewComponent()
+    )
+}

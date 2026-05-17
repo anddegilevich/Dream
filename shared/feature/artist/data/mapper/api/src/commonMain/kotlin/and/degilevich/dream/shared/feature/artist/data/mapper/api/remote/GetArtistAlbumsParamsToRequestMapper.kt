@@ -1,0 +1,7 @@
+package and.degilevich.dream.shared.feature.artist.data.mapper.api.remote
+
+import and.degilevich.dream.shared.core.service.api.model.method.getArtistAlbums.GetArtistAlbumsRequest
+import and.degilevich.dream.shared.feature.artist.model.core.method.getArtistAlbums.GetArtistAlbumsParams
+import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
+
+interface GetArtistAlbumsParamsToRequestMapper : Mapper<GetArtistAlbumsParams, GetArtistAlbumsRequest>

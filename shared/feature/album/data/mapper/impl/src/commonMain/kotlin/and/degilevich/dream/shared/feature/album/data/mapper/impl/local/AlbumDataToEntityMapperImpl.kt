@@ -1,0 +1,18 @@
+package and.degilevich.dream.shared.feature.album.data.mapper.impl.local
+
+import and.degilevich.dream.shared.core.db.api.entity.AlbumEntity
+import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
+import and.degilevich.dream.shared.feature.album.data.mapper.api.local.AlbumDataToEntityMapper
+
+internal class AlbumDataToEntityMapperImpl : AlbumDataToEntityMapper {
+
+    override fun map(item: AlbumData): AlbumEntity = with(item) {
+        AlbumEntity(
+            id = id.value,
+            name = name,
+            albumType = albumType.id.value,
+            totalTracks = totalTracks,
+            releaseDate = releaseDate
+        )
+    }
+}

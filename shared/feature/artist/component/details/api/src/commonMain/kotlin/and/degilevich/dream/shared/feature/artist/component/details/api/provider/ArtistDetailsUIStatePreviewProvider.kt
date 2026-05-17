@@ -1,26 +1,24 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.provider
 
-import and.degilevich.dream.shared.feature.album.design.api.provider.AlbumCardUIDataPreviewProvider
+import and.degilevich.dream.shared.feature.album.ui.api.provider.AlbumCardUIDataPreviewProvider
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
-import and.degilevich.dream.shated.feature.track.design.api.provider.TrackCardUIDataPreviewProvider
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 
-class ArtistDetailsUIStatePreviewProvider : PreviewParameterProvider<ArtistDetailsUIState> {
+class ArtistDetailsUIStatePreviewProvider : LabeledPreviewParameterProvider<ArtistDetailsUIState>() {
 
-    override val values: Sequence<ArtistDetailsUIState> = sequenceOf(
-        provideSkeleton(),
-        provide()
+    override val labeledValues = listOf(
+        "Skeleton" to provideSkeleton(),
+        "Default" to provideDefault()
     )
 
     fun provideSkeleton(): ArtistDetailsUIState {
         return ArtistDetailsUIState.empty()
     }
 
-    fun provide(): ArtistDetailsUIState {
+    fun provideDefault(): ArtistDetailsUIState {
         return ArtistDetailsUIState(
             info = Skeleton.Value(ArtistInfoLayoutUIDataPreviewProvider().provide()),
-            topTracks = Skeleton.Value(TrackCardUIDataPreviewProvider().provideList()),
             albums = Skeleton.Value(AlbumCardUIDataPreviewProvider().provideList())
         )
     }

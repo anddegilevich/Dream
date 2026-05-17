@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.search.component.search.api.component.model
 
-import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCardUIData
+import and.degilevich.dream.shared.feature.search.ui.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import androidx.compose.runtime.Immutable

@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.album.component.details.api.provider
 
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsLayoutUIData
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 
-class AlbumDetailsLayoutUIDataPreviewProvider : PreviewParameterProvider<AlbumDetailsLayoutUIData> {
+class AlbumDetailsLayoutUIDataPreviewProvider : LabeledPreviewParameterProvider<AlbumDetailsLayoutUIData>() {
 
-    override val values: Sequence<AlbumDetailsLayoutUIData> = sequenceOf(
-        provide()
+    override val labeledValues = listOf(
+        "Default" to provideDefault()
     )
 
-    fun provide(): AlbumDetailsLayoutUIData {
+    fun provideDefault(): AlbumDetailsLayoutUIData {
         return AlbumDetailsLayoutUIData.empty().copy(
             name = "Album",
             type = "Album",

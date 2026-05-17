@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.navigation.api.model.args
 
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistId
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class ArtistDetailsNavArgs(
-    val artistId: Identifier
+    val artistId: ArtistId
 )

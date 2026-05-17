@@ -1,14 +1,17 @@
 package and.degilevich.dream.shared.feature.search.component.search.impl.component
 
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
+import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistId
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchIntent
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchSideEffect
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchState
 import and.degilevich.dream.shared.feature.search.domain.api.usecase.SearchUseCase
-import and.degilevich.dream.shared.feature.search.model.core.api.dictionary.SearchType
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.model.core.dictionary.SearchType
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchResult
+import and.degilevich.dream.shared.feature.track.model.artifact.data.TrackId
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
-import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
+import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
@@ -87,15 +90,17 @@ internal class SearchDomainComponent(
 
     private fun onItemClicked(searchItemId: Identifier) {
         with(state().searchResult) {
-            when {
-                artists.items.ids().contains(searchItemId) -> navigateToArtist(artistId = searchItemId)
-                albums.items.ids().contains(searchItemId) -> navigateToAlbum(albumId = searchItemId)
-                tracks.items.ids().contains(searchItemId) -> navigateToTrack(trackId = searchItemId)
+            artists.items.getById(id = searchItemId)?.let { artist ->
+                navigateToArtist(artistId = artist.id)
+            } ?: albums.items.getById(id = searchItemId)?.let { album ->
+                navigateToAlbum(albumId = album.id)
+            } ?: tracks.items.getById(id = searchItemId)?.let { track ->
+                navigateToTrack(trackId = track.id)
             }
         }
     }
 
-    private fun navigateToArtist(artistId: Identifier) {
+    private fun navigateToArtist(artistId: ArtistId) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.ArtistDetails(
                 navArgs = ArtistDetailsNavArgs(artistId = artistId)
@@ -103,7 +108,7 @@ internal class SearchDomainComponent(
         )
     }
 
-    private fun navigateToAlbum(albumId: Identifier) {
+    private fun navigateToAlbum(albumId: AlbumId) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(albumId = albumId)
@@ -111,7 +116,7 @@ internal class SearchDomainComponent(
         )
     }
 
-    private fun navigateToTrack(trackId: Identifier) {
+    private fun navigateToTrack(trackId: TrackId) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.TrackDetails(
                 navArgs = TrackDetailsNavArgs(trackId = trackId)

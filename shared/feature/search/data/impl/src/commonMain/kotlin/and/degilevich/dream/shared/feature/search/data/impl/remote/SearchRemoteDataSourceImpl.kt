@@ -1,0 +1,23 @@
+package and.degilevich.dream.shared.feature.search.data.impl.remote
+
+import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchParamsToRequestMapper
+import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchResponseToResultMapper
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchResult
+import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
+import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
+import and.degilevich.dream.shared.template.data.impl.remote.BaseRemoteDataSource
+
+internal class SearchRemoteDataSourceImpl(
+    private val searchParamsToRequestMapper: SearchParamsToRequestMapper,
+    private val searchResponseToResultMapper: SearchResponseToResultMapper,
+) : BaseRemoteDataSource(), SearchRemoteDataSource {
+
+    override suspend fun search(params: SearchParams): Result<SearchResult> {
+        return service.search(
+            request = params.mapWith(searchParamsToRequestMapper)
+        ).foldResultSuccess { response ->
+            response.mapWith(searchResponseToResultMapper)
+        }
+    }
+}

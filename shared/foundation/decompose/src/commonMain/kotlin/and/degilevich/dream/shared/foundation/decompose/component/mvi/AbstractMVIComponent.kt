@@ -52,8 +52,9 @@ abstract class AbstractMVIComponent<State : Any, in Intent : Any, SideEffect : A
     private fun registerState(stateConservator: ComponentStateConservator<State>) {
         stateKeeper.register(
             key = stateConservator.key,
-            strategy = stateConservator.serializer
-        ) { state() }
+            strategy = stateConservator.serializer,
+            supplier = ::state
+        )
     }
 
     override fun handleIntent(intent: Intent) = Unit

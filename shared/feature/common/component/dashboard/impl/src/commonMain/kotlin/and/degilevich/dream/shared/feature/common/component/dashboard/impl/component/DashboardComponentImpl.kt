@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.impl.component
 
 import and.degilevich.dream.shared.feature.album.component.releases.impl.component.AlbumReleasesComponentImpl
-import and.degilevich.dream.shared.feature.category.component.list.impl.component.CategoryListComponentImpl
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
@@ -28,13 +27,10 @@ class DashboardComponentImpl(
         serializer = DashboardItemConfig.serializer(),
         initialItems = {
             Items(
-                items = listOf(
-                    DashboardItemConfig.AlbumReleases,
-                    DashboardItemConfig.CategoryList
-                )
+                items = listOf(DashboardItemConfig.AlbumReleases)
             )
         },
-        key = "items",
+        key = ITEMS_KEY,
         childFactory = ::itemFactory
     )
 
@@ -50,14 +46,10 @@ class DashboardComponentImpl(
                     )
                 )
             }
-
-            is DashboardItemConfig.CategoryList -> {
-                DashboardItem.CategoryList(
-                    component = CategoryListComponentImpl(
-                        componentContext = componentContext
-                    )
-                )
-            }
         }
+    }
+
+    private companion object {
+        const val ITEMS_KEY = "items"
     }
 }

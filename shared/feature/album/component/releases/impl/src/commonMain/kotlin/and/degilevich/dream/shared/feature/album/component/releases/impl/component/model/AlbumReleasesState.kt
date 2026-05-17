@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.album.component.releases.impl.component.model
 
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
 import kotlinx.serialization.Serializable
 
 @Serializable

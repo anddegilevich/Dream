@@ -1,12 +1,12 @@
 package and.degilevich.dream.shared.feature.artist.component.details.api.provider
 
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistInfoLayoutUIData
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 
-class ArtistInfoLayoutUIDataPreviewProvider : PreviewParameterProvider<ArtistInfoLayoutUIData> {
+class ArtistInfoLayoutUIDataPreviewProvider : LabeledPreviewParameterProvider<ArtistInfoLayoutUIData>() {
 
-    override val values: Sequence<ArtistInfoLayoutUIData> = sequenceOf(
-        provide()
+    override val labeledValues = listOf(
+        "Default" to provide()
     )
 
     fun provide(): ArtistInfoLayoutUIData {

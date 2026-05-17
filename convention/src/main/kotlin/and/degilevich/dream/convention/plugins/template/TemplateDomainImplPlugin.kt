@@ -14,7 +14,7 @@ internal class TemplateDomainImplPlugin : Plugin<Project> {
                 apply(libs().plugins.kmp.library)
                 apply(libs().plugins.project.multiplatform)
                 apply(libs().plugins.project.serialization)
-                apply(libs().plugins.project.koin)
+                apply(libs().plugins.project.di)
             }
         }
     }

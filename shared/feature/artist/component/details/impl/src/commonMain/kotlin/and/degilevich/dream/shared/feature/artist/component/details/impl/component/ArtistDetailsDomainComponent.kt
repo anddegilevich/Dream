@@ -1,21 +1,19 @@
 package and.degilevich.dream.shared.feature.artist.component.details.impl.component
 
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsState
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistAlbumsUseCase
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistTopTracksUseCase
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistUseCase
-import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistTopTracks.GetArtistTopTracksParams
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistAlbumsUseCase
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistUseCase
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.model.core.method.getArtistAlbums.GetArtistAlbumsParams
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
-import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
@@ -46,9 +44,8 @@ internal class ArtistDetailsDomainComponent(
     )
 ) {
 
-    private val fetchArtistUseCase: FetchArtistUseCase by inject()
-    private val fetchArtistTopTracksUseCase: FetchArtistTopTracksUseCase by inject()
-    private val fetchArtistAlbumsUseCase: FetchArtistAlbumsUseCase by inject()
+    private val getArtistUseCase: GetArtistUseCase by inject()
+    private val getArtistAlbumsUseCase: GetArtistAlbumsUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -57,30 +54,28 @@ internal class ArtistDetailsDomainComponent(
     override fun handleIntent(intent: ArtistDetailsIntent) {
         when (intent) {
             is ArtistDetailsIntent.OnBackClicked -> navigateBack()
-            is ArtistDetailsIntent.OnTrackClicked -> navigateToTrack(trackId = intent.id)
-            is ArtistDetailsIntent.OnAlbumClicked -> navigateToAlbum(albumId = intent.id)
+            is ArtistDetailsIntent.OnAlbumClicked -> onAlbumClicked(id = intent.id)
         }
     }
 
     private fun subscribeToLifecycle() {
         doOnCreate {
-            fetchScreenData()
+            getScreenData()
         }
     }
 
-    private fun fetchScreenData() = scope.launch {
+    private fun getScreenData() = scope.launch {
         try {
             setLoading(true)
             supervisorScope {
                 listOf(
-                    fetchArtist(),
-                    fetchTopTracks(),
-                    fetchAlbums(),
+                    getArtist(),
+                    getAlbums(),
                 ).awaitAll().forEach { result ->
                     result.onFailure { error ->
                         toastController.showRepeatToast(
                             error = error,
-                            onRepeat = ::fetchScreenData
+                            onRepeat = ::getScreenData
                         )
                         cancel()
                     }
@@ -91,33 +86,23 @@ internal class ArtistDetailsDomainComponent(
         }
     }
 
-    private fun fetchArtist() = scope.async {
+    private fun getArtist() = scope.async {
         val params = GetArtistParams(
             id = state().navArgs.artistId
         )
-        withContext(context = Dispatchers.IO) { fetchArtistUseCase(params = params) }
+        withContext(context = Dispatchers.IO) { getArtistUseCase(params = params) }
             .onSuccess { result ->
                 setArtist(artist = result.artist)
             }
     }
 
-    private fun fetchTopTracks() = scope.async {
-        val params = GetArtistTopTracksParams(
-            id = state().navArgs.artistId
-        )
-        withContext(context = Dispatchers.IO) { fetchArtistTopTracksUseCase(params = params) }
-            .onSuccess { result ->
-                setTopTracks(tracks = result.tracks)
-            }
-    }
-
-    private fun fetchAlbums() = scope.async {
+    private fun getAlbums() = scope.async {
         val params = GetArtistAlbumsParams(
             id = state().navArgs.artistId,
             limit = ALBUMS_LIMIT,
             offset = 0
         )
-        withContext(context = Dispatchers.IO) { fetchArtistAlbumsUseCase(params = params) }
+        withContext(context = Dispatchers.IO) { getArtistAlbumsUseCase(params = params) }
             .onSuccess { result ->
                 setAlbums(albums = result.items)
             }
@@ -127,15 +112,12 @@ internal class ArtistDetailsDomainComponent(
         navigator.screenNavigator.pop()
     }
 
-    private fun navigateToTrack(trackId: Identifier) {
-        navigator.screenNavigator.pushToFront(
-            ScreenConfig.TrackDetails(
-                navArgs = TrackDetailsNavArgs(trackId = trackId)
-            )
-        )
+    private fun onAlbumClicked(id: Identifier) {
+        val album = state().albums.getById(id) ?: return
+        navigateToAlbum(albumId = album.id)
     }
 
-    private fun navigateToAlbum(albumId: Identifier) {
+    private fun navigateToAlbum(albumId: AlbumId) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(albumId = albumId)
@@ -145,10 +127,6 @@ internal class ArtistDetailsDomainComponent(
 
     private fun setArtist(artist: ArtistData) = reduce {
         copy(artist = artist)
-    }
-
-    private fun setTopTracks(tracks: List<TrackData>) = reduce {
-        copy(topTracks = tracks)
     }
 
     private fun setAlbums(albums: List<AlbumSimplifiedData>) = reduce {

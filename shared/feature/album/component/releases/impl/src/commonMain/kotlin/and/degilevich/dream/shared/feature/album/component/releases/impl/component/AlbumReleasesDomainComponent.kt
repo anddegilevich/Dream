@@ -3,10 +3,12 @@ package and.degilevich.dream.shared.feature.album.component.releases.impl.compon
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesState
-import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchNewReleasesUseCase
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumSimplifiedData
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesParams
+import and.degilevich.dream.shared.feature.album.domain.api.usecase.GetNewReleasesUseCase
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
+import and.degilevich.dream.shared.feature.album.model.core.method.getNewReleases.GetNewReleasesParams
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
@@ -26,7 +28,7 @@ internal class AlbumReleasesDomainComponent(
     stateConservator = AlbumReleasesStateConservator()
 ) {
 
-    private val fetchNewReleasesUseCase: FetchNewReleasesUseCase by inject()
+    private val getNewReleasesUseCase: GetNewReleasesUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -34,31 +36,31 @@ internal class AlbumReleasesDomainComponent(
 
     override fun handleIntent(intent: AlbumReleasesIntent) {
         when (intent) {
-            is AlbumReleasesIntent.OnAlbumClicked -> navigateToAlbum(albumId = intent.id)
+            is AlbumReleasesIntent.OnAlbumClicked -> onAlbumClicked(intent.id)
         }
     }
 
     private fun subscribeToLifecycle() {
         doOnCreate {
-            fetchNewReleases()
+            getNewReleases()
         }
     }
 
-    private fun fetchNewReleases() = scope.launch {
+    private fun getNewReleases() = scope.launch {
         val params = GetNewReleasesParams(
             limit = ALBUM_RELEASES_LIMIT,
             offset = 0
         )
         try {
             setLoading(true)
-            withContext(context = Dispatchers.IO) { fetchNewReleasesUseCase(params) }
+            withContext(context = Dispatchers.IO) { getNewReleasesUseCase(params) }
                 .onSuccess { result ->
-                    setReleases(albums = result.albums.albums)
+                    setReleases(albums = result.albums)
                 }
                 .onFailure { error ->
                     toastController.showRepeatToast(
                         error = error,
-                        onRepeat = ::fetchNewReleases
+                        onRepeat = ::getNewReleases
                     )
                 }
         } finally {
@@ -66,7 +68,12 @@ internal class AlbumReleasesDomainComponent(
         }
     }
 
-    private fun navigateToAlbum(albumId: Identifier) {
+    private fun onAlbumClicked(id: Identifier) {
+        val album = state().releases.getById(id) ?: return
+        navigateToAlbum(albumId = album.id)
+    }
+
+    private fun navigateToAlbum(albumId: AlbumId) {
         navigator.screenNavigator.pushToFront(
             ScreenConfig.AlbumDetails(
                 navArgs = AlbumDetailsNavArgs(
