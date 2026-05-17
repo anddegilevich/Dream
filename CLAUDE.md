@@ -87,9 +87,9 @@ Feature template plugins (e.g., `TemplateComponentApiPlugin`) configure feature 
 
 Each feature (`artist`, `album`, etc.) follows vertical slice:
 
-* `model/artifact` - shared feature domain models (to avoid circular deps with other features)
-* `model/core` - feature domain models
 * `data/api|impl`- data access (remote, local, storage), mappers to domain models
+* `domain/model/artifact` - shared feature domain models (to avoid circular deps with other features)
+* `domain/model/core` - feature domain models
 * `domain/api|impl` - use cases, managers, validators, value holders, etc.
 * `ui/api|impl` - ui models, compose functions, mappers from to ui models
 * `component/<component_name>/api|impl` - screens/views (component, component models, compose functions)
@@ -107,7 +107,7 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 * Modules depend only downward or on same-level
 * `api` module never depends on `impl`
 * Implementations have `internal` visibility and provided via DI
-* Each `impl` layer provides its own module (e.g., `ArtistSourceModule`).
+* Each `impl` layer provides its own module (e.g., `ArtistDataModule`).
   `shared/di/AppModule` assembles all modules.
 
 ### Compose rules

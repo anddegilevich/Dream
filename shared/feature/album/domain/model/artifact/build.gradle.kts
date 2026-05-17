@@ -5,9 +5,9 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.feature.track.model.artifact)
-            api(projects.shared.feature.artist.model.artifact)
-            api(projects.shared.feature.image.model.artifact)
+            api(projects.shared.feature.track.domain.model.artifact)
+            api(projects.shared.feature.artist.domain.model.artifact)
+            api(projects.shared.feature.image.domain.model.artifact)
         }
     }
 

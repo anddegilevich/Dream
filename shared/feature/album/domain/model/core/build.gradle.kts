@@ -5,7 +5,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.feature.album.model.artifact)
+            api(projects.shared.feature.album.domain.model.artifact)
         }
     }
 
