@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.coroutines)
     alias(libs.plugins.project.serialization)
-    alias(libs.plugins.project.koin)
+    alias(libs.plugins.project.di)
 }
 
 kotlin {

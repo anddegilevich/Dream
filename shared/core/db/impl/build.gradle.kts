@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 plugins {
     alias(libs.plugins.project.multiplatform)
     alias(libs.plugins.project.room)
-    alias(libs.plugins.project.koin)
+    alias(libs.plugins.project.di)
 }
 
 kotlin {

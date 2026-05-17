@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.navigation.api.model.args
 
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistId
+import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistId
 import kotlinx.serialization.Serializable
 
 @Serializable

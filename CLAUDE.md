@@ -2,83 +2,143 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Build & Commands
+## Build
+
+### Commands
 
 ```bash
-# Unit tests
-./gradlew test
-./gradlew allTests              # all targets, aggregated report
+# Tests
+./gradlew test # Unit tests
+./gradlew detekt # Static analysis
 
-# Static analysis
-./gradlew detekt
-
-# Combined check
-./gradlew check                 # detekt + tests
-
-# Android
-./gradlew :android:app:assembleDebug
-
-# iOS (simulator)
-xcodebuild build -project ios/app.xcodeproj -configuration Debug -scheme prodDebug -sdk iphonesimulator
+# Build
+./gradlew :android:app:assembleDebug # Android
+xcodebuild build -project ios/app.xcodeproj -configuration Debug -scheme prodDebug -sdk iphonesimulator # iOS
 ```
 
-**Run single test module:** `./gradlew :shared:feature:album:component:details:api:test`
+### Flavors
 
-**Local properties required** — create `local.properties` with Spotify credentials:
+* `prod` - Real Spotify API
+* `mock` - Stub API
+
+### Local properties
+
+`local.properties` with Spotify credentials are required:
+
 ```
 CLIENT_ID=<your_client_id>
 CLIENT_SECRET=<your_client_secret>
 ```
 
-Build flavors: `prod` (real Spotify API) and `mock`.
-
 ## Architecture
 
-Kotlin Multiplatform (Compose Multiplatform UI shared across Android + iOS). MVI pattern with Decompose for navigation/component lifecycle.
+### Tech stack
 
-### Module Layers (per feature)
+* **Architecture** - Decompose + MVI
+* **UI** - Compose Multiplatform
+* **Concurrency** - Kotlin Coroutines
+* **Serialization** - Kotlin Serialization
+* **Gradle** - Kotlin DSL, Gradle Convention Plugins, Version Catalog, KSP
+* **Dependency Injection** - Koin
+* **HTTP Client** - Ktor
+* **Local Database** - Room
+* **Preference Storage** - DataStore + Multiplatform Settings
+* **Resources** - MOKO resources
+* **Logger** - Napier
+* **Image Loading** - Coil
+* **Build Config** - BuildKonfig
+* **Static Code Analysis** - Detekt
 
-Each feature (`artist`, `album`, `track`, `search`) follows this vertical slice:
+All versions can be found in version catalog file `/gradle/libs.versions.toml`
 
-```
-model/artifact/api   — shared models (avoid circular deps)
-model/core/api       — feature domain models
-source/api|impl      — data access (Ktor remote, Room local)
-domain/api|impl      — use cases
-design/api|impl      — UI components + mappers
-component/*/api|impl — screens (Decompose components)
-```
+### Convention plugins
 
-### Key Shared Modules
+`/convention/` contains Gradle convention plugins that wrap common build setup (e.g., `MultiplatformPlugin`).
+Feature template plugins (e.g., `TemplateComponentApiPlugin`) configure feature modules.
 
-- `shared/foundation/` — multiplatform primitives, base decompose components, compose utils
-- `shared/core/` — infrastructure: HTTP client (Ktor), DB (Room), storage, crypto, toast
-- `shared/design/` — theme (colors, typography, shapes), system UI components
-- `shared/di/` — Koin DI wiring for all modules
-- `shared/navigation/` — `AppNavigationComponent`, `ScreenConfig` sealed class
-- `shared/app/` — `RootComponentImpl` (screen stack + toasts), iOS `RootViewController`
-- `shared/config/` — BuildKonfig-based compile-time config per flavor
+### Modules structure
 
-### Dependency Rule
+* `shared/foundation/` - project unspecific extensions, abstractions, utils
+  * `shared/foundation/primitive` - kotlin primitives extensions
+  * `shared/foundation/serialization` - serialization utils
+  * `shared/foundation/abstraction` - abstractions and base useful classes
+  * `shared/foundation/compose` - Compose extensions
+  * `shared/foundation/datetime` - datetime utils
+  * `shared/foundation/decompose` - base decompose component implementations
+* `shared/config` - flavor dependent build config
+* `shared/logger` - project logger util
+* `shared/resource/api|impl` - project strings, images, fonts, etc.
+* `shared/core/` - project core infrastructure
+  * `shared/core/crypto/api|impl` - crypto utils
+  * `shared/core/client/api|impl` - http client
+  * `shared/core/service/api|impl` - Spotify rest api service
+  * `shared/core/db/api|impl` - local sql database
+  * `shared/core/storage/api|impl` - preferences storage
+* `shared/design/` - Compose design system
+  * `shared/design/theme` - theme colors, typography, shapes, etc.
+  * `shared/design/system` - ui components like buttons, inputs, etc.
+* `shared/feature/` - feature modules
+  * ...
+* `shared/navigation/api|impl` - centralized app navigation
+* `shared/di` - dependencies hub wiring all modules
+* `shared/app/api|impl` - shared app entry point with root component and composable view
 
-Modules depend only downward/same-level. `api` module never depends on `impl`. `design` never depends on `component`.
+### Feature modules structure
 
-### DI
+Each feature (`artist`, `album`, etc.) follows vertical slice:
 
-Koin. Each layer provides its own module (e.g., `ArtistSourceModule`, `ArtistDomainModule`). `shared/di/AppModule` assembles all.
+* `data/mapper/api|impl`- mappers from core remote and local models to domain
+* `data/api|impl`- data access (repositories, remote sources, local sources, storages)
+* `domain/model/artifact` - shared feature domain models (to avoid circular deps with other features)
+* `domain/model/core` - feature domain models
+* `domain/api|impl` - use cases, managers, validators, value holders, etc.
+* `ui/api|impl` - ui models, compose functions, mappers from to ui models
+* `component/<component_name>/api|impl` - screens/views (component, component models, compose functions)
 
-iOS init: `DIHelperKt.doInitDI()` called from `AppDelegate.swift`.
+### Platform entry points
 
-### Platform Entry Points
+* **Android**: `DreamApplication` → `MainActivity`
+* **iOS**: `iOSApp` → `RootView`
+* **Shared**: `ComposeApp` → `RootComponentImpl`
 
-- **Android**: `DreamApplication` (Koin init) → `MainActivity` (RootComponent + Compose)
-- **iOS**: `AppDelegate.swift` (DI) → `RootView.swift` (Decompose component display)
-- **Shared**: `RootComponentImpl` manages screen stack and navigation
+## Rules
 
-### Convention Plugins
+### Dependencies rules
 
-`/convention/` contains Gradle convention plugins that wrap common build setup — `MultiplatformPlugin`, `ComposePlugin`, `KoinPlugin`, etc. Feature template plugins auto-configure new feature modules.
+* Modules depend only downward or on same-level
+* `api` module never depends on `impl`
+* Implementations have `internal` visibility and provided via DI
+* Each `impl` layer provides its own module (e.g., `ArtistDataModule`).
+  `shared/di/AppModule` assembles all modules.
 
-### Testing
+### Compose rules
 
-Tests live in `commonTest` source sets. Framework: JUnit (`androidx.test.ext:junit`). Detekt config: `detekt/detekt.yml` (excludes generated code, ignores `@Composable` for LongMethod rule).
+#### UI models rules
+
+* UI models names ended with `UIData`. Only exception is state models of MVI components (end with `UIState`)
+* UI models annotated with `Immutable` or `Stable`
+* UI models do not depend on domain models
+* Collection parameters of ui models should be `ImmutableList` instead of `List`
+* `LazyList` items models should have `Identifier`
+
+#### Compose functions rules
+
+* First optional parameter should be `Modifier`
+* Use animations to change visibility/color/position/other render values (e.g., `animateFloatAsState`)
+* MVI pattern is mostly preferable: 
+  - Single state defining parameter `data: UIData`
+  - Single lambda intent handler `onIntent: (Intent) -> Unit`
+* Use `LabeledPreviewParameterProvider` for composables `Preview`
+
+### Component rules
+
+* DomainComponent plays view model role (handle view intents, makes requests, manages domain state)
+* Domain State maps to UIState in BinderComponent using UIStateMapper
+* Domain State and all its parameters should be `Serializable`
+
+### Test rules
+
+#### UI test rules
+
+* Map UI elements with Compose Semantics `testTags`
+* UI tests should check all view states provided by `PreviewParameterProvider`

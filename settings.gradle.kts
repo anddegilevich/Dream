@@ -77,8 +77,8 @@ include(":shared:design:system")
 // =====================================================================================================================
 // Template
 
-include(":shared:template:source:api")
-include(":shared:template:source:impl")
+include(":shared:template:data:api")
+include(":shared:template:data:impl")
 
 include(":shared:template:component:impl")
 
@@ -99,41 +99,41 @@ include(":shared:feature:common:component:home:api")
 include(":shared:feature:common:component:home:impl")
 
 // Image
-include(":shared:feature:image:model:artifact:api")
+include(":shared:feature:image:data:mapper:api")
+include(":shared:feature:image:data:mapper:impl")
 
-include(":shared:feature:image:source:api")
-include(":shared:feature:image:source:impl")
+include(":shared:feature:image:domain:model:artifact")
 
 // Artist
-include(":shared:feature:artist:model:artifact:api")
+include(":shared:feature:artist:data:mapper:api")
+include(":shared:feature:artist:data:mapper:impl")
+include(":shared:feature:artist:data:api")
+include(":shared:feature:artist:data:impl")
 
-include(":shared:feature:artist:model:core:api")
-
-include(":shared:feature:artist:source:api")
-include(":shared:feature:artist:source:impl")
-
+include(":shared:feature:artist:domain:model:artifact")
+include(":shared:feature:artist:domain:model:core")
 include(":shared:feature:artist:domain:api")
 include(":shared:feature:artist:domain:impl")
 
-include(":shared:feature:artist:design:api")
-include(":shared:feature:artist:design:impl")
+include(":shared:feature:artist:ui:api")
+include(":shared:feature:artist:ui:impl")
 
 include(":shared:feature:artist:component:details:api")
 include(":shared:feature:artist:component:details:impl")
 
 // Album
-include(":shared:feature:album:model:artifact:api")
+include(":shared:feature:album:data:mapper:api")
+include(":shared:feature:album:data:mapper:impl")
+include(":shared:feature:album:data:api")
+include(":shared:feature:album:data:impl")
 
-include(":shared:feature:album:model:core:api")
-
-include(":shared:feature:album:source:api")
-include(":shared:feature:album:source:impl")
-
+include(":shared:feature:album:domain:model:artifact")
+include(":shared:feature:album:domain:model:core")
 include(":shared:feature:album:domain:api")
 include(":shared:feature:album:domain:impl")
 
-include(":shared:feature:album:design:api")
-include(":shared:feature:album:design:impl")
+include(":shared:feature:album:ui:api")
+include(":shared:feature:album:ui:impl")
 
 include(":shared:feature:album:component:releases:api")
 include(":shared:feature:album:component:releases:impl")
@@ -142,33 +142,34 @@ include(":shared:feature:album:component:details:api")
 include(":shared:feature:album:component:details:impl")
 
 // Track
-include(":shared:feature:track:model:artifact:api")
+include(":shared:feature:track:data:mapper:api")
+include(":shared:feature:track:data:mapper:impl")
+include(":shared:feature:track:data:api")
+include(":shared:feature:track:data:impl")
 
-include(":shared:feature:track:model:core:api")
-
-include(":shared:feature:track:source:api")
-include(":shared:feature:track:source:impl")
-
+include(":shared:feature:track:domain:model:artifact")
+include(":shared:feature:track:domain:model:core")
 include(":shared:feature:track:domain:api")
 include(":shared:feature:track:domain:impl")
 
-include(":shared:feature:track:design:api")
-include(":shared:feature:track:design:impl")
+include(":shared:feature:track:ui:api")
+include(":shared:feature:track:ui:impl")
 
 include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
 
 // Search
-include(":shared:feature:search:model:core:api")
+include(":shared:feature:search:data:mapper:api")
+include(":shared:feature:search:data:mapper:impl")
+include(":shared:feature:search:data:api")
+include(":shared:feature:search:data:impl")
 
-include(":shared:feature:search:source:api")
-include(":shared:feature:search:source:impl")
-
+include(":shared:feature:search:domain:model:core")
 include(":shared:feature:search:domain:api")
 include(":shared:feature:search:domain:impl")
 
-include(":shared:feature:search:design:api")
-include(":shared:feature:search:design:impl")
+include(":shared:feature:search:ui:api")
+include(":shared:feature:search:ui:impl")
 
 include(":shared:feature:search:component:search:api")
 include(":shared:feature:search:component:search:impl")

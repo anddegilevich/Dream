@@ -5,10 +5,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.feature.artist.source.api)
-            implementation(projects.shared.feature.album.source.api)
-            implementation(projects.shared.feature.track.source.api)
             api(projects.shared.feature.artist.domain.api)
+            implementation(projects.shared.feature.album.data.api)
         }
     }
 

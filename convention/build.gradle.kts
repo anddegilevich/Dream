@@ -47,10 +47,10 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.CoroutinesPlugin"
             }
         }
-        libs.plugins.project.koin.get().let { plugin ->
+        libs.plugins.project.di.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.KoinPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.DIPlugin"
             }
         }
         libs.plugins.project.ktor.get().let { plugin ->
@@ -65,22 +65,34 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.RoomPlugin"
             }
         }
-        libs.plugins.project.template.model.api.get().let { plugin ->
+        libs.plugins.project.template.model.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateModelApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateModelPlugin"
             }
         }
-        libs.plugins.project.template.source.api.get().let { plugin ->
+        libs.plugins.project.template.data.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateSourceApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataApiPlugin"
             }
         }
-        libs.plugins.project.template.source.impl.get().let { plugin ->
+        libs.plugins.project.template.data.impl.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateSourceImplPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataImplPlugin"
+            }
+        }
+        libs.plugins.project.template.data.mapper.api.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataMapperApiPlugin"
+            }
+        }
+        libs.plugins.project.template.data.mapper.impl.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataMapperImplPlugin"
             }
         }
         libs.plugins.project.template.domain.api.get().let { plugin ->
@@ -95,16 +107,16 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDomainImplPlugin"
             }
         }
-        libs.plugins.project.template.design.api.get().let { plugin ->
+        libs.plugins.project.template.ui.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDesignApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateUIApiPlugin"
             }
         }
-        libs.plugins.project.template.design.impl.get().let { plugin ->
+        libs.plugins.project.template.ui.impl.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDesignImplPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateUIImplPlugin"
             }
         }
         libs.plugins.project.template.component.api.get().let { plugin ->

@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.album.component.releases.api.compone
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesUIState
-import and.degilevich.dream.shared.feature.album.component.releases.api.design.AlbumReleasesCarousel
+import and.degilevich.dream.shared.feature.album.component.releases.api.view.AlbumReleasesCarousel
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderMVIComponent
 import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.runtime.Composable

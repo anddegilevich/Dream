@@ -2,10 +2,10 @@ package and.degilevich.dream.shared.feature.search.component.search.impl.compone
 
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchState
-import and.degilevich.dream.shared.feature.search.design.api.mapper.AlbumInfoToSearchCardUIDataMapper
-import and.degilevich.dream.shared.feature.search.design.api.mapper.ArtistDataToSearchCardUIDataMapper
-import and.degilevich.dream.shared.feature.search.design.api.mapper.TrackDataToSearchCardUIDataMapper
-import and.degilevich.dream.shared.feature.search.design.api.model.card.SearchCardUIData
+import and.degilevich.dream.shared.feature.search.ui.api.mapper.AlbumInfoToSearchCardUIDataMapper
+import and.degilevich.dream.shared.feature.search.ui.api.mapper.ArtistDataToSearchCardUIDataMapper
+import and.degilevich.dream.shared.feature.search.ui.api.mapper.TrackDataToSearchCardUIDataMapper
+import and.degilevich.dream.shared.feature.search.ui.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton

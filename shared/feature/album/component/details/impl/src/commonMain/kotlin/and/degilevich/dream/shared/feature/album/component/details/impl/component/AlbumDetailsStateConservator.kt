@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.album.component.details.impl.component
 
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsState
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
+import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.conservator.ComponentStateConservator
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs

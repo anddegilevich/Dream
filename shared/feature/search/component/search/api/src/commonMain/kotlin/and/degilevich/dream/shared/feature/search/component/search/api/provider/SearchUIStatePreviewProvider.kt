@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.search.component.search.api.provider
 
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
-import and.degilevich.dream.shared.feature.search.design.api.provider.SearchCardUIDataPreviewProvider
+import and.degilevich.dream.shared.feature.search.ui.api.provider.SearchCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 

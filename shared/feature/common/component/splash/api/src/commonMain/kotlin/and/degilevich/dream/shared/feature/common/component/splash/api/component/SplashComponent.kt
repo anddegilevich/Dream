@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.common.component.splash.api.componen
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashIntent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashUIState
-import and.degilevich.dream.shared.feature.common.component.splash.api.design.SplashScreen
+import and.degilevich.dream.shared.feature.common.component.splash.api.view.SplashScreen
 import and.degilevich.dream.shared.foundation.decompose.component.render.RenderMVIComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable

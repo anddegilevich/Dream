@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.details.impl.component
 
-import and.degilevich.dream.shared.feature.album.design.api.mapper.AlbumInfoToCardUIDataMapper
-import and.degilevich.dream.shared.feature.album.design.api.model.AlbumCardUIData
+import and.degilevich.dream.shared.feature.album.ui.api.mapper.AlbumInfoToCardUIDataMapper
+import and.degilevich.dream.shared.feature.album.ui.api.model.AlbumCardUIData
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistInfoLayoutUIData
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsState

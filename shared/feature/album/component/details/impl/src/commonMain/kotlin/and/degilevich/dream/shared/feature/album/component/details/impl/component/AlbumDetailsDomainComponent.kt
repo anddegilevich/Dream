@@ -3,14 +3,14 @@ package and.degilevich.dream.shared.feature.album.component.details.impl.compone
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsIntent
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsSideEffect
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsState
-import and.degilevich.dream.shared.feature.album.domain.api.usecase.FetchAlbumUseCase
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
-import and.degilevich.dream.shared.feature.artist.domain.api.usecase.FetchArtistsUseCase
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistId
-import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtists.GetArtistsParams
-import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
+import and.degilevich.dream.shared.feature.album.domain.api.usecase.GetAlbumUseCase
+import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
+import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumParams
+import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistsUseCase
+import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistId
+import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.method.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.track.model.artifact.data.TrackId
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
@@ -45,8 +45,8 @@ internal class AlbumDetailsDomainComponent(
     )
 ) {
 
-    private val fetchAlbumUseCase: FetchAlbumUseCase by inject()
-    private val fetchArtistsUseCase: FetchArtistsUseCase by inject()
+    private val getAlbumUseCase: GetAlbumUseCase by inject()
+    private val getArtistsUseCase: GetArtistsUseCase by inject()
 
     init {
         subscribeToLifecycle()
@@ -62,24 +62,24 @@ internal class AlbumDetailsDomainComponent(
 
     private fun subscribeToLifecycle() {
         doOnCreate {
-            fetchScreenData()
+            getScreenData()
         }
     }
 
-    private fun fetchScreenData() = scope.launch {
+    private fun getScreenData() = scope.launch {
         try {
             setLoading(true)
-            fetchAlbum().await().onFailure { error ->
+            getAlbum().await().onFailure { error ->
                 toastController.showRepeatToast(
                     error = error,
-                    onRepeat = ::fetchScreenData
+                    onRepeat = ::getScreenData
                 )
                 cancel()
             }
-            fetchArtists().await().onFailure { error ->
+            getArtists().await().onFailure { error ->
                 toastController.showRepeatToast(
                     error = error,
-                    onRepeat = ::fetchScreenData
+                    onRepeat = ::getScreenData
                 )
             }
         } finally {
@@ -87,21 +87,21 @@ internal class AlbumDetailsDomainComponent(
         }
     }
 
-    private fun fetchAlbum() = scope.async {
+    private fun getAlbum() = scope.async {
         val params = GetAlbumParams(
             id = state().navArgs.albumId
         )
-        withContext(context = Dispatchers.IO) { fetchAlbumUseCase(params = params) }
+        withContext(context = Dispatchers.IO) { getAlbumUseCase(params = params) }
             .onSuccess { result ->
                 setAlbum(album = result.album)
             }
     }
 
-    private fun fetchArtists() = scope.async {
+    private fun getArtists() = scope.async {
         val params = GetArtistsParams(
             ids = state().album.artists.ids()
         )
-        withContext(context = Dispatchers.IO) { fetchArtistsUseCase(params = params) }
+        withContext(context = Dispatchers.IO) { getArtistsUseCase(params = params) }
             .onSuccess { result ->
                 setArtists(artists = result.artists)
             }
