@@ -83,15 +83,20 @@ Here is the list of frameworks, that were used in this project:
 | | |- ...
 | |- 2.8 feature
 | | |- 2.8.1 artist
-| | | |- 2.8.1.1 model
-| | | | |- 2.8.1.1.1 artifact
-| | | | |- 2.8.1.1.2 core
-| | | |- 2.8.1.2 data
-| | | |- 2.8.1.3 domain
-| | | |- 2.8.1.4 ui
-| | | |- 2.8.1.5 component
-| | | | |- 2.8.1.5.1 list
-| | | | |- 2.8.1.5.2 details
+| | | |- 2.8.1.1 data
+| | | | |- 2.8.1.1.1 data/api
+| | | | |- 2.8.1.1.2 data/impl
+| | | | |- 2.8.1.1.3 data/mapper/api
+| | | | |- 2.8.1.1.4 data/mapper/impl
+| | | |- 2.8.1.2 domain
+| | | | |- 2.8.1.2.1 domain/model/artifact
+| | | | |- 2.8.1.2.2 domain/model/core
+| | | | |- 2.8.1.2.3 domain/api
+| | | | |- 2.8.1.2.4 domain/impl
+| | | |- 2.8.1.3 ui
+| | | |- 2.8.1.4 component
+| | | | |- 2.8.1.4.1 list
+| | | | |- 2.8.1.4.2 details
 | | | | |- ...
 | | |- 2.8.2 album
 | | |- ...
@@ -186,44 +191,71 @@ Apps sources, models, logic and design divided by features.
 Feature specific code.
 Used Artist feature as an example.
 
-### 2.8.1.1 shared.feature.artist.model
+### 2.8.1.1 shared.feature.artist.data
 
-Domain feature models that are unspecific to any particular component.
+Feature specific sources of data, split into four submodules.
 
-### 2.8.1.1.1 shared.feature.artist.model.artifact
+### 2.8.1.1.1 shared.feature.artist.data.api
 
-Contains models that can be implemented in other features model modules.
+Data source interfaces and their parameter/result models.
+
+***Contains:***
+Local data source interfaces;
+Remote data source interfaces;
+Storage interfaces.
+
+### 2.8.1.1.2 shared.feature.artist.data.impl
+
+Data source implementations. Depends only on own `data.api` and own `data.mapper.api`.
+
+***Contains:***
+Local data source implementations;
+Remote data source implementations;
+Storage implementations.
+
+### 2.8.1.1.3 shared.feature.artist.data.mapper.api
+
+Mapper interfaces for converting between data-layer entities and domain models.
+Isolated from data source interfaces to avoid cross-feature `data.api` coupling.
+
+***Contains:***
+Remote mapper interfaces (output → data model, params → request, response → result);
+Local mapper interfaces (data model → db entity).
+
+### 2.8.1.1.4 shared.feature.artist.data.mapper.impl
+
+Mapper implementations and their DI bindings.
+Depends on own `data.mapper.api` plus any cross-feature `data.mapper.api` modules needed.
+
+***Contains:***
+Remote mapper implementations;
+Local mapper implementations;
+Koin DI module (`[feature]DataMapperModule()`).
+
+### 2.8.1.2 shared.feature.artist.domain
+
+Feature specific domain logic classes that accumulate logic for concise calls from components.
+
+### 2.8.1.2.1 shared.feature.artist.domain.model.artifact
+
+Contains models that can be imported in other features' model modules.
 Used to prevent cycle dependencies.
 
 ***Contains:***
-Simplified data classes that are contained in other features models as an entry points;
-Interfaces that declares specific behavior;
-Mappers for mapping data layer entities to the domain models.
+Simplified data classes used as entry points in other features' models;
+Interfaces that declare specific behavior.
 
-### 2.8.1.1.2 shared.feature.artist.model.core
+### 2.8.1.2.2 shared.feature.artist.domain.model.core
 
-Feature specific models.
-Mostly are not supposed to be imported in other features model modules.
+Feature specific domain models.
+Not intended to be imported in other features' model modules.
 
 ***Contains:***
 Data classes;
-Request classes;
-Enum dictionaries;
-Mappers for mapping data layer entities to the domain models.
+Request/result classes;
+Enum dictionaries.
 
-### 2.8.1.2 shared.feature.artist.data
-
-Feature specific sources of data.
-
-***Contains:***
-Local data sources;
-Remote data sources;
-Paging data sources;
-Paging data sources;
-Storages;
-etc.
-
-### 2.8.1.3 shared.feature.artist.domain
+### 2.8.1.2.3 shared.feature.artist.domain.api / domain.impl
 
 Feature specific domain logic classes that accumulate logic for concise calls from components.
 
@@ -234,7 +266,7 @@ Validators;
 Value holders;
 etc.
 
-### 2.8.1.4 shared.feature.artist.ui
+### 2.8.1.3 shared.feature.artist.ui
 
 Feature ui elements.
 
@@ -243,11 +275,11 @@ UI models;
 Compose functions;
 Mappers to map domain models to ui.
 
-### 2.8.1.5 shared.feature.artist.component
+### 2.8.1.4 shared.feature.artist.component
 
 Feature components (i.e. screens, bottom sheets, dialogs).
 
-### 2.8.1.5.1 shared.feature.artist.component.list
+### 2.8.1.4.1 shared.feature.artist.component.list
 
 Component, its logic and ui.
 
