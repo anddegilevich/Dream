@@ -6,6 +6,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.feature.image.data.api)
+            implementation(projects.shared.feature.image.data.mapper.api)
         }
     }
 

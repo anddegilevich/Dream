@@ -25,21 +25,25 @@ kotlin {
             implementation(projects.shared.navigation.impl)
 
             // Feature
-            implementation(projects.shared.feature.image.data.impl)
+            implementation(projects.shared.feature.image.data.mapper.impl)
 
             implementation(projects.shared.feature.artist.data.impl)
+            implementation(projects.shared.feature.artist.data.mapper.impl)
             implementation(projects.shared.feature.artist.domain.impl)
             implementation(projects.shared.feature.artist.ui.impl)
 
             implementation(projects.shared.feature.album.data.impl)
+            implementation(projects.shared.feature.album.data.mapper.impl)
             implementation(projects.shared.feature.album.domain.impl)
             implementation(projects.shared.feature.album.ui.impl)
 
             implementation(projects.shared.feature.track.data.impl)
+            implementation(projects.shared.feature.track.data.mapper.impl)
             implementation(projects.shared.feature.track.domain.impl)
             implementation(projects.shared.feature.track.ui.impl)
 
             implementation(projects.shared.feature.search.data.impl)
+            implementation(projects.shared.feature.search.data.mapper.impl)
             implementation(projects.shared.feature.search.domain.impl)
             implementation(projects.shared.feature.search.ui.impl)
         }

@@ -87,7 +87,8 @@ Feature template plugins (e.g., `TemplateComponentApiPlugin`) configure feature 
 
 Each feature (`artist`, `album`, etc.) follows vertical slice:
 
-* `data/api|impl`- data access (remote, local, storage), mappers to domain models
+* `data/mapper/api|impl`- mappers from core remote and local models to domain
+* `data/api|impl`- data access (remote, local, storage)
 * `domain/model/artifact` - shared feature domain models (to avoid circular deps with other features)
 * `domain/model/core` - feature domain models
 * `domain/api|impl` - use cases, managers, validators, value holders, etc.

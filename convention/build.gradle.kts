@@ -83,6 +83,18 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataImplPlugin"
             }
         }
+        libs.plugins.project.template.data.mapper.api.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataMapperApiPlugin"
+            }
+        }
+        libs.plugins.project.template.data.mapper.impl.get().let { plugin ->
+            register(plugin.pluginId) {
+                id = plugin.pluginId
+                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataMapperImplPlugin"
+            }
+        }
         libs.plugins.project.template.domain.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId

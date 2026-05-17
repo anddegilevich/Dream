@@ -5,10 +5,10 @@ import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.Ge
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtistAlbums.GetArtistAlbumsParams
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtistAlbums.GetArtistAlbumsResult
 import and.degilevich.dream.shared.feature.artist.data.api.remote.ArtistRemoteDataSource
-import and.degilevich.dream.shared.feature.artist.data.api.remote.mapper.GetArtistAlbumsParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.data.api.remote.mapper.GetArtistAlbumsResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.data.api.remote.mapper.GetArtistParamsToRequestMapper
-import and.degilevich.dream.shared.feature.artist.data.api.remote.mapper.GetArtistResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.GetArtistAlbumsParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.GetArtistAlbumsResponseToResultMapper
+import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.GetArtistParamsToRequestMapper
+import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.GetArtistResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 import and.degilevich.dream.shared.template.data.impl.remote.BaseRemoteDataSource

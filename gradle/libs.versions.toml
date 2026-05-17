@@ -273,6 +273,8 @@ project-room = { id = "project.room.plugin", version.ref = "project-plugin" }
 project-template-model = { id = "project.template.model", version.ref = "project-plugin" }
 project-template-data-api = { id = "project.template.data.api", version.ref = "project-plugin" }
 project-template-data-impl = { id = "project.template.data.impl", version.ref = "project-plugin" }
+project-template-data-mapper-api = { id = "project.template.data.mapper.api", version.ref = "project-plugin" }
+project-template-data-mapper-impl = { id = "project.template.data.mapper.impl", version.ref = "project-plugin" }
 project-template-domain-api = { id = "project.template.domain.api", version.ref = "project-plugin" }
 project-template-domain-impl = { id = "project.template.domain.impl", version.ref = "project-plugin" }
 project-template-ui-api = { id = "project.template.ui.api", version.ref = "project-plugin" }

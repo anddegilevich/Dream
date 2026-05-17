@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.album.data.impl.remote
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumResult
 import and.degilevich.dream.shared.feature.album.data.api.remote.AlbumRemoteDataSource
-import and.degilevich.dream.shared.feature.album.data.api.remote.mapper.GetAlbumParamsToRequestMapper
-import and.degilevich.dream.shared.feature.album.data.api.remote.mapper.GetAlbumResponseToResultMapper
+import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.GetAlbumParamsToRequestMapper
+import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.GetAlbumResponseToResultMapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 import and.degilevich.dream.shared.template.data.impl.remote.BaseRemoteDataSource

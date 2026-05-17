@@ -10,10 +10,10 @@ import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCros
 import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
 import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
 import and.degilevich.dream.shared.feature.album.data.api.local.AlbumLocalDataSource
-import and.degilevich.dream.shared.feature.album.data.api.local.mapper.AlbumDataToEntityMapper
-import and.degilevich.dream.shared.feature.album.data.api.local.mapper.AlbumSimplifiedDataToEntityMapper
-import and.degilevich.dream.shared.feature.artist.data.api.local.mapper.ArtistSimplifiedDataToEntityMapper
-import and.degilevich.dream.shared.feature.track.data.api.local.mapper.TrackSimplifiedDataToEntityMapper
+import and.degilevich.dream.shared.feature.album.data.mapper.api.local.AlbumDataToEntityMapper
+import and.degilevich.dream.shared.feature.album.data.mapper.api.local.AlbumSimplifiedDataToEntityMapper
+import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.ArtistSimplifiedDataToEntityMapper
+import and.degilevich.dream.shared.feature.track.data.mapper.api.local.TrackSimplifiedDataToEntityMapper
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.distinctById
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.template.data.impl.local.BaseLocalDataSource
