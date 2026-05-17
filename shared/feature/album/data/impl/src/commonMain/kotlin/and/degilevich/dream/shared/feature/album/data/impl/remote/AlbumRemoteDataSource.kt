@@ -1,8 +1,8 @@
-package and.degilevich.dream.shared.feature.album.data.api.remote
+package and.degilevich.dream.shared.feature.album.data.impl.remote
 
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumResult
 
-interface AlbumRemoteDataSource {
+internal interface AlbumRemoteDataSource {
     suspend fun getAlbum(params: GetAlbumParams): Result<GetAlbumResult>
 }

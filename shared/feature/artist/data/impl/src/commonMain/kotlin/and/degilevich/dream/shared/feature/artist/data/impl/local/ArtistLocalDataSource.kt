@@ -1,8 +1,8 @@
-package and.degilevich.dream.shared.feature.artist.data.api.local
+package and.degilevich.dream.shared.feature.artist.data.impl.local
 
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 
-interface ArtistLocalDataSource {
+internal interface ArtistLocalDataSource {
 
     suspend fun saveArtists(artists: List<ArtistData>)
     suspend fun saveArtist(artist: ArtistData)

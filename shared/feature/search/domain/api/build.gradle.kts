@@ -5,7 +5,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.feature.search.domain.model.core)
+            api(projects.shared.feature.search.data.api)
         }
     }
 

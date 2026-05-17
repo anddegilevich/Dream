@@ -101,8 +101,6 @@ include(":shared:feature:common:component:home:impl")
 // Image
 include(":shared:feature:image:data:mapper:api")
 include(":shared:feature:image:data:mapper:impl")
-include(":shared:feature:image:data:api")
-include(":shared:feature:image:data:impl")
 
 include(":shared:feature:image:domain:model:artifact")
 

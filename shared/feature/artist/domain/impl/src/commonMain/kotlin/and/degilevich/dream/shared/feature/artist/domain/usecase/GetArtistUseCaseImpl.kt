@@ -1,19 +1,17 @@
 package and.degilevich.dream.shared.feature.artist.domain.usecase
 
+import and.degilevich.dream.shared.feature.artist.data.api.repository.ArtistRepository
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistResult
-import and.degilevich.dream.shared.feature.artist.data.api.local.ArtistLocalDataSource
-import and.degilevich.dream.shared.feature.artist.data.api.remote.ArtistRemoteDataSource
 
 internal class GetArtistUseCaseImpl(
-    private val artistRemoteDataSource: ArtistRemoteDataSource,
-    private val artistLocalDataSource: ArtistLocalDataSource
+    private val artistRepository: ArtistRepository
 ) : GetArtistUseCase {
 
     override suspend fun invoke(params: GetArtistParams): Result<GetArtistResult> {
-        return artistRemoteDataSource.getArtist(params = params).onSuccess { result ->
-            artistLocalDataSource.saveArtist(artist = result.artist)
+        return artistRepository.getArtist(params = params).onSuccess { result ->
+            artistRepository.cacheArtist(artist = result.artist)
         }
     }
 }

@@ -1,19 +1,17 @@
 package and.degilevich.dream.shared.feature.album.domain.impl.usecase
 
+import and.degilevich.dream.shared.feature.album.data.api.repository.AlbumRepository
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.GetAlbumUseCase
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumResult
-import and.degilevich.dream.shared.feature.album.data.api.local.AlbumLocalDataSource
-import and.degilevich.dream.shared.feature.album.data.api.remote.AlbumRemoteDataSource
 
 internal class GetAlbumUseCaseImpl(
-    private val albumRemoteDataSource: AlbumRemoteDataSource,
-    private val albumLocalDataSource: AlbumLocalDataSource
+    private val albumRepository: AlbumRepository
 ) : GetAlbumUseCase {
 
     override suspend fun invoke(params: GetAlbumParams): Result<GetAlbumResult> {
-        return albumRemoteDataSource.getAlbum(params = params).onSuccess { result ->
-            albumLocalDataSource.saveAlbum(album = result.album)
+        return albumRepository.getAlbum(params = params).onSuccess { result ->
+            albumRepository.cacheAlbum(album = result.album)
         }
     }
 }
