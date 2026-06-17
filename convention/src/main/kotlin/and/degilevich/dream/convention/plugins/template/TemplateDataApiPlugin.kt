@@ -14,14 +14,11 @@ internal class TemplateDataApiPlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.kmp.library)
                 apply(libs().plugins.project.multiplatform)
-                apply(libs().plugins.project.serialization)
                 apply(libs().plugins.project.coroutines)
             }
             kotlinMultiplatformConfig {
                 with(sourceSets) {
                     commonMain.dependencies {
-                        implementation(project(":shared:core:service:api"))
-                        implementation(project(":shared:core:db:api"))
                         api(project(":shared:template:data:api"))
                     }
                 }
