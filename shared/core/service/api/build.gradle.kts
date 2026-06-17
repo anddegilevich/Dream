@@ -6,6 +6,12 @@ plugins {
 }
 
 kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            api(projects.shared.core.client.api)
+        }
+    }
+
     android {
         namespace = "and.degilevich.dream.shared.core.service.api"
     }

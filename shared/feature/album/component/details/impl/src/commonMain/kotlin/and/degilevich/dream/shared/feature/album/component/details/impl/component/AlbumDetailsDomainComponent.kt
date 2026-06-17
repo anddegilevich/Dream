@@ -13,7 +13,6 @@ import and.degilevich.dream.shared.feature.artist.model.core.method.getArtists.G
 import and.degilevich.dream.shared.feature.track.model.artifact.data.TrackId
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
-import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
@@ -99,7 +98,7 @@ internal class AlbumDetailsDomainComponent(
 
     private fun getArtists() = scope.async {
         val params = GetArtistsParams(
-            ids = state().album.artists.ids()
+            ids = state().album.artists.map { it.id }
         )
         withContext(context = Dispatchers.IO) { getArtistsUseCase(params = params) }
             .onSuccess { result ->

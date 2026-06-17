@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesState
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.GetNewReleasesUseCase
 import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
-import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
+import and.degilevich.dream.shared.feature.album.model.artifact.data.SimplifiedAlbumData
 import and.degilevich.dream.shared.feature.album.model.core.method.getNewReleases.GetNewReleasesParams
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
@@ -83,7 +83,7 @@ internal class AlbumReleasesDomainComponent(
         )
     }
 
-    private fun setReleases(albums: List<AlbumSimplifiedData>) = reduce {
+    private fun setReleases(albums: List<SimplifiedAlbumData>) = reduce {
         copy(releases = albums)
     }
 
