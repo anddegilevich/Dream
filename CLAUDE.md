@@ -7,6 +7,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Commands
 
 ```bash
+# Api generation
+./gradlew :shared:core:service:api:openApiGenerate
+
 # Tests
 ./gradlew test # Unit tests
 ./gradlew detekt # Static analysis

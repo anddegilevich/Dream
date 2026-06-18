@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.details.impl.component
 
 import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
-import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
+import and.degilevich.dream.shared.feature.album.model.artifact.data.SimplifiedAlbumData
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsState
@@ -129,7 +129,7 @@ internal class ArtistDetailsDomainComponent(
         copy(artist = artist)
     }
 
-    private fun setAlbums(albums: List<AlbumSimplifiedData>) = reduce {
+    private fun setAlbums(albums: List<SimplifiedAlbumData>) = reduce {
         copy(albums = albums)
     }
 

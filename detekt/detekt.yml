@@ -1,12 +1,10 @@
 complexity:
+  excludes: &excludePatterns
+    - '**/generated/**'
   LongParameterList:
     active: false
   TooManyFunctions:
-    excludes: &excludePatterns
-      - '**/generated/**'
     thresholdInClasses: 20
-  LargeClass:
-    excludes: *excludePatterns
   LongMethod:
     ignoreAnnotated:
       - 'Composable'
@@ -15,6 +13,7 @@ output-reports:
   active: true
 
 exceptions:
+  excludes: *excludePatterns
   TooGenericExceptionCaught:
     active: true
     excludes:
@@ -24,64 +23,23 @@ exceptions:
       - 'RuntimeException'
       - 'Throwable'
     allowedExceptionNameRegex: '_|(ignore|expected).*'
-  SwallowedException:
-    excludes: *excludePatterns
 
 naming:
+  excludes: *excludePatterns
   FunctionNaming:
     functionPattern: '([A-Za-z][a-zA-Z0-9]*)|(`.*)'
-  ClassNaming:
-    excludes: *excludePatterns
-  FunctionParameterNaming:
-    excludes: *excludePatterns
-  ConstructorParameterNaming:
-    excludes: *excludePatterns
 
 empty-blocks:
-  EmptyClassBlock:
-    excludes: *excludePatterns
-  EmptyFunctionBlock:
-    excludes: *excludePatterns
+  excludes: *excludePatterns
   EmptyFinallyBlock:
     active: false
 
 formatting:
+  excludes: *excludePatterns
   CommentSpacing:
     active: false
-  NoLineBreakBeforeAssignment:
-    excludes: *excludePatterns
-  NoUnusedImports:
-    excludes: *excludePatterns
-  ParameterListWrapping:
-    excludes: *excludePatterns
-  SpacingAroundColon:
-    excludes: *excludePatterns
-  SpacingAroundCurly:
-    excludes: *excludePatterns
-  NoUnitReturn:
-    excludes: *excludePatterns
-  NoConsecutiveBlankLines:
-    excludes: *excludePatterns
-  NoTrailingSpaces:
-    excludes: *excludePatterns
-  MaximumLineLength:
-    excludes: *excludePatterns
-  SpacingAroundKeyword:
-    excludes: *excludePatterns
-  NoBlankLineBeforeRbrace:
-    excludes: *excludePatterns
-  SpacingAroundParens:
-    excludes: *excludePatterns
-  NoEmptyClassBody:
-    excludes: *excludePatterns
-  Indentation:
-    excludes: *excludePatterns
   ImportOrdering:
     active: false
-  NoMultipleSpaces:
-    excludes: *excludePatterns
-  Wrapping:
-    excludes: *excludePatterns
   ArgumentListWrapping:
     active: false
   NoEmptyFirstLineInMethodBlock:
@@ -92,10 +50,9 @@ formatting:
     active: false
   FinalNewline:
     active: false
-  ModifierListSpacing:
-    excludes: *excludePatterns
 
 style:
+  excludes: *excludePatterns
   ForbiddenComment:
     active: true
     values:
@@ -103,32 +60,23 @@ style:
       - 'STOPSHIP'
     allowedPatterns: 'FIXME'
   MagicNumber:
-    excludes: *excludePatterns
     ignorePropertyDeclaration: true
     ignoreCompanionObjectPropertyDeclaration: true
     ignoreAnnotated:
       - 'Preview'
       - 'Test'
-  MaxLineLength:
-    excludes: *excludePatterns
-  MayBeConst:
-    excludes: *excludePatterns
   UnusedPrivateMember:
     ignoreAnnotated:
       - 'Preview'
       - 'PreviewLightDark'
       - 'LightDarkPreviews'
-    excludes: *excludePatterns
   NewLineAtEndOfFile:
     active: false
-  UnusedPrivateProperty:
-    excludes: *excludePatterns
-  UseArrayLiteralsInAnnotations:
-    excludes: *excludePatterns
   ThrowsCount:
     max: 10
 
 TwitterCompose:
+  excludes: *excludePatterns
   CompositionLocalAllowlist:
     active: true
   CompositionLocalNaming:

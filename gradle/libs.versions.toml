@@ -82,6 +82,9 @@ filekit = "0.13.0" # https://github.com/vinceglb/FileKit/releases
 # Compose stability analyzer
 compose-stability-analyzer = "0.7.3" # https://github.com/skydoves/compose-stability-analyzer/releases
 
+# Open API generator
+openapi-generator = "7.23.0" # https://github.com/OpenAPITools/openapi-generator/releases
+
 # Baseline profile
 baselineprofile = "1.5.0-alpha05" # https://mvnrepository.com/artifact/androidx.baselineprofile
 profileinstaller = "1.4.1" # https://mvnrepository.com/artifact/androidx.profileinstaller/profileinstaller
@@ -260,6 +263,9 @@ ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 
 # Compose Stability Analyzer - https://github.com/skydoves/compose-stability-analyzer
 compose-stability-analyzer = { id = "com.github.skydoves.compose.stability.analyzer", version.ref = "compose-stability-analyzer" }
+
+# Open API generator - https://openapi-generator.tech/docs/generators/kotlin
+openapi-generator = { id = "org.openapi.generator", version.ref = "openapi-generator" }
 
 # Project
 project-multiplatform = { id = "project.multiplatform.plugin", version.ref = "project-plugin" }

@@ -7,8 +7,8 @@ import and.degilevich.dream.shared.core.db.api.dao.ArtistToTrackCrossRefDao
 import and.degilevich.dream.shared.core.db.api.dao.TrackDao
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToAlbumCrossRefEntity
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCrossRefEntity
-import and.degilevich.dream.shared.feature.album.data.mapper.api.local.AlbumSimplifiedDataToEntityMapper
-import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.ArtistSimplifiedDataToEntityMapper
+import and.degilevich.dream.shared.feature.album.data.mapper.api.local.SimplifiedAlbumDataToEntityMapper
+import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.SimplifiedArtistDataToEntityMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.local.TrackDataToEntityMapper
 import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.distinctById
@@ -17,8 +17,8 @@ import and.degilevich.dream.shared.template.data.impl.local.BaseLocalDataSource
 
 internal class TrackLocalDataSourceImpl(
     private val trackDataToEntityMapper: TrackDataToEntityMapper,
-    private val artistSimplifiedDataToEntityMapper: ArtistSimplifiedDataToEntityMapper,
-    private val albumSimplifiedDataToEntityMapper: AlbumSimplifiedDataToEntityMapper
+    private val simplifiedArtistDataToEntityMapper: SimplifiedArtistDataToEntityMapper,
+    private val simplifiedAlbumDataToEntityMapper: SimplifiedAlbumDataToEntityMapper
 ) : BaseLocalDataSource(), TrackLocalDataSource {
 
     private val trackDao: TrackDao by lazy { database.getTrackDao() }
@@ -33,13 +33,13 @@ internal class TrackLocalDataSourceImpl(
             tracks
                 .flatMap { track -> track.artists }
                 .distinctById()
-                .mapWith(artistSimplifiedDataToEntityMapper)
+                .mapWith(simplifiedArtistDataToEntityMapper)
         )
         albumDao.upsertAll(
             tracks
                 .map { track -> track.album }
                 .distinctById()
-                .mapWith(albumSimplifiedDataToEntityMapper)
+                .mapWith(simplifiedAlbumDataToEntityMapper)
         )
         artistToAlbumCrossRefDao.upsertAll(
             tracks
@@ -68,8 +68,8 @@ internal class TrackLocalDataSourceImpl(
 
     override suspend fun saveTrack(track: TrackData) {
         trackDao.upsert(track.mapWith(trackDataToEntityMapper))
-        artistDao.upsertAll(track.artists.mapWith(artistSimplifiedDataToEntityMapper))
-        albumDao.upsert(track.album.mapWith(albumSimplifiedDataToEntityMapper))
+        artistDao.upsertAll(track.artists.mapWith(simplifiedArtistDataToEntityMapper))
+        albumDao.upsert(track.album.mapWith(simplifiedAlbumDataToEntityMapper))
         artistToAlbumCrossRefDao.upsertAll(
             track.album.artists.map { artist ->
                 ArtistToAlbumCrossRefEntity(

@@ -1,13 +1,13 @@
 package and.degilevich.dream.shared.feature.album.model.core.data
 
-import and.degilevich.dream.shared.feature.track.model.artifact.data.TrackSimplifiedData
+import and.degilevich.dream.shared.feature.track.model.artifact.data.SimplifiedTrackData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.empty.state.EmptyState
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class AlbumTracksData(
-    val items: List<TrackSimplifiedData>
+    val items: List<SimplifiedTrackData>
 ) : EmptyState {
 
     override fun isEmpty(): Boolean {
