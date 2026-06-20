@@ -57,6 +57,8 @@ Here is the list of frameworks, that were used in this project:
 * **Image Loading** - [Coil](https://github.com/coil-kt/coil)
 * **Build Config** - [BuildKonfig](https://github.com/yshrsmz/BuildKonfig)
 * **Static Code Analysis** - [Detekt](https://detekt.dev)
+* **Crypto** - [Keystore](https://developer.android.com/privacy-and-security/keystore) + 
+[Keychain](https://developer.apple.com/documentation/security/keychain-services)
 
 ## Architecture
 

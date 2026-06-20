@@ -51,6 +51,7 @@ CLIENT_SECRET=<your_client_secret>
 * **Image Loading** - Coil
 * **Build Config** - BuildKonfig
 * **Static Code Analysis** - Detekt
+* **Crypto** - Keystore + Keychain
 
 All versions can be found in version catalog file `/gradle/libs.versions.toml`
 
