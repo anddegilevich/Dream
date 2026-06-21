@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.core.crypto.impl.keyStore
+package and.degilevich.dream.shared.core.crypto.impl.keystore
 
 import android.security.keystore.KeyProperties
 

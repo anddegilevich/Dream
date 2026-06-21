@@ -1,6 +1,8 @@
 package and.degilevich.dream.shared.core.storage.impl
 
 import and.degilevich.dream.shared.core.crypto.api.service.CryptoService
+import and.degilevich.dream.shared.core.crypto.api.service.decrypt
+import and.degilevich.dream.shared.core.crypto.api.service.encrypt
 import and.degilevich.dream.shared.core.storage.api.PreferenceStorage
 import and.degilevich.dream.shared.foundation.primitive.result.foldResult
 import and.degilevich.dream.shared.foundation.serialization.decodeFromJsonOrNull
@@ -46,7 +48,7 @@ internal class PreferenceStorageImpl(
     ): T? {
         val encryptedValue = settings.getStringOrNull(key)
         val decryptedValue = encryptedValue?.let { value ->
-            cryptoService.decryptOrNull(value)
+            cryptoService.decrypt(value).getOrNull()
         }
         return decryptedValue?.decodeFromJsonOrNull(
             deserializer = serializer
@@ -65,7 +67,7 @@ internal class PreferenceStorageImpl(
             key = key
         ).map { encryptedValue ->
             encryptedValue?.let { value ->
-                cryptoService.decryptOrNull(value)?.decodeFromJsonOrNull(
+                cryptoService.decrypt(value).getOrNull()?.decodeFromJsonOrNull(
                     deserializer = serializer
                 )
             }

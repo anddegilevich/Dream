@@ -1,12 +1,13 @@
-package and.degilevich.dream.shared.core.crypto.impl.keyStore
+package and.degilevich.dream.shared.core.crypto.impl.keystore
 
+import and.degilevich.dream.shared.core.crypto.CryptoConst
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import java.security.KeyStore
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 
-internal class KeyStoreManagerImpl : KeyStoreManager {
+internal class KeystoreManagerImpl : KeystoreManager {
 
     private val keyStore by lazy {
         KeyStore.getInstance(KEYSTORE_PROVIDER).apply { load(null) }
@@ -18,13 +19,13 @@ internal class KeyStoreManagerImpl : KeyStoreManager {
         )
 
     override fun getKey(): SecretKey {
-        val keyEntry = keyStore.getEntry(KEY_ALIAS, null) as? KeyStore.SecretKeyEntry
+        val keyEntry = keyStore.getEntry(CryptoConst.KEY_ALIAS, null) as? KeyStore.SecretKeyEntry
         return keyEntry?.secretKey ?: createKey()
     }
 
     private fun createKey(): SecretKey {
         val keyGenParameterSpec = KeyGenParameterSpec.Builder(
-            KEY_ALIAS,
+            CryptoConst.KEY_ALIAS,
             KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
         )
             .setBlockModes(SecretKeyConst.BLOCK_MODE)
@@ -40,6 +41,5 @@ internal class KeyStoreManagerImpl : KeyStoreManager {
 
     private companion object {
         const val KEYSTORE_PROVIDER = "AndroidKeyStore"
-        const val KEY_ALIAS = "dream_key_alias"
     }
 }

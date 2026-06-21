@@ -3,6 +3,12 @@ plugins {
 }
 
 kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.shared.foundation.primitive)
+        }
+    }
+
     android {
         namespace = "and.degilevich.dream.shared.core.crypto.api"
     }
