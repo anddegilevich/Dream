@@ -67,7 +67,7 @@ jobs:
         run: ./gradlew :android:app:assembleDebug
 
   build-ios:
-    name: Build iOS simulator app
+    name: Build iOS
     runs-on: macos-latest
     needs: test
     steps:
@@ -89,6 +89,6 @@ jobs:
           -project ios/app.xcodeproj \
           -configuration Debug \
           -scheme prodDebug \
-          -destination 'generic/platform=iOS Simulator' \
+          -sdk iphonesimulator \
           -derivedDataPath ./build \
           -verbose

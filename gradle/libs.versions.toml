@@ -41,13 +41,13 @@ detekt-compose = "0.0.26" # https://github.com/twitter/compose-rules/releases
 koin-bom = "4.2.2" # https://github.com/InsertKoinIO/koin/releases
 
 # Ktor
-ktor = "3.5.0" # https://github.com/ktorio/ktor/releases
+ktor = "3.5.1" # https://github.com/ktorio/ktor/releases
 
 # Logpack
-logback = "1.5.34"
+logback = "1.5.37"
 
 # Decompose
-decompose = "3.5.0" # https://github.com/arkivanov/Decompose/releases
+decompose = "3.6.0-alpha01" # https://github.com/arkivanov/Decompose/releases
 
 # Essenty
 essenty = "2.5.0" # https://github.com/arkivanov/Essenty/releases
@@ -65,7 +65,7 @@ napier = "2.7.1" # https://github.com/AAkira/Napier/releases
 moko-resources = "0.26.4" # https://github.com/icerockdev/moko-resources/releases
 
 # BuildKonfig
-buildkonfig = "0.21.2" # https://github.com/yshrsmz/BuildKonfig/releases
+buildkonfig = "0.22.0" # https://github.com/yshrsmz/BuildKonfig/releases
 
 # Room
 room = "2.8.4" # https://developer.android.com/jetpack/androidx/releases/room
