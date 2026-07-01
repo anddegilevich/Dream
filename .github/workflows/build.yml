@@ -68,7 +68,7 @@ jobs:
 
   build-ios:
     name: Build iOS simulator app
-    runs-on: macos-latest
+    runs-on: macos-14
     needs: test
     steps:
       - name: Checkout
@@ -80,7 +80,7 @@ jobs:
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
 
-      - name: Run UI tests
+      - name: Run iOS tests
         run: ./gradlew iosSimulatorArm64Test
 
       - name: Build iOS simulator app
