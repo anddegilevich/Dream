@@ -1,9 +1,9 @@
 [versions]
 
 # SDK versions
-android-compile-sdk = "36"
+android-compile-sdk = "37"
 android-min-sdk = "26"
-android-target-sdk = "36"
+android-target-sdk = "37"
 
 # Android gradle plugin
 agp = "9.1.0" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
