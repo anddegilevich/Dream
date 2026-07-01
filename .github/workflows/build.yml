@@ -68,7 +68,7 @@ jobs:
 
   build-ios:
     name: Build iOS simulator app
-    runs-on: macos-14
+    runs-on: macos-latest
     needs: test
     steps:
       - name: Checkout
@@ -89,6 +89,6 @@ jobs:
           -project ios/app.xcodeproj \
           -configuration Debug \
           -scheme prodDebug \
-          -sdk iphonesimulator \
+          -destination 'generic/platform=iOS Simulator' \
           -derivedDataPath ./build \
           -verbose
