@@ -8,7 +8,6 @@ plugins {
 }
 
 kotlin {
-    iosArm64()
     listOf(
         iosArm64(),
         iosSimulatorArm64()
