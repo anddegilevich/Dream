@@ -16,7 +16,7 @@ java = "21"
 kotlin = "2.4.0" # https://kotlinlang.org/docs/releases.html#release-details
 
 # Compose
-compose = "1.11.1" # https://mvnrepository.com/artifact/org.jetbrains.compose/compose-gradle-plugin
+compose = "1.10.3" # https://mvnrepository.com/artifact/org.jetbrains.compose/compose-gradle-plugin
 
 # KSP
 ksp = "2.3.4" # https://github.com/google/ksp/releases

@@ -22,4 +22,4 @@ runs:
       uses: ./.github/actions/setup-local-properties
       with:
         client-id: ${{ inputs.client-id }}
-        client-secret: ${{ inputs.client-id }}
+        client-secret: ${{ inputs.client-secret }}
