@@ -67,7 +67,7 @@ jobs:
         run: ./gradlew :android:app:assembleDebug
 
   build-ios:
-    name: Build iOS simulator app
+    name: Build iOS
     runs-on: macos-latest
     needs: test
     steps:
@@ -80,7 +80,7 @@ jobs:
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
 
-      - name: Run UI tests
+      - name: Run iOS tests
         run: ./gradlew iosSimulatorArm64Test
 
       - name: Build iOS simulator app
@@ -91,4 +91,5 @@ jobs:
           -scheme prodDebug \
           -sdk iphonesimulator \
           -derivedDataPath ./build \
+          EXCLUDED_ARCHS="x86_64" \
           -verbose
