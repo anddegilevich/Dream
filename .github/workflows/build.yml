@@ -91,4 +91,5 @@ jobs:
           -scheme prodDebug \
           -sdk iphonesimulator \
           -derivedDataPath ./build \
+          EXCLUDED_ARCHS="x86_64" \
           -verbose
