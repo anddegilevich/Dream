@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.track.component.details.api.component
 import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsUIState
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsState
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
-import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class TrackDetailsComponentImpl(

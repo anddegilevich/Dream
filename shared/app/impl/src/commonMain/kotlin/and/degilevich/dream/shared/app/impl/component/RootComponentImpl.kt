@@ -14,7 +14,7 @@ import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.impl.AppNavigationComponent
 import and.degilevich.dream.shared.navigation.impl.AppNavigationComponentImpl
-import and.degilevich.dream.shared.template.component.impl.BaseComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import com.arkivanov.decompose.router.stack.ChildStack

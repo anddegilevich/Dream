@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.album.component.details.api.component
 import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsUIState
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsState
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
-import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class AlbumDetailsComponentImpl(

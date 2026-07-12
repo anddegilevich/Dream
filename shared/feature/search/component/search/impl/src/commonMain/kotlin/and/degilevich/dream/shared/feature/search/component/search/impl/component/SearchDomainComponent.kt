@@ -16,7 +16,7 @@ import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pushToFront
 import kotlinx.coroutines.Dispatchers

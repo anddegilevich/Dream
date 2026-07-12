@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.impl.compone
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
-import and.degilevich.dream.shared.template.component.impl.BaseComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.router.items.Items

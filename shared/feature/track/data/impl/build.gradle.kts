@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.project.template.data.impl)
+    alias(libs.plugins.project.feature.data.impl)
 }
 
 kotlin {

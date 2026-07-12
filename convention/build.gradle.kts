@@ -65,70 +65,70 @@ gradlePlugin {
                 implementationClass = "and.degilevich.dream.convention.plugins.RoomPlugin"
             }
         }
-        libs.plugins.project.template.model.get().let { plugin ->
+        libs.plugins.project.feature.model.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateModelPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseModelPlugin"
             }
         }
-        libs.plugins.project.template.data.api.get().let { plugin ->
+        libs.plugins.project.feature.data.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseDataApiPlugin"
             }
         }
-        libs.plugins.project.template.data.impl.get().let { plugin ->
+        libs.plugins.project.feature.data.impl.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataImplPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseDataImplPlugin"
             }
         }
-        libs.plugins.project.template.data.mapper.api.get().let { plugin ->
+        libs.plugins.project.feature.data.mapper.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataMapperApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseDataMapperApiPlugin"
             }
         }
-        libs.plugins.project.template.data.mapper.impl.get().let { plugin ->
+        libs.plugins.project.feature.data.mapper.impl.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDataMapperImplPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseDataMapperImplPlugin"
             }
         }
-        libs.plugins.project.template.domain.api.get().let { plugin ->
+        libs.plugins.project.feature.domain.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDomainApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseDomainApiPlugin"
             }
         }
-        libs.plugins.project.template.domain.impl.get().let { plugin ->
+        libs.plugins.project.feature.domain.impl.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateDomainImplPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseDomainImplPlugin"
             }
         }
-        libs.plugins.project.template.ui.api.get().let { plugin ->
+        libs.plugins.project.feature.ui.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateUIApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseUIApiPlugin"
             }
         }
-        libs.plugins.project.template.ui.impl.get().let { plugin ->
+        libs.plugins.project.feature.ui.impl.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateUIImplPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseUIImplPlugin"
             }
         }
-        libs.plugins.project.template.component.api.get().let { plugin ->
+        libs.plugins.project.feature.component.api.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateComponentApiPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseComponentApiPlugin"
             }
         }
-        libs.plugins.project.template.component.impl.get().let { plugin ->
+        libs.plugins.project.feature.component.impl.get().let { plugin ->
             register(plugin.pluginId) {
                 id = plugin.pluginId
-                implementationClass = "and.degilevich.dream.convention.plugins.template.TemplateComponentImplPlugin"
+                implementationClass = "and.degilevich.dream.convention.plugins.base.BaseComponentImplPlugin"
             }
         }
     }

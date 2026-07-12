@@ -58,7 +58,7 @@ All versions can be found in version catalog file `/gradle/libs.versions.toml`
 ### Convention plugins
 
 `/convention/` contains Gradle convention plugins that wrap common build setup (e.g., `MultiplatformPlugin`).
-Feature template plugins (e.g., `TemplateComponentApiPlugin`) configure feature modules.
+Feature base plugins (e.g., `BaseComponentApiPlugin`) configure feature modules.
 
 ### Modules structure
 
@@ -82,6 +82,7 @@ Feature template plugins (e.g., `TemplateComponentApiPlugin`) configure feature 
   * `shared/design/theme` - theme colors, typography, shapes, etc.
   * `shared/design/system` - ui components like buttons, inputs, etc.
 * `shared/feature/` - feature modules
+  * `shared/feature/base/` - base abstractions for typical feature modules (base component, base data sources)
   * ...
 * `shared/navigation/api|impl` - centralized app navigation
 * `shared/di` - dependencies hub wiring all modules

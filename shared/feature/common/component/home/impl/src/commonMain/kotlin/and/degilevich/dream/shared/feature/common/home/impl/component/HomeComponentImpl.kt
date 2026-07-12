@@ -8,7 +8,7 @@ import and.degilevich.dream.shared.feature.common.home.api.component.child.HomeP
 import and.degilevich.dream.shared.feature.common.home.api.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.SearchComponentImpl
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orNullIfNegative
-import and.degilevich.dream.shared.template.component.impl.BaseComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import com.arkivanov.decompose.router.pages.ChildPages

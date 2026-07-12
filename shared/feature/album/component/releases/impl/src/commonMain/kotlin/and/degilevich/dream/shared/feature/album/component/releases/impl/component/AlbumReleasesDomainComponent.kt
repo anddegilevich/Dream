@@ -11,7 +11,7 @@ import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.doOnCreate

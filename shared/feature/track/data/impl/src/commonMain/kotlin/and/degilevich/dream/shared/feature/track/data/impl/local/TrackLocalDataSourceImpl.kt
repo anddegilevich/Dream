@@ -13,7 +13,7 @@ import and.degilevich.dream.shared.feature.track.data.mapper.api.local.TrackData
 import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.distinctById
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import and.degilevich.dream.shared.template.data.impl.local.BaseLocalDataSource
+import and.degilevich.dream.shared.feature.base.data.impl.local.BaseLocalDataSource
 
 internal class TrackLocalDataSourceImpl(
     private val trackDataToEntityMapper: TrackDataToEntityMapper,

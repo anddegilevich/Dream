@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.feature.common.component.navbar.api.component
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarSideEffect
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarUIState
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState
-import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class NavbarComponentImpl(

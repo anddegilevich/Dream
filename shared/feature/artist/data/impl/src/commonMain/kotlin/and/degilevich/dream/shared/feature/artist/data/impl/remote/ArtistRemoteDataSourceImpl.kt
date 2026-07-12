@@ -9,7 +9,7 @@ import and.degilevich.dream.shared.feature.artist.model.core.method.getArtistAlb
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtistAlbums.GetArtistAlbumsResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
-import and.degilevich.dream.shared.template.data.impl.remote.BaseRemoteDataSource
+import and.degilevich.dream.shared.feature.base.data.impl.remote.BaseRemoteDataSource
 
 internal class ArtistRemoteDataSourceImpl(
     private val artistOutputToDataMapper: ArtistOutputToDataMapper,

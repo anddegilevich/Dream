@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.common.component.navbar.impl.componen
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueById
-import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 
 internal class NavbarDomainComponent(

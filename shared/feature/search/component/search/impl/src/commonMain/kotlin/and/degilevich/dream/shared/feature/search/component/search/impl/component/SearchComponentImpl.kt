@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.feature.search.component.search.api.component
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchSideEffect
 import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchUIState
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchState
-import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class SearchComponentImpl(

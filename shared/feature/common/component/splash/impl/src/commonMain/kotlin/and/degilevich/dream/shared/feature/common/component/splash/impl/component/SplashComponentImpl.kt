@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.feature.common.component.splash.api.component
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashUIState
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashState
-import and.degilevich.dream.shared.template.component.impl.BaseBinderComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseBinderComponent
 import com.arkivanov.decompose.ComponentContext
 
 class SplashComponentImpl(
