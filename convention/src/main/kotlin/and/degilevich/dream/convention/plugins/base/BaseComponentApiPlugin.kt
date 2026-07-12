@@ -14,14 +14,16 @@ internal class BaseComponentApiPlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.kmp.library)
                 apply(libs().plugins.project.multiplatform)
-                apply(libs().plugins.project.compose)
+                apply(libs().plugins.compose.compiler)
                 apply(libs().plugins.project.serialization)
             }
             kotlinMultiplatformConfig {
                 with(sourceSets) {
                     commonMain.dependencies {
                         implementation(project(":shared:foundation:decompose"))
-                        implementation(project(":shared:design:system"))
+                        implementation(project(":shared:foundation:compose"))
+                        implementation(project(":shared:resource:api"))
+                        implementation(libs().compose.runtime)
                     }
                 }
             }

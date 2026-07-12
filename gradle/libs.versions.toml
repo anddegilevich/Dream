@@ -1,9 +1,9 @@
 [versions]
 
 # SDK versions
-android-compile-sdk = "37"
+android-compile-sdk = "36"
 android-min-sdk = "26"
-android-target-sdk = "37"
+android-target-sdk = "36"
 
 # Android gradle plugin
 agp = "9.1.0" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
@@ -139,6 +139,7 @@ compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-pre
 compose-ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "compose" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
 compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "compose" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose" }
 compose-ui-test-junit4-android = { module = "androidx.compose.ui:ui-test-junit4-android", version.ref = "compose" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 

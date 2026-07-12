@@ -1,11 +1,13 @@
 package and.degilevich.dream.shared.feature.common.component.splash.impl.component
 
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashIntent
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashUIState
-import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashState
 import and.degilevich.dream.shared.feature.base.component.impl.BaseBinderComponent
+import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
+import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashIntent
+import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashSideEffect
+import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashState
+import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashUIState
+import and.degilevich.dream.shared.feature.common.component.splash.impl.view.SplashScreen
+import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 
 class SplashComponentImpl(
@@ -18,4 +20,10 @@ class SplashComponentImpl(
     uiStateMapper = SplashUIStateMapper(),
     initialUIState = SplashUIState.empty()
 ),
-    SplashComponent
+    SplashComponent {
+
+    @Composable
+    override fun Render() {
+        SplashScreen()
+    }
+}

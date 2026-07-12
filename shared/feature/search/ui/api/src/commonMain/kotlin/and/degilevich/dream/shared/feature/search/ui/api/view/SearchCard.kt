@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.search.ui.api.model.card.AlbumSearchC
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.ArtistSearchCardUIData
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.TrackSearchCardUIData
-import and.degilevich.dream.shared.feature.search.ui.api.provider.SearchCardUIDataPreviewProvider
+import and.degilevich.dream.shared.feature.search.ui.api.preview.SearchCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.runtime.Composable

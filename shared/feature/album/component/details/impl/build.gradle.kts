@@ -9,6 +9,9 @@ kotlin {
             implementation(projects.shared.core.datetime.api)
             implementation(projects.shared.feature.album.domain.api)
             implementation(projects.shared.feature.artist.domain.api)
+            implementation(projects.shared.feature.album.ui.api)
+            implementation(projects.shared.feature.artist.ui.api)
+            implementation(projects.shared.feature.track.ui.api)
         }
     }
 

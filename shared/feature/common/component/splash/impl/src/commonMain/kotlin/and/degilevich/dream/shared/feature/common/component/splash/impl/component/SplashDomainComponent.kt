@@ -1,10 +1,10 @@
 package and.degilevich.dream.shared.feature.common.component.splash.impl.component
 
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashIntent
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
+import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashIntent
+import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashSideEffect
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.model.SplashState
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.essenty.lifecycle.doOnStart

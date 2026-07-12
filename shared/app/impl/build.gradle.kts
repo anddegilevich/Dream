@@ -1,10 +1,7 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 
 plugins {
-    alias(libs.plugins.project.multiplatform)
-    alias(libs.plugins.project.compose)
-    alias(libs.plugins.project.di)
-    alias(libs.plugins.project.coroutines)
+    alias(libs.plugins.project.feature.component.impl)
 }
 
 kotlin {
@@ -33,14 +30,11 @@ kotlin {
             // Logger
             api(projects.shared.logger)
 
-            // Core
-            implementation(projects.shared.core.toast.api)
+            api(projects.shared.foundation.decompose)
+            api(projects.shared.feature.base.component.impl)
 
             // Navigation
             implementation(projects.shared.navigation.impl)
-
-            // Base
-            implementation(projects.shared.feature.base.component.impl)
 
             // DI
             api(projects.shared.di)

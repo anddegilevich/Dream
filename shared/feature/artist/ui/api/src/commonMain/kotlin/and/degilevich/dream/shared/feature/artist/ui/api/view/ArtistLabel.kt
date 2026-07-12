@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.ui.api.model.ArtistLabelUIData
-import and.degilevich.dream.shared.feature.artist.ui.api.provider.ArtistLabelUIDataPreviewProvider
+import and.degilevich.dream.shared.feature.artist.ui.api.preview.ArtistLabelUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce

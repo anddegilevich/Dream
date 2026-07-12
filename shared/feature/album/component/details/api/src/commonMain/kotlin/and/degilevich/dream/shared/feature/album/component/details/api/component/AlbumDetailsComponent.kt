@@ -1,22 +1,12 @@
 package and.degilevich.dream.shared.feature.album.component.details.api.component
 
-import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsIntent
-import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsSideEffect
-import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsUIState
-import and.degilevich.dream.shared.feature.album.component.details.api.view.AlbumDetailsScreen
-import and.degilevich.dream.shared.foundation.decompose.component.render.RenderMVIComponent
-import and.degilevich.dream.shared.foundation.decompose.compose.component.state
+import and.degilevich.dream.shared.foundation.decompose.component.render.RenderComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 
 @Stable
-interface AlbumDetailsComponent : RenderMVIComponent<AlbumDetailsUIState, AlbumDetailsIntent, AlbumDetailsSideEffect> {
+interface AlbumDetailsComponent : RenderComponent {
 
     @Composable
-    override fun Render() {
-        AlbumDetailsScreen(
-            state = state(),
-            onIntent = ::handleIntent
-        )
-    }
+    override fun Render()
 }

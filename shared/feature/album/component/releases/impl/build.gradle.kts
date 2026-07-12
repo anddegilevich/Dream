@@ -7,6 +7,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.feature.album.component.releases.api)
             implementation(projects.shared.feature.album.domain.api)
+            implementation(projects.shared.feature.album.ui.api)
         }
     }
 

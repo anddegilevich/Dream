@@ -1,11 +1,13 @@
 package and.degilevich.dream.shared.app.impl.component
 
 import and.degilevich.dream.shared.app.api.component.RootComponent
-import and.degilevich.dream.shared.app.api.component.child.Screen
+import and.degilevich.dream.shared.app.impl.component.child.Screen
+import and.degilevich.dream.shared.app.impl.view.ComposeApp
 import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.AlbumDetailsComponentImpl
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
+import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
 import and.degilevich.dream.shared.feature.common.home.impl.component.HomeComponentImpl
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.TrackDetailsComponentImpl
@@ -14,7 +16,7 @@ import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import and.degilevich.dream.shared.navigation.impl.AppNavigationComponent
 import and.degilevich.dream.shared.navigation.impl.AppNavigationComponentImpl
-import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
+import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import com.arkivanov.decompose.router.stack.ChildStack
@@ -37,7 +39,7 @@ class RootComponentImpl(
 
     private val toastChannel: ToastReceiveChannel by inject()
 
-    override val screenStack: Value<ChildStack<ScreenConfig, Screen>> = childStack(
+    private val screens: Value<ChildStack<ScreenConfig, Screen>> = childStack(
         source = navigationComponent.screenNavigationSource,
         serializer = ScreenConfig.serializer(),
         initialConfiguration = ScreenConfig.Splash,
@@ -46,7 +48,15 @@ class RootComponentImpl(
         childFactory = ::screenFactory,
     )
 
-    override val toasts: Flow<ToastData> = toastChannel.receiveAsFlow()
+    private val toasts: Flow<ToastData> = toastChannel.receiveAsFlow()
+
+    @Composable
+    override fun Render() {
+        ComposeApp(
+            screens = screens,
+            toasts = toasts
+        )
+    }
 
     private fun screenFactory(
         screenConfig: ScreenConfig,

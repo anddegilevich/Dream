@@ -14,6 +14,7 @@ internal class BaseComponentImplPlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.kmp.library)
                 apply(libs().plugins.project.multiplatform)
+                apply(libs().plugins.project.compose)
                 apply(libs().plugins.project.di)
                 apply(libs().plugins.project.serialization)
                 apply(libs().plugins.project.coroutines)
@@ -25,6 +26,7 @@ internal class BaseComponentImplPlugin : Plugin<Project> {
                         implementation(project(":shared:logger"))
                         implementation(project(":shared:core:toast:api"))
                         implementation(project(":shared:navigation:api"))
+                        implementation(project(":shared:design:system"))
                     }
                 }
             }

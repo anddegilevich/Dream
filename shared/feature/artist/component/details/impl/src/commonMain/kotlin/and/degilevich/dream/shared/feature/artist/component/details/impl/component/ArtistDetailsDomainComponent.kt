@@ -2,20 +2,20 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.compon
 
 import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
 import and.degilevich.dream.shared.feature.album.model.artifact.data.SimplifiedAlbumData
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsIntent
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsSideEffect
+import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsIntent
+import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsSideEffect
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsState
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistAlbumsUseCase
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistUseCase
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtist.GetArtistParams
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtistAlbums.GetArtistAlbumsParams
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushToFront
