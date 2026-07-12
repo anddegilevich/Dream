@@ -279,15 +279,19 @@ Mappers to map domain models to ui.
 
 ### 2.7.2.4 shared.feature.artist.component
 
-Feature components (i.e. screens, bottom sheets, dialogs).
+Feature components (i.e. screens, bottom sheets, dialogs), each with its own `<component_name>/api|impl` module pair.
 
-### 2.7.2.4.1 shared.feature.artist.component.list
+### 2.7.2.4.1 shared.feature.artist.component.details
 
-Component, its logic and ui.
+Component, its logic and ui, split by api/impl approach.
 
-***Contains:***
-UI and domain models of the component entities;
-Component store entities (executor, ui state mapper, etc.).
+***api*** contains a single marker interface extending `RenderComponent` (`@Composable fun Render()`).
+
+***impl*** contains:
+Component implementation (`ComponentImpl`, `DomainComponent`, `UIStateMapper`, state conservator);
+Component mvi models (`Intent`, `SideEffect`, `UIState`, domain `State`);
+Preview component and preview providers;
+View (screen/layout compose functions, `view/semantic` test tags, `view/skeleton` loading placeholders).
 
 ### 2.8 shared.navigation
 
@@ -307,10 +311,10 @@ Combines all other di modules (from impl modules).
 
 Entry point for platforms to shared app code.
 Implementation submodule is used for ios app ui view controller generation.
+`api` exposes only the `RootComponent` marker interface (extends `RenderComponent`); platforms call `rootComponent.Render()` directly, no composable wrapper is exposed from api.
 
 ***Contains:***
-Root compose function;
-Root component implementation;
+Root component implementation (`RootComponentImpl`), which renders the internal `ComposeApp` compose function;
 App di module;
 
 ### 3 android
