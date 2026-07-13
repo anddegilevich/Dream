@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetA
 import and.degilevich.dream.shared.feature.album.model.core.method.getAlbum.GetAlbumResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
-import and.degilevich.dream.shared.template.data.impl.remote.BaseRemoteDataSource
+import and.degilevich.dream.shared.feature.base.data.impl.remote.BaseRemoteDataSource
 
 internal class AlbumRemoteDataSourceImpl(
     private val albumOutputToDataMapper: AlbumOutputToDataMapper

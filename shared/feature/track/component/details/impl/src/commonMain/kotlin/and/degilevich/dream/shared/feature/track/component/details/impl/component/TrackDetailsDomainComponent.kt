@@ -1,13 +1,13 @@
 package and.degilevich.dream.shared.feature.track.component.details.impl.component
 
-import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsIntent
-import and.degilevich.dream.shared.feature.track.component.details.api.component.model.TrackDetailsSideEffect
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
+import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsIntent
+import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsSideEffect
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsState
 import and.degilevich.dream.shared.feature.track.domain.api.usecase.GetTrackUseCase
 import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
 import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackParams
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
-import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.essenty.lifecycle.doOnCreate

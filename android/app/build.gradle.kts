@@ -78,6 +78,7 @@ dependencies {
 
     // App
     implementation(projects.shared.app.impl)
+    implementation(libs.compose.foundation)
 
     // Baseline profile
     implementation(libs.androidx.profileinstaller)

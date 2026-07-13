@@ -1,14 +1,16 @@
 package and.degilevich.dream.shared.feature.common.home.impl.component
 
+import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.NavbarComponentImpl
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
-import and.degilevich.dream.shared.feature.common.home.api.component.child.HomeNavbar
-import and.degilevich.dream.shared.feature.common.home.api.component.child.HomePage
-import and.degilevich.dream.shared.feature.common.home.api.component.model.HomePageConfig
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
+import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
+import and.degilevich.dream.shared.feature.common.home.impl.view.HomeScreen
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.SearchComponentImpl
 import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orNullIfNegative
-import and.degilevich.dream.shared.template.component.impl.BaseComponent
+import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
 import com.arkivanov.decompose.router.pages.ChildPages
@@ -30,15 +32,15 @@ class HomeComponentImpl(
 
     private val scope = coroutineScope()
 
-    override val navbar: HomeNavbar = HomeNavbar(
-        component = NavbarComponentImpl(
-            componentContext = childContext(key = NAVBAR_KEY)
-        )
+    private val navbarComponent = NavbarComponentImpl(
+        componentContext = childContext(key = NAVBAR_KEY)
     )
+
+    private val navbar: HomeNavbar = HomeNavbar(component = navbarComponent)
 
     private val pagesNavigation = PagesNavigation<HomePageConfig>()
 
-    override val pages: Value<ChildPages<HomePageConfig, HomePage>> = childPages(
+    private val pages: Value<ChildPages<HomePageConfig, HomePage>> = childPages(
         source = pagesNavigation,
         serializer = HomePageConfig.serializer(),
         initialPages = {
@@ -57,6 +59,11 @@ class HomeComponentImpl(
 
     init {
         observeNavbarState()
+    }
+
+    @Composable
+    override fun Render() {
+        HomeScreen(navbar = navbar, pages = pages)
     }
 
     private fun pageFactory(
@@ -83,7 +90,7 @@ class HomeComponentImpl(
     }
 
     private fun observeNavbarState() = scope.launch {
-        navbar.state.collectLatest { state ->
+        navbarComponent.state.collectLatest { state ->
             val activePageIndex = state.items.indexOfFirst { item ->
                 item.isSelected
             }.orNullIfNegative() ?: return@collectLatest

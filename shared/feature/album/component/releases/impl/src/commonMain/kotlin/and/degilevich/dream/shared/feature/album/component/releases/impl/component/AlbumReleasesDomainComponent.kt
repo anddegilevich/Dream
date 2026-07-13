@@ -1,17 +1,17 @@
 package and.degilevich.dream.shared.feature.album.component.releases.impl.component
 
-import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesIntent
-import and.degilevich.dream.shared.feature.album.component.releases.api.component.model.AlbumReleasesSideEffect
+import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesIntent
+import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesSideEffect
 import and.degilevich.dream.shared.feature.album.component.releases.impl.component.model.AlbumReleasesState
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.GetNewReleasesUseCase
 import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
 import and.degilevich.dream.shared.feature.album.model.artifact.data.SimplifiedAlbumData
 import and.degilevich.dream.shared.feature.album.model.core.method.getNewReleases.GetNewReleasesParams
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.doOnCreate

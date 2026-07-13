@@ -75,15 +75,13 @@ include(":shared:design:theme")
 include(":shared:design:system")
 
 // =====================================================================================================================
-// Template
-
-include(":shared:template:data:api")
-include(":shared:template:data:impl")
-
-include(":shared:template:component:impl")
-
-// =====================================================================================================================
 // Feature
+
+// Base
+include(":shared:feature:base:data:api")
+include(":shared:feature:base:data:impl")
+
+include(":shared:feature:base:component:impl")
 
 // Common
 include(":shared:feature:common:component:splash:api")

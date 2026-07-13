@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.project.template.domain.api)
+    alias(libs.plugins.project.feature.domain.api)
 }
 
 kotlin {

@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.db.api.dao.ArtistDao
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.ArtistDataToEntityMapper
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import and.degilevich.dream.shared.template.data.impl.local.BaseLocalDataSource
+import and.degilevich.dream.shared.feature.base.data.impl.local.BaseLocalDataSource
 
 internal class ArtistLocalDataSourceImpl(
     private val artistDataToEntityMapper: ArtistDataToEntityMapper

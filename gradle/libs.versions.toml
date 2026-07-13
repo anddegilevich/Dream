@@ -1,9 +1,9 @@
 [versions]
 
 # SDK versions
-android-compile-sdk = "37"
+android-compile-sdk = "36"
 android-min-sdk = "26"
-android-target-sdk = "37"
+android-target-sdk = "36"
 
 # Android gradle plugin
 agp = "9.1.0" # https://developer.android.com/build/releases/gradle-plugin#updating-gradle
@@ -139,6 +139,7 @@ compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-pre
 compose-ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "compose" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
 compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "compose" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose" }
 compose-ui-test-junit4-android = { module = "androidx.compose.ui:ui-test-junit4-android", version.ref = "compose" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 
@@ -276,14 +277,14 @@ project-di = { id = "project.di.plugin", version.ref = "project-plugin" }
 project-ktor = { id = "project.ktor.plugin", version.ref = "project-plugin" }
 project-room = { id = "project.room.plugin", version.ref = "project-plugin" }
 
-project-template-model = { id = "project.template.model", version.ref = "project-plugin" }
-project-template-data-api = { id = "project.template.data.api", version.ref = "project-plugin" }
-project-template-data-impl = { id = "project.template.data.impl", version.ref = "project-plugin" }
-project-template-data-mapper-api = { id = "project.template.data.mapper.api", version.ref = "project-plugin" }
-project-template-data-mapper-impl = { id = "project.template.data.mapper.impl", version.ref = "project-plugin" }
-project-template-domain-api = { id = "project.template.domain.api", version.ref = "project-plugin" }
-project-template-domain-impl = { id = "project.template.domain.impl", version.ref = "project-plugin" }
-project-template-ui-api = { id = "project.template.ui.api", version.ref = "project-plugin" }
-project-template-ui-impl = { id = "project.template.ui.impl", version.ref = "project-plugin" }
-project-template-component-api = { id = "project.template.component.api", version.ref = "project-plugin" }
-project-template-component-impl = { id = "project.template.component.impl", version.ref = "project-plugin" }
+project-feature-model = { id = "project.feature.model", version.ref = "project-plugin" }
+project-feature-data-api = { id = "project.feature.data.api", version.ref = "project-plugin" }
+project-feature-data-impl = { id = "project.feature.data.impl", version.ref = "project-plugin" }
+project-feature-data-mapper-api = { id = "project.feature.data.mapper.api", version.ref = "project-plugin" }
+project-feature-data-mapper-impl = { id = "project.feature.data.mapper.impl", version.ref = "project-plugin" }
+project-feature-domain-api = { id = "project.feature.domain.api", version.ref = "project-plugin" }
+project-feature-domain-impl = { id = "project.feature.domain.impl", version.ref = "project-plugin" }
+project-feature-ui-api = { id = "project.feature.ui.api", version.ref = "project-plugin" }
+project-feature-ui-impl = { id = "project.feature.ui.impl", version.ref = "project-plugin" }
+project-feature-component-api = { id = "project.feature.component.api", version.ref = "project-plugin" }
+project-feature-component-impl = { id = "project.feature.component.impl", version.ref = "project-plugin" }

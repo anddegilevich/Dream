@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.project.template.data.mapper.impl)
+    alias(libs.plugins.project.feature.data.mapper.impl)
 }
 
 kotlin {

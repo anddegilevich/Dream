@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.feature.search.model.core.method.search.Searc
 import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
-import and.degilevich.dream.shared.template.data.impl.remote.BaseRemoteDataSource
+import and.degilevich.dream.shared.feature.base.data.impl.remote.BaseRemoteDataSource
 
 internal class SearchRemoteDataSourceImpl(
     private val searchResponseToResultMapper: SearchResponseToResultMapper,
