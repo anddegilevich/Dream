@@ -11,7 +11,7 @@ import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 
-class AlbumReleasesComponentImpl(
+internal class AlbumReleasesComponentImpl(
     componentContext: ComponentContext
 ) : BaseBinderComponent<
     AlbumReleasesUIState,

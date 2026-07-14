@@ -5,12 +5,12 @@ import and.degilevich.dream.shared.app.impl.component.child.Screen
 import and.degilevich.dream.shared.app.impl.view.ComposeApp
 import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
-import and.degilevich.dream.shared.feature.album.component.details.impl.component.AlbumDetailsComponentImpl
-import and.degilevich.dream.shared.feature.artist.component.details.impl.component.ArtistDetailsComponentImpl
+import and.degilevich.dream.shared.feature.album.component.details.api.component.AlbumDetailsComponent
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
-import and.degilevich.dream.shared.feature.common.component.splash.impl.component.SplashComponentImpl
-import and.degilevich.dream.shared.feature.common.home.impl.component.HomeComponentImpl
-import and.degilevich.dream.shared.feature.track.component.details.impl.component.TrackDetailsComponentImpl
+import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
+import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
+import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
@@ -25,7 +25,9 @@ import com.arkivanov.decompose.value.Value
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
 import org.koin.core.component.inject
+import org.koin.core.parameter.parametersOf
 
 class RootComponentImpl(
     componentContext: ComponentContext
@@ -43,7 +45,7 @@ class RootComponentImpl(
         source = navigationComponent.screenNavigationSource,
         serializer = ScreenConfig.serializer(),
         initialConfiguration = ScreenConfig.Splash,
-        key = "screens",
+        key = SCREENS_KEY,
         handleBackButton = true,
         childFactory = ::screenFactory,
     )
@@ -65,43 +67,34 @@ class RootComponentImpl(
         Log.info("Navigate to -> $screenConfig")
         return when (screenConfig) {
             is ScreenConfig.Splash -> Screen.Splash(
-                component = SplashComponentImpl(
-                    componentContext = componentContext
-                )
+                component = get<SplashComponent> { parametersOf(componentContext) }
             )
 
             is ScreenConfig.Home -> Screen.Home(
-                component = HomeComponentImpl(
-                    componentContext = componentContext
-                )
+                component = get<HomeComponent> { parametersOf(componentContext) }
             )
 
-            is ScreenConfig.ArtistDetails -> {
-                Screen.ArtistDetails(
-                    component = ArtistDetailsComponentImpl(
-                        componentContext = componentContext,
-                        navArgs = screenConfig.navArgs
-                    )
-                )
-            }
+            is ScreenConfig.ArtistDetails -> Screen.ArtistDetails(
+                component = get<ArtistDetailsComponent> {
+                    parametersOf(componentContext, screenConfig.navArgs)
+                }
+            )
 
-            is ScreenConfig.AlbumDetails -> {
-                Screen.AlbumDetails(
-                    component = AlbumDetailsComponentImpl(
-                        componentContext = componentContext,
-                        navArgs = screenConfig.navArgs
-                    )
-                )
-            }
+            is ScreenConfig.AlbumDetails -> Screen.AlbumDetails(
+                component = get<AlbumDetailsComponent> {
+                    parametersOf(componentContext, screenConfig.navArgs)
+                }
+            )
 
-            is ScreenConfig.TrackDetails -> {
-                Screen.TrackDetails(
-                    component = TrackDetailsComponentImpl(
-                        componentContext = componentContext,
-                        navArgs = screenConfig.navArgs
-                    )
-                )
-            }
+            is ScreenConfig.TrackDetails -> Screen.TrackDetails(
+                component = get<TrackDetailsComponent> {
+                    parametersOf(componentContext, screenConfig.navArgs)
+                }
+            )
         }
+    }
+
+    private companion object {
+        const val SCREENS_KEY = "screens"
     }
 }

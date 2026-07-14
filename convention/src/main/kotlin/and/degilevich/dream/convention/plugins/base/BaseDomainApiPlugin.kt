@@ -13,6 +13,7 @@ internal class BaseDomainApiPlugin : Plugin<Project> {
             plugins {
                 apply(libs().plugins.kmp.library)
                 apply(libs().plugins.project.multiplatform)
+                apply(libs().plugins.project.coroutines)
             }
         }
     }

@@ -12,7 +12,7 @@ import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 
-class TrackDetailsComponentImpl(
+internal class TrackDetailsComponentImpl(
     componentContext: ComponentContext,
     navArgs: TrackDetailsNavArgs
 ) : BaseBinderComponent<

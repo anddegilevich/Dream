@@ -10,7 +10,7 @@ import and.degilevich.dream.shared.feature.common.component.splash.impl.view.Spl
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 
-class SplashComponentImpl(
+internal class SplashComponentImpl(
     componentContext: ComponentContext
 ) : BaseBinderComponent<SplashUIState, SplashIntent, SplashSideEffect, SplashState>(
     componentContext = componentContext,

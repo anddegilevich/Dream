@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.common.home.impl.component
 
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
-import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.NavbarComponentImpl
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponentListener
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.common.home.impl.view.HomeScreen
-import and.degilevich.dream.shared.feature.search.component.search.impl.component.SearchComponentImpl
-import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orNullIfNegative
+import and.degilevich.dream.shared.feature.search.component.search.api.component.SearchComponent
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
@@ -19,24 +19,27 @@ import com.arkivanov.decompose.router.pages.PagesNavigation
 import com.arkivanov.decompose.router.pages.childPages
 import com.arkivanov.decompose.router.pages.select
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
+import org.koin.core.parameter.parametersOf
 
-class HomeComponentImpl(
+internal class HomeComponentImpl(
     componentContext: ComponentContext
 ) : BaseComponent(
     componentContext = componentContext
 ),
-    HomeComponent {
+    HomeComponent,
+    KoinComponent,
+    NavbarComponentListener {
 
-    private val scope = coroutineScope()
-
-    private val navbarComponent = NavbarComponentImpl(
-        componentContext = childContext(key = NAVBAR_KEY)
+    private val navbar: HomeNavbar = HomeNavbar(
+        component = get<NavbarComponent> {
+            parametersOf(
+                childContext(key = NAVBAR_KEY),
+                this as NavbarComponentListener
+            )
+        }
     )
-
-    private val navbar: HomeNavbar = HomeNavbar(component = navbarComponent)
 
     private val pagesNavigation = PagesNavigation<HomePageConfig>()
 
@@ -57,13 +60,13 @@ class HomeComponentImpl(
         childFactory = ::pageFactory
     )
 
-    init {
-        observeNavbarState()
-    }
-
     @Composable
     override fun Render() {
         HomeScreen(navbar = navbar, pages = pages)
+    }
+
+    override fun onNavbarItemSelected(index: Int) {
+        pagesNavigation.select(index = index)
     }
 
     private fun pageFactory(
@@ -73,30 +76,15 @@ class HomeComponentImpl(
         return when (config) {
             is HomePageConfig.Dashboard -> {
                 HomePage.Dashboard(
-                    component = DashboardComponentImpl(
-                        componentContext = componentContext
-                    )
+                    component = get<DashboardComponent> { parametersOf(componentContext) }
                 )
             }
 
             is HomePageConfig.Search -> {
                 HomePage.Search(
-                    SearchComponentImpl(
-                        componentContext = componentContext
-                    )
+                    component = get<SearchComponent> { parametersOf(componentContext) }
                 )
             }
-        }
-    }
-
-    private fun observeNavbarState() = scope.launch {
-        navbarComponent.state.collectLatest { state ->
-            val activePageIndex = state.items.indexOfFirst { item ->
-                item.isSelected
-            }.orNullIfNegative() ?: return@collectLatest
-            pagesNavigation.select(
-                index = activePageIndex
-            )
         }
     }
 
