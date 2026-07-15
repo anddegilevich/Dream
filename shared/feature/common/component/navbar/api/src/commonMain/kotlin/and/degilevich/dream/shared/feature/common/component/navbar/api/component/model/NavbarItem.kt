@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model
+package and.degilevich.dream.shared.feature.common.component.navbar.api.component.model
 
 import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
@@ -7,6 +7,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 enum class NavbarItem(override val id: Identifier) : Identified {
-    HOME(id = identifier("home")),
+    DASHBOARD(id = identifier("dashboard")),
     SEARCH(id = identifier("search"))
 }
