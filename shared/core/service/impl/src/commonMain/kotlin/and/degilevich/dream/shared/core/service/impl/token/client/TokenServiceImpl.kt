@@ -4,7 +4,6 @@ import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.network.api.RemoteClient
 import and.degilevich.dream.shared.core.service.impl.token.model.Tokens
 import and.degilevich.dream.shared.core.service.impl.token.model.request.TokenResponse
-import and.degilevich.dream.shared.core.service.impl.token.storage.TokensStorage
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.DefaultRequest
@@ -13,10 +12,9 @@ import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.http.HttpHeaders
 
-internal class TokenClientImpl(
-    remoteClient: RemoteClient,
-    private val tokensStorage: TokensStorage,
-) : TokenClient {
+internal class TokenServiceImpl(
+    remoteClient: RemoteClient
+) : TokenService {
 
     private val client: HttpClient = remoteClient.client.config {
         install(DefaultRequest) {
@@ -36,13 +34,8 @@ internal class TokenClientImpl(
                 accessToken = response.accessToken.orEmpty(),
                 refreshToken = ""
             )
-            handleSuccessGetToken(tokens)
             tokens
         }
-    }
-
-    private suspend fun handleSuccessGetToken(tokens: Tokens) {
-        tokensStorage.save(tokens)
     }
 
     private companion object {

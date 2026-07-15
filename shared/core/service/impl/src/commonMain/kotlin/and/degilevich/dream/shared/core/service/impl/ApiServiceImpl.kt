@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.core.service.api.generated.api.AlbumsApi
 import and.degilevich.dream.shared.core.service.api.generated.api.ArtistsApi
 import and.degilevich.dream.shared.core.service.api.generated.api.SearchApi
 import and.degilevich.dream.shared.core.service.api.generated.api.TracksApi
-import and.degilevich.dream.shared.core.service.impl.token.client.TokenClient
+import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
 import and.degilevich.dream.shared.core.service.impl.token.mappers.mapToBearer
 import and.degilevich.dream.shared.core.service.impl.token.storage.TokensStorage
 import io.ktor.client.HttpClientConfig
@@ -18,7 +18,7 @@ import io.ktor.client.plugins.auth.providers.bearer
 internal class ApiServiceImpl(
     remoteClient: RemoteClient,
     private val tokensStorage: TokensStorage,
-    private val tokenClient: TokenClient
+    private val tokenService: TokenService
 ) : ApiService {
 
     private val apiServiceClient = remoteClient.client.config {
@@ -39,7 +39,9 @@ internal class ApiServiceImpl(
                     tokensStorage.read()?.mapToBearer()
                 }
                 refreshTokens {
-                    tokenClient.getToken().getOrNull()?.mapToBearer()
+                    tokenService.getToken().onSuccess { tokens ->
+                        tokensStorage.save(tokens)
+                    }.getOrNull()?.mapToBearer()
                 }
             }
         }
