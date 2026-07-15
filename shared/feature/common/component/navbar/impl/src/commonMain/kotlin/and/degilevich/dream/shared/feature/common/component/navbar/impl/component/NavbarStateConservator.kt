@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.impl.component
 
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItem
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItem
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.conservator.ComponentStateConservator
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
@@ -10,7 +10,7 @@ internal class NavbarStateConservator : ComponentStateConservator<NavbarState> {
     override val key: String = NavbarState::class.className()
     override val initialState: NavbarState = NavbarState(
         items = NavbarItem.entries,
-        activeItem = NavbarItem.HOME
+        activeItem = NavbarItem.DASHBOARD
     )
     override val serializer: KSerializer<NavbarState> = NavbarState.serializer()
 }

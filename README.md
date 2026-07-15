@@ -73,7 +73,7 @@ Here is the list of frameworks, that were used in this project:
 | |- 2.3 logger
 | |- 2.4 resource
 | |- 2.5 core
-| | |- 2.5.1 client
+| | |- 2.5.1 network
 | | |- 2.5.2 db
 | | |- ...
 | |- 2.6 design

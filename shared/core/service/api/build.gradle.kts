@@ -8,7 +8,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(projects.shared.core.client.api)
+            api(projects.shared.core.network.api)
         }
     }
 

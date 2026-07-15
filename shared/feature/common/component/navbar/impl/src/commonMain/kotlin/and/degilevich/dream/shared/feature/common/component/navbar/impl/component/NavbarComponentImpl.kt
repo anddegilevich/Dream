@@ -11,7 +11,7 @@ import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 
-class NavbarComponentImpl(
+internal class NavbarComponentImpl(
     componentContext: ComponentContext
 ) : BaseBinderComponent<
     NavbarUIState,
@@ -21,9 +21,7 @@ class NavbarComponentImpl(
     >(
     componentContext = componentContext,
     domainComponentFactory = { childComponentContext ->
-        NavbarDomainComponent(
-            componentContext = childComponentContext
-        )
+        NavbarDomainComponent(componentContext = childComponentContext)
     },
     initialUIState = NavbarUIState.empty(),
     uiStateMapper = NavbarUIStateMapper()

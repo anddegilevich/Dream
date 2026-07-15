@@ -39,9 +39,7 @@ internal class ArtistDetailsDomainComponent(
     ArtistDetailsSideEffect
     >(
     componentContext = componentContext,
-    stateConservator = ArtistDetailsStateConservator(
-        navArgs = navArgs
-    )
+    stateConservator = ArtistDetailsStateConservator(navArgs = navArgs)
 ) {
 
     private val getArtistUseCase: GetArtistUseCase by inject()

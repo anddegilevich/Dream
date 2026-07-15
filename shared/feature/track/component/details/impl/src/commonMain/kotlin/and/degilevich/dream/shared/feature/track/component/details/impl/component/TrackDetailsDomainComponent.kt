@@ -26,9 +26,7 @@ internal class TrackDetailsDomainComponent(
     TrackDetailsSideEffect
     >(
     componentContext = componentContext,
-    stateConservator = TrackDetailsStateConservator(
-        navArgs = navArgs
-    )
+    stateConservator = TrackDetailsStateConservator(navArgs = navArgs)
 ) {
     private val getTrackUseCase: GetTrackUseCase by inject()
 

@@ -50,8 +50,8 @@ include(":shared:resource:impl")
 include(":shared:core:datetime:api")
 include(":shared:core:datetime:impl")
 
-include(":shared:core:client:api")
-include(":shared:core:client:impl")
+include(":shared:core:network:api")
+include(":shared:core:network:impl")
 
 include(":shared:core:service:api")
 include(":shared:core:service:impl")

@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.project.feature.component.api)
+    alias(libs.plugins.project.serialization)
 }
 
 kotlin {

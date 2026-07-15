@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.impl.component
 
-import and.degilevich.dream.shared.feature.album.component.releases.impl.component.AlbumReleasesComponentImpl
+import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesComponent
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
@@ -13,14 +13,18 @@ import com.arkivanov.decompose.router.items.Items
 import com.arkivanov.decompose.router.items.ItemsNavigation
 import com.arkivanov.decompose.router.items.LazyChildItems
 import com.arkivanov.decompose.router.items.childItems
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
+import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalDecomposeApi::class)
-class DashboardComponentImpl(
+internal class DashboardComponentImpl(
     componentContext: ComponentContext
 ) : BaseComponent(
     componentContext = componentContext
 ),
-    DashboardComponent {
+    DashboardComponent,
+    KoinComponent {
 
     private val itemsNavigation = ItemsNavigation<DashboardItemConfig>()
 
@@ -48,9 +52,7 @@ class DashboardComponentImpl(
         return when (config) {
             is DashboardItemConfig.AlbumReleases -> {
                 DashboardItem.AlbumReleases(
-                    component = AlbumReleasesComponentImpl(
-                        componentContext = componentContext
-                    )
+                    component = get<AlbumReleasesComponent> { parametersOf(componentContext) }
                 )
             }
         }

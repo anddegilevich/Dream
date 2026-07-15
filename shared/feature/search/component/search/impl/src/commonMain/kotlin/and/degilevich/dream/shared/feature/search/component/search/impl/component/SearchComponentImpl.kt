@@ -11,7 +11,7 @@ import and.degilevich.dream.shared.foundation.decompose.compose.component.state
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 
-class SearchComponentImpl(
+internal class SearchComponentImpl(
     componentContext: ComponentContext
 ) : BaseBinderComponent<
     SearchUIState,
@@ -21,9 +21,7 @@ class SearchComponentImpl(
     >(
     componentContext = componentContext,
     domainComponentFactory = { childComponentContext ->
-        SearchDomainComponent(
-            componentContext = childComponentContext
-        )
+        SearchDomainComponent(componentContext = childComponentContext)
     },
     initialUIState = SearchUIState.empty(),
     uiStateMapper = SearchUIStateMapper()

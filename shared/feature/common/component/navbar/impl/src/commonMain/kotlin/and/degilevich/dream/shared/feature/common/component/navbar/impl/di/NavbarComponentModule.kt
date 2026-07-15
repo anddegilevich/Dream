@@ -1,0 +1,17 @@
+package and.degilevich.dream.shared.feature.common.component.navbar.impl.di
+
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarManager
+import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.NavbarComponentImpl
+import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.NavbarManagerImpl
+import com.arkivanov.decompose.ComponentContext
+import org.koin.dsl.module
+
+fun navbarComponentModule() = module {
+    single<NavbarManager> { NavbarManagerImpl() }
+    factory<NavbarComponent> { (componentContext: ComponentContext) ->
+        NavbarComponentImpl(
+            componentContext = componentContext
+        )
+    }
+}

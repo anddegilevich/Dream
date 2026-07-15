@@ -1,17 +1,20 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.impl.view
 
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.system.stub.ViewStub
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
+import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
-import and.degilevich.dream.shared.feature.common.component.dashboard.impl.preview.DashboardPreviewComponent
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.shared.foundation.decompose.compose.preview.PreviewLazyChildItems
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
@@ -59,8 +62,27 @@ fun DashboardScreen(
     )
 }
 
+@OptIn(ExperimentalDecomposeApi::class)
 @LightDarkPreviews
 @Composable
 private fun DashboardScreenPreview() = ComposeAppTheme {
-    DashboardPreviewComponent().Render()
+    DashboardScreen(
+        items = PreviewLazyChildItems(
+            items = mapOf(
+                DashboardItemConfig.AlbumReleases to DashboardItem.AlbumReleases(
+                    component = object : AlbumReleasesComponent {
+                        @Composable
+                        override fun Render() {
+                            ViewStub(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .height(200.dp),
+                                stub = "AlbumReleasesComponent"
+                            )
+                        }
+                    }
+                )
+            )
+        )
+    )
 }

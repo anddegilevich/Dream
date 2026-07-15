@@ -5,7 +5,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.feature.album.component.releases.impl)
+            implementation(projects.shared.feature.album.component.releases.api)
             api(projects.shared.feature.common.component.dashboard.api)
         }
     }

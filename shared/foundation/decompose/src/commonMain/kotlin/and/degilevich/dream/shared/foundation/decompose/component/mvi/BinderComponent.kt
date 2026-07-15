@@ -25,12 +25,10 @@ abstract class BinderComponent<
     initialUIState: UIState,
 ) : MVIComponent<UIState, Intent, SideEffect>, ComponentContext by componentContext {
 
-    private val scope: CoroutineScope = coroutineScope()
+    protected val scope: CoroutineScope = coroutineScope()
 
     private val domainComponent: MVIComponent<State, Intent, SideEffect> = domainComponentFactory(
-        childContext(
-            key = STORE_COMPONENT_CHILD_KEY
-        )
+        childContext(key = STORE_COMPONENT_CHILD_KEY)
     )
 
     override val state: StateFlow<UIState> = domainComponent.state

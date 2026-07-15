@@ -1,13 +1,18 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.impl.component
 
 import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarManager
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItem
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarIntent
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItem
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarSideEffect
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueById
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.essenty.lifecycle.doOnCreate
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.koin.core.component.inject
 
 internal class NavbarDomainComponent(
     componentContext: ComponentContext
@@ -20,6 +25,20 @@ internal class NavbarDomainComponent(
     stateConservator = NavbarStateConservator()
 ) {
 
+    init {
+        subscribeToLifecycle()
+    }
+
+    private val navbarManager: NavbarManager by inject()
+
+    private fun subscribeToLifecycle() {
+        doOnCreate {
+            initNavbarManager()
+            observeNavbarItems()
+            observeActiveNavbarItem()
+        }
+    }
+
     override fun handleIntent(intent: NavbarIntent) {
         when (intent) {
             is NavbarIntent.OnItemClicked -> onItemClicked(intent.id)
@@ -28,10 +47,31 @@ internal class NavbarDomainComponent(
 
     private fun onItemClicked(id: Identifier) {
         val item = getEnumValueById<NavbarItem>(id = id) ?: return
-        setActiveItem(item = item)
+        navbarManager.selectItem(item = item)
     }
+
+    private fun initNavbarManager() {
+        with(state()) {
+            navbarManager.init(
+                items = items,
+                activeItem = activeItem
+            )
+        }
+    }
+
+    private fun observeNavbarItems() = navbarManager.items.onEach { items ->
+        setItems(items)
+    }.launchIn(scope)
+
+    private fun observeActiveNavbarItem() = navbarManager.activeItem.onEach { activeItem ->
+        setActiveItem(activeItem)
+    }.launchIn(scope)
 
     private fun setActiveItem(item: NavbarItem) = reduce {
         copy(activeItem = item)
+    }
+
+    private fun setItems(items: List<NavbarItem>) = reduce {
+        copy(items = items)
     }
 }

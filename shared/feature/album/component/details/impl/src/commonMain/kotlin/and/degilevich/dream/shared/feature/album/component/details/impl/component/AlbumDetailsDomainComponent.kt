@@ -39,9 +39,7 @@ internal class AlbumDetailsDomainComponent(
     AlbumDetailsSideEffect
     >(
     componentContext = componentContext,
-    stateConservator = AlbumDetailsStateConservator(
-        navArgs = navArgs
-    )
+    stateConservator = AlbumDetailsStateConservator(navArgs = navArgs)
 ) {
 
     private val getAlbumUseCase: GetAlbumUseCase by inject()

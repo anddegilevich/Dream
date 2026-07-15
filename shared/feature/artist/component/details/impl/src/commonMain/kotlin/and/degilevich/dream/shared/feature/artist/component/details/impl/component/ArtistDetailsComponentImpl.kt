@@ -12,7 +12,7 @@ import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArg
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 
-class ArtistDetailsComponentImpl(
+internal class ArtistDetailsComponentImpl(
     componentContext: ComponentContext,
     navArgs: ArtistDetailsNavArgs
 ) : BaseBinderComponent<
