@@ -1,10 +1,10 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.impl.component
 
 import and.degilevich.dream.Res
-import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItemUIData
-import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarUIState
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItem
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItem
+import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItemUIData
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState
+import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarUIState
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.resource.api.ResourceManager
 import dev.icerock.moko.resources.ImageResource
@@ -43,7 +43,7 @@ internal class NavbarUIStateMapper : Mapper<NavbarState, NavbarUIState>, KoinCom
         isSelected: Boolean
     ): ImageResource {
         return when (item) {
-            NavbarItem.HOME -> {
+            NavbarItem.DASHBOARD -> {
                 if (isSelected) {
                     Res.images.ic_home_filled
                 } else {
@@ -61,7 +61,7 @@ internal class NavbarUIStateMapper : Mapper<NavbarState, NavbarUIState>, KoinCom
         item: NavbarItem
     ): String {
         val resource = when (item) {
-            NavbarItem.HOME -> Res.strings.navbar_item_home
+            NavbarItem.DASHBOARD -> Res.strings.navbar_item_home
             NavbarItem.SEARCH -> Res.strings.navbar_item_search
         }
         return resourceManager.getString(resource)

@@ -57,6 +57,8 @@ Here is the list of frameworks, that were used in this project:
 * **Image Loading** - [Coil](https://github.com/coil-kt/coil)
 * **Build Config** - [BuildKonfig](https://github.com/yshrsmz/BuildKonfig)
 * **Static Code Analysis** - [Detekt](https://detekt.dev)
+* **Crypto** - [Keystore](https://developer.android.com/privacy-and-security/keystore) + 
+[Keychain](https://developer.apple.com/documentation/security/keychain-services)
 
 ## Architecture
 
@@ -71,38 +73,38 @@ Here is the list of frameworks, that were used in this project:
 | |- 2.3 logger
 | |- 2.4 resource
 | |- 2.5 core
-| | |- 2.5.1 client
+| | |- 2.5.1 network
 | | |- 2.5.2 db
 | | |- ...
 | |- 2.6 design
 | | |- 2.6.1 theme
 | | |- 2.6.2 system
-| |- 2.7 template
-| | |- 2.7.1 data
-| | |- 2.7.2 component
-| | |- ...
-| |- 2.8 feature
-| | |- 2.8.1 artist
-| | | |- 2.8.1.1 data
-| | | | |- 2.8.1.1.1 data/api
-| | | | |- 2.8.1.1.2 data/impl
-| | | | |- 2.8.1.1.3 data/mapper/api
-| | | | |- 2.8.1.1.4 data/mapper/impl
-| | | |- 2.8.1.2 domain
-| | | | |- 2.8.1.2.1 domain/model/artifact
-| | | | |- 2.8.1.2.2 domain/model/core
-| | | | |- 2.8.1.2.3 domain/api
-| | | | |- 2.8.1.2.4 domain/impl
-| | | |- 2.8.1.3 ui
-| | | |- 2.8.1.4 component
-| | | | |- 2.8.1.4.1 list
-| | | | |- 2.8.1.4.2 details
+| |- 2.7 feature
+| | |- 2.7.1 base
+| | | |- 2.7.1.1 data
+| | | |- 2.7.1.2 component
+| | | |- ...
+| | |- 2.7.2 artist
+| | | |- 2.7.2.1 data
+| | | | |- 2.7.2.1.1 data/api
+| | | | |- 2.7.2.1.2 data/impl
+| | | | |- 2.7.2.1.3 data/mapper/api
+| | | | |- 2.7.2.1.4 data/mapper/impl
+| | | |- 2.7.2.2 domain
+| | | | |- 2.7.2.2.1 domain/model/artifact
+| | | | |- 2.7.2.2.2 domain/model/core
+| | | | |- 2.7.2.2.3 domain/api
+| | | | |- 2.7.2.2.4 domain/impl
+| | | |- 2.7.2.3 ui
+| | | |- 2.7.2.4 component
+| | | | |- 2.7.2.4.1 list
+| | | | |- 2.7.2.4.2 details
 | | | | |- ...
-| | |- 2.8.2 album
+| | |- 2.7.3 album
 | | |- ...
-| |- 2.9 navigation
-| |- 2.10 di
-| |- 2.11 app
+| |- 2.8 navigation
+| |- 2.9 di
+| |- 2.10 app
 |- 3. android
 | |- 3.1 app
 | |- 3.2 baseline
@@ -174,7 +176,11 @@ etc.
 Projects ui theme (colors, shapes, etc.) and basic ui elements(button, radio group, etc.).
 Feature unspecific views.
 
-### 2.7 shared.template
+### 2.7 shared.feature
+
+Apps sources, models, logic and design divided by features.
+
+### 2.7.1 shared.feature.base
 
 Base abstractions for creating typical feature modules.
 
@@ -182,20 +188,16 @@ Base abstractions for creating typical feature modules.
 Base component implementation;
 Abstraction over core data sources for feature sources.
 
-### 2.8 shared.feature
-
-Apps sources, models, logic and design divided by features.
-
-### 2.8.1 shared.feature.artist 
+### 2.7.2 shared.feature.artist 
 
 Feature specific code.
 Used Artist feature as an example.
 
-### 2.8.1.1 shared.feature.artist.data
+### 2.7.2.1 shared.feature.artist.data
 
 Feature specific sources of data, split into four submodules.
 
-### 2.8.1.1.1 shared.feature.artist.data.api
+### 2.7.2.1.1 shared.feature.artist.data.api
 
 Data source interfaces and their parameter/result models.
 
@@ -204,7 +206,7 @@ Local data source interfaces;
 Remote data source interfaces;
 Storage interfaces.
 
-### 2.8.1.1.2 shared.feature.artist.data.impl
+### 2.7.2.1.2 shared.feature.artist.data.impl
 
 Data source implementations. Depends only on own `data.api` and own `data.mapper.api`.
 
@@ -213,7 +215,7 @@ Local data source implementations;
 Remote data source implementations;
 Storage implementations.
 
-### 2.8.1.1.3 shared.feature.artist.data.mapper.api
+### 2.7.2.1.3 shared.feature.artist.data.mapper.api
 
 Mapper interfaces for converting between data-layer entities and domain models.
 Isolated from data source interfaces to avoid cross-feature `data.api` coupling.
@@ -222,7 +224,7 @@ Isolated from data source interfaces to avoid cross-feature `data.api` coupling.
 Remote mapper interfaces (output → data model, params → request, response → result);
 Local mapper interfaces (data model → db entity).
 
-### 2.8.1.1.4 shared.feature.artist.data.mapper.impl
+### 2.7.2.1.4 shared.feature.artist.data.mapper.impl
 
 Mapper implementations and their DI bindings.
 Depends on own `data.mapper.api` plus any cross-feature `data.mapper.api` modules needed.
@@ -232,11 +234,11 @@ Remote mapper implementations;
 Local mapper implementations;
 Koin DI module (`[feature]DataMapperModule()`).
 
-### 2.8.1.2 shared.feature.artist.domain
+### 2.7.2.2 shared.feature.artist.domain
 
 Feature specific domain logic classes that accumulate logic for concise calls from components.
 
-### 2.8.1.2.1 shared.feature.artist.domain.model.artifact
+### 2.7.2.2.1 shared.feature.artist.domain.model.artifact
 
 Contains models that can be imported in other features' model modules.
 Used to prevent cycle dependencies.
@@ -245,7 +247,7 @@ Used to prevent cycle dependencies.
 Simplified data classes used as entry points in other features' models;
 Interfaces that declare specific behavior.
 
-### 2.8.1.2.2 shared.feature.artist.domain.model.core
+### 2.7.2.2.2 shared.feature.artist.domain.model.core
 
 Feature specific domain models.
 Not intended to be imported in other features' model modules.
@@ -255,7 +257,7 @@ Data classes;
 Request/result classes;
 Enum dictionaries.
 
-### 2.8.1.2.3 shared.feature.artist.domain.api / domain.impl
+### 2.7.2.2.3 shared.feature.artist.domain.api / domain.impl
 
 Feature specific domain logic classes that accumulate logic for concise calls from components.
 
@@ -266,7 +268,7 @@ Validators;
 Value holders;
 etc.
 
-### 2.8.1.3 shared.feature.artist.ui
+### 2.7.2.3 shared.feature.artist.ui
 
 Feature ui elements.
 
@@ -275,19 +277,23 @@ UI models;
 Compose functions;
 Mappers to map domain models to ui.
 
-### 2.8.1.4 shared.feature.artist.component
+### 2.7.2.4 shared.feature.artist.component
 
-Feature components (i.e. screens, bottom sheets, dialogs).
+Feature components (i.e. screens, bottom sheets, dialogs), each with its own `<component_name>/api|impl` module pair.
 
-### 2.8.1.4.1 shared.feature.artist.component.list
+### 2.7.2.4.1 shared.feature.artist.component.details
 
-Component, its logic and ui.
+Component, its logic and ui, split by api/impl approach.
 
-***Contains:***
-UI and domain models of the component entities;
-Component store entities (executor, ui state mapper, etc.).
+***api*** contains a single marker interface extending `RenderComponent` (`@Composable fun Render()`).
 
-### 2.9 shared.navigation
+***impl*** contains:
+Component implementation (`ComponentImpl`, `DomainComponent`, `UIStateMapper`, state conservator);
+Component mvi models (`Intent`, `SideEffect`, `UIState`, domain `State`);
+Preview component and preview providers;
+View (screen/layout compose functions, `view/semantic` test tags, `view/skeleton` loading placeholders).
+
+### 2.8 shared.navigation
 
 Global app navigation.
 Can implement feature model modules.
@@ -296,19 +302,19 @@ Can implement feature model modules.
 Navigation manager;
 Configs with navigation arguments;
 
-### 2.10 shared.di
+### 2.9 shared.di
 
 Provides app's dependency injection module.
 Combines all other di modules (from impl modules).
 
-### 2.11 shared.app
+### 2.10 shared.app
 
 Entry point for platforms to shared app code.
 Implementation submodule is used for ios app ui view controller generation.
+`api` exposes only the `RootComponent` marker interface (extends `RenderComponent`); platforms call `rootComponent.Render()` directly, no composable wrapper is exposed from api.
 
 ***Contains:***
-Root compose function;
-Root component implementation;
+Root component implementation (`RootComponentImpl`), which renders the internal `ComposeApp` compose function;
 App di module;
 
 ### 3 android

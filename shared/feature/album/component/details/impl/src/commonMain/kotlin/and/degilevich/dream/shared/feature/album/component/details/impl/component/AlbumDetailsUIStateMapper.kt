@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.album.component.details.impl.component
 
 import and.degilevich.dream.shared.core.datetime.api.DreamDateTimeFormat
-import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsLayoutUIData
-import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsUIState
+import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsLayoutUIData
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsState
+import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsUIState
 import and.degilevich.dream.shared.feature.album.ui.api.mapper.AlbumTypeToUITextMapper
 import and.degilevich.dream.shared.feature.artist.ui.api.mapper.ArtistDataToLabelUIDataMapper
 import and.degilevich.dream.shared.feature.artist.ui.api.model.ArtistLabelUIData

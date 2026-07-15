@@ -2,9 +2,9 @@ package and.degilevich.dream.shared.feature.artist.component.details.impl.compon
 
 import and.degilevich.dream.shared.feature.album.ui.api.mapper.AlbumInfoToCardUIDataMapper
 import and.degilevich.dream.shared.feature.album.ui.api.model.AlbumCardUIData
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistDetailsUIState
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.model.ArtistInfoLayoutUIData
 import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsState
+import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistDetailsUIState
+import and.degilevich.dream.shared.feature.artist.component.details.impl.component.model.ArtistInfoLayoutUIData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton

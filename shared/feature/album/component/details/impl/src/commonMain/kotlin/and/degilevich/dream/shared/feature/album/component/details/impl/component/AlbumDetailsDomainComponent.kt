@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.album.component.details.impl.component
 
-import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsIntent
-import and.degilevich.dream.shared.feature.album.component.details.api.component.model.AlbumDetailsSideEffect
+import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsIntent
+import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsSideEffect
 import and.degilevich.dream.shared.feature.album.component.details.impl.component.model.AlbumDetailsState
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.GetAlbumUseCase
 import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
@@ -10,15 +10,14 @@ import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistsU
 import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistId
 import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
 import and.degilevich.dream.shared.feature.artist.model.core.method.getArtists.GetArtistsParams
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import and.degilevich.dream.shared.feature.track.model.artifact.data.TrackId
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
-import and.degilevich.dream.shared.foundation.abstraction.id.ext.ids
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushToFront
@@ -40,9 +39,7 @@ internal class AlbumDetailsDomainComponent(
     AlbumDetailsSideEffect
     >(
     componentContext = componentContext,
-    stateConservator = AlbumDetailsStateConservator(
-        navArgs = navArgs
-    )
+    stateConservator = AlbumDetailsStateConservator(navArgs = navArgs)
 ) {
 
     private val getAlbumUseCase: GetAlbumUseCase by inject()
@@ -99,7 +96,7 @@ internal class AlbumDetailsDomainComponent(
 
     private fun getArtists() = scope.async {
         val params = GetArtistsParams(
-            ids = state().album.artists.ids()
+            ids = state().album.artists.map { it.id }
         )
         withContext(context = Dispatchers.IO) { getArtistsUseCase(params = params) }
             .onSuccess { result ->

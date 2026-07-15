@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.project.template.component.impl)
+    alias(libs.plugins.project.feature.component.impl)
 }
 
 kotlin {
@@ -7,6 +7,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.feature.album.component.releases.api)
             implementation(projects.shared.feature.album.domain.api)
+            implementation(projects.shared.feature.album.ui.api)
         }
     }
 

@@ -50,8 +50,8 @@ include(":shared:resource:impl")
 include(":shared:core:datetime:api")
 include(":shared:core:datetime:impl")
 
-include(":shared:core:client:api")
-include(":shared:core:client:impl")
+include(":shared:core:network:api")
+include(":shared:core:network:impl")
 
 include(":shared:core:service:api")
 include(":shared:core:service:impl")
@@ -75,15 +75,13 @@ include(":shared:design:theme")
 include(":shared:design:system")
 
 // =====================================================================================================================
-// Template
-
-include(":shared:template:data:api")
-include(":shared:template:data:impl")
-
-include(":shared:template:component:impl")
-
-// =====================================================================================================================
 // Feature
+
+// Base
+include(":shared:feature:base:data:api")
+include(":shared:feature:base:data:impl")
+
+include(":shared:feature:base:component:impl")
 
 // Common
 include(":shared:feature:common:component:splash:api")

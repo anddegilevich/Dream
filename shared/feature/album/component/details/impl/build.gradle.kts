@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.project.template.component.impl)
+    alias(libs.plugins.project.feature.component.impl)
 }
 
 kotlin {
@@ -9,6 +9,9 @@ kotlin {
             implementation(projects.shared.core.datetime.api)
             implementation(projects.shared.feature.album.domain.api)
             implementation(projects.shared.feature.artist.domain.api)
+            implementation(projects.shared.feature.album.ui.api)
+            implementation(projects.shared.feature.artist.ui.api)
+            implementation(projects.shared.feature.track.ui.api)
         }
     }
 

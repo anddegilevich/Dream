@@ -9,7 +9,7 @@ import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shated.feature.track.ui.api.model.TrackCardUIData
-import and.degilevich.dream.shated.feature.track.ui.api.provider.TrackCardUIDataPreviewProvider
+import and.degilevich.dream.shated.feature.track.ui.api.preview.TrackCardUIDataPreviewProvider
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text

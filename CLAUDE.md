@@ -7,6 +7,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Commands
 
 ```bash
+# Api generation
+./gradlew :shared:core:service:api:openApiGenerate
+
 # Tests
 ./gradlew test # Unit tests
 ./gradlew detekt # Static analysis
@@ -48,13 +51,14 @@ CLIENT_SECRET=<your_client_secret>
 * **Image Loading** - Coil
 * **Build Config** - BuildKonfig
 * **Static Code Analysis** - Detekt
+* **Crypto** - Keystore + Keychain
 
 All versions can be found in version catalog file `/gradle/libs.versions.toml`
 
 ### Convention plugins
 
 `/convention/` contains Gradle convention plugins that wrap common build setup (e.g., `MultiplatformPlugin`).
-Feature template plugins (e.g., `TemplateComponentApiPlugin`) configure feature modules.
+Feature base plugins (e.g., `BaseComponentApiPlugin`) configure feature modules.
 
 ### Modules structure
 
@@ -70,7 +74,7 @@ Feature template plugins (e.g., `TemplateComponentApiPlugin`) configure feature 
 * `shared/resource/api|impl` - project strings, images, fonts, etc.
 * `shared/core/` - project core infrastructure
   * `shared/core/crypto/api|impl` - crypto utils
-  * `shared/core/client/api|impl` - http client
+  * `shared/core/network/api|impl` - http client
   * `shared/core/service/api|impl` - Spotify rest api service
   * `shared/core/db/api|impl` - local sql database
   * `shared/core/storage/api|impl` - preferences storage
@@ -78,6 +82,7 @@ Feature template plugins (e.g., `TemplateComponentApiPlugin`) configure feature 
   * `shared/design/theme` - theme colors, typography, shapes, etc.
   * `shared/design/system` - ui components like buttons, inputs, etc.
 * `shared/feature/` - feature modules
+  * `shared/feature/base/` - base abstractions for typical feature modules (base component, base data sources)
   * ...
 * `shared/navigation/api|impl` - centralized app navigation
 * `shared/di` - dependencies hub wiring all modules
@@ -93,13 +98,15 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 * `domain/model/core` - feature domain models
 * `domain/api|impl` - use cases, managers, validators, value holders, etc.
 * `ui/api|impl` - ui models, compose functions, mappers from to ui models
-* `component/<component_name>/api|impl` - screens/views (component, component models, compose functions)
+* `component/<component_name>/api|impl` - screens/views
+  * `api` - single marker interface extending `RenderComponent` (`@Composable fun Render()`); no state, intent or view types leak into api
+  * `impl` - `ComponentImpl`, `DomainComponent`, `UIStateMapper`/state conservator, `component/model` (`Intent`, `SideEffect`, `UIState`, domain `State`), `preview` (preview component + providers), `view` (screen/layout composables, `view/semantic` test tags, `view/skeleton` loading placeholders)
 
 ### Platform entry points
 
 * **Android**: `DreamApplication` → `MainActivity`
 * **iOS**: `iOSApp` → `RootView`
-* **Shared**: `ComposeApp` → `RootComponentImpl`
+* **Shared**: `RootComponentImpl` → `ComposeApp` (`RootComponentImpl.Render()` renders the internal `ComposeApp` composable; platforms call `rootComponent.Render()` directly, no composable wrapper is exposed)
 
 ## Rules
 
@@ -135,6 +142,9 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 * DomainComponent plays view model role (handle view intents, makes requests, manages domain state)
 * Domain State maps to UIState in BinderComponent using UIStateMapper
 * Domain State and all its parameters should be `Serializable`
+* Component `api` module exposes only a `RenderComponent`-extending marker interface (`Render()`); it has no other members and no dependency on UI/design/state types
+* `UIState`, `Intent`, `SideEffect`, `ComponentImpl`, `DomainComponent`, `UIStateMapper`, preview components/providers and all view composables live in the component's `impl` module
+* Use `BaseComponent`/`BaseBinderComponent`/`BaseDomainComponent` (`shared/feature/base/component/impl`) as base classes for new components
 
 ### Test rules
 

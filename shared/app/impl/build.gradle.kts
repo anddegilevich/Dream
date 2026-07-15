@@ -1,16 +1,11 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 
 plugins {
-    alias(libs.plugins.project.multiplatform)
-    alias(libs.plugins.project.compose)
-    alias(libs.plugins.project.di)
-    alias(libs.plugins.project.coroutines)
+    alias(libs.plugins.project.feature.component.impl)
 }
 
 kotlin {
-    iosArm64()
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
@@ -35,27 +30,24 @@ kotlin {
             // Logger
             api(projects.shared.logger)
 
-            // Core
-            implementation(projects.shared.core.toast.api)
+            api(projects.shared.foundation.decompose)
+            api(projects.shared.feature.base.component.impl)
 
             // Navigation
             implementation(projects.shared.navigation.impl)
-
-            // Template
-            implementation(projects.shared.template.component.impl)
 
             // DI
             api(projects.shared.di)
 
             // Feature
-            implementation(projects.shared.feature.common.component.splash.impl)
-            implementation(projects.shared.feature.common.component.home.impl)
+            implementation(projects.shared.feature.common.component.splash.api)
+            implementation(projects.shared.feature.common.component.home.api)
 
-            implementation(projects.shared.feature.artist.component.details.impl)
+            implementation(projects.shared.feature.artist.component.details.api)
 
-            implementation(projects.shared.feature.album.component.details.impl)
+            implementation(projects.shared.feature.album.component.details.api)
 
-            implementation(projects.shared.feature.track.component.details.impl)
+            implementation(projects.shared.feature.track.component.details.api)
 
             api(projects.shared.app.api)
         }

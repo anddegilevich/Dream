@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.album.model.core.method.getAlbum
 
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
 
 data class GetAlbumParams(
-    val id: Identifier
+    val id: AlbumId
 )

@@ -1,0 +1,21 @@
+plugins {
+    alias(libs.plugins.project.multiplatform)
+    alias(libs.plugins.project.ktor)
+    alias(libs.plugins.project.di)
+    alias(libs.plugins.project.serialization)
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.shared.foundation.abstraction)
+            implementation(projects.shared.foundation.serialization)
+            implementation(projects.shared.logger)
+            api(projects.shared.core.network.api)
+        }
+    }
+
+    android {
+        namespace = "and.degilevich.dream.shared.core.network.impl"
+    }
+}

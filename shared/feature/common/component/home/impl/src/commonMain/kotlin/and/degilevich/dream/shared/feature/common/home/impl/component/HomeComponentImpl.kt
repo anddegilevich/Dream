@@ -1,63 +1,90 @@
 package and.degilevich.dream.shared.feature.common.home.impl.component
 
-import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.DashboardComponentImpl
-import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.NavbarComponentImpl
+import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarManager
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItem
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
-import and.degilevich.dream.shared.feature.common.home.api.component.child.HomeNavbar
-import and.degilevich.dream.shared.feature.common.home.api.component.child.HomePage
-import and.degilevich.dream.shared.feature.common.home.api.component.model.HomePageConfig
-import and.degilevich.dream.shared.feature.search.component.search.impl.component.SearchComponentImpl
-import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orNullIfNegative
-import and.degilevich.dream.shared.template.component.impl.BaseComponent
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
+import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
+import and.degilevich.dream.shared.feature.common.home.impl.view.HomeScreen
+import and.degilevich.dream.shared.feature.search.component.search.api.component.SearchComponent
+import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.childContext
 import com.arkivanov.decompose.router.pages.ChildPages
 import com.arkivanov.decompose.router.pages.Pages
 import com.arkivanov.decompose.router.pages.PagesNavigation
 import com.arkivanov.decompose.router.pages.childPages
 import com.arkivanov.decompose.router.pages.select
+import com.arkivanov.decompose.router.pages.setItems
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
+import org.koin.core.component.inject
+import org.koin.core.parameter.parametersOf
 
-class HomeComponentImpl(
+internal class HomeComponentImpl(
     componentContext: ComponentContext
 ) : BaseComponent(
     componentContext = componentContext
 ),
-    HomeComponent {
+    HomeComponent,
+    KoinComponent {
 
-    private val scope = coroutineScope()
+    private val navbarManager: NavbarManager by inject()
 
-    override val navbar: HomeNavbar = HomeNavbar(
-        component = NavbarComponentImpl(
-            componentContext = childContext(key = NAVBAR_KEY)
-        )
+    private val scope: CoroutineScope = coroutineScope()
+
+    private val navbar: HomeNavbar = HomeNavbar(
+        component = get<NavbarComponent> {
+            parametersOf(childContext(key = NAVBAR_KEY))
+        }
     )
 
     private val pagesNavigation = PagesNavigation<HomePageConfig>()
 
-    override val pages: Value<ChildPages<HomePageConfig, HomePage>> = childPages(
+    private val pages: Value<ChildPages<HomePageConfig, HomePage>> = childPages(
         source = pagesNavigation,
         serializer = HomePageConfig.serializer(),
-        initialPages = {
-            Pages(
-                items = listOf(
-                    HomePageConfig.Dashboard,
-                    HomePageConfig.Search
-                ),
-                selectedIndex = 0
-            )
-        },
+        initialPages = { Pages() },
         key = PAGES_KEY,
         handleBackButton = false,
         childFactory = ::pageFactory
     )
 
     init {
-        observeNavbarState()
+        observeNavbarItems()
+        observeNavbarActiveItemIndex()
     }
+
+    @Composable
+    override fun Render() {
+        HomeScreen(navbar = navbar, pages = pages)
+    }
+
+    @OptIn(ExperimentalDecomposeApi::class)
+    private fun observeNavbarItems() = navbarManager.items.onEach { items ->
+        pagesNavigation.setItems {
+            items.map { item ->
+                when (item) {
+                    NavbarItem.DASHBOARD -> HomePageConfig.Dashboard
+                    NavbarItem.SEARCH -> HomePageConfig.Search
+                }
+            }
+        }
+    }.launchIn(scope)
+
+    private fun observeNavbarActiveItemIndex() = navbarManager.activeItemIndex.onEach { activeItem ->
+        pagesNavigation.select(index = activeItem)
+    }.launchIn(scope)
 
     private fun pageFactory(
         config: HomePageConfig,
@@ -66,30 +93,15 @@ class HomeComponentImpl(
         return when (config) {
             is HomePageConfig.Dashboard -> {
                 HomePage.Dashboard(
-                    component = DashboardComponentImpl(
-                        componentContext = componentContext
-                    )
+                    component = get<DashboardComponent> { parametersOf(componentContext) }
                 )
             }
 
             is HomePageConfig.Search -> {
                 HomePage.Search(
-                    SearchComponentImpl(
-                        componentContext = componentContext
-                    )
+                    component = get<SearchComponent> { parametersOf(componentContext) }
                 )
             }
-        }
-    }
-
-    private fun observeNavbarState() = scope.launch {
-        navbar.state.collectLatest { state ->
-            val activePageIndex = state.items.indexOfFirst { item ->
-                item.isSelected
-            }.orNullIfNegative() ?: return@collectLatest
-            pagesNavigation.select(
-                index = activePageIndex
-            )
         }
     }
 

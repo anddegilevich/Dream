@@ -10,6 +10,8 @@
     <string name="title_new_releases">Новинки</string>
     <string name="title_albums">Альбомы</string>
 
+    <string name="stub_not_yet_implemented">В разработке</string>
+
     <string name="button_back">Назад</string>
     <string name="button_subscribe">Подписаться</string>
     <string name="button_repeat">Повторить</string>

@@ -30,6 +30,7 @@ android {
         }
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             isDebuggable = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug") //FIXME: Add signing
@@ -77,6 +78,7 @@ dependencies {
 
     // App
     implementation(projects.shared.app.impl)
+    implementation(libs.compose.foundation)
 
     // Baseline profile
     implementation(libs.androidx.profileinstaller)

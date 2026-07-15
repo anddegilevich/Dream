@@ -1,28 +1,34 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.impl.component
 
-import and.degilevich.dream.shared.feature.album.component.releases.impl.component.AlbumReleasesComponentImpl
+import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesComponent
+import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.child.DashboardItem
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.model.DashboardItemConfig
-import and.degilevich.dream.shared.template.component.impl.BaseComponent
+import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
+import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
+import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.DashboardScreen
+import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.router.items.Items
 import com.arkivanov.decompose.router.items.ItemsNavigation
 import com.arkivanov.decompose.router.items.LazyChildItems
 import com.arkivanov.decompose.router.items.childItems
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
+import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalDecomposeApi::class)
-class DashboardComponentImpl(
+internal class DashboardComponentImpl(
     componentContext: ComponentContext
 ) : BaseComponent(
     componentContext = componentContext
 ),
-    DashboardComponent {
+    DashboardComponent,
+    KoinComponent {
 
     private val itemsNavigation = ItemsNavigation<DashboardItemConfig>()
 
-    override val items: LazyChildItems<DashboardItemConfig, DashboardItem> = childItems(
+    private val items: LazyChildItems<DashboardItemConfig, DashboardItem> = childItems(
         source = itemsNavigation,
         serializer = DashboardItemConfig.serializer(),
         initialItems = {
@@ -34,6 +40,11 @@ class DashboardComponentImpl(
         childFactory = ::itemFactory
     )
 
+    @Composable
+    override fun Render() {
+        DashboardScreen(items = items)
+    }
+
     private fun itemFactory(
         config: DashboardItemConfig,
         componentContext: ComponentContext
@@ -41,9 +52,7 @@ class DashboardComponentImpl(
         return when (config) {
             is DashboardItemConfig.AlbumReleases -> {
                 DashboardItem.AlbumReleases(
-                    component = AlbumReleasesComponentImpl(
-                        componentContext = componentContext
-                    )
+                    component = get<AlbumReleasesComponent> { parametersOf(componentContext) }
                 )
             }
         }

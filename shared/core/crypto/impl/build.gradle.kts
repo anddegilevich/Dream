@@ -6,7 +6,6 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.shared.foundation.primitive)
             api(projects.shared.core.crypto.api)
         }
     }

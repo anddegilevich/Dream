@@ -2,8 +2,9 @@ package and.degilevich.dream.shared.feature.search.component.search.impl.compone
 
 import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
 import and.degilevich.dream.shared.feature.artist.model.artifact.data.ArtistId
-import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchIntent
-import and.degilevich.dream.shared.feature.search.component.search.api.component.model.SearchSideEffect
+import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
+import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchIntent
+import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchSideEffect
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchState
 import and.degilevich.dream.shared.feature.search.domain.api.usecase.SearchUseCase
 import and.degilevich.dream.shared.feature.search.model.core.dictionary.SearchType
@@ -16,7 +17,6 @@ import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import and.degilevich.dream.shared.template.component.impl.BaseDomainComponent
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pushToFront
 import kotlinx.coroutines.Dispatchers

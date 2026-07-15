@@ -8,20 +8,20 @@ import and.degilevich.dream.shared.core.db.api.dao.TrackDao
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToAlbumCrossRefEntity
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCrossRefEntity
 import and.degilevich.dream.shared.feature.album.data.mapper.api.local.AlbumDataToEntityMapper
-import and.degilevich.dream.shared.feature.album.data.mapper.api.local.AlbumSimplifiedDataToEntityMapper
-import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumSimplifiedData
+import and.degilevich.dream.shared.feature.album.data.mapper.api.local.SimplifiedAlbumDataToEntityMapper
+import and.degilevich.dream.shared.feature.album.model.artifact.data.SimplifiedAlbumData
 import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
-import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.ArtistSimplifiedDataToEntityMapper
-import and.degilevich.dream.shared.feature.track.data.mapper.api.local.TrackSimplifiedDataToEntityMapper
+import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.SimplifiedArtistDataToEntityMapper
+import and.degilevich.dream.shared.feature.track.data.mapper.api.local.SimplifiedTrackDataToEntityMapper
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.distinctById
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import and.degilevich.dream.shared.template.data.impl.local.BaseLocalDataSource
+import and.degilevich.dream.shared.feature.base.data.impl.local.BaseLocalDataSource
 
 internal class AlbumLocalDataSourceImpl(
     private val albumDataToEntityMapper: AlbumDataToEntityMapper,
-    private val albumSimplifiedDataToEntityMapper: AlbumSimplifiedDataToEntityMapper,
-    private val artistSimplifiedDataToEntityMapper: ArtistSimplifiedDataToEntityMapper,
-    private val trackSimplifiedDataToEntityMapper: TrackSimplifiedDataToEntityMapper
+    private val simplifiedAlbumDataToEntityMapper: SimplifiedAlbumDataToEntityMapper,
+    private val simplifiedArtistDataToEntityMapper: SimplifiedArtistDataToEntityMapper,
+    private val simplifiedTrackDataToEntityMapper: SimplifiedTrackDataToEntityMapper
 ) : BaseLocalDataSource(), AlbumLocalDataSource {
 
     private val albumDao: AlbumDao by lazy { database.getAlbumDao() }
@@ -35,12 +35,12 @@ internal class AlbumLocalDataSourceImpl(
         artistDao.upsertAll(
             (album.artists + album.tracks.items.flatMap { track -> track.artists })
                 .distinctById()
-                .mapWith(artistSimplifiedDataToEntityMapper)
+                .mapWith(simplifiedArtistDataToEntityMapper)
 
         )
         trackDao.upsertAll(
             album.tracks.items
-                .mapWith(trackSimplifiedDataToEntityMapper)
+                .mapWith(simplifiedTrackDataToEntityMapper)
                 .map { entity ->
                     entity.copy(albumId = album.id.value)
                 }
@@ -74,11 +74,11 @@ internal class AlbumLocalDataSourceImpl(
         )
     }
 
-    override suspend fun saveAlbums(albums: List<AlbumSimplifiedData>) {
-        albumDao.upsertAll(albums.mapWith(albumSimplifiedDataToEntityMapper))
+    override suspend fun saveAlbums(albums: List<SimplifiedAlbumData>) {
+        albumDao.upsertAll(albums.mapWith(simplifiedAlbumDataToEntityMapper))
         artistDao.upsertAll(
             albums.flatMap { album ->
-                album.artists.mapWith(artistSimplifiedDataToEntityMapper)
+                album.artists.mapWith(simplifiedArtistDataToEntityMapper)
             }
         )
         artistToAlbumCrossRefDao.upsertAll(

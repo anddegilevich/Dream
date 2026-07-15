@@ -1,18 +1,12 @@
 package and.degilevich.dream.shared.feature.common.component.splash.api.component
 
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashIntent
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashSideEffect
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.model.SplashUIState
-import and.degilevich.dream.shared.feature.common.component.splash.api.view.SplashScreen
-import and.degilevich.dream.shared.foundation.decompose.component.render.RenderMVIComponent
+import and.degilevich.dream.shared.foundation.decompose.component.render.RenderComponent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 
 @Stable
-interface SplashComponent : RenderMVIComponent<SplashUIState, SplashIntent, SplashSideEffect> {
+interface SplashComponent : RenderComponent {
 
     @Composable
-    override fun Render() {
-        SplashScreen()
-    }
+    override fun Render()
 }
