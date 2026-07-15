@@ -9,6 +9,7 @@ import and.degilevich.dream.shared.feature.common.component.navbar.impl.componen
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueById
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.core.component.inject
@@ -24,11 +25,18 @@ internal class NavbarDomainComponent(
     stateConservator = NavbarStateConservator()
 ) {
 
+    init {
+        subscribeToLifecycle()
+    }
+
     private val navbarManager: NavbarManager by inject()
 
-    init {
-        observeNavbarItems()
-        observeActiveNavbarItem()
+    private fun subscribeToLifecycle() {
+        doOnCreate {
+            initNavbarManager()
+            observeNavbarItems()
+            observeActiveNavbarItem()
+        }
     }
 
     override fun handleIntent(intent: NavbarIntent) {
@@ -40,6 +48,15 @@ internal class NavbarDomainComponent(
     private fun onItemClicked(id: Identifier) {
         val item = getEnumValueById<NavbarItem>(id = id) ?: return
         navbarManager.selectItem(item = item)
+    }
+
+    private fun initNavbarManager() {
+        with(state()) {
+            navbarManager.init(
+                items = items,
+                activeItem = activeItem
+            )
+        }
     }
 
     private fun observeNavbarItems() = navbarManager.items.onEach { items ->

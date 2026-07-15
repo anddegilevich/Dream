@@ -11,4 +11,8 @@ interface NavbarManager {
     val activeItemIndex: Flow<Int>
 
     fun selectItem(item: NavbarItem)
+    fun init(
+        items: List<NavbarItem>,
+        activeItem: NavbarItem
+    )
 }

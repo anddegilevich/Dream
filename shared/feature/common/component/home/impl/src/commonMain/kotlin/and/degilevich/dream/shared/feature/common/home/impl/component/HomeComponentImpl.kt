@@ -39,9 +39,9 @@ internal class HomeComponentImpl(
     HomeComponent,
     KoinComponent {
 
-    private val scope: CoroutineScope = coroutineScope()
-
     private val navbarManager: NavbarManager by inject()
+
+    private val scope: CoroutineScope = coroutineScope()
 
     private val navbar: HomeNavbar = HomeNavbar(
         component = get<NavbarComponent> {
@@ -54,12 +54,7 @@ internal class HomeComponentImpl(
     private val pages: Value<ChildPages<HomePageConfig, HomePage>> = childPages(
         source = pagesNavigation,
         serializer = HomePageConfig.serializer(),
-        initialPages = {
-            Pages(
-                items = emptyList(),
-                selectedIndex = 0
-            )
-        },
+        initialPages = { Pages() },
         key = PAGES_KEY,
         handleBackButton = false,
         childFactory = ::pageFactory

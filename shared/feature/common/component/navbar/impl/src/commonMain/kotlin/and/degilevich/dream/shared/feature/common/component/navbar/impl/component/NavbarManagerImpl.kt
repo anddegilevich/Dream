@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.update
 
 internal class NavbarManagerImpl : NavbarManager {
 
-    private val mutableItems = MutableStateFlow(NavbarItem.entries)
+    private val mutableItems = MutableStateFlow(NavbarItem.entries.toList())
     private val mutableActiveItem = MutableStateFlow(NavbarItem.DASHBOARD)
 
     override val items = mutableItems.asStateFlow()
@@ -22,5 +22,13 @@ internal class NavbarManagerImpl : NavbarManager {
 
     override fun selectItem(item: NavbarItem) {
         mutableActiveItem.update { item }
+    }
+
+    override fun init(
+        items: List<NavbarItem>,
+        activeItem: NavbarItem
+    ) {
+        mutableItems.update { items }
+        mutableActiveItem.update { activeItem }
     }
 }
