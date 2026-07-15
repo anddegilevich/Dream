@@ -74,7 +74,7 @@ Feature base plugins (e.g., `BaseComponentApiPlugin`) configure feature modules.
 * `shared/resource/api|impl` - project strings, images, fonts, etc.
 * `shared/core/` - project core infrastructure
   * `shared/core/crypto/api|impl` - crypto utils
-  * `shared/core/client/api|impl` - http client
+  * `shared/core/network/api|impl` - http client
   * `shared/core/service/api|impl` - Spotify rest api service
   * `shared/core/db/api|impl` - local sql database
   * `shared/core/storage/api|impl` - preferences storage

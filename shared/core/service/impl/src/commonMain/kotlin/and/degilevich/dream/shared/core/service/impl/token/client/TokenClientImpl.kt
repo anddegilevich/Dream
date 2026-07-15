@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.core.service.impl.token.client
 
 import and.degilevich.dream.SharedBuildConfig
-import and.degilevich.dream.shared.core.client.api.RemoteClient
+import and.degilevich.dream.shared.core.network.api.RemoteClient
 import and.degilevich.dream.shared.core.service.impl.token.model.Tokens
 import and.degilevich.dream.shared.core.service.impl.token.model.request.TokenResponse
 import and.degilevich.dream.shared.core.service.impl.token.storage.TokensStorage

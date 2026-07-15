@@ -21,9 +21,7 @@ internal class AlbumReleasesComponentImpl(
     >(
     componentContext = componentContext,
     domainComponentFactory = { childComponentContext ->
-        AlbumReleasesDomainComponent(
-            componentContext = childComponentContext
-        )
+        AlbumReleasesDomainComponent(componentContext = childComponentContext)
     },
     initialUIState = AlbumReleasesUIState.empty(),
     uiStateMapper = AlbumReleasesUIStateMapper()

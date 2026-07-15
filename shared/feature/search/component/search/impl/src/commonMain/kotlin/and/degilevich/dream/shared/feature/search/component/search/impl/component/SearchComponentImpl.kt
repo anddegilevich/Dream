@@ -21,9 +21,7 @@ internal class SearchComponentImpl(
     >(
     componentContext = componentContext,
     domainComponentFactory = { childComponentContext ->
-        SearchDomainComponent(
-            componentContext = childComponentContext
-        )
+        SearchDomainComponent(componentContext = childComponentContext)
     },
     initialUIState = SearchUIState.empty(),
     uiStateMapper = SearchUIStateMapper()

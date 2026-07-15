@@ -27,9 +27,7 @@ internal class NavbarComponentImpl(
     >(
     componentContext = componentContext,
     domainComponentFactory = { childComponentContext ->
-        NavbarDomainComponent(
-            componentContext = childComponentContext
-        )
+        NavbarDomainComponent(componentContext = childComponentContext)
     },
     initialUIState = NavbarUIState.empty(),
     uiStateMapper = NavbarUIStateMapper()

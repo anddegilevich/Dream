@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.core.service.impl
 
 import and.degilevich.dream.SharedBuildConfig
-import and.degilevich.dream.shared.core.client.api.RemoteClient
+import and.degilevich.dream.shared.core.network.api.RemoteClient
 import and.degilevich.dream.shared.core.service.api.ApiService
 import and.degilevich.dream.shared.core.service.api.generated.api.AlbumsApi
 import and.degilevich.dream.shared.core.service.api.generated.api.ArtistsApi
