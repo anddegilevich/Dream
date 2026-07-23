@@ -21,7 +21,7 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 
 ```
 domain/model/artifact   → ALLOWED: foundation only
-domain/model/core       → ALLOWED: domain/model/artifact (own), sibling feature data/model/artifact|core
+domain/model/core       → ALLOWED: domain/model/artifact (own), sibling feature domain/model/artifact|core
 
 data/api                → ALLOWED: domain/model/core (own)
                           NOT_ALLOWED: sibling feature data/*
@@ -31,8 +31,8 @@ data/mapper/api         → ALLOWED: domain/model/core (own)
 
 data/mapper/impl        → ALLOWED: data/mapper/api (own), sibling feature data/mapper/api (reuse cross-feature mappers)
 
-data/impl               → ALLOWED: data/api (own), data/mapper/api (own), core:service/db:api
-                          NOT_ALLOWED: sibling feature data/* (enforced — no cross-feature data deps)
+data/impl               → ALLOWED: data/api (own), data/mapper/api (own), core:service/db:api, sibling feature data/mapper/api (reuse cross-feature mappers)
+                          NOT_ALLOWED: sibling feature data/api|impl (enforced — no cross-feature data deps)
 
 domain/api              → ALLOWED: data/api (own) as api() dep ← key: transitive for consumers, domain/model/core
 
@@ -41,11 +41,11 @@ domain/impl             → ALLOWED: domain/api (own) — gets data/api+Reposito
 
 ui/api                  → ALLOWED: domain/model/core, sibling feature ui/api ALLOWED (composable reuse), design:system
 
-ui/impl                 → ALLOWED: ui/api (own), sibling feature data/mapper/api (shared domain to ui mappers)
+ui/impl                 → ALLOWED: ui/api (own), domain/model/core|artifact (own), sibling feature ui/api (reuse)
 
 ui/component/<s>/api    → ALLOWED: foundation:decompose
 
-ui/component/<s>/impl   → ALLOWED: component/api (own), domain/api (own), sibling feature domain/api, sibling feature component/api
+ui/component/<s>/impl   → ALLOWED: component/api (own), ui/api (own + sibling), domain/api (own), sibling feature domain/api, sibling feature component/api
                           NOT_ALLOWED: data/*, ui/impl, sibling component/impl
 ```
 
@@ -56,7 +56,8 @@ ui/component/<s>/impl   → ALLOWED: component/api (own), domain/api (own), sibl
 3. **`domain/impl` never declares `data/api` directly** — gets it via transitive chain from `domain/api`
 4. **`data/mapper/api` maps between domain model types only** (not raw data types) — keeps them safely reusable cross-feature without exposing internal data types
 5. **`domain/model/artifact|core` have no `/api` suffix** — the module itself is the API (api-only, no impl)
-6. **No sibling feature `data/*` imports anywhere** except `data/impl` for its own feature — cross-feature data access goes through domain module
+6. **No sibling feature `data/api`|`data/impl` imports anywhere** except `data/impl` for its own feature — cross-feature data access goes through domain module (sibling `data/mapper/api` reuse is the one carved-out exception, for both `data/impl` and `data/mapper/impl`)
+7. **Matrix is convention-only, not build-enforced** — convention plugins (`convention/.../plugins/base/*.kt`) only wire shared infra deps, they don't check feature-to-feature dependency direction. Violations can slip in (e.g. a feature's `domain/impl` pulling another feature's `data/api` directly) and must be caught in review.
 
 ## Koin module naming convention
 
