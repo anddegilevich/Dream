@@ -1,10 +1,14 @@
 package and.degilevich.dream.shared.feature.search.model.core.dictionary
 
+import and.degilevich.dream.shared.foundation.abstraction.id.AnyIdentifier
 import and.degilevich.dream.shared.foundation.abstraction.id.Identified
-import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.identifier
+import kotlinx.serialization.Serializable
 
-enum class SearchType(override val id: Identifier) : Identified {
+@Serializable
+enum class SearchType(
+    override val id: AnyIdentifier
+) : Identified {
     ALBUM(id = identifier("album")),
     ARTIST(id = identifier("artist")),
     PLAYLIST(id = identifier("playlist")),

@@ -8,7 +8,7 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-fun albumUiModule() = module {
+fun albumUIModule() = module {
     factoryOf(::AlbumInfoToCardUIDataMapperImpl) bind AlbumInfoToCardUIDataMapper::class
     factoryOf(::AlbumTypeToUITextMapperImpl) bind AlbumTypeToUITextMapper::class
 }

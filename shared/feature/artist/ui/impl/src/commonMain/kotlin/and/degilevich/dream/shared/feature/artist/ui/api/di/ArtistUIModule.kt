@@ -8,7 +8,7 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-fun artistUiModule() = module {
+fun artistUIModule() = module {
     factoryOf(::ArtistDataToLabelUIDataMapperImpl) bind ArtistDataToLabelUIDataMapper::class
     factoryOf(::ArtistsInfoToStringMapperImpl) bind ArtistsInfoToStringMapper::class
 }

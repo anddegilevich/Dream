@@ -8,15 +8,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Api generation
-./gradlew :shared:core:service:api:openApiGenerate
+./gradlew :shared:core:service:api:openApiGenerate # /open-api-generate
 
 # Tests
-./gradlew test # Unit tests
-./gradlew detekt # Static analysis
+./gradlew test # Unit tests, /test
+./gradlew detekt # Static analysis, /detekt
 
 # Build
-./gradlew :android:app:assembleDebug # Android
-xcodebuild build -project ios/app.xcodeproj -configuration Debug -scheme prodDebug -sdk iphonesimulator # iOS
+./gradlew :android:app:assembleDebug # Android, /build android
+xcodebuild build -project ios/app.xcodeproj -configuration Debug -scheme prodDebug -sdk iphonesimulator # iOS, /build ios
 ```
 
 ### Flavors
@@ -107,48 +107,3 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 * **Android**: `DreamApplication` → `MainActivity`
 * **iOS**: `iOSApp` → `RootView`
 * **Shared**: `RootComponentImpl` → `ComposeApp` (`RootComponentImpl.Render()` renders the internal `ComposeApp` composable; platforms call `rootComponent.Render()` directly, no composable wrapper is exposed)
-
-## Rules
-
-### Dependencies rules
-
-* Modules depend only downward or on same-level
-* `api` module never depends on `impl`
-* Implementations have `internal` visibility and provided via DI
-* Each `impl` layer provides its own module (e.g., `ArtistDataModule`).
-  `shared/di/AppModule` assembles all modules.
-
-### Compose rules
-
-#### UI models rules
-
-* UI models names ended with `UIData`. Only exception is state models of MVI components (end with `UIState`)
-* UI models annotated with `Immutable` or `Stable`
-* UI models do not depend on domain models
-* Collection parameters of ui models should be `ImmutableList` instead of `List`
-* `LazyList` items models should have `Identifier`
-
-#### Compose functions rules
-
-* First optional parameter should be `Modifier`
-* Use animations to change visibility/color/position/other render values (e.g., `animateFloatAsState`)
-* MVI pattern is mostly preferable: 
-  - Single state defining parameter `data: UIData`
-  - Single lambda intent handler `onIntent: (Intent) -> Unit`
-* Use `LabeledPreviewParameterProvider` for composables `Preview`
-
-### Component rules
-
-* DomainComponent plays view model role (handle view intents, makes requests, manages domain state)
-* Domain State maps to UIState in BinderComponent using UIStateMapper
-* Domain State and all its parameters should be `Serializable`
-* Component `api` module exposes only a `RenderComponent`-extending marker interface (`Render()`); it has no other members and no dependency on UI/design/state types
-* `UIState`, `Intent`, `SideEffect`, `ComponentImpl`, `DomainComponent`, `UIStateMapper`, preview components/providers and all view composables live in the component's `impl` module
-* Use `BaseComponent`/`BaseBinderComponent`/`BaseDomainComponent` (`shared/feature/base/component/impl`) as base classes for new components
-
-### Test rules
-
-#### UI test rules
-
-* Map UI elements with Compose Semantics `testTags`
-* UI tests should check all view states provided by `PreviewParameterProvider`
