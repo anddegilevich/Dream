@@ -10,7 +10,7 @@ description: Module dependency direction and api/impl visibility rules. Use when
 * Implementations have `internal` visibility and are provided via DI
 * Each `impl` layer provides its own Koin module (e.g. `ArtistDataModule`).
 * `shared/di/AppModule` assembles all modules
-* Full per-layer dependency matrix (what each layer may/may not depend on) lives in the `feature-module-structure` skill — this file only covers the general direction rule and DI wiring
+* Full per-layer dependency matrix (what each layer may/may not depend on) lives in the `feature-module-rules` skill — this file only covers the general direction rule and DI wiring
 * Not build-enforced: convention plugins (`convention/.../plugins/base/*.kt`) wire shared infra only, they don't check feature-to-feature dependency direction, so violations of these rules can compile fine and must be caught in review
 
 ## DI aggregation hierarchy

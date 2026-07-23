@@ -1,5 +1,5 @@
 ---
-name: feature-module-structure
+name: feature-module-rules
 description: Vertical-slice feature module layout, dependency matrix, and Koin naming convention. Use when creating a new feature module, or a new layer (data/domain/ui/component) inside an existing one.
 ---
 

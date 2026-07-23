@@ -1,5 +1,5 @@
 ---
-name: component-rules
+name: component-module-rules
 description: Decompose component conventions. Use when creating or modifying a Decompose component (ComponentImpl, DomainComponent, UIState/Intent/SideEffect, component api/impl split).
 ---
 
