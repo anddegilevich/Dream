@@ -6,6 +6,6 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-fun trackUiModule() = module {
+fun trackUIModule() = module {
     factoryOf(::TrackInfoToTrackCardUIDataMapperImpl) bind TrackInfoToTrackCardUIDataMapper::class
 }

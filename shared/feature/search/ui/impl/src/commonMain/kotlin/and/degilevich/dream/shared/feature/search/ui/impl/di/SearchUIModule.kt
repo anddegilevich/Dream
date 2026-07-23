@@ -10,7 +10,7 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-fun searchUiModule() = module {
+fun searchUIModule() = module {
     factoryOf(::AlbumInfoToSearchCardUIDataMapperImpl) bind AlbumInfoToSearchCardUIDataMapper::class
     factoryOf(::ArtistDataToSearchCardUIDataMapperImpl) bind ArtistDataToSearchCardUIDataMapper::class
     factoryOf(::TrackDataToSearchCardUIDataMapperImpl) bind TrackDataToSearchCardUIDataMapper::class
