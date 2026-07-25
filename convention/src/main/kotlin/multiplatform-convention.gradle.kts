@@ -57,6 +57,7 @@ kotlin {
     sourceSets {
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation(libs().kotest.assertions.core)
         }
         getByName("androidHostTest").dependencies {
             implementation(libs().kotlin.test.junit)

@@ -3,9 +3,9 @@ package and.degilevich.dream.shared.feature.album.data.mapper.impl.remote
 import and.degilevich.dream.shared.core.service.api.generated.model.AlbumObject
 import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.AlbumOutputToDataMapper
 import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.AlbumTracksOutputToDataMapper
-import and.degilevich.dream.shared.feature.album.model.artifact.data.AlbumId
-import and.degilevich.dream.shared.feature.album.model.artifact.dictionary.AlbumType
-import and.degilevich.dream.shared.feature.album.model.core.data.AlbumData
+import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
+import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
+import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.SimplifiedArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.data.mapper.api.remote.ImageOutputToDataMapper
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getEnumValueByIdOrElse

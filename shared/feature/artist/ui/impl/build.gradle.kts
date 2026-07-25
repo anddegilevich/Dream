@@ -6,7 +6,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.feature.artist.ui.api)
-            implementation(projects.shared.feature.artist.domain.model.core)
         }
     }
 

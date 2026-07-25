@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.data.impl.local
 
-import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 
 internal interface ArtistLocalDataSource {
 

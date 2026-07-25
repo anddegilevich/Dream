@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.artist.data.mapper.impl.local
 
 import and.degilevich.dream.shared.core.db.api.entity.ArtistEntity
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.SimplifiedArtistDataToEntityMapper
-import and.degilevich.dream.shared.feature.artist.model.artifact.data.SimplifiedArtistData
+import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.SimplifiedArtistData
 
 internal class SimplifiedArtistDataToEntityMapperImpl : SimplifiedArtistDataToEntityMapper {
 

@@ -4,8 +4,8 @@ import and.degilevich.dream.shared.feature.album.data.api.repository.AlbumReposi
 import and.degilevich.dream.shared.feature.artist.data.api.repository.ArtistRepository
 import and.degilevich.dream.shared.feature.search.data.api.repository.SearchRepository
 import and.degilevich.dream.shared.feature.search.domain.api.usecase.SearchUseCase
-import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchParams
-import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
 import and.degilevich.dream.shared.feature.track.data.api.repository.TrackRepository
 
 internal class SearchUseCaseImpl(

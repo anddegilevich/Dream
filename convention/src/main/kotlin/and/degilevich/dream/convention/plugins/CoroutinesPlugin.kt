@@ -19,6 +19,7 @@ internal class CoroutinesPlugin : Plugin<Project> {
                     }
                     commonTest.dependencies {
                         implementation(libs().kotlinx.coroutines.test)
+                        implementation(libs().turbine)
                     }
                 }
             }

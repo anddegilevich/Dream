@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.details.impl.component.model
 
-import and.degilevich.dream.shared.feature.album.model.artifact.data.SimplifiedAlbumData
-import and.degilevich.dream.shared.feature.artist.model.core.data.ArtistData
+import and.degilevich.dream.shared.feature.album.model.artifact.api.data.SimplifiedAlbumData
+import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
 import kotlinx.serialization.Serializable
 

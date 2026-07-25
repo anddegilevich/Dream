@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.track.data.impl.local
 
-import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
+import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 
 internal interface TrackLocalDataSource {
     suspend fun saveTracks(tracks: List<TrackData>)
