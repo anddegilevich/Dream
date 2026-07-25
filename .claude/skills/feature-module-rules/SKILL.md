@@ -9,8 +9,8 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 
 * `data/mapper/api|impl` - mappers from core remote and local models to domain
 * `data/api|impl` - data access (repositories, remote sources, local sources, storages)
-* `domain/model/artifact` - shared feature domain models (to avoid circular deps with other features)
-* `domain/model/core` - feature domain models
+* `domain/model/artifact/api|test` - shared feature domain models (to avoid circular deps with other features); `test` holds fixtures, safe for cross-feature reuse
+* `domain/model/core/api|test` - feature domain models; `test` holds fixtures, own-feature scoped
 * `domain/api|impl` - use cases, managers, validators, value holders, etc.
 * `ui/api|impl` - ui models, compose functions, mappers from domain to ui models
 * `component/<component_name>/api|impl` - screens/views
@@ -20,13 +20,15 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 ## Dependency matrix
 
 ```
-domain/model/artifact   → ALLOWED: foundation only
-domain/model/core       → ALLOWED: domain/model/artifact (own), sibling feature domain/model/artifact|core
+domain/model/artifact/api   → ALLOWED: foundation only
+domain/model/artifact/test  → ALLOWED: domain/model/artifact/api (own) as api() dep — safe for cross-feature reuse (artifact/api graph is a leaf-terminated DAG, can never cycle)
+domain/model/core/api       → ALLOWED: domain/model/artifact/api (own), sibling feature domain/model/artifact/api|core/api
+domain/model/core/test      → ALLOWED: domain/model/core/api (own), domain/model/artifact/test (own) as api() deps — own-feature scoped; a cross-feature core/test dependency must follow the same single direction already established by the core/api graph (never the reverse), to avoid a real Gradle circular-project-dependency
 
-data/api                → ALLOWED: domain/model/core (own)
+data/api                → ALLOWED: domain/model/core/api (own)
                           NOT_ALLOWED: sibling feature data/*
 
-data/mapper/api         → ALLOWED: domain/model/core (own)
+data/mapper/api         → ALLOWED: domain/model/core/api (own)
                           NOT_ALLOWED: data/api, raw data types, domain/api, ui
 
 data/mapper/impl        → ALLOWED: data/mapper/api (own), sibling feature data/mapper/api (reuse cross-feature mappers)
@@ -34,20 +36,26 @@ data/mapper/impl        → ALLOWED: data/mapper/api (own), sibling feature data
 data/impl               → ALLOWED: data/api (own), data/mapper/api (own), core:service/db:api, sibling feature data/mapper/api (reuse cross-feature mappers)
                           NOT_ALLOWED: sibling feature data/api|impl (enforced — no cross-feature data deps)
 
-domain/api              → ALLOWED: data/api (own) as api() dep ← key: transitive for consumers, domain/model/core
+domain/api              → ALLOWED: data/api (own) as api() dep ← key: transitive for consumers, domain/model/core/api
 
 domain/impl             → ALLOWED: domain/api (own) — gets data/api+Repository transitively, sibling feature domain/api
                           NOT_ALLOWED: sibling feature data/*, ui
 
-ui/api                  → ALLOWED: domain/model/core, sibling feature ui/api ALLOWED (composable reuse), design:system
+ui/api                  → ALLOWED: domain/model/core/api, sibling feature ui/api ALLOWED (composable reuse), design:system
 
-ui/impl                 → ALLOWED: ui/api (own), domain/model/core|artifact (own), sibling feature ui/api (reuse)
+ui/impl                 → ALLOWED: ui/api (own), domain/model/core/api|artifact/api (own), sibling feature ui/api (reuse)
 
 ui/component/<s>/api    → ALLOWED: foundation:decompose
 
 ui/component/<s>/impl   → ALLOWED: component/api (own), ui/api (own + sibling), domain/api (own), sibling feature domain/api, sibling feature component/api
                           NOT_ALLOWED: data/*, ui/impl, sibling component/impl
+
+data/test               → ALLOWED: data/api (own) as api() dep
+ui/test                 → ALLOWED: ui/api (own) as api() dep, domain/model/artifact/api|core/api (own, if the api's interfaces reference those types)
+domain/test             → ALLOWED: domain/api (own) as api() dep
 ```
+
+`<layer>/test` modules are sibling to that layer's `api`/`impl`, built with the same convention plugin as that layer's own `api` module (e.g. `data/test` uses `project.feature.data.api`, `ui/test` uses `project.feature.ui.api`, model `test` uses `project.feature.model`) — there is no dedicated test plugin. They host hand-rolled fakes of that layer's own public `api` interfaces, consumed exclusively via `commonTest` dependencies (never `commonMain`) by `impl` modules that need the fake — including cross-feature (same carve-out as `data/mapper/api` reuse). Only created when there's an actual consumer — no speculative empty `test` modules. See `unit-test-rules`.
 
 ## Key architectural decisions
 
@@ -55,7 +63,7 @@ ui/component/<s>/impl   → ALLOWED: component/api (own), ui/api (own + sibling)
 2. **`domain/api` exposes `data/api` as `api()` dep** — consumers get Repository interface transitively; no duplicate dep declarations
 3. **`domain/impl` never declares `data/api` directly** — gets it via transitive chain from `domain/api`
 4. **`data/mapper/api` maps between domain model types only** (not raw data types) — keeps them safely reusable cross-feature without exposing internal data types
-5. **`domain/model/artifact|core` have no `/api` suffix** — the module itself is the API (api-only, no impl)
+5. **`domain/model/artifact|core` have no `impl` submodule** — only `api` (the model contract) and, when there's a consumer, `test` (fixtures); no speculative empty `test` modules
 6. **No sibling feature `data/api`|`data/impl` imports anywhere** except `data/impl` for its own feature — cross-feature data access goes through domain module (sibling `data/mapper/api` reuse is the one carved-out exception, for both `data/impl` and `data/mapper/impl`)
 7. **Matrix is convention-only, not build-enforced** — convention plugins (`convention/.../plugins/base/*.kt`) only wire shared infra deps, they don't check feature-to-feature dependency direction. Violations can slip in (e.g. a feature's `domain/impl` pulling another feature's `data/api` directly) and must be caught in review.
 
