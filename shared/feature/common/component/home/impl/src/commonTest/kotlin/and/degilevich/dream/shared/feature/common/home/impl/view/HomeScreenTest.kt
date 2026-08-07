@@ -8,7 +8,9 @@ import and.degilevich.dream.shared.feature.common.home.impl.component.child.Home
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.common.home.impl.view.semantic.HomeScreenSemantic
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
@@ -16,6 +18,7 @@ import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.v2.runComposeUiTest
 import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.value.MutableValue
+import androidx.compose.ui.unit.dp
 import kotlin.test.Test
 import com.arkivanov.decompose.router.pages.ChildPages as ChildPagesState
 
@@ -33,7 +36,10 @@ class HomeScreenTest {
                         component = object : NavbarComponent {
                             @Composable
                             override fun Render() {
-                                ViewStub(stub = "NavbarComponent")
+                                ViewStub(
+                                    modifier = Modifier.height(44.dp),
+                                    stub = "NavbarComponent"
+                                )
                             }
                         }
                     ),

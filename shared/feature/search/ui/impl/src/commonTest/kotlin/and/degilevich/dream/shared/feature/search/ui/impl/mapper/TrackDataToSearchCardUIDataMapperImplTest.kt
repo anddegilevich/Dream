@@ -41,7 +41,8 @@ class TrackDataToSearchCardUIDataMapperImplTest {
             id = "track-1",
             album = simplifiedAlbumData(
                 id = "album-1",
-                images = emptyList())
+                images = emptyList()
+            )
         )
         val mapper = createMapper(
             artistsInfoToStringMapper = FakeArtistsInfoToStringMapper(onMap = { "" })

@@ -42,7 +42,8 @@ class SimplifiedTrackOutputToDataMapperImplTest {
     }
 
     private fun createMapper(
-        simplifiedArtistOutputToDataMapper: SimplifiedArtistOutputToDataMapper = FakeSimplifiedArtistOutputToDataMapper()
+        simplifiedArtistOutputToDataMapper: SimplifiedArtistOutputToDataMapper =
+            FakeSimplifiedArtistOutputToDataMapper()
     ) = SimplifiedTrackOutputToDataMapperImpl(
         simplifiedArtistOutputToDataMapper = simplifiedArtistOutputToDataMapper
     )
