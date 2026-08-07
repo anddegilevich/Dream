@@ -7,6 +7,10 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.feature.artist.ui.api)
         }
+        commonTest.dependencies {
+            implementation(projects.shared.feature.artist.domain.model.core.test)
+            implementation(projects.shared.feature.image.domain.model.artifact.test)
+        }
     }
 
     android {

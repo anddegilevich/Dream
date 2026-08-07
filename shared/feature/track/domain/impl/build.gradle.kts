@@ -7,6 +7,10 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.feature.track.domain.api)
         }
+        commonTest.dependencies {
+            implementation(projects.shared.feature.track.data.test)
+            implementation(projects.shared.feature.track.domain.model.core.test)
+        }
     }
 
     android {

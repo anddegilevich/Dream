@@ -11,7 +11,6 @@ kotlin {
             implementation(projects.shared.feature.track.data.mapper.api)
         }
         commonTest.dependencies {
-            implementation(projects.shared.core.service.test)
             implementation(projects.shared.feature.image.data.mapper.test)
             implementation(projects.shared.feature.image.domain.model.artifact.test)
             implementation(projects.shared.feature.artist.data.mapper.test)

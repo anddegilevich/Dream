@@ -22,6 +22,10 @@ internal class BaseDataMapperImplPlugin : Plugin<Project> {
                         implementation(project(":shared:core:service:api"))
                         implementation(project(":shared:core:db:api"))
                     }
+                    commonTest.dependencies {
+                        implementation(project(":shared:core:service:test"))
+                        implementation(project(":shared:core:db:test"))
+                    }
                 }
             }
         }
