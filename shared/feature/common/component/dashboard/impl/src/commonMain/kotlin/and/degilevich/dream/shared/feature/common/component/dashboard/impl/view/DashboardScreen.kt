@@ -6,10 +6,12 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
+import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.semantic.DashboardScreenSemantic
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shared.foundation.decompose.compose.preview.PreviewLazyChildItems
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
@@ -23,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.lazyitems.ChildItemsLifecycleController
@@ -51,7 +54,11 @@ fun DashboardScreen(
             items = itemsState.items
         ) { config ->
             val item = remember(config) { items[config] }
-            item.Render()
+            Box(
+                modifier = Modifier.testTag(DashboardScreenSemantic.TEST_TAG_ITEM)
+            ) {
+                item.Render()
+            }
         }
     }
 

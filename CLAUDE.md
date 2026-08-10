@@ -82,7 +82,7 @@ Feature base plugins (e.g., `BaseComponentApiPlugin`) configure feature modules.
   * `shared/design/theme` - theme colors, typography, shapes, etc.
   * `shared/design/system` - ui components like buttons, inputs, etc.
 * `shared/feature/` - feature modules
-  * `shared/feature/base/` - base abstractions for typical feature modules (base component, base data sources)
+  * `shared/feature/base/` - base abstractions for typical feature modules (base component, base storage)
   * ...
 * `shared/navigation/api|impl` - centralized app navigation
 * `shared/di` - dependencies hub wiring all modules
@@ -94,8 +94,8 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 
 * `data/mapper/api|impl`- mappers from core remote and local models to domain
 * `data/api|impl`- data access (repositories, remote sources, local sources, storages)
-* `domain/model/artifact` - shared feature domain models (to avoid circular deps with other features)
-* `domain/model/core` - feature domain models
+* `domain/model/artifact/api` - shared cross-feature domain models (to avoid circular deps with other features)
+* `domain/model/core/api` - feature-local domain models
 * `domain/api|impl` - use cases, managers, validators, value holders, etc.
 * `ui/api|impl` - ui models, compose functions, mappers from to ui models
 * `component/<component_name>/api|impl` - screens/views

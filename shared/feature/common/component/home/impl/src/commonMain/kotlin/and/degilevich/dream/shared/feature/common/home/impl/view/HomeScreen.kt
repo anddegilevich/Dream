@@ -8,7 +8,9 @@ import and.degilevich.dream.shared.feature.common.component.navbar.api.component
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
+import and.degilevich.dream.shared.feature.common.home.impl.view.semantic.HomeScreenSemantic
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.extensions.compose.pages.ChildPages
@@ -53,7 +56,11 @@ fun HomeScreen(
             key = { child -> child.configuration.id.value },
             scrollAnimation = PagesScrollAnimation.Default,
         ) { _, page ->
-            page.Render()
+            Box(
+                modifier = Modifier.testTag(HomeScreenSemantic.TEST_TAG_PAGE)
+            ) {
+                page.Render()
+            }
         }
         navbar.Render()
     }

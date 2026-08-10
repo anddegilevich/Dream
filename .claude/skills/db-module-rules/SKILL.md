@@ -14,4 +14,4 @@ description: core/db module conventions — Room entities, DAOs, cross-refs, rel
 * Joined reads use a `<X>ExtendedEntity` relation data class: `@Embedded val x: XEntity` plus `@Relation(entity = ..., parentColumn = ..., entityColumn = ..., associateBy = Junction(...))` for many-to-many, or a plain `@Relation` for a direct FK (e.g. tracks belonging to an album)
 * `AppDatabase` interface declares one `fun get<X>Dao(): <X>Dao` per entity/cross-ref; `AbstractAppDatabase`'s `@Database(entities = [...])` list must include every `Entity`/cross-ref-`Entity` class or Room fails to compile
 * `dbModule()` (`core/db/impl/di`) wires `AppDatabaseFactory` and calls `.create()` once behind a Koin `single { }` bound to `AppDatabase::class`
-* Local data sources (feature `data/impl`) depend on `AppDatabase` (via `BaseLocalDataSource`), never on `AbstractAppDatabase` or a concrete Dao impl directly — see `data-module-rules`
+* Local data sources (feature `data/impl`) take `AppDatabase` as their own constructor param, never `AbstractAppDatabase` or a concrete Dao impl directly — see `data-module-rules`

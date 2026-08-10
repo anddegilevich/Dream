@@ -94,6 +94,8 @@ junit = "1.3.0" # https://mvnrepository.com/artifact/androidx.test.ext/junit
 espresso-core = "3.7.0" # https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
 uiautomator = "2.3.0" # https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
 benchmark-macro-junit4 = "1.4.1" # https://mvnrepository.com/artifact/androidx.benchmark/benchmark-macro-junit4
+kotest = "6.2.3" # https://github.com/kotest/kotest/releases
+turbine = "1.2.1" # https://github.com/cashapp/turbine/releases
 
 # Project
 project-plugin = "1.0.0"
@@ -222,6 +224,12 @@ glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = 
 # FileKit - https://filekit.mintlify.app
 filekit-core = { module = "io.github.vinceglb:filekit-core", version.ref = "filekit" }
 filekit-dialogs = { module = "io.github.vinceglb:filekit-dialogs", version.ref = "filekit" }
+
+# Kotest - https://kotest.io
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+# Turbine - https://github.com/cashapp/turbine
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [bundles]
 

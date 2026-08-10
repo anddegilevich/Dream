@@ -5,8 +5,8 @@ import and.degilevich.dream.shared.feature.track.component.details.impl.componen
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsSideEffect
 import and.degilevich.dream.shared.feature.track.component.details.impl.component.model.TrackDetailsState
 import and.degilevich.dream.shared.feature.track.domain.api.usecase.GetTrackUseCase
-import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
-import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackParams
+import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pop

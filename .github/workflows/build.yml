@@ -11,21 +11,8 @@ env:
   GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096M -Dorg.gradle.daemon=true -Dorg.gradle.parallel=true -Dorg.gradle.configuration-cache=true -Dorg.gradle.caching=true"
 
 jobs:
-  init-project:
-    name: Init project
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup
-        uses: ./.github/actions/setup
-        with:
-          client-id: ${{ secrets.CLIENT_ID }}
-          client-secret: ${{ secrets.CLIENT_SECRET }}
-
-  test:
-    name: Run tests
+  detekt:
+    name: Static analysis
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,21 +25,35 @@ jobs:
           client-secret: ${{ secrets.CLIENT_SECRET }}
 
       - name: Run static code analysis
-        run: ./gradlew detekt
+        run: ./gradlew detekt --continue
 
-      - name: Run tests
-        run: ./gradlew test
+  unit-test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Upload test reports
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+
+      - name: Run unit tests
+        run: ./gradlew unitTest :android:app:test
+
+      - name: Upload unit test reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-reports
+          name: unit-test-reports
           path: "**/build/reports/tests/"
 
   build-android:
     name: Build Android
     runs-on: ubuntu-latest
-    needs: test
+    needs: unit-test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,10 +67,10 @@ jobs:
       - name: Build Android debug APK
         run: ./gradlew :android:app:assembleDebug
 
-  build-ios:
-    name: Build iOS
+  ui-test-build-ios:
+    name: UI tests + Build iOS
     runs-on: macos-latest
-    needs: test
+    needs: unit-test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -80,8 +81,15 @@ jobs:
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
 
-      - name: Run iOS tests
-        run: ./gradlew iosSimulatorArm64Test
+      - name: Run Compose UI tests
+        run: ./gradlew uiTest
+
+      - name: Upload UI test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-test-reports
+          path: "**/build/reports/tests/"
 
       - name: Build iOS simulator app
         run: |

@@ -59,6 +59,9 @@ Here is the list of frameworks, that were used in this project:
 * **Static Code Analysis** - [Detekt](https://detekt.dev)
 * **Crypto** - [Keystore](https://developer.android.com/privacy-and-security/keystore) + 
 [Keychain](https://developer.apple.com/documentation/security/keychain-services)
+* **Testing** - [kotlin.test](https://kotlinlang.org/api/latest/kotlin.test) (Runner), 
+  [Kotest](https://kotest.io) (Assertions),
+  [Turbine](https://github.com/cashapp/turbine) (Flow testing)
 
 ## Architecture
 
@@ -90,12 +93,18 @@ Here is the list of frameworks, that were used in this project:
 | | | | |- 2.7.2.1.2 data/impl
 | | | | |- 2.7.2.1.3 data/mapper/api
 | | | | |- 2.7.2.1.4 data/mapper/impl
+| | | | |- 2.7.2.1.5 data/test
 | | | |- 2.7.2.2 domain
-| | | | |- 2.7.2.2.1 domain/model/artifact
-| | | | |- 2.7.2.2.2 domain/model/core
-| | | | |- 2.7.2.2.3 domain/api
-| | | | |- 2.7.2.2.4 domain/impl
+| | | | |- 2.7.2.2.1 domain/model/artifact/api
+| | | | |- 2.7.2.2.2 domain/model/artifact/test
+| | | | |- 2.7.2.2.3 domain/model/core/api
+| | | | |- 2.7.2.2.4 domain/model/core/test
+| | | | |- 2.7.2.2.5 domain/api
+| | | | |- 2.7.2.2.6 domain/impl
 | | | |- 2.7.2.3 ui
+| | | | |- 2.7.2.3.1 ui/api
+| | | | |- 2.7.2.3.2 ui/impl
+| | | | |- 2.7.2.3.3 ui/test
 | | | |- 2.7.2.4 component
 | | | | |- 2.7.2.4.1 list
 | | | | |- 2.7.2.4.2 details
@@ -186,7 +195,7 @@ Base abstractions for creating typical feature modules.
 
 ***Contains:***
 Base component implementation;
-Abstraction over core data sources for feature sources.
+Base storage abstraction for feature preference storages.
 
 ### 2.7.2 shared.feature.artist 
 
@@ -238,7 +247,7 @@ Koin DI module (`[feature]DataMapperModule()`).
 
 Feature specific domain logic classes that accumulate logic for concise calls from components.
 
-### 2.7.2.2.1 shared.feature.artist.domain.model.artifact
+### 2.7.2.2.1 shared.feature.artist.domain.model.artifact.api
 
 Contains models that can be imported in other features' model modules.
 Used to prevent cycle dependencies.
@@ -247,7 +256,7 @@ Used to prevent cycle dependencies.
 Simplified data classes used as entry points in other features' models;
 Interfaces that declare specific behavior.
 
-### 2.7.2.2.2 shared.feature.artist.domain.model.core
+### 2.7.2.2.3 shared.feature.artist.domain.model.core.api
 
 Feature specific domain models.
 Not intended to be imported in other features' model modules.
@@ -257,7 +266,7 @@ Data classes;
 Request/result classes;
 Enum dictionaries.
 
-### 2.7.2.2.3 shared.feature.artist.domain.api / domain.impl
+### 2.7.2.2.5 shared.feature.artist.domain.api|impl
 
 Feature specific domain logic classes that accumulate logic for concise calls from components.
 
@@ -270,12 +279,19 @@ etc.
 
 ### 2.7.2.3 shared.feature.artist.ui
 
-Feature ui elements.
+Feature ui elements, split into `ui.api`/`ui.impl` (plus `ui.test` when needed).
+
+### 2.7.2.3.1 shared.feature.artist.ui.api
 
 ***Contains:***
-UI models;
-Compose functions;
-Mappers to map domain models to ui.
+UI models (`UIData`);
+Mapper interfaces from domain models to ui;
+Shared composables reused by sibling features.
+
+### 2.7.2.3.2 shared.feature.artist.ui.impl
+
+***Contains:***
+UI mapper implementations.
 
 ### 2.7.2.4 shared.feature.artist.component
 
@@ -332,6 +348,14 @@ Android app baseline profile generator.
 ### 4 ios
 
 IOS XCode project.
+
+### test modules
+
+Hand-rolled fakes of the `api`'s module classes.
+
+***Contains:***
+Classes fake implementations;
+Fixture model methods.
 
 ## Setup
 

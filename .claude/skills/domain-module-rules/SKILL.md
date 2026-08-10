@@ -10,3 +10,7 @@ description: Domain layer conventions — use cases, managers. Use when creating
 * Use case impl depends only on its own feature's `data/api` `Repository` (never `data/impl`, never a remote/local data source directly)
 * Business logic (e.g. fetch-then-cache, composing multiple repository calls) lives in the use case, not the repository
 * Long-lived domain-scoped mutable state (not request-shaped, not a use case) may use `ValueHolder`/`MutableValueHolder`/`AbstractMutableValueHolder` (`shared/foundation/abstraction/holder`) as base
+
+## Testing
+
+* `UseCaseImpl` → `unit-test-rules`: fake the `Repository`/`Repository`s it depends on, consumed from the owning feature's `data/test` module (and any cross-feature `data/test` module it needs — e.g. a use case depending on another feature's `domain/api`, which transitively exposes that feature's `Repository`)

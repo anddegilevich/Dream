@@ -13,3 +13,7 @@ description: data/mapper module conventions — remote/local mapper interfaces, 
 * Mapper impls compose other mappers via constructor injection + `.mapWith(mapper)` (singular) or `.mapWith(mapper)` on a `List`/`Iterable` (plural) — never map nested types by hand
 * Cross-feature mapper reuse is allowed only through another feature's `data/mapper/api` (e.g. artist's mapper injecting `SimplifiedAlbumOutputToDataMapper` from `feature/album`) — never through a sibling `data/api`/`data/impl`
 * Every mapper impl is bound in `<feature>DataMapperModule()` (`data/mapper/impl/di`): `factoryOf(::XImpl) bind X::class`
+
+## Testing
+
+* `MapperImpl` → `unit-test-rules`; fake any nested mapper dependencies inline in the test file (mapper interfaces are cheap to fake and rarely need cross-module reuse — only extract to a dedicated `test` module if another module genuinely needs the fake)

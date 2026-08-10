@@ -14,6 +14,9 @@ kotlin {
             implementation(projects.shared.core.storage.api)
             api(projects.shared.feature.base.data.api)
         }
+        commonTest.dependencies {
+            implementation(projects.shared.foundation.abstraction)
+        }
     }
 
     android {

@@ -6,7 +6,10 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.feature.artist.ui.api)
-            implementation(projects.shared.feature.artist.domain.model.core)
+        }
+        commonTest.dependencies {
+            implementation(projects.shared.feature.artist.domain.model.core.test)
+            implementation(projects.shared.feature.image.domain.model.artifact.test)
         }
     }
 

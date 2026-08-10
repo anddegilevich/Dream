@@ -11,3 +11,8 @@ description: UI layer module conventions — domain-to-UIData mappers and api/im
 * UI mappers are pure sync `map(item): UIModel` — no suspend, no side effects
 * `UIData` models used in lists implement `Identified` + `companion object : EmptyFactory<...>` same pattern as domain core models
 * See `compose-rules` for `UIData` naming/`@Immutable`/collection-type rules and `@Composable` function conventions
+
+## Testing
+
+* `MapperImpl` → `unit-test-rules`; fake its mapper/`ResourceManager` collaborators
+* A UI mapper interface (or `ResourceManager`) consumed cross-feature/cross-module gets its fake in a sibling `ui/test` (or `resource/test`) module (same convention plugin as that layer's own `api` module) so consumers depend on it as `commonTest`-only

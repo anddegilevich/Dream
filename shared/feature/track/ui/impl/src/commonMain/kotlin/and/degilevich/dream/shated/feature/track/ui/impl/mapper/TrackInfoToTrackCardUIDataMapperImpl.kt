@@ -1,6 +1,6 @@
 package and.degilevich.dream.shated.feature.track.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.track.model.artifact.abstraction.TrackInfo
+import and.degilevich.dream.shared.feature.track.model.artifact.api.abstraction.TrackInfo
 import and.degilevich.dream.shated.feature.track.ui.api.mapper.TrackInfoToTrackCardUIDataMapper
 import and.degilevich.dream.shated.feature.track.ui.api.model.TrackCardUIData
 
