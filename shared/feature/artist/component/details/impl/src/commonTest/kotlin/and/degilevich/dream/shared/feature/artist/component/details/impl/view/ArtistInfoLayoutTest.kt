@@ -16,14 +16,12 @@ class ArtistInfoLayoutTest {
     private val name = hasTestTag(ArtistInfoLayoutSemantic.TEST_TAG_NAME)
 
     @Test
-    fun testDefaultState() = runComposeUiTest {
+    fun `render default state - shows artist name`() = runComposeUiTest {
         setContent {
             ComposeAppTheme {
                 ArtistInfoLayout(data = provider.provide())
             }
         }
-        onNode(name)
-            .assertExists()
-            .assertIsDisplayed()
+        onNode(name).assertIsDisplayed()
     }
 }

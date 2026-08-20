@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.feature.common.component.navbar.impl.preview
 
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItemUIData
+import and.degilevich.dream.shared.foundation.abstraction.id.identifier
 import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
@@ -22,11 +23,13 @@ class NavbarItemUIDataPreviewProvider : LabeledPreviewParameterProvider<NavbarIt
     fun provideList(): ImmutableList<NavbarItemUIData> {
         return persistentListOf(
             NavbarItemUIData.empty().copy(
+                id = identifier(value = "1"),
                 text = "Home",
                 icon = Res.images.ic_home_filled,
                 isSelected = true
             ),
             NavbarItemUIData.empty().copy(
+                id = identifier(value = "2"),
                 text = "Search",
                 icon = Res.images.ic_search,
             )

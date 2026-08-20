@@ -48,7 +48,9 @@ fun TrackDetailsScreen(
                 .statusBarsPadding()
         )
         IconButton(
-            modifier = Modifier.size(24.dp),
+            modifier = Modifier
+                .testTag(TrackDetailsScreenSemantic.TEST_TAG_BACK)
+                .size(24.dp),
             painter = painterResource(Res.images.ic_back)
         ) {
             onIntent(TrackDetailsIntent.OnBackClicked)
