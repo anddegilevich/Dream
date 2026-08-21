@@ -14,7 +14,7 @@ class SplashScreenTest {
     private val logo = hasTestTag(SplashScreenSemantic.TEST_TAG_LOGO)
 
     @Test
-    fun testDefaultState() = runComposeUiTest {
+    fun `render default state - shows logo`() = runComposeUiTest {
         setContent {
             ComposeAppTheme {
                 SplashScreen()

@@ -28,7 +28,7 @@ class HomeScreenTest {
     private val page = hasTestTag(HomeScreenSemantic.TEST_TAG_PAGE)
 
     @Test
-    fun testDefaultState() = runComposeUiTest {
+    fun `render default state - shows selected page`() = runComposeUiTest {
         setContent {
             ComposeAppTheme {
                 HomeScreen(

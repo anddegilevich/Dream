@@ -62,7 +62,9 @@ fun ArtistDetailsScreen(
                 modifier = Modifier.padding(horizontal = 16.dp)
             ) {
                 IconButton(
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier
+                        .testTag(ArtistDetailsScreenSemantic.TEST_TAG_BACK)
+                        .size(24.dp),
                     painter = painterResource(Res.images.ic_back)
                 ) {
                     onIntent(ArtistDetailsIntent.OnBackClicked)

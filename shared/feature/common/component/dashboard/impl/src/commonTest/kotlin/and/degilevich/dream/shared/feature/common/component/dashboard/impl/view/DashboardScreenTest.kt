@@ -22,7 +22,7 @@ class DashboardScreenTest {
     private val item = hasTestTag(DashboardScreenSemantic.TEST_TAG_ITEM)
 
     @Test
-    fun testDefaultState() = runComposeUiTest {
+    fun `render default state - shows child items`() = runComposeUiTest {
         setContent {
             ComposeAppTheme {
                 DashboardScreen(

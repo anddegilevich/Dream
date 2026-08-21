@@ -16,14 +16,12 @@ class AlbumDetailsLayoutTest {
     private val name = hasTestTag(AlbumDetailsLayoutSemantic.TEST_TAG_NAME)
 
     @Test
-    fun testDefaultState() = runComposeUiTest {
+    fun `render default state - shows album name`() = runComposeUiTest {
         setContent {
             ComposeAppTheme {
                 AlbumDetailsLayout(data = provider.provideDefault())
             }
         }
-        onNode(name)
-            .assertExists()
-            .assertIsDisplayed()
+        onNode(name).assertIsDisplayed()
     }
 }

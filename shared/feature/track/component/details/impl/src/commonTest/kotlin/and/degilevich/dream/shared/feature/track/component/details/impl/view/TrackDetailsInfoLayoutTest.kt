@@ -15,7 +15,7 @@ class TrackDetailsInfoLayoutTest {
     private val name = hasTestTag(TrackDetailsInfoLayoutSemantic.TEST_TAG_NAME)
 
     @Test
-    fun testDefaultState() = runComposeUiTest {
+    fun `render default state - shows track name`() = runComposeUiTest {
         setContent {
             ComposeAppTheme {
                 TrackDetailsInfoLayout(
@@ -23,7 +23,6 @@ class TrackDetailsInfoLayoutTest {
                 )
             }
         }
-        onNode(name)
-            .assertExists()
+        onNode(name).assertExists()
     }
 }

@@ -6,18 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Commands
 
-```bash
-# Api generation
-./gradlew :shared:core:service:api:openApiGenerate # /open-api-generate
-
-# Tests
-./gradlew test # Unit tests, /test
-./gradlew detekt # Static analysis, /detekt
-
-# Build
-./gradlew :android:app:assembleDebug # Android, /build android
-xcodebuild build -project ios/app.xcodeproj -configuration Debug -scheme prodDebug -sdk iphonesimulator # iOS, /build ios
-```
+Use the commands from `.claude/commands/`.
 
 ### Flavors
 
@@ -35,75 +24,22 @@ CLIENT_SECRET=<your_client_secret>
 
 ## Architecture
 
-### Tech stack
-
-* **Architecture** - Decompose + MVI
-* **UI** - Compose Multiplatform
-* **Concurrency** - Kotlin Coroutines
-* **Serialization** - Kotlin Serialization
-* **Gradle** - Kotlin DSL, Gradle Convention Plugins, Version Catalog, KSP
-* **Dependency Injection** - Koin
-* **HTTP Client** - Ktor
-* **Local Database** - Room
-* **Preference Storage** - DataStore + Multiplatform Settings
-* **Resources** - MOKO resources
-* **Logger** - Napier
-* **Image Loading** - Coil
-* **Build Config** - BuildKonfig
-* **Static Code Analysis** - Detekt
-* **Crypto** - Keystore + Keychain
-
-All versions can be found in version catalog file `/gradle/libs.versions.toml`
-
 ### Convention plugins
 
 `/convention/` contains Gradle convention plugins that wrap common build setup (e.g., `MultiplatformPlugin`).
 Feature base plugins (e.g., `BaseComponentApiPlugin`) configure feature modules.
 
-### Modules structure
-
-* `shared/foundation/` - project unspecific extensions, abstractions, utils
-  * `shared/foundation/primitive` - kotlin primitives extensions
-  * `shared/foundation/serialization` - serialization utils
-  * `shared/foundation/abstraction` - abstractions and base useful classes
-  * `shared/foundation/compose` - Compose extensions
-  * `shared/foundation/datetime` - datetime utils
-  * `shared/foundation/decompose` - base decompose component implementations
-* `shared/config` - flavor dependent build config
-* `shared/logger` - project logger util
-* `shared/resource/api|impl` - project strings, images, fonts, etc.
-* `shared/core/` - project core infrastructure
-  * `shared/core/crypto/api|impl` - crypto utils
-  * `shared/core/network/api|impl` - http client
-  * `shared/core/service/api|impl` - Spotify rest api service
-  * `shared/core/db/api|impl` - local sql database
-  * `shared/core/storage/api|impl` - preferences storage
-* `shared/design/` - Compose design system
-  * `shared/design/theme` - theme colors, typography, shapes, etc.
-  * `shared/design/system` - ui components like buttons, inputs, etc.
-* `shared/feature/` - feature modules
-  * `shared/feature/base/` - base abstractions for typical feature modules (base component, base storage)
-  * ...
-* `shared/navigation/api|impl` - centralized app navigation
-* `shared/di` - dependencies hub wiring all modules
-* `shared/app/api|impl` - shared app entry point with root component and composable view
-
 ### Feature modules structure
 
-Each feature (`artist`, `album`, etc.) follows vertical slice:
-
-* `data/mapper/api|impl`- mappers from core remote and local models to domain
-* `data/api|impl`- data access (repositories, remote sources, local sources, storages)
-* `domain/model/artifact/api` - shared cross-feature domain models (to avoid circular deps with other features)
-* `domain/model/core/api` - feature-local domain models
-* `domain/api|impl` - use cases, managers, validators, value holders, etc.
-* `ui/api|impl` - ui models, compose functions, mappers from to ui models
-* `component/<component_name>/api|impl` - screens/views
-  * `api` - single marker interface extending `RenderComponent` (`@Composable fun Render()`); no state, intent or view types leak into api
-  * `impl` - `ComponentImpl`, `DomainComponent`, `UIStateMapper`/state conservator, `component/model` (`Intent`, `SideEffect`, `UIState`, domain `State`), `preview` (preview component + providers), `view` (screen/layout composables, `view/semantic` test tags, `view/skeleton` loading placeholders)
+See the `feature-module-rules`
 
 ### Platform entry points
 
 * **Android**: `DreamApplication` → `MainActivity`
 * **iOS**: `iOSApp` → `RootView`
 * **Shared**: `RootComponentImpl` → `ComposeApp` (`RootComponentImpl.Render()` renders the internal `ComposeApp` composable; platforms call `rootComponent.Render()` directly, no composable wrapper is exposed)
+
+## Workflow
+
+* Always ask if any clarifications needed.
+* Do not suggest or execute git methods until specifically asked for it.

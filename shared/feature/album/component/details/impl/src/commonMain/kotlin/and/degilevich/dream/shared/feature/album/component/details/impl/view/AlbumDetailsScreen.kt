@@ -61,7 +61,9 @@ fun AlbumDetailsScreen(
                 modifier = Modifier.padding(horizontal = 16.dp)
             ) {
                 IconButton(
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier
+                        .testTag(AlbumDetailsScreenSemantic.TEST_TAG_BACK)
+                        .size(24.dp),
                     painter = painterResource(Res.images.ic_back)
                 ) {
                     onIntent(AlbumDetailsIntent.OnBackClicked)
@@ -103,12 +105,16 @@ fun AlbumDetailsScreen(
                     loadingItemsCount = 1,
                     loadingItemContent = {
                         SkeletonArtistLabel(
-                            modifier = Modifier.animateItem(),
+                            modifier = Modifier
+                                .testTag(AlbumDetailsScreenSemantic.TEST_TAG_ARTIST_SKELETON)
+                                .animateItem(),
                         )
                     },
                     itemContent = { artist ->
                         ArtistLabel(
-                            modifier = Modifier.animateItem(),
+                            modifier = Modifier
+                                .testTag(AlbumDetailsScreenSemantic.TEST_TAG_ARTIST)
+                                .animateItem(),
                             data = artist
                         ) { artistId ->
                             onIntent(
