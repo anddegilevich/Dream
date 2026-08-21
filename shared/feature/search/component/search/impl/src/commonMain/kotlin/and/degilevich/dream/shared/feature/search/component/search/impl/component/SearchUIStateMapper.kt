@@ -9,11 +9,11 @@ import and.degilevich.dream.shared.feature.search.ui.api.model.card.SearchCardUI
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
+import and.degilevich.dream.shared.foundation.primitive.collections.list.interleave
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import kotlin.random.Random
 
 internal class SearchUIStateMapper : Mapper<SearchState, SearchUIState>, KoinComponent {
 
@@ -33,12 +33,11 @@ internal class SearchUIStateMapper : Mapper<SearchState, SearchUIState>, KoinCom
             isLoading = isLoading && searchResult.isEmpty()
         ) {
             listOf(
-                searchResult.albums.items.mapWith(albumDataToSearchCardUIDataMapper),
                 searchResult.artists.items.mapWith(artistDataToSearchCardUIDataMapper),
-                searchResult.tracks.items.mapWith(trackDataToSearchCardUIDataMapper)
+                searchResult.tracks.items.mapWith(trackDataToSearchCardUIDataMapper),
+                searchResult.albums.items.mapWith(albumDataToSearchCardUIDataMapper)
             )
-                .flatten()
-                .shuffled(random = Random(0)) // FIXME: Sort more deliberately
+                .interleave()
                 .toImmutableList()
         }
     }
