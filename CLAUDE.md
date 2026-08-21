@@ -38,3 +38,8 @@ See the `feature-module-rules`
 * **Android**: `DreamApplication` → `MainActivity`
 * **iOS**: `iOSApp` → `RootView`
 * **Shared**: `RootComponentImpl` → `ComposeApp` (`RootComponentImpl.Render()` renders the internal `ComposeApp` composable; platforms call `rootComponent.Render()` directly, no composable wrapper is exposed)
+
+## Workflow
+
+* Always ask if any clarifications needed.
+* Do not suggest or execute git methods until specifically asked for it.
