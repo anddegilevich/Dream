@@ -11,6 +11,33 @@ Notes for Gradle 9 / this project's module layout:
 ./gradlew test
 ```
 
+## Convention tasks (preferred for the TDD loop)
+
+Every module registers `unitTest`; component `impl` modules also register `uiTest` (see `convention/src/main/kotlin/and/degilevich/dream/convention/common/TestTasksExt.kt`). Run without a project path and Gradle matches the task name across all subprojects:
+
+```bash
+# Every module's host-side unit tests
+./gradlew unitTest
+
+# All Compose UI tests
+./gradlew uiTest
+
+# One module
+./gradlew :shared:feature:artist:domain:impl:unitTest
+```
+
+* `unitTest` → `testAndroidHostTest` (JVM host, fast — this is the TDD loop task)
+* `uiTest` → `iosSimulatorArm64Test`. `registerUITestTask()` disables `testAndroidHostTest` in component `impl` modules, so Compose UI tests run **only** on the iOS simulator (Robolectric isn't in this project)
+* Neither task runs detekt — detekt is hooked onto `check`, so run `./gradlew detekt` separately
+
+### Running a single test class
+
+`--tests` is an option on the `Test` task itself. `unitTest` is a lifecycle task that only `dependsOn`, so it rejects the flag — filter on the underlying task:
+
+```bash
+./gradlew :shared:feature:track:domain:impl:testAndroidHostTest --tests "*.GetTrackUseCaseImplTest"
+```
+
 ## Unit tests only
 
 ```bash
