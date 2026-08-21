@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.core.crypto.impl.keychain
 
 import and.degilevich.dream.shared.core.crypto.CryptoConst
-import and.degilevich.dream.shared.core.crypto.impl.generator.RandomBytesGenerator
+import and.degilevich.dream.shared.core.crypto.api.generator.SecureBytesGenerator
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.addressOf
 import kotlinx.cinterop.alloc
@@ -38,7 +38,7 @@ import platform.posix.memcpy
 
 @OptIn(ExperimentalForeignApi::class)
 internal class KeychainManagerImpl(
-    private val randomBytesGenerator: RandomBytesGenerator
+    private val secureBytesGenerator: SecureBytesGenerator
 ) : KeychainManager {
 
     private val tagData by lazy { CryptoConst.KEY_ALIAS.encodeToByteArray().let(::convertToCFData) }
@@ -48,7 +48,7 @@ internal class KeychainManagerImpl(
         return if (key != null) {
             key
         } else {
-            val newKey = randomBytesGenerator.generate(AES_KEY_SIZE_BYTES)
+            val newKey = secureBytesGenerator.generate(AES_KEY_SIZE_BYTES)
             saveKey(newKey)
             newKey
         }

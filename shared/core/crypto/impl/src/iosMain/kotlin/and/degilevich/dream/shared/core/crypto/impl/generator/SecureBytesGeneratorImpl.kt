@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.core.crypto.impl.generator
 
+import and.degilevich.dream.shared.core.crypto.api.generator.SecureBytesGenerator
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.addressOf
 import kotlinx.cinterop.convert
@@ -9,7 +10,7 @@ import platform.Security.errSecSuccess
 import platform.Security.kSecRandomDefault
 
 @OptIn(ExperimentalForeignApi::class)
-internal class RandomBytesGeneratorImpl : RandomBytesGenerator {
+internal class SecureBytesGeneratorImpl : SecureBytesGenerator {
 
     override fun generate(size: Int): ByteArray {
         val array = ByteArray(size)

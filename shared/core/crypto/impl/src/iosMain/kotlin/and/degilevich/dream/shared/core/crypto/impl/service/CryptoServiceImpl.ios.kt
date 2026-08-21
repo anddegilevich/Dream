@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.core.crypto.impl.service
 
+import and.degilevich.dream.shared.core.crypto.api.generator.SecureBytesGenerator
 import and.degilevich.dream.shared.core.crypto.api.service.CryptoService
-import and.degilevich.dream.shared.core.crypto.impl.generator.RandomBytesGenerator
 import and.degilevich.dream.shared.core.crypto.impl.keychain.KeychainManager
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.addressOf
@@ -23,12 +23,12 @@ import platform.posix.size_tVar
 @OptIn(ExperimentalForeignApi::class)
 internal actual class CryptoServiceImpl(
     private val keyChainManager: KeychainManager,
-    private val randomBytesGenerator: RandomBytesGenerator
+    private val secureBytesGenerator: SecureBytesGenerator
 ) : CryptoService {
 
     override fun encrypt(value: ByteArray): Result<ByteArray> = runCatching {
         val key = keyChainManager.getKey()
-        val iv = randomBytesGenerator.generate(AES_BLOCK_SIZE)
+        val iv = secureBytesGenerator.generate(AES_BLOCK_SIZE)
         val outBuffer = ByteArray(value.size + AES_BLOCK_SIZE)
         var outLength = 0
         memScoped {
