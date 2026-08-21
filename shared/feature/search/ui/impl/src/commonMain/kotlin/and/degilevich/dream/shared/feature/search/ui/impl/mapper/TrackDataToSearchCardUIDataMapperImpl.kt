@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.search.ui.impl.mapper
 import and.degilevich.dream.shared.feature.artist.ui.api.mapper.ArtistsInfoToStringMapper
 import and.degilevich.dream.shared.feature.search.ui.api.mapper.TrackDataToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.TrackSearchCardUIData
-import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
+import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 
 internal class TrackDataToSearchCardUIDataMapperImpl(
     private val artistsInfoToStringMapper: ArtistsInfoToStringMapper

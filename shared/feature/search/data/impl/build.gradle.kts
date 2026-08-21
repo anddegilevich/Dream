@@ -8,6 +8,9 @@ kotlin {
             api(projects.shared.feature.search.data.api)
             implementation(projects.shared.feature.search.data.mapper.api)
         }
+        commonTest.dependencies {
+            implementation(projects.shared.feature.search.data.mapper.test)
+        }
     }
 
     android {

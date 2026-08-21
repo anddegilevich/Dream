@@ -2,8 +2,8 @@ package and.degilevich.dream.shared.feature.track.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.track.data.api.repository.TrackRepository
 import and.degilevich.dream.shared.feature.track.domain.api.usecase.GetTrackUseCase
-import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackParams
-import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackResult
+import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
+import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackResult
 
 internal class GetTrackUseCaseImpl(
     private val trackRepository: TrackRepository

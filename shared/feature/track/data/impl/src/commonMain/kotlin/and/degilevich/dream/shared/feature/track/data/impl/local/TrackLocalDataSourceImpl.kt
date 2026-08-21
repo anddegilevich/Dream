@@ -5,21 +5,22 @@ import and.degilevich.dream.shared.core.db.api.dao.ArtistDao
 import and.degilevich.dream.shared.core.db.api.dao.ArtistToAlbumCrossRefDao
 import and.degilevich.dream.shared.core.db.api.dao.ArtistToTrackCrossRefDao
 import and.degilevich.dream.shared.core.db.api.dao.TrackDao
+import and.degilevich.dream.shared.core.db.api.database.AppDatabase
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToAlbumCrossRefEntity
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCrossRefEntity
 import and.degilevich.dream.shared.feature.album.data.mapper.api.local.SimplifiedAlbumDataToEntityMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.SimplifiedArtistDataToEntityMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.local.TrackDataToEntityMapper
-import and.degilevich.dream.shared.feature.track.model.core.data.TrackData
+import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.distinctById
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import and.degilevich.dream.shared.feature.base.data.impl.local.BaseLocalDataSource
 
 internal class TrackLocalDataSourceImpl(
+    private val database: AppDatabase,
     private val trackDataToEntityMapper: TrackDataToEntityMapper,
     private val simplifiedArtistDataToEntityMapper: SimplifiedArtistDataToEntityMapper,
     private val simplifiedAlbumDataToEntityMapper: SimplifiedAlbumDataToEntityMapper
-) : BaseLocalDataSource(), TrackLocalDataSource {
+) : TrackLocalDataSource {
 
     private val trackDao: TrackDao by lazy { database.getTrackDao() }
     private val artistDao: ArtistDao by lazy { database.getArtistDao() }

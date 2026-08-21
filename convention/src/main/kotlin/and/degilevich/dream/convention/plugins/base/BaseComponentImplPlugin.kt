@@ -4,6 +4,7 @@ import and.degilevich.dream.convention.common.apply
 import and.degilevich.dream.convention.common.kotlinMultiplatformConfig
 import and.degilevich.dream.convention.common.libs
 import and.degilevich.dream.convention.common.plugins
+import and.degilevich.dream.convention.common.registerUITestTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -30,6 +31,7 @@ internal class BaseComponentImplPlugin : Plugin<Project> {
                     }
                 }
             }
+            registerUITestTask()
         }
     }
 }

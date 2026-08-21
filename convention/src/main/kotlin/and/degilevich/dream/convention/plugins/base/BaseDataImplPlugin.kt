@@ -26,6 +26,11 @@ internal class BaseDataImplPlugin : Plugin<Project> {
                         implementation(project(":shared:core:db:api"))
                         implementation(project(":shared:feature:base:data:impl"))
                     }
+                    commonTest.dependencies {
+                        implementation(libs().ktor.client.mock)
+                        implementation(project(":shared:core:service:test"))
+                        implementation(project(":shared:core:db:test"))
+                    }
                 }
             }
         }

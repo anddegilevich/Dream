@@ -43,6 +43,7 @@ include(":shared:logger")
 // Resource
 include(":shared:resource:api")
 include(":shared:resource:impl")
+include(":shared:resource:test")
 
 // =====================================================================================================================
 // Core
@@ -55,6 +56,7 @@ include(":shared:core:network:impl")
 
 include(":shared:core:service:api")
 include(":shared:core:service:impl")
+include(":shared:core:service:test")
 
 include(":shared:core:storage:api")
 include(":shared:core:storage:impl")
@@ -64,6 +66,7 @@ include(":shared:core:crypto:impl")
 
 include(":shared:core:db:api")
 include(":shared:core:db:impl")
+include(":shared:core:db:test")
 
 include(":shared:core:toast:api")
 include(":shared:core:toast:impl")
@@ -99,22 +102,29 @@ include(":shared:feature:common:component:home:impl")
 // Image
 include(":shared:feature:image:data:mapper:api")
 include(":shared:feature:image:data:mapper:impl")
+include(":shared:feature:image:data:mapper:test")
 
-include(":shared:feature:image:domain:model:artifact")
+include(":shared:feature:image:domain:model:artifact:api")
+include(":shared:feature:image:domain:model:artifact:test")
 
 // Artist
 include(":shared:feature:artist:data:mapper:api")
 include(":shared:feature:artist:data:mapper:impl")
+include(":shared:feature:artist:data:mapper:test")
 include(":shared:feature:artist:data:api")
 include(":shared:feature:artist:data:impl")
+include(":shared:feature:artist:data:test")
 
-include(":shared:feature:artist:domain:model:artifact")
-include(":shared:feature:artist:domain:model:core")
+include(":shared:feature:artist:domain:model:artifact:api")
+include(":shared:feature:artist:domain:model:artifact:test")
+include(":shared:feature:artist:domain:model:core:api")
+include(":shared:feature:artist:domain:model:core:test")
 include(":shared:feature:artist:domain:api")
 include(":shared:feature:artist:domain:impl")
 
 include(":shared:feature:artist:ui:api")
 include(":shared:feature:artist:ui:impl")
+include(":shared:feature:artist:ui:test")
 
 include(":shared:feature:artist:component:details:api")
 include(":shared:feature:artist:component:details:impl")
@@ -122,11 +132,15 @@ include(":shared:feature:artist:component:details:impl")
 // Album
 include(":shared:feature:album:data:mapper:api")
 include(":shared:feature:album:data:mapper:impl")
+include(":shared:feature:album:data:mapper:test")
 include(":shared:feature:album:data:api")
 include(":shared:feature:album:data:impl")
+include(":shared:feature:album:data:test")
 
-include(":shared:feature:album:domain:model:artifact")
-include(":shared:feature:album:domain:model:core")
+include(":shared:feature:album:domain:model:artifact:api")
+include(":shared:feature:album:domain:model:artifact:test")
+include(":shared:feature:album:domain:model:core:api")
+include(":shared:feature:album:domain:model:core:test")
 include(":shared:feature:album:domain:api")
 include(":shared:feature:album:domain:impl")
 
@@ -142,11 +156,15 @@ include(":shared:feature:album:component:details:impl")
 // Track
 include(":shared:feature:track:data:mapper:api")
 include(":shared:feature:track:data:mapper:impl")
+include(":shared:feature:track:data:mapper:test")
 include(":shared:feature:track:data:api")
 include(":shared:feature:track:data:impl")
+include(":shared:feature:track:data:test")
 
-include(":shared:feature:track:domain:model:artifact")
-include(":shared:feature:track:domain:model:core")
+include(":shared:feature:track:domain:model:artifact:api")
+include(":shared:feature:track:domain:model:artifact:test")
+include(":shared:feature:track:domain:model:core:api")
+include(":shared:feature:track:domain:model:core:test")
 include(":shared:feature:track:domain:api")
 include(":shared:feature:track:domain:impl")
 
@@ -159,10 +177,13 @@ include(":shared:feature:track:component:details:impl")
 // Search
 include(":shared:feature:search:data:mapper:api")
 include(":shared:feature:search:data:mapper:impl")
+include(":shared:feature:search:data:mapper:test")
 include(":shared:feature:search:data:api")
 include(":shared:feature:search:data:impl")
+include(":shared:feature:search:data:test")
 
-include(":shared:feature:search:domain:model:core")
+include(":shared:feature:search:domain:model:core:api")
+include(":shared:feature:search:domain:model:core:test")
 include(":shared:feature:search:domain:api")
 include(":shared:feature:search:domain:impl")
 

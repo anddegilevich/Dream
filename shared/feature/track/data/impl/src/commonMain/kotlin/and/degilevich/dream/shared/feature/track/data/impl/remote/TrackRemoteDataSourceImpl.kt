@@ -1,16 +1,17 @@
 package and.degilevich.dream.shared.feature.track.data.impl.remote
 
+import and.degilevich.dream.shared.core.service.api.ApiService
 import and.degilevich.dream.shared.core.service.api.generated.api.TracksApi
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.TrackOutputToDataMapper
-import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackParams
-import and.degilevich.dream.shared.feature.track.model.core.method.getTrack.GetTrackResult
+import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
+import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
-import and.degilevich.dream.shared.feature.base.data.impl.remote.BaseRemoteDataSource
 
 internal class TrackRemoteDataSourceImpl(
+    private val apiService: ApiService,
     private val trackOutputToDataMapper: TrackOutputToDataMapper,
-) : BaseRemoteDataSource(), TrackRemoteDataSource {
+) : TrackRemoteDataSource {
 
     private val tracksApi: TracksApi by lazy { apiService.tracksApi }
 

@@ -5,10 +5,10 @@ import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchA
 import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchArtistsOutputToDataMapper
 import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchResponseToResultMapper
 import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchTracksOutputToDataMapper
-import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchAlbumsData
-import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchArtistsData
-import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchResult
-import and.degilevich.dream.shared.feature.search.model.core.method.search.SearchTracksData
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchAlbumsData
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchArtistsData
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchTracksData
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.ext.orEmpty
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 

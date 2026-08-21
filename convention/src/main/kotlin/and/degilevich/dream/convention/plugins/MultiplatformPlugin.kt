@@ -1,6 +1,7 @@
 package and.degilevich.dream.convention.plugins
 
 import and.degilevich.dream.convention.common.plugins
+import and.degilevich.dream.convention.common.registerUnitTestTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -11,6 +12,7 @@ internal class MultiplatformPlugin : Plugin<Project> {
             plugins {
                 apply("multiplatform-convention")
             }
+            registerUnitTestTask()
         }
     }
 }

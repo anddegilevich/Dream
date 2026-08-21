@@ -89,9 +89,7 @@ private fun ClickableWithDebounceModifierPreview() {
                 ) {
                     onClicksCallsCount++
                 }
-                .scaleOnClick(
-                    interactionSource = interactionSource
-                )
+                .scaleOnClick(interactionSource = interactionSource)
                 .size(200.dp)
                 .background(Color.Red)
         )
