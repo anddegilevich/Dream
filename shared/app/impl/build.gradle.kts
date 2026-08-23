@@ -34,6 +34,8 @@ kotlin {
             api(projects.shared.feature.base.component.impl)
 
             // Navigation
+            implementation(projects.shared.core.deeplink.api)
+
             implementation(projects.shared.navigation.impl)
 
             // DI

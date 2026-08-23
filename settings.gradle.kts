@@ -68,6 +68,12 @@ include(":shared:core:db:api")
 include(":shared:core:db:impl")
 include(":shared:core:db:test")
 
+include(":shared:core:deeplink:api")
+include(":shared:core:deeplink:impl")
+
+include(":shared:core:webauth:api")
+include(":shared:core:webauth:impl")
+
 include(":shared:core:toast:api")
 include(":shared:core:toast:impl")
 

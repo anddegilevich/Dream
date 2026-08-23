@@ -7,6 +7,8 @@ import androidx.compose.runtime.Stable
 @Stable
 interface RootComponent : RenderComponent {
 
+    fun onDeepLink(url: String)
+
     @Composable
     override fun Render()
 }

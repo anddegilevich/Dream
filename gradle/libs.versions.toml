@@ -26,6 +26,7 @@ androidx-activity-compose = "1.13.0" # https://mvnrepository.com/artifact/androi
 androidx-lifecycle = "2.10.0" # https://mvnrepository.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-runtime-compose
 androidx-core-splashscreen = "1.2.0" # https://mvnrepository.com/artifact/androidx.core/core-splashscreen
 androidx-datastore = "1.2.1"
+androidx-browser = "1.10.0" # https://mvnrepository.com/artifact/androidx.browser/browser
 
 # Kotlinx
 kotlinx-coroutines = "1.11.0" # https://github.com/Kotlin/kotlinx.coroutines/releases
@@ -122,6 +123,7 @@ androidx-uiautomator = { module = "androidx.test.uiautomator:uiautomator", versi
 androidx-benchmark-macro-junit4 = { module = "androidx.benchmark:benchmark-macro-junit4", version.ref = "benchmark-macro-junit4" }
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "androidx-datastore" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx-datastore" }
+androidx-browser = { module = "androidx.browser:browser", version.ref = "androidx-browser" }
 
 # Kotlinx
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
