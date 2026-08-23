@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.core.webauth.impl.launcher
 
+import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.webauth.api.launcher.WebAuthLauncher
 import and.degilevich.dream.shared.core.webauth.api.model.WebAuthError
 import kotlinx.coroutines.CancellableContinuation
@@ -69,6 +70,6 @@ internal class WebAuthLauncherImpl : WebAuthLauncher {
     }
 
     private companion object {
-        const val CALLBACK_SCHEME = "dream"
+        val CALLBACK_SCHEME = SharedBuildConfig.REDIRECT_URI.substringBefore(delimiter = "://")
     }
 }

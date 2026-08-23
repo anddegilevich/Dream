@@ -32,8 +32,15 @@ buildkonfig {
     val variantField = "VARIANT"
     val clientIdField = "CLIENT_ID"
     val clientSecretField = "CLIENT_SECRET"
-    val authBaseUrlField = "AUTH_BASE_URL"
+    val authAuthorizeUrlField = "AUTH_AUTHORIZE_URL"
+    val authTokenUrlField = "AUTH_TOKEN_URL"
     val apiBaseUrlField = "API_BASE_URL"
+    val redirectUriField = "REDIRECT_URI"
+
+    val redirectScheme = "dream"
+    val redirectHost = "auth"
+    val redirectPath = "/callback"
+    val redirectUri = "$redirectScheme://$redirectHost$redirectPath"
 
     defaultConfigs { }
 
@@ -51,8 +58,18 @@ buildkonfig {
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
-            name = authBaseUrlField,
+            name = authAuthorizeUrlField,
+            value = "https://accounts.spotify.com/authorize"
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = authTokenUrlField,
             value = "https://accounts.spotify.com/api/token"
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = redirectUriField,
+            value = redirectUri
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
@@ -80,8 +97,18 @@ buildkonfig {
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
-            name = authBaseUrlField,
+            name = authAuthorizeUrlField,
+            value = "http://10.0.2.2:8080/authorize"
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = authTokenUrlField,
             value = "http://10.0.2.2:8080/token"
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = redirectUriField,
+            value = redirectUri
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,

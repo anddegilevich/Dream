@@ -8,6 +8,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.core.webauth.api)
+            implementation(projects.shared.config)
         }
         androidMain.dependencies {
             implementation(libs.androidx.browser)

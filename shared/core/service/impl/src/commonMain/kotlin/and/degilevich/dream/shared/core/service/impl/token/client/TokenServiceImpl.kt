@@ -18,7 +18,7 @@ internal class TokenServiceImpl(
 
     private val client: HttpClient = remoteClient.client.config {
         install(DefaultRequest) {
-            url(SharedBuildConfig.AUTH_BASE_URL)
+            url(SharedBuildConfig.AUTH_TOKEN_URL)
         }
     }
 

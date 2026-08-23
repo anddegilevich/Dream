@@ -9,6 +9,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.core.deeplink.api)
             implementation(projects.shared.core.webauth.api)
+            implementation(projects.shared.config)
         }
     }
 
