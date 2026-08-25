@@ -11,7 +11,11 @@ kotlin {
             api(projects.shared.core.service.api)
             implementation(projects.shared.config)
             implementation(projects.shared.core.storage.api)
+            implementation(projects.shared.core.crypto.api)
             implementation(projects.shared.foundation.abstraction)
+        }
+        commonTest.dependencies {
+            implementation(projects.shared.core.crypto.test)
         }
     }
 

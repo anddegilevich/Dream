@@ -32,7 +32,8 @@ internal class TokenServiceImpl(
             }.body<TokenResponse>()
             val tokens = TokensData(
                 accessToken = response.accessToken.orEmpty(),
-                refreshToken = ""
+                refreshToken = "",
+                expirationTimestamp = 0L
             )
             tokens
         }

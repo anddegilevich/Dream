@@ -63,6 +63,7 @@ include(":shared:core:storage:impl")
 
 include(":shared:core:crypto:api")
 include(":shared:core:crypto:impl")
+include(":shared:core:crypto:test")
 
 include(":shared:core:db:api")
 include(":shared:core:db:impl")
