@@ -7,9 +7,11 @@ import and.degilevich.dream.shared.core.service.api.generated.api.AlbumsApi
 import and.degilevich.dream.shared.core.service.api.generated.api.ArtistsApi
 import and.degilevich.dream.shared.core.service.api.generated.api.SearchApi
 import and.degilevich.dream.shared.core.service.api.generated.api.TracksApi
+import and.degilevich.dream.shared.core.service.api.generated.api.UsersApi
+import and.degilevich.dream.shared.core.service.api.model.SessionData
+import and.degilevich.dream.shared.core.service.impl.session.storage.SessionStorage
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
 import and.degilevich.dream.shared.core.service.impl.token.mappers.mapToBearer
-import and.degilevich.dream.shared.core.service.impl.token.storage.TokensStorage
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.auth.Auth
@@ -17,7 +19,7 @@ import io.ktor.client.plugins.auth.providers.bearer
 
 internal class ApiServiceImpl(
     remoteClient: RemoteClient,
-    private val tokensStorage: TokensStorage,
+    private val sessionStorage: SessionStorage,
     private val tokenService: TokenService
 ) : ApiService {
 
@@ -36,11 +38,11 @@ internal class ApiServiceImpl(
         install(Auth) {
             bearer {
                 loadTokens {
-                    tokensStorage.read()?.mapToBearer()
+                    sessionStorage.read()?.tokens?.mapToBearer()
                 }
                 refreshTokens {
                     tokenService.getToken().onSuccess { tokens ->
-                        tokensStorage.save(tokens)
+                        sessionStorage.save(SessionData(tokens = tokens))
                     }.getOrNull()?.mapToBearer()
                 }
             }
@@ -70,6 +72,13 @@ internal class ApiServiceImpl(
 
     override val searchApi: SearchApi by lazy {
         SearchApi(
+            baseUrl = SharedBuildConfig.API_BASE_URL,
+            httpClient = apiServiceClient
+        )
+    }
+
+    override val usersApi: UsersApi by lazy {
+        UsersApi(
             baseUrl = SharedBuildConfig.API_BASE_URL,
             httpClient = apiServiceClient
         )

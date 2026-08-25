@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.core.service.impl.token.client
 
 import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.network.api.RemoteClient
-import and.degilevich.dream.shared.core.service.impl.token.model.Tokens
+import and.degilevich.dream.shared.core.service.api.model.TokensData
 import and.degilevich.dream.shared.core.service.impl.token.model.request.TokenResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -22,7 +22,7 @@ internal class TokenServiceImpl(
         }
     }
 
-    override suspend fun getToken(): Result<Tokens> {
+    override suspend fun getToken(): Result<TokensData> {
         return runCatching {
             val response = client.post {
                 header(HttpHeaders.ContentType, HEADER_CONTENT_TYPE_VALUE)
@@ -30,7 +30,7 @@ internal class TokenServiceImpl(
                 parameter(PARAM_CLIENT_ID, SharedBuildConfig.CLIENT_ID)
                 parameter(PARAM_CLIENT_SECRET, SharedBuildConfig.CLIENT_SECRET)
             }.body<TokenResponse>()
-            val tokens = Tokens(
+            val tokens = TokensData(
                 accessToken = response.accessToken.orEmpty(),
                 refreshToken = ""
             )
