@@ -12,6 +12,11 @@ import and.degilevich.dream.shared.core.service.impl.session.url.AuthUrlBuilder
 import and.degilevich.dream.shared.core.service.impl.session.url.AuthUrlBuilderImpl
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenServiceImpl
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensDataToBearerMapper
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensDataToBearerMapperImpl
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensOutputToDataMapper
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensOutputToDataMapperImpl
+import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -23,4 +28,6 @@ fun serviceModule() = module {
     singleOf(::AuthUrlBuilderImpl) bind AuthUrlBuilder::class
     singleOf(::TokenServiceImpl) bind TokenService::class
     singleOf(::ApiServiceImpl) bind ApiService::class
+    factoryOf(::TokensOutputToDataMapperImpl) bind TokensOutputToDataMapper::class
+    factoryOf(::TokensDataToBearerMapperImpl) bind TokensDataToBearerMapper::class
 }

@@ -11,7 +11,8 @@ import and.degilevich.dream.shared.core.service.api.generated.api.UsersApi
 import and.degilevich.dream.shared.core.service.api.model.SessionData
 import and.degilevich.dream.shared.core.service.impl.session.storage.SessionStorage
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
-import and.degilevich.dream.shared.core.service.impl.token.mappers.mapToBearer
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensDataToBearerMapper
+import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.auth.Auth
@@ -20,7 +21,8 @@ import io.ktor.client.plugins.auth.providers.bearer
 internal class ApiServiceImpl(
     remoteClient: RemoteClient,
     private val sessionStorage: SessionStorage,
-    private val tokenService: TokenService
+    private val tokenService: TokenService,
+    private val tokensDataToBearerMapper: TokensDataToBearerMapper
 ) : ApiService {
 
     private val apiServiceClient = remoteClient.client.config {
@@ -38,12 +40,14 @@ internal class ApiServiceImpl(
         install(Auth) {
             bearer {
                 loadTokens {
-                    sessionStorage.read()?.tokens?.mapToBearer()
+                    sessionStorage.read()?.tokens?.mapWith(tokensDataToBearerMapper)
                 }
                 refreshTokens {
-                    tokenService.getToken().onSuccess { tokens ->
-                        sessionStorage.save(SessionData(tokens = tokens))
-                    }.getOrNull()?.mapToBearer()
+                    sessionStorage.read()?.tokens?.refreshToken?.let { refreshToken ->
+                        tokenService.refresh(refreshToken = refreshToken).onSuccess { tokens ->
+                            sessionStorage.save(SessionData(tokens = tokens))
+                        }.getOrNull()?.mapWith(tokensDataToBearerMapper)
+                    }
                 }
             }
         }

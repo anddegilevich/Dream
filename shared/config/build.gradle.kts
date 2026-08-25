@@ -31,7 +31,6 @@ buildkonfig {
 
     val variantField = "VARIANT"
     val clientIdField = "CLIENT_ID"
-    val clientSecretField = "CLIENT_SECRET"
     val authAuthorizeUrlField = "AUTH_AUTHORIZE_URL"
     val authTokenUrlField = "AUTH_TOKEN_URL"
     val apiBaseUrlField = "API_BASE_URL"
@@ -49,7 +48,6 @@ buildkonfig {
             load(FileInputStream("${rootDir}/local.properties"))
         }
         val clientId = localProperties.getProperty(clientIdField)
-        val clientSecret = localProperties.getProperty(clientSecretField)
 
         buildConfigField(
             type = FieldSpec.Type.STRING,
@@ -80,11 +78,6 @@ buildkonfig {
             type = FieldSpec.Type.STRING,
             name = clientIdField,
             value = clientId
-        )
-        buildConfigField(
-            type = FieldSpec.Type.STRING,
-            name = clientSecretField,
-            value = clientSecret
         )
     }
 
@@ -119,11 +112,6 @@ buildkonfig {
             type = FieldSpec.Type.STRING,
             name = clientIdField,
             value = "mockClientId"
-        )
-        buildConfigField(
-            type = FieldSpec.Type.STRING,
-            name = clientSecretField,
-            value = "mockClientSecret"
         )
     }
 }

@@ -19,7 +19,6 @@ Use the commands from `.claude/commands/`.
 
 ```
 CLIENT_ID=<your_client_id>
-CLIENT_SECRET=<your_client_secret>
 ```
 
 ## Architecture
