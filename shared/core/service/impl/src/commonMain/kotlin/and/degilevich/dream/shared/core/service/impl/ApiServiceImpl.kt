@@ -16,6 +16,7 @@ import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.providers.BearerTokens
 import io.ktor.client.plugins.auth.providers.bearer
 
 internal class ApiServiceImpl(
@@ -39,16 +40,8 @@ internal class ApiServiceImpl(
     private fun HttpClientConfig<*>.installAuth() {
         install(Auth) {
             bearer {
-                loadTokens {
-                    sessionStorage.read()?.tokens?.mapWith(tokensDataToBearerMapper)
-                }
-                refreshTokens {
-                    sessionStorage.read()?.tokens?.refreshToken?.let { refreshToken ->
-                        tokenService.refresh(refreshToken = refreshToken).onSuccess { tokens ->
-                            sessionStorage.save(SessionData(tokens = tokens))
-                        }.getOrNull()?.mapWith(tokensDataToBearerMapper)
-                    }
-                }
+                loadTokens { loadTokens() }
+                refreshTokens { refreshTokens() }
             }
         }
     }
@@ -86,5 +79,22 @@ internal class ApiServiceImpl(
             baseUrl = SharedBuildConfig.API_BASE_URL,
             httpClient = apiServiceClient
         )
+    }
+
+    private suspend fun loadTokens(): BearerTokens? {
+        return sessionStorage.read()?.tokens?.mapWith(tokensDataToBearerMapper)
+    }
+
+    private suspend fun refreshTokens(): BearerTokens? {
+        return sessionStorage.read()?.tokens?.refreshToken?.let { refreshToken ->
+            tokenService.refresh(refreshToken = refreshToken)
+                .onSuccess { tokens ->
+                    sessionStorage.save(
+                        SessionData(tokens = tokens)
+                    )
+                }.onFailure {
+                    sessionStorage.clear()
+                }.getOrNull()?.mapWith(tokensDataToBearerMapper)
+        }
     }
 }

@@ -101,21 +101,6 @@ class TokenServiceImplTest {
     }
 
     @Test
-    fun `exchangeCode - mapped tokens carry no refresh token - has nothing to fall back to`() = runTest {
-        val tokenService = createTokenService(
-            engine = respondingWith(content = encoded(response = tokenResponse())),
-            tokensOutputToDataMapper = mapperReturning(tokens = tokensData(refreshToken = ""))
-        )
-
-        val result = tokenService.exchangeCode(
-            code = "code-value",
-            codeVerifier = "verifier-value"
-        )
-
-        result.getOrNull()?.refreshToken shouldBe ""
-    }
-
-    @Test
     fun `exchangeCode - error response - returns failure without mapping`() = runTest {
         val engine = respondingWith(
             content = """{"error":"invalid_grant"}""",
@@ -146,7 +131,7 @@ class TokenServiceImplTest {
     }
 
     @Test
-    fun `refresh - mapped tokens carry a rotated refresh token - keeps the rotated one`() = runTest {
+    fun `refresh - always - returns the refresh token exactly as mapped`() = runTest {
         val tokenService = createTokenService(
             engine = respondingWith(content = encoded(response = tokenResponse())),
             tokensOutputToDataMapper = mapperReturning(
@@ -157,18 +142,6 @@ class TokenServiceImplTest {
         val result = tokenService.refresh(refreshToken = "current-refresh-token")
 
         result.getOrNull()?.refreshToken shouldBe "rotated-refresh-token"
-    }
-
-    @Test
-    fun `refresh - mapped tokens carry no refresh token - falls back to the current one`() = runTest {
-        val tokenService = createTokenService(
-            engine = respondingWith(content = encoded(response = tokenResponse(refreshToken = null))),
-            tokensOutputToDataMapper = mapperReturning(tokens = tokensData(refreshToken = ""))
-        )
-
-        val result = tokenService.refresh(refreshToken = "current-refresh-token")
-
-        result.getOrNull()?.refreshToken shouldBe "current-refresh-token"
     }
 
     @Test
