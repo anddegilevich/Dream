@@ -177,30 +177,47 @@ class SessionServiceImplTest {
     }
 
     @Test
-    fun `hasActiveSession - stored session carries tokens - returns true`() = runTest {
+    fun `getActiveSession - stored session carries tokens - returns the stored session`() = runTest {
+        val stored = SessionData(tokens = tokens())
         val sessionService = createSessionService(
-            sessionStorage = FakeSessionStorage(onRead = { SessionData(tokens = tokens()) })
+            sessionStorage = FakeSessionStorage(onRead = { stored })
         )
 
-        sessionService.hasActiveSession() shouldBe true
+        sessionService.getActiveSession().getOrNull() shouldBe stored
     }
 
     @Test
-    fun `hasActiveSession - stored session is empty - returns false`() = runTest {
+    fun `getActiveSession - stored session is empty - fails rather than returning an empty session`() = runTest {
         val sessionService = createSessionService(
             sessionStorage = FakeSessionStorage(onRead = { SessionData.empty() })
         )
 
-        sessionService.hasActiveSession() shouldBe false
+        val result = sessionService.getActiveSession()
+
+        result.isFailure.shouldBe(true)
     }
 
     @Test
-    fun `hasActiveSession - nothing stored - returns false`() = runTest {
+    fun `getActiveSession - nothing stored - fails`() = runTest {
         val sessionService = createSessionService(
             sessionStorage = FakeSessionStorage(onRead = { null })
         )
 
-        sessionService.hasActiveSession() shouldBe false
+        val result = sessionService.getActiveSession()
+
+        result.isFailure.shouldBe(true)
+    }
+
+    @Test
+    fun `getActiveSession - storage read throws - fails rather than propagating the throw`() = runTest {
+        val readFailure = IllegalStateException("decryption failed")
+        val sessionService = createSessionService(
+            sessionStorage = FakeSessionStorage(onRead = { throw readFailure })
+        )
+
+        val result = sessionService.getActiveSession()
+
+        result.exceptionOrNull() shouldBe readFailure
     }
 
     @Test

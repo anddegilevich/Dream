@@ -7,7 +7,6 @@ import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchT
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 
 internal class SearchRemoteDataSourceImpl(
     private val apiService: ApiService,
@@ -24,7 +23,7 @@ internal class SearchRemoteDataSourceImpl(
             limit = params.limit,
             offset = params.offset
         ).body()
-    }.foldResultSuccess { response ->
+    }.map { response ->
         response.mapWith(searchResponseToResultMapper)
     }
 }

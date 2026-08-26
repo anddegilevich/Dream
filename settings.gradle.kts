@@ -200,6 +200,10 @@ include(":shared:feature:search:ui:impl")
 include(":shared:feature:search:component:search:api")
 include(":shared:feature:search:component:search:impl")
 
+// Auth
+include(":shared:feature:auth:data:api")
+include(":shared:feature:auth:data:impl")
+
 // =====================================================================================================================
 // Navigation
 

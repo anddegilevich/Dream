@@ -12,7 +12,7 @@ import and.degilevich.dream.shared.core.service.impl.session.url.AuthUrlBuilder
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
 import and.degilevich.dream.shared.core.webauth.api.launcher.WebAuthLauncher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
 
 internal class SessionServiceImpl(
     private val pkceGenerator: PkceGenerator,
@@ -45,12 +45,16 @@ internal class SessionServiceImpl(
         sessionStorage.clear()
     }
 
-    override suspend fun hasActiveSession(): Boolean {
-        return sessionStorage.read()?.isEmpty() == false
+    override suspend fun getActiveSession(): Result<SessionData> {
+        return sessionStorage.read()?.let { session ->
+            Result.success(session)
+        } ?: Result.failure(Exception("No active session"))
     }
 
     override fun observeSession(): Flow<SessionData> {
-        return sessionStorage.observe().map { session -> session ?: SessionData.empty() }
+        return sessionStorage.observe().mapNotNull { session ->
+            session
+        }
     }
 
     private suspend fun exchangeCode(
@@ -61,7 +65,9 @@ internal class SessionServiceImpl(
             tokenService.exchangeCode(
                 code = redirect.code,
                 codeVerifier = pkce.codeVerifier
-            ).map { tokens -> SessionData(tokens = tokens) }
+            ).map { tokens ->
+                SessionData(tokens = tokens)
+            }
         } else {
             Result.failure(AuthError.StateMismatch())
         }

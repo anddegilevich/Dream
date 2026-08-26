@@ -6,7 +6,6 @@ import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.TrackOut
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 
 internal class TrackRemoteDataSourceImpl(
     private val apiService: ApiService,
@@ -19,7 +18,7 @@ internal class TrackRemoteDataSourceImpl(
         tracksApi.getTrack(
             id = params.id.value
         ).body()
-    }.foldResultSuccess { response ->
+    }.map { response ->
         GetTrackResult(
             track = response.mapWith(trackOutputToDataMapper)
         )

@@ -6,7 +6,6 @@ import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.AlbumOut
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 
 internal class AlbumRemoteDataSourceImpl(
     private val apiService: ApiService,
@@ -17,7 +16,7 @@ internal class AlbumRemoteDataSourceImpl(
 
     override suspend fun getAlbum(params: GetAlbumParams): Result<GetAlbumResult> = runCatching {
         albumsApi.getAnAlbum(id = params.id.value).body()
-    }.foldResultSuccess { response ->
+    }.map { response ->
         GetAlbumResult(
             album = response.mapWith(albumOutputToDataMapper)
         )

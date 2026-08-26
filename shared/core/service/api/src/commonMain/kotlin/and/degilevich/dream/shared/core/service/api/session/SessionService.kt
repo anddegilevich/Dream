@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface SessionService {
     suspend fun login(): Result<SessionData>
     suspend fun logout()
-    suspend fun hasActiveSession(): Boolean
+    suspend fun getActiveSession(): Result<SessionData>
     fun observeSession(): Flow<SessionData>
 }
