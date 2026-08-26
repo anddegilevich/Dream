@@ -30,8 +30,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="auth"
-                    android:scheme="dream" />
+                    android:host="callback"
+                    android:scheme="and.degilevich.dream" />
             </intent-filter>
         </activity>
     </application>

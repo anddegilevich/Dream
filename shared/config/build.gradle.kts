@@ -36,11 +36,6 @@ buildkonfig {
     val apiBaseUrlField = "API_BASE_URL"
     val redirectUriField = "REDIRECT_URI"
 
-    val redirectScheme = "dream"
-    val redirectHost = "auth"
-    val redirectPath = "/callback"
-    val redirectUri = "$redirectScheme://$redirectHost$redirectPath"
-
     defaultConfigs { }
 
     defaultConfigs(prodFlavor) {
@@ -67,7 +62,7 @@ buildkonfig {
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = redirectUriField,
-            value = redirectUri
+            value = "and.degilevich.dream://callback"
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
@@ -91,27 +86,27 @@ buildkonfig {
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = authAuthorizeUrlField,
-            value = "http://10.0.2.2:8080/authorize"
+            value = ""
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = authTokenUrlField,
-            value = "http://10.0.2.2:8080/token"
+            value = ""
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = redirectUriField,
-            value = redirectUri
+            value = ""
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = apiBaseUrlField,
-            value = "http://10.0.2.2:8080"
+            value = ""
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = clientIdField,
-            value = "mockClientId"
+            value = ""
         )
     }
 }

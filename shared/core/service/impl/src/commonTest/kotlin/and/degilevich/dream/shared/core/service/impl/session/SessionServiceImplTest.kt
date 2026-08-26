@@ -40,7 +40,7 @@ class SessionServiceImplTest {
             webAuthLauncher = FakeWebAuthLauncher(
                 onAuthorize = { url ->
                     authorizedUrls.add(url)
-                    Result.success("dream://auth/callback")
+                    Result.success("and.degilevich.dream://callback")
                 }
             ),
             tokenService = FakeTokenService(onExchangeCode = { _, _ -> Result.success(tokens()) }),
@@ -62,7 +62,7 @@ class SessionServiceImplTest {
             authRedirectParser = FakeAuthRedirectParser(
                 onParse = { Result.success(authRedirect(code = "code-value", state = "state-value")) }
             ),
-            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("dream://auth/callback") }),
+            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("and.degilevich.dream://callback") }),
             tokenService = FakeTokenService(
                 onExchangeCode = { code, codeVerifier ->
                     exchanges.add(code to codeVerifier)
@@ -86,7 +86,7 @@ class SessionServiceImplTest {
             authRedirectParser = FakeAuthRedirectParser(
                 onParse = { Result.success(authRedirect(state = "state-value")) }
             ),
-            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("dream://auth/callback") }),
+            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("and.degilevich.dream://callback") }),
             tokenService = FakeTokenService(onExchangeCode = { _, _ -> Result.success(tokens()) }),
             sessionStorage = FakeSessionStorage(onSave = { session -> savedSessions.add(session) })
         )
@@ -106,7 +106,7 @@ class SessionServiceImplTest {
             authRedirectParser = FakeAuthRedirectParser(
                 onParse = { Result.success(authRedirect(state = "forged-state-value")) }
             ),
-            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("dream://auth/callback") })
+            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("and.degilevich.dream://callback") })
         )
 
         val result = sessionService.login()
@@ -137,7 +137,7 @@ class SessionServiceImplTest {
             authRedirectParser = FakeAuthRedirectParser(
                 onParse = { Result.failure(AuthError.Denied(reason = "access_denied")) }
             ),
-            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("dream://auth/callback") })
+            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("and.degilevich.dream://callback") })
         )
 
         val result = sessionService.login()
@@ -153,7 +153,7 @@ class SessionServiceImplTest {
             authRedirectParser = FakeAuthRedirectParser(
                 onParse = { Result.success(authRedirect(state = "state-value")) }
             ),
-            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("dream://auth/callback") }),
+            webAuthLauncher = FakeWebAuthLauncher(onAuthorize = { Result.success("and.degilevich.dream://callback") }),
             tokenService = FakeTokenService(
                 onExchangeCode = { _, _ -> Result.failure(IllegalStateException("exchange failed")) }
             )

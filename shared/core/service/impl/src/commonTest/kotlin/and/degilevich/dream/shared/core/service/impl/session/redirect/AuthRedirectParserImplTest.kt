@@ -11,7 +11,7 @@ class AuthRedirectParserImplTest {
     @Test
     fun `parse - redirect carries a code and state - returns both`() {
         val result = AuthRedirectParserImpl().parse(
-            url = "dream://auth/callback?code=code-value&state=state-value"
+            url = "and.degilevich.dream://callback?code=code-value&state=state-value"
         )
 
         result.getOrNull() shouldBe AuthRedirectData(
@@ -23,7 +23,7 @@ class AuthRedirectParserImplTest {
     @Test
     fun `parse - redirect carries an encoded code - decodes it`() {
         val result = AuthRedirectParserImpl().parse(
-            url = "dream://auth/callback?code=code%2Fwith%2Bchars&state=state-value"
+            url = "and.degilevich.dream://callback?code=code%2Fwith%2Bchars&state=state-value"
         )
 
         result.getOrNull()?.code shouldBe "code/with+chars"
@@ -32,7 +32,7 @@ class AuthRedirectParserImplTest {
     @Test
     fun `parse - user denied consent - fails with the reported reason`() {
         val result = AuthRedirectParserImpl().parse(
-            url = "dream://auth/callback?error=access_denied&state=state-value"
+            url = "and.degilevich.dream://callback?error=access_denied&state=state-value"
         )
 
         val error = result.exceptionOrNull().shouldBeInstanceOf<AuthError.Denied>()
@@ -42,7 +42,7 @@ class AuthRedirectParserImplTest {
     @Test
     fun `parse - error takes precedence over a code - fails rather than continuing`() {
         val result = AuthRedirectParserImpl().parse(
-            url = "dream://auth/callback?code=code-value&error=access_denied&state=state-value"
+            url = "and.degilevich.dream://callback?code=code-value&error=access_denied&state=state-value"
         )
 
         result.exceptionOrNull().shouldBeInstanceOf<AuthError.Denied>()
@@ -50,14 +50,14 @@ class AuthRedirectParserImplTest {
 
     @Test
     fun `parse - redirect carries no code - fails as malformed`() {
-        val result = AuthRedirectParserImpl().parse(url = "dream://auth/callback?state=state-value")
+        val result = AuthRedirectParserImpl().parse(url = "and.degilevich.dream://callback?state=state-value")
 
         result.exceptionOrNull().shouldBeInstanceOf<AuthError.Malformed>()
     }
 
     @Test
     fun `parse - redirect carries no state - fails as malformed`() {
-        val result = AuthRedirectParserImpl().parse(url = "dream://auth/callback?code=code-value")
+        val result = AuthRedirectParserImpl().parse(url = "and.degilevich.dream://callback?code=code-value")
 
         result.exceptionOrNull().shouldBeInstanceOf<AuthError.Malformed>()
     }
