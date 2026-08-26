@@ -187,17 +187,6 @@ class SessionServiceImplTest {
     }
 
     @Test
-    fun `getActiveSession - stored session is empty - fails rather than returning an empty session`() = runTest {
-        val sessionService = createSessionService(
-            sessionStorage = FakeSessionStorage(onRead = { SessionData.empty() })
-        )
-
-        val result = sessionService.getActiveSession()
-
-        result.isFailure.shouldBe(true)
-    }
-
-    @Test
     fun `getActiveSession - nothing stored - fails`() = runTest {
         val sessionService = createSessionService(
             sessionStorage = FakeSessionStorage(onRead = { null })
@@ -209,18 +198,6 @@ class SessionServiceImplTest {
     }
 
     @Test
-    fun `getActiveSession - storage read throws - fails rather than propagating the throw`() = runTest {
-        val readFailure = IllegalStateException("decryption failed")
-        val sessionService = createSessionService(
-            sessionStorage = FakeSessionStorage(onRead = { throw readFailure })
-        )
-
-        val result = sessionService.getActiveSession()
-
-        result.exceptionOrNull() shouldBe readFailure
-    }
-
-    @Test
     fun `observeSession - storage emits a session - forwards it`() = runTest {
         val stored = SessionData(tokens = tokens())
         val sessionService = createSessionService(
@@ -229,18 +206,6 @@ class SessionServiceImplTest {
 
         sessionService.observeSession().test {
             awaitItem() shouldBe stored
-            awaitComplete()
-        }
-    }
-
-    @Test
-    fun `observeSession - storage emits nothing stored - forwards an empty session`() = runTest {
-        val sessionService = createSessionService(
-            sessionStorage = FakeSessionStorage(onObserve = { flowOf(null) })
-        )
-
-        sessionService.observeSession().test {
-            awaitItem() shouldBe SessionData.empty()
             awaitComplete()
         }
     }

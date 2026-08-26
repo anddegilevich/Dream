@@ -203,6 +203,10 @@ include(":shared:feature:search:component:search:impl")
 // Auth
 include(":shared:feature:auth:data:api")
 include(":shared:feature:auth:data:impl")
+include(":shared:feature:auth:data:test")
+
+include(":shared:feature:auth:domain:api")
+include(":shared:feature:auth:domain:impl")
 
 // =====================================================================================================================
 // Navigation
