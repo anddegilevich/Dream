@@ -5,10 +5,11 @@ import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.system.snackbar.provider.SnackbarDataPreviewProvider
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
+import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,6 +30,8 @@ fun AppSnackbar(
     data: SnackbarData,
     modifier: Modifier = Modifier
 ) {
+    val onActionClickedDebounced = rememberDebounced { data.performAction() }
+
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -52,11 +55,11 @@ fun AppSnackbar(
         data.actionLabel?.let { action ->
             Space(width = 12.dp)
             Text(
-                modifier = Modifier.clickableWithDebounce(
-                    indication = themeRipple()
-                ) {
-                    data.performAction()
-                },
+                modifier = Modifier.clickable(
+                    interactionSource = null,
+                    indication = themeRipple(),
+                    onClick = onActionClickedDebounced
+                ),
                 text = action,
                 textDecoration = TextDecoration.Underline,
                 color = Theme.colors.text.secondary,

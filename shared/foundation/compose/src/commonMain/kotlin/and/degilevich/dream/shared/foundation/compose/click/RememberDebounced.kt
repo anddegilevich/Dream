@@ -1,7 +1,7 @@
-package and.degilevich.dream.shared.foundation.compose.modifier.clickable
+package and.degilevich.dream.shared.foundation.compose.click
 
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import androidx.compose.foundation.Indication
+import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -14,61 +14,49 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.TimeMark
+import kotlin.time.TimeSource
 
-fun Modifier.clickableWithDebounce(
-    isEnabled: Boolean = true,
-    debounceDuration: Duration = defaultDebounceDuration,
-    interactionSource: MutableInteractionSource? = null,
-    indication: Indication? = null,
-    onClicked: suspend () -> Unit
-): Modifier {
-    return composed {
-        val mutex = remember { Mutex() }
-        var isDebounce by remember { mutableStateOf(false) }
-        val coroutineScope = rememberCoroutineScope()
-
-        this.clickable(
-            enabled = isEnabled && !isDebounce,
-            interactionSource = interactionSource,
-            indication = indication
-        ) {
-            coroutineScope.launch {
-                if (mutex.tryLock()) {
-                    try {
-                        isDebounce = true
-                        onClicked()
-                        delay(debounceDuration)
-                        isDebounce = false
-                    } finally {
-                        mutex.unlock()
-                    }
-                }
+@Composable
+fun rememberDebounced(
+    debounceDuration: Duration = DEFAULT_DEBOUNCE,
+    block: () -> Unit
+): () -> Unit {
+    val onClickedDebounced by rememberUpdatedState(block)
+    return remember(debounceDuration) {
+        var lastMark: TimeMark? = null
+        val onClick: () -> Unit = {
+            val mark = lastMark
+            if (mark == null || mark.elapsedNow() >= debounceDuration) {
+                lastMark = TimeSource.Monotonic.markNow()
+                onClickedDebounced()
             }
         }
+        onClick
     }
 }
 
+private val DEFAULT_DEBOUNCE = 600.milliseconds
+
 @Preview
 @Composable
-private fun ClickableWithDebounceModifierPreview() {
+private fun RememberDebouncedPreview() {
     val interactionSource = remember { MutableInteractionSource() }
     var onClicksCallsCount by remember { mutableIntStateOf(0) }
+    val onSpacerClicked = rememberDebounced(debounceDuration = 1.seconds) {
+        onClicksCallsCount++
+    }
 
     Column(
         modifier = Modifier
@@ -83,17 +71,14 @@ private fun ClickableWithDebounceModifierPreview() {
         Space(height = 12.dp)
         Spacer(
             modifier = Modifier
-                .clickableWithDebounce(
-                    debounceDuration = 1.seconds,
-                    interactionSource = interactionSource
-                ) {
-                    onClicksCallsCount++
-                }
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null,
+                    onClick = onSpacerClicked
+                )
                 .scaleOnClick(interactionSource = interactionSource)
                 .size(200.dp)
                 .background(Color.Red)
         )
     }
 }
-
-private val defaultDebounceDuration = 650.milliseconds

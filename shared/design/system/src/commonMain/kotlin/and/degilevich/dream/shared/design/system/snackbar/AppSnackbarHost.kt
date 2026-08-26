@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.design.system.snackbar
 
-import and.degilevich.dream.shared.design.system.button.PrimaryButton
+import and.degilevich.dream.shared.design.system.button.PrimaryTextButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.foundation.compose.snackbar.SwipeToDismissSnackbarHost
@@ -49,7 +49,7 @@ private fun AppSnackbarHostPreview() = ComposeAppTheme(isDarkMode = true) {
             .themeBackground()
             .fillMaxSize()
     ) {
-        PrimaryButton(
+        PrimaryTextButton(
             modifier = Modifier.align(Alignment.Center),
             text = "Show toast"
         ) {

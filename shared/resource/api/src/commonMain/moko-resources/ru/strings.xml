@@ -13,9 +13,11 @@
     <string name="stub_not_yet_implemented">В разработке</string>
 
     <string name="button_back">Назад</string>
+    <string name="button_connect_spotify">Подключить Spotify</string>
     <string name="button_subscribe">Подписаться</string>
     <string name="button_repeat">Повторить</string>
 
+    <string name="label_login_prompt">Войдите через Spotify, чтобы продолжить</string>
     <string name="label_artist">Артист</string>
     <string name="label_album">Альбом</string>
     <string name="label_track">Трек</string>
@@ -27,4 +29,5 @@
 
     <string name="error">Ошибка</string>
     <string name="error_forbidden_resource">Сервис не доступен</string>
+    <string name="error_authentication_failed">Не удалось войти</string>
 </resources>

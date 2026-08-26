@@ -15,9 +15,11 @@
     <string name="stub_not_yet_implemented">Not yet implemented</string>
 
     <string name="button_back">Back</string>
+    <string name="button_connect_spotify">Connect Spotify</string>
     <string name="button_subscribe">Subscribe</string>
     <string name="button_repeat">Repeat</string>
 
+    <string name="label_login_prompt">Sign in with Spotify to continue</string>
     <string name="label_artist">Artist</string>
     <string name="label_album">Album</string>
     <string name="label_track">Track</string>
@@ -29,4 +31,5 @@
 
     <string name="error">Error</string>
     <string name="error_forbidden_resource">Requested resource is forbidden</string>
+    <string name="error_authentication_failed">Authentication failed</string>
 </resources>

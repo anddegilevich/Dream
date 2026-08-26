@@ -208,6 +208,9 @@ include(":shared:feature:auth:data:test")
 include(":shared:feature:auth:domain:api")
 include(":shared:feature:auth:domain:impl")
 
+include(":shared:feature:auth:component:login:api")
+include(":shared:feature:auth:component:login:impl")
+
 // =====================================================================================================================
 // Navigation
 

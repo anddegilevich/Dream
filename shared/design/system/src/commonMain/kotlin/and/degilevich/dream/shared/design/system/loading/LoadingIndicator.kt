@@ -7,16 +7,18 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun LoadingIndicator(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    color: Color = Theme.colors.common.brand
 ) {
     CircularProgressIndicator(
         modifier = modifier,
-        color = Theme.colors.common.brand,
+        color = color,
         strokeCap = StrokeCap.Round
     )
 }
