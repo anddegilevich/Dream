@@ -45,6 +45,8 @@ kotlin {
             implementation(projects.shared.feature.common.component.splash.api)
             implementation(projects.shared.feature.common.component.home.api)
 
+            implementation(projects.shared.feature.auth.component.login.api)
+
             implementation(projects.shared.feature.artist.component.details.api)
 
             implementation(projects.shared.feature.album.component.details.api)

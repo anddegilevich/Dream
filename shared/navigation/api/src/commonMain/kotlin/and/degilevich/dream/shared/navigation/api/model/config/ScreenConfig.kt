@@ -15,6 +15,11 @@ sealed interface ScreenConfig {
     @Serializable
     data object Home : ScreenConfig
 
+    // Auth
+
+    @Serializable
+    data object Login : ScreenConfig
+
     // Artist
 
     @Serializable

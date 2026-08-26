@@ -54,6 +54,10 @@ kotlin {
             implementation(projects.shared.feature.search.ui.impl)
             implementation(projects.shared.feature.search.component.search.impl)
 
+            implementation(projects.shared.feature.auth.data.impl)
+            implementation(projects.shared.feature.auth.domain.impl)
+            implementation(projects.shared.feature.auth.component.login.impl)
+
             // Common
             implementation(projects.shared.feature.common.component.splash.impl)
             implementation(projects.shared.feature.common.component.home.impl)
