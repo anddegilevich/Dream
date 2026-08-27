@@ -9,7 +9,7 @@ class FakeSessionService(
     private val onLogin: () -> Result<SessionData> = { fakeImplementationError() },
     private val onLogout: () -> Unit = { fakeImplementationError() },
     private val onGetActiveSession: () -> Result<SessionData> = { fakeImplementationError() },
-    private val onObserveSession: () -> Flow<SessionData> = { fakeImplementationError() }
+    private val onObserveSession: () -> Flow<SessionData?> = { fakeImplementationError() }
 ) : SessionService {
 
     override suspend fun login(): Result<SessionData> {
@@ -24,7 +24,7 @@ class FakeSessionService(
         return onGetActiveSession()
     }
 
-    override fun observeSession(): Flow<SessionData> {
+    override fun observeSession(): Flow<SessionData?> {
         return onObserveSession()
     }
 }

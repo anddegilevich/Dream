@@ -7,5 +7,5 @@ interface SessionService {
     suspend fun login(): Result<SessionData>
     suspend fun logout()
     suspend fun getActiveSession(): Result<SessionData>
-    fun observeSession(): Flow<SessionData>
+    fun observeSession(): Flow<SessionData?>
 }

@@ -210,6 +210,32 @@ class SessionServiceImplTest {
         }
     }
 
+    @Test
+    fun `observeSession - storage emits nothing stored - forwards null`() = runTest {
+        val sessionService = createSessionService(
+            sessionStorage = FakeSessionStorage(onObserve = { flowOf(null) })
+        )
+
+        sessionService.observeSession().test {
+            awaitItem() shouldBe null
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun `observeSession - session is cleared while observed - forwards the transition`() = runTest {
+        val stored = SessionData(tokens = tokens())
+        val sessionService = createSessionService(
+            sessionStorage = FakeSessionStorage(onObserve = { flowOf(stored, null) })
+        )
+
+        sessionService.observeSession().test {
+            awaitItem() shouldBe stored
+            awaitItem() shouldBe null
+            awaitComplete()
+        }
+    }
+
     @Suppress("LongParameterList")
     private fun createSessionService(
         pkceGenerator: PkceGenerator = FakePkceGenerator(),

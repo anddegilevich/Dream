@@ -23,7 +23,7 @@ internal class AuthRepositoryImpl(
 
     override fun observeHasActiveSession(): Flow<Boolean> {
         return sessionService.observeSession().map { session ->
-            session.isNotEmpty()
+            session?.isNotEmpty() == true
         }
     }
 }

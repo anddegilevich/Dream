@@ -123,6 +123,20 @@ class AuthRepositoryImplTest {
         }
     }
 
+    @Test
+    fun `observeHasActiveSession - no session stored - emits false`() = runTest {
+        val repository = AuthRepositoryImpl(
+            sessionService = FakeSessionService(
+                onObserveSession = { flowOf(null) }
+            )
+        )
+
+        repository.observeHasActiveSession().test {
+            awaitItem() shouldBe false
+            awaitComplete()
+        }
+    }
+
     private fun activeSession(): SessionData {
         return SessionData(
             tokens = TokensData(
