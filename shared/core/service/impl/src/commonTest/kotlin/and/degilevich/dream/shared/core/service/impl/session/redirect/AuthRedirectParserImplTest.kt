@@ -40,6 +40,16 @@ class AuthRedirectParserImplTest {
     }
 
     @Test
+    fun `parse - user denied consent - reports the reason in the error message`() {
+        val result = AuthRedirectParserImpl().parse(
+            url = "and.degilevich.dream://callback?error=access_denied&state=state-value"
+        )
+
+        val error = result.exceptionOrNull().shouldBeInstanceOf<AuthError.Denied>()
+        error.message shouldBe "Authorization denied: access_denied"
+    }
+
+    @Test
     fun `parse - error takes precedence over a code - fails rather than continuing`() {
         val result = AuthRedirectParserImpl().parse(
             url = "and.degilevich.dream://callback?code=code-value&error=access_denied&state=state-value"

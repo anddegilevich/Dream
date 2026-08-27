@@ -194,7 +194,7 @@ class SessionServiceImplTest {
 
         val result = sessionService.getActiveSession()
 
-        result.isFailure.shouldBe(true)
+        result.exceptionOrNull().shouldBeInstanceOf<NullPointerException>()
     }
 
     @Test

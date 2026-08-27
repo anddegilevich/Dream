@@ -45,9 +45,7 @@ internal class SessionServiceImpl(
     }
 
     override suspend fun getActiveSession(): Result<SessionData> {
-        return sessionStorage.read()?.let { session ->
-            Result.success(session)
-        } ?: Result.failure(Exception("No active session"))
+        return runCatching { sessionStorage.read()!! }
     }
 
     override fun observeSession(): Flow<SessionData?> {
