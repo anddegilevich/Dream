@@ -1,7 +1,6 @@
 package and.degilevich.dream
 
 import and.degilevich.dream.shared.app.impl.component.RootComponentImpl
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,7 +27,6 @@ class MainActivity : ComponentActivity() {
         initEdgeToEdge()
 
         super.onCreate(savedInstanceState)
-        handleDeepLink(intent = intent)
         setContent {
             CompositionLocalProvider(
                 LocalOverscrollFactory provides null
@@ -36,17 +34,6 @@ class MainActivity : ComponentActivity() {
                 rootComponent.Render()
             }
         }
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        setIntent(intent)
-        handleDeepLink(intent = intent)
-    }
-
-    private fun handleDeepLink(intent: Intent) {
-        val url = intent.data?.toString() ?: return
-        rootComponent.onDeepLink(url = url)
     }
 
     private fun initEdgeToEdge() {

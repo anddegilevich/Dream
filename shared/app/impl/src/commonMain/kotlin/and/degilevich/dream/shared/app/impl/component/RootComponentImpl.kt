@@ -5,7 +5,6 @@ import and.degilevich.dream.shared.app.impl.component.child.Screen
 import and.degilevich.dream.shared.app.impl.view.ComposeApp
 import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
-import and.degilevich.dream.shared.core.deeplink.api.manager.DeeplinkManager
 import and.degilevich.dream.shared.feature.album.component.details.api.component.AlbumDetailsComponent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
 import and.degilevich.dream.shared.feature.auth.component.login.api.component.LoginComponent
@@ -43,8 +42,6 @@ class RootComponentImpl(
 
     private val toastChannel: ToastReceiveChannel by inject()
 
-    private val deeplinkManager: DeeplinkManager by inject()
-
     private val screens: Value<ChildStack<ScreenConfig, Screen>> = childStack(
         source = navigationComponent.screenNavigationSource,
         serializer = ScreenConfig.serializer(),
@@ -55,10 +52,6 @@ class RootComponentImpl(
     )
 
     private val toasts: Flow<ToastData> = toastChannel.receiveAsFlow()
-
-    override fun onDeepLink(url: String) {
-        deeplinkManager.handleDeeplink(url = url)
-    }
 
     @Composable
     override fun Render() {

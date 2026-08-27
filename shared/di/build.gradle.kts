@@ -21,7 +21,6 @@ kotlin {
             implementation(projects.shared.core.db.impl)
             implementation(projects.shared.core.toast.impl)
             implementation(projects.shared.core.webauth.impl)
-            implementation(projects.shared.core.deeplink.impl)
 
             // Navigation
             implementation(projects.shared.navigation.impl)

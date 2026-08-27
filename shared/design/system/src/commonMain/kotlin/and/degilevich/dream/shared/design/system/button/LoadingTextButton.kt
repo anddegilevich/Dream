@@ -11,7 +11,6 @@ import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -43,7 +42,7 @@ fun LoadingTextButton(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             AnimatedVisibility(
                 visible = isLoading,
@@ -51,7 +50,7 @@ fun LoadingTextButton(
                 exit = shrinkHorizontally { it }
             ) {
                 LoadingIndicator(
-                    modifier = Modifier.size(12.dp),
+                    size = 12.dp,
                     color = contentColor
                 )
             }
