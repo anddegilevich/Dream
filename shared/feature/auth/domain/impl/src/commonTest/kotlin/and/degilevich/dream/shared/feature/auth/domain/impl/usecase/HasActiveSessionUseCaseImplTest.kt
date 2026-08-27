@@ -24,15 +24,4 @@ class HasActiveSessionUseCaseImplTest {
 
         useCase() shouldBe false
     }
-
-    @Test
-    fun `invoke - reading the session throws - reports no session rather than raising`() = runTest {
-        val useCase = HasActiveSessionUseCaseImpl(
-            authRepository = FakeAuthRepository(
-                onHasActiveSession = { throw IllegalStateException("decryption failed") }
-            )
-        )
-
-        useCase() shouldBe false
-    }
 }

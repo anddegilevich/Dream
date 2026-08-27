@@ -8,8 +8,6 @@ internal class HasActiveSessionUseCaseImpl(
 ) : HasActiveSessionUseCase {
 
     override suspend fun invoke(): Boolean {
-        return runCatching {
-            authRepository.hasActiveSession()
-        }.getOrDefault(defaultValue = false)
+        return authRepository.hasActiveSession()
     }
 }

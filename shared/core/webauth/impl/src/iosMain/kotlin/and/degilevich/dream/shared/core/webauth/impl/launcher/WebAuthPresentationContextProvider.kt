@@ -5,6 +5,7 @@ import platform.AuthenticationServices.ASWebAuthenticationPresentationContextPro
 import platform.AuthenticationServices.ASWebAuthenticationSession
 import platform.UIKit.UIApplication
 import platform.UIKit.UIWindow
+import platform.UIKit.UIWindowScene
 import platform.darwin.NSObject
 
 internal class WebAuthPresentationContextProvider :
@@ -14,6 +15,13 @@ internal class WebAuthPresentationContextProvider :
     override fun presentationAnchorForWebAuthenticationSession(
         session: ASWebAuthenticationSession
     ): ASPresentationAnchor {
-        return UIApplication.sharedApplication.keyWindow ?: UIWindow()
+        return keyWindow() ?: UIWindow()
+    }
+
+    private fun keyWindow(): UIWindow? {
+        return UIApplication.sharedApplication.connectedScenes
+            .filterIsInstance<UIWindowScene>()
+            .flatMap { scene -> scene.windows.filterIsInstance<UIWindow>() }
+            .firstOrNull { window -> window.isKeyWindow() }
     }
 }

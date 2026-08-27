@@ -1,6 +1,6 @@
-package and.degilevich.dream.shared.core.webauth.api.model
+package and.degilevich.dream.shared.core.webauth.impl.model
 
-sealed interface WebAuthResult {
+internal sealed interface WebAuthResult {
 
     data class Redirect(val url: String) : WebAuthResult
 

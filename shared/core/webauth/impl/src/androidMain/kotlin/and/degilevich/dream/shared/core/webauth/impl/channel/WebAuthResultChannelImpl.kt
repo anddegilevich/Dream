@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.core.webauth.impl.channel
 
-import and.degilevich.dream.shared.core.webauth.api.channel.WebAuthResultChannel
-import and.degilevich.dream.shared.core.webauth.api.model.WebAuthResult
+import and.degilevich.dream.shared.core.webauth.impl.model.WebAuthResult
 import kotlinx.coroutines.channels.Channel
 
 internal class WebAuthResultChannelImpl :

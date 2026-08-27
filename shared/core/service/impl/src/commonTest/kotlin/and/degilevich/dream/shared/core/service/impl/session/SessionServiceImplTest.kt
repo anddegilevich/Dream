@@ -195,6 +195,19 @@ class SessionServiceImplTest {
         result.exceptionOrNull().shouldBeInstanceOf<NullPointerException>()
     }
 
+    @Test
+    fun `getActiveSession - reading the session throws - fails rather than raising`() = runTest {
+        val sessionService = createSessionService(
+            sessionStorage = FakeSessionStorage(
+                onRead = { throw IllegalStateException("decryption failed") }
+            )
+        )
+
+        val result = sessionService.getActiveSession()
+
+        result.exceptionOrNull().shouldBeInstanceOf<IllegalStateException>()
+    }
+
     @Suppress("LongParameterList")
     private fun createSessionService(
         pkceGenerator: PkceGenerator = FakePkceGenerator(),
