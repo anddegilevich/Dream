@@ -59,6 +59,10 @@ internal class PreferenceStorageImpl(
         settings.remove(key)
     }
 
+    override suspend fun clearAll() {
+        settings.clear()
+    }
+
     override fun <T> observe(
         key: String,
         serializer: DeserializationStrategy<T>

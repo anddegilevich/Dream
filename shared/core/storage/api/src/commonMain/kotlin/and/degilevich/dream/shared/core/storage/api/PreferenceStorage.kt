@@ -19,6 +19,8 @@ interface PreferenceStorage {
 
     suspend fun clear(key: String)
 
+    suspend fun clearAll()
+
     fun <T> observe(
         key: String,
         serializer: DeserializationStrategy<T>

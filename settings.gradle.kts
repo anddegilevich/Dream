@@ -61,6 +61,7 @@ include(":shared:core:service:test")
 
 include(":shared:core:storage:api")
 include(":shared:core:storage:impl")
+include(":shared:core:storage:test")
 
 include(":shared:core:crypto:api")
 include(":shared:core:crypto:impl")
