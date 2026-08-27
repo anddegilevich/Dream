@@ -6,7 +6,8 @@ import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplemen
 
 class FakeTrackDao(
     private val onUpsert: (TrackEntity) -> Unit = { fakeImplementationError() },
-    private val onUpsertAll: (List<TrackEntity>) -> Unit = { fakeImplementationError() }
+    private val onUpsertAll: (List<TrackEntity>) -> Unit = { fakeImplementationError() },
+    private val onDeleteAll: () -> Unit = { fakeImplementationError() }
 ) : TrackDao {
 
     override suspend fun upsert(entity: TrackEntity) {
@@ -15,5 +16,9 @@ class FakeTrackDao(
 
     override suspend fun upsertAll(entities: List<TrackEntity>) {
         onUpsertAll(entities)
+    }
+
+    override suspend fun deleteAll() {
+        onDeleteAll()
     }
 }

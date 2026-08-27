@@ -12,4 +12,6 @@ interface AppDatabase {
     fun getTrackDao(): TrackDao
     fun getArtistToAlbumCrossRefDao(): ArtistToAlbumCrossRefDao
     fun getArtistToTrackCrossRefDao(): ArtistToTrackCrossRefDao
+
+    suspend fun clear()
 }

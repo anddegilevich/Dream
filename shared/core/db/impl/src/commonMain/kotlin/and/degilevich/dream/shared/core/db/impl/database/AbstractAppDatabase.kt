@@ -23,4 +23,13 @@ import androidx.room.RoomDatabase
     exportSchema = false
 )
 @ConstructedBy(AppDatabaseConstructor::class)
-internal abstract class AbstractAppDatabase : RoomDatabase(), AppDatabase
+internal abstract class AbstractAppDatabase : RoomDatabase(), AppDatabase {
+
+    override suspend fun clear() {
+        getArtistToAlbumCrossRefDao().deleteAll()
+        getArtistToTrackCrossRefDao().deleteAll()
+        getArtistDao().deleteAll()
+        getAlbumDao().deleteAll()
+        getTrackDao().deleteAll()
+    }
+}

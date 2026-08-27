@@ -13,11 +13,13 @@ class FakeAppDatabase(
     private val onGetAlbumDao: () -> AlbumDao = { fakeImplementationError() },
     private val onGetTrackDao: () -> TrackDao = { fakeImplementationError() },
     private val onGetArtistToAlbumCrossRefDao: () -> ArtistToAlbumCrossRefDao = { fakeImplementationError() },
-    private val onGetArtistToTrackCrossRefDao: () -> ArtistToTrackCrossRefDao = { fakeImplementationError() }
+    private val onGetArtistToTrackCrossRefDao: () -> ArtistToTrackCrossRefDao = { fakeImplementationError() },
+    private val onClear: () -> Unit = { fakeImplementationError() }
 ) : AppDatabase {
     override fun getArtistDao(): ArtistDao = onGetArtistDao()
     override fun getAlbumDao(): AlbumDao = onGetAlbumDao()
     override fun getTrackDao(): TrackDao = onGetTrackDao()
     override fun getArtistToAlbumCrossRefDao(): ArtistToAlbumCrossRefDao = onGetArtistToAlbumCrossRefDao()
     override fun getArtistToTrackCrossRefDao(): ArtistToTrackCrossRefDao = onGetArtistToTrackCrossRefDao()
+    override suspend fun clear() = onClear()
 }

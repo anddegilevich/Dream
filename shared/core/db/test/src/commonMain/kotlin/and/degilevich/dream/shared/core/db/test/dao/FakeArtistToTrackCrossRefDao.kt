@@ -5,10 +5,15 @@ import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCros
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 
 class FakeArtistToTrackCrossRefDao(
-    private val onUpsertAll: (List<ArtistToTrackCrossRefEntity>) -> Unit = { fakeImplementationError() }
+    private val onUpsertAll: (List<ArtistToTrackCrossRefEntity>) -> Unit = { fakeImplementationError() },
+    private val onDeleteAll: () -> Unit = { fakeImplementationError() }
 ) : ArtistToTrackCrossRefDao {
 
     override suspend fun upsertAll(entities: List<ArtistToTrackCrossRefEntity>) {
         onUpsertAll(entities)
+    }
+
+    override suspend fun deleteAll() {
+        onDeleteAll()
     }
 }
