@@ -1,9 +1,5 @@
 package and.degilevich.dream.shared.foundation.primitive.collections.map
 
-fun <K> Map<K, Boolean>.isAnySelected(): Boolean {
-    return values.any { it }
-}
-
 fun <K> Map<K, Boolean>.firstSelectedKeyOrNull(): K? {
     return entries.find { entry ->
         entry.value
