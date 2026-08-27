@@ -9,7 +9,10 @@ import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainCompone
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.replaceCurrent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.core.component.inject
 
 internal class LoginDomainComponent(
@@ -30,7 +33,7 @@ internal class LoginDomainComponent(
     private fun login() = scope.launch {
         try {
             setLoading(isLoading = true)
-            loginUseCase()
+            withContext(Dispatchers.IO) { loginUseCase() }
                 .onSuccess { navigateToHome() }
                 .onFailure { reportLoginFailure() }
         } finally {
