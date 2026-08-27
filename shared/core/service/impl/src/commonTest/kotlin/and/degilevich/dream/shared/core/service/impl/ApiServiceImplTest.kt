@@ -38,11 +38,12 @@ class ApiServiceImplTest {
     fun `usersApi - access token is rejected - refreshes and retries with the new token`() = runTest {
         val engine = respondingWith(statuses = listOf(HttpStatusCode.Unauthorized, HttpStatusCode.OK))
         val refreshedWith = mutableListOf<String>()
+        var stored = session(accessToken = "expired-access-token")
         val apiService = createApiService(
             engine = engine,
             sessionStorage = FakeSessionStorage(
-                onRead = { session(accessToken = "expired-access-token") },
-                onSave = { }
+                onRead = { stored },
+                onSave = { session -> stored = session }
             ),
             tokenService = FakeTokenService(
                 onRefresh = { refreshToken ->
@@ -110,6 +111,38 @@ class ApiServiceImplTest {
             tokenService = tokenService,
             tokensDataToBearerMapper = TokensDataToBearerMapperImpl()
         )
+    }
+
+    @Test
+    fun `usersApi - stored token changed since the last call - sends the new token`() = runTest {
+        val engine = respondingWith(statuses = listOf(HttpStatusCode.OK))
+        var stored = session(accessToken = "first-access-token")
+        val apiService = createApiService(
+            engine = engine,
+            sessionStorage = FakeSessionStorage(onRead = { stored })
+        )
+        apiService.usersApi.getCurrentUsersProfile()
+
+        stored = session(accessToken = "second-access-token")
+        apiService.usersApi.getCurrentUsersProfile()
+
+        engine.requestHistory.last().headers[HttpHeaders.Authorization] shouldBe "Bearer second-access-token"
+    }
+
+    @Test
+    fun `usersApi - session was cleared after a call - stops sending a bearer token`() = runTest {
+        val engine = respondingWith(statuses = listOf(HttpStatusCode.OK))
+        var stored: SessionData? = session(accessToken = "stored-access-token")
+        val apiService = createApiService(
+            engine = engine,
+            sessionStorage = FakeSessionStorage(onRead = { stored })
+        )
+        apiService.usersApi.getCurrentUsersProfile()
+
+        stored = null
+        apiService.usersApi.getCurrentUsersProfile()
+
+        engine.requestHistory.last().headers[HttpHeaders.Authorization] shouldBe null
     }
 
     private fun session(accessToken: String): SessionData {

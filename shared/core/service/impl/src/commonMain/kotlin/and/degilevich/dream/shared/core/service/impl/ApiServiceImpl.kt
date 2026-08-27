@@ -40,6 +40,7 @@ internal class ApiServiceImpl(
     private fun HttpClientConfig<*>.installAuth() {
         install(Auth) {
             bearer {
+                cacheTokens = false
                 loadTokens { loadTokens() }
                 refreshTokens { refreshTokens() }
             }
