@@ -141,8 +141,7 @@ class AuthRepositoryImplTest {
         return SessionData(
             tokens = TokensData(
                 accessToken = "access-token",
-                refreshToken = "refresh-token",
-                expirationTimestamp = 1_000L
+                refreshToken = "refresh-token"
             )
         )
     }

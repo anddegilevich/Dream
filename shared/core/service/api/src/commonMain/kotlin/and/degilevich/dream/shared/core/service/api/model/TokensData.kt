@@ -7,8 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TokensData(
     val accessToken: String,
-    val refreshToken: String,
-    val expirationTimestamp: Long
+    val refreshToken: String
 ) : EmptyState {
 
     override fun isEmpty(): Boolean {
@@ -20,8 +19,7 @@ data class TokensData(
         override fun empty(): TokensData {
             return TokensData(
                 accessToken = "",
-                refreshToken = "",
-                expirationTimestamp = 0L
+                refreshToken = ""
             )
         }
     }

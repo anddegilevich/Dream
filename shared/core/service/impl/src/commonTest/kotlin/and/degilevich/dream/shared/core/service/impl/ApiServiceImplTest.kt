@@ -119,8 +119,7 @@ class ApiServiceImplTest {
     private fun tokens(accessToken: String): TokensData {
         return TokensData(
             accessToken = accessToken,
-            refreshToken = "stored-refresh-token",
-            expirationTimestamp = 4_600_000L
+            refreshToken = "stored-refresh-token"
         )
     }
 

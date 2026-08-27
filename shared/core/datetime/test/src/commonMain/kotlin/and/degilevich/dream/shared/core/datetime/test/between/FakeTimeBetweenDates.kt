@@ -1,11 +1,11 @@
-package and.degilevich.dream.shared.core.service.impl.datetime
+package and.degilevich.dream.shared.core.datetime.test.between
 
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 import and.degilevich.dream.shared.foundation.datetime.api.between.TimeBetweenDates
 import and.degilevich.dream.shared.foundation.datetime.api.between.TimeBetweenDatesConfigBuilderScope
 import and.degilevich.dream.shared.foundation.datetime.api.between.TimeBetweenNowAndDateConfigBuilderScope
 
-internal class FakeTimeBetweenDates(
+class FakeTimeBetweenDates(
     private val onTimeBetweenNowAndDateResult: () -> Result<Long> = { fakeImplementationError() },
     private val onTimeBetweenNowAndDate: () -> Long = { fakeImplementationError() },
     private val onTimeBetweenDatesResult: () -> Result<Long> = { fakeImplementationError() },

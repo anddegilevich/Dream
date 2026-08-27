@@ -50,6 +50,7 @@ include(":shared:resource:test")
 
 include(":shared:core:datetime:api")
 include(":shared:core:datetime:impl")
+include(":shared:core:datetime:test")
 
 include(":shared:core:network:api")
 include(":shared:core:network:impl")

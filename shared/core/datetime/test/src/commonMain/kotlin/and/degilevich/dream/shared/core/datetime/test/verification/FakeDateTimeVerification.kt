@@ -1,11 +1,11 @@
-package and.degilevich.dream.shared.core.service.impl.datetime
+package and.degilevich.dream.shared.core.datetime.test.verification
 
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 import and.degilevich.dream.shared.foundation.datetime.api.verification.DateTimeVerification
 import and.degilevich.dream.shared.foundation.datetime.api.verification.VerificationDateBuilderScope
 import and.degilevich.dream.shared.foundation.datetime.api.verification.VerificationDateWithOffsetBuilderScope
 
-internal class FakeDateTimeVerification(
+class FakeDateTimeVerification(
     private val onIsFutureDateWithOffsetResult: () -> Result<Boolean> = { fakeImplementationError() },
     private val onIsFutureDateWithOffset: () -> Boolean = { fakeImplementationError() },
     private val onIsPastDateWithOffsetResult: () -> Result<Boolean> = { fakeImplementationError() },

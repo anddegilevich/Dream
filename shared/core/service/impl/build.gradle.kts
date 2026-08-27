@@ -13,7 +13,6 @@ kotlin {
             implementation(projects.shared.config)
             implementation(projects.shared.core.storage.api)
             implementation(projects.shared.core.crypto.api)
-            implementation(projects.shared.core.datetime.api)
             implementation(projects.shared.core.webauth.api)
             implementation(projects.shared.foundation.abstraction)
         }

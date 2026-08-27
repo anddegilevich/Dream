@@ -1,11 +1,11 @@
-package and.degilevich.dream.shared.core.service.impl.datetime
+package and.degilevich.dream.shared.core.datetime.test.format
 
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 import and.degilevich.dream.shared.foundation.datetime.api.common.DateTimeInput
 import and.degilevich.dream.shared.foundation.datetime.api.format.DateTimeFormatConfigBuilderScope
 import and.degilevich.dream.shared.foundation.datetime.api.format.DateTimeFormatter
 
-internal class FakeDateTimeFormatter(
+class FakeDateTimeFormatter(
     private val onFormatResult: () -> Result<String> = { fakeImplementationError() },
     private val onFormat: () -> String = { fakeImplementationError() },
     private val onFormatToMillisResult: () -> Result<Long> = { fakeImplementationError() },

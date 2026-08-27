@@ -268,8 +268,7 @@ class SessionServiceImplTest {
     private fun tokens(): TokensData {
         return TokensData(
             accessToken = "access-token-value",
-            refreshToken = "refresh-token-value",
-            expirationTimestamp = 4_600_000L
+            refreshToken = "refresh-token-value"
         )
     }
 }

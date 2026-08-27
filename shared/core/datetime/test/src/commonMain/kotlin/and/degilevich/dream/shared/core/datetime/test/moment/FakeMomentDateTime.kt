@@ -1,10 +1,10 @@
-package and.degilevich.dream.shared.core.service.impl.datetime
+package and.degilevich.dream.shared.core.datetime.test.moment
 
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 import and.degilevich.dream.shared.foundation.datetime.api.moment.MomentConfigBuilderScope
 import and.degilevich.dream.shared.foundation.datetime.api.moment.MomentDateTime
 
-internal class FakeMomentDateTime(
+class FakeMomentDateTime(
     private val onStartOfDateUnitResult: () -> Result<String> = { fakeImplementationError() },
     private val onStartOfDateUnit: () -> String = { fakeImplementationError() },
     private val onEndOfDateUnitResult: () -> Result<String> = { fakeImplementationError() },

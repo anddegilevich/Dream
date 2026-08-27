@@ -172,13 +172,11 @@ class TokenServiceImplTest {
 
     private fun tokensData(
         accessToken: String = "mapped-access-token",
-        refreshToken: String = "mapped-refresh-token",
-        expirationTimestamp: Long = 4_600_000L
+        refreshToken: String = "mapped-refresh-token"
     ): TokensData {
         return TokensData(
             accessToken = accessToken,
-            refreshToken = refreshToken,
-            expirationTimestamp = expirationTimestamp
+            refreshToken = refreshToken
         )
     }
 

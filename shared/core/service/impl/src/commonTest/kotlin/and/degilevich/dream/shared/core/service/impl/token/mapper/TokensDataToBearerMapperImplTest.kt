@@ -11,8 +11,7 @@ class TokensDataToBearerMapperImplTest {
         val bearer = TokensDataToBearerMapperImpl().map(
             item = TokensData(
                 accessToken = "access-token-value",
-                refreshToken = "refresh-token-value",
-                expirationTimestamp = 1_000_000L
+                refreshToken = "refresh-token-value"
             )
         )
 

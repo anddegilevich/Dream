@@ -1,10 +1,10 @@
-package and.degilevich.dream.shared.core.service.impl.datetime
+package and.degilevich.dream.shared.core.datetime.test.current
 
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 import and.degilevich.dream.shared.foundation.datetime.api.current.CurrentDateTime
 import and.degilevich.dream.shared.foundation.datetime.api.current.CurrentDateTimeConfigBuilderScope
 
-internal class FakeCurrentDateTime(
+class FakeCurrentDateTime(
     private val onCurrentTimeMillis: () -> Long = { fakeImplementationError() },
     private val onCurrentDateTimeResult: (CurrentDateTimeConfigBuilderScope.() -> Unit) -> Result<String> = {
         fakeImplementationError()
