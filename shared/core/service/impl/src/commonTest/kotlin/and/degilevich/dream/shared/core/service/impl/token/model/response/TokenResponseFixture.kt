@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.core.service.impl.token.model.request
+package and.degilevich.dream.shared.core.service.impl.token.model.response
 
 internal fun tokenResponse(
     accessToken: String = "access-token-value",

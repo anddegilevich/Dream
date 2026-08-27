@@ -360,6 +360,6 @@ Fixture model methods.
 ## Setup
 
 In order to build a prod version of the project the **CLIENT_ID** of the API should be added to your `local.properties`.
-Check [Spotify Web API Getting Started](https://developer.spotify.com/documentation/web-api/tutorials/getting-started#request-an-access-token) to learn how get them.
+Check [Spotify Web API Getting Started](https://developer.spotify.com/documentation/web-api/tutorials/getting-started#request-an-access-token) to learn how get client id.
 
 //TODO: Add alternative instructions for mock build

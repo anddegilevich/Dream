@@ -3,10 +3,10 @@ package and.degilevich.dream.shared.core.service.impl.token.client
 import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.service.api.model.TokensData
 import and.degilevich.dream.shared.core.service.impl.network.fakeRemoteClient
-import and.degilevich.dream.shared.core.service.impl.token.mapper.FakeTokensOutputToDataMapper
-import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensOutputToDataMapper
-import and.degilevich.dream.shared.core.service.impl.token.model.request.TokenResponse
-import and.degilevich.dream.shared.core.service.impl.token.model.request.tokenResponse
+import and.degilevich.dream.shared.core.service.impl.token.mapper.FakeTokenResponseToDataMapper
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokenResponseToDataMapper
+import and.degilevich.dream.shared.core.service.impl.token.model.response.TokenResponse
+import and.degilevich.dream.shared.core.service.impl.token.model.response.tokenResponse
 import io.kotest.matchers.shouldBe
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -30,7 +30,7 @@ class TokenServiceImplTest {
 
         createTokenService(
             engine = engine,
-            tokensOutputToDataMapper = mapperReturning(tokens = tokensData())
+            tokenResponseToDataMapper = mapperReturning(tokens = tokensData())
         ).exchangeCode(
             code = "code-value",
             codeVerifier = "verifier-value"
@@ -46,7 +46,7 @@ class TokenServiceImplTest {
 
         createTokenService(
             engine = engine,
-            tokensOutputToDataMapper = mapperReturning(tokens = tokensData())
+            tokenResponseToDataMapper = mapperReturning(tokens = tokensData())
         ).exchangeCode(
             code = "code-value",
             codeVerifier = "verifier-value"
@@ -66,7 +66,7 @@ class TokenServiceImplTest {
 
         createTokenService(
             engine = engine,
-            tokensOutputToDataMapper = mapperReturning(tokens = tokensData())
+            tokenResponseToDataMapper = mapperReturning(tokens = tokensData())
         ).exchangeCode(
             code = "code-value",
             codeVerifier = "verifier-value"
@@ -83,7 +83,7 @@ class TokenServiceImplTest {
         val mappedResponses = mutableListOf<TokenResponse>()
         val tokenService = createTokenService(
             engine = respondingWith(content = encoded(response = response)),
-            tokensOutputToDataMapper = FakeTokensOutputToDataMapper(
+            tokenResponseToDataMapper = FakeTokenResponseToDataMapper(
                 onMap = { item ->
                     mappedResponses.add(item)
                     mapped
@@ -121,7 +121,7 @@ class TokenServiceImplTest {
 
         createTokenService(
             engine = engine,
-            tokensOutputToDataMapper = mapperReturning(tokens = tokensData())
+            tokenResponseToDataMapper = mapperReturning(tokens = tokensData())
         ).refresh(refreshToken = "current-refresh-token")
 
         val parameters = engine.lastFormParameters()
@@ -134,7 +134,7 @@ class TokenServiceImplTest {
     fun `refresh - always - returns the refresh token exactly as mapped`() = runTest {
         val tokenService = createTokenService(
             engine = respondingWith(content = encoded(response = tokenResponse())),
-            tokensOutputToDataMapper = mapperReturning(
+            tokenResponseToDataMapper = mapperReturning(
                 tokens = tokensData(refreshToken = "rotated-refresh-token")
             )
         )
@@ -158,16 +158,16 @@ class TokenServiceImplTest {
 
     private fun createTokenService(
         engine: MockEngine,
-        tokensOutputToDataMapper: TokensOutputToDataMapper = FakeTokensOutputToDataMapper()
+        tokenResponseToDataMapper: TokenResponseToDataMapper = FakeTokenResponseToDataMapper()
     ): TokenServiceImpl {
         return TokenServiceImpl(
             remoteClient = fakeRemoteClient(engine = engine),
-            tokensOutputToDataMapper = tokensOutputToDataMapper
+            tokenResponseToDataMapper = tokenResponseToDataMapper
         )
     }
 
-    private fun mapperReturning(tokens: TokensData): TokensOutputToDataMapper {
-        return FakeTokensOutputToDataMapper(onMap = { tokens })
+    private fun mapperReturning(tokens: TokensData): TokenResponseToDataMapper {
+        return FakeTokenResponseToDataMapper(onMap = { tokens })
     }
 
     private fun tokensData(
