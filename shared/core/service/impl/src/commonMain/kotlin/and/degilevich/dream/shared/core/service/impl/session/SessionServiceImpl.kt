@@ -11,7 +11,6 @@ import and.degilevich.dream.shared.core.service.impl.session.storage.SessionStor
 import and.degilevich.dream.shared.core.service.impl.session.url.AuthUrlBuilder
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
 import and.degilevich.dream.shared.core.webauth.api.launcher.WebAuthLauncher
-import kotlinx.coroutines.flow.Flow
 
 internal class SessionServiceImpl(
     private val pkceGenerator: PkceGenerator,
@@ -46,10 +45,6 @@ internal class SessionServiceImpl(
 
     override suspend fun getActiveSession(): Result<SessionData> {
         return runCatching { sessionStorage.read()!! }
-    }
-
-    override fun observeSession(): Flow<SessionData?> {
-        return sessionStorage.observe()
     }
 
     private suspend fun exchangeCode(

@@ -3,9 +3,7 @@ package and.degilevich.dream.shared.feature.auth.data.impl.repository
 import and.degilevich.dream.shared.core.service.api.model.SessionData
 import and.degilevich.dream.shared.core.service.api.model.TokensData
 import and.degilevich.dream.shared.core.service.test.session.FakeSessionService
-import app.cash.turbine.test
 import io.kotest.matchers.shouldBe
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 
@@ -73,68 +71,6 @@ class AuthRepositoryImplTest {
         )
 
         repository.hasActiveSession() shouldBe false
-    }
-
-    @Test
-    fun `observeHasActiveSession - session holds tokens - emits true`() = runTest {
-        val repository = AuthRepositoryImpl(
-            sessionService = FakeSessionService(
-                onObserveSession = { flowOf(activeSession()) }
-            )
-        )
-
-        repository.observeHasActiveSession().test {
-            awaitItem() shouldBe true
-            awaitComplete()
-        }
-    }
-
-    @Test
-    fun `observeHasActiveSession - session is empty - emits false`() = runTest {
-        val repository = AuthRepositoryImpl(
-            sessionService = FakeSessionService(
-                onObserveSession = { flowOf(SessionData.empty()) }
-            )
-        )
-
-        repository.observeHasActiveSession().test {
-            awaitItem() shouldBe false
-            awaitComplete()
-        }
-    }
-
-    @Test
-    fun `observeHasActiveSession - session is cleared while observed - emits the transition`() = runTest {
-        val repository = AuthRepositoryImpl(
-            sessionService = FakeSessionService(
-                onObserveSession = {
-                    flowOf(
-                        activeSession(),
-                        SessionData.empty()
-                    )
-                }
-            )
-        )
-
-        repository.observeHasActiveSession().test {
-            awaitItem() shouldBe true
-            awaitItem() shouldBe false
-            awaitComplete()
-        }
-    }
-
-    @Test
-    fun `observeHasActiveSession - no session stored - emits false`() = runTest {
-        val repository = AuthRepositoryImpl(
-            sessionService = FakeSessionService(
-                onObserveSession = { flowOf(null) }
-            )
-        )
-
-        repository.observeHasActiveSession().test {
-            awaitItem() shouldBe false
-            awaitComplete()
-        }
     }
 
     private fun activeSession(): SessionData {

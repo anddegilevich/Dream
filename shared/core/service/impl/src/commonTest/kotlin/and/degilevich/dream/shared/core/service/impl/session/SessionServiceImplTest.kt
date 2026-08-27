@@ -18,10 +18,8 @@ import and.degilevich.dream.shared.core.service.impl.token.client.FakeTokenServi
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
 import and.degilevich.dream.shared.core.webauth.api.launcher.WebAuthLauncher
 import and.degilevich.dream.shared.core.webauth.api.model.WebAuthError
-import app.cash.turbine.test
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 
@@ -195,45 +193,6 @@ class SessionServiceImplTest {
         val result = sessionService.getActiveSession()
 
         result.exceptionOrNull().shouldBeInstanceOf<NullPointerException>()
-    }
-
-    @Test
-    fun `observeSession - storage emits a session - forwards it`() = runTest {
-        val stored = SessionData(tokens = tokens())
-        val sessionService = createSessionService(
-            sessionStorage = FakeSessionStorage(onObserve = { flowOf(stored) })
-        )
-
-        sessionService.observeSession().test {
-            awaitItem() shouldBe stored
-            awaitComplete()
-        }
-    }
-
-    @Test
-    fun `observeSession - storage emits nothing stored - forwards null`() = runTest {
-        val sessionService = createSessionService(
-            sessionStorage = FakeSessionStorage(onObserve = { flowOf(null) })
-        )
-
-        sessionService.observeSession().test {
-            awaitItem() shouldBe null
-            awaitComplete()
-        }
-    }
-
-    @Test
-    fun `observeSession - session is cleared while observed - forwards the transition`() = runTest {
-        val stored = SessionData(tokens = tokens())
-        val sessionService = createSessionService(
-            sessionStorage = FakeSessionStorage(onObserve = { flowOf(stored, null) })
-        )
-
-        sessionService.observeSession().test {
-            awaitItem() shouldBe stored
-            awaitItem() shouldBe null
-            awaitComplete()
-        }
     }
 
     @Suppress("LongParameterList")

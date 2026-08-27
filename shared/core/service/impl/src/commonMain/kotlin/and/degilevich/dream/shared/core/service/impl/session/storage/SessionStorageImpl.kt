@@ -2,7 +2,6 @@ package and.degilevich.dream.shared.core.service.impl.session.storage
 
 import and.degilevich.dream.shared.core.service.api.model.SessionData
 import and.degilevich.dream.shared.core.storage.api.PreferenceStorage
-import kotlinx.coroutines.flow.Flow
 
 internal class SessionStorageImpl(
     private val preferenceStorage: PreferenceStorage
@@ -25,13 +24,6 @@ internal class SessionStorageImpl(
 
     override suspend fun clear() {
         preferenceStorage.clear(key = SESSION_PREFERENCE_STORAGE_KEY)
-    }
-
-    override fun observe(): Flow<SessionData?> {
-        return preferenceStorage.observe(
-            key = SESSION_PREFERENCE_STORAGE_KEY,
-            serializer = SessionData.serializer()
-        )
     }
 
     private companion object {
