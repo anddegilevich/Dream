@@ -3,7 +3,6 @@ package and.degilevich.dream.shared.feature.user.domain.impl.usecase
 import and.degilevich.dream.shared.feature.user.data.api.repository.UserRepository
 import and.degilevich.dream.shared.feature.user.domain.api.usecase.GetCurrentUserUseCase
 import and.degilevich.dream.shared.feature.user.model.core.api.method.getCurrentUser.GetCurrentUserResult
-import and.degilevich.dream.shared.foundation.primitive.result.foldResult
 import and.degilevich.dream.shared.foundation.primitive.result.recoverResult
 
 internal class GetCurrentUserUseCaseImpl(

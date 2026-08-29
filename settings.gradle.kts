@@ -224,6 +224,7 @@ include(":shared:feature:user:domain:model:core:test")
 
 include(":shared:feature:user:domain:api")
 include(":shared:feature:user:domain:impl")
+include(":shared:feature:user:domain:test")
 
 // =====================================================================================================================
 // Navigation

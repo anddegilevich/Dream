@@ -9,6 +9,7 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(projects.shared.feature.user.data.test)
+            implementation(projects.shared.feature.user.domain.test)
             implementation(projects.shared.feature.user.domain.model.core.test)
         }
     }

@@ -5,7 +5,9 @@ import and.degilevich.dream.shared.feature.user.data.impl.storage.FakeUserDataSt
 import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
 import and.degilevich.dream.shared.feature.user.model.core.api.method.getCurrentUser.GetCurrentUserResult
 import and.degilevich.dream.shared.feature.user.model.core.test.data.userData
+import app.cash.turbine.test
 import io.kotest.matchers.shouldBe
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 
@@ -54,5 +56,19 @@ class UserRepositoryImplTest {
         )
         val result = repository.getCachedUser()
         result shouldBe storageResult
+    }
+
+    @Test
+    fun `observeUser - emits the values observed from the storage`() = runTest {
+        val user = userData(id = "user-1")
+        val repository = UserRepositoryImpl(
+            userRemoteDataSource = FakeUserRemoteDataSource(),
+            userDataStorage = FakeUserDataStorage(onObserve = { flowOf(user, null) })
+        )
+        repository.observeUser().test {
+            awaitItem() shouldBe user
+            awaitItem() shouldBe null
+            awaitComplete()
+        }
     }
 }
