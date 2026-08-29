@@ -15,6 +15,11 @@ interface PreferenceStorage {
     suspend fun <T> read(
         key: String,
         serializer: DeserializationStrategy<T>
+    ): Result<T>
+
+    suspend fun <T> readOrNull(
+        key: String,
+        serializer: DeserializationStrategy<T>
     ): T?
 
     suspend fun clear(key: String)

@@ -8,7 +8,8 @@ import kotlinx.serialization.SerializationStrategy
 
 class FakePreferenceStorage(
     private val onSave: (key: String, value: Any?) -> Unit = { _, _ -> fakeImplementationError() },
-    private val onRead: (key: String) -> Any? = { fakeImplementationError() },
+    private val onRead: (key: String) -> Result<Any?> = { fakeImplementationError() },
+    private val onReadOrNull: (key: String) -> Any? = { fakeImplementationError() },
     private val onClear: (key: String) -> Unit = { fakeImplementationError() },
     private val onClearAll: () -> Unit = { fakeImplementationError() },
     private val onObserve: (key: String) -> Flow<Any?> = { fakeImplementationError() }
@@ -26,8 +27,16 @@ class FakePreferenceStorage(
     override suspend fun <T> read(
         key: String,
         serializer: DeserializationStrategy<T>
+    ): Result<T> {
+        return onRead(key) as Result<T>
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override suspend fun <T> readOrNull(
+        key: String,
+        serializer: DeserializationStrategy<T>
     ): T? {
-        return onRead(key) as T?
+        return onReadOrNull(key) as T?
     }
 
     override suspend fun clear(key: String) {

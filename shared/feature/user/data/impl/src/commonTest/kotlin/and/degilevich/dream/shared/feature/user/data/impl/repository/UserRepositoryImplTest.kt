@@ -35,13 +35,24 @@ class UserRepositoryImplTest {
     }
 
     @Test
-    fun `getCachedUser - returns the user read from the storage`() = runTest {
+    fun `getCachedUser - storage holds a user - returns it as success`() = runTest {
         val user = userData(id = "user-1")
         val repository = UserRepositoryImpl(
             userRemoteDataSource = FakeUserRemoteDataSource(),
-            userDataStorage = FakeUserDataStorage(onRead = { user })
+            userDataStorage = FakeUserDataStorage(onRead = { Result.success(user) })
         )
         val result = repository.getCachedUser()
-        result shouldBe user
+        result shouldBe Result.success(user)
+    }
+
+    @Test
+    fun `getCachedUser - storage read fails - returns the storage failure unchanged`() = runTest {
+        val storageResult = Result.failure<UserData>(IllegalStateException("no cached user"))
+        val repository = UserRepositoryImpl(
+            userRemoteDataSource = FakeUserRemoteDataSource(),
+            userDataStorage = FakeUserDataStorage(onRead = { storageResult })
+        )
+        val result = repository.getCachedUser()
+        result shouldBe storageResult
     }
 }

@@ -6,14 +6,17 @@ import kotlinx.coroutines.flow.Flow
 
 class FakeUserDataStorage(
     private val onSave: (UserData) -> Unit = { fakeImplementationError() },
-    private val onRead: () -> UserData? = { fakeImplementationError() },
+    private val onRead: () -> Result<UserData> = { fakeImplementationError() },
+    private val onReadOrNull: () -> UserData? = { fakeImplementationError() },
     private val onClear: () -> Unit = { fakeImplementationError() },
     private val onObserve: () -> Flow<UserData?> = { fakeImplementationError() }
 ) : UserDataStorage {
 
     override suspend fun save(value: UserData) = onSave(value)
 
-    override suspend fun read(): UserData? = onRead()
+    override suspend fun read(): Result<UserData> = onRead()
+
+    override suspend fun readOrNull(): UserData? = onReadOrNull()
 
     override suspend fun clear() = onClear()
 

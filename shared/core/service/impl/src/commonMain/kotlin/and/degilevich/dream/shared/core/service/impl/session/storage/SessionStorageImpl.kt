@@ -16,7 +16,7 @@ internal class SessionStorageImpl(
     }
 
     override suspend fun read(): SessionData? {
-        return preferenceStorage.read(
+        return preferenceStorage.readOrNull(
             key = SESSION_PREFERENCE_STORAGE_KEY,
             serializer = SessionData.serializer()
         )

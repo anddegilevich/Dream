@@ -8,12 +8,12 @@ import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplemen
 class FakeUserRepository(
     private val onGetCurrentUser: () -> Result<GetCurrentUserResult> = { fakeImplementationError() },
     private val onCacheUser: (UserData) -> Unit = { fakeImplementationError() },
-    private val onGetCachedUser: () -> UserData? = { fakeImplementationError() }
+    private val onGetCachedUser: () -> Result<UserData> = { fakeImplementationError() }
 ) : UserRepository {
 
     override suspend fun getCurrentUser(): Result<GetCurrentUserResult> = onGetCurrentUser()
 
     override suspend fun cacheUser(user: UserData) = onCacheUser(user)
 
-    override suspend fun getCachedUser(): UserData? = onGetCachedUser()
+    override suspend fun getCachedUser(): Result<UserData> = onGetCachedUser()
 }

@@ -32,7 +32,7 @@ class GetCurrentUserUseCaseImplTest {
         val useCase = GetCurrentUserUseCaseImpl(
             userRepository = FakeUserRepository(
                 onGetCurrentUser = { Result.failure(IllegalStateException("network error")) },
-                onGetCachedUser = { cachedUser }
+                onGetCachedUser = { Result.success(cachedUser) }
             )
         )
         val result = useCase()
@@ -44,7 +44,7 @@ class GetCurrentUserUseCaseImplTest {
         val useCase = GetCurrentUserUseCaseImpl(
             userRepository = FakeUserRepository(
                 onGetCurrentUser = { Result.failure(IllegalStateException("network error")) },
-                onGetCachedUser = { null }
+                onGetCachedUser = { Result.failure(IllegalStateException("no cached user")) }
             )
         )
         val result = useCase()

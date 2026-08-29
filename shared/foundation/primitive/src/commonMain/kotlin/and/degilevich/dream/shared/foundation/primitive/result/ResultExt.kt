@@ -12,3 +12,15 @@ inline fun <R, T> Result<T>.foldResult(
         }
     )
 }
+inline fun <T> Result<T>.recoverResult(
+    onError: (error: Throwable) -> Result<T>,
+): Result<T> {
+    return fold(
+        onSuccess = { value ->
+            Result.success(value)
+        },
+        onFailure = { error ->
+            onError(error)
+        }
+    )
+}

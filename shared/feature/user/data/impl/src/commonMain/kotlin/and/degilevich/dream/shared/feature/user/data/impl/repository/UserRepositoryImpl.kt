@@ -19,7 +19,7 @@ internal class UserRepositoryImpl(
         userDataStorage.save(value = user)
     }
 
-    override suspend fun getCachedUser(): UserData? {
+    override suspend fun getCachedUser(): Result<UserData> {
         return userDataStorage.read()
     }
 }

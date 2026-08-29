@@ -6,5 +6,5 @@ import and.degilevich.dream.shared.feature.user.model.core.api.method.getCurrent
 interface UserRepository {
     suspend fun getCurrentUser(): Result<GetCurrentUserResult>
     suspend fun cacheUser(user: UserData)
-    suspend fun getCachedUser(): UserData?
+    suspend fun getCachedUser(): Result<UserData>
 }
