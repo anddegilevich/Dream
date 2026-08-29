@@ -226,6 +226,9 @@ include(":shared:feature:user:domain:api")
 include(":shared:feature:user:domain:impl")
 include(":shared:feature:user:domain:test")
 
+include(":shared:feature:user:ui:api")
+include(":shared:feature:user:ui:impl")
+
 // =====================================================================================================================
 // Navigation
 

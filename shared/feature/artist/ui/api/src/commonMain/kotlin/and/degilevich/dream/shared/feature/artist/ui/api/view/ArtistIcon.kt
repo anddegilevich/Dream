@@ -3,6 +3,8 @@ package and.degilevich.dream.shared.feature.artist.ui.api.view
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun ArtistIcon(
     iconUrl: String,
@@ -26,15 +29,16 @@ fun ArtistIcon(
 ) {
     val painter = rememberAsyncImagePainter(model = iconUrl)
     val asyncImageState by painter.state.collectAsState()
+    val transition = updateTransition(asyncImageState)
 
     Box(
         modifier = modifier
             .clip(CircleShape),
         contentAlignment = Alignment.Center
     ) {
-        Crossfade(
+        transition.Crossfade(
             modifier = Modifier.matchParentSize(),
-            targetState = asyncImageState
+            contentKey = { imageState -> imageState::class }
         ) { imageState ->
             when (imageState) {
                 is AsyncImagePainter.State.Success -> {
