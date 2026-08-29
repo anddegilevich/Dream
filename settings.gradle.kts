@@ -222,6 +222,9 @@ include(":shared:feature:user:domain:model:artifact:api")
 include(":shared:feature:user:domain:model:core:api")
 include(":shared:feature:user:domain:model:core:test")
 
+include(":shared:feature:user:domain:api")
+include(":shared:feature:user:domain:impl")
+
 // =====================================================================================================================
 // Navigation
 
