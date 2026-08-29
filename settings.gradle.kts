@@ -211,6 +211,10 @@ include(":shared:feature:auth:component:login:api")
 include(":shared:feature:auth:component:login:impl")
 
 // User
+include(":shared:feature:user:data:mapper:api")
+include(":shared:feature:user:data:mapper:impl")
+include(":shared:feature:user:data:mapper:test")
+
 include(":shared:feature:user:domain:model:artifact:api")
 include(":shared:feature:user:domain:model:core:api")
 include(":shared:feature:user:domain:model:core:test")
