@@ -210,6 +210,11 @@ include(":shared:feature:auth:domain:impl")
 include(":shared:feature:auth:component:login:api")
 include(":shared:feature:auth:component:login:impl")
 
+// User
+include(":shared:feature:user:domain:model:artifact:api")
+include(":shared:feature:user:domain:model:core:api")
+include(":shared:feature:user:domain:model:core:test")
+
 // =====================================================================================================================
 // Navigation
 
