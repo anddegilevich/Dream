@@ -24,10 +24,10 @@ import org.koin.core.component.inject
 internal class DrawerDomainComponent(
     componentContext: ComponentContext
 ) : BaseDomainComponent<
-        DrawerState,
-        DrawerIntent,
-        DrawerSideEffect
-        >(
+    DrawerState,
+    DrawerIntent,
+    DrawerSideEffect
+    >(
     componentContext = componentContext,
     stateConservator = DrawerStateConservator()
 ) {
