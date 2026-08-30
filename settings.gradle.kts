@@ -102,6 +102,11 @@ include(":shared:feature:common:component:dashboard:impl")
 include(":shared:feature:common:component:navbar:api")
 include(":shared:feature:common:component:navbar:impl")
 
+include(":shared:feature:common:component:topbar:api")
+include(":shared:feature:common:component:topbar:impl")
+
+include(":shared:feature:common:component:drawer:api")
+
 include(":shared:feature:common:component:home:api")
 include(":shared:feature:common:component:home:impl")
 

@@ -10,7 +10,6 @@ import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.children.NavigationSource
 import com.arkivanov.decompose.router.slot.SlotNavigation
-import com.arkivanov.decompose.router.slot.SlotNavigator
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.StackNavigator
 import org.koin.core.component.KoinComponent
@@ -27,7 +26,6 @@ class AppNavigationComponentImpl(
     override val screenNavigationSource: NavigationSource<StackNavigation.Event<ScreenConfig>> = screenNavigation
     override val navbarNavigationSource: NavigationSource<SlotNavigation.Event<NavbarConfig>> = navbarNavigation
     override val screenNavigator: StackNavigator<ScreenConfig> = screenNavigation
-    override val navbarNavigator: SlotNavigator<NavbarConfig> = navbarNavigation
 
     override val resultManager: NavigationResultManager = NavigationResultManager(
         initialState = stateKeeper.consume(
