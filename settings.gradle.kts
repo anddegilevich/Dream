@@ -192,9 +192,12 @@ include(":shared:feature:playlist:data:mapper:impl")
 include(":shared:feature:playlist:data:mapper:test")
 include(":shared:feature:playlist:data:api")
 include(":shared:feature:playlist:data:impl")
+include(":shared:feature:playlist:data:test")
 
 include(":shared:feature:playlist:domain:model:artifact:api")
 include(":shared:feature:playlist:domain:model:core:api")
+include(":shared:feature:playlist:domain:api")
+include(":shared:feature:playlist:domain:impl")
 
 // Search
 include(":shared:feature:search:data:mapper:api")
