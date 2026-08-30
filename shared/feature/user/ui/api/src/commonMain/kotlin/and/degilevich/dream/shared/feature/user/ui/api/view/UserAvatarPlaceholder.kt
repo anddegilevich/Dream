@@ -25,7 +25,7 @@ fun UserAvatarPlaceholder(
     Box(
         modifier = modifier
             .size(size)
-            .background(color = Theme.colors.icon.placeholderBackground),
+            .background(color = Theme.colors.common.brand),
         contentAlignment = Alignment.Center
     ) {
         Text(

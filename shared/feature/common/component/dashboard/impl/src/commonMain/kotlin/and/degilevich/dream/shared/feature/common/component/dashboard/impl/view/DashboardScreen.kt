@@ -47,8 +47,6 @@ fun DashboardScreen(
             .themeBackground(),
         state = lazyListState,
         contentPadding = PaddingValues(top = 20.dp)
-            .plus(WindowInsets.statusBars.asPaddingValues())
-            .plus(WindowInsets.navigationBars.asPaddingValues())
     ) {
         identifiedItems(
             items = itemsState.items
