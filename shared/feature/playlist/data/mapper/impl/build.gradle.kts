@@ -11,6 +11,7 @@ kotlin {
         commonTest.dependencies {
             implementation(projects.shared.feature.image.data.mapper.test)
             implementation(projects.shared.feature.image.domain.model.artifact.test)
+            implementation(projects.shared.feature.playlist.domain.model.artifact.test)
         }
     }
 
