@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.component.model.DrawerHeaderUIData
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.preview.DrawerHeaderUIDataPreviewProvider
-import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.semantic.DrawerScreenSemantic
+import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.semantic.AppDrawerSemantic
 import and.degilevich.dream.shared.feature.user.ui.api.view.UserAvatar
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
@@ -27,12 +27,12 @@ fun DrawerHeader(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         UserAvatar(
-            modifier = Modifier.testTag(DrawerScreenSemantic.TEST_TAG_AVATAR),
+            modifier = Modifier.testTag(AppDrawerSemantic.TEST_TAG_AVATAR),
             data = data.avatar,
             size = 72.dp
         )
         Text(
-            modifier = Modifier.testTag(DrawerScreenSemantic.TEST_TAG_NAME),
+            modifier = Modifier.testTag(AppDrawerSemantic.TEST_TAG_NAME),
             text = data.name,
             color = Theme.colors.text.primary,
             style = Theme.typography.h3

@@ -11,7 +11,7 @@ internal class LogoutUseCaseImpl(
     private val appDatabase: AppDatabase
 ) : LogoutUseCase {
 
-    override suspend fun invoke() {
+    override suspend fun invoke(): Result<Unit> = runCatching {
         authRepository.logout()
         preferenceStorage.clearAll()
         appDatabase.clear()

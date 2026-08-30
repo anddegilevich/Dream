@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.component.model.DrawerIntent
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.component.model.DrawerUIState
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.preview.DrawerUIStatePreviewProvider
-import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.semantic.DrawerScreenSemantic
+import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.semantic.AppDrawerSemantic
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.skeleton.SkeletonDrawerHeader
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
@@ -43,7 +43,7 @@ fun AppDrawer(
             skeleton = state.user,
             loadingContent = {
                 SkeletonDrawerHeader(
-                    modifier = Modifier.testTag(DrawerScreenSemantic.TEST_TAG_HEADER_SKELETON)
+                    modifier = Modifier.testTag(AppDrawerSemantic.TEST_TAG_HEADER_SKELETON)
                 )
             }
         ) { user ->
@@ -52,7 +52,7 @@ fun AppDrawer(
         Space(height = 32.dp)
         PrimaryTextButton(
             modifier = Modifier
-                .testTag(DrawerScreenSemantic.TEST_TAG_LOGOUT_BUTTON)
+                .testTag(AppDrawerSemantic.TEST_TAG_LOGOUT_BUTTON)
                 .fillMaxWidth(),
             text = stringResource(Res.strings.button_logout)
         ) {

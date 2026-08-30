@@ -24,10 +24,10 @@ import org.koin.core.component.inject
 internal class DrawerDomainComponent(
     componentContext: ComponentContext
 ) : BaseDomainComponent<
-    DrawerState,
-    DrawerIntent,
-    DrawerSideEffect
-    >(
+        DrawerState,
+        DrawerIntent,
+        DrawerSideEffect
+        >(
     componentContext = componentContext,
     stateConservator = DrawerStateConservator()
 ) {
@@ -59,11 +59,14 @@ internal class DrawerDomainComponent(
         }.launchIn(scope)
 
     private fun onLogoutClicked() = scope.launch {
-        withContext(context = Dispatchers.IO) {
-            logoutUseCase()
-        }
-        drawerManager.close()
-        navigateToLogin()
+        withContext(context = Dispatchers.IO) { logoutUseCase() }
+            .onSuccess {
+                drawerManager.close()
+                navigateToLogin()
+            }
+            .onFailure { error ->
+                toastController.showMessageToast(error = error)
+            }
     }
 
     private fun navigateToLogin() {

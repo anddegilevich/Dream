@@ -8,17 +8,12 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.impl.compo
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.semantic.DashboardScreenSemantic
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
-import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shared.foundation.decompose.compose.preview.PreviewLazyChildItems
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable

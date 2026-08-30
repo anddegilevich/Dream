@@ -4,6 +4,7 @@ import and.degilevich.dream.shared.feature.user.data.api.repository.UserReposito
 import and.degilevich.dream.shared.feature.user.domain.api.manager.UserFetchingManager
 import and.degilevich.dream.shared.feature.user.domain.api.usecase.GetCurrentUserUseCase
 import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
+import and.degilevich.dream.shared.foundation.primitive.result.recoverResult
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlin.time.Duration.Companion.seconds
@@ -22,7 +23,7 @@ internal class UserFetchingManagerImpl(
 
     override suspend fun fetch(): Result<UserData> = mutex.withLock {
         if (isDebouncing()) {
-            userRepository.getCachedUser()
+            userRepository.getCachedUser().recoverResult { fetchUser() }
         } else {
             fetchUser()
         }

@@ -4,7 +4,6 @@ import and.degilevich.dream.shared.feature.user.data.api.repository.UserReposito
 import and.degilevich.dream.shared.feature.user.data.test.repository.FakeUserRepository
 import and.degilevich.dream.shared.feature.user.domain.api.usecase.GetCurrentUserUseCase
 import and.degilevich.dream.shared.feature.user.domain.test.usecase.FakeGetCurrentUserUseCase
-import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
 import and.degilevich.dream.shared.feature.user.model.core.api.method.getCurrentUser.GetCurrentUserResult
 import and.degilevich.dream.shared.feature.user.model.core.test.data.userData
 import io.kotest.matchers.shouldBe
@@ -62,20 +61,27 @@ class UserFetchingManagerImplTest {
     }
 
     @Test
-    fun `fetch - inside the debounce window and the storage read fails - returns the storage failure`() = runTest {
-        val storageError = Result.failure<UserData>(IllegalStateException("no stored user"))
+    fun `fetch - inside the debounce window and the storage read fails - fetches again`() = runTest {
+        var invocationCount = 0
+        val user = userData(id = "user-1")
         val timeSource = TestTimeSource()
         val manager = createManager(
             getCurrentUserUseCase = FakeGetCurrentUserUseCase(
-                onInvoke = { Result.success(GetCurrentUserResult(user = userData(id = "user-1"))) }
+                onInvoke = {
+                    invocationCount++
+                    Result.success(GetCurrentUserResult(user = user))
+                }
             ),
-            userRepository = FakeUserRepository(onGetCachedUser = { storageError }),
+            userRepository = FakeUserRepository(
+                onGetCachedUser = { Result.failure(IllegalStateException("no stored user")) }
+            ),
             timeSource = timeSource
         )
         manager.fetch()
         timeSource += 29.seconds
         val result = manager.fetch()
-        result shouldBe storageError
+        result shouldBe Result.success(user)
+        invocationCount shouldBe 2
     }
 
     @Test

@@ -10,6 +10,7 @@ import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
+import kotlin.test.assertTrue
 
 class LogoutUseCaseImplTest {
 
@@ -94,6 +95,25 @@ class LogoutUseCaseImplTest {
         useCase()
 
         teardownOrder shouldContainExactly listOf("session", "preferences", "database")
+    }
+
+    @Test
+    fun `invoke - local state wipe fails - returns failure`() = runTest {
+        val useCase = createUseCase(
+            authRepository = FakeAuthRepository(
+                onLogout = { }
+            ),
+            preferenceStorage = FakePreferenceStorage(
+                onClearAll = { }
+            ),
+            appDatabase = FakeAppDatabase(
+                onClear = { error("database is locked") }
+            )
+        )
+
+        val result = useCase()
+
+        assertTrue(result.isFailure)
     }
 
     private fun createUseCase(

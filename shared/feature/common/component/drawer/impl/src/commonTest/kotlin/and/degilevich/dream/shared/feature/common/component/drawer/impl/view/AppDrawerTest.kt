@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.feature.common.component.drawer.impl.componen
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.component.model.DrawerUIState
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.preview.DrawerUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.preview.DrawerHeaderUIDataPreviewProvider
-import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.semantic.DrawerScreenSemantic
+import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.semantic.AppDrawerSemantic
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
@@ -18,14 +18,14 @@ import io.kotest.matchers.collections.shouldContainExactly
 import kotlin.test.Test
 
 @OptIn(ExperimentalTestApi::class)
-class DrawerScreenTest {
+class AppDrawerTest {
 
     private val provider = DrawerUIStatePreviewProvider()
     private val userProvider = DrawerHeaderUIDataPreviewProvider()
-    private val avatar = hasTestTag(DrawerScreenSemantic.TEST_TAG_AVATAR)
-    private val name = hasTestTag(DrawerScreenSemantic.TEST_TAG_NAME)
-    private val headerSkeleton = hasTestTag(DrawerScreenSemantic.TEST_TAG_HEADER_SKELETON)
-    private val logoutButton = hasTestTag(DrawerScreenSemantic.TEST_TAG_LOGOUT_BUTTON)
+    private val avatar = hasTestTag(AppDrawerSemantic.TEST_TAG_AVATAR)
+    private val name = hasTestTag(AppDrawerSemantic.TEST_TAG_NAME)
+    private val headerSkeleton = hasTestTag(AppDrawerSemantic.TEST_TAG_HEADER_SKELETON)
+    private val logoutButton = hasTestTag(AppDrawerSemantic.TEST_TAG_LOGOUT_BUTTON)
 
     @Test
     fun `render default state - shows user header and logout button`() = runComposeUiTest {
