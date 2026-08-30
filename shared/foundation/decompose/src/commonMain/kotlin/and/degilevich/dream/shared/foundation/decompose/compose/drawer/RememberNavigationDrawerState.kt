@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.arkivanov.decompose.value.Value
 
@@ -17,25 +18,27 @@ fun <T : Any> rememberNavigationDrawerState(
     onStateChanged: (isOpen: Boolean) -> Unit,
 ): NavigationDrawerState<T> {
     val childDrawer by drawer.subscribeAsState()
-    val drawerState = rememberDrawerState(
+    val materialDrawerState = rememberDrawerState(
         initialValue = if (childDrawer.isOpen) DrawerValue.Open else DrawerValue.Closed
     )
 
-    DisposableEffect(drawerState.isOpen) {
-        onStateChanged(drawerState.isOpen)
+    DisposableEffect(materialDrawerState.isOpen) {
+        onStateChanged(materialDrawerState.isOpen)
         onDispose {}
     }
 
     LaunchedEffect(childDrawer.isOpen) {
         if (childDrawer.isOpen) {
-            drawerState.open()
+            materialDrawerState.open()
         } else {
-            drawerState.close()
+            materialDrawerState.close()
         }
     }
 
-    return object : NavigationDrawerState<T> {
-        override val drawerState: DrawerState get() = drawerState
-        override val instance: T get() = childDrawer.instance
+    return remember(materialDrawerState) {
+        object : NavigationDrawerState<T> {
+            override val drawerState: DrawerState = materialDrawerState
+            override val instance: T get() = childDrawer.instance
+        }
     }
 }

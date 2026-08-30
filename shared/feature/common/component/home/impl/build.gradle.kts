@@ -7,6 +7,8 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.shared.feature.common.component.dashboard.api)
             implementation(projects.shared.feature.common.component.navbar.api)
+            implementation(projects.shared.feature.common.component.topbar.api)
+            implementation(projects.shared.feature.common.component.drawer.api)
             implementation(projects.shared.feature.search.component.search.api)
             api(projects.shared.feature.common.component.home.api)
         }
