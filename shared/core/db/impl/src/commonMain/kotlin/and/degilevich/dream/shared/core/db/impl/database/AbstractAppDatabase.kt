@@ -3,6 +3,7 @@ package and.degilevich.dream.shared.core.db.impl.database
 import and.degilevich.dream.shared.core.db.api.database.AppDatabase
 import and.degilevich.dream.shared.core.db.api.entity.AlbumEntity
 import and.degilevich.dream.shared.core.db.api.entity.ArtistEntity
+import and.degilevich.dream.shared.core.db.api.entity.PlaylistEntity
 import and.degilevich.dream.shared.core.db.api.entity.TrackEntity
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToAlbumCrossRefEntity
 import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCrossRefEntity
@@ -15,6 +16,7 @@ import androidx.room.RoomDatabase
         ArtistEntity::class,
         AlbumEntity::class,
         TrackEntity::class,
+        PlaylistEntity::class,
 
         ArtistToAlbumCrossRefEntity::class,
         ArtistToTrackCrossRefEntity::class
@@ -31,5 +33,6 @@ internal abstract class AbstractAppDatabase : RoomDatabase(), AppDatabase {
         getArtistDao().deleteAll()
         getAlbumDao().deleteAll()
         getTrackDao().deleteAll()
+        getPlaylistDao().deleteAll()
     }
 }
