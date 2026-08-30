@@ -1,9 +1,9 @@
-package and.degilevich.dream.shared.feature.common.component.topbar.impl.component.model
+package and.degilevich.dream.shared.feature.common.component.drawer.impl.component.model
 
 import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TopbarState(
+data class DrawerState(
     val user: UserData
 )

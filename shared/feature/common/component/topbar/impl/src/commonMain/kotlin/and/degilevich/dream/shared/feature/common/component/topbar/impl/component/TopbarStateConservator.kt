@@ -9,7 +9,6 @@ import kotlinx.serialization.KSerializer
 internal class TopbarStateConservator : ComponentStateConservator<TopbarState> {
     override val key: String = TopbarState::class.className()
     override val initialState: TopbarState = TopbarState(
-        isLoading = false,
         user = UserData.empty()
     )
     override val serializer: KSerializer<TopbarState> = TopbarState.serializer()

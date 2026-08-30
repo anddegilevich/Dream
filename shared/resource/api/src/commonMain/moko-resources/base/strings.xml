@@ -18,6 +18,7 @@
     <string name="button_connect_spotify">Connect Spotify</string>
     <string name="button_subscribe">Subscribe</string>
     <string name="button_repeat">Repeat</string>
+    <string name="button_logout">Log out</string>
 
     <string name="label_login_prompt">Sign in with Spotify to continue</string>
     <string name="label_artist">Artist</string>

@@ -57,9 +57,6 @@ internal class TopbarDomainComponent(
     }
 
     private fun setUser(user: UserData) = reduce {
-        copy(
-            user = user,
-            isLoading = false
-        )
+        copy(user = user)
     }
 }

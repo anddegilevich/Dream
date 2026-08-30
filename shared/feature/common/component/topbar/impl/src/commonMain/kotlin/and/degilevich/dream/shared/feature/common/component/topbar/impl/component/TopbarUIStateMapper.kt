@@ -14,7 +14,9 @@ internal class TopbarUIStateMapper : Mapper<TopbarState, TopbarUIState>, KoinCom
 
     override fun map(item: TopbarState): TopbarUIState = with(item) {
         TopbarUIState(
-            avatar = Skeleton.from(isLoading = isLoading) {
+            avatar = Skeleton.from(
+                isLoading = user.isEmpty()
+            ) {
                 user.let(userDataToAvatarUIDataMapper::map)
             }
         )

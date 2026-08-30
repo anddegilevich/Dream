@@ -10,17 +10,15 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun SkeletonUserAvatar(
-    size: Dp,
     modifier: Modifier = Modifier
 ) {
     Spacer(
         modifier = modifier
-            .size(size)
+            .size(36.dp)
             .clip(CircleShape)
             .themeShimmer()
     )
@@ -30,7 +28,6 @@ fun SkeletonUserAvatar(
 @Composable
 private fun SkeletonUserAvatarPreview() = ComposeAppTheme {
     SkeletonUserAvatar(
-        modifier = Modifier.themeBackground(),
-        size = 36.dp
+        modifier = Modifier.themeBackground()
     )
 }

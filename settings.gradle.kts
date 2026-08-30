@@ -106,6 +106,7 @@ include(":shared:feature:common:component:topbar:api")
 include(":shared:feature:common:component:topbar:impl")
 
 include(":shared:feature:common:component:drawer:api")
+include(":shared:feature:common:component:drawer:impl")
 
 include(":shared:feature:common:component:home:api")
 include(":shared:feature:common:component:home:impl")

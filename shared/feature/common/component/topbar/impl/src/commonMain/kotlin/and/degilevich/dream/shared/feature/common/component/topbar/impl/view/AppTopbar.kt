@@ -38,7 +38,7 @@ fun AppTopbar(
 ) {
     val onAvatarClicked = rememberDebounced { onIntent(TopbarIntent.OnAvatarClicked) }
 
-    Column (
+    Column(
         modifier = modifier
             .themeBackground()
             .statusBarsPadding()
@@ -51,12 +51,10 @@ fun AppTopbar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             SkeletonCrossfade(
-                modifier = Modifier.size(AVATAR_SIZE),
                 skeleton = state.avatar,
                 loadingContent = {
                     SkeletonUserAvatar(
                         modifier = Modifier.testTag(AppTopbarSemantic.TEST_TAG_AVATAR_SKELETON),
-                        size = AVATAR_SIZE
                     )
                 }
             ) { avatar ->
@@ -69,7 +67,7 @@ fun AppTopbar(
                             onClick = onAvatarClicked
                         ),
                     data = avatar,
-                    size = AVATAR_SIZE
+                    size = 36.dp
                 )
             }
         }
@@ -92,5 +90,3 @@ private fun AppTopbarPreview(
         state = state
     ) { }
 }
-
-private val AVATAR_SIZE = 36.dp

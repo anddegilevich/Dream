@@ -9,12 +9,18 @@ class TopbarUIStatePreviewProvider : LabeledPreviewParameterProvider<TopbarUISta
 
     override val labeledValues = listOf(
         "Default" to provideDefault(),
-        "Loading" to TopbarUIState.empty()
+        "Loading" to provideLoading()
     )
 
     fun provideDefault(): TopbarUIState {
         return TopbarUIState(
             avatar = Skeleton.Value(UserAvatarUIDataPreviewProvider().provideDefault())
+        )
+    }
+
+    fun provideLoading(): TopbarUIState {
+        return TopbarUIState(
+            avatar = Skeleton.Loading
         )
     }
 }
