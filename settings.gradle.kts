@@ -186,6 +186,10 @@ include(":shared:feature:track:ui:impl")
 include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
 
+// Playlist
+include(":shared:feature:playlist:domain:model:artifact:api")
+include(":shared:feature:playlist:domain:model:core:api")
+
 // Search
 include(":shared:feature:search:data:mapper:api")
 include(":shared:feature:search:data:mapper:impl")
