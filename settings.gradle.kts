@@ -203,6 +203,9 @@ include(":shared:feature:playlist:domain:impl")
 include(":shared:feature:playlist:ui:api")
 include(":shared:feature:playlist:ui:impl")
 
+include(":shared:feature:playlist:component:list:api")
+include(":shared:feature:playlist:component:list:impl")
+
 // Search
 include(":shared:feature:search:data:mapper:api")
 include(":shared:feature:search:data:mapper:impl")
