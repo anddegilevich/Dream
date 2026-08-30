@@ -187,6 +187,9 @@ include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
 
 // Playlist
+include(":shared:feature:playlist:data:mapper:api")
+include(":shared:feature:playlist:data:mapper:impl")
+
 include(":shared:feature:playlist:domain:model:artifact:api")
 include(":shared:feature:playlist:domain:model:core:api")
 
