@@ -11,6 +11,8 @@
     <string name="title_artists">Artists</string>
     <string name="title_new_releases">New releases</string>
     <string name="title_albums">Albums</string>
+    <string name="title_my_playlists">My playlists</string>
+    <string name="title_liked_songs">Liked Songs</string>
 
     <string name="stub_not_yet_implemented">Not yet implemented</string>
 

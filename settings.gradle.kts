@@ -200,6 +200,9 @@ include(":shared:feature:playlist:domain:model:core:api")
 include(":shared:feature:playlist:domain:api")
 include(":shared:feature:playlist:domain:impl")
 
+include(":shared:feature:playlist:ui:api")
+include(":shared:feature:playlist:ui:impl")
+
 // Search
 include(":shared:feature:search:data:mapper:api")
 include(":shared:feature:search:data:mapper:impl")
