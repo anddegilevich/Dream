@@ -6,6 +6,7 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.compon
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.DashboardScreen
+import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponent
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
@@ -33,7 +34,10 @@ internal class DashboardComponentImpl(
         serializer = DashboardItemConfig.serializer(),
         initialItems = {
             Items(
-                items = listOf(DashboardItemConfig.AlbumReleases)
+                items = listOf(
+                    DashboardItemConfig.PlaylistList,
+                    DashboardItemConfig.AlbumReleases
+                )
             )
         },
         key = ITEMS_KEY,
@@ -53,6 +57,12 @@ internal class DashboardComponentImpl(
             is DashboardItemConfig.AlbumReleases -> {
                 DashboardItem.AlbumReleases(
                     component = get<AlbumReleasesComponent> { parametersOf(componentContext) }
+                )
+            }
+
+            is DashboardItemConfig.PlaylistList -> {
+                DashboardItem.PlaylistList(
+                    component = get<PlaylistListComponent> { parametersOf(componentContext) }
                 )
             }
         }

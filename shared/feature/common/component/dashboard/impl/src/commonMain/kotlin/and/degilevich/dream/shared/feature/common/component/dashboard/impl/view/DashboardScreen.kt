@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.semantic.DashboardScreenSemantic
+import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponent
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shared.foundation.decompose.compose.preview.PreviewLazyChildItems
@@ -78,6 +79,19 @@ private fun DashboardScreenPreview() = ComposeAppTheme {
                                     .fillMaxSize()
                                     .height(200.dp),
                                 stub = "AlbumReleasesComponent"
+                            )
+                        }
+                    }
+                ),
+                DashboardItemConfig.PlaylistList to DashboardItem.PlaylistList(
+                    component = object : PlaylistListComponent {
+                        @Composable
+                        override fun Render() {
+                            ViewStub(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .height(200.dp),
+                                stub = "PlaylistListComponent"
                             )
                         }
                     }

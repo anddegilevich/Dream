@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.di.feature.artistModule
 import and.degilevich.dream.shared.di.feature.authModule
 import and.degilevich.dream.shared.di.feature.commonModule
 import and.degilevich.dream.shared.di.feature.imageModule
+import and.degilevich.dream.shared.di.feature.playlistModule
 import and.degilevich.dream.shared.di.feature.searchModule
 import and.degilevich.dream.shared.di.feature.trackModule
 import and.degilevich.dream.shared.di.feature.userModule
@@ -15,6 +16,7 @@ internal fun featureModule() = module {
     includes(artistModule())
     includes(albumModule())
     includes(trackModule())
+    includes(playlistModule())
     includes(searchModule())
     includes(userModule())
     includes(commonModule())
