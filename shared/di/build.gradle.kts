@@ -53,6 +53,11 @@ kotlin {
             implementation(projects.shared.feature.search.ui.impl)
             implementation(projects.shared.feature.search.component.search.impl)
 
+            implementation(projects.shared.feature.user.data.impl)
+            implementation(projects.shared.feature.user.data.mapper.impl)
+            implementation(projects.shared.feature.user.domain.impl)
+            implementation(projects.shared.feature.user.ui.impl)
+
             implementation(projects.shared.feature.auth.data.impl)
             implementation(projects.shared.feature.auth.domain.impl)
             implementation(projects.shared.feature.auth.component.login.impl)
@@ -62,6 +67,8 @@ kotlin {
             implementation(projects.shared.feature.common.component.home.impl)
             implementation(projects.shared.feature.common.component.dashboard.impl)
             implementation(projects.shared.feature.common.component.navbar.impl)
+            implementation(projects.shared.feature.common.component.topbar.impl)
+            implementation(projects.shared.feature.common.component.drawer.impl)
         }
     }
 

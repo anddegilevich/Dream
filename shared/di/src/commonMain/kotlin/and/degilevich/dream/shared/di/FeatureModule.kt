@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.di.feature.commonModule
 import and.degilevich.dream.shared.di.feature.imageModule
 import and.degilevich.dream.shared.di.feature.searchModule
 import and.degilevich.dream.shared.di.feature.trackModule
+import and.degilevich.dream.shared.di.feature.userModule
 import org.koin.dsl.module
 
 internal fun featureModule() = module {
@@ -15,6 +16,7 @@ internal fun featureModule() = module {
     includes(albumModule())
     includes(trackModule())
     includes(searchModule())
+    includes(userModule())
     includes(commonModule())
     includes(authModule())
 }
