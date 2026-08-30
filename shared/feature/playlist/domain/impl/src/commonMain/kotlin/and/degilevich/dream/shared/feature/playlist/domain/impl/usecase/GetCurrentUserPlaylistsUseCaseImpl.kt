@@ -13,5 +13,8 @@ internal class GetCurrentUserPlaylistsUseCaseImpl(
         params: GetCurrentUserPlaylistsParams
     ): Result<GetCurrentUserPlaylistsResult> {
         return playlistRepository.getCurrentUserPlaylists(params = params)
+            .onSuccess { result ->
+                playlistRepository.cachePlaylists(playlists = result.playlists)
+            }
     }
 }
