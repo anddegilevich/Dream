@@ -7,8 +7,9 @@ import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.ui.api.view.AlbumIcon
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.TrackSearchCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -27,13 +28,15 @@ fun TrackSearchCard(
     modifier: Modifier = Modifier,
     onClicked: (id: Identifier) -> Unit
 ) {
+    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+
     Row(
         modifier = modifier
-            .clickableWithDebounce(
-                indication = themeRipple()
-            ) {
-                onClicked(data.id)
-            }
+            .clickable(
+                interactionSource = null,
+                indication = themeRipple(),
+                onClick = onClickedDebounced
+            )
             .padding(all = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

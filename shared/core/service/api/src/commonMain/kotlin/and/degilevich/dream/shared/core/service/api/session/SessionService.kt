@@ -1,0 +1,9 @@
+package and.degilevich.dream.shared.core.service.api.session
+
+import and.degilevich.dream.shared.core.service.api.model.SessionData
+
+interface SessionService {
+    suspend fun login(): Result<SessionData>
+    suspend fun logout()
+    suspend fun getActiveSession(): Result<SessionData>
+}

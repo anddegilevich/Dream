@@ -7,10 +7,11 @@ import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItemUIData
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.preview.NavbarItemUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -38,13 +39,15 @@ fun NavbarItemButton(
         }
     )
 
+    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+
     Column(
         modifier = modifier
-            .clickableWithDebounce(
-                indication = themeRipple()
-            ) {
-                onClicked(data.id)
-            }
+            .clickable(
+                interactionSource = null,
+                indication = themeRipple(),
+                onClick = onClickedDebounced
+            )
             .padding(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

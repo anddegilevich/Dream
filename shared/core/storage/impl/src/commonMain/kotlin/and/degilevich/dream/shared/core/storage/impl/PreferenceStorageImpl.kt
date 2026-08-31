@@ -4,7 +4,11 @@ import and.degilevich.dream.shared.core.crypto.api.service.CryptoService
 import and.degilevich.dream.shared.core.crypto.api.service.decrypt
 import and.degilevich.dream.shared.core.crypto.api.service.encrypt
 import and.degilevich.dream.shared.core.storage.api.PreferenceStorage
+import and.degilevich.dream.shared.core.storage.api.exception.StorageReadException
+import and.degilevich.dream.shared.core.storage.api.exception.StorageValueNotFoundException
 import and.degilevich.dream.shared.foundation.primitive.result.foldResult
+import and.degilevich.dream.shared.foundation.primitive.result.recoverResult
+import and.degilevich.dream.shared.foundation.serialization.decodeFromJson
 import and.degilevich.dream.shared.foundation.serialization.decodeFromJsonOrNull
 import and.degilevich.dream.shared.foundation.serialization.encodeToJson
 import com.russhwolf.settings.ExperimentalSettingsApi
@@ -45,18 +49,38 @@ internal class PreferenceStorageImpl(
     override suspend fun <T> read(
         key: String,
         serializer: DeserializationStrategy<T>
-    ): T? {
+    ): Result<T> {
         val encryptedValue = settings.getStringOrNull(key)
-        val decryptedValue = encryptedValue?.let { value ->
-            cryptoService.decrypt(value).getOrNull()
-        }
-        return decryptedValue?.decodeFromJsonOrNull(
-            deserializer = serializer
-        )
+            ?: return Result.failure(StorageValueNotFoundException(key = key))
+        return cryptoService.decrypt(encryptedValue)
+            .foldResult { decryptedValue ->
+                decryptedValue.decodeFromJson(deserializer = serializer)
+            }.recoverResult { error ->
+                Result.failure(
+                    StorageReadException(
+                        key = key,
+                        cause = error
+                    )
+                )
+            }
+    }
+
+    override suspend fun <T> readOrNull(
+        key: String,
+        serializer: DeserializationStrategy<T>
+    ): T? {
+        return read(
+            key = key,
+            serializer = serializer
+        ).getOrNull()
     }
 
     override suspend fun clear(key: String) {
         settings.remove(key)
+    }
+
+    override suspend fun clearAll() {
+        settings.clear()
     }
 
     override fun <T> observe(

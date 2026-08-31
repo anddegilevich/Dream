@@ -6,9 +6,10 @@ import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.ui.api.model.ArtistLabelUIData
 import and.degilevich.dream.shared.feature.artist.ui.api.preview.ArtistLabelUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,11 +26,15 @@ fun ArtistLabel(
     modifier: Modifier = Modifier,
     onClicked: (id: Identifier) -> Unit
 ) {
+    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+
     Row(
         modifier = modifier
-            .clickableWithDebounce {
-                onClicked(data.id)
-            }
+            .clickable(
+                interactionSource = null,
+                indication = null,
+                onClick = onClickedDebounced
+            )
             .padding(all = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

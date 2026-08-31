@@ -1,7 +1,5 @@
 package and.degilevich.dream.shared.foundation.primitive.primitives.number.format
 
-import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZeroIfNegative
-
 internal interface NumberFormatConfigBuilder : NumberFormatScope {
     fun build(): NumberFormatConfig
 
@@ -11,7 +9,7 @@ internal interface NumberFormatConfigBuilder : NumberFormatScope {
         private var decimalSeparator: Char = '.'
 
         override fun setFractionDigits(digits: Int) {
-            fractionDigits = digits.orZeroIfNegative()
+            fractionDigits = digits.coerceAtLeast(0)
         }
 
         override fun setDecimalSeparator(separator: Char) {

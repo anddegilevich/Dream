@@ -21,3 +21,4 @@ description: UI model and Compose function conventions. Use when writing or revi
   - Single state defining parameter `data: UIData`
   - Single lambda intent handler `onIntent: (Intent) -> Unit`
 * Use `LabeledPreviewParameterProvider` for composables `Preview`
+* Spacing between children of a `Row`/`Column`/`LazyRow`/`LazyColumn` is declared on the layout via `horizontalArrangement`/`verticalArrangement` = `Arrangement.spacedBy(<dp>)` — not by inserting spacers between every child. Reach for `Space(...)`/`Spacer(...)` only when the gaps differ from one another, and then only for the gaps that deviate

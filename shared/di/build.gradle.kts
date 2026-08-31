@@ -20,6 +20,7 @@ kotlin {
             implementation(projects.shared.core.service.impl)
             implementation(projects.shared.core.db.impl)
             implementation(projects.shared.core.toast.impl)
+            implementation(projects.shared.core.webauth.impl)
 
             // Navigation
             implementation(projects.shared.navigation.impl)
@@ -46,17 +47,34 @@ kotlin {
             implementation(projects.shared.feature.track.ui.impl)
             implementation(projects.shared.feature.track.component.details.impl)
 
+            implementation(projects.shared.feature.playlist.data.impl)
+            implementation(projects.shared.feature.playlist.data.mapper.impl)
+            implementation(projects.shared.feature.playlist.domain.impl)
+            implementation(projects.shared.feature.playlist.ui.impl)
+            implementation(projects.shared.feature.playlist.component.list.impl)
+
             implementation(projects.shared.feature.search.data.impl)
             implementation(projects.shared.feature.search.data.mapper.impl)
             implementation(projects.shared.feature.search.domain.impl)
             implementation(projects.shared.feature.search.ui.impl)
             implementation(projects.shared.feature.search.component.search.impl)
 
+            implementation(projects.shared.feature.user.data.impl)
+            implementation(projects.shared.feature.user.data.mapper.impl)
+            implementation(projects.shared.feature.user.domain.impl)
+            implementation(projects.shared.feature.user.ui.impl)
+
+            implementation(projects.shared.feature.auth.data.impl)
+            implementation(projects.shared.feature.auth.domain.impl)
+            implementation(projects.shared.feature.auth.component.login.impl)
+
             // Common
             implementation(projects.shared.feature.common.component.splash.impl)
             implementation(projects.shared.feature.common.component.home.impl)
             implementation(projects.shared.feature.common.component.dashboard.impl)
             implementation(projects.shared.feature.common.component.navbar.impl)
+            implementation(projects.shared.feature.common.component.topbar.impl)
+            implementation(projects.shared.feature.common.component.drawer.impl)
         }
     }
 

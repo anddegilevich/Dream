@@ -3,9 +3,10 @@ package and.degilevich.dream.shared.design.system.button
 import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
+import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -28,6 +29,7 @@ fun IconButton(
     onClicked: () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
+    val onClickedDebounced = rememberDebounced(block = onClicked)
 
     Icon(
         modifier = modifier
@@ -36,10 +38,11 @@ fun IconButton(
                 interactionSource = interactionSource
             )
             .clip(CircleShape)
-            .clickableWithDebounce(
-                isEnabled = isEnabled,
+            .clickable(
                 interactionSource = interactionSource,
-                onClicked = onClicked
+                indication = null,
+                enabled = isEnabled,
+                onClick = onClickedDebounced
             ),
         painter = painter,
         tint = tint,

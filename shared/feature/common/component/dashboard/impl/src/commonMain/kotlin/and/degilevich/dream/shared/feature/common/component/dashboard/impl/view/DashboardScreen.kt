@@ -7,18 +7,14 @@ import and.degilevich.dream.shared.feature.album.component.releases.api.componen
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.semantic.DashboardScreenSemantic
+import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponent
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
-import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shared.foundation.decompose.compose.preview.PreviewLazyChildItems
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
@@ -47,8 +43,6 @@ fun DashboardScreen(
             .themeBackground(),
         state = lazyListState,
         contentPadding = PaddingValues(top = 20.dp)
-            .plus(WindowInsets.statusBars.asPaddingValues())
-            .plus(WindowInsets.navigationBars.asPaddingValues())
     ) {
         identifiedItems(
             items = itemsState.items
@@ -85,6 +79,19 @@ private fun DashboardScreenPreview() = ComposeAppTheme {
                                     .fillMaxSize()
                                     .height(200.dp),
                                 stub = "AlbumReleasesComponent"
+                            )
+                        }
+                    }
+                ),
+                DashboardItemConfig.PlaylistList to DashboardItem.PlaylistList(
+                    component = object : PlaylistListComponent {
+                        @Composable
+                        override fun Render() {
+                            ViewStub(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .height(200.dp),
+                                stub = "PlaylistListComponent"
                             )
                         }
                     }

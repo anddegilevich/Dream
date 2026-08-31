@@ -8,6 +8,9 @@ import org.koin.dsl.module
 
 fun artistDetailsComponentModule() = module {
     factory<ArtistDetailsComponent> { (componentContext: ComponentContext, navArgs: ArtistDetailsNavArgs) ->
-        ArtistDetailsComponentImpl(componentContext = componentContext, navArgs = navArgs)
+        ArtistDetailsComponentImpl(
+            componentContext = componentContext,
+            navArgs = navArgs
+        )
     }
 }

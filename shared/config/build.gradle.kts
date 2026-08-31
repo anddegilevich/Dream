@@ -31,9 +31,10 @@ buildkonfig {
 
     val variantField = "VARIANT"
     val clientIdField = "CLIENT_ID"
-    val clientSecretField = "CLIENT_SECRET"
-    val authBaseUrlField = "AUTH_BASE_URL"
+    val authAuthorizeUrlField = "AUTH_AUTHORIZE_URL"
+    val authTokenUrlField = "AUTH_TOKEN_URL"
     val apiBaseUrlField = "API_BASE_URL"
+    val redirectUriField = "REDIRECT_URI"
 
     defaultConfigs { }
 
@@ -42,7 +43,6 @@ buildkonfig {
             load(FileInputStream("${rootDir}/local.properties"))
         }
         val clientId = localProperties.getProperty(clientIdField)
-        val clientSecret = localProperties.getProperty(clientSecretField)
 
         buildConfigField(
             type = FieldSpec.Type.STRING,
@@ -51,8 +51,18 @@ buildkonfig {
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
-            name = authBaseUrlField,
+            name = authAuthorizeUrlField,
+            value = "https://accounts.spotify.com/authorize"
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = authTokenUrlField,
             value = "https://accounts.spotify.com/api/token"
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = redirectUriField,
+            value = "and.degilevich.dream://callback"
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
@@ -63,11 +73,6 @@ buildkonfig {
             type = FieldSpec.Type.STRING,
             name = clientIdField,
             value = clientId
-        )
-        buildConfigField(
-            type = FieldSpec.Type.STRING,
-            name = clientSecretField,
-            value = clientSecret
         )
     }
 
@@ -80,23 +85,28 @@ buildkonfig {
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
-            name = authBaseUrlField,
-            value = "http://10.0.2.2:8080/token"
+            name = authAuthorizeUrlField,
+            value = ""
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = authTokenUrlField,
+            value = ""
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = redirectUriField,
+            value = ""
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = apiBaseUrlField,
-            value = "http://10.0.2.2:8080"
+            value = ""
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = clientIdField,
-            value = "mockClientId"
-        )
-        buildConfigField(
-            type = FieldSpec.Type.STRING,
-            name = clientSecretField,
-            value = "mockClientSecret"
+            value = ""
         )
     }
 }

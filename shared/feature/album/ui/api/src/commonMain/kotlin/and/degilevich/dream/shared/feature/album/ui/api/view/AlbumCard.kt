@@ -6,10 +6,11 @@ import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.ui.api.model.AlbumCardUIData
 import and.degilevich.dream.shared.feature.album.ui.api.preview.AlbumCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
@@ -30,14 +31,15 @@ fun AlbumCard(
     onClicked: (id: Identifier) -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
+    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
 
     Column(
         modifier = modifier
-            .clickableWithDebounce(
+            .clickable(
                 interactionSource = interactionSource,
-            ) {
-                onClicked(data.id)
-            }
+                indication = null,
+                onClick = onClickedDebounced
+            )
             .scaleOnClick(
                 interactionSource = interactionSource
             )

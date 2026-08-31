@@ -5,11 +5,12 @@ import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.modifier.clickable.clickableWithDebounce
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shated.feature.track.ui.api.model.TrackCardUIData
 import and.degilevich.dream.shated.feature.track.ui.api.preview.TrackCardUIDataPreviewProvider
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text
@@ -25,13 +26,15 @@ fun TrackCard(
     modifier: Modifier = Modifier,
     onClicked: (id: Identifier) -> Unit
 ) {
+    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+
     Row(
         modifier = modifier
-            .clickableWithDebounce(
-                indication = themeRipple()
-            ) {
-                onClicked(data.id)
-            },
+            .clickable(
+                interactionSource = null,
+                indication = themeRipple(),
+                onClick = onClickedDebounced
+            ),
         verticalAlignment = Alignment.Top
     ) {
         Text(

@@ -10,8 +10,6 @@ import org.koin.dsl.module
 fun navbarComponentModule() = module {
     single<NavbarManager> { NavbarManagerImpl() }
     factory<NavbarComponent> { (componentContext: ComponentContext) ->
-        NavbarComponentImpl(
-            componentContext = componentContext
-        )
+        NavbarComponentImpl(componentContext = componentContext)
     }
 }

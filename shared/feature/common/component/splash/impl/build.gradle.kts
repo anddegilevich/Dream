@@ -5,6 +5,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(projects.shared.feature.auth.domain.api)
             api(projects.shared.feature.common.component.splash.api)
         }
     }

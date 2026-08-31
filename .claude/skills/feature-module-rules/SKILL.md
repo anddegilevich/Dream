@@ -57,6 +57,30 @@ domain/test             → ALLOWED: domain/api (own) as api() dep
 
 `<layer>/test` modules are sibling to that layer's `api`/`impl`, built with the same convention plugin as that layer's own `api` module (e.g. `data/test` uses `project.feature.data.api`, `ui/test` uses `project.feature.ui.api`, model `test` uses `project.feature.model`) — there is no dedicated test plugin. They host hand-rolled fakes of that layer's own public `api` interfaces, consumed exclusively via `commonTest` dependencies (never `commonMain`) by `impl` modules that need the fake — including cross-feature (same carve-out as `data/mapper/api` reuse). Only created when there's an actual consumer — no speculative empty `test` modules. See `unit-test-rules`.
 
+## Build order
+
+Modules are created bottom-up, following the dependency matrix. Each cell below is a separate, separately-confirmed step (see CLAUDE.md → Incremental delivery):
+
+| # | Step | Contains |
+|---|------|----------|
+| 1 | `domain/model/artifact/api`, `domain/model/core/api` | models, ids, `<Method>Params`/`<Method>Result` |
+| 2 | `data/mapper/api` | mapper interfaces |
+| 3 | `data/mapper/impl` | mapper implementations + `<feature>DataMapperModule()` |
+| 4 | `data/api` | `Repository` interfaces |
+| 5 | `data/impl` | repositories, remote/local data sources + `<feature>DataModule()` |
+| 6 | `domain/api` | use case / manager interfaces |
+| 7 | `domain/impl` | use case implementations + `<feature>DomainModule()` |
+| 8 | `ui/api` | `UIData`, shared composables, domain→ui mapper interfaces |
+| 9 | `ui/impl` | mapper implementations + `<feature>UIModule()` |
+| 10 | `component/<name>/api` | `RenderComponent` marker |
+| 11 | `component/<name>/impl` | `ComponentImpl`, `DomainComponent`, `UIState`/`Intent`/`SideEffect`, views |
+| 12 | DI + navigation wiring | `<feature>Module()`, root/child config registration |
+
+* `api` steps are contract steps — they end with the interfaces and signatures presented for review, not with any behavior.
+* The matching `impl` step does not start until its `api` contract is confirmed.
+* `<layer>/test` fixture modules are created inside the step of the layer that first needs them, never speculatively.
+* Steps with no work for a given feature are skipped explicitly, stated in the plan, not silently dropped.
+
 ## Key architectural decisions
 
 1. **Repository interfaces in `data/api`**, implementations in `data/impl` — keeps data sources fully internal

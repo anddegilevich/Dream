@@ -17,10 +17,6 @@ fun Int?.orNullIfNegative(): Int? {
     }
 }
 
-fun Int.orZeroIfNegative(): Int {
-    return if (this >= 0) this else 0
-}
-
 fun Int.isEven(): Boolean {
     return this % 2 == 0
 }

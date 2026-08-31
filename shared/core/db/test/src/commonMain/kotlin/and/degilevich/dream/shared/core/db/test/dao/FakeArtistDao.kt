@@ -6,7 +6,8 @@ import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplemen
 
 class FakeArtistDao(
     private val onUpsert: (ArtistEntity) -> Unit = { fakeImplementationError() },
-    private val onUpsertAll: (List<ArtistEntity>) -> Unit = { fakeImplementationError() }
+    private val onUpsertAll: (List<ArtistEntity>) -> Unit = { fakeImplementationError() },
+    private val onDeleteAll: () -> Unit = { fakeImplementationError() }
 ) : ArtistDao {
 
     override suspend fun upsert(entity: ArtistEntity) {
@@ -15,5 +16,9 @@ class FakeArtistDao(
 
     override suspend fun upsertAll(entities: List<ArtistEntity>) {
         onUpsertAll(entities)
+    }
+
+    override suspend fun deleteAll() {
+        onDeleteAll()
     }
 }

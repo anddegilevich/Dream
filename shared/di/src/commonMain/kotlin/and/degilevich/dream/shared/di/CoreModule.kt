@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.core.network.impl.di.networkModule
 import and.degilevich.dream.shared.core.service.impl.di.serviceModule
 import and.degilevich.dream.shared.core.storage.impl.di.storageModule
 import and.degilevich.dream.shared.core.toast.impl.di.toastModule
+import and.degilevich.dream.shared.core.webauth.impl.di.webAuthModule
 import org.koin.dsl.module
 
 internal fun coreModule() = module {
@@ -17,4 +18,5 @@ internal fun coreModule() = module {
     includes(datetimeModule())
     includes(dbModule())
     includes(toastModule())
+    includes(webAuthModule())
 }

@@ -2,7 +2,6 @@ package and.degilevich.dream.shared.feature.common.component.navbar.impl.compone
 
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarManager
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItem
-import and.degilevich.dream.shared.foundation.primitive.primitives.number.int.orZeroIfNegative
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,7 +16,7 @@ internal class NavbarManagerImpl : NavbarManager {
     override val items = mutableItems.asStateFlow()
     override val activeItem = mutableActiveItem.asStateFlow()
     override val activeItemIndex: Flow<Int> = combine(items, activeItem) { items, activeItem ->
-        items.indexOf(activeItem).orZeroIfNegative()
+        items.indexOf(activeItem).coerceAtLeast(0)
     }
 
     override fun selectItem(item: NavbarItem) {

@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.app.impl.component.child
 
 import and.degilevich.dream.shared.feature.album.component.details.api.component.AlbumDetailsComponent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
+import and.degilevich.dream.shared.feature.auth.component.login.api.component.LoginComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
@@ -22,6 +23,13 @@ internal sealed interface Screen : RenderComponent {
     class Home(
         component: HomeComponent
     ) : Screen, HomeComponent by component
+
+    // Auth
+
+    @Stable
+    class Login(
+        component: LoginComponent
+    ) : Screen, LoginComponent by component
 
     // Artist
 

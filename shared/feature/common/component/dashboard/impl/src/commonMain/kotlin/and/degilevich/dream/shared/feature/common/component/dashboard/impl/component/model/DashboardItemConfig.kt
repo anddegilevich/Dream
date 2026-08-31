@@ -12,4 +12,9 @@ sealed interface DashboardItemConfig : Identified {
     data object AlbumReleases : DashboardItemConfig {
         override val id: AnyIdentifier = identifier("albumReleases")
     }
+
+    @Serializable
+    data object PlaylistList : DashboardItemConfig {
+        override val id: AnyIdentifier = identifier("playlistList")
+    }
 }

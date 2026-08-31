@@ -9,7 +9,6 @@ import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtis
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
 import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
-import and.degilevich.dream.shared.foundation.primitive.result.foldResultSuccess
 
 internal class ArtistRemoteDataSourceImpl(
     private val apiService: ApiService,
@@ -21,7 +20,7 @@ internal class ArtistRemoteDataSourceImpl(
 
     override suspend fun getArtist(params: GetArtistParams): Result<GetArtistResult> = runCatching {
         artistApi.getAnArtist(id = params.id.value).body()
-    }.foldResultSuccess { response ->
+    }.map { response ->
         GetArtistResult(
             artist = response.mapWith(artistOutputToDataMapper)
         )
@@ -33,7 +32,7 @@ internal class ArtistRemoteDataSourceImpl(
             limit = params.limit,
             offset = params.offset,
         ).body()
-    }.foldResultSuccess { response ->
+    }.map { response ->
         response.mapWith(getArtistAlbumsResponseToResultMapper)
     }
 }

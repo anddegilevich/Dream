@@ -26,8 +26,15 @@ abstract class BaseStorage<T>(
         preferenceStorage.clear(key = key)
     }
 
-    override suspend fun read(): T? {
+    override suspend fun read(): Result<T> {
         return preferenceStorage.read(
+            key = key,
+            serializer = serializer
+        )
+    }
+
+    override suspend fun readOrNull(): T? {
+        return preferenceStorage.readOrNull(
             key = key,
             serializer = serializer
         )

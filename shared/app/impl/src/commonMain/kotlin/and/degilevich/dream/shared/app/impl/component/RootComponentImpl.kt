@@ -7,6 +7,7 @@ import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.feature.album.component.details.api.component.AlbumDetailsComponent
 import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
+import and.degilevich.dream.shared.feature.auth.component.login.api.component.LoginComponent
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
@@ -72,6 +73,10 @@ class RootComponentImpl(
 
             is ScreenConfig.Home -> Screen.Home(
                 component = get<HomeComponent> { parametersOf(componentContext) }
+            )
+
+            is ScreenConfig.Login -> Screen.Login(
+                component = get<LoginComponent> { parametersOf(componentContext) }
             )
 
             is ScreenConfig.ArtistDetails -> Screen.ArtistDetails(

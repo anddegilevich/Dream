@@ -50,6 +50,7 @@ include(":shared:resource:test")
 
 include(":shared:core:datetime:api")
 include(":shared:core:datetime:impl")
+include(":shared:core:datetime:test")
 
 include(":shared:core:network:api")
 include(":shared:core:network:impl")
@@ -60,13 +61,18 @@ include(":shared:core:service:test")
 
 include(":shared:core:storage:api")
 include(":shared:core:storage:impl")
+include(":shared:core:storage:test")
 
 include(":shared:core:crypto:api")
 include(":shared:core:crypto:impl")
+include(":shared:core:crypto:test")
 
 include(":shared:core:db:api")
 include(":shared:core:db:impl")
 include(":shared:core:db:test")
+
+include(":shared:core:webauth:api")
+include(":shared:core:webauth:impl")
 
 include(":shared:core:toast:api")
 include(":shared:core:toast:impl")
@@ -95,6 +101,12 @@ include(":shared:feature:common:component:dashboard:impl")
 
 include(":shared:feature:common:component:navbar:api")
 include(":shared:feature:common:component:navbar:impl")
+
+include(":shared:feature:common:component:topbar:api")
+include(":shared:feature:common:component:topbar:impl")
+
+include(":shared:feature:common:component:drawer:api")
+include(":shared:feature:common:component:drawer:impl")
 
 include(":shared:feature:common:component:home:api")
 include(":shared:feature:common:component:home:impl")
@@ -174,6 +186,26 @@ include(":shared:feature:track:ui:impl")
 include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
 
+// Playlist
+include(":shared:feature:playlist:data:mapper:api")
+include(":shared:feature:playlist:data:mapper:impl")
+include(":shared:feature:playlist:data:mapper:test")
+include(":shared:feature:playlist:data:api")
+include(":shared:feature:playlist:data:impl")
+include(":shared:feature:playlist:data:test")
+
+include(":shared:feature:playlist:domain:model:artifact:api")
+include(":shared:feature:playlist:domain:model:artifact:test")
+include(":shared:feature:playlist:domain:model:core:api")
+include(":shared:feature:playlist:domain:api")
+include(":shared:feature:playlist:domain:impl")
+
+include(":shared:feature:playlist:ui:api")
+include(":shared:feature:playlist:ui:impl")
+
+include(":shared:feature:playlist:component:list:api")
+include(":shared:feature:playlist:component:list:impl")
+
 // Search
 include(":shared:feature:search:data:mapper:api")
 include(":shared:feature:search:data:mapper:impl")
@@ -192,6 +224,36 @@ include(":shared:feature:search:ui:impl")
 
 include(":shared:feature:search:component:search:api")
 include(":shared:feature:search:component:search:impl")
+
+// Auth
+include(":shared:feature:auth:data:api")
+include(":shared:feature:auth:data:impl")
+include(":shared:feature:auth:data:test")
+
+include(":shared:feature:auth:domain:api")
+include(":shared:feature:auth:domain:impl")
+
+include(":shared:feature:auth:component:login:api")
+include(":shared:feature:auth:component:login:impl")
+
+// User
+include(":shared:feature:user:data:mapper:api")
+include(":shared:feature:user:data:mapper:impl")
+include(":shared:feature:user:data:mapper:test")
+include(":shared:feature:user:data:api")
+include(":shared:feature:user:data:impl")
+include(":shared:feature:user:data:test")
+
+include(":shared:feature:user:domain:model:artifact:api")
+include(":shared:feature:user:domain:model:core:api")
+include(":shared:feature:user:domain:model:core:test")
+
+include(":shared:feature:user:domain:api")
+include(":shared:feature:user:domain:impl")
+include(":shared:feature:user:domain:test")
+
+include(":shared:feature:user:ui:api")
+include(":shared:feature:user:ui:impl")
 
 // =====================================================================================================================
 // Navigation

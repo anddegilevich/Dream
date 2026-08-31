@@ -4,18 +4,27 @@ import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.system.stub.ViewStub
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
+import and.degilevich.dream.shared.feature.common.component.drawer.api.component.DrawerComponent
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
+import and.degilevich.dream.shared.feature.common.component.topbar.api.component.TopbarComponent
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeDrawer
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeTopbar
+import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomeIntent
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.common.home.impl.view.semantic.HomeScreenSemantic
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.shared.foundation.decompose.compose.drawer.rememberNavigationDrawerState
+import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.ChildDrawer
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.material.ModalDrawer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -29,6 +38,45 @@ import com.arkivanov.decompose.router.pages.ChildPages as ChildPagesState
 
 @Composable
 fun HomeScreen(
+    topbar: HomeTopbar,
+    navbar: HomeNavbar,
+    pages: Value<ChildPagesState<HomePageConfig, HomePage>>,
+    drawer: Value<ChildDrawer<HomeDrawer>>,
+    modifier: Modifier = Modifier,
+    onIntent: (HomeIntent) -> Unit
+) {
+    val navigationDrawerState = rememberNavigationDrawerState(
+        drawer = drawer,
+        onStateChanged = { isOpen ->
+            onIntent(HomeIntent.OnDrawerStateChanged(isOpen = isOpen))
+        }
+    )
+
+    ModalDrawer(
+        modifier = modifier.fillMaxSize(),
+        drawerState = navigationDrawerState.drawerState,
+        gesturesEnabled = navigationDrawerState.drawerState.isOpen,
+        drawerContent = {
+            Box(
+                modifier = Modifier
+                    .testTag(HomeScreenSemantic.TEST_TAG_DRAWER)
+                    .fillMaxHeight()
+            ) {
+                navigationDrawerState.instance.Render()
+            }
+        }
+    ) {
+        HomeContent(
+            topbar = topbar,
+            navbar = navbar,
+            pages = pages
+        )
+    }
+}
+
+@Composable
+private fun HomeContent(
+    topbar: HomeTopbar,
     navbar: HomeNavbar,
     pages: Value<ChildPagesState<HomePageConfig, HomePage>>,
     modifier: Modifier = Modifier
@@ -38,6 +86,7 @@ fun HomeScreen(
             .themeBackground()
             .fillMaxSize()
     ) {
+        topbar.Render()
         ChildPages(
             modifier = Modifier
                 .fillMaxWidth()
@@ -70,13 +119,24 @@ fun HomeScreen(
 @Composable
 private fun HomeScreenPreview() = ComposeAppTheme {
     HomeScreen(
+        topbar = HomeTopbar(
+            component = object : TopbarComponent {
+                @Composable
+                override fun Render() {
+                    ViewStub(
+                        modifier = Modifier.height(56.dp),
+                        stub = "TopbarComponent"
+                    )
+                }
+            }
+        ),
         navbar = HomeNavbar(
             component = object : NavbarComponent {
                 @Composable
                 override fun Render() {
                     ViewStub(
                         modifier = Modifier.height(44.dp),
-                        stub = "NavbarComponent",
+                        stub = "NavbarComponent"
                     )
                 }
             }
@@ -100,6 +160,20 @@ private fun HomeScreenPreview() = ComposeAppTheme {
                 ),
                 selectedIndex = 0
             )
-        )
+        ),
+        drawer = MutableValue(
+            ChildDrawer(
+                instance = HomeDrawer(
+                    component = object : DrawerComponent {
+                        @Composable
+                        override fun Render() {
+                            ViewStub(stub = "DrawerComponent")
+                        }
+                    }
+                ),
+                isOpen = false
+            )
+        ),
+        onIntent = { }
     )
 }

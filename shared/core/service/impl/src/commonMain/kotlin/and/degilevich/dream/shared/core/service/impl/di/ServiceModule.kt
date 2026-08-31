@@ -1,17 +1,36 @@
 package and.degilevich.dream.shared.core.service.impl.di
 
 import and.degilevich.dream.shared.core.service.api.ApiService
+import and.degilevich.dream.shared.core.service.api.session.SessionService
 import and.degilevich.dream.shared.core.service.impl.ApiServiceImpl
+import and.degilevich.dream.shared.core.service.impl.session.SessionServiceImpl
+import and.degilevich.dream.shared.core.service.impl.session.pkce.PkceGenerator
+import and.degilevich.dream.shared.core.service.impl.session.pkce.PkceGeneratorImpl
+import and.degilevich.dream.shared.core.service.impl.session.redirect.AuthRedirectParser
+import and.degilevich.dream.shared.core.service.impl.session.redirect.AuthRedirectParserImpl
+import and.degilevich.dream.shared.core.service.impl.session.storage.SessionStorage
+import and.degilevich.dream.shared.core.service.impl.session.storage.SessionStorageImpl
+import and.degilevich.dream.shared.core.service.impl.session.url.AuthUrlBuilder
+import and.degilevich.dream.shared.core.service.impl.session.url.AuthUrlBuilderImpl
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenServiceImpl
-import and.degilevich.dream.shared.core.service.impl.token.storage.TokensStorage
-import and.degilevich.dream.shared.core.service.impl.token.storage.TokensStorageImpl
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokenResponseToDataMapper
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokenResponseToDataMapperImpl
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensDataToBearerMapper
+import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensDataToBearerMapperImpl
+import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun serviceModule() = module {
-    singleOf(::TokensStorageImpl) bind TokensStorage::class
+    singleOf(::SessionStorageImpl) bind SessionStorage::class
+    singleOf(::PkceGeneratorImpl) bind PkceGenerator::class
+    singleOf(::AuthUrlBuilderImpl) bind AuthUrlBuilder::class
+    singleOf(::AuthRedirectParserImpl) bind AuthRedirectParser::class
     singleOf(::TokenServiceImpl) bind TokenService::class
     singleOf(::ApiServiceImpl) bind ApiService::class
+    factoryOf(::TokenResponseToDataMapperImpl) bind TokenResponseToDataMapper::class
+    factoryOf(::TokensDataToBearerMapperImpl) bind TokensDataToBearerMapper::class
+    singleOf(::SessionServiceImpl) bind SessionService::class
 }

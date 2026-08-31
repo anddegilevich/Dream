@@ -3,12 +3,14 @@ plugins {
     alias(libs.plugins.project.serialization)
     alias(libs.plugins.openapi.generator)
     alias(libs.plugins.project.ktor)
+    alias(libs.plugins.project.coroutines)
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.core.network.api)
+            api(projects.shared.foundation.abstraction)
         }
     }
 
