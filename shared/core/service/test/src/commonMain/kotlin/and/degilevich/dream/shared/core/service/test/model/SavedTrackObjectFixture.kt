@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.api.generated.model.SavedTrackOb
 import and.degilevich.dream.shared.core.service.api.generated.model.TrackObject
 
 fun savedTrackObject(
-    addedAt: String = "2024-01-01T00:00:00Z",
+    addedAt: String? = "2024-01-01T00:00:00Z",
     track: TrackObject? = trackObject()
 ): SavedTrackObject = SavedTrackObject(
     addedAt = addedAt,

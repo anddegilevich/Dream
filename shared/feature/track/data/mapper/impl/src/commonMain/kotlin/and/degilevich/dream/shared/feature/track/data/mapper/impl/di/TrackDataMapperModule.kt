@@ -2,11 +2,13 @@ package and.degilevich.dream.shared.feature.track.data.mapper.impl.di
 
 import and.degilevich.dream.shared.feature.track.data.mapper.api.local.SimplifiedTrackDataToEntityMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.local.TrackDataToEntityMapper
+import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SavedTrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SavedTracksOutputToResultMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SimplifiedTrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.TrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.impl.local.SimplifiedTrackDataToEntityMapperImpl
 import and.degilevich.dream.shared.feature.track.data.mapper.impl.local.TrackDataToEntityMapperImpl
+import and.degilevich.dream.shared.feature.track.data.mapper.impl.remote.SavedTrackOutputToDataMapperImpl
 import and.degilevich.dream.shared.feature.track.data.mapper.impl.remote.SavedTracksOutputToResultMapperImpl
 import and.degilevich.dream.shared.feature.track.data.mapper.impl.remote.SimplifiedTrackOutputToDataMapperImpl
 import and.degilevich.dream.shared.feature.track.data.mapper.impl.remote.TrackOutputToDataMapperImpl
@@ -20,5 +22,6 @@ fun trackDataMapperModule() = module {
 
     factoryOf(::SimplifiedTrackOutputToDataMapperImpl) bind SimplifiedTrackOutputToDataMapper::class
     factoryOf(::TrackOutputToDataMapperImpl) bind TrackOutputToDataMapper::class
+    factoryOf(::SavedTrackOutputToDataMapperImpl) bind SavedTrackOutputToDataMapper::class
     factoryOf(::SavedTracksOutputToResultMapperImpl) bind SavedTracksOutputToResultMapper::class
 }

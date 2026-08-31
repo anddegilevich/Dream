@@ -4,6 +4,8 @@ import and.degilevich.dream.shared.feature.track.data.api.repository.TrackReposi
 import and.degilevich.dream.shared.feature.track.data.impl.local.TrackLocalDataSource
 import and.degilevich.dream.shared.feature.track.data.impl.remote.TrackRemoteDataSource
 import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksParams
+import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksResult
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackResult
 
@@ -15,6 +17,8 @@ internal class TrackRepositoryImpl(
     override suspend fun getTrack(params: GetTrackParams): Result<GetTrackResult> {
         return trackRemoteDataSource.getTrack(params = params)
     }
+
+    override suspend fun getSavedTracks(params: GetSavedTracksParams): Result<GetSavedTracksResult> = TODO()
 
     override suspend fun cacheTrack(track: TrackData) {
         trackLocalDataSource.saveTrack(track = track)
