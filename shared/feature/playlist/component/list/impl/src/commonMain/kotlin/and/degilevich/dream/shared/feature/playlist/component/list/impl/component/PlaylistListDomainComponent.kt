@@ -7,7 +7,9 @@ import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCur
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListIntent
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListSideEffect
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListState
+import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -31,7 +33,7 @@ internal class PlaylistListDomainComponent(
     override fun handleIntent(intent: PlaylistListIntent) {
         when (intent) {
             is PlaylistListIntent.OnPlaylistClicked -> Unit // FIXME: navigate to playlist details
-            is PlaylistListIntent.OnLikedSongsClicked -> Unit // FIXME: navigate to liked songs
+            is PlaylistListIntent.OnLikedSongsClicked -> navigateToLikedTracks()
         }
     }
 
@@ -61,6 +63,10 @@ internal class PlaylistListDomainComponent(
         } finally {
             setLoading(false)
         }
+    }
+
+    private fun navigateToLikedTracks() {
+        navigator.screenNavigator.pushToFront(ScreenConfig.LikedTracks)
     }
 
     private fun setPlaylists(playlists: List<SimplifiedPlaylistData>) = reduce {

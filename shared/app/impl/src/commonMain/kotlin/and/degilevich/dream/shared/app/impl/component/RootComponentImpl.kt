@@ -12,6 +12,7 @@ import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
+import and.degilevich.dream.shared.feature.track.component.liked.api.component.LikedTracksComponent
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
@@ -95,6 +96,10 @@ class RootComponentImpl(
                 component = get<TrackDetailsComponent> {
                     parametersOf(componentContext, screenConfig.navArgs)
                 }
+            )
+
+            is ScreenConfig.LikedTracks -> Screen.LikedTracks(
+                component = get<LikedTracksComponent> { parametersOf(componentContext) }
             )
         }
     }

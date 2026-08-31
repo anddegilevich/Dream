@@ -38,4 +38,7 @@ sealed interface ScreenConfig {
     data class TrackDetails(
         val navArgs: TrackDetailsNavArgs
     ) : ScreenConfig
+
+    @Serializable
+    data object LikedTracks : ScreenConfig
 }

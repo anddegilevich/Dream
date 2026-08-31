@@ -50,6 +50,7 @@ kotlin {
             implementation(projects.shared.feature.album.component.details.api)
 
             implementation(projects.shared.feature.track.component.details.api)
+            implementation(projects.shared.feature.track.component.liked.api)
 
             api(projects.shared.app.api)
         }
