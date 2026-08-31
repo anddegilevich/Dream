@@ -179,12 +179,15 @@ include(":shared:feature:track:domain:model:core:api")
 include(":shared:feature:track:domain:model:core:test")
 include(":shared:feature:track:domain:api")
 include(":shared:feature:track:domain:impl")
+include(":shared:feature:track:domain:test")
 
 include(":shared:feature:track:ui:api")
 include(":shared:feature:track:ui:impl")
 
 include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
+include(":shared:feature:track:component:liked:api")
+include(":shared:feature:track:component:liked:impl")
 
 // Playlist
 include(":shared:feature:playlist:data:mapper:api")
