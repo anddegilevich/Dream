@@ -18,7 +18,9 @@ internal class TrackRepositoryImpl(
         return trackRemoteDataSource.getTrack(params = params)
     }
 
-    override suspend fun getSavedTracks(params: GetSavedTracksParams): Result<GetSavedTracksResult> = TODO()
+    override suspend fun getSavedTracks(params: GetSavedTracksParams): Result<GetSavedTracksResult> {
+        return trackRemoteDataSource.getSavedTracks(params = params)
+    }
 
     override suspend fun cacheTrack(track: TrackData) {
         trackLocalDataSource.saveTrack(track = track)
