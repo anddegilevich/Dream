@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.track.data.impl.remote
 
 import and.degilevich.dream.shared.core.service.api.ApiService
 import and.degilevich.dream.shared.core.service.api.generated.api.TracksApi
-import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SavedTracksOutputToResultMapper
+import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SavedTracksResponseToResultMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.TrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksParams
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksResult
@@ -13,7 +13,7 @@ import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 internal class TrackRemoteDataSourceImpl(
     private val apiService: ApiService,
     private val trackOutputToDataMapper: TrackOutputToDataMapper,
-    private val savedTracksOutputToResultMapper: SavedTracksOutputToResultMapper,
+    private val savedTracksResponseToResultMapper: SavedTracksResponseToResultMapper,
 ) : TrackRemoteDataSource {
 
     private val tracksApi: TracksApi by lazy { apiService.tracksApi }
@@ -36,6 +36,6 @@ internal class TrackRemoteDataSourceImpl(
             offset = params.offset
         ).body()
     }.map { response ->
-        response.mapWith(savedTracksOutputToResultMapper)
+        response.mapWith(savedTracksResponseToResultMapper)
     }
 }

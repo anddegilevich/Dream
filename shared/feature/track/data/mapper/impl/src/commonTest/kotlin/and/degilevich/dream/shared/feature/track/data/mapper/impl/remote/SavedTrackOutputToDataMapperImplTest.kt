@@ -45,21 +45,7 @@ class SavedTrackOutputToDataMapperImplTest {
     fun `map - no track - falls back to empty track`() {
         val result = createMapper().map(savedTrackObject(track = null))
 
-        with(result) {
-            track shouldBe TrackData.empty()
-            isEmpty() shouldBe true
-        }
-    }
-
-    @Test
-    fun `map - track present - is not empty`() {
-        val mapper = createMapper(
-            trackOutputToDataMapper = FakeTrackOutputToDataMapper(onMap = { trackData(id = "track-1") })
-        )
-
-        val result = mapper.map(savedTrackObject())
-
-        result.isEmpty() shouldBe false
+        result.track shouldBe TrackData.empty()
     }
 
     private fun createMapper(

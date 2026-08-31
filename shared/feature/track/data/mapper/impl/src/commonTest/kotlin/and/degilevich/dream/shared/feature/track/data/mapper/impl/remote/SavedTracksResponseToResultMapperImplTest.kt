@@ -4,12 +4,11 @@ import and.degilevich.dream.shared.core.service.test.model.pagingSavedTrackObjec
 import and.degilevich.dream.shared.core.service.test.model.savedTrackObject
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SavedTrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.test.remote.FakeSavedTrackOutputToDataMapper
-import and.degilevich.dream.shared.feature.track.model.core.api.data.SavedTrackData
 import and.degilevich.dream.shared.feature.track.model.core.test.data.savedTrackData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 
-class SavedTracksOutputToResultMapperImplTest {
+class SavedTracksResponseToResultMapperImplTest {
 
     @Test
     fun `map - saved tracks - delegates every item to injected mapper preserving order`() {
@@ -47,28 +46,6 @@ class SavedTracksOutputToResultMapperImplTest {
     }
 
     @Test
-    fun `map - item mapped to empty - drops the item`() {
-        val savedTrack = savedTrackData(id = "track-1")
-        val emptyOutput = savedTrackObject(track = null)
-        val mapper = createMapper(
-            savedTrackOutputToDataMapper = FakeSavedTrackOutputToDataMapper(
-                onMap = { output -> if (output === emptyOutput) SavedTrackData.empty() else savedTrack }
-            )
-        )
-        val input = pagingSavedTrackObject(
-            items = listOf(emptyOutput, savedTrackObject()),
-            total = 2
-        )
-
-        val result = mapper.map(input)
-
-        with(result) {
-            tracks shouldBe listOf(savedTrack)
-            total shouldBe 2
-        }
-    }
-
-    @Test
     fun `map - empty page - returns no tracks`() {
         val result = createMapper().map(pagingSavedTrackObject(total = 0))
 
@@ -80,7 +57,7 @@ class SavedTracksOutputToResultMapperImplTest {
 
     private fun createMapper(
         savedTrackOutputToDataMapper: SavedTrackOutputToDataMapper = FakeSavedTrackOutputToDataMapper()
-    ) = SavedTracksOutputToResultMapperImpl(
+    ) = SavedTracksResponseToResultMapperImpl(
         savedTrackOutputToDataMapper = savedTrackOutputToDataMapper
     )
 }

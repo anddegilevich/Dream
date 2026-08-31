@@ -7,9 +7,9 @@ import and.degilevich.dream.shared.core.service.test.model.pagingSavedTrackObjec
 import and.degilevich.dream.shared.core.service.test.model.savedTrackObject
 import and.degilevich.dream.shared.core.service.test.model.trackObject
 import and.degilevich.dream.shared.core.service.test.service.FakeApiService
-import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SavedTracksOutputToResultMapper
+import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SavedTracksResponseToResultMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.TrackOutputToDataMapper
-import and.degilevich.dream.shared.feature.track.data.mapper.test.remote.FakeSavedTracksOutputToResultMapper
+import and.degilevich.dream.shared.feature.track.data.mapper.test.remote.FakeSavedTracksResponseToResultMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.test.remote.FakeTrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
 import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksParams
@@ -77,7 +77,7 @@ class TrackRemoteDataSourceImplTest {
         )
         val dataSource = createDataSource(
             engine = respondingWith(content = content),
-            savedTracksOutputToResultMapper = FakeSavedTracksOutputToResultMapper(onMap = { expected })
+            savedTracksResponseToResultMapper = FakeSavedTracksResponseToResultMapper(onMap = { expected })
         )
 
         val result = dataSource.getSavedTracks(
@@ -105,7 +105,7 @@ class TrackRemoteDataSourceImplTest {
         }
         val dataSource = createDataSource(
             engine = engine,
-            savedTracksOutputToResultMapper = FakeSavedTracksOutputToResultMapper(
+            savedTracksResponseToResultMapper = FakeSavedTracksResponseToResultMapper(
                 onMap = { GetSavedTracksResult(tracks = emptyList(), total = 0) }
             )
         )
@@ -133,13 +133,13 @@ class TrackRemoteDataSourceImplTest {
     private fun createDataSource(
         engine: MockEngine,
         trackOutputToDataMapper: TrackOutputToDataMapper = FakeTrackOutputToDataMapper(),
-        savedTracksOutputToResultMapper: SavedTracksOutputToResultMapper = FakeSavedTracksOutputToResultMapper()
+        savedTracksResponseToResultMapper: SavedTracksResponseToResultMapper = FakeSavedTracksResponseToResultMapper()
     ): TrackRemoteDataSourceImpl {
         val apiService = FakeApiService(onTracksApi = { fakeTracksApi(engine = engine) })
         return TrackRemoteDataSourceImpl(
             apiService = apiService,
             trackOutputToDataMapper = trackOutputToDataMapper,
-            savedTracksOutputToResultMapper = savedTracksOutputToResultMapper
+            savedTracksResponseToResultMapper = savedTracksResponseToResultMapper
         )
     }
 
