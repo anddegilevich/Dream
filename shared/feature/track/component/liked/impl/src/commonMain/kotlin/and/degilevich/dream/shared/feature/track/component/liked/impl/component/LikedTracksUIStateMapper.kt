@@ -37,8 +37,10 @@ internal class LikedTracksUIStateMapper : Mapper<LikedTracksState, LikedTracksUI
             isLoading = tracks.isEmpty() && !isLoadingTracks
         ) {
             tracks
-                .map { savedTrack ->
-                    trackInfoToTrackCardUIDataMapper.map(savedTrack.track)
+                .mapIndexed { index, savedTrack ->
+                    trackInfoToTrackCardUIDataMapper
+                        .map(savedTrack.track)
+                        .copy(number = (index + 1).toString())
                 }
                 .toImmutableList()
         }

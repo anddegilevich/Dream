@@ -58,7 +58,8 @@ fun AlbumDetailsScreen(
     ) {
         item {
             Column(
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 IconButton(
                     modifier = Modifier
@@ -68,8 +69,8 @@ fun AlbumDetailsScreen(
                 ) {
                     onIntent(AlbumDetailsIntent.OnBackClicked)
                 }
-                Space(height = 12.dp)
                 SkeletonCrossfade(
+                    modifier = Modifier.padding(horizontal = 16.dp),
                     skeleton = state.info,
                     loadingContent = {
                         SkeletonAlbumDetailsLayout(
