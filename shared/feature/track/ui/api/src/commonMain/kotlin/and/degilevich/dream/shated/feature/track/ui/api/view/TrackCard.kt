@@ -13,10 +13,12 @@ import and.degilevich.dream.shated.feature.track.ui.api.preview.TrackCardUIDataP
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -38,9 +40,11 @@ fun TrackCard(
         verticalAlignment = Alignment.Top
     ) {
         Text(
+            modifier = Modifier.widthIn(min = 28.dp),
             text = data.number,
             style = Theme.typography.main,
-            color = Theme.colors.text.primary
+            color = Theme.colors.text.primary,
+            textAlign = TextAlign.End
         )
         Space(width = 8.dp)
         Column {
