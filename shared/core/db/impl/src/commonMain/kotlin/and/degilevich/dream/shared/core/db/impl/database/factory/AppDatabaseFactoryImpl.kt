@@ -14,6 +14,7 @@ internal class AppDatabaseFactoryImpl(
 
     override fun create(): AppDatabase {
         return databaseBuilder
+            .fallbackToDestructiveMigration(dropAllTables = true)
             .setDriver(driver = BundledSQLiteDriver())
             .setQueryCoroutineContext(context = Dispatchers.IO)
             .build()
