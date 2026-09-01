@@ -183,6 +183,7 @@ include(":shared:feature:track:domain:test")
 
 include(":shared:feature:track:ui:api")
 include(":shared:feature:track:ui:impl")
+include(":shared:feature:track:ui:test")
 
 include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
