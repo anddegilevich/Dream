@@ -1,11 +1,11 @@
 package and.degilevich.dream.shared.feature.track.component.liked.impl.view
 
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
+import and.degilevich.dream.shared.feature.playlist.ui.api.preview.PlaylistTrackCardUIDataPreviewProvider
 import and.degilevich.dream.shared.feature.track.component.liked.impl.component.model.LikedTracksIntent
 import and.degilevich.dream.shared.feature.track.component.liked.impl.component.model.LikedTracksUIState
 import and.degilevich.dream.shared.feature.track.component.liked.impl.preview.LikedTracksUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.track.component.liked.impl.view.semantic.LikedTracksScreenSemantic
-import and.degilevich.dream.shated.feature.track.ui.api.preview.TrackCardUIDataPreviewProvider
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
@@ -86,7 +86,7 @@ class LikedTracksScreenTest {
     @Test
     fun `click track - emits OnTrackClicked with clicked track id`() = runComposeUiTest {
         val intents = mutableListOf<LikedTracksIntent>()
-        val tracks = TrackCardUIDataPreviewProvider().provideList()
+        val tracks = PlaylistTrackCardUIDataPreviewProvider().provideList()
         setContent(
             state = provider.provideDefault(),
             onIntent = intents::add

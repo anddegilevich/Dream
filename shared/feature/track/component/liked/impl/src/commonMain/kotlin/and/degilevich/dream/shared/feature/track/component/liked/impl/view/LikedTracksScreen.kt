@@ -6,6 +6,8 @@ import and.degilevich.dream.shared.design.system.modifier.roundedThemeShimmer
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
+import and.degilevich.dream.shared.feature.playlist.ui.api.view.PlaylistTrackCard
+import and.degilevich.dream.shared.feature.playlist.ui.api.view.skeleton.SkeletonPlaylistTrackCard
 import and.degilevich.dream.shared.feature.track.component.liked.impl.component.model.LikedTracksIntent
 import and.degilevich.dream.shared.feature.track.component.liked.impl.component.model.LikedTracksUIState
 import and.degilevich.dream.shared.feature.track.component.liked.impl.preview.LikedTracksUIStatePreviewProvider
@@ -16,8 +18,6 @@ import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
-import and.degilevich.dream.shated.feature.track.ui.api.view.TrackCard
-import and.degilevich.dream.shated.feature.track.ui.api.view.skeleton.SkeletonTrackCard
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -87,14 +87,14 @@ fun LikedTracksScreen(
             skeleton = state.tracks,
             loadingItemsCount = LOADING_ITEMS_COUNT,
             loadingItemContent = {
-                SkeletonTrackCard(
+                SkeletonPlaylistTrackCard(
                     modifier = Modifier
                         .testTag(LikedTracksScreenSemantic.TEST_TAG_ITEM_SKELETON)
                         .fillMaxWidth()
                 )
             },
             itemContent = { track ->
-                TrackCard(
+                PlaylistTrackCard(
                     modifier = Modifier
                         .testTag(LikedTracksScreenSemantic.TEST_TAG_ITEM)
                         .animateItem()
@@ -107,7 +107,7 @@ fun LikedTracksScreen(
         )
         if (state.isLoadingTracks) {
             items(count = LOADING_ITEMS_COUNT) {
-                SkeletonTrackCard(
+                SkeletonPlaylistTrackCard(
                     modifier = Modifier
                         .testTag(LikedTracksScreenSemantic.TEST_TAG_NEXT_PAGE_SKELETON)
                         .fillMaxWidth()

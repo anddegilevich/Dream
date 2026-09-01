@@ -66,7 +66,7 @@ internal class LikedTracksPagingSourceImpl(
         isLastPageReached = result.tracks.count() < PAGE_SIZE || tracks.size >= result.total
     }
 
-    private companion object {
+    internal companion object {
         const val PAGE_SIZE = 50
     }
 }

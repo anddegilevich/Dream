@@ -41,7 +41,7 @@ class LikedTracksPagingSourceImplTest {
         pagingSource.isLoading.value shouldBe false
         requestedParams shouldContainExactly listOf(
             GetSavedTracksParams(
-                limit = PAGE_SIZE,
+                limit = LikedTracksPagingSourceImpl.PAGE_SIZE,
                 offset = 0
             )
         )
@@ -49,18 +49,20 @@ class LikedTracksPagingSourceImplTest {
 
     @Test
     fun `loadMore - called twice - loads consecutive pages and appends them`() = runTest {
-        val firstTrack = savedTrackData(id = "track-1")
-        val secondTrack = savedTrackData(id = "track-2")
+        val firstPage = List(LikedTracksPagingSourceImpl.PAGE_SIZE) { index ->
+            savedTrackData(id = "track-$index")
+        }
+        val secondPageTrack = savedTrackData(id = "track-last")
         val requestedParams = mutableListOf<GetSavedTracksParams>()
         val pagingSource = LikedTracksPagingSourceImpl(
             getSavedTracksUseCase = FakeGetSavedTracksUseCase(
                 onInvoke = { params ->
                     requestedParams.add(params)
-                    val track = if (params.offset == 0) firstTrack else secondTrack
+                    val tracks = if (params.offset == 0) firstPage else listOf(secondPageTrack)
                     Result.success(
                         GetSavedTracksResult(
-                            tracks = listOf(track),
-                            total = 5
+                            tracks = tracks,
+                            total = TOTAL_COUNT
                         )
                     )
                 }
@@ -70,15 +72,15 @@ class LikedTracksPagingSourceImplTest {
         pagingSource.loadMore()
         pagingSource.loadMore()
 
-        pagingSource.tracks.value shouldContainExactly listOf(firstTrack, secondTrack)
+        pagingSource.tracks.value shouldContainExactly firstPage + secondPageTrack
         requestedParams shouldContainExactly listOf(
             GetSavedTracksParams(
-                limit = PAGE_SIZE,
+                limit = LikedTracksPagingSourceImpl.PAGE_SIZE,
                 offset = 0
             ),
             GetSavedTracksParams(
-                limit = PAGE_SIZE,
-                offset = 1
+                limit = LikedTracksPagingSourceImpl.PAGE_SIZE,
+                offset = LikedTracksPagingSourceImpl.PAGE_SIZE
             )
         )
     }
@@ -209,17 +211,17 @@ class LikedTracksPagingSourceImplTest {
         pagingSource.tracks.value shouldContainExactly listOf(track)
         requestedParams shouldContainExactly listOf(
             GetSavedTracksParams(
-                limit = PAGE_SIZE,
+                limit = LikedTracksPagingSourceImpl.PAGE_SIZE,
                 offset = 0
             ),
             GetSavedTracksParams(
-                limit = PAGE_SIZE,
+                limit = LikedTracksPagingSourceImpl.PAGE_SIZE,
                 offset = 0
             )
         )
     }
 
     private companion object {
-        const val PAGE_SIZE = 20
+        const val TOTAL_COUNT = 100
     }
 }

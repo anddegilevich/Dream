@@ -11,7 +11,6 @@ import and.degilevich.dream.shared.feature.album.component.details.impl.view.sem
 import and.degilevich.dream.shared.feature.album.component.details.impl.view.skeleton.SkeletonAlbumDetailsLayout
 import and.degilevich.dream.shared.feature.artist.ui.api.view.ArtistLabel
 import and.degilevich.dream.shared.feature.artist.ui.api.view.skeleton.SkeletonArtistLabel
-import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems

@@ -7,7 +7,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.feature.track.component.liked.api)
             implementation(projects.shared.feature.track.domain.api)
-            implementation(projects.shared.feature.track.ui.api)
+            implementation(projects.shared.feature.playlist.ui.api)
         }
     }
 
