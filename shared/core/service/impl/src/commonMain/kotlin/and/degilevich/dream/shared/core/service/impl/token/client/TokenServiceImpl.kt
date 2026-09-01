@@ -3,13 +3,17 @@ package and.degilevich.dream.shared.core.service.impl.token.client
 import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.network.api.RemoteClient
 import and.degilevich.dream.shared.core.service.api.model.TokensData
+import and.degilevich.dream.shared.core.service.impl.session.model.AuthError
 import and.degilevich.dream.shared.core.service.impl.token.mapper.TokenResponseToDataMapper
 import and.degilevich.dream.shared.core.service.impl.token.model.response.TokenResponse
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
+import and.degilevich.dream.shared.foundation.primitive.result.recoverResult
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.request.forms.submitForm
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.Parameters
 
 internal class TokenServiceImpl(
@@ -45,7 +49,11 @@ internal class TokenServiceImpl(
                 append(PARAM_REFRESH_TOKEN, refreshToken)
                 append(PARAM_CLIENT_ID, SharedBuildConfig.CLIENT_ID)
             }
-        )
+        ).map { tokens ->
+            tokens.copy(
+                refreshToken = tokens.refreshToken.ifEmpty { refreshToken }
+            )
+        }
     }
 
     private suspend fun requestToken(
@@ -55,10 +63,25 @@ internal class TokenServiceImpl(
             client.submitForm(formParameters = parameters)
                 .body<TokenResponse>()
                 .mapWith(tokenResponseToDataMapper)
+        }.recoverResult { error ->
+            Result.failure(mapRequestTokenError(error = error))
+        }
+    }
+
+    private fun mapRequestTokenError(error: Throwable): Throwable {
+        val isGrantRejected = error is ClientRequestException && error.response.status in GRANT_REJECTED_STATUSES
+        return if (isGrantRejected) {
+            AuthError.GrantRejected(cause = error)
+        } else {
+            error
         }
     }
 
     private companion object {
+        val GRANT_REJECTED_STATUSES = setOf(
+            HttpStatusCode.BadRequest,
+            HttpStatusCode.Unauthorized
+        )
         const val PARAM_GRANT_TYPE = "grant_type"
         const val PARAM_CODE = "code"
         const val PARAM_REDIRECT_URI = "redirect_uri"

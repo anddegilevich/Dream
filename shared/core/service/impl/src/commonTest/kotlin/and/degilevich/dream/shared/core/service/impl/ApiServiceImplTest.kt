@@ -3,6 +3,7 @@ package and.degilevich.dream.shared.core.service.impl
 import and.degilevich.dream.shared.core.service.api.model.SessionData
 import and.degilevich.dream.shared.core.service.api.model.TokensData
 import and.degilevich.dream.shared.core.service.impl.network.fakeRemoteClient
+import and.degilevich.dream.shared.core.service.impl.session.model.AuthError
 import and.degilevich.dream.shared.core.service.impl.session.storage.FakeSessionStorage
 import and.degilevich.dream.shared.core.service.impl.session.storage.SessionStorage
 import and.degilevich.dream.shared.core.service.impl.token.client.FakeTokenService
@@ -80,7 +81,7 @@ class ApiServiceImplTest {
     }
 
     @Test
-    fun `usersApi - refresh fails - clears the stored session`() = runTest {
+    fun `usersApi - refresh token is rejected - clears the stored session`() = runTest {
         var sessionCleared = false
         val apiService = createApiService(
             engine = respondingWith(statuses = listOf(HttpStatusCode.Unauthorized, HttpStatusCode.Unauthorized)),
@@ -89,7 +90,7 @@ class ApiServiceImplTest {
                 onClear = { sessionCleared = true }
             ),
             tokenService = FakeTokenService(
-                onRefresh = { Result.failure(IllegalStateException("refresh rejected")) }
+                onRefresh = { Result.failure(AuthError.GrantRejected(cause = null)) }
             )
         )
 
@@ -98,6 +99,27 @@ class ApiServiceImplTest {
         }
 
         sessionCleared shouldBe true
+    }
+
+    @Test
+    fun `usersApi - refresh cannot reach the token endpoint - keeps the stored session`() = runTest {
+        var sessionCleared = false
+        val apiService = createApiService(
+            engine = respondingWith(statuses = listOf(HttpStatusCode.Unauthorized, HttpStatusCode.Unauthorized)),
+            sessionStorage = FakeSessionStorage(
+                onRead = { session(accessToken = "expired-access-token") },
+                onClear = { sessionCleared = true }
+            ),
+            tokenService = FakeTokenService(
+                onRefresh = { Result.failure(IllegalStateException("network is down")) }
+            )
+        )
+
+        assertFailsWith<Exception> {
+            apiService.usersApi.getCurrentUsersProfile()
+        }
+
+        sessionCleared shouldBe false
     }
 
     private fun createApiService(

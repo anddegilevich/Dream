@@ -10,6 +10,7 @@ import and.degilevich.dream.shared.core.service.api.generated.api.SearchApi
 import and.degilevich.dream.shared.core.service.api.generated.api.TracksApi
 import and.degilevich.dream.shared.core.service.api.generated.api.UsersApi
 import and.degilevich.dream.shared.core.service.api.model.SessionData
+import and.degilevich.dream.shared.core.service.impl.session.model.AuthError
 import and.degilevich.dream.shared.core.service.impl.session.storage.SessionStorage
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
 import and.degilevich.dream.shared.core.service.impl.token.mapper.TokensDataToBearerMapper
@@ -101,9 +102,15 @@ internal class ApiServiceImpl(
                     sessionStorage.save(
                         SessionData(tokens = tokens)
                     )
-                }.onFailure {
-                    sessionStorage.clear()
+                }.onFailure { error ->
+                    handleRefreshTokenFailure(error = error)
                 }.getOrNull()?.mapWith(tokensDataToBearerMapper)
+        }
+    }
+
+    private suspend fun handleRefreshTokenFailure(error: Throwable) {
+        if (error is AuthError.GrantRejected) {
+            sessionStorage.clear()
         }
     }
 }
