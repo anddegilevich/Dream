@@ -1,10 +1,11 @@
-package and.degilevich.dream.shated.feature.track.ui.api.view.skeleton
+package and.degilevich.dream.shared.feature.playlist.ui.api.view.skeleton
 
 import and.degilevich.dream.shared.design.system.modifier.roundedThemeShimmer
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
+import and.degilevich.dream.shared.design.system.modifier.themeShimmer
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,12 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SkeletonTrackCard(
+fun SkeletonPlaylistTrackCard(
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier,
-        verticalAlignment = Alignment.Top
+        horizontalArrangement = Arrangement.spacedBy(space = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(
             modifier = Modifier
@@ -30,8 +32,14 @@ fun SkeletonTrackCard(
                     height = 16.dp
                 )
         )
-        Space(width = 8.dp)
-        Column {
+        Spacer(
+            modifier = Modifier
+                .themeShimmer()
+                .size(size = 48.dp)
+        )
+        Column(
+            verticalArrangement = Arrangement.spacedBy(space = 4.dp)
+        ) {
             Spacer(
                 modifier = Modifier
                     .roundedThemeShimmer()
@@ -40,7 +48,6 @@ fun SkeletonTrackCard(
                         height = 16.dp
                     )
             )
-            Space(height = 4.dp)
             Spacer(
                 modifier = Modifier
                     .roundedThemeShimmer()
@@ -55,8 +62,8 @@ fun SkeletonTrackCard(
 
 @LightDarkPreviews
 @Composable
-private fun SkeletonTrackCardPreview() = ComposeAppTheme {
-    SkeletonTrackCard(
+private fun SkeletonPlaylistTrackCardPreview() = ComposeAppTheme {
+    SkeletonPlaylistTrackCard(
         modifier = Modifier.themeBackground()
     )
 }

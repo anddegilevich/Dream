@@ -9,6 +9,8 @@ import kotlinx.collections.immutable.toImmutableList
 @Suppress("MagicNumber")
 class TrackCardUIDataPreviewProvider : LabeledPreviewParameterProvider<TrackCardUIData>() {
 
+    private val trackCardInfoUIDataPreviewProvider = TrackCardInfoUIDataPreviewProvider()
+
     override val labeledValues = listOf(
         "Default" to provideDefault()
     )
@@ -17,8 +19,7 @@ class TrackCardUIDataPreviewProvider : LabeledPreviewParameterProvider<TrackCard
         return TrackCardUIData(
             id = identifier("id"),
             number = "1",
-            name = "Track",
-            artists = "Artist",
+            info = trackCardInfoUIDataPreviewProvider.provideDefault()
         )
     }
 
@@ -27,8 +28,7 @@ class TrackCardUIDataPreviewProvider : LabeledPreviewParameterProvider<TrackCard
             TrackCardUIData(
                 id = identifier(value = i.toString()),
                 number = i.toString(),
-                name = "Track $i",
-                artists = "Artist"
+                info = trackCardInfoUIDataPreviewProvider.provide(index = i)
             )
         }.toImmutableList()
     }
