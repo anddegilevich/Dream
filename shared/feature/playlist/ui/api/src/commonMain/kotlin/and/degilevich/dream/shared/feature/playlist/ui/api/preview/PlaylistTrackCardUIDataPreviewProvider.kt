@@ -14,7 +14,6 @@ class PlaylistTrackCardUIDataPreviewProvider : LabeledPreviewParameterProvider<P
 
     override val labeledValues = listOf(
         "Default" to provideDefault(),
-        "Without number" to provideWithoutNumber()
     )
 
     fun provideDefault(): PlaylistTrackCardUIData {
@@ -24,10 +23,6 @@ class PlaylistTrackCardUIDataPreviewProvider : LabeledPreviewParameterProvider<P
             info = trackCardInfoUIDataPreviewProvider.provideDefault(),
             albumCoverUrl = ""
         )
-    }
-
-    fun provideWithoutNumber(): PlaylistTrackCardUIData {
-        return provideDefault().copy(number = "")
     }
 
     fun provideList(): ImmutableList<PlaylistTrackCardUIData> {
