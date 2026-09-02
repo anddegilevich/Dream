@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.navigation.api.model.config
 
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.ArtistDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.args.PlaylistDetailsNavArgs
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs
 import kotlinx.serialization.Serializable
 
@@ -31,6 +32,12 @@ sealed interface ScreenConfig {
     @Serializable
     data class AlbumDetails(
         val navArgs: AlbumDetailsNavArgs
+    ) : ScreenConfig
+
+    // Playlist
+    @Serializable
+    data class PlaylistDetails(
+        val navArgs: PlaylistDetailsNavArgs
     ) : ScreenConfig
 
     // Track

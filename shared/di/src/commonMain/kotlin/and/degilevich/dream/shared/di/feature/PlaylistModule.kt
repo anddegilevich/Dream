@@ -1,5 +1,6 @@
 package and.degilevich.dream.shared.di.feature
 
+import and.degilevich.dream.shared.feature.playlist.component.details.impl.di.playlistDetailsComponentModule
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.di.playlistListComponentModule
 import and.degilevich.dream.shared.feature.playlist.data.impl.di.playlistDataModule
 import and.degilevich.dream.shared.feature.playlist.data.mapper.impl.di.playlistDataMapperModule
@@ -13,4 +14,5 @@ internal fun playlistModule() = module {
     includes(playlistDomainModule())
     includes(playlistUIModule())
     includes(playlistListComponentModule())
+    includes(playlistDetailsComponentModule())
 }

@@ -11,6 +11,7 @@ import and.degilevich.dream.shared.feature.auth.component.login.api.component.Lo
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponentFactory
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponentFactory
+import and.degilevich.dream.shared.feature.playlist.component.details.api.component.PlaylistDetailsComponentFactory
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponentFactory
 import and.degilevich.dream.shared.feature.track.component.liked.api.component.LikedTracksComponentFactory
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
@@ -46,6 +47,7 @@ class RootComponentImpl(
     private val loginComponentFactory: LoginComponentFactory by inject()
     private val artistDetailsComponentFactory: ArtistDetailsComponentFactory by inject()
     private val albumDetailsComponentFactory: AlbumDetailsComponentFactory by inject()
+    private val playlistDetailsComponentFactory: PlaylistDetailsComponentFactory by inject()
     private val trackDetailsComponentFactory: TrackDetailsComponentFactory by inject()
     private val likedTracksComponentFactory: LikedTracksComponentFactory by inject()
 
@@ -101,6 +103,13 @@ class RootComponentImpl(
 
             is ScreenConfig.AlbumDetails -> Screen.AlbumDetails(
                 component = albumDetailsComponentFactory.create(
+                    componentContext = componentContext,
+                    navArgs = screenConfig.navArgs
+                )
+            )
+
+            is ScreenConfig.PlaylistDetails -> Screen.PlaylistDetails(
+                component = playlistDetailsComponentFactory.create(
                     componentContext = componentContext,
                     navArgs = screenConfig.navArgs
                 )

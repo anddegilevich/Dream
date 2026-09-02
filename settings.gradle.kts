@@ -214,6 +214,8 @@ include(":shared:feature:playlist:ui:impl")
 
 include(":shared:feature:playlist:component:list:api")
 include(":shared:feature:playlist:component:list:impl")
+include(":shared:feature:playlist:component:details:api")
+include(":shared:feature:playlist:component:details:impl")
 
 // Search
 include(":shared:feature:search:data:mapper:api")
