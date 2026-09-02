@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.feature.track.component.liked.impl.component.
 import and.degilevich.dream.shared.feature.track.component.liked.impl.component.model.LikedTracksSideEffect
 import and.degilevich.dream.shared.feature.track.component.liked.impl.component.model.LikedTracksState
 import and.degilevich.dream.shared.feature.track.domain.api.paging.LikedTracksPagingSource
+import and.degilevich.dream.shared.feature.track.domain.api.paging.LikedTracksPagingSourceFactory
 import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
 import and.degilevich.dream.shared.feature.track.model.core.api.data.SavedTrackData
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
@@ -30,7 +31,10 @@ internal class LikedTracksDomainComponent(
     stateConservator = LikedTracksStateConservator()
 ) {
 
-    private val likedTracksPagingSource: LikedTracksPagingSource by inject()
+    private val likedTracksPagingSourceFactory: LikedTracksPagingSourceFactory by inject()
+    private val likedTracksPagingSource: LikedTracksPagingSource = likedTracksPagingSourceFactory.create(
+        componentContext = componentContext
+    )
 
     init {
         subscribeToPagingSource()
@@ -46,7 +50,7 @@ internal class LikedTracksDomainComponent(
     }
 
     private fun subscribeToPagingSource() = with(likedTracksPagingSource) {
-        tracks.onEach(::setTracks).launchIn(scope)
+        data.onEach(::setTracks).launchIn(scope)
         totalCount.onEach(::setTotal).launchIn(scope)
         isLoading.onEach(::setLoadingTracks).launchIn(scope)
         errors.onEach(::showError).launchIn(scope)
@@ -54,13 +58,17 @@ internal class LikedTracksDomainComponent(
 
     private fun subscribeToLifecycle() {
         doOnCreate {
-            loadNextPage()
+            loadFirstPage()
         }
+    }
+
+    private fun loadFirstPage() = scope.launch {
+        withContext(context = Dispatchers.IO) { likedTracksPagingSource.loadFirstPage() }
     }
 
     private fun loadNextPage() {
         scope.launch {
-            withContext(context = Dispatchers.IO) { likedTracksPagingSource.loadMore() }
+            withContext(context = Dispatchers.IO) { likedTracksPagingSource.loadNextPage() }
         }
     }
 

@@ -90,6 +90,9 @@ include(":shared:design:system")
 include(":shared:feature:base:data:api")
 include(":shared:feature:base:data:impl")
 
+include(":shared:feature:base:domain:api")
+include(":shared:feature:base:domain:impl")
+
 include(":shared:feature:base:component:impl")
 
 // Common
