@@ -15,9 +15,9 @@ import and.degilevich.dream.shared.feature.track.component.details.api.component
 import and.degilevich.dream.shared.feature.track.component.liked.api.component.LikedTracksComponentFactory
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.logger.Log
+import and.degilevich.dream.shared.navigation.api.component.AppNavigationComponent
+import and.degilevich.dream.shared.navigation.api.component.AppNavigationComponentFactory
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
-import and.degilevich.dream.shared.navigation.impl.AppNavigationComponent
-import and.degilevich.dream.shared.navigation.impl.AppNavigationComponentImpl
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
@@ -27,13 +27,14 @@ import com.arkivanov.decompose.value.Value
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
 import org.koin.core.component.inject
 
 class RootComponentImpl(
     componentContext: ComponentContext
 ) : BaseComponent(componentContext), RootComponent, KoinComponent {
 
-    private val navigationComponent = AppNavigationComponentImpl(
+    private val navigationComponent: AppNavigationComponent = get<AppNavigationComponentFactory>().create(
         componentContext = childContext(
             key = AppNavigationComponent::class.className()
         )

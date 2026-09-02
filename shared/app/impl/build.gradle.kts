@@ -33,9 +33,6 @@ kotlin {
             api(projects.shared.foundation.decompose)
             api(projects.shared.feature.base.component.impl)
 
-            // Navigation
-            implementation(projects.shared.navigation.impl)
-
             // DI
             api(projects.shared.di)
 
