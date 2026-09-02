@@ -14,7 +14,8 @@ Each feature (`artist`, `album`, etc.) follows vertical slice:
 * `domain/api|impl` - use cases, managers, validators, value holders, etc.
 * `ui/api|impl` - ui models, compose functions, mappers from domain to ui models
 * `component/<component_name>/api|impl` - screens/views
-  * `api` - single marker interface extending `RenderComponent` (`@Composable fun Render()`); no state, intent or view types leak into api
+  * `api` - marker interface extending `RenderComponent` (`@Composable fun Render()`) + `<Name>ComponentFactory`
+    (`create(componentContext)`, plus `navArgs` when the screen takes them); no state, intent or view types leak into api
   * `impl` - `ComponentImpl`, `DomainComponent`, `UIStateMapper`/state conservator, `component/model` (`Intent`, `SideEffect`, `UIState`, domain `State`), `preview` (preview component + providers), `view` (screen/layout composables, `view/semantic` test tags, `view/skeleton` loading placeholders)
 
 ## Dependency matrix
@@ -45,9 +46,12 @@ ui/api                  → ALLOWED: domain/model/core/api, sibling feature ui/a
 
 ui/impl                 → ALLOWED: ui/api (own), domain/model/core/api|artifact/api (own), sibling feature ui/api (reuse)
 
-ui/component/<s>/api    → ALLOWED: foundation:decompose
+ui/component/<s>/api    → ALLOWED: foundation:decompose (api() dep — factory signatures expose ComponentContext),
+                          shared/navigation:api (api() dep — factory navArgs). Both come from BaseComponentApiPlugin,
+                          never declared per-module
 
-ui/component/<s>/impl   → ALLOWED: component/api (own), ui/api (own + sibling), domain/api (own), sibling feature domain/api, sibling feature component/api
+ui/component/<s>/impl   → ALLOWED: component/api (own) — gets foundation:decompose + shared/navigation:api transitively,
+                          ui/api (own + sibling), domain/api (own), sibling feature domain/api, sibling feature component/api
                           NOT_ALLOWED: data/*, ui/impl, sibling component/impl
 
 data/test               → ALLOWED: data/api (own) as api() dep
@@ -72,8 +76,8 @@ Modules are created bottom-up, following the dependency matrix. Each cell below 
 | 7 | `domain/impl` | use case implementations + `<feature>DomainModule()` |
 | 8 | `ui/api` | `UIData`, shared composables, domain→ui mapper interfaces |
 | 9 | `ui/impl` | mapper implementations + `<feature>UIModule()` |
-| 10 | `component/<name>/api` | `RenderComponent` marker |
-| 11 | `component/<name>/impl` | `ComponentImpl`, `DomainComponent`, `UIState`/`Intent`/`SideEffect`, views |
+| 10 | `component/<name>/api` | `RenderComponent` marker, `<Name>ComponentFactory` |
+| 11 | `component/<name>/impl` | `ComponentImpl`, `<Name>ComponentFactoryImpl`, `DomainComponent`, `UIState`/`Intent`/`SideEffect`, views |
 | 12 | DI + navigation wiring | `<feature>Module()`, root/child config registration |
 
 * `api` steps are contract steps — they end with the interfaces and signatures presented for review, not with any behavior.
@@ -105,6 +109,11 @@ fun <feature>DomainModule() = module { ... }
 
 // ui/impl
 fun <feature>UIModule() = module { ... }
+
+// component/<name>/impl — the component itself is never a Koin definition, only its factory
+fun <name>ComponentModule() = module {
+    factoryOf(::<Name>ComponentFactoryImpl) bind <Name>ComponentFactory::class
+}
 
 // di/AppModule wiring:
 internal fun <feature>Module() = module {

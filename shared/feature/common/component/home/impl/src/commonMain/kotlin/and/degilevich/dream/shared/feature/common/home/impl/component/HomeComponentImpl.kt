@@ -1,13 +1,13 @@
 package and.degilevich.dream.shared.feature.common.home.impl.component
 
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
-import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
-import and.degilevich.dream.shared.feature.common.component.drawer.api.component.DrawerComponent
+import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponentFactory
+import and.degilevich.dream.shared.feature.common.component.drawer.api.component.DrawerComponentFactory
 import and.degilevich.dream.shared.feature.common.component.drawer.api.component.DrawerManager
-import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
+import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponentFactory
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarManager
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItem
-import and.degilevich.dream.shared.feature.common.component.topbar.api.component.TopbarComponent
+import and.degilevich.dream.shared.feature.common.component.topbar.api.component.TopbarComponentFactory
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeDrawer
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
@@ -16,10 +16,10 @@ import and.degilevich.dream.shared.feature.common.home.impl.component.child.Home
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomeIntent
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.common.home.impl.view.HomeScreen
+import and.degilevich.dream.shared.feature.search.component.search.api.component.SearchComponentFactory
 import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.ChildDrawer
 import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.DrawerNavigation
 import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.childDrawer
-import and.degilevich.dream.shared.feature.search.component.search.api.component.SearchComponent
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
@@ -36,9 +36,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.get
 import org.koin.core.component.inject
-import org.koin.core.parameter.parametersOf
 
 internal class HomeComponentImpl(
     componentContext: ComponentContext
@@ -50,19 +48,24 @@ internal class HomeComponentImpl(
 
     private val navbarManager: NavbarManager by inject()
     private val drawerManager: DrawerManager by inject()
+    private val topbarComponentFactory: TopbarComponentFactory by inject()
+    private val navbarComponentFactory: NavbarComponentFactory by inject()
+    private val dashboardComponentFactory: DashboardComponentFactory by inject()
+    private val searchComponentFactory: SearchComponentFactory by inject()
+    private val drawerComponentFactory: DrawerComponentFactory by inject()
 
     private val scope: CoroutineScope = coroutineScope()
 
     private val topbar: HomeTopbar = HomeTopbar(
-        component = get<TopbarComponent> {
-            parametersOf(childContext(key = TOPBAR_KEY))
-        }
+        component = topbarComponentFactory.create(
+            componentContext = childContext(key = TOPBAR_KEY)
+        )
     )
 
     private val navbar: HomeNavbar = HomeNavbar(
-        component = get<NavbarComponent> {
-            parametersOf(childContext(key = NAVBAR_KEY))
-        }
+        component = navbarComponentFactory.create(
+            componentContext = childContext(key = NAVBAR_KEY)
+        )
     )
 
     private val pagesNavigation = PagesNavigation<HomePageConfig>()
@@ -146,13 +149,17 @@ internal class HomeComponentImpl(
         return when (config) {
             is HomePageConfig.Dashboard -> {
                 HomePage.Dashboard(
-                    component = get<DashboardComponent> { parametersOf(componentContext) }
+                    component = dashboardComponentFactory.create(
+                        componentContext = componentContext
+                    )
                 )
             }
 
             is HomePageConfig.Search -> {
                 HomePage.Search(
-                    component = get<SearchComponent> { parametersOf(componentContext) }
+                    component = searchComponentFactory.create(
+                        componentContext = componentContext
+                    )
                 )
             }
         }
@@ -160,7 +167,9 @@ internal class HomeComponentImpl(
 
     private fun drawerFactory(componentContext: ComponentContext): HomeDrawer {
         return HomeDrawer(
-            component = get<DrawerComponent> { parametersOf(componentContext) }
+            component = drawerComponentFactory.create(
+                componentContext = componentContext
+            )
         )
     }
 

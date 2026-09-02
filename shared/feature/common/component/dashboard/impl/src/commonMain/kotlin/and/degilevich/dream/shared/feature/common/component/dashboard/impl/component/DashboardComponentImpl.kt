@@ -1,12 +1,12 @@
 package and.degilevich.dream.shared.feature.common.component.dashboard.impl.component
 
-import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesComponent
+import and.degilevich.dream.shared.feature.album.component.releases.api.component.AlbumReleasesComponentFactory
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.api.component.DashboardComponent
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.DashboardScreen
-import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponent
+import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponentFactory
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
@@ -15,8 +15,7 @@ import com.arkivanov.decompose.router.items.ItemsNavigation
 import com.arkivanov.decompose.router.items.LazyChildItems
 import com.arkivanov.decompose.router.items.childItems
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.get
-import org.koin.core.parameter.parametersOf
+import org.koin.core.component.inject
 
 @OptIn(ExperimentalDecomposeApi::class)
 internal class DashboardComponentImpl(
@@ -26,6 +25,9 @@ internal class DashboardComponentImpl(
 ),
     DashboardComponent,
     KoinComponent {
+
+    private val albumReleasesComponentFactory: AlbumReleasesComponentFactory by inject()
+    private val playlistListComponentFactory: PlaylistListComponentFactory by inject()
 
     private val itemsNavigation = ItemsNavigation<DashboardItemConfig>()
 
@@ -56,13 +58,17 @@ internal class DashboardComponentImpl(
         return when (config) {
             is DashboardItemConfig.AlbumReleases -> {
                 DashboardItem.AlbumReleases(
-                    component = get<AlbumReleasesComponent> { parametersOf(componentContext) }
+                    component = albumReleasesComponentFactory.create(
+                        componentContext = componentContext
+                    )
                 )
             }
 
             is DashboardItemConfig.PlaylistList -> {
                 DashboardItem.PlaylistList(
-                    component = get<PlaylistListComponent> { parametersOf(componentContext) }
+                    component = playlistListComponentFactory.create(
+                        componentContext = componentContext
+                    )
                 )
             }
         }

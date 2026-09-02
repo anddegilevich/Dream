@@ -5,14 +5,14 @@ import and.degilevich.dream.shared.app.impl.component.child.Screen
 import and.degilevich.dream.shared.app.impl.view.ComposeApp
 import and.degilevich.dream.shared.core.toast.api.channel.ToastReceiveChannel
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
-import and.degilevich.dream.shared.feature.album.component.details.api.component.AlbumDetailsComponent
-import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponent
-import and.degilevich.dream.shared.feature.auth.component.login.api.component.LoginComponent
+import and.degilevich.dream.shared.feature.album.component.details.api.component.AlbumDetailsComponentFactory
+import and.degilevich.dream.shared.feature.artist.component.details.api.component.ArtistDetailsComponentFactory
+import and.degilevich.dream.shared.feature.auth.component.login.api.component.LoginComponentFactory
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
-import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
-import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
-import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
-import and.degilevich.dream.shared.feature.track.component.liked.api.component.LikedTracksComponent
+import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponentFactory
+import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponentFactory
+import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponentFactory
+import and.degilevich.dream.shared.feature.track.component.liked.api.component.LikedTracksComponentFactory
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.logger.Log
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
@@ -27,9 +27,7 @@ import com.arkivanov.decompose.value.Value
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.get
 import org.koin.core.component.inject
-import org.koin.core.parameter.parametersOf
 
 class RootComponentImpl(
     componentContext: ComponentContext
@@ -42,6 +40,13 @@ class RootComponentImpl(
     )
 
     private val toastChannel: ToastReceiveChannel by inject()
+    private val splashComponentFactory: SplashComponentFactory by inject()
+    private val homeComponentFactory: HomeComponentFactory by inject()
+    private val loginComponentFactory: LoginComponentFactory by inject()
+    private val artistDetailsComponentFactory: ArtistDetailsComponentFactory by inject()
+    private val albumDetailsComponentFactory: AlbumDetailsComponentFactory by inject()
+    private val trackDetailsComponentFactory: TrackDetailsComponentFactory by inject()
+    private val likedTracksComponentFactory: LikedTracksComponentFactory by inject()
 
     private val screens: Value<ChildStack<ScreenConfig, Screen>> = childStack(
         source = navigationComponent.screenNavigationSource,
@@ -69,37 +74,48 @@ class RootComponentImpl(
         Log.info("Navigate to -> $screenConfig")
         return when (screenConfig) {
             is ScreenConfig.Splash -> Screen.Splash(
-                component = get<SplashComponent> { parametersOf(componentContext) }
+                component = splashComponentFactory.create(
+                    componentContext = componentContext
+                )
             )
 
             is ScreenConfig.Home -> Screen.Home(
-                component = get<HomeComponent> { parametersOf(componentContext) }
+                component = homeComponentFactory.create(
+                    componentContext = componentContext
+                )
             )
 
             is ScreenConfig.Login -> Screen.Login(
-                component = get<LoginComponent> { parametersOf(componentContext) }
+                component = loginComponentFactory.create(
+                    componentContext = componentContext
+                )
             )
 
             is ScreenConfig.ArtistDetails -> Screen.ArtistDetails(
-                component = get<ArtistDetailsComponent> {
-                    parametersOf(componentContext, screenConfig.navArgs)
-                }
+                component = artistDetailsComponentFactory.create(
+                    componentContext = componentContext,
+                    navArgs = screenConfig.navArgs
+                )
             )
 
             is ScreenConfig.AlbumDetails -> Screen.AlbumDetails(
-                component = get<AlbumDetailsComponent> {
-                    parametersOf(componentContext, screenConfig.navArgs)
-                }
+                component = albumDetailsComponentFactory.create(
+                    componentContext = componentContext,
+                    navArgs = screenConfig.navArgs
+                )
             )
 
             is ScreenConfig.TrackDetails -> Screen.TrackDetails(
-                component = get<TrackDetailsComponent> {
-                    parametersOf(componentContext, screenConfig.navArgs)
-                }
+                component = trackDetailsComponentFactory.create(
+                    componentContext = componentContext,
+                    navArgs = screenConfig.navArgs
+                )
             )
 
             is ScreenConfig.LikedTracks -> Screen.LikedTracks(
-                component = get<LikedTracksComponent> { parametersOf(componentContext) }
+                component = likedTracksComponentFactory.create(
+                    componentContext = componentContext
+                )
             )
         }
     }
