@@ -10,8 +10,6 @@ internal class GetTrackUseCaseImpl(
 ) : GetTrackUseCase {
 
     override suspend fun invoke(params: GetTrackParams): Result<GetTrackResult> {
-        return trackRepository.getTrack(params = params).onSuccess { result ->
-            trackRepository.cacheTrack(track = result.track)
-        }
+        return trackRepository.getTrack(params = params)
     }
 }

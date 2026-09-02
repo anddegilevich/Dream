@@ -11,8 +11,5 @@ internal class GetPlaylistUseCaseImpl(
 
     override suspend fun invoke(params: GetPlaylistParams): Result<GetPlaylistResult> {
         return playlistRepository.getPlaylist(params = params)
-            .onSuccess { result ->
-                playlistRepository.cachePlaylist(playlist = result.playlist)
-            }
     }
 }

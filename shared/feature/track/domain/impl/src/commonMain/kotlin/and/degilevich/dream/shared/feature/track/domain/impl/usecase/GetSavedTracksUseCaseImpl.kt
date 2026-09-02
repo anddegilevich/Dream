@@ -11,10 +11,5 @@ internal class GetSavedTracksUseCaseImpl(
 
     override suspend fun invoke(params: GetSavedTracksParams): Result<GetSavedTracksResult> {
         return trackRepository.getSavedTracks(params = params)
-            .onSuccess { result ->
-                trackRepository.cacheTracks(
-                    tracks = result.tracks.map { savedTrack -> savedTrack.track }
-                )
-            }
     }
 }

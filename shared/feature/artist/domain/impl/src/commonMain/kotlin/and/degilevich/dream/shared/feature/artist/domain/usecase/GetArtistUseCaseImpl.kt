@@ -10,8 +10,6 @@ internal class GetArtistUseCaseImpl(
 ) : GetArtistUseCase {
 
     override suspend fun invoke(params: GetArtistParams): Result<GetArtistResult> {
-        return artistRepository.getArtist(params = params).onSuccess { result ->
-            artistRepository.cacheArtist(artist = result.artist)
-        }
+        return artistRepository.getArtist(params = params)
     }
 }

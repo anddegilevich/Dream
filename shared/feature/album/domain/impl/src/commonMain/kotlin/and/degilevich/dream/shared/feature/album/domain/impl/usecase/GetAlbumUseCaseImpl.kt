@@ -10,8 +10,6 @@ internal class GetAlbumUseCaseImpl(
 ) : GetAlbumUseCase {
 
     override suspend fun invoke(params: GetAlbumParams): Result<GetAlbumResult> {
-        return albumRepository.getAlbum(params = params).onSuccess { result ->
-            albumRepository.cacheAlbum(album = result.album)
-        }
+        return albumRepository.getAlbum(params = params)
     }
 }
