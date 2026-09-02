@@ -12,7 +12,8 @@ internal class SearchAlbumsOutputToDataMapperImpl(
 
     override fun map(item: PagingSimplifiedAlbumObject): SearchAlbumsData = with(item) {
         SearchAlbumsData(
-            items = items.mapWith(simplifiedAlbumOutputToDataMapper)
+            items = items.mapWith(simplifiedAlbumOutputToDataMapper),
+            total = total
         )
     }
 }

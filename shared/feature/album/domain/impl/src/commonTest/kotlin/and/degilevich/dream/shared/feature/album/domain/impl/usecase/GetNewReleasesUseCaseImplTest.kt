@@ -30,7 +30,10 @@ class GetNewReleasesUseCaseImplTest {
                     SearchResult(
                         tracks = SearchTracksData.empty(),
                         artists = SearchArtistsData.empty(),
-                        albums = SearchAlbumsData(items = listOf(album))
+                        albums = SearchAlbumsData(
+                            items = listOf(album),
+                            total = 1
+                        )
                     )
                 )
             }

@@ -225,6 +225,7 @@ include(":shared:feature:search:domain:model:core:api")
 include(":shared:feature:search:domain:model:core:test")
 include(":shared:feature:search:domain:api")
 include(":shared:feature:search:domain:impl")
+include(":shared:feature:search:domain:test")
 
 include(":shared:feature:search:ui:api")
 include(":shared:feature:search:ui:impl")

@@ -33,9 +33,18 @@ class SearchUseCaseImplTest {
         val album = simplifiedAlbumData(id = "album-1")
         val track = trackData(id = "track-1")
         val searchResult = SearchResult(
-            tracks = SearchTracksData(items = listOf(track)),
-            artists = SearchArtistsData(items = listOf(artist)),
-            albums = SearchAlbumsData(items = listOf(album))
+            tracks = SearchTracksData(
+                items = listOf(track),
+                total = 1
+            ),
+            artists = SearchArtistsData(
+                items = listOf(artist),
+                total = 1
+            ),
+            albums = SearchAlbumsData(
+                items = listOf(album),
+                total = 1
+            )
         )
         val cachedArtists = mutableListOf<ArtistData>()
         val cachedAlbums = mutableListOf<SimplifiedAlbumData>()

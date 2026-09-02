@@ -12,7 +12,8 @@ internal class SearchArtistsOutputToDataMapperImpl(
 
     override fun map(item: PagingArtistObject): SearchArtistsData = with(item) {
         SearchArtistsData(
-            items = items.mapWith(artistOutputToDataMapper)
+            items = items.mapWith(artistOutputToDataMapper),
+            total = total
         )
     }
 }

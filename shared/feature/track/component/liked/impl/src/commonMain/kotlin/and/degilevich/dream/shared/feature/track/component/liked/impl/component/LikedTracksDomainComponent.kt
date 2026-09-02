@@ -37,7 +37,6 @@ internal class LikedTracksDomainComponent(
     )
 
     init {
-        subscribeToPagingSource()
         subscribeToLifecycle()
     }
 
@@ -49,17 +48,18 @@ internal class LikedTracksDomainComponent(
         }
     }
 
+    private fun subscribeToLifecycle() {
+        doOnCreate {
+            subscribeToPagingSource()
+            loadFirstPage()
+        }
+    }
+
     private fun subscribeToPagingSource() = with(likedTracksPagingSource) {
         data.onEach(::setTracks).launchIn(scope)
         totalCount.onEach(::setTotal).launchIn(scope)
         isLoading.onEach(::setLoadingTracks).launchIn(scope)
         errors.onEach(::showError).launchIn(scope)
-    }
-
-    private fun subscribeToLifecycle() {
-        doOnCreate {
-            loadFirstPage()
-        }
     }
 
     private fun loadFirstPage() = scope.launch {

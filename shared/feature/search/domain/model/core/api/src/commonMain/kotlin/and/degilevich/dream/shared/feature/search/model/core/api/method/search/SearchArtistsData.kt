@@ -7,7 +7,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SearchArtistsData(
-    val items: List<ArtistData>
+    val items: List<ArtistData>,
+    val total: Int
 ) : EmptyState {
 
     override fun isEmpty(): Boolean {
@@ -15,9 +16,11 @@ data class SearchArtistsData(
     }
 
     companion object : EmptyFactory<SearchArtistsData> {
+
         override fun empty(): SearchArtistsData {
             return SearchArtistsData(
-                items = emptyList()
+                items = emptyList(),
+                total = 0
             )
         }
     }

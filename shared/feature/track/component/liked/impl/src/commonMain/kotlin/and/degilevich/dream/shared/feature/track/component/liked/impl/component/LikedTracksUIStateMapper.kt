@@ -34,7 +34,7 @@ internal class LikedTracksUIStateMapper : Mapper<LikedTracksState, LikedTracksUI
 
     private fun mapToTracks(state: LikedTracksState): Skeleton<ImmutableList<PlaylistTrackCardUIData>> = with(state) {
         Skeleton.from(
-            isLoading = tracks.isEmpty() && !isLoadingTracks
+            isLoading = tracks.isEmpty() && isLoadingTracks
         ) {
             tracks
                 .mapIndexed { index, savedTrack ->
