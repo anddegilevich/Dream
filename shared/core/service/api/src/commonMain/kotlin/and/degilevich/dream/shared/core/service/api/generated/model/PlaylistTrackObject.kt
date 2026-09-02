@@ -53,7 +53,7 @@ data class PlaylistTrackObject (
     /* Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not.  */
     @SerialName(value = "is_local") val isLocal: kotlin.Boolean? = null,
 
-    @SerialName(value = "item") val item: PlaylistTrackObjectItem? = null,
+    @SerialName(value = "item") val item: TrackObject? = null,
 
     @Deprecated(message = "This property is deprecated.")
     @SerialName(value = "track") val track: PlaylistTrackObjectTrack? = null
