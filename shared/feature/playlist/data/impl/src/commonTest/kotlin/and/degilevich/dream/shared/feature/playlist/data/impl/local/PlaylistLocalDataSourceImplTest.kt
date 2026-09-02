@@ -5,9 +5,12 @@ import and.degilevich.dream.shared.core.db.api.entity.PlaylistEntity
 import and.degilevich.dream.shared.core.db.test.dao.FakePlaylistDao
 import and.degilevich.dream.shared.core.db.test.database.FakeAppDatabase
 import and.degilevich.dream.shared.core.db.test.entity.playlistEntity
+import and.degilevich.dream.shared.feature.playlist.data.mapper.api.local.PlaylistDataToEntityMapper
 import and.degilevich.dream.shared.feature.playlist.data.mapper.api.local.SimplifiedPlaylistDataToEntityMapper
+import and.degilevich.dream.shared.feature.playlist.data.mapper.test.local.FakePlaylistDataToEntityMapper
 import and.degilevich.dream.shared.feature.playlist.data.mapper.test.local.FakeSimplifiedPlaylistDataToEntityMapper
 import and.degilevich.dream.shared.feature.playlist.model.artifact.test.data.simplifiedPlaylistData
+import and.degilevich.dream.shared.feature.playlist.model.core.test.data.playlistData
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -50,12 +53,29 @@ class PlaylistLocalDataSourceImplTest {
         upsertedAll shouldBe listOf(emptyList())
     }
 
+    @Test
+    fun `savePlaylist - upserts the playlist mapped through the playlist entity mapper`() = runTest {
+        val upserted = mutableListOf<PlaylistEntity>()
+        val dataSource = createDataSource(
+            playlistDao = FakePlaylistDao(onUpsert = { upserted.add(it) }),
+            playlistDataToEntityMapper = FakePlaylistDataToEntityMapper(
+                onMap = { playlist -> playlistEntity(id = playlist.id.value) }
+            )
+        )
+
+        dataSource.savePlaylist(playlist = playlistData(id = "playlist-3"))
+
+        upserted shouldBe listOf(playlistEntity(id = "playlist-3"))
+    }
+
     private fun createDataSource(
         playlistDao: PlaylistDao = FakePlaylistDao(),
         simplifiedPlaylistDataToEntityMapper: SimplifiedPlaylistDataToEntityMapper =
-            FakeSimplifiedPlaylistDataToEntityMapper()
+            FakeSimplifiedPlaylistDataToEntityMapper(),
+        playlistDataToEntityMapper: PlaylistDataToEntityMapper = FakePlaylistDataToEntityMapper()
     ) = PlaylistLocalDataSourceImpl(
         database = FakeAppDatabase(onGetPlaylistDao = { playlistDao }),
-        simplifiedPlaylistDataToEntityMapper = simplifiedPlaylistDataToEntityMapper
+        simplifiedPlaylistDataToEntityMapper = simplifiedPlaylistDataToEntityMapper,
+        playlistDataToEntityMapper = playlistDataToEntityMapper
     )
 }
