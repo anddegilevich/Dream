@@ -19,7 +19,8 @@ internal class BaseComponentApiPlugin : Plugin<Project> {
             kotlinMultiplatformConfig {
                 with(sourceSets) {
                     commonMain.dependencies {
-                        implementation(project(":shared:foundation:decompose"))
+                        api(project(":shared:foundation:decompose"))
+                        api(project(":shared:navigation:api"))
                         implementation(libs().compose.runtime)
                     }
                 }
