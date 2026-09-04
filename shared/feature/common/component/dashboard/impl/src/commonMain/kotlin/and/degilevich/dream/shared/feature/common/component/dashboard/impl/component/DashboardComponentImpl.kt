@@ -6,6 +6,7 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.api.compon
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.child.DashboardItem
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.component.model.DashboardItemConfig
 import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.DashboardScreen
+import and.degilevich.dream.shared.feature.player.component.recentlyPlayed.api.component.RecentlyPlayedComponentFactory
 import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponentFactory
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
@@ -28,6 +29,7 @@ internal class DashboardComponentImpl(
 
     private val albumReleasesComponentFactory: AlbumReleasesComponentFactory by inject()
     private val playlistListComponentFactory: PlaylistListComponentFactory by inject()
+    private val recentlyPlayedComponentFactory: RecentlyPlayedComponentFactory by inject()
 
     private val itemsNavigation = ItemsNavigation<DashboardItemConfig>()
 
@@ -38,6 +40,7 @@ internal class DashboardComponentImpl(
             Items(
                 items = listOf(
                     DashboardItemConfig.PlaylistList,
+                    DashboardItemConfig.RecentlyPlayed,
                     DashboardItemConfig.AlbumReleases
                 )
             )
@@ -67,6 +70,14 @@ internal class DashboardComponentImpl(
             is DashboardItemConfig.PlaylistList -> {
                 DashboardItem.PlaylistList(
                     component = playlistListComponentFactory.create(
+                        componentContext = componentContext
+                    )
+                )
+            }
+
+            is DashboardItemConfig.RecentlyPlayed -> {
+                DashboardItem.RecentlyPlayed(
+                    component = recentlyPlayedComponentFactory.create(
                         componentContext = componentContext
                     )
                 )
