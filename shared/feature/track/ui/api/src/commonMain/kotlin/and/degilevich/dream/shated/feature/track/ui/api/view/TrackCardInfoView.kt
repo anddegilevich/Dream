@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -26,12 +27,16 @@ fun TrackCardInfoView(
         Text(
             text = data.name,
             style = Theme.typography.main,
-            color = Theme.colors.text.primary
+            color = Theme.colors.text.primary,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
         Text(
             text = data.artists,
             style = Theme.typography.label,
-            color = Theme.colors.text.secondary
+            color = Theme.colors.text.secondary,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }
