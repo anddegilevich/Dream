@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.core.network.api.RemoteClient
 import and.degilevich.dream.shared.core.service.api.ApiService
 import and.degilevich.dream.shared.core.service.api.generated.api.AlbumsApi
 import and.degilevich.dream.shared.core.service.api.generated.api.ArtistsApi
+import and.degilevich.dream.shared.core.service.api.generated.api.PlayerApi
 import and.degilevich.dream.shared.core.service.api.generated.api.PlaylistsApi
 import and.degilevich.dream.shared.core.service.api.generated.api.SearchApi
 import and.degilevich.dream.shared.core.service.api.generated.api.TracksApi
@@ -86,6 +87,13 @@ internal class ApiServiceImpl(
 
     override val playlistsApi: PlaylistsApi by lazy {
         PlaylistsApi(
+            baseUrl = SharedBuildConfig.API_BASE_URL,
+            httpClient = apiServiceClient
+        )
+    }
+
+    override val playerApi: PlayerApi by lazy {
+        PlayerApi(
             baseUrl = SharedBuildConfig.API_BASE_URL,
             httpClient = apiServiceClient
         )
