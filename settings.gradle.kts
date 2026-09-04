@@ -229,6 +229,9 @@ include(":shared:feature:player:data:test")
 include(":shared:feature:player:domain:api")
 include(":shared:feature:player:domain:impl")
 
+include(":shared:feature:player:component:recentlyPlayed:api")
+include(":shared:feature:player:component:recentlyPlayed:impl")
+
 // Search
 include(":shared:feature:search:data:mapper:api")
 include(":shared:feature:search:data:mapper:impl")

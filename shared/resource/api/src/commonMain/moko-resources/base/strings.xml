@@ -13,6 +13,7 @@
     <string name="title_albums">Albums</string>
     <string name="title_my_playlists">My playlists</string>
     <string name="title_liked_songs">Liked Songs</string>
+    <string name="title_recently_played">Recently played</string>
 
     <string name="stub_not_yet_implemented">Not yet implemented</string>
 
