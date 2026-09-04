@@ -223,6 +223,9 @@ include(":shared:feature:player:domain:model:core:test")
 include(":shared:feature:player:data:mapper:api")
 include(":shared:feature:player:data:mapper:impl")
 include(":shared:feature:player:data:mapper:test")
+include(":shared:feature:player:data:api")
+include(":shared:feature:player:data:impl")
+include(":shared:feature:player:data:test")
 
 // Search
 include(":shared:feature:search:data:mapper:api")
