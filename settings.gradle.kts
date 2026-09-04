@@ -217,6 +217,10 @@ include(":shared:feature:playlist:component:list:impl")
 include(":shared:feature:playlist:component:details:api")
 include(":shared:feature:playlist:component:details:impl")
 
+// Player
+include(":shared:feature:player:domain:model:core:api")
+include(":shared:feature:player:domain:model:core:test")
+
 // Search
 include(":shared:feature:search:data:mapper:api")
 include(":shared:feature:search:data:mapper:impl")
