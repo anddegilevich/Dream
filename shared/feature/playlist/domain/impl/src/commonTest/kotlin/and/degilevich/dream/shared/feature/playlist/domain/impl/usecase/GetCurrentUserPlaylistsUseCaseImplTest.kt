@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.feature.playlist.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.playlist.data.test.repository.FakePlaylistRepository
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.SimplifiedPlaylistData
 import and.degilevich.dream.shared.feature.playlist.model.artifact.test.data.simplifiedPlaylistData
 import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
 import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsResult
@@ -13,40 +12,34 @@ import kotlin.test.assertTrue
 class GetCurrentUserPlaylistsUseCaseImplTest {
 
     @Test
-    fun `invoke - repository succeeds - caches the returned playlists and returns the result unchanged`() = runTest {
+    fun `invoke - repository succeeds - returns the result unchanged`() = runTest {
         val playlists = listOf(
             simplifiedPlaylistData(id = "playlist-1"),
             simplifiedPlaylistData(id = "playlist-2")
         )
         val expected = Result.success(GetCurrentUserPlaylistsResult(playlists = playlists))
-        val cachedPlaylists = mutableListOf<List<SimplifiedPlaylistData>>()
         val useCase = GetCurrentUserPlaylistsUseCaseImpl(
             playlistRepository = FakePlaylistRepository(
-                onGetCurrentUserPlaylists = { expected },
-                onCachePlaylists = { cachedPlaylists.add(it) }
+                onGetCurrentUserPlaylists = { expected }
             )
         )
 
         val result = useCase(params())
 
         result shouldBe expected
-        cachedPlaylists shouldBe listOf(playlists)
     }
 
     @Test
-    fun `invoke - repository fails - returns failure without caching`() = runTest {
-        val cachedPlaylists = mutableListOf<List<SimplifiedPlaylistData>>()
+    fun `invoke - repository fails - returns failure`() = runTest {
         val useCase = GetCurrentUserPlaylistsUseCaseImpl(
             playlistRepository = FakePlaylistRepository(
-                onGetCurrentUserPlaylists = { Result.failure(IllegalStateException("network error")) },
-                onCachePlaylists = { cachedPlaylists.add(it) }
+                onGetCurrentUserPlaylists = { Result.failure(IllegalStateException("network error")) }
             )
         )
 
         val result = useCase(params())
 
         assertTrue(result.isFailure)
-        cachedPlaylists shouldBe emptyList()
     }
 
     @Test
@@ -57,8 +50,7 @@ class GetCurrentUserPlaylistsUseCaseImplTest {
                 onGetCurrentUserPlaylists = { params ->
                     receivedParams.add(params)
                     Result.success(GetCurrentUserPlaylistsResult(playlists = emptyList()))
-                },
-                onCachePlaylists = {}
+                }
             )
         )
         val params = params(

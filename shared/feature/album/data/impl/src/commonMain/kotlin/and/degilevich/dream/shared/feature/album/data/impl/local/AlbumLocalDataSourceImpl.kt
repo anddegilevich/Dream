@@ -54,15 +54,6 @@ internal class AlbumLocalDataSourceImpl(
                 )
             }
         )
-        val entities = album.tracks.items.flatMap { track ->
-            track.artists.map { artist ->
-                ArtistToTrackCrossRefEntity(
-                    artistId = artist.id.value,
-                    trackId = track.id.value
-                )
-            }
-        }
-        print(entities)
         artistToTrackCrossRefDao.upsertAll(
             album.tracks.items.flatMap { track ->
                 track.artists.map { artist ->

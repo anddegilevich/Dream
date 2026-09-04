@@ -26,7 +26,7 @@ fun SkeletonTrackCard(
             modifier = Modifier
                 .roundedThemeShimmer()
                 .size(
-                    width = 12.dp,
+                    width = 28.dp,
                     height = 16.dp
                 )
         )

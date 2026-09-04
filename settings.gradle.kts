@@ -90,6 +90,9 @@ include(":shared:design:system")
 include(":shared:feature:base:data:api")
 include(":shared:feature:base:data:impl")
 
+include(":shared:feature:base:domain:api")
+include(":shared:feature:base:domain:impl")
+
 include(":shared:feature:base:component:impl")
 
 // Common
@@ -179,12 +182,16 @@ include(":shared:feature:track:domain:model:core:api")
 include(":shared:feature:track:domain:model:core:test")
 include(":shared:feature:track:domain:api")
 include(":shared:feature:track:domain:impl")
+include(":shared:feature:track:domain:test")
 
 include(":shared:feature:track:ui:api")
 include(":shared:feature:track:ui:impl")
+include(":shared:feature:track:ui:test")
 
 include(":shared:feature:track:component:details:api")
 include(":shared:feature:track:component:details:impl")
+include(":shared:feature:track:component:liked:api")
+include(":shared:feature:track:component:liked:impl")
 
 // Playlist
 include(":shared:feature:playlist:data:mapper:api")
@@ -197,14 +204,33 @@ include(":shared:feature:playlist:data:test")
 include(":shared:feature:playlist:domain:model:artifact:api")
 include(":shared:feature:playlist:domain:model:artifact:test")
 include(":shared:feature:playlist:domain:model:core:api")
+include(":shared:feature:playlist:domain:model:core:test")
 include(":shared:feature:playlist:domain:api")
 include(":shared:feature:playlist:domain:impl")
+include(":shared:feature:playlist:domain:test")
 
 include(":shared:feature:playlist:ui:api")
 include(":shared:feature:playlist:ui:impl")
 
 include(":shared:feature:playlist:component:list:api")
 include(":shared:feature:playlist:component:list:impl")
+include(":shared:feature:playlist:component:details:api")
+include(":shared:feature:playlist:component:details:impl")
+
+// Player
+include(":shared:feature:player:domain:model:core:api")
+include(":shared:feature:player:domain:model:core:test")
+include(":shared:feature:player:data:mapper:api")
+include(":shared:feature:player:data:mapper:impl")
+include(":shared:feature:player:data:mapper:test")
+include(":shared:feature:player:data:api")
+include(":shared:feature:player:data:impl")
+include(":shared:feature:player:data:test")
+include(":shared:feature:player:domain:api")
+include(":shared:feature:player:domain:impl")
+
+include(":shared:feature:player:component:recentlyPlayed:api")
+include(":shared:feature:player:component:recentlyPlayed:impl")
 
 // Search
 include(":shared:feature:search:data:mapper:api")
@@ -218,6 +244,7 @@ include(":shared:feature:search:domain:model:core:api")
 include(":shared:feature:search:domain:model:core:test")
 include(":shared:feature:search:domain:api")
 include(":shared:feature:search:domain:impl")
+include(":shared:feature:search:domain:test")
 
 include(":shared:feature:search:ui:api")
 include(":shared:feature:search:ui:impl")

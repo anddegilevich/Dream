@@ -15,6 +15,7 @@ kotlin {
             implementation(projects.shared.feature.artist.data.mapper.test)
             implementation(projects.shared.feature.album.domain.model.artifact.test)
             implementation(projects.shared.feature.artist.domain.model.artifact.test)
+            implementation(projects.shared.feature.track.data.mapper.test)
             implementation(projects.shared.feature.track.domain.model.artifact.test)
             implementation(projects.shared.feature.track.domain.model.core.test)
         }

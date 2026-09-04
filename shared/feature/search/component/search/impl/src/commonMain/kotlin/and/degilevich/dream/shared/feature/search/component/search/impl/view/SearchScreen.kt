@@ -13,6 +13,8 @@ import and.degilevich.dream.shared.feature.search.ui.api.view.skeleton.SkeletonS
 import and.degilevich.dream.shared.foundation.compose.draggable.OnDragLaunchedEffect
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.ime.controller.rememberImeController
+import and.degilevich.dream.shared.foundation.compose.list.OnLastItemDisplayedSideEffect
+import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
@@ -24,7 +26,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
@@ -47,11 +48,19 @@ fun SearchScreen(
         imeController.hide()
     }
 
+    if (state.items is Skeleton.Value) {
+        OnLastItemDisplayedSideEffect(
+            listState = lazyListState,
+            threshold = LOAD_NEXT_PAGE_THRESHOLD
+        ) {
+            onIntent(SearchIntent.OnNextPageRequested)
+        }
+    }
+
     Column(
         modifier = modifier
             .themeBackground()
             .fillMaxSize()
-            .statusBarsPadding()
     ) {
         SearchTextField(
             modifier = Modifier
@@ -72,7 +81,7 @@ fun SearchScreen(
         ) {
             identifiedSkeletonItems(
                 skeleton = state.items,
-                loadingItemsCount = 16,
+                loadingItemsCount = LOADING_ITEMS_COUNT,
                 loadingItemContent = {
                     SkeletonSearchCard(
                         modifier = Modifier.testTag(SearchScreenSemantic.TEST_TAG_ITEM_SKELETON)
@@ -91,9 +100,19 @@ fun SearchScreen(
                     )
                 }
             )
+            if (state.isLoadingNextPage) {
+                items(count = LOADING_ITEMS_COUNT) {
+                    SkeletonSearchCard(
+                        modifier = Modifier.testTag(SearchScreenSemantic.TEST_TAG_NEXT_PAGE_SKELETON)
+                    )
+                }
+            }
         }
     }
 }
+
+private const val LOADING_ITEMS_COUNT = 16
+private const val LOAD_NEXT_PAGE_THRESHOLD = 10
 
 @LightDarkPreviews
 @Composable

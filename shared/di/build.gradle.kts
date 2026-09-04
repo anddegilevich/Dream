@@ -46,12 +46,19 @@ kotlin {
             implementation(projects.shared.feature.track.domain.impl)
             implementation(projects.shared.feature.track.ui.impl)
             implementation(projects.shared.feature.track.component.details.impl)
+            implementation(projects.shared.feature.track.component.liked.impl)
 
             implementation(projects.shared.feature.playlist.data.impl)
             implementation(projects.shared.feature.playlist.data.mapper.impl)
             implementation(projects.shared.feature.playlist.domain.impl)
             implementation(projects.shared.feature.playlist.ui.impl)
             implementation(projects.shared.feature.playlist.component.list.impl)
+            implementation(projects.shared.feature.playlist.component.details.impl)
+
+            implementation(projects.shared.feature.player.data.impl)
+            implementation(projects.shared.feature.player.data.mapper.impl)
+            implementation(projects.shared.feature.player.domain.impl)
+            implementation(projects.shared.feature.player.component.recentlyPlayed.impl)
 
             implementation(projects.shared.feature.search.data.impl)
             implementation(projects.shared.feature.search.data.mapper.impl)

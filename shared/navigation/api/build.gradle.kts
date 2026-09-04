@@ -10,6 +10,7 @@ kotlin {
             api(projects.shared.foundation.abstraction)
             api(projects.shared.feature.album.domain.model.artifact.api)
             api(projects.shared.feature.artist.domain.model.artifact.api)
+            api(projects.shared.feature.playlist.domain.model.artifact.api)
             api(projects.shared.feature.track.domain.model.artifact.api)
         }
     }

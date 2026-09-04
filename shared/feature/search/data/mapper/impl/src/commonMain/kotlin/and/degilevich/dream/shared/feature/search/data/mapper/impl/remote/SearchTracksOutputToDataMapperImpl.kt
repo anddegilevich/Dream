@@ -12,7 +12,8 @@ internal class SearchTracksOutputToDataMapperImpl(
 
     override fun map(item: PagingTrackObject): SearchTracksData = with(item) {
         SearchTracksData(
-            items = items.mapWith(trackOutputToDataMapper)
+            items = items.mapWith(trackOutputToDataMapper),
+            total = total
         )
     }
 }

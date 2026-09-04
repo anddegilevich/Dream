@@ -10,8 +10,7 @@ import androidx.compose.runtime.Immutable
 data class TrackCardUIData(
     override val id: Identifier,
     val number: String,
-    val name: String,
-    val artists: String
+    val info: TrackCardInfoUIData
 ) : Identified {
 
     companion object : EmptyFactory<TrackCardUIData> {
@@ -20,8 +19,7 @@ data class TrackCardUIData(
             return TrackCardUIData(
                 id = emptyIdentifier(),
                 number = "",
-                name = "",
-                artists = ""
+                info = TrackCardInfoUIData.empty()
             )
         }
     }

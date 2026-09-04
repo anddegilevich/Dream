@@ -33,9 +33,6 @@ kotlin {
             api(projects.shared.foundation.decompose)
             api(projects.shared.feature.base.component.impl)
 
-            // Navigation
-            implementation(projects.shared.navigation.impl)
-
             // DI
             api(projects.shared.di)
 
@@ -49,7 +46,10 @@ kotlin {
 
             implementation(projects.shared.feature.album.component.details.api)
 
+            implementation(projects.shared.feature.playlist.component.details.api)
+
             implementation(projects.shared.feature.track.component.details.api)
+            implementation(projects.shared.feature.track.component.liked.api)
 
             api(projects.shared.app.api)
         }

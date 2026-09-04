@@ -1,29 +1,33 @@
 package and.degilevich.dream.shated.feature.track.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.artist.model.artifact.test.data.simplifiedArtistData
 import and.degilevich.dream.shared.feature.track.model.artifact.test.data.simplifiedTrackData
+import and.degilevich.dream.shated.feature.track.ui.api.model.TrackCardInfoUIData
+import and.degilevich.dream.shated.feature.track.ui.test.mapper.FakeTrackInfoToTrackCardInfoUIDataMapper
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 
 class TrackInfoToTrackCardUIDataMapperImplTest {
 
     @Test
-    fun `map - multiple artists - joins artist names and copies scalar fields`() {
+    fun `map - track - copies id, stringifies track number and delegates info to info mapper`() {
         val track = simplifiedTrackData(
             id = "track-1",
-            artists = listOf(
-                simplifiedArtistData(id = "artist-a"),
-                simplifiedArtistData(id = "artist-b")
-            )
+            trackNumber = 3
         )
-        val result = createMapper().map(track)
+        val info = TrackCardInfoUIData(
+            name = "Track track-1",
+            artists = "Artist artist-a"
+        )
+        val mapper = TrackInfoToTrackCardUIDataMapperImpl(
+            trackInfoToTrackCardInfoUIDataMapper = FakeTrackInfoToTrackCardInfoUIDataMapper(onMap = { info })
+        )
+
+        val result = mapper.map(track)
+
         with(result) {
             id shouldBe track.id
-            name shouldBe track.name
-            number shouldBe track.trackNumber.toString()
-            artists shouldBe "Artist artist-a, Artist artist-b"
+            number shouldBe "3"
+            this.info shouldBe info
         }
     }
-
-    private fun createMapper() = TrackInfoToTrackCardUIDataMapperImpl()
 }

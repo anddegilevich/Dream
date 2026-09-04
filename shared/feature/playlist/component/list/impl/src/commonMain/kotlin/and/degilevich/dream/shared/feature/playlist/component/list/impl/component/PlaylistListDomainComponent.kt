@@ -2,12 +2,18 @@ package and.degilevich.dream.shared.feature.playlist.component.list.impl.compone
 
 import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import and.degilevich.dream.shared.feature.playlist.domain.api.usecase.GetCurrentUserPlaylistsUseCase
+import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.PlaylistId
 import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.SimplifiedPlaylistData
 import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListIntent
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListSideEffect
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListState
+import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
+import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
+import and.degilevich.dream.shared.navigation.api.model.args.PlaylistDetailsNavArgs
+import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -30,8 +36,8 @@ internal class PlaylistListDomainComponent(
 
     override fun handleIntent(intent: PlaylistListIntent) {
         when (intent) {
-            is PlaylistListIntent.OnPlaylistClicked -> Unit // FIXME: navigate to playlist details
-            is PlaylistListIntent.OnLikedSongsClicked -> Unit // FIXME: navigate to liked songs
+            is PlaylistListIntent.OnPlaylistClicked -> onPlaylistClicked(id = intent.id)
+            is PlaylistListIntent.OnLikedSongsClicked -> navigateToLikedTracks()
         }
     }
 
@@ -61,6 +67,25 @@ internal class PlaylistListDomainComponent(
         } finally {
             setLoading(false)
         }
+    }
+
+    private fun onPlaylistClicked(id: Identifier) {
+        val playlist = state().playlists.getById(id = id) ?: return
+        navigateToPlaylistDetails(playlistId = playlist.id)
+    }
+
+    private fun navigateToPlaylistDetails(playlistId: PlaylistId) {
+        navigator.screenNavigator.pushToFront(
+            ScreenConfig.PlaylistDetails(
+                navArgs = PlaylistDetailsNavArgs(
+                    playlistId = playlistId
+                )
+            )
+        )
+    }
+
+    private fun navigateToLikedTracks() {
+        navigator.screenNavigator.pushToFront(ScreenConfig.LikedTracks)
     }
 
     private fun setPlaylists(playlists: List<SimplifiedPlaylistData>) = reduce {

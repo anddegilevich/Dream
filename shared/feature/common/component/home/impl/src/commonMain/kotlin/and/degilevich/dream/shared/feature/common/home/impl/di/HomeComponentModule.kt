@@ -1,12 +1,11 @@
 package and.degilevich.dream.shared.feature.common.home.impl.di
 
-import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
-import and.degilevich.dream.shared.feature.common.home.impl.component.HomeComponentImpl
-import com.arkivanov.decompose.ComponentContext
+import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponentFactory
+import and.degilevich.dream.shared.feature.common.home.impl.component.HomeComponentFactoryImpl
+import org.koin.core.module.dsl.factoryOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun homeComponentModule() = module {
-    factory<HomeComponent> { (componentContext: ComponentContext) ->
-        HomeComponentImpl(componentContext = componentContext)
-    }
+    factoryOf(::HomeComponentFactoryImpl) bind HomeComponentFactory::class
 }

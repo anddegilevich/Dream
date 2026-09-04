@@ -5,7 +5,9 @@ import and.degilevich.dream.shared.feature.artist.model.core.test.data.artistDat
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchArtistsData
 
 fun searchArtistsData(
-    items: List<ArtistData> = listOf(artistData(id = "artist-1"))
+    items: List<ArtistData> = listOf(artistData(id = "artist-1")),
+    total: Int = items.size
 ): SearchArtistsData = SearchArtistsData(
-    items = items
+    items = items,
+    total = total
 )

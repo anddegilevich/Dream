@@ -3,7 +3,6 @@ package and.degilevich.dream.shared.feature.album.domain.impl.usecase
 import and.degilevich.dream.shared.feature.album.data.api.repository.AlbumRepository
 import and.degilevich.dream.shared.feature.album.data.test.repository.FakeAlbumRepository
 import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumResult
 import and.degilevich.dream.shared.feature.album.model.core.test.data.albumData
@@ -15,33 +14,42 @@ import kotlin.test.assertTrue
 class GetAlbumUseCaseImplTest {
 
     @Test
-    fun `invoke - repository succeeds - caches the returned album and returns the result unchanged`() = runTest {
+    fun `invoke - repository succeeds - returns the result unchanged`() = runTest {
         val album = albumData(id = "album-1")
-        val cachedAlbums = mutableListOf<AlbumData>()
         val albumRepository = FakeAlbumRepository(
-            onGetAlbum = { Result.success(GetAlbumResult(album = album)) },
-            onCacheAlbum = { cachedAlbums.add(it) }
+            onGetAlbum = { Result.success(GetAlbumResult(album = album)) }
         )
         val useCase = createGetAlbumUseCase(albumRepository = albumRepository)
         val params = GetAlbumParams(id = AlbumId(value = "album-1"))
         val result = useCase(params)
         result shouldBe Result.success(GetAlbumResult(album = album))
-        cachedAlbums shouldBe listOf(album)
     }
 
     @Test
-    fun `invoke - repository fails - returns failure without caching`() = runTest {
+    fun `invoke - repository fails - returns failure`() = runTest {
         val error = IllegalStateException("network error")
-        val cachedAlbums = mutableListOf<AlbumData>()
         val albumRepository = FakeAlbumRepository(
-            onGetAlbum = { Result.failure(error) },
-            onCacheAlbum = { cachedAlbums.add(it) }
+            onGetAlbum = { Result.failure(error) }
         )
         val useCase = createGetAlbumUseCase(albumRepository = albumRepository)
         val params = GetAlbumParams(id = AlbumId(value = "album-1"))
         val result = useCase(params)
         assertTrue(result.isFailure)
-        cachedAlbums shouldBe emptyList()
+    }
+
+    @Test
+    fun `invoke - any params - passes them to the repository unchanged`() = runTest {
+        val receivedParams = mutableListOf<GetAlbumParams>()
+        val albumRepository = FakeAlbumRepository(
+            onGetAlbum = { params ->
+                receivedParams.add(params)
+                Result.success(GetAlbumResult(album = albumData(id = "album-1")))
+            }
+        )
+        val useCase = createGetAlbumUseCase(albumRepository = albumRepository)
+        val params = GetAlbumParams(id = AlbumId(value = "album-1"))
+        useCase(params)
+        receivedParams shouldBe listOf(params)
     }
 
     private fun createGetAlbumUseCase(

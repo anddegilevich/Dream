@@ -5,7 +5,9 @@ import and.degilevich.dream.shared.feature.album.model.artifact.test.data.simpli
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchAlbumsData
 
 fun searchAlbumsData(
-    items: List<SimplifiedAlbumData> = listOf(simplifiedAlbumData(id = "album-1"))
+    items: List<SimplifiedAlbumData> = listOf(simplifiedAlbumData(id = "album-1")),
+    total: Int = items.size
 ): SearchAlbumsData = SearchAlbumsData(
-    items = items
+    items = items,
+    total = total
 )
