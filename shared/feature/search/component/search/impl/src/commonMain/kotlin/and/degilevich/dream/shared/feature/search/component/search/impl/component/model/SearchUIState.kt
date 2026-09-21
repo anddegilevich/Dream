@@ -10,13 +10,17 @@ import kotlinx.collections.immutable.persistentListOf
 @Immutable
 data class SearchUIState(
     val query: String,
-    val items: Skeleton<ImmutableList<SearchCardUIData>>
+    val items: Skeleton<ImmutableList<SearchCardUIData>>,
+    val isLoadingNextPage: Boolean
 ) {
+
     companion object : EmptyFactory<SearchUIState> {
+
         override fun empty(): SearchUIState {
             return SearchUIState(
                 query = "",
-                items = Skeleton.Value(persistentListOf())
+                items = Skeleton.Value(persistentListOf()),
+                isLoadingNextPage = false
             )
         }
     }

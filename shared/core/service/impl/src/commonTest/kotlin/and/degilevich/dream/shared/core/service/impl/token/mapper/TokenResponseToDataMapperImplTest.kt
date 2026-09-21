@@ -41,6 +41,27 @@ class TokenResponseToDataMapperImplTest {
     }
 
     @Test
+    fun `map - response omits the refresh token - maps it to an empty refresh token`() {
+        val tokens = TokenResponseToDataMapperImpl().map(
+            item = tokenResponse(refreshToken = null)
+        )
+
+        tokens.refreshToken shouldBe ""
+    }
+
+    @Test
+    fun `map - response omits the refresh token - still carries the granted access token`() {
+        val tokens = TokenResponseToDataMapperImpl().map(
+            item = tokenResponse(
+                accessToken = "granted-access-token",
+                refreshToken = null
+            )
+        )
+
+        tokens.accessToken shouldBe "granted-access-token"
+    }
+
+    @Test
     fun `map - granted tokens are present - maps to a non-empty state`() {
         val tokens = TokenResponseToDataMapperImpl().map(item = tokenResponse())
 

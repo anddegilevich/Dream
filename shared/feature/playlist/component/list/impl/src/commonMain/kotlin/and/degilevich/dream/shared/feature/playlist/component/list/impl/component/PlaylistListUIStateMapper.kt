@@ -23,9 +23,7 @@ internal class PlaylistListUIStateMapper : Mapper<PlaylistListState, PlaylistLis
     }
 
     private fun mapToPlaylists(state: PlaylistListState): Skeleton<ImmutableList<PlaylistCardUIData>> = with(state) {
-        Skeleton.from(
-            isLoading = playlists.isNotEmpty()
-        ) {
+        Skeleton.from(isLoading = playlists.isEmpty()) {
             playlists
                 .asSequence()
                 .mapWith(playlistInfoToCardUIDataMapper)

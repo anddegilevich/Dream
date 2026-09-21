@@ -1,12 +1,11 @@
 package and.degilevich.dream.shared.feature.playlist.component.list.impl.di
 
-import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponent
-import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.PlaylistListComponentImpl
-import com.arkivanov.decompose.ComponentContext
+import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponentFactory
+import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.PlaylistListComponentFactoryImpl
+import org.koin.core.module.dsl.factoryOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun playlistListComponentModule() = module {
-    factory<PlaylistListComponent> { (componentContext: ComponentContext) ->
-        PlaylistListComponentImpl(componentContext = componentContext)
-    }
+    factoryOf(::PlaylistListComponentFactoryImpl) bind PlaylistListComponentFactory::class
 }

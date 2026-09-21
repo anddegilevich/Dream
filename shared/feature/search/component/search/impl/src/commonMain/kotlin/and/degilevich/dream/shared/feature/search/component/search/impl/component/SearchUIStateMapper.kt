@@ -2,14 +2,11 @@ package and.degilevich.dream.shared.feature.search.component.search.impl.compone
 
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchState
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchUIState
-import and.degilevich.dream.shared.feature.search.ui.api.mapper.AlbumInfoToSearchCardUIDataMapper
-import and.degilevich.dream.shared.feature.search.ui.api.mapper.ArtistDataToSearchCardUIDataMapper
-import and.degilevich.dream.shared.feature.search.ui.api.mapper.TrackDataToSearchCardUIDataMapper
+import and.degilevich.dream.shared.feature.search.ui.api.mapper.SearchItemDataToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.SearchCardUIData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.Mapper
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
-import and.degilevich.dream.shared.foundation.primitive.collections.list.interleave
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import org.koin.core.component.KoinComponent
@@ -17,27 +14,22 @@ import org.koin.core.component.inject
 
 internal class SearchUIStateMapper : Mapper<SearchState, SearchUIState>, KoinComponent {
 
-    private val artistDataToSearchCardUIDataMapper: ArtistDataToSearchCardUIDataMapper by inject()
-    private val albumDataToSearchCardUIDataMapper: AlbumInfoToSearchCardUIDataMapper by inject()
-    private val trackDataToSearchCardUIDataMapper: TrackDataToSearchCardUIDataMapper by inject()
+    private val searchItemDataToSearchCardUIDataMapper: SearchItemDataToSearchCardUIDataMapper by inject()
 
     override fun map(item: SearchState): SearchUIState = with(item) {
         SearchUIState(
             query = query,
-            items = mapToItems(state = this)
+            items = mapToItems(state = this),
+            isLoadingNextPage = isLoading
         )
     }
 
     private fun mapToItems(state: SearchState): Skeleton<ImmutableList<SearchCardUIData>> = with(state) {
         Skeleton.from(
-            isLoading = isLoading && searchResult.isEmpty()
+            isLoading = items.isEmpty() && isLoading
         ) {
-            listOf(
-                searchResult.artists.items.mapWith(artistDataToSearchCardUIDataMapper),
-                searchResult.tracks.items.mapWith(trackDataToSearchCardUIDataMapper),
-                searchResult.albums.items.mapWith(albumDataToSearchCardUIDataMapper)
-            )
-                .interleave()
+            items
+                .mapWith(searchItemDataToSearchCardUIDataMapper)
                 .toImmutableList()
         }
     }

@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.di.feature
 
 import and.degilevich.dream.shared.feature.track.component.details.impl.di.trackDetailsComponentModule
+import and.degilevich.dream.shared.feature.track.component.liked.impl.di.likedTracksComponentModule
 import and.degilevich.dream.shared.feature.track.data.impl.di.trackDataModule
 import and.degilevich.dream.shared.feature.track.data.mapper.impl.di.trackDataMapperModule
 import and.degilevich.dream.shared.feature.track.domain.impl.di.trackDomainModule
@@ -13,4 +14,5 @@ internal fun trackModule() = module {
     includes(trackDomainModule())
     includes(trackUIModule())
     includes(trackDetailsComponentModule())
+    includes(likedTracksComponentModule())
 }

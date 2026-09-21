@@ -4,13 +4,14 @@ import and.degilevich.dream.shared.core.service.api.generated.model.PagingSimpli
 import and.degilevich.dream.shared.core.service.api.generated.model.SimplifiedAlbumObject
 
 fun pagingSimplifiedAlbumObject(
-    items: List<SimplifiedAlbumObject> = emptyList()
+    items: List<SimplifiedAlbumObject> = emptyList(),
+    total: Int = items.size
 ): PagingSimplifiedAlbumObject = PagingSimplifiedAlbumObject(
     href = "https://api.spotify.com/v1/search",
     limit = 20,
     next = null,
     offset = 0,
     previous = null,
-    total = items.size,
+    total = total,
     items = items
 )

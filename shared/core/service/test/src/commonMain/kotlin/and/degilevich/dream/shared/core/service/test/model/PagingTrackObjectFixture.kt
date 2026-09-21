@@ -4,13 +4,14 @@ import and.degilevich.dream.shared.core.service.api.generated.model.PagingTrackO
 import and.degilevich.dream.shared.core.service.api.generated.model.TrackObject
 
 fun pagingTrackObject(
-    items: List<TrackObject> = emptyList()
+    items: List<TrackObject> = emptyList(),
+    total: Int = items.size
 ): PagingTrackObject = PagingTrackObject(
     href = "https://api.spotify.com/v1/search",
     limit = 20,
     next = null,
     offset = 0,
     previous = null,
-    total = items.size,
+    total = total,
     items = items
 )

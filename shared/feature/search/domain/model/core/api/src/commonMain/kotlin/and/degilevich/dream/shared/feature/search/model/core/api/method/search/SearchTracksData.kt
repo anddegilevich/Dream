@@ -7,16 +7,20 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SearchTracksData(
-    val items: List<TrackData>
+    val items: List<TrackData>,
+    val total: Int
 ) : EmptyState {
 
     override fun isEmpty(): Boolean {
         return items.isEmpty()
     }
+
     companion object : EmptyFactory<SearchTracksData> {
+
         override fun empty(): SearchTracksData {
             return SearchTracksData(
-                items = emptyList()
+                items = emptyList(),
+                total = 0
             )
         }
     }

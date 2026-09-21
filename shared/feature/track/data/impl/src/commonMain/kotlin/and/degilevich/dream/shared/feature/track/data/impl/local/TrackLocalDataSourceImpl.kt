@@ -32,7 +32,7 @@ internal class TrackLocalDataSourceImpl(
         trackDao.upsertAll(tracks.mapWith(trackDataToEntityMapper))
         artistDao.upsertAll(
             tracks
-                .flatMap { track -> track.artists }
+                .flatMap { track -> track.artists + track.album.artists }
                 .distinctById()
                 .mapWith(simplifiedArtistDataToEntityMapper)
         )
@@ -69,7 +69,11 @@ internal class TrackLocalDataSourceImpl(
 
     override suspend fun saveTrack(track: TrackData) {
         trackDao.upsert(track.mapWith(trackDataToEntityMapper))
-        artistDao.upsertAll(track.artists.mapWith(simplifiedArtistDataToEntityMapper))
+        artistDao.upsertAll(
+            (track.artists + track.album.artists)
+                .distinctById()
+                .mapWith(simplifiedArtistDataToEntityMapper)
+        )
         albumDao.upsert(track.album.mapWith(simplifiedAlbumDataToEntityMapper))
         artistToAlbumCrossRefDao.upsertAll(
             track.album.artists.map { artist ->

@@ -20,8 +20,6 @@ internal class GetArtistsUseCaseImpl(
             GetArtistsResult(
                 artists = results.map { it.artist }
             )
-        }.onSuccess { result ->
-            artistRepository.cacheArtists(artists = result.artists)
         }
     }
 }

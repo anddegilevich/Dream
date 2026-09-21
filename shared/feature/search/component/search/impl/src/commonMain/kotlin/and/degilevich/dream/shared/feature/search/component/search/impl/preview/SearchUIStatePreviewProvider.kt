@@ -9,20 +9,27 @@ class SearchUIStatePreviewProvider : LabeledPreviewParameterProvider<SearchUISta
 
     override val labeledValues = listOf(
         "Skeleton" to provideSkeleton(),
-        "Default" to provideDefault()
+        "Default" to provideDefault(),
+        "Loading next page" to provideLoadingNextPage()
     )
 
     fun provideSkeleton(): SearchUIState {
         return SearchUIState(
             query = "Query",
-            items = Skeleton.Loading
+            items = Skeleton.Loading,
+            isLoadingNextPage = true
         )
     }
 
     fun provideDefault(): SearchUIState {
         return SearchUIState(
             query = "Query",
-            items = Skeleton.Value(SearchCardUIDataPreviewProvider().provideList())
+            items = Skeleton.Value(SearchCardUIDataPreviewProvider().provideList()),
+            isLoadingNextPage = false
         )
+    }
+
+    fun provideLoadingNextPage(): SearchUIState {
+        return provideDefault().copy(isLoadingNextPage = true)
     }
 }

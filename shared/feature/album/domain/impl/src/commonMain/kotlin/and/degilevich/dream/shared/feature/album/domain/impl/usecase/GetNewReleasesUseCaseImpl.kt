@@ -1,6 +1,5 @@
 package and.degilevich.dream.shared.feature.album.domain.impl.usecase
 
-import and.degilevich.dream.shared.feature.album.data.api.repository.AlbumRepository
 import and.degilevich.dream.shared.feature.album.domain.api.usecase.GetNewReleasesUseCase
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesParams
 import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesResult
@@ -9,8 +8,7 @@ import and.degilevich.dream.shared.feature.search.model.core.api.dictionary.Sear
 import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
 
 internal class GetNewReleasesUseCaseImpl(
-    private val searchRepository: SearchRepository,
-    private val albumRepository: AlbumRepository
+    private val searchRepository: SearchRepository
 ) : GetNewReleasesUseCase {
 
     override suspend fun invoke(params: GetNewReleasesParams): Result<GetNewReleasesResult> {
@@ -25,8 +23,6 @@ internal class GetNewReleasesUseCaseImpl(
             GetNewReleasesResult(
                 albums = result.albums.items
             )
-        }.onSuccess { result ->
-            albumRepository.cacheAlbums(albums = result.albums)
         }
     }
 

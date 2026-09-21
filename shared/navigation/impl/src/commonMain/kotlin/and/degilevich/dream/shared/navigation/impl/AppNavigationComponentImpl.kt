@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.foundation.decompose.navigation.result.Naviga
 import and.degilevich.dream.shared.foundation.decompose.navigation.result.NavigationResultManagerState
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import and.degilevich.dream.shared.navigation.api.AppNavigator
+import and.degilevich.dream.shared.navigation.api.component.AppNavigationComponent
 import and.degilevich.dream.shared.navigation.api.model.config.NavbarConfig
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext
@@ -14,7 +15,7 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.StackNavigator
 import org.koin.core.component.KoinComponent
 
-class AppNavigationComponentImpl(
+internal class AppNavigationComponentImpl(
     componentContext: ComponentContext
 ) : AppNavigationComponent,
     KoinComponent,

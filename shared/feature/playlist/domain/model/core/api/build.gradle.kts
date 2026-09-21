@@ -6,6 +6,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.feature.playlist.domain.model.artifact.api)
+            api(projects.shared.feature.track.domain.model.core.api)
         }
     }
 

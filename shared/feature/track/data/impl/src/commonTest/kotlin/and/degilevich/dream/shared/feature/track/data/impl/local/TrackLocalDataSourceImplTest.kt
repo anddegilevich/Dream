@@ -125,6 +125,80 @@ class TrackLocalDataSourceImplTest {
         albumUpsertedAll.single() shouldBe listOf(albumEntity(id = "album-1"))
     }
 
+    @Test
+    fun `saveTrack - album artist not among track artists - upserts album artist too`() = runTest {
+        val artistUpsertedAll = mutableListOf<List<ArtistEntity>>()
+        val artistToAlbumUpsertedAll = mutableListOf<List<ArtistToAlbumCrossRefEntity>>()
+        val dataSource = createDataSource(
+            trackDao = FakeTrackDao(onUpsert = {}),
+            artistDao = FakeArtistDao(onUpsertAll = { artistUpsertedAll.add(it) }),
+            albumDao = FakeAlbumDao(onUpsert = {}),
+            artistToAlbumCrossRefDao = FakeArtistToAlbumCrossRefDao(
+                onUpsertAll = { artistToAlbumUpsertedAll.add(it) }
+            ),
+            artistToTrackCrossRefDao = FakeArtistToTrackCrossRefDao(onUpsertAll = {})
+        )
+        val trackArtist = simplifiedArtistData(id = "artist-a")
+        val albumArtist = simplifiedArtistData(id = "artist-b")
+        val track = trackData(
+            id = "track-1",
+            album = simplifiedAlbumData(
+                id = "album-1",
+                artists = listOf(albumArtist)
+            ),
+            artists = listOf(trackArtist)
+        )
+        dataSource.saveTrack(track)
+        artistUpsertedAll.single() shouldBe listOf(
+            artistEntity(id = "artist-a"),
+            artistEntity(id = "artist-b")
+        )
+        artistToAlbumUpsertedAll.single() shouldBe listOf(
+            ArtistToAlbumCrossRefEntity(
+                artistId = "artist-b",
+                albumId = "album-1"
+            )
+        )
+    }
+
+    @Test
+    fun `saveTracks - album artist not among track artists - upserts album artist too`() = runTest {
+        val artistUpsertedAll = mutableListOf<List<ArtistEntity>>()
+        val artistToAlbumUpsertedAll = mutableListOf<List<ArtistToAlbumCrossRefEntity>>()
+        val dataSource = createDataSource(
+            trackDao = FakeTrackDao(onUpsertAll = {}),
+            artistDao = FakeArtistDao(onUpsertAll = { artistUpsertedAll.add(it) }),
+            albumDao = FakeAlbumDao(onUpsertAll = {}),
+            artistToAlbumCrossRefDao = FakeArtistToAlbumCrossRefDao(
+                onUpsertAll = { artistToAlbumUpsertedAll.add(it) }
+            ),
+            artistToTrackCrossRefDao = FakeArtistToTrackCrossRefDao(onUpsertAll = {})
+        )
+        val trackArtist = simplifiedArtistData(id = "artist-a")
+        val albumArtist = simplifiedArtistData(id = "artist-b")
+        val tracks = listOf(
+            trackData(
+                id = "track-1",
+                album = simplifiedAlbumData(
+                    id = "album-1",
+                    artists = listOf(albumArtist)
+                ),
+                artists = listOf(trackArtist)
+            )
+        )
+        dataSource.saveTracks(tracks)
+        artistUpsertedAll.single() shouldBe listOf(
+            artistEntity(id = "artist-a"),
+            artistEntity(id = "artist-b")
+        )
+        artistToAlbumUpsertedAll.single() shouldBe listOf(
+            ArtistToAlbumCrossRefEntity(
+                artistId = "artist-b",
+                albumId = "album-1"
+            )
+        )
+    }
+
     private fun createDataSource(
         trackDao: TrackDao = FakeTrackDao(),
         artistDao: ArtistDao = FakeArtistDao(),

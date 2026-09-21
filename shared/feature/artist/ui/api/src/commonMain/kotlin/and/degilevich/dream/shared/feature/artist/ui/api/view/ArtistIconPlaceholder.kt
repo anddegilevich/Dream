@@ -24,7 +24,7 @@ fun ArtistIconPlaceholder(
                 scaleX = ICON_FRACTION,
                 scaleY = ICON_FRACTION
             ),
-        painter = painterResource(Res.images.ic_duck),
+        painter = painterResource(Res.images.ic_user),
         contentDescription = null,
         tint = Theme.colors.icon.secondary,
     )

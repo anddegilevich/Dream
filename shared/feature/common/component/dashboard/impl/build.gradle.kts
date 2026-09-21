@@ -7,6 +7,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.shared.feature.album.component.releases.api)
             implementation(projects.shared.feature.playlist.component.list.api)
+            implementation(projects.shared.feature.player.component.recentlyPlayed.api)
             api(projects.shared.feature.common.component.dashboard.api)
         }
     }

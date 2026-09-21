@@ -27,6 +27,17 @@ class SearchTracksOutputToDataMapperImplTest {
     }
 
     @Test
+    fun `map - paging response with total - copies total from the paging response`() {
+        val result = createMapper().map(
+            pagingTrackObject(
+                items = emptyList(),
+                total = TOTAL_COUNT
+            )
+        )
+        result.total shouldBe TOTAL_COUNT
+    }
+
+    @Test
     fun `map - paging response with no items - returns empty items list`() {
         val result = createMapper().map(
             pagingTrackObject(items = emptyList())
@@ -39,4 +50,8 @@ class SearchTracksOutputToDataMapperImplTest {
     ) = SearchTracksOutputToDataMapperImpl(
         trackOutputToDataMapper = trackOutputToDataMapper
     )
+
+    private companion object {
+        const val TOTAL_COUNT = 42
+    }
 }

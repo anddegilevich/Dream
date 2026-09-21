@@ -8,7 +8,7 @@ internal class TokenResponseToDataMapperImpl : TokenResponseToDataMapper {
     override fun map(item: TokenResponse): TokensData = with(item) {
         TokensData(
             accessToken = accessToken,
-            refreshToken = refreshToken
+            refreshToken = refreshToken.orEmpty()
         )
     }
 }

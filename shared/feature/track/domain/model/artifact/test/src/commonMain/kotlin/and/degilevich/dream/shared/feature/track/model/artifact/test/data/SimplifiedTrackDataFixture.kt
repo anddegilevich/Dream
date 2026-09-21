@@ -6,11 +6,12 @@ import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
 
 fun simplifiedTrackData(
     id: String,
-    artists: List<SimplifiedArtistData>
+    trackNumber: Int = 1,
+    artists: List<SimplifiedArtistData> = emptyList()
 ): SimplifiedTrackData = SimplifiedTrackData(
     id = TrackId(value = id),
     name = "Track $id",
-    trackNumber = 1,
+    trackNumber = trackNumber,
     durationMs = 1000,
     artists = artists
 )

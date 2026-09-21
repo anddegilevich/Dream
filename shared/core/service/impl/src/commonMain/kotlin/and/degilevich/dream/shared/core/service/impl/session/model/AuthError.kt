@@ -13,4 +13,8 @@ internal sealed class AuthError(message: String) : Exception(message) {
     class StateMismatch : AuthError(
         message = "Authorization state does not match the request"
     )
+
+    class GrantRejected(override val cause: Throwable?) : AuthError(
+        message = "Authorization grant was rejected by the token endpoint"
+    )
 }

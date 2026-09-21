@@ -6,10 +6,13 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.shared.feature.track.ui.api)
+            implementation(projects.shared.feature.artist.ui.api)
         }
         commonTest.dependencies {
             implementation(projects.shared.feature.track.domain.model.artifact.test)
             implementation(projects.shared.feature.artist.domain.model.artifact.test)
+            implementation(projects.shared.feature.artist.ui.test)
+            implementation(projects.shared.feature.track.ui.test)
         }
     }
 

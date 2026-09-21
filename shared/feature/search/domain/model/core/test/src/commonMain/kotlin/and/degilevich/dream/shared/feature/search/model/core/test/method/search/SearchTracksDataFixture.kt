@@ -5,7 +5,9 @@ import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
 import and.degilevich.dream.shared.feature.track.model.core.test.data.trackData
 
 fun searchTracksData(
-    items: List<TrackData> = listOf(trackData(id = "track-1"))
+    items: List<TrackData> = listOf(trackData(id = "track-1")),
+    total: Int = items.size
 ): SearchTracksData = SearchTracksData(
-    items = items
+    items = items,
+    total = total
 )

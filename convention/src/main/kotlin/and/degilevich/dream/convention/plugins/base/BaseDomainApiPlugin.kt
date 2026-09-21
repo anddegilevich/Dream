@@ -1,6 +1,7 @@
 package and.degilevich.dream.convention.plugins.base
 
 import and.degilevich.dream.convention.common.apply
+import and.degilevich.dream.convention.common.kotlinMultiplatformConfig
 import and.degilevich.dream.convention.common.libs
 import and.degilevich.dream.convention.common.plugins
 import org.gradle.api.Plugin
@@ -14,6 +15,13 @@ internal class BaseDomainApiPlugin : Plugin<Project> {
                 apply(libs().plugins.kmp.library)
                 apply(libs().plugins.project.multiplatform)
                 apply(libs().plugins.project.coroutines)
+            }
+            kotlinMultiplatformConfig {
+                with(sourceSets) {
+                    commonMain.dependencies {
+                        api(project(":shared:feature:base:domain:api"))
+                    }
+                }
             }
         }
     }

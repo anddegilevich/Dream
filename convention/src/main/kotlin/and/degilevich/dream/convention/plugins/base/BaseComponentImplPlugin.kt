@@ -26,7 +26,6 @@ internal class BaseComponentImplPlugin : Plugin<Project> {
                         implementation(project(":shared:feature:base:component:impl"))
                         implementation(project(":shared:logger"))
                         implementation(project(":shared:core:toast:api"))
-                        implementation(project(":shared:navigation:api"))
                         implementation(project(":shared:design:system"))
                     }
                 }

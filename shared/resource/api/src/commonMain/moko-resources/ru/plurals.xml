@@ -8,4 +8,12 @@
         <item quantity="many">%d артистов</item>
         <item quantity="other">%d артистов</item>
     </plural>
+    <plural name="plural_song">
+        <item quantity="zero">%d треков</item>
+        <item quantity="one">%d трек</item>
+        <item quantity="two">%d трека</item>
+        <item quantity="few">%d трека</item>
+        <item quantity="many">%d треков</item>
+        <item quantity="other">%d треков</item>
+    </plural>
 </resources>

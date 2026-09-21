@@ -10,6 +10,8 @@ kotlin {
         commonTest.dependencies {
             implementation(projects.shared.feature.playlist.data.test)
             implementation(projects.shared.feature.playlist.domain.model.artifact.test)
+            implementation(projects.shared.feature.playlist.domain.model.core.test)
+            implementation(projects.shared.feature.playlist.domain.test)
         }
     }
 

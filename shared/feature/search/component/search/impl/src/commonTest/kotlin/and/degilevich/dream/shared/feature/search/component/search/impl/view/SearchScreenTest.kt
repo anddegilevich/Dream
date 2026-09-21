@@ -26,29 +26,30 @@ class SearchScreenTest {
     private val searchField = hasTestTag(SearchScreenSemantic.TEST_TAG_SEARCH_FIELD)
     private val itemSkeleton = hasTestTag(SearchScreenSemantic.TEST_TAG_ITEM_SKELETON)
     private val item = hasTestTag(SearchScreenSemantic.TEST_TAG_ITEM)
+    private val nextPageSkeleton = hasTestTag(SearchScreenSemantic.TEST_TAG_NEXT_PAGE_SKELETON)
 
     @Test
     fun `render skeleton state - shows search field and item skeletons`() = runComposeUiTest {
-        val intents = mutableListOf<SearchIntent>()
-        setContent(
-            state = provider.provideSkeleton(),
-            onIntent = intents::add
-        )
+        setContent(state = provider.provideSkeleton())
+
         onNode(searchField).assertIsDisplayed()
         onAllNodes(itemSkeleton).onFirst().assertIsDisplayed()
-        intents.shouldBeEmpty()
     }
 
     @Test
     fun `render default state - shows search field and items`() = runComposeUiTest {
-        val intents = mutableListOf<SearchIntent>()
-        setContent(
-            state = provider.provideDefault(),
-            onIntent = intents::add
-        )
+        setContent(state = provider.provideDefault())
+
         onNode(searchField).assertIsDisplayed()
         onAllNodes(item).onFirst().assertIsDisplayed()
-        intents.shouldBeEmpty()
+    }
+
+    @Test
+    fun `render loading next page state - shows items and next page skeleton`() = runComposeUiTest {
+        setContent(state = provider.provideLoadingNextPage())
+
+        onAllNodes(item).onFirst().assertIsDisplayed()
+        onAllNodes(nextPageSkeleton).onFirst().assertIsDisplayed()
     }
 
     @Test
@@ -58,9 +59,14 @@ class SearchScreenTest {
             state = provider.provideDefault(),
             onIntent = intents::add
         )
+
         onNode(searchField).performTextReplacement(QUERY)
-        waitUntil(conditionDescription = "intent emitted") { intents.isNotEmpty() }
-        intents.shouldContainExactly(SearchIntent.OnQueryChanged(value = QUERY))
+
+        waitUntil(conditionDescription = "intent emitted") {
+            intents.any { intent -> intent is SearchIntent.OnQueryChanged }
+        }
+        intents.filterIsInstance<SearchIntent.OnQueryChanged>()
+            .shouldContainExactly(SearchIntent.OnQueryChanged(value = QUERY))
     }
 
     @Test
@@ -71,9 +77,40 @@ class SearchScreenTest {
             state = provider.provideDefault(),
             onIntent = intents::add
         )
+
         onAllNodes(item)[CLICKED_ITEM_INDEX].performClick()
-        waitUntil(conditionDescription = "intent emitted") { intents.isNotEmpty() }
-        intents.shouldContainExactly(SearchIntent.OnItemClicked(id = cards[CLICKED_ITEM_INDEX].id))
+
+        waitUntil(conditionDescription = "intent emitted") {
+            intents.any { intent -> intent is SearchIntent.OnItemClicked }
+        }
+        intents.filterIsInstance<SearchIntent.OnItemClicked>()
+            .shouldContainExactly(SearchIntent.OnItemClicked(id = cards[CLICKED_ITEM_INDEX].id))
+    }
+
+    @Test
+    fun `render short list - requests the next page once the end is reached`() = runComposeUiTest {
+        val intents = mutableListOf<SearchIntent>()
+        setContent(
+            state = provider.provideDefault(),
+            onIntent = intents::add
+        )
+
+        waitUntil(conditionDescription = "next page requested") {
+            intents.contains(SearchIntent.OnNextPageRequested)
+        }
+        intents.shouldContainExactly(SearchIntent.OnNextPageRequested)
+    }
+
+    @Test
+    fun `render skeleton state - does not request the next page`() = runComposeUiTest {
+        val intents = mutableListOf<SearchIntent>()
+        setContent(
+            state = provider.provideSkeleton(),
+            onIntent = intents::add
+        )
+
+        waitForIdle()
+        intents.shouldBeEmpty()
     }
 
     private fun ComposeUiTest.setContent(
@@ -87,7 +124,9 @@ class SearchScreenTest {
             )
         }
     }
-}
 
-private const val QUERY = "Beatles"
-private const val CLICKED_ITEM_INDEX = 1
+    private companion object {
+        const val QUERY = "Beatles"
+        const val CLICKED_ITEM_INDEX = 1
+    }
+}

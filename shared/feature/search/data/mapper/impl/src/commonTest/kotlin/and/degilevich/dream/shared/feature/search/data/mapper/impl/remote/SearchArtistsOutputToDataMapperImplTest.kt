@@ -22,6 +22,17 @@ class SearchArtistsOutputToDataMapperImplTest {
     }
 
     @Test
+    fun `map - paging response with total - copies total from the paging response`() {
+        val result = createMapper().map(
+            pagingArtistObject(
+                items = emptyList(),
+                total = TOTAL_COUNT
+            )
+        )
+        result.total shouldBe TOTAL_COUNT
+    }
+
+    @Test
     fun `map - paging response with no items - returns empty items list`() {
         val result = createMapper().map(pagingArtistObject(items = emptyList()))
         result.items shouldBe emptyList()
@@ -32,4 +43,8 @@ class SearchArtistsOutputToDataMapperImplTest {
     ) = SearchArtistsOutputToDataMapperImpl(
         artistOutputToDataMapper = artistOutputToDataMapper
     )
+
+    private companion object {
+        const val TOTAL_COUNT = 42
+    }
 }

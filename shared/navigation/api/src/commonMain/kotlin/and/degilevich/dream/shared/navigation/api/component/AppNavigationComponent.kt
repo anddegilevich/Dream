@@ -1,4 +1,4 @@
-package and.degilevich.dream.shared.navigation.impl
+package and.degilevich.dream.shared.navigation.api.component
 
 import and.degilevich.dream.shared.navigation.api.model.config.NavbarConfig
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
