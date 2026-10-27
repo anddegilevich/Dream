@@ -228,6 +228,7 @@ include(":shared:feature:player:data:impl")
 include(":shared:feature:player:data:test")
 include(":shared:feature:player:domain:api")
 include(":shared:feature:player:domain:impl")
+include(":shared:feature:player:domain:test")
 
 include(":shared:feature:player:component:recentlyPlayed:api")
 include(":shared:feature:player:component:recentlyPlayed:impl")
