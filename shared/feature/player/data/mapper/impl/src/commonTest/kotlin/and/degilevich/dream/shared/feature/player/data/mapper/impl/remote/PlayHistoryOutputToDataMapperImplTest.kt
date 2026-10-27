@@ -4,8 +4,8 @@ import and.degilevich.dream.shared.core.service.test.model.playHistoryObject
 import and.degilevich.dream.shared.core.service.test.model.trackObject
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.TrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.test.remote.FakeTrackOutputToDataMapper
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
-import and.degilevich.dream.shared.feature.track.model.core.test.data.trackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.test.data.trackData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

@@ -10,11 +10,11 @@ import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.ArtistO
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.GetArtistAlbumsResponseToResultMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.test.remote.FakeArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.test.remote.FakeGetArtistAlbumsResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistId
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
-import and.degilevich.dream.shared.feature.artist.model.core.test.data.artistData
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.api.data.ArtistId
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
+import and.degilevich.dream.shared.feature.artist.domain.model.core.test.data.artistData
 import io.kotest.matchers.shouldBe
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond

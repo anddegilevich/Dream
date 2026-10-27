@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.artist.data.mapper.test.remote
 
 import and.degilevich.dream.shared.core.service.api.generated.model.PagingArtistDiscographyAlbumObject
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.GetArtistAlbumsResponseToResultMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 
 class FakeGetArtistAlbumsResponseToResultMapper(

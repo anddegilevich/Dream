@@ -1,10 +1,10 @@
 package and.degilevich.dream.shared.feature.album.data.test.repository
 
 import and.degilevich.dream.shared.feature.album.data.api.repository.AlbumRepository
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.SimplifiedAlbumData
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumResult
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.data.SimplifiedAlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.data.AlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.method.getAlbum.GetAlbumParams
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.method.getAlbum.GetAlbumResult
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 
 class FakeAlbumRepository(

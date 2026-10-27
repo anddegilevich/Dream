@@ -11,6 +11,6 @@ kotlin {
     }
 
     android {
-        namespace = "and.degilevich.dream.shared.feature.album.model.core.test"
+        namespace = "and.degilevich.dream.shared.feature.album.domain.model.core.test"
     }
 }

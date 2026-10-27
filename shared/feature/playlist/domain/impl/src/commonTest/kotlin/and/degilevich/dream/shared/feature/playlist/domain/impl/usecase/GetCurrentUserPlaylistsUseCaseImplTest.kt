@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.playlist.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.playlist.data.test.repository.FakePlaylistRepository
-import and.degilevich.dream.shared.feature.playlist.model.artifact.test.data.simplifiedPlaylistData
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.test.data.simplifiedPlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsResult
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

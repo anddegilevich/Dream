@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.test.model.pagingSimplifiedAlbum
 import and.degilevich.dream.shared.core.service.test.model.simplifiedAlbumObject
 import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.SimplifiedAlbumOutputToDataMapper
 import and.degilevich.dream.shared.feature.album.data.mapper.test.remote.FakeSimplifiedAlbumOutputToDataMapper
-import and.degilevich.dream.shared.feature.album.model.artifact.test.data.simplifiedAlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.test.data.simplifiedAlbumData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

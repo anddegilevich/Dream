@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.navigation.api.model.args
 
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.PlaylistId
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.PlaylistId
 import kotlinx.serialization.Serializable
 
 @Serializable

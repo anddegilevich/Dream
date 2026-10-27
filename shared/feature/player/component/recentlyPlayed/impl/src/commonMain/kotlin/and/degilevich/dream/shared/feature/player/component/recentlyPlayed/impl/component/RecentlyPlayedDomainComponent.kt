@@ -5,9 +5,9 @@ import and.degilevich.dream.shared.feature.player.component.recentlyPlayed.impl.
 import and.degilevich.dream.shared.feature.player.component.recentlyPlayed.impl.component.model.RecentlyPlayedSideEffect
 import and.degilevich.dream.shared.feature.player.component.recentlyPlayed.impl.component.model.RecentlyPlayedState
 import and.degilevich.dream.shared.feature.player.domain.api.usecase.GetRecentlyPlayedUseCase
-import and.degilevich.dream.shared.feature.player.model.core.api.data.PlayHistoryData
-import and.degilevich.dream.shared.feature.player.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedParams
-import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.data.PlayHistoryData
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedParams
+import and.degilevich.dream.shared.feature.track.domain.model.artifact.api.data.TrackId
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs

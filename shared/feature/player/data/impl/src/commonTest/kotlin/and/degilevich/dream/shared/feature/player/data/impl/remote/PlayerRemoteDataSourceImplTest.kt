@@ -8,9 +8,9 @@ import and.degilevich.dream.shared.core.service.test.model.playHistoryObject
 import and.degilevich.dream.shared.core.service.test.service.FakeApiService
 import and.degilevich.dream.shared.feature.player.data.mapper.api.remote.RecentlyPlayedResponseToResultMapper
 import and.degilevich.dream.shared.feature.player.data.mapper.test.remote.FakeRecentlyPlayedResponseToResultMapper
-import and.degilevich.dream.shared.feature.player.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedParams
-import and.degilevich.dream.shared.feature.player.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedResult
-import and.degilevich.dream.shared.feature.player.model.core.test.data.playHistoryData
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedParams
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedResult
+import and.degilevich.dream.shared.feature.player.domain.model.core.test.data.playHistoryData
 import io.kotest.matchers.shouldBe
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond

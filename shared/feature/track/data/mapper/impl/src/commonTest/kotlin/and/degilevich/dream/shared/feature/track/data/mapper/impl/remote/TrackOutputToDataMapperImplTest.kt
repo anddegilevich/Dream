@@ -5,11 +5,11 @@ import and.degilevich.dream.shared.core.service.test.model.simplifiedArtistObjec
 import and.degilevich.dream.shared.core.service.test.model.trackObject
 import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.SimplifiedAlbumOutputToDataMapper
 import and.degilevich.dream.shared.feature.album.data.mapper.test.remote.FakeSimplifiedAlbumOutputToDataMapper
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.SimplifiedAlbumData
-import and.degilevich.dream.shared.feature.album.model.artifact.test.data.simplifiedAlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.data.SimplifiedAlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.test.data.simplifiedAlbumData
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.SimplifiedArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.test.remote.FakeSimplifiedArtistOutputToDataMapper
-import and.degilevich.dream.shared.feature.artist.model.artifact.test.data.simplifiedArtistData
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.test.data.simplifiedArtistData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

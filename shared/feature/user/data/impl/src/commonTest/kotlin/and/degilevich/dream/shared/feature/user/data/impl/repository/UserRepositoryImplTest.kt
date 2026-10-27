@@ -2,9 +2,9 @@ package and.degilevich.dream.shared.feature.user.data.impl.repository
 
 import and.degilevich.dream.shared.feature.user.data.impl.remote.FakeUserRemoteDataSource
 import and.degilevich.dream.shared.feature.user.data.impl.storage.FakeUserDataStorage
-import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
-import and.degilevich.dream.shared.feature.user.model.core.api.method.getCurrentUser.GetCurrentUserResult
-import and.degilevich.dream.shared.feature.user.model.core.test.data.userData
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.data.UserData
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.method.getCurrentUser.GetCurrentUserResult
+import and.degilevich.dream.shared.feature.user.domain.model.core.test.data.userData
 import app.cash.turbine.test
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.flowOf

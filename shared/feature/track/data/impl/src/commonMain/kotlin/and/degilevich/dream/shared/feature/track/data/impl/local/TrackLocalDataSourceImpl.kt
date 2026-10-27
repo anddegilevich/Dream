@@ -11,7 +11,7 @@ import and.degilevich.dream.shared.core.db.api.entity.crossRef.ArtistToTrackCros
 import and.degilevich.dream.shared.feature.album.data.mapper.api.local.SimplifiedAlbumDataToEntityMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.SimplifiedArtistDataToEntityMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.api.local.TrackDataToEntityMapper
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.data.TrackData
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.distinctById
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 

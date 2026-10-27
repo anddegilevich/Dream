@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.search.data.mapper.impl.remote
 
 import and.degilevich.dream.shared.core.service.api.generated.api.SearchApi
-import and.degilevich.dream.shared.feature.search.model.core.api.dictionary.SearchType
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.dictionary.SearchType
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

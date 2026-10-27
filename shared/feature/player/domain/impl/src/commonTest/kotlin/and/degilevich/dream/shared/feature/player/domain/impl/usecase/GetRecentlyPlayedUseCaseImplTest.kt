@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.player.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.player.data.test.repository.FakePlayerRepository
-import and.degilevich.dream.shared.feature.player.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedParams
-import and.degilevich.dream.shared.feature.player.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedResult
-import and.degilevich.dream.shared.feature.player.model.core.test.data.playHistoryData
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedParams
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedResult
+import and.degilevich.dream.shared.feature.player.domain.model.core.test.data.playHistoryData
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

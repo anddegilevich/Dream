@@ -2,12 +2,12 @@ package and.degilevich.dream.shared.feature.artist.data.impl.repository
 
 import and.degilevich.dream.shared.feature.artist.data.impl.local.FakeArtistLocalDataSource
 import and.degilevich.dream.shared.feature.artist.data.impl.remote.FakeArtistRemoteDataSource
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistId
-import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtist.GetArtistResult
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.api.data.ArtistId
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtist.GetArtistParams
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtist.GetArtistResult
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

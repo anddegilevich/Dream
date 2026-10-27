@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.user.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.image.model.artifact.test.data.imageData
-import and.degilevich.dream.shared.feature.user.model.core.test.data.userData
+import and.degilevich.dream.shared.feature.image.domain.model.artifact.test.data.imageData
+import and.degilevich.dream.shared.feature.user.domain.model.core.test.data.userData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

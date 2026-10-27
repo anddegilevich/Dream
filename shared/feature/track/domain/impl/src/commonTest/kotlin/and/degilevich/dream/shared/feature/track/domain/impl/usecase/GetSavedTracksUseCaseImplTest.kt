@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.track.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.track.data.test.repository.FakeTrackRepository
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksParams
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksResult
-import and.degilevich.dream.shared.feature.track.model.core.test.data.savedTrackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.method.getSavedTracks.GetSavedTracksParams
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.method.getSavedTracks.GetSavedTracksResult
+import and.degilevich.dream.shared.feature.track.domain.model.core.test.data.savedTrackData
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

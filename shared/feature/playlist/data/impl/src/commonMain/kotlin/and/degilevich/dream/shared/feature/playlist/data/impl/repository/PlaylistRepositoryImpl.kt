@@ -3,14 +3,14 @@ package and.degilevich.dream.shared.feature.playlist.data.impl.repository
 import and.degilevich.dream.shared.feature.playlist.data.api.repository.PlaylistRepository
 import and.degilevich.dream.shared.feature.playlist.data.impl.local.PlaylistLocalDataSource
 import and.degilevich.dream.shared.feature.playlist.data.impl.remote.PlaylistRemoteDataSource
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.SimplifiedPlaylistData
-import and.degilevich.dream.shared.feature.playlist.model.core.api.data.PlaylistData
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsResult
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylist.GetPlaylistParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylist.GetPlaylistResult
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.SimplifiedPlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.data.PlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylist.GetPlaylistParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylist.GetPlaylistResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
 
 internal class PlaylistRepositoryImpl(
     private val playlistRemoteDataSource: PlaylistRemoteDataSource,

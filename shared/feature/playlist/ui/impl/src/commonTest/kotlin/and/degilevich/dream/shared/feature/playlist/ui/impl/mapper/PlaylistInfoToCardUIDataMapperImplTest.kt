@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.feature.playlist.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.image.model.artifact.test.data.imageData
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.PlaylistId
-import and.degilevich.dream.shared.feature.playlist.model.artifact.test.data.simplifiedPlaylistData
+import and.degilevich.dream.shared.feature.image.domain.model.artifact.test.data.imageData
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.PlaylistId
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.test.data.simplifiedPlaylistData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

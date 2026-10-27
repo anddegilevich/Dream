@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.test.model.pagingSavedTrackObjec
 import and.degilevich.dream.shared.core.service.test.model.savedTrackObject
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SavedTrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.test.remote.FakeSavedTrackOutputToDataMapper
-import and.degilevich.dream.shared.feature.track.model.core.test.data.savedTrackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.test.data.savedTrackData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

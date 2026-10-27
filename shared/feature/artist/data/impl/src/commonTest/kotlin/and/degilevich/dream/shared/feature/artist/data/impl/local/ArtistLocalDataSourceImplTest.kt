@@ -7,8 +7,8 @@ import and.degilevich.dream.shared.core.db.test.database.FakeAppDatabase
 import and.degilevich.dream.shared.core.db.test.entity.artistEntity
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.local.ArtistDataToEntityMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.test.local.FakeArtistDataToEntityMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
-import and.degilevich.dream.shared.feature.artist.model.core.test.data.artistData
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.domain.model.core.test.data.artistData
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

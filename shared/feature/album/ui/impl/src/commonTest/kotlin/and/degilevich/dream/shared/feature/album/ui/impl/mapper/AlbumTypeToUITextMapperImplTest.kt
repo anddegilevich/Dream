@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.album.ui.impl.mapper
 
 import and.degilevich.dream.Res
-import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.dictionary.AlbumType
 import and.degilevich.dream.shared.resource.test.FakeResourceManager
 import dev.icerock.moko.resources.StringResource
 import io.kotest.matchers.shouldBe

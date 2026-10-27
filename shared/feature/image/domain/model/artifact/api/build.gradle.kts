@@ -4,6 +4,6 @@ plugins {
 
 kotlin {
     android {
-        namespace = "and.degilevich.dream.shared.feature.image.model.artifact.api"
+        namespace = "and.degilevich.dream.shared.feature.image.domain.model.artifact.api"
     }
 }

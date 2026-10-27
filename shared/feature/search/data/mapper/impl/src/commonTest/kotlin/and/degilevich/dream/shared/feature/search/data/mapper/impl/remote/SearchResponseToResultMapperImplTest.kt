@@ -7,12 +7,12 @@ import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchT
 import and.degilevich.dream.shared.feature.search.data.mapper.test.remote.FakeSearchAlbumsOutputToDataMapper
 import and.degilevich.dream.shared.feature.search.data.mapper.test.remote.FakeSearchArtistsOutputToDataMapper
 import and.degilevich.dream.shared.feature.search.data.mapper.test.remote.FakeSearchTracksOutputToDataMapper
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchAlbumsData
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchArtistsData
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchTracksData
-import and.degilevich.dream.shared.feature.search.model.core.test.method.search.searchAlbumsData
-import and.degilevich.dream.shared.feature.search.model.core.test.method.search.searchArtistsData
-import and.degilevich.dream.shared.feature.search.model.core.test.method.search.searchTracksData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchAlbumsData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchArtistsData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchTracksData
+import and.degilevich.dream.shared.feature.search.domain.model.core.test.method.search.searchAlbumsData
+import and.degilevich.dream.shared.feature.search.domain.model.core.test.method.search.searchArtistsData
+import and.degilevich.dream.shared.feature.search.domain.model.core.test.method.search.searchTracksData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

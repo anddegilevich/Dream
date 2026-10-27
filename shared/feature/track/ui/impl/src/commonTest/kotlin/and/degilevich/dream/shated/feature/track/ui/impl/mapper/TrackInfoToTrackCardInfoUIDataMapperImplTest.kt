@@ -1,8 +1,8 @@
 package and.degilevich.dream.shated.feature.track.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.artist.model.artifact.test.data.simplifiedArtistData
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.test.data.simplifiedArtistData
 import and.degilevich.dream.shared.feature.artist.ui.test.mapper.FakeArtistsInfoToStringMapper
-import and.degilevich.dream.shared.feature.track.model.artifact.test.data.simplifiedTrackData
+import and.degilevich.dream.shared.feature.track.domain.model.artifact.test.data.simplifiedTrackData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

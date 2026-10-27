@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.common.component.topbar.impl.component
 
 import and.degilevich.dream.shared.feature.common.component.topbar.impl.component.model.TopbarState
-import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.data.UserData
 import and.degilevich.dream.shared.foundation.decompose.component.mvi.conservator.ComponentStateConservator
 import and.degilevich.dream.shared.foundation.primitive.reflection.className
 import kotlinx.serialization.KSerializer

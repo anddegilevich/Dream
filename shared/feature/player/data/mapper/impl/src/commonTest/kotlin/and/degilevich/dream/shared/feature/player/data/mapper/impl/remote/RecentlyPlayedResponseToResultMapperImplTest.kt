@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.test.model.cursorPagingPlayHisto
 import and.degilevich.dream.shared.core.service.test.model.playHistoryObject
 import and.degilevich.dream.shared.feature.player.data.mapper.api.remote.PlayHistoryOutputToDataMapper
 import and.degilevich.dream.shared.feature.player.data.mapper.test.remote.FakePlayHistoryOutputToDataMapper
-import and.degilevich.dream.shared.feature.player.model.core.test.data.playHistoryData
+import and.degilevich.dream.shared.feature.player.domain.model.core.test.data.playHistoryData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

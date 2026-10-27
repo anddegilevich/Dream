@@ -1,10 +1,10 @@
 package and.degilevich.dream.shared.feature.playlist.domain.impl.paging
 
 import and.degilevich.dream.shared.feature.playlist.domain.test.usecase.FakeGetPlaylistTracksUseCase
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.PlaylistId
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
-import and.degilevich.dream.shared.feature.playlist.model.core.test.data.playlistTrackData
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.PlaylistId
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.test.data.playlistTrackData
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import app.cash.turbine.test

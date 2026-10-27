@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.core.service.test.model.privateUserObject
 import and.degilevich.dream.shared.core.service.test.service.FakeApiService
 import and.degilevich.dream.shared.feature.user.data.mapper.api.remote.UserOutputToDataMapper
 import and.degilevich.dream.shared.feature.user.data.mapper.test.remote.FakeUserOutputToDataMapper
-import and.degilevich.dream.shared.feature.user.model.core.test.data.userData
+import and.degilevich.dream.shared.feature.user.domain.model.core.test.data.userData
 import io.kotest.matchers.shouldBe
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond

@@ -6,8 +6,8 @@ import and.degilevich.dream.shared.feature.track.component.liked.impl.component.
 import and.degilevich.dream.shared.feature.track.component.liked.impl.component.model.LikedTracksState
 import and.degilevich.dream.shared.feature.track.domain.api.paging.LikedTracksPagingSource
 import and.degilevich.dream.shared.feature.track.domain.api.paging.LikedTracksPagingSourceFactory
-import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
-import and.degilevich.dream.shared.feature.track.model.core.api.data.SavedTrackData
+import and.degilevich.dream.shared.feature.track.domain.model.artifact.api.data.TrackId
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.data.SavedTrackData
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.TrackDetailsNavArgs

@@ -11,6 +11,6 @@ kotlin {
     }
 
     android {
-        namespace = "and.degilevich.dream.shared.feature.player.model.core.test"
+        namespace = "and.degilevich.dream.shared.feature.player.domain.model.core.test"
     }
 }

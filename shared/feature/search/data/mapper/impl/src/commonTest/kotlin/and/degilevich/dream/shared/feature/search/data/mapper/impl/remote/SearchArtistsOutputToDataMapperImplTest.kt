@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.test.model.artistObject
 import and.degilevich.dream.shared.core.service.test.model.pagingArtistObject
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.ArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.test.remote.FakeArtistOutputToDataMapper
-import and.degilevich.dream.shared.feature.artist.model.core.api.data.ArtistData
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.data.ArtistData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

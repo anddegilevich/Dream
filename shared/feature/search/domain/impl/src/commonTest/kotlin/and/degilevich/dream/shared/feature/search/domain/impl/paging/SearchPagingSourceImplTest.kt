@@ -1,16 +1,16 @@
 package and.degilevich.dream.shared.feature.search.domain.impl.paging
 
-import and.degilevich.dream.shared.feature.album.model.artifact.test.data.simplifiedAlbumData
-import and.degilevich.dream.shared.feature.artist.model.core.test.data.artistData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.test.data.simplifiedAlbumData
+import and.degilevich.dream.shared.feature.artist.domain.model.core.test.data.artistData
 import and.degilevich.dream.shared.feature.search.domain.test.usecase.FakeSearchUseCase
-import and.degilevich.dream.shared.feature.search.model.core.api.data.SearchItemData
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
-import and.degilevich.dream.shared.feature.search.model.core.test.method.search.searchAlbumsData
-import and.degilevich.dream.shared.feature.search.model.core.test.method.search.searchArtistsData
-import and.degilevich.dream.shared.feature.search.model.core.test.method.search.searchTracksData
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
-import and.degilevich.dream.shared.feature.track.model.core.test.data.trackData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.data.SearchItemData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.domain.model.core.test.method.search.searchAlbumsData
+import and.degilevich.dream.shared.feature.search.domain.model.core.test.method.search.searchArtistsData
+import and.degilevich.dream.shared.feature.search.domain.model.core.test.method.search.searchTracksData
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.test.data.trackData
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import app.cash.turbine.test

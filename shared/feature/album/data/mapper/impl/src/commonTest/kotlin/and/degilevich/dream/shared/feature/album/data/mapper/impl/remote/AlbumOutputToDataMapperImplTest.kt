@@ -6,14 +6,14 @@ import and.degilevich.dream.shared.core.service.test.model.albumObject
 import and.degilevich.dream.shared.core.service.test.model.imageObject
 import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.AlbumTracksOutputToDataMapper
 import and.degilevich.dream.shared.feature.album.data.mapper.test.remote.FakeAlbumTracksOutputToDataMapper
-import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumTracksData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.dictionary.AlbumType
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.data.AlbumTracksData
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.SimplifiedArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.test.remote.FakeSimplifiedArtistOutputToDataMapper
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.SimplifiedArtistData
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.api.data.SimplifiedArtistData
 import and.degilevich.dream.shared.feature.image.data.mapper.api.remote.ImageOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.data.mapper.test.remote.FakeImageOutputToDataMapper
-import and.degilevich.dream.shared.feature.image.model.artifact.api.data.ImageData
+import and.degilevich.dream.shared.feature.image.domain.model.artifact.api.data.ImageData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

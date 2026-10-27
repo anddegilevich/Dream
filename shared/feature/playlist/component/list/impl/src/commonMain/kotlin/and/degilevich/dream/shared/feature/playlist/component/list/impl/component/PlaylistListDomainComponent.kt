@@ -2,9 +2,9 @@ package and.degilevich.dream.shared.feature.playlist.component.list.impl.compone
 
 import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import and.degilevich.dream.shared.feature.playlist.domain.api.usecase.GetCurrentUserPlaylistsUseCase
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.PlaylistId
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.SimplifiedPlaylistData
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.PlaylistId
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.SimplifiedPlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListIntent
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListSideEffect
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.component.model.PlaylistListState

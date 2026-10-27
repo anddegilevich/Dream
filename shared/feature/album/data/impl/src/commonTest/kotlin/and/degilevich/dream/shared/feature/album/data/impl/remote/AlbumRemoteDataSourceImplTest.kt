@@ -6,9 +6,9 @@ import and.degilevich.dream.shared.core.service.test.model.albumObject
 import and.degilevich.dream.shared.core.service.test.service.FakeApiService
 import and.degilevich.dream.shared.feature.album.data.mapper.api.remote.AlbumOutputToDataMapper
 import and.degilevich.dream.shared.feature.album.data.mapper.test.remote.FakeAlbumOutputToDataMapper
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
-import and.degilevich.dream.shared.feature.album.model.core.api.data.AlbumData
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.data.AlbumId
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.data.AlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.method.getAlbum.GetAlbumParams
 import io.kotest.matchers.shouldBe
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond

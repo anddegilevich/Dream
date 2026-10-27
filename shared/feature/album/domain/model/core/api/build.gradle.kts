@@ -10,6 +10,6 @@ kotlin {
     }
 
     android {
-        namespace = "and.degilevich.dream.shared.feature.album.model.core.api"
+        namespace = "and.degilevich.dream.shared.feature.album.domain.model.core.api"
     }
 }

@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.user.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.user.data.test.repository.FakeUserRepository
 import and.degilevich.dream.shared.feature.user.domain.test.manager.FakeUserFetchingManager
-import and.degilevich.dream.shared.feature.user.model.core.test.data.userData
+import and.degilevich.dream.shared.feature.user.domain.model.core.test.data.userData
 import app.cash.turbine.test
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.flowOf

@@ -4,10 +4,10 @@ import and.degilevich.dream.shared.feature.base.domain.api.paging.model.PageData
 import and.degilevich.dream.shared.feature.base.domain.impl.paging.BasePagingSource
 import and.degilevich.dream.shared.feature.playlist.domain.api.paging.PlaylistTracksPagingSource
 import and.degilevich.dream.shared.feature.playlist.domain.api.usecase.GetPlaylistTracksUseCase
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.PlaylistId
-import and.degilevich.dream.shared.feature.playlist.model.core.api.data.PlaylistTrackData
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.PlaylistId
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.data.PlaylistTrackData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
 import com.arkivanov.decompose.ComponentContext
 
 internal class PlaylistTracksPagingSourceImpl(

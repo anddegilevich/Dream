@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.album.domain.impl.usecase
 
-import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
-import and.degilevich.dream.shared.feature.album.model.artifact.test.data.simplifiedAlbumData
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesParams
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getNewReleases.GetNewReleasesResult
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.dictionary.AlbumType
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.test.data.simplifiedAlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.method.getNewReleases.GetNewReleasesParams
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.method.getNewReleases.GetNewReleasesResult
 import and.degilevich.dream.shared.feature.search.data.test.repository.FakeSearchRepository
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchAlbumsData
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchArtistsData
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchTracksData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchAlbumsData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchArtistsData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchTracksData
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.data.mapper.impl.remote
 
 import and.degilevich.dream.shared.core.service.test.model.simplifiedArtistObject
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.dictionary.ArtistType
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.api.dictionary.ArtistType
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

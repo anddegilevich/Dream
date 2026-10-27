@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.search.component.search.impl.component
 
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.ArtistId
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.data.AlbumId
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.api.data.ArtistId
 import and.degilevich.dream.shared.feature.base.component.impl.BaseDomainComponent
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchIntent
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchSideEffect
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchState
 import and.degilevich.dream.shared.feature.search.domain.api.paging.SearchPagingSource
 import and.degilevich.dream.shared.feature.search.domain.api.paging.SearchPagingSourceFactory
-import and.degilevich.dream.shared.feature.search.model.core.api.data.SearchItemData
-import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.data.SearchItemData
+import and.degilevich.dream.shared.feature.track.domain.model.artifact.api.data.TrackId
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.AlbumDetailsNavArgs

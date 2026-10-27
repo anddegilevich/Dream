@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.track.component.liked.impl.component.model
 
-import and.degilevich.dream.shared.feature.track.model.core.api.data.SavedTrackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.data.SavedTrackData
 import kotlinx.serialization.Serializable
 
 @Serializable

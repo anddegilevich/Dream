@@ -10,6 +10,6 @@ kotlin {
     }
 
     android {
-        namespace = "and.degilevich.dream.shared.feature.playlist.model.artifact.api"
+        namespace = "and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api"
     }
 }

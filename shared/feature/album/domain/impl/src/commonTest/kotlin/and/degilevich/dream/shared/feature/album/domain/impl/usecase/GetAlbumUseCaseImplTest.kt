@@ -2,10 +2,10 @@ package and.degilevich.dream.shared.feature.album.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.album.data.api.repository.AlbumRepository
 import and.degilevich.dream.shared.feature.album.data.test.repository.FakeAlbumRepository
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumParams
-import and.degilevich.dream.shared.feature.album.model.core.api.method.getAlbum.GetAlbumResult
-import and.degilevich.dream.shared.feature.album.model.core.test.data.albumData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.data.AlbumId
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.method.getAlbum.GetAlbumParams
+import and.degilevich.dream.shared.feature.album.domain.model.core.api.method.getAlbum.GetAlbumResult
+import and.degilevich.dream.shared.feature.album.domain.model.core.test.data.albumData
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.user.data.impl.repository
 import and.degilevich.dream.shared.feature.user.data.api.repository.UserRepository
 import and.degilevich.dream.shared.feature.user.data.impl.remote.UserRemoteDataSource
 import and.degilevich.dream.shared.feature.user.data.impl.storage.UserDataStorage
-import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
-import and.degilevich.dream.shared.feature.user.model.core.api.method.getCurrentUser.GetCurrentUserResult
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.data.UserData
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.method.getCurrentUser.GetCurrentUserResult
 import kotlinx.coroutines.flow.Flow
 
 internal class UserRepositoryImpl(

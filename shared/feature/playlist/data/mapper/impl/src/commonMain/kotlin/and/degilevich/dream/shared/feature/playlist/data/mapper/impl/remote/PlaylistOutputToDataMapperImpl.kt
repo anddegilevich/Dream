@@ -3,8 +3,8 @@ package and.degilevich.dream.shared.feature.playlist.data.mapper.impl.remote
 import and.degilevich.dream.shared.core.service.api.generated.model.PlaylistObject
 import and.degilevich.dream.shared.feature.image.data.mapper.api.remote.ImageOutputToDataMapper
 import and.degilevich.dream.shared.feature.playlist.data.mapper.api.remote.PlaylistOutputToDataMapper
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.PlaylistId
-import and.degilevich.dream.shared.feature.playlist.model.core.api.data.PlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.PlaylistId
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.data.PlaylistData
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 
 internal class PlaylistOutputToDataMapperImpl(

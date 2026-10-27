@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.playlist.data.mapper.impl.local
 
 import and.degilevich.dream.shared.core.db.api.entity.PlaylistEntity
 import and.degilevich.dream.shared.feature.playlist.data.mapper.api.local.SimplifiedPlaylistDataToEntityMapper
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.SimplifiedPlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.SimplifiedPlaylistData
 
 internal class SimplifiedPlaylistDataToEntityMapperImpl : SimplifiedPlaylistDataToEntityMapper {
 

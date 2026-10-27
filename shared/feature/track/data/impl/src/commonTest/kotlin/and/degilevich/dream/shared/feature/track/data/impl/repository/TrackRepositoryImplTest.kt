@@ -2,14 +2,14 @@ package and.degilevich.dream.shared.feature.track.data.impl.repository
 
 import and.degilevich.dream.shared.feature.track.data.impl.local.FakeTrackLocalDataSource
 import and.degilevich.dream.shared.feature.track.data.impl.remote.FakeTrackRemoteDataSource
-import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
-import and.degilevich.dream.shared.feature.track.model.core.api.data.TrackData
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksParams
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getSavedTracks.GetSavedTracksResult
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackParams
-import and.degilevich.dream.shared.feature.track.model.core.api.method.getTrack.GetTrackResult
-import and.degilevich.dream.shared.feature.track.model.core.test.data.savedTrackData
-import and.degilevich.dream.shared.feature.track.model.core.test.data.trackData
+import and.degilevich.dream.shared.feature.track.domain.model.artifact.api.data.TrackId
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.data.TrackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.method.getSavedTracks.GetSavedTracksParams
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.method.getSavedTracks.GetSavedTracksResult
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.method.getTrack.GetTrackParams
+import and.degilevich.dream.shared.feature.track.domain.model.core.api.method.getTrack.GetTrackResult
+import and.degilevich.dream.shared.feature.track.domain.model.core.test.data.savedTrackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.test.data.trackData
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

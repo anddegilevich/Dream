@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.artist.ui.api.mapper
 
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.abstraction.ArtistInfo
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.api.abstraction.ArtistInfo
 
 internal class ArtistsInfoToStringMapperImpl : ArtistsInfoToStringMapper {
     override fun map(artists: List<ArtistInfo>): String {

@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.feature.playlist.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.album.model.artifact.test.data.simplifiedAlbumData
-import and.degilevich.dream.shared.feature.image.model.artifact.test.data.imageData
-import and.degilevich.dream.shared.feature.track.model.core.test.data.trackData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.test.data.simplifiedAlbumData
+import and.degilevich.dream.shared.feature.image.domain.model.artifact.test.data.imageData
+import and.degilevich.dream.shared.feature.track.domain.model.core.test.data.trackData
 import and.degilevich.dream.shated.feature.track.ui.api.model.TrackCardInfoUIData
 import and.degilevich.dream.shated.feature.track.ui.test.mapper.FakeTrackInfoToTrackCardInfoUIDataMapper
 import io.kotest.matchers.shouldBe

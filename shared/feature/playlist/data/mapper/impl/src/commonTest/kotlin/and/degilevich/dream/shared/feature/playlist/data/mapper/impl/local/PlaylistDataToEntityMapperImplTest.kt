@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.playlist.data.mapper.impl.local
 
-import and.degilevich.dream.shared.feature.image.model.artifact.test.data.imageData
-import and.degilevich.dream.shared.feature.playlist.model.core.test.data.playlistData
+import and.degilevich.dream.shared.feature.image.domain.model.artifact.test.data.imageData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.test.data.playlistData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

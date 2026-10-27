@@ -2,8 +2,8 @@ package and.degilevich.dream.shared.feature.artist.domain.usecase
 
 import and.degilevich.dream.shared.feature.artist.data.api.repository.ArtistRepository
 import and.degilevich.dream.shared.feature.artist.domain.api.usecase.GetArtistAlbumsUseCase
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
-import and.degilevich.dream.shared.feature.artist.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtistAlbums.GetArtistAlbumsParams
+import and.degilevich.dream.shared.feature.artist.domain.model.core.api.method.getArtistAlbums.GetArtistAlbumsResult
 
 internal class GetArtistAlbumsUseCaseImpl(
     private val artistRepository: ArtistRepository

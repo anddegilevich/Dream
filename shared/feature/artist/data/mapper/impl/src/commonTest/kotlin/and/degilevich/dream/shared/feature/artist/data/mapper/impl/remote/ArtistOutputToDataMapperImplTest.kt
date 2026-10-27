@@ -2,10 +2,10 @@ package and.degilevich.dream.shared.feature.artist.data.mapper.impl.remote
 
 import and.degilevich.dream.shared.core.service.test.model.artistObject
 import and.degilevich.dream.shared.core.service.test.model.imageObject
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.dictionary.ArtistType
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.api.dictionary.ArtistType
 import and.degilevich.dream.shared.feature.image.data.mapper.api.remote.ImageOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.data.mapper.test.remote.FakeImageOutputToDataMapper
-import and.degilevich.dream.shared.feature.image.model.artifact.test.data.imageData
+import and.degilevich.dream.shared.feature.image.domain.model.artifact.test.data.imageData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

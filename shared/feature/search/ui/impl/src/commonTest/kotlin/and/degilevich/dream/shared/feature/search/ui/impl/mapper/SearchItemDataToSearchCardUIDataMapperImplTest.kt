@@ -1,15 +1,15 @@
 package and.degilevich.dream.shared.feature.search.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.album.model.artifact.test.data.simplifiedAlbumData
-import and.degilevich.dream.shared.feature.artist.model.core.test.data.artistData
-import and.degilevich.dream.shared.feature.search.model.core.api.data.SearchItemData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.test.data.simplifiedAlbumData
+import and.degilevich.dream.shared.feature.artist.domain.model.core.test.data.artistData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.data.SearchItemData
 import and.degilevich.dream.shared.feature.search.ui.api.mapper.AlbumInfoToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.ui.api.mapper.ArtistDataToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.ui.api.mapper.TrackDataToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.AlbumSearchCardUIData
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.ArtistSearchCardUIData
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.TrackSearchCardUIData
-import and.degilevich.dream.shared.feature.track.model.core.test.data.trackData
+import and.degilevich.dream.shared.feature.track.domain.model.core.test.data.trackData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

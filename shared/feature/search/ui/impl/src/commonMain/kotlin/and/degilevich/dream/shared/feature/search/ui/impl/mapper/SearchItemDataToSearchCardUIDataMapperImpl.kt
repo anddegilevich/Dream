@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.search.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.search.model.core.api.data.SearchItemData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.data.SearchItemData
 import and.degilevich.dream.shared.feature.search.ui.api.mapper.AlbumInfoToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.ui.api.mapper.ArtistDataToSearchCardUIDataMapper
 import and.degilevich.dream.shared.feature.search.ui.api.mapper.SearchItemDataToSearchCardUIDataMapper

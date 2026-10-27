@@ -1,9 +1,9 @@
 package and.degilevich.dream.shared.feature.album.ui.impl.mapper
 
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.AlbumId
-import and.degilevich.dream.shared.feature.album.model.artifact.api.data.SimplifiedAlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.data.AlbumId
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.data.SimplifiedAlbumData
 import and.degilevich.dream.shared.feature.artist.ui.test.mapper.FakeArtistsInfoToStringMapper
-import and.degilevich.dream.shared.feature.image.model.artifact.test.data.imageData
+import and.degilevich.dream.shared.feature.image.domain.model.artifact.test.data.imageData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

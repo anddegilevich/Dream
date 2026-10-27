@@ -7,10 +7,10 @@ import and.degilevich.dream.shared.feature.playlist.component.details.impl.compo
 import and.degilevich.dream.shared.feature.playlist.domain.api.paging.PlaylistTracksPagingSource
 import and.degilevich.dream.shared.feature.playlist.domain.api.paging.PlaylistTracksPagingSourceFactory
 import and.degilevich.dream.shared.feature.playlist.domain.api.usecase.GetPlaylistUseCase
-import and.degilevich.dream.shared.feature.playlist.model.core.api.data.PlaylistData
-import and.degilevich.dream.shared.feature.playlist.model.core.api.data.PlaylistTrackData
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylist.GetPlaylistParams
-import and.degilevich.dream.shared.feature.track.model.artifact.api.data.TrackId
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.data.PlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.data.PlaylistTrackData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylist.GetPlaylistParams
+import and.degilevich.dream.shared.feature.track.domain.model.artifact.api.data.TrackId
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.abstraction.id.ext.getById
 import and.degilevich.dream.shared.navigation.api.model.args.PlaylistDetailsNavArgs

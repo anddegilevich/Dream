@@ -4,8 +4,8 @@ import and.degilevich.dream.shared.core.service.api.ApiService
 import and.degilevich.dream.shared.core.service.api.generated.api.SearchApi
 import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchResponseToResultMapper
 import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchTypeToRequestMapper
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchResult
 import and.degilevich.dream.shared.foundation.abstraction.mapper.ext.mapWith
 
 internal class SearchRemoteDataSourceImpl(

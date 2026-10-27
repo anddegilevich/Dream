@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.track.data.mapper.impl.local
 
-import and.degilevich.dream.shared.feature.track.model.artifact.test.data.simplifiedTrackData
+import and.degilevich.dream.shared.feature.track.domain.model.artifact.test.data.simplifiedTrackData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

@@ -9,9 +9,9 @@ import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchR
 import and.degilevich.dream.shared.feature.search.data.mapper.api.remote.SearchTypeToRequestMapper
 import and.degilevich.dream.shared.feature.search.data.mapper.test.remote.FakeSearchResponseToResultMapper
 import and.degilevich.dream.shared.feature.search.data.mapper.test.remote.FakeSearchTypeToRequestMapper
-import and.degilevich.dream.shared.feature.search.model.core.api.dictionary.SearchType
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.dictionary.SearchType
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchResult
 import io.kotest.matchers.shouldBe
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond

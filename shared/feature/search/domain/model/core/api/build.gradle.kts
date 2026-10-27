@@ -12,6 +12,6 @@ kotlin {
     }
 
     android {
-        namespace = "and.degilevich.dream.shared.feature.search.model.core.api"
+        namespace = "and.degilevich.dream.shared.feature.search.domain.model.core.api"
     }
 }

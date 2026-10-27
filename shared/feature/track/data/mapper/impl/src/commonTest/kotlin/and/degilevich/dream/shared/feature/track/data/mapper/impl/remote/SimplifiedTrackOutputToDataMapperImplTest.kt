@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.api.generated.model.SimplifiedAr
 import and.degilevich.dream.shared.core.service.api.generated.model.SimplifiedTrackObject
 import and.degilevich.dream.shared.feature.artist.data.mapper.api.remote.SimplifiedArtistOutputToDataMapper
 import and.degilevich.dream.shared.feature.artist.data.mapper.test.remote.FakeSimplifiedArtistOutputToDataMapper
-import and.degilevich.dream.shared.feature.artist.model.artifact.api.data.SimplifiedArtistData
+import and.degilevich.dream.shared.feature.artist.domain.model.artifact.api.data.SimplifiedArtistData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

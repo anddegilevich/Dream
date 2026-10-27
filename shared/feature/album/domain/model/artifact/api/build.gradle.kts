@@ -12,6 +12,6 @@ kotlin {
     }
 
     android {
-        namespace = "and.degilevich.dream.shared.feature.album.model.artifact.api"
+        namespace = "and.degilevich.dream.shared.feature.album.domain.model.artifact.api"
     }
 }

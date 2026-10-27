@@ -3,7 +3,7 @@ package and.degilevich.dream.shared.feature.user.domain.impl.manager
 import and.degilevich.dream.shared.feature.user.data.api.repository.UserRepository
 import and.degilevich.dream.shared.feature.user.domain.api.manager.UserFetchingManager
 import and.degilevich.dream.shared.feature.user.domain.api.usecase.GetCurrentUserUseCase
-import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.data.UserData
 import and.degilevich.dream.shared.foundation.primitive.result.recoverResult
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.api.generated.model.SimplifiedTr
 import and.degilevich.dream.shared.core.service.test.model.pagingSimplifiedTrackObject
 import and.degilevich.dream.shared.feature.track.data.mapper.api.remote.SimplifiedTrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.track.data.mapper.test.remote.FakeSimplifiedTrackOutputToDataMapper
-import and.degilevich.dream.shared.feature.track.model.artifact.api.data.SimplifiedTrackData
+import and.degilevich.dream.shared.feature.track.domain.model.artifact.api.data.SimplifiedTrackData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

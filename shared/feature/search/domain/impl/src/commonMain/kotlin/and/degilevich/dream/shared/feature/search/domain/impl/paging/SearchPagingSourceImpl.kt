@@ -4,10 +4,10 @@ import and.degilevich.dream.shared.feature.base.domain.api.paging.model.PageData
 import and.degilevich.dream.shared.feature.base.domain.impl.paging.BasePagingSource
 import and.degilevich.dream.shared.feature.search.domain.api.paging.SearchPagingSource
 import and.degilevich.dream.shared.feature.search.domain.api.usecase.SearchUseCase
-import and.degilevich.dream.shared.feature.search.model.core.api.data.SearchItemData
-import and.degilevich.dream.shared.feature.search.model.core.api.dictionary.SearchType
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchParams
-import and.degilevich.dream.shared.feature.search.model.core.api.method.search.SearchResult
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.data.SearchItemData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.dictionary.SearchType
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchParams
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.method.search.SearchResult
 import and.degilevich.dream.shared.foundation.primitive.collections.list.interleave
 import com.arkivanov.decompose.ComponentContext
 

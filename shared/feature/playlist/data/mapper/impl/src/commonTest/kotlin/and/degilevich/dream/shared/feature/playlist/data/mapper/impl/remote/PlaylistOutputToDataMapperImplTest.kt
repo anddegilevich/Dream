@@ -5,7 +5,7 @@ import and.degilevich.dream.shared.core.service.test.model.pagingPlaylistTrackOb
 import and.degilevich.dream.shared.core.service.test.model.playlistObject
 import and.degilevich.dream.shared.feature.image.data.mapper.api.remote.ImageOutputToDataMapper
 import and.degilevich.dream.shared.feature.image.data.mapper.test.remote.FakeImageOutputToDataMapper
-import and.degilevich.dream.shared.feature.image.model.artifact.test.data.imageData
+import and.degilevich.dream.shared.feature.image.domain.model.artifact.test.data.imageData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

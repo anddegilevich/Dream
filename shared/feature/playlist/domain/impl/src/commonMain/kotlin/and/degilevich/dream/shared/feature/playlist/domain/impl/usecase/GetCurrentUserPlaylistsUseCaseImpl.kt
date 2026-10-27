@@ -2,8 +2,8 @@ package and.degilevich.dream.shared.feature.playlist.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.playlist.data.api.repository.PlaylistRepository
 import and.degilevich.dream.shared.feature.playlist.domain.api.usecase.GetCurrentUserPlaylistsUseCase
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getCurrentUserPlaylists.GetCurrentUserPlaylistsResult
 
 internal class GetCurrentUserPlaylistsUseCaseImpl(
     private val playlistRepository: PlaylistRepository

@@ -1,10 +1,10 @@
 package and.degilevich.dream.shared.feature.playlist.domain.impl.usecase
 
 import and.degilevich.dream.shared.feature.playlist.data.test.repository.FakePlaylistRepository
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.PlaylistId
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
-import and.degilevich.dream.shared.feature.playlist.model.core.test.data.playlistTrackData
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.PlaylistId
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.test.data.playlistTrackData
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

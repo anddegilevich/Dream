@@ -4,7 +4,7 @@ import and.degilevich.dream.shared.core.service.test.model.pagingPlaylistTrackOb
 import and.degilevich.dream.shared.core.service.test.model.playlistTrackObject
 import and.degilevich.dream.shared.feature.playlist.data.mapper.api.remote.PlaylistTrackOutputToDataMapper
 import and.degilevich.dream.shared.feature.playlist.data.mapper.test.remote.FakePlaylistTrackOutputToDataMapper
-import and.degilevich.dream.shared.feature.playlist.model.core.test.data.playlistTrackData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.test.data.playlistTrackData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

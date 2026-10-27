@@ -1,8 +1,8 @@
 package and.degilevich.dream.shared.feature.playlist.domain.test.usecase
 
 import and.degilevich.dream.shared.feature.playlist.domain.api.usecase.GetPlaylistTracksUseCase
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
-import and.degilevich.dream.shared.feature.playlist.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksParams
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.method.getPlaylistTracks.GetPlaylistTracksResult
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 
 class FakeGetPlaylistTracksUseCase(

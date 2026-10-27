@@ -1,6 +1,6 @@
 package and.degilevich.dream.shared.feature.search.component.search.impl.component.model
 
-import and.degilevich.dream.shared.feature.search.model.core.api.data.SearchItemData
+import and.degilevich.dream.shared.feature.search.domain.model.core.api.data.SearchItemData
 import kotlinx.serialization.Serializable
 
 @Serializable

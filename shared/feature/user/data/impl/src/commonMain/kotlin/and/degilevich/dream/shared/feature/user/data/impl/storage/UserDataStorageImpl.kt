@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.user.data.impl.storage
 
 import and.degilevich.dream.shared.feature.base.data.impl.storage.BaseStorage
-import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.data.UserData
 
 internal class UserDataStorageImpl :
     BaseStorage<UserData>(

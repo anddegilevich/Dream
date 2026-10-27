@@ -2,7 +2,7 @@ package and.degilevich.dream.shared.feature.playlist.data.mapper.test.remote
 
 import and.degilevich.dream.shared.core.service.api.generated.model.SimplifiedPlaylistObject
 import and.degilevich.dream.shared.feature.playlist.data.mapper.api.remote.SimplifiedPlaylistOutputToDataMapper
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.SimplifiedPlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.SimplifiedPlaylistData
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 
 class FakeSimplifiedPlaylistOutputToDataMapper(

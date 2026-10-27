@@ -6,7 +6,7 @@ import and.degilevich.dream.shared.feature.common.component.topbar.impl.componen
 import and.degilevich.dream.shared.feature.common.component.topbar.impl.component.model.TopbarSideEffect
 import and.degilevich.dream.shared.feature.common.component.topbar.impl.component.model.TopbarState
 import and.degilevich.dream.shared.feature.user.domain.api.usecase.ObserveCurrentUserUseCase
-import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.data.UserData
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.Dispatchers

@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.playlist.data.impl.local
 
-import and.degilevich.dream.shared.feature.playlist.model.artifact.api.data.SimplifiedPlaylistData
-import and.degilevich.dream.shared.feature.playlist.model.core.api.data.PlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.artifact.api.data.SimplifiedPlaylistData
+import and.degilevich.dream.shared.feature.playlist.domain.model.core.api.data.PlaylistData
 import and.degilevich.dream.shared.foundation.abstraction.exception.fakeImplementationError
 
 class FakePlaylistLocalDataSource(

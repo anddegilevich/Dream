@@ -7,7 +7,7 @@ import and.degilevich.dream.shared.feature.common.component.drawer.impl.componen
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.component.model.DrawerSideEffect
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.component.model.DrawerState
 import and.degilevich.dream.shared.feature.user.domain.api.usecase.ObserveCurrentUserUseCase
-import and.degilevich.dream.shared.feature.user.model.core.api.data.UserData
+import and.degilevich.dream.shared.feature.user.domain.model.core.api.data.UserData
 import and.degilevich.dream.shared.foundation.decompose.navigation.ext.replaceAll
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext

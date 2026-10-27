@@ -1,7 +1,7 @@
 package and.degilevich.dream.shared.feature.album.data.mapper.impl.local
 
-import and.degilevich.dream.shared.feature.album.model.artifact.api.dictionary.AlbumType
-import and.degilevich.dream.shared.feature.album.model.artifact.test.data.simplifiedAlbumData
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.dictionary.AlbumType
+import and.degilevich.dream.shared.feature.album.domain.model.artifact.test.data.simplifiedAlbumData
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 
