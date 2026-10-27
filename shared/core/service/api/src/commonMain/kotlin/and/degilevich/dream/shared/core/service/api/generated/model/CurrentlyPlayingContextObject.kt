@@ -26,7 +26,7 @@ package and.degilevich.dream.shared.core.service.api.generated.model
 import and.degilevich.dream.shared.core.service.api.generated.model.ContextObject
 import and.degilevich.dream.shared.core.service.api.generated.model.DeviceObject
 import and.degilevich.dream.shared.core.service.api.generated.model.DisallowsObject
-import and.degilevich.dream.shared.core.service.api.generated.model.PlaylistTrackObjectItem
+import and.degilevich.dream.shared.core.service.api.generated.model.TrackObject
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -42,7 +42,7 @@ import kotlinx.serialization.encoding.*
  * @param timestamp Unix Millisecond Timestamp when playback state was last changed (play, pause, skip, scrub, new song, etc.).
  * @param progressMs Progress into the currently playing track or episode. Can be `null`.
  * @param isPlaying If something is currently playing, return `true`.
- * @param item 
+ * @param item The currently playing track or episode. Can be `null`.
  * @param currentlyPlayingType The object type of the currently playing item. Can be one of `track`, `episode`, `ad` or `unknown`. 
  * @param actions Allows to update the user interface based on which playback actions are available within the current context. 
  */
@@ -63,7 +63,7 @@ data class CurrentlyPlayingContextObject (
     @SerialName(value = "context") val context: ContextObject? = null,
 
     /* Unix Millisecond Timestamp when playback state was last changed (play, pause, skip, scrub, new song, etc.). */
-    @SerialName(value = "timestamp") val timestamp: kotlin.Int? = null,
+    @SerialName(value = "timestamp") val timestamp: kotlin.Long? = null,
 
     /* Progress into the currently playing track or episode. Can be `null`. */
     @SerialName(value = "progress_ms") val progressMs: kotlin.Int? = null,
@@ -71,7 +71,8 @@ data class CurrentlyPlayingContextObject (
     /* If something is currently playing, return `true`. */
     @SerialName(value = "is_playing") val isPlaying: kotlin.Boolean? = null,
 
-    @SerialName(value = "item") val item: PlaylistTrackObjectItem? = null,
+    /* The currently playing track or episode. Can be `null`. */
+    @SerialName(value = "item") val item: TrackObject? = null,
 
     /* The object type of the currently playing item. Can be one of `track`, `episode`, `ad` or `unknown`.  */
     @SerialName(value = "currently_playing_type") val currentlyPlayingType: kotlin.String? = null,

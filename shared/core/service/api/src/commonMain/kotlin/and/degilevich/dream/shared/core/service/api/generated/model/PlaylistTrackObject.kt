@@ -23,9 +23,8 @@
 
 package and.degilevich.dream.shared.core.service.api.generated.model
 
-import and.degilevich.dream.shared.core.service.api.generated.model.PlaylistTrackObjectItem
-import and.degilevich.dream.shared.core.service.api.generated.model.PlaylistTrackObjectTrack
 import and.degilevich.dream.shared.core.service.api.generated.model.PlaylistUserObject
+import and.degilevich.dream.shared.core.service.api.generated.model.TrackObject
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -37,8 +36,8 @@ import kotlinx.serialization.encoding.*
  * @param addedAt The date and time the track or episode was added. _**Note**: some very old playlists may return `null` in this field._ 
  * @param addedBy The Spotify user who added the track or episode. _**Note**: some very old playlists may return `null` in this field._ 
  * @param isLocal Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not. 
- * @param item 
- * @param track 
+ * @param item Information about the track or episode.
+ * @param track **Deprecated:** Use `item` instead. Information about the track or episode. 
  */
 @Serializable
 
@@ -53,10 +52,12 @@ data class PlaylistTrackObject (
     /* Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not.  */
     @SerialName(value = "is_local") val isLocal: kotlin.Boolean? = null,
 
+    /* Information about the track or episode. */
     @SerialName(value = "item") val item: TrackObject? = null,
 
+    /* **Deprecated:** Use `item` instead. Information about the track or episode.  */
     @Deprecated(message = "This property is deprecated.")
-    @SerialName(value = "track") val track: PlaylistTrackObjectTrack? = null
+    @SerialName(value = "track") val track: TrackObject? = null
 
 ) {
 

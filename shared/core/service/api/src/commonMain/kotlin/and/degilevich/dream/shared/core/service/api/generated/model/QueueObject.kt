@@ -23,7 +23,7 @@
 
 package and.degilevich.dream.shared.core.service.api.generated.model
 
-import and.degilevich.dream.shared.core.service.api.generated.model.PlaylistTrackObjectItem
+import and.degilevich.dream.shared.core.service.api.generated.model.TrackObject
 
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -32,17 +32,18 @@ import kotlinx.serialization.encoding.*
 /**
  * 
  *
- * @param currentlyPlaying 
+ * @param currentlyPlaying The currently playing track or episode. Can be `null`.
  * @param queue The tracks or episodes in the queue. Can be empty.
  */
 @Serializable
 
 data class QueueObject (
 
-    @SerialName(value = "currently_playing") val currentlyPlaying: PlaylistTrackObjectItem? = null,
+    /* The currently playing track or episode. Can be `null`. */
+    @SerialName(value = "currently_playing") val currentlyPlaying: TrackObject? = null,
 
     /* The tracks or episodes in the queue. Can be empty. */
-    @SerialName(value = "queue") val queue: kotlin.collections.List<PlaylistTrackObjectItem>? = null
+    @SerialName(value = "queue") val queue: kotlin.collections.List<TrackObject>? = null
 
 ) {
 

@@ -106,8 +106,6 @@ src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/mod
 src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/model/PlaylistObject.kt
 src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/model/PlaylistOwnerObject.kt
 src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/model/PlaylistTrackObject.kt
-src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/model/PlaylistTrackObjectItem.kt
-src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/model/PlaylistTrackObjectTrack.kt
 src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/model/PlaylistTracksRefObject.kt
 src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/model/PlaylistUserObject.kt
 src/commonMain/kotlin/and/degilevich/dream/shared/core/service/api/generated/model/PrivateUserObject.kt
