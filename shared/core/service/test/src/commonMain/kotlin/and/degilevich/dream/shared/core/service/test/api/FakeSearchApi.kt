@@ -5,5 +5,6 @@ import io.ktor.client.engine.mock.MockEngine
 
 fun fakeSearchApi(engine: MockEngine): SearchApi = SearchApi(
     baseUrl = "https://fake.api.com",
-    httpClientEngine = engine
+    httpClientEngine = engine,
+    httpClientConfig = { config -> config.expectSuccess = true }
 )

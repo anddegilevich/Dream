@@ -5,5 +5,6 @@ import io.ktor.client.engine.mock.MockEngine
 
 fun fakeAlbumsApi(engine: MockEngine): AlbumsApi = AlbumsApi(
     baseUrl = "https://fake.api.com",
-    httpClientEngine = engine
+    httpClientEngine = engine,
+    httpClientConfig = { config -> config.expectSuccess = true }
 )

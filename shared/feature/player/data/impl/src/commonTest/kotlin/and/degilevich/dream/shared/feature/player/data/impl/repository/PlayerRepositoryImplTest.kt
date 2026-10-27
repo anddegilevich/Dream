@@ -1,12 +1,15 @@
 package and.degilevich.dream.shared.feature.player.data.impl.repository
 
 import and.degilevich.dream.shared.feature.player.data.impl.remote.FakePlayerRemoteDataSource
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getPlaybackState.GetPlaybackStateResult
 import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedParams
 import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getRecentlyPlayed.GetRecentlyPlayedResult
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.setShuffle.SetShuffleParams
 import and.degilevich.dream.shared.feature.player.domain.model.core.test.data.playHistoryData
+import and.degilevich.dream.shared.feature.player.domain.model.core.test.data.playbackStateData
 import io.kotest.matchers.shouldBe
-import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
+import kotlinx.coroutines.test.runTest
 
 class PlayerRepositoryImplTest {
 
@@ -52,5 +55,75 @@ class PlayerRepositoryImplTest {
         val result = repository.getRecentlyPlayed(params = GetRecentlyPlayedParams(limit = 10))
 
         result shouldBe expected
+    }
+
+    @Test
+    fun `getPlaybackState - delegates to remote data source and returns its result unchanged`() = runTest {
+        val expected = Result.success<GetPlaybackStateResult>(
+            GetPlaybackStateResult.Value(playbackState = playbackStateData())
+        )
+        val repository = PlayerRepositoryImpl(
+            playerRemoteDataSource = FakePlayerRemoteDataSource(onGetPlaybackState = { expected })
+        )
+
+        val result = repository.getPlaybackState()
+
+        result shouldBe expected
+    }
+
+    @Test
+    fun `getPlaybackState - remote data source fails - propagates the failure unchanged`() = runTest {
+        val expected = Result.failure<GetPlaybackStateResult>(IllegalStateException("network is down"))
+        val repository = PlayerRepositoryImpl(
+            playerRemoteDataSource = FakePlayerRemoteDataSource(onGetPlaybackState = { expected })
+        )
+
+        val result = repository.getPlaybackState()
+
+        result shouldBe expected
+    }
+
+    @Test
+    fun `skipToNext - delegates to remote data source and returns its result unchanged`() = runTest {
+        val expected = Result.failure<Unit>(IllegalStateException("premium required"))
+        val repository = PlayerRepositoryImpl(
+            playerRemoteDataSource = FakePlayerRemoteDataSource(onSkipToNext = { expected })
+        )
+
+        val result = repository.skipToNext()
+
+        result shouldBe expected
+    }
+
+    @Test
+    fun `skipToPrevious - delegates to remote data source and returns its result unchanged`() = runTest {
+        val expected = Result.failure<Unit>(IllegalStateException("premium required"))
+        val repository = PlayerRepositoryImpl(
+            playerRemoteDataSource = FakePlayerRemoteDataSource(onSkipToPrevious = { expected })
+        )
+
+        val result = repository.skipToPrevious()
+
+        result shouldBe expected
+    }
+
+    @Test
+    fun `setShuffle - passes params through to remote data source and returns its result unchanged`() = runTest {
+        val receivedParams = mutableListOf<SetShuffleParams>()
+        val expected = Result.success(Unit)
+        val repository = PlayerRepositoryImpl(
+            playerRemoteDataSource = FakePlayerRemoteDataSource(
+                onSetShuffle = { params ->
+                    receivedParams.add(params)
+                    expected
+                }
+            )
+        )
+        val params = SetShuffleParams(isEnabled = true)
+
+        val result = repository.setShuffle(params = params)
+
+        result shouldBe expected
+        receivedParams shouldBe listOf(params)
     }
 }

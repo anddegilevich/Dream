@@ -5,5 +5,8 @@ import io.ktor.client.engine.mock.MockEngine
 
 fun fakePlaylistsApi(engine: MockEngine): PlaylistsApi = PlaylistsApi(
     baseUrl = "https://fake.api.com",
-    httpClientEngine = engine
+    httpClientEngine = engine,
+    httpClientConfig = { config ->
+        config.expectSuccess = true
+    }
 )
