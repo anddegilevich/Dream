@@ -31,7 +31,7 @@ class PlaybackStateOutputToDataMapperImplTest {
     }
 
     @Test
-    fun `map - playback fields present - copies playing, progress, shuffle and device name`() {
+    fun `map - playback fields present - copies playing progress shuffle and device name`() {
         val input = currentlyPlayingContextObject(
             item = null,
             isPlaying = true,
@@ -50,7 +50,7 @@ class PlaybackStateOutputToDataMapperImplTest {
     }
 
     @Test
-    fun `map - playback fields null - maps to not playing, zero progress and shuffle off`() {
+    fun `map - playback fields null - maps to not playing zero progress and shuffle off`() {
         val input = currentlyPlayingContextObject(
             item = null,
             isPlaying = null,

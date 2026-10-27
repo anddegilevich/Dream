@@ -33,7 +33,7 @@ class CurrentlyPlayingContextObjectTest {
     }
 
     @Test
-    fun `decode - playback fields - carries progress, playing and shuffle flags`() {
+    fun `decode - playback fields - carries progress playing and shuffle flags`() {
         val state = decode(payload = payload())
 
         state.progressMs shouldBe 20000

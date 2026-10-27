@@ -6,5 +6,7 @@ enum class DreamDateTimeFormat(
     override val format: String
 ) : DateTimeFormat {
     YYYY_MM_DD("YYYY-MM-DD"),
-    YYYY("YYYY")
+    YYYY("YYYY"),
+    M_SS("m:ss"),
+    H_MM_SS("H:mm:ss")
 }

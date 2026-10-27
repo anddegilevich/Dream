@@ -4,9 +4,6 @@ import and.degilevich.dream.shared.feature.player.domain.model.core.api.data.Pla
 
 sealed interface GetPlaybackStateResult {
 
-    /**
-     * No active playback: no active device, or nothing is playing.
-     */
     data object None : GetPlaybackStateResult
 
     data class Value(
