@@ -235,6 +235,8 @@ include(":shared:feature:player:ui:test")
 
 include(":shared:feature:player:component:recentlyPlayed:api")
 include(":shared:feature:player:component:recentlyPlayed:impl")
+include(":shared:feature:player:component:miniPlayer:api")
+include(":shared:feature:player:component:miniPlayer:impl")
 
 // Search
 include(":shared:feature:search:data:mapper:api")
