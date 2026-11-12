@@ -5,4 +5,5 @@ sealed interface PlayerIntent {
     data object OnSkipToPreviousClicked : PlayerIntent
     data object OnSkipToNextClicked : PlayerIntent
     data object OnShuffleClicked : PlayerIntent
+    data object OnPlayClicked : PlayerIntent
 }

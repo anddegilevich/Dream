@@ -25,6 +25,7 @@ class MiniPlayerViewTest {
     private val shuffle = hasTestTag(MiniPlayerViewSemantic.TEST_TAG_SHUFFLE)
     private val skipToPrevious = hasTestTag(MiniPlayerViewSemantic.TEST_TAG_SKIP_TO_PREVIOUS)
     private val skipToNext = hasTestTag(MiniPlayerViewSemantic.TEST_TAG_SKIP_TO_NEXT)
+    private val play = hasTestTag(MiniPlayerViewSemantic.TEST_TAG_PLAY)
 
     @Test
     fun `render default state - shows track and controls`() = runComposeUiTest {
@@ -41,6 +42,7 @@ class MiniPlayerViewTest {
         onNode(shuffle).assertIsDisplayed()
         onNode(skipToPrevious).assertIsDisplayed()
         onNode(skipToNext).assertIsDisplayed()
+        onNode(play).assertIsDisplayed()
         intents.shouldBeEmpty()
     }
 
@@ -114,6 +116,27 @@ class MiniPlayerViewTest {
 
         waitUntil(conditionDescription = "intent emitted") { intents.isNotEmpty() }
         intents.shouldContainExactly(MiniPlayerIntent.OnShuffleClicked)
+    }
+
+    @Test
+    fun `render playing state - shows play control`() = runComposeUiTest {
+        setContent(state = provider.providePlaying())
+
+        onNode(play).assertIsDisplayed()
+    }
+
+    @Test
+    fun `click play - emits OnPlayClicked`() = runComposeUiTest {
+        val intents = mutableListOf<MiniPlayerIntent>()
+        setContent(
+            state = provider.provideDefault(),
+            onIntent = intents::add
+        )
+
+        onNode(play).performClick()
+
+        waitUntil(conditionDescription = "intent emitted") { intents.isNotEmpty() }
+        intents.shouldContainExactly(MiniPlayerIntent.OnPlayClicked)
     }
 
     private fun ComposeUiTest.setContent(

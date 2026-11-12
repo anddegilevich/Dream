@@ -11,4 +11,6 @@ interface PlayerRepository {
     suspend fun skipToNext(): Result<Unit>
     suspend fun skipToPrevious(): Result<Unit>
     suspend fun setShuffle(params: SetShuffleParams): Result<Unit>
+    suspend fun pause(): Result<Unit>
+    suspend fun resume(): Result<Unit>
 }

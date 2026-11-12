@@ -24,6 +24,7 @@ import io.ktor.client.engine.mock.respond
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
+import io.ktor.http.content.OutgoingContent
 import io.ktor.http.headersOf
 import kotlin.test.Test
 import kotlin.test.assertTrue
@@ -283,6 +284,87 @@ class PlayerRemoteDataSourceImplTest {
             url.encodedPath shouldBe "/me/player/shuffle"
             url.parameters["state"] shouldBe "false"
         }
+    }
+
+    @Test
+    fun `pause - no content - returns success`() = runTest {
+        val dataSource = playerRemoteDataSource(
+            engine = respondingWith(status = HttpStatusCode.NoContent, content = "")
+        )
+
+        val result = dataSource.pause()
+
+        result shouldBe Result.success(Unit)
+    }
+
+    @Test
+    fun `pause - forbidden - returns failure`() = runTest {
+        val dataSource = playerRemoteDataSource(
+            engine = respondingWith(status = HttpStatusCode.Forbidden, content = ERROR_BODY)
+        )
+
+        val result = dataSource.pause()
+
+        assertTrue(result.isFailure)
+    }
+
+    @Test
+    fun `pause - request - targets the pause path with PUT`() = runTest {
+        val engine = respondingWith(status = HttpStatusCode.NoContent, content = "")
+        val dataSource = playerRemoteDataSource(engine = engine)
+
+        dataSource.pause()
+
+        with(engine.requestHistory.first()) {
+            method shouldBe HttpMethod.Put
+            url.encodedPath shouldBe "/me/player/pause"
+        }
+    }
+
+    @Test
+    fun `resume - no content - returns success`() = runTest {
+        val dataSource = playerRemoteDataSource(
+            engine = respondingWith(status = HttpStatusCode.NoContent, content = "")
+        )
+
+        val result = dataSource.resume()
+
+        result shouldBe Result.success(Unit)
+    }
+
+    @Test
+    fun `resume - forbidden - returns failure`() = runTest {
+        val dataSource = playerRemoteDataSource(
+            engine = respondingWith(status = HttpStatusCode.Forbidden, content = ERROR_BODY)
+        )
+
+        val result = dataSource.resume()
+
+        assertTrue(result.isFailure)
+    }
+
+    @Test
+    fun `resume - request - targets the play path with PUT`() = runTest {
+        val engine = respondingWith(status = HttpStatusCode.NoContent, content = "")
+        val dataSource = playerRemoteDataSource(engine = engine)
+
+        dataSource.resume()
+
+        with(engine.requestHistory.first()) {
+            method shouldBe HttpMethod.Put
+            url.encodedPath shouldBe "/me/player/play"
+        }
+    }
+
+    @Test
+    fun `resume - request - sends an empty json object body`() = runTest {
+        val engine = respondingWith(status = HttpStatusCode.NoContent, content = "")
+        val dataSource = playerRemoteDataSource(engine = engine)
+
+        dataSource.resume()
+
+        val body = engine.requestHistory.first().body as OutgoingContent.ByteArrayContent
+        body.bytes().decodeToString() shouldBe "{}"
     }
 
     private fun encoded(items: List<PlayHistoryObject>) = Json.encodeToString(

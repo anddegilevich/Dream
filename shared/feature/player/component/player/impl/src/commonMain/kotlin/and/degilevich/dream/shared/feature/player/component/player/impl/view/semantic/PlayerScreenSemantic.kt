@@ -7,4 +7,5 @@ object PlayerScreenSemantic {
     const val TEST_TAG_SHUFFLE = "player_shuffle"
     const val TEST_TAG_SKIP_TO_PREVIOUS = "player_skip_to_previous"
     const val TEST_TAG_SKIP_TO_NEXT = "player_skip_to_next"
+    const val TEST_TAG_PLAY = "player_play"
 }

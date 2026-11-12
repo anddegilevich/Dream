@@ -10,6 +10,7 @@ class PlayerUIStatePreviewProvider : LabeledPreviewParameterProvider<PlayerUISta
     override val labeledValues = listOf(
         "Default" to provideDefault(),
         "Shuffling" to provideShuffling(),
+        "Playing" to providePlaying(),
         "Long names" to provideLongNames()
     )
 
@@ -25,12 +26,17 @@ class PlayerUIStatePreviewProvider : LabeledPreviewParameterProvider<PlayerUISta
                 elapsed = "0:20",
                 remaining = "-1:00"
             ),
-            isShuffling = false
+            isShuffling = false,
+            isPlaying = false
         )
     }
 
     fun provideShuffling(): PlayerUIState {
         return provideDefault().copy(isShuffling = true)
+    }
+
+    fun providePlaying(): PlayerUIState {
+        return provideDefault().copy(isPlaying = true)
     }
 
     fun provideLongNames(): PlayerUIState {

@@ -9,6 +9,7 @@ class MiniPlayerUIStatePreviewProvider : LabeledPreviewParameterProvider<MiniPla
     override val labeledValues = listOf(
         "Default" to provideDefault(),
         "Shuffling" to provideShuffling(),
+        "Playing" to providePlaying(),
         "Long names" to provideLongNames()
     )
 
@@ -19,12 +20,17 @@ class MiniPlayerUIStatePreviewProvider : LabeledPreviewParameterProvider<MiniPla
                 name = "Track",
                 artists = "Artist"
             ),
-            isShuffling = false
+            isShuffling = false,
+            isPlaying = false
         )
     }
 
     fun provideShuffling(): MiniPlayerUIState {
         return provideDefault().copy(isShuffling = true)
+    }
+
+    fun providePlaying(): MiniPlayerUIState {
+        return provideDefault().copy(isPlaying = true)
     }
 
     fun provideLongNames(): MiniPlayerUIState {

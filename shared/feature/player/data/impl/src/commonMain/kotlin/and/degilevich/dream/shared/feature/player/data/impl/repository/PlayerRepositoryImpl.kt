@@ -32,4 +32,12 @@ internal class PlayerRepositoryImpl(
     override suspend fun setShuffle(params: SetShuffleParams): Result<Unit> {
         return playerRemoteDataSource.setShuffle(params = params)
     }
+
+    override suspend fun pause(): Result<Unit> {
+        return playerRemoteDataSource.pause()
+    }
+
+    override suspend fun resume(): Result<Unit> {
+        return playerRemoteDataSource.resume()
+    }
 }

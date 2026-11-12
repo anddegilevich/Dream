@@ -5,4 +5,5 @@ sealed interface MiniPlayerIntent {
     data object OnSkipToPreviousClicked : MiniPlayerIntent
     data object OnSkipToNextClicked : MiniPlayerIntent
     data object OnShuffleClicked : MiniPlayerIntent
+    data object OnPlayClicked : MiniPlayerIntent
 }

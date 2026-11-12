@@ -126,4 +126,28 @@ class PlayerRepositoryImplTest {
         result shouldBe expected
         receivedParams shouldBe listOf(params)
     }
+
+    @Test
+    fun `pause - delegates to remote data source and returns its result unchanged`() = runTest {
+        val expected = Result.failure<Unit>(IllegalStateException("premium required"))
+        val repository = PlayerRepositoryImpl(
+            playerRemoteDataSource = FakePlayerRemoteDataSource(onPause = { expected })
+        )
+
+        val result = repository.pause()
+
+        result shouldBe expected
+    }
+
+    @Test
+    fun `resume - delegates to remote data source and returns its result unchanged`() = runTest {
+        val expected = Result.failure<Unit>(IllegalStateException("premium required"))
+        val repository = PlayerRepositoryImpl(
+            playerRemoteDataSource = FakePlayerRemoteDataSource(onResume = { expected })
+        )
+
+        val result = repository.resume()
+
+        result shouldBe expected
+    }
 }

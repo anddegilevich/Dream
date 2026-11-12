@@ -11,6 +11,7 @@ import and.degilevich.dream.shared.feature.player.component.player.impl.componen
 import and.degilevich.dream.shared.feature.player.component.player.impl.preview.PlayerUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.player.component.player.impl.view.semantic.PlayerScreenSemantic
 import and.degilevich.dream.shared.feature.player.ui.api.view.PlaybackProgressView
+import and.degilevich.dream.shared.feature.player.ui.api.view.PlayIconButton
 import and.degilevich.dream.shared.feature.player.ui.api.view.ShuffleIconButton
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
@@ -18,7 +19,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -103,6 +103,7 @@ fun PlayerScreen(
         PlayerControls(
             modifier = Modifier.fillMaxWidth(),
             isShuffling = state.isShuffling,
+            isPlaying = state.isPlaying,
             onIntent = onIntent
         )
     }
@@ -111,6 +112,7 @@ fun PlayerScreen(
 @Composable
 private fun PlayerControls(
     isShuffling: Boolean,
+    isPlaying: Boolean,
     modifier: Modifier = Modifier,
     onIntent: (PlayerIntent) -> Unit
 ) {
@@ -132,6 +134,13 @@ private fun PlayerControls(
                 .size(40.dp),
             painter = painterResource(Res.images.ic_skip_previous),
             onClicked = { onIntent(PlayerIntent.OnSkipToPreviousClicked) }
+        )
+        PlayIconButton(
+            modifier = Modifier
+                .testTag(PlayerScreenSemantic.TEST_TAG_PLAY)
+                .size(56.dp),
+            isPlaying = isPlaying,
+            onClicked = { onIntent(PlayerIntent.OnPlayClicked) }
         )
         IconButton(
             modifier = Modifier

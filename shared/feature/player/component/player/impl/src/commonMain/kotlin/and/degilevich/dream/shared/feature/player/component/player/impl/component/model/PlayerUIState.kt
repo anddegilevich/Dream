@@ -10,7 +10,8 @@ data class PlayerUIState(
     val coverUrl: String,
     val track: TrackCardInfoUIData,
     val progress: PlaybackProgressUIData,
-    val isShuffling: Boolean
+    val isShuffling: Boolean,
+    val isPlaying: Boolean
 ) {
 
     companion object : EmptyFactory<PlayerUIState> {
@@ -20,7 +21,8 @@ data class PlayerUIState(
                 coverUrl = "",
                 track = TrackCardInfoUIData.empty(),
                 progress = PlaybackProgressUIData.empty(),
-                isShuffling = false
+                isShuffling = false,
+                isPlaying = false
             )
         }
     }

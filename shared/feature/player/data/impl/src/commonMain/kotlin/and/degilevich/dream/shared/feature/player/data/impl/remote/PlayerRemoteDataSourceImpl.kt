@@ -2,6 +2,7 @@ package and.degilevich.dream.shared.feature.player.data.impl.remote
 
 import and.degilevich.dream.shared.core.service.api.ApiService
 import and.degilevich.dream.shared.core.service.api.generated.api.PlayerApi
+import and.degilevich.dream.shared.core.service.api.generated.model.StartAUsersPlaybackRequest
 import and.degilevich.dream.shared.feature.player.data.mapper.api.remote.PlaybackStateResponseToResultMapper
 import and.degilevich.dream.shared.feature.player.data.mapper.api.remote.RecentlyPlayedResponseToResultMapper
 import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.getPlaybackState.GetPlaybackStateResult
@@ -49,6 +50,14 @@ internal class PlayerRemoteDataSourceImpl(
 
     override suspend fun setShuffle(params: SetShuffleParams): Result<Unit> = runCatching {
         playerApi.toggleShuffleForUsersPlayback(state = params.isEnabled)
+    }.map { }
+
+    override suspend fun pause(): Result<Unit> = runCatching {
+        playerApi.pauseAUsersPlayback()
+    }.map { }
+
+    override suspend fun resume(): Result<Unit> = runCatching {
+        playerApi.startAUsersPlayback(startAUsersPlaybackRequest = StartAUsersPlaybackRequest())
     }.map { }
 
     private companion object {

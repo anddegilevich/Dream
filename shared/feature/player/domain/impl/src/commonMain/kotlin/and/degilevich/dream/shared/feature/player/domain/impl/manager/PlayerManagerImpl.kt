@@ -44,6 +44,14 @@ internal class PlayerManagerImpl(
         return playerRepository.setShuffle(params = params).onSuccess { fetchPlayerState() }
     }
 
+    override suspend fun pause(): Result<Unit> {
+        return playerRepository.pause().onSuccess { fetchPlayerState() }
+    }
+
+    override suspend fun resume(): Result<Unit> {
+        return playerRepository.resume().onSuccess { fetchPlayerState() }
+    }
+
     private suspend fun fetchPlayerState() {
         playerRepository.getPlaybackState().onSuccess { result ->
             playerStateMutable.value = result.toPlayerState()

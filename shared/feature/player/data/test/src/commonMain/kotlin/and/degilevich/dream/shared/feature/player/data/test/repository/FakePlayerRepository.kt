@@ -14,7 +14,9 @@ class FakePlayerRepository(
     private val onGetPlaybackState: () -> Result<GetPlaybackStateResult> = { fakeImplementationError() },
     private val onSkipToNext: () -> Result<Unit> = { fakeImplementationError() },
     private val onSkipToPrevious: () -> Result<Unit> = { fakeImplementationError() },
-    private val onSetShuffle: (SetShuffleParams) -> Result<Unit> = { fakeImplementationError() }
+    private val onSetShuffle: (SetShuffleParams) -> Result<Unit> = { fakeImplementationError() },
+    private val onPause: () -> Result<Unit> = { fakeImplementationError() },
+    private val onResume: () -> Result<Unit> = { fakeImplementationError() }
 ) : PlayerRepository {
 
     override suspend fun getRecentlyPlayed(
@@ -28,4 +30,8 @@ class FakePlayerRepository(
     override suspend fun skipToPrevious(): Result<Unit> = onSkipToPrevious()
 
     override suspend fun setShuffle(params: SetShuffleParams): Result<Unit> = onSetShuffle(params)
+
+    override suspend fun pause(): Result<Unit> = onPause()
+
+    override suspend fun resume(): Result<Unit> = onResume()
 }

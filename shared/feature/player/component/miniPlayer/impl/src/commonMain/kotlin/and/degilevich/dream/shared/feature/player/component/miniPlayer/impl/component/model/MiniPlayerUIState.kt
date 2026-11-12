@@ -8,7 +8,8 @@ import androidx.compose.runtime.Immutable
 data class MiniPlayerUIState(
     val coverUrl: String,
     val track: TrackCardInfoUIData,
-    val isShuffling: Boolean
+    val isShuffling: Boolean,
+    val isPlaying: Boolean
 ) {
 
     companion object : EmptyFactory<MiniPlayerUIState> {
@@ -17,7 +18,8 @@ data class MiniPlayerUIState(
             return MiniPlayerUIState(
                 coverUrl = "",
                 track = TrackCardInfoUIData.empty(),
-                isShuffling = false
+                isShuffling = false,
+                isPlaying = false
             )
         }
     }

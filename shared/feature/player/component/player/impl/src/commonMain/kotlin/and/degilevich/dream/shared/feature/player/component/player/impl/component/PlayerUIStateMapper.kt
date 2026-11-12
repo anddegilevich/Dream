@@ -18,7 +18,8 @@ internal class PlayerUIStateMapper : Mapper<PlayerState, PlayerUIState>, KoinCom
             coverUrl = playbackState.track.album.images.firstOrNull()?.url.orEmpty(),
             track = trackInfoToTrackCardInfoUIDataMapper.map(playbackState.track),
             progress = playbackStateDataToPlaybackProgressUIDataMapper.map(playbackState),
-            isShuffling = playbackState.isShuffling
+            isShuffling = playbackState.isShuffling,
+            isPlaying = playbackState.isPlaying
         )
     }
 }

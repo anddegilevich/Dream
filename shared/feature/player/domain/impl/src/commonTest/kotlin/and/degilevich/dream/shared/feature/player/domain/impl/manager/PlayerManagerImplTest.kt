@@ -374,6 +374,64 @@ class PlayerManagerImplTest {
         manager.playerState.first() shouldBe PlayerStateData.Idle
     }
 
+    @Test
+    fun `pause - repository succeeds - returns success and fetches the player state`() = runTest {
+        val fetchedState = playbackStateData(trackId = "track", isPlaying = false)
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = { value(fetchedState) },
+                onPause = { Result.success(Unit) }
+            )
+        )
+
+        val result = manager.pause()
+
+        result shouldBe Result.success(Unit)
+        manager.playerState.first() shouldBe PlayerStateData.Active(playbackState = fetchedState)
+    }
+
+    @Test
+    fun `pause - repository fails - returns the failure without fetching the player state`() = runTest {
+        val expected = Result.failure<Unit>(IllegalStateException("premium required"))
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(onPause = { expected })
+        )
+
+        val result = manager.pause()
+
+        result shouldBe expected
+        manager.playerState.first() shouldBe PlayerStateData.Idle
+    }
+
+    @Test
+    fun `resume - repository succeeds - returns success and fetches the player state`() = runTest {
+        val fetchedState = playbackStateData(trackId = "track", isPlaying = true)
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = { value(fetchedState) },
+                onResume = { Result.success(Unit) }
+            )
+        )
+
+        val result = manager.resume()
+
+        result shouldBe Result.success(Unit)
+        manager.playerState.first() shouldBe PlayerStateData.Active(playbackState = fetchedState)
+    }
+
+    @Test
+    fun `resume - repository fails - returns the failure without fetching the player state`() = runTest {
+        val expected = Result.failure<Unit>(IllegalStateException("premium required"))
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(onResume = { expected })
+        )
+
+        val result = manager.resume()
+
+        result shouldBe expected
+        manager.playerState.first() shouldBe PlayerStateData.Idle
+    }
+
     private fun createManager(
         playerRepository: PlayerRepository = FakePlayerRepository()
     ) = PlayerManagerImpl(

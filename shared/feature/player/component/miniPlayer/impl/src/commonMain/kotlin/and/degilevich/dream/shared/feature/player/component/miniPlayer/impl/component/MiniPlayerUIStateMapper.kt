@@ -15,7 +15,8 @@ internal class MiniPlayerUIStateMapper : Mapper<MiniPlayerState, MiniPlayerUISta
         MiniPlayerUIState(
             coverUrl = playbackState.track.album.images.firstOrNull()?.url.orEmpty(),
             track = trackInfoToTrackCardInfoUIDataMapper.map(playbackState.track),
-            isShuffling = playbackState.isShuffling
+            isShuffling = playbackState.isShuffling,
+            isPlaying = playbackState.isPlaying
         )
     }
 }

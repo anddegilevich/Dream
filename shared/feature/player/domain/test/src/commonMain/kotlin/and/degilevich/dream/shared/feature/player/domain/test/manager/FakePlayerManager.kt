@@ -10,7 +10,9 @@ class FakePlayerManager(
     private val onPlayerState: () -> Flow<PlayerStateData> = { fakeImplementationError() },
     private val onSkipToNext: suspend () -> Result<Unit> = { fakeImplementationError() },
     private val onSkipToPrevious: suspend () -> Result<Unit> = { fakeImplementationError() },
-    private val onSetShuffle: suspend (SetShuffleParams) -> Result<Unit> = { fakeImplementationError() }
+    private val onSetShuffle: suspend (SetShuffleParams) -> Result<Unit> = { fakeImplementationError() },
+    private val onPause: suspend () -> Result<Unit> = { fakeImplementationError() },
+    private val onResume: suspend () -> Result<Unit> = { fakeImplementationError() }
 ) : PlayerManager {
 
     override val playerState: Flow<PlayerStateData>
@@ -21,4 +23,8 @@ class FakePlayerManager(
     override suspend fun skipToPrevious(): Result<Unit> = onSkipToPrevious()
 
     override suspend fun setShuffle(params: SetShuffleParams): Result<Unit> = onSetShuffle(params)
+
+    override suspend fun pause(): Result<Unit> = onPause()
+
+    override suspend fun resume(): Result<Unit> = onResume()
 }

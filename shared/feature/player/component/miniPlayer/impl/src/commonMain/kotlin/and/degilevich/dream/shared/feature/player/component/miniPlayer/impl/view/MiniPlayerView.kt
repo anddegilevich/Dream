@@ -10,6 +10,7 @@ import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.comp
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.component.model.MiniPlayerUIState
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.preview.MiniPlayerUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.view.semantic.MiniPlayerViewSemantic
+import and.degilevich.dream.shared.feature.player.ui.api.view.PlayIconButton
 import and.degilevich.dream.shared.feature.player.ui.api.view.ShuffleIconButton
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
@@ -64,6 +65,7 @@ fun MiniPlayerView(
         )
         MiniPlayerControls(
             isShuffling = state.isShuffling,
+            isPlaying = state.isPlaying,
             onIntent = onIntent
         )
     }
@@ -72,6 +74,7 @@ fun MiniPlayerView(
 @Composable
 private fun MiniPlayerControls(
     isShuffling: Boolean,
+    isPlaying: Boolean,
     modifier: Modifier = Modifier,
     onIntent: (MiniPlayerIntent) -> Unit
 ) {
@@ -93,6 +96,13 @@ private fun MiniPlayerControls(
                 .size(24.dp),
             painter = painterResource(Res.images.ic_skip_previous),
             onClicked = { onIntent(MiniPlayerIntent.OnSkipToPreviousClicked) }
+        )
+        PlayIconButton(
+            modifier = Modifier
+                .testTag(MiniPlayerViewSemantic.TEST_TAG_PLAY)
+                .size(24.dp),
+            isPlaying = isPlaying,
+            onClicked = { onIntent(MiniPlayerIntent.OnPlayClicked) }
         )
         IconButton(
             modifier = Modifier

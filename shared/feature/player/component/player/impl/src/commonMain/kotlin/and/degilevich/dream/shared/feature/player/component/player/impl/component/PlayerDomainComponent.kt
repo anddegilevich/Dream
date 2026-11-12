@@ -40,6 +40,7 @@ internal class PlayerDomainComponent(
             is PlayerIntent.OnSkipToPreviousClicked -> skipToPrevious()
             is PlayerIntent.OnSkipToNextClicked -> skipToNext()
             is PlayerIntent.OnShuffleClicked -> toggleShuffle()
+            is PlayerIntent.OnPlayClicked -> togglePlayback()
         }
     }
 
@@ -65,6 +66,19 @@ internal class PlayerDomainComponent(
         )
         withContext(Dispatchers.IO) {
             playerManager.setShuffle(params = params)
+        }.onFailure { error ->
+            toastController.showMessageToast(error = error)
+        }
+    }
+
+    private fun togglePlayback() = scope.launch {
+        val isPlaying = state().playbackState.isPlaying
+        withContext(Dispatchers.IO) {
+            if (isPlaying) {
+                playerManager.pause()
+            } else {
+                playerManager.resume()
+            }
         }.onFailure { error ->
             toastController.showMessageToast(error = error)
         }

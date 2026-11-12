@@ -41,6 +41,7 @@ internal class MiniPlayerDomainComponent(
             is MiniPlayerIntent.OnSkipToPreviousClicked -> skipToPrevious()
             is MiniPlayerIntent.OnSkipToNextClicked -> skipToNext()
             is MiniPlayerIntent.OnShuffleClicked -> toggleShuffle()
+            is MiniPlayerIntent.OnPlayClicked -> togglePlayback()
         }
     }
 
@@ -64,6 +65,19 @@ internal class MiniPlayerDomainComponent(
         val params = SetShuffleParams(isEnabled = !state().playbackState.isShuffling)
         withContext(Dispatchers.IO) {
             playerManager.setShuffle(params = params)
+        }.onFailure { error ->
+            toastController.showMessageToast(error = error)
+        }
+    }
+
+    private fun togglePlayback() = scope.launch {
+        val isPlaying = state().playbackState.isPlaying
+        withContext(Dispatchers.IO) {
+            if (isPlaying) {
+                playerManager.pause()
+            } else {
+                playerManager.resume()
+            }
         }.onFailure { error ->
             toastController.showMessageToast(error = error)
         }
