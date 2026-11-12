@@ -12,7 +12,7 @@ import and.degilevich.dream.shared.feature.playlist.component.list.impl.componen
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.preview.PlaylistListUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.playlist.component.list.impl.view.semantic.PlaylistListCarouselSemantic
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.title_my_playlists
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
@@ -31,8 +32,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun PlaylistListCarousel(
     state: PlaylistListUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (PlaylistListIntent) -> Unit
+    onIntent: (PlaylistListIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -57,10 +58,11 @@ fun PlaylistListCarousel(
         ) {
             item {
                 LikedSongsCard(
-                    modifier = Modifier.testTag(PlaylistListCarouselSemantic.TEST_TAG_LIKED_SONGS)
-                ) {
-                    onIntent(PlaylistListIntent.OnLikedSongsClicked)
-                }
+                    modifier = Modifier.testTag(PlaylistListCarouselSemantic.TEST_TAG_LIKED_SONGS),
+                    onClick = {
+                        onIntent(PlaylistListIntent.OnLikedSongsClicked)
+                    }
+                )
             }
             identifiedSkeletonItems(
                 skeleton = state.playlists,
@@ -75,12 +77,13 @@ fun PlaylistListCarousel(
                         modifier = Modifier
                             .testTag(PlaylistListCarouselSemantic.TEST_TAG_ITEM)
                             .animateItem(),
-                        data = playlist
-                    ) { id ->
-                        onIntent(
-                            PlaylistListIntent.OnPlaylistClicked(id = id)
-                        )
-                    }
+                        data = playlist,
+                        onClick = { id ->
+                            onIntent(
+                                PlaylistListIntent.OnPlaylistClicked(id = id)
+                            )
+                        }
+                    )
                 }
             )
         }
@@ -89,7 +92,7 @@ fun PlaylistListCarousel(
 
 private const val LOADING_ITEMS_COUNT = 10
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlaylistListCarouselPreview(
     @PreviewParameter(PlaylistListUIStatePreviewProvider::class)
@@ -98,7 +101,8 @@ private fun PlaylistListCarouselPreview(
     ComposeAppTheme {
         PlaylistListCarousel(
             modifier = Modifier.themeBackground(),
-            state = state
-        ) {}
+            state = state,
+            onIntent = {}
+        )
     }
 }

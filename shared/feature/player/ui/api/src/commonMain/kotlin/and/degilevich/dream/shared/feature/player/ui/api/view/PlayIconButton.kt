@@ -1,14 +1,16 @@
 package and.degilevich.dream.shared.feature.player.ui.api.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_pause
+import and.degilevich.dream.ic_play
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.foundation.compose.preview.BooleanPreviewProvider
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -16,8 +18,8 @@ import dev.icerock.moko.resources.compose.painterResource
 @Composable
 fun PlayIconButton(
     isPlaying: Boolean,
-    modifier: Modifier = Modifier,
-    onClicked: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     IconButton(
         modifier = modifier,
@@ -28,11 +30,11 @@ fun PlayIconButton(
                 Res.images.ic_play
             }
         ),
-        onClicked = onClicked
+        onClick = onClick
     )
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlayIconButtonPreview(
     @PreviewParameter(BooleanPreviewProvider::class)
@@ -42,6 +44,7 @@ private fun PlayIconButtonPreview(
         modifier = Modifier
             .themeBackground()
             .size(24.dp),
-        isPlaying = isPlaying
-    ) {}
+        isPlaying = isPlaying,
+        onClick = {}
+    )
 }

@@ -9,7 +9,7 @@ If `$ARGUMENTS` is `android`, run:
 If `$ARGUMENTS` is `ios`, run:
 
 ```bash
-xcodebuild build -project ios/app.xcodeproj -configuration Debug -scheme prodDebug -sdk iphonesimulator
+xcodebuild build -project ios/app.xcodeproj -configuration Debug -scheme prodDebug -sdk iphonesimulator -arch arm64
 ```
 
 If no platform is given, ask which one to build.

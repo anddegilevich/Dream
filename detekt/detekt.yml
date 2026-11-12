@@ -4,13 +4,10 @@ complexity:
   LongParameterList:
     active: false
   TooManyFunctions:
-    thresholdInClasses: 20
+    allowedFunctionsPerClass: 20
   LongMethod:
     ignoreAnnotated:
       - 'Composable'
-
-output-reports:
-  active: true
 
 exceptions:
   excludes: *excludePatterns
@@ -34,7 +31,7 @@ empty-blocks:
   EmptyFinallyBlock:
     active: false
 
-formatting:
+ktlint:
   excludes: *excludePatterns
   CommentSpacing:
     active: false
@@ -50,12 +47,26 @@ formatting:
     active: false
   FinalNewline:
     active: false
+  TrailingCommaOnCallSite:
+    active: false
+  TrailingCommaOnDeclarationSite:
+    active: false
+  FunctionSignature:
+    active: false
+  ClassSignature:
+    active: false
+  FunctionExpressionBody:
+    active: false
+  BlankLineBetweenWhenConditions:
+    active: false
+  TypeParameterListSpacing:
+    active: false
 
 style:
   excludes: *excludePatterns
   ForbiddenComment:
     active: true
-    values:
+    comments:
       - 'TODO'
       - 'STOPSHIP'
     allowedPatterns: 'FIXME'
@@ -65,25 +76,22 @@ style:
     ignoreAnnotated:
       - 'Preview'
       - 'Test'
-  UnusedPrivateMember:
+  UnusedPrivateFunction:
     ignoreAnnotated:
       - 'Preview'
       - 'PreviewLightDark'
-      - 'LightDarkPreviews'
   NewLineAtEndOfFile:
     active: false
   ThrowsCount:
     max: 10
 
-TwitterCompose:
+Compose:
   excludes: *excludePatterns
   CompositionLocalAllowlist:
     active: true
   CompositionLocalNaming:
     active: true
   ContentEmitterReturningValues:
-    active: true
-  ModifierComposable:
     active: true
   ModifierMissing:
     active: true

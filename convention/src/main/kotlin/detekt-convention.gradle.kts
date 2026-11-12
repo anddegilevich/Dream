@@ -1,9 +1,9 @@
 import and.degilevich.dream.convention.common.javaVersion
-import io.gitlab.arturbosch.detekt.Detekt
-import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import dev.detekt.gradle.Detekt
+import dev.detekt.gradle.DetektCreateBaselineTask
 
 plugins {
-    id("io.gitlab.arturbosch.detekt")
+    id("dev.detekt")
 }
 
 detekt {
@@ -30,8 +30,8 @@ tasks.withType<DetektCreateBaselineTask>().configureEach {
 }
 
 dependencies {
-    // libs.versions.detekt - gradle/libs.versions.toml:12
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.8")
+    // libs.versions.detekt - gradle/libs.versions.toml
+    detektPlugins("dev.detekt:detekt-rules-ktlint-wrapper:2.0.0-alpha.6")
     // libs.versions.detekt.compose - gradle/libs.versions.toml
-    detektPlugins("com.twitter.compose.rules:detekt:0.0.26")
+    detektPlugins("io.nlopez.compose.rules:detekt:0.6.8")
 }

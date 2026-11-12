@@ -3,7 +3,6 @@ package and.degilevich.dream.shated.feature.track.ui.api.view
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shated.feature.track.ui.api.model.TrackCardInfoUIData
 import and.degilevich.dream.shated.feature.track.ui.api.preview.TrackCardInfoUIDataPreviewProvider
 import androidx.compose.foundation.layout.Arrangement
@@ -12,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -41,7 +41,7 @@ fun TrackCardInfoView(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun TrackCardInfoViewPreview(
     @PreviewParameter(TrackCardInfoUIDataPreviewProvider::class)

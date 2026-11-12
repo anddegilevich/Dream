@@ -8,7 +8,6 @@ import and.degilevich.dream.shared.feature.playlist.ui.api.preview.PlaylistCardU
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -21,24 +20,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun PlaylistCard(
     data: PlaylistCardUIData,
-    modifier: Modifier = Modifier,
-    onClicked: (id: Identifier) -> Unit
+    onClick: (id: Identifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+    val onClickDebounced = rememberDebounced { onClick(data.id) }
 
     Column(
         modifier = modifier
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,
-                onClick = onClickedDebounced
+                onClick = onClickDebounced
             )
             .scaleOnClick(interactionSource = interactionSource)
             .width(140.dp),
@@ -59,7 +59,7 @@ fun PlaylistCard(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlaylistCardPreview(
     @PreviewParameter(PlaylistCardUIDataPreviewProvider::class)
@@ -67,6 +67,7 @@ private fun PlaylistCardPreview(
 ) = ComposeAppTheme {
     PlaylistCard(
         modifier = Modifier.themeBackground(),
-        data = data
-    ) {}
+        data = data,
+        onClick = {}
+    )
 }

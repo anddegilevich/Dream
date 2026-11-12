@@ -8,7 +8,6 @@ import and.degilevich.dream.shared.feature.artist.ui.api.preview.ArtistLabelUIDa
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -17,23 +16,24 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun ArtistLabel(
     data: ArtistLabelUIData,
-    modifier: Modifier = Modifier,
-    onClicked: (id: Identifier) -> Unit
+    onClick: (id: Identifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+    val onClickDebounced = rememberDebounced { onClick(data.id) }
 
     Row(
         modifier = modifier
             .clickable(
                 interactionSource = null,
                 indication = null,
-                onClick = onClickedDebounced
+                onClick = onClickDebounced
             )
             .padding(all = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -51,7 +51,7 @@ fun ArtistLabel(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun ArtistLabelPreview(
     @PreviewParameter(ArtistLabelUIDataPreviewProvider::class)
@@ -59,6 +59,7 @@ private fun ArtistLabelPreview(
 ) = ComposeAppTheme {
     ArtistLabel(
         modifier = Modifier.themeBackground(),
-        data = data
-    ) { }
+        data = data,
+        onClick = { }
+    )
 }

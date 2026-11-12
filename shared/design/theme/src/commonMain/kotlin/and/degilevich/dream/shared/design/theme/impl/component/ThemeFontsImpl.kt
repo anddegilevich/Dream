@@ -1,6 +1,20 @@
 package and.degilevich.dream.shared.design.theme.impl.component
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.avenirnextcyr_bold
+import and.degilevich.dream.avenirnextcyr_bolditalic
+import and.degilevich.dream.avenirnextcyr_heavy
+import and.degilevich.dream.avenirnextcyr_heavyitalic
+import and.degilevich.dream.avenirnextcyr_italic
+import and.degilevich.dream.avenirnextcyr_light
+import and.degilevich.dream.avenirnextcyr_lightitalic
+import and.degilevich.dream.avenirnextcyr_medium
+import and.degilevich.dream.avenirnextcyr_mediumitalic
+import and.degilevich.dream.avenirnextcyr_regular
+import and.degilevich.dream.avenirnextcyr_thin
+import and.degilevich.dream.avenirnextcyr_thinitalic
+import and.degilevich.dream.avenirnextcyr_ultralight
+import and.degilevich.dream.avenirnextcyr_ultralightit
 import and.degilevich.dream.shared.design.theme.api.component.ThemeFonts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable

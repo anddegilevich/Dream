@@ -4,7 +4,7 @@ import and.degilevich.dream.Res
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.stub_not_yet_implemented
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +12,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
 
@@ -38,7 +39,7 @@ fun ViewStub(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun ViewStubPreview() = ComposeAppTheme {
     ViewStub(stub = "Stub")

@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.search.ui.api.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.label_track
 import and.degilevich.dream.shared.design.system.divider.TextCircleDivider
 import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.theme.api.Theme
@@ -25,17 +26,17 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun TrackSearchCard(
     data: TrackSearchCardUIData,
-    modifier: Modifier = Modifier,
-    onClicked: (id: Identifier) -> Unit
+    onClick: (id: Identifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+    val onClickDebounced = rememberDebounced { onClick(data.id) }
 
     Row(
         modifier = modifier
             .clickable(
                 interactionSource = null,
                 indication = themeRipple(),
-                onClick = onClickedDebounced
+                onClick = onClickDebounced
             )
             .padding(all = 4.dp),
         verticalAlignment = Alignment.CenterVertically

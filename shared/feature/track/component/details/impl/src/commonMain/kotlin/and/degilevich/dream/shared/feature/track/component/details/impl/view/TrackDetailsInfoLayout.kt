@@ -8,7 +8,6 @@ import and.degilevich.dream.shared.feature.track.component.details.impl.componen
 import and.degilevich.dream.shared.feature.track.component.details.impl.preview.TrackDetailsInfoLayoutUIDataPreviewProvider
 import and.degilevich.dream.shared.feature.track.component.details.impl.view.semantic.TrackDetailsInfoLayoutSemantic
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -61,7 +61,7 @@ fun TrackDetailsInfoLayout(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun TrackDetailsInfoLayoutPreview(
     @PreviewParameter(TrackDetailsInfoLayoutUIDataPreviewProvider::class)

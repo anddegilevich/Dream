@@ -13,6 +13,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.Child
@@ -27,11 +28,12 @@ fun <C : Any, T : Any> ColumnScope.AnimatedSlot(
     content: @Composable (child: Child.Created<C, T>) -> Unit,
 ) {
     val child = slot.child
+    val currentContent by rememberUpdatedState(content)
     var childContent: @Composable ColumnScope.() -> Unit by remember { mutableStateOf({ }) }
 
     DisposableEffect(child) {
         if (child != null) {
-            childContent = { content(child) }
+            childContent = { currentContent(child) }
         }
         onDispose {}
     }

@@ -1,6 +1,10 @@
 package and.degilevich.dream.shared.feature.album.ui.impl.mapper
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.album_type_album
+import and.degilevich.dream.album_type_compilation
+import and.degilevich.dream.album_type_single
+import and.degilevich.dream.error
 import and.degilevich.dream.shared.feature.album.domain.model.artifact.api.dictionary.AlbumType
 import and.degilevich.dream.shared.resource.test.FakeResourceManager
 import dev.icerock.moko.resources.StringResource

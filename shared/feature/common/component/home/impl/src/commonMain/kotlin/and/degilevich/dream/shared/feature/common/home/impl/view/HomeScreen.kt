@@ -17,7 +17,6 @@ import and.degilevich.dream.shared.feature.common.home.impl.component.model.Home
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.common.home.impl.view.semantic.HomeScreenSemantic
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.api.component.MiniPlayerComponent
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shared.foundation.decompose.compose.drawer.rememberNavigationDrawerState
 import and.degilevich.dream.shared.foundation.decompose.compose.slot.AnimatedSlot
 import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.ChildDrawer
@@ -36,6 +35,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.extensions.compose.pages.ChildPages
@@ -53,12 +53,12 @@ fun HomeScreen(
     miniPlayer: Value<ChildSlot<HomeMiniPlayerConfig, HomeMiniPlayer>>,
     pages: Value<ChildPagesState<HomePageConfig, HomePage>>,
     drawer: Value<ChildDrawer<HomeDrawer>>,
-    modifier: Modifier = Modifier,
-    onIntent: (HomeIntent) -> Unit
+    onIntent: (HomeIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val navigationDrawerState = rememberNavigationDrawerState(
         drawer = drawer,
-        onStateChanged = { isOpen ->
+        onStateChange = { isOpen ->
             onIntent(HomeIntent.OnDrawerStateChanged(isOpen = isOpen))
         }
     )
@@ -138,7 +138,7 @@ private fun HomeContent(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun HomeScreenPreview() = ComposeAppTheme {
     HomeScreen(

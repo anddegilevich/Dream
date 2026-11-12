@@ -33,14 +33,14 @@ fun rememberDebounced(
     debounceDuration: Duration = DEFAULT_DEBOUNCE,
     block: () -> Unit
 ): () -> Unit {
-    val onClickedDebounced by rememberUpdatedState(block)
+    val onClickDebounced by rememberUpdatedState(block)
     return remember(debounceDuration) {
         var lastMark: TimeMark? = null
         val onClick: () -> Unit = {
             val mark = lastMark
             if (mark == null || mark.elapsedNow() >= debounceDuration) {
                 lastMark = TimeSource.Monotonic.markNow()
-                onClickedDebounced()
+                onClickDebounced()
             }
         }
         onClick

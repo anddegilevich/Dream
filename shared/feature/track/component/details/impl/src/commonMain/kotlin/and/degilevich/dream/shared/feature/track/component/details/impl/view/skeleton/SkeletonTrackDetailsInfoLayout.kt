@@ -4,7 +4,6 @@ import and.degilevich.dream.shared.design.system.modifier.roundedThemeShimmer
 import and.degilevich.dream.shared.design.system.modifier.themeShimmer
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -13,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -61,7 +61,7 @@ fun SkeletonTrackDetailsInfoLayout(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun SkeletonTrackDetailsInfoLayoutPreview() = ComposeAppTheme {
     SkeletonTrackDetailsInfoLayout()

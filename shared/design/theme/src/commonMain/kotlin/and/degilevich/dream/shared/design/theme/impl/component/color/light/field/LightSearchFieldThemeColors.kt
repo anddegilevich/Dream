@@ -1,6 +1,10 @@
 package and.degilevich.dream.shared.design.theme.impl.component.color.light.field
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.black
+import and.degilevich.dream.davys_gray
+import and.degilevich.dream.malachite
+import and.degilevich.dream.philippine_silver
 import and.degilevich.dream.shared.design.theme.api.component.color.field.SearchFieldThemeColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color

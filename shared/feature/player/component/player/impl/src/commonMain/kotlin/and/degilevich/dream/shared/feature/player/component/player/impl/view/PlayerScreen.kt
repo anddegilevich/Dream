@@ -1,6 +1,9 @@
 package and.degilevich.dream.shared.feature.player.component.player.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_back
+import and.degilevich.dream.ic_skip_next
+import and.degilevich.dream.ic_skip_previous
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
@@ -14,7 +17,6 @@ import and.degilevich.dream.shared.feature.player.ui.api.view.PlaybackProgressVi
 import and.degilevich.dream.shared.feature.player.ui.api.view.PlayIconButton
 import and.degilevich.dream.shared.feature.player.ui.api.view.ShuffleIconButton
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -39,8 +42,8 @@ import dev.icerock.moko.resources.compose.painterResource
 @Composable
 fun PlayerScreen(
     state: PlayerUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (PlayerIntent) -> Unit
+    onIntent: (PlayerIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
@@ -60,7 +63,7 @@ fun PlayerScreen(
                 .testTag(PlayerScreenSemantic.TEST_TAG_BACK)
                 .size(24.dp),
             painter = painterResource(Res.images.ic_back),
-            onClicked = { onIntent(PlayerIntent.OnBackClicked) }
+            onClick = { onIntent(PlayerIntent.OnBackClicked) }
         )
         Space(height = 20.dp)
         Box(
@@ -113,8 +116,8 @@ fun PlayerScreen(
 private fun PlayerControls(
     isShuffling: Boolean,
     isPlaying: Boolean,
-    modifier: Modifier = Modifier,
-    onIntent: (PlayerIntent) -> Unit
+    onIntent: (PlayerIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier,
@@ -126,39 +129,40 @@ private fun PlayerControls(
                 .testTag(PlayerScreenSemantic.TEST_TAG_SHUFFLE)
                 .size(32.dp),
             isShuffling = isShuffling,
-            onClicked = { onIntent(PlayerIntent.OnShuffleClicked) }
+            onClick = { onIntent(PlayerIntent.OnShuffleClicked) }
         )
         IconButton(
             modifier = Modifier
                 .testTag(PlayerScreenSemantic.TEST_TAG_SKIP_TO_PREVIOUS)
                 .size(40.dp),
             painter = painterResource(Res.images.ic_skip_previous),
-            onClicked = { onIntent(PlayerIntent.OnSkipToPreviousClicked) }
+            onClick = { onIntent(PlayerIntent.OnSkipToPreviousClicked) }
         )
         PlayIconButton(
             modifier = Modifier
                 .testTag(PlayerScreenSemantic.TEST_TAG_PLAY)
                 .size(56.dp),
             isPlaying = isPlaying,
-            onClicked = { onIntent(PlayerIntent.OnPlayClicked) }
+            onClick = { onIntent(PlayerIntent.OnPlayClicked) }
         )
         IconButton(
             modifier = Modifier
                 .testTag(PlayerScreenSemantic.TEST_TAG_SKIP_TO_NEXT)
                 .size(40.dp),
             painter = painterResource(Res.images.ic_skip_next),
-            onClicked = { onIntent(PlayerIntent.OnSkipToNextClicked) }
+            onClick = { onIntent(PlayerIntent.OnSkipToNextClicked) }
         )
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlayerScreenPreview(
     @PreviewParameter(PlayerUIStatePreviewProvider::class)
     state: PlayerUIState
 ) = ComposeAppTheme {
     PlayerScreen(
-        state = state
-    ) {}
+        state = state,
+        onIntent = {}
+    )
 }

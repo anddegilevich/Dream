@@ -12,7 +12,7 @@ import and.degilevich.dream.shared.feature.album.ui.api.view.AlbumCard
 import and.degilevich.dream.shared.feature.album.ui.api.view.skeleton.SkeletonAlbumCard
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.title_new_releases
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
@@ -31,8 +32,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun AlbumReleasesCarousel(
     state: AlbumReleasesUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (AlbumReleasesIntent) -> Unit
+    onIntent: (AlbumReleasesIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -68,19 +69,20 @@ fun AlbumReleasesCarousel(
                         modifier = Modifier
                             .testTag(AlbumReleasesCarouselSemantic.TEST_TAG_ITEM)
                             .animateItem(),
-                        data = album
-                    ) { id ->
-                        onIntent(
-                            AlbumReleasesIntent.OnAlbumClicked(id = id)
-                        )
-                    }
+                        data = album,
+                        onClick = { id ->
+                            onIntent(
+                                AlbumReleasesIntent.OnAlbumClicked(id = id)
+                            )
+                        }
+                    )
                 }
             )
         }
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun AlbumReleasesCarouselPreview(
     @PreviewParameter(AlbumReleasesUIStatePreviewProvider::class)
@@ -89,7 +91,8 @@ private fun AlbumReleasesCarouselPreview(
     ComposeAppTheme {
         AlbumReleasesCarousel(
             modifier = Modifier.themeBackground(),
-            state = state
-        ) {}
+            state = state,
+            onIntent = {}
+        )
     }
 }

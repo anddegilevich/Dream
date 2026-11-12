@@ -6,13 +6,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 
 @Composable
 fun OnLastItemDisplayedSideEffect(
     listState: LazyListState,
     threshold: Int,
-    onLastItemDisplayed: () -> Unit
+    onLastItemDisplay: () -> Unit
 ) {
+    val currentOnLastItemDisplay by rememberUpdatedState(onLastItemDisplay)
     val isLastItemDisplayed by remember(listState, threshold) {
         derivedStateOf {
             val layoutInfo = listState.layoutInfo
@@ -24,7 +26,7 @@ fun OnLastItemDisplayedSideEffect(
 
     LaunchedEffect(isLastItemDisplayed) {
         if (isLastItemDisplayed) {
-            onLastItemDisplayed()
+            currentOnLastItemDisplay()
         }
     }
 }

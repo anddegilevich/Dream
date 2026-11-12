@@ -7,5 +7,6 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun playerUIModule() = module {
-    factoryOf(::PlaybackStateDataToPlaybackProgressUIDataMapperImpl) bind PlaybackStateDataToPlaybackProgressUIDataMapper::class
+    factoryOf(::PlaybackStateDataToPlaybackProgressUIDataMapperImpl)
+        .bind(PlaybackStateDataToPlaybackProgressUIDataMapper::class)
 }

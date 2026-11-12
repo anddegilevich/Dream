@@ -1,6 +1,11 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.impl.component
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_home
+import and.degilevich.dream.ic_home_filled
+import and.degilevich.dream.ic_search
+import and.degilevich.dream.navbar_item_home
+import and.degilevich.dream.navbar_item_search
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.model.NavbarItem
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItemUIData
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarState

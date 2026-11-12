@@ -15,6 +15,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,7 +40,8 @@ fun <C : Any, T : Any> SlotBottomSheetLayout(
     sheetBackgroundColor: Color = MaterialTheme.colors.surface,
     content: @Composable () -> Unit
 ) {
-
+    val currentOnDismiss by rememberUpdatedState(onDismiss)
+    val currentSheetContent by rememberUpdatedState(sheetContent)
     val slotState by slot.subscribeAsState()
     val child: Child.Created<C, T>? = slotState.child
     val isVisibleChild = remember(child) { child != null }
@@ -47,7 +49,7 @@ fun <C : Any, T : Any> SlotBottomSheetLayout(
 
     LaunchedEffect(sheetState.targetValue) {
         if (sheetState.targetValue == ModalBottomSheetValue.Hidden) {
-            onDismiss()
+            currentOnDismiss()
         }
     }
     LaunchedEffect(isVisibleChild) {
@@ -62,7 +64,7 @@ fun <C : Any, T : Any> SlotBottomSheetLayout(
     DisposableEffect(child) {
         if (child != null) {
             childContent = {
-                sheetContent(child)
+                currentSheetContent(child)
             }
         }
         onDispose {}

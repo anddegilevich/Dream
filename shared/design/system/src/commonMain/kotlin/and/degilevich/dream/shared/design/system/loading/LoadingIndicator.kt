@@ -2,7 +2,6 @@ package and.degilevich.dream.shared.design.system.loading
 
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
@@ -12,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -33,7 +33,7 @@ private val DEFAULT_SIZE = 40.dp
 
 private const val STROKE_WIDTH_RATIO = 0.1f
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun LoadingIndicatorPreview() = ComposeAppTheme {
     Row(

@@ -1,6 +1,8 @@
 package and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_skip_next
+import and.degilevich.dream.ic_skip_previous
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
@@ -14,14 +16,12 @@ import and.degilevich.dream.shared.feature.player.ui.api.view.PlayIconButton
 import and.degilevich.dream.shared.feature.player.ui.api.view.PlaybackProgressBar
 import and.degilevich.dream.shared.feature.player.ui.api.view.ShuffleIconButton
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shated.feature.track.ui.api.view.TrackCardInfoView
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -37,8 +38,8 @@ import dev.icerock.moko.resources.compose.painterResource
 @Composable
 fun MiniPlayerView(
     state: MiniPlayerUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (MiniPlayerIntent) -> Unit
+    onIntent: (MiniPlayerIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val onViewClickedDebounced = rememberDebounced { onIntent(MiniPlayerIntent.OnViewClicked) }
 
@@ -93,8 +94,8 @@ fun MiniPlayerView(
 private fun MiniPlayerControls(
     isShuffling: Boolean,
     isPlaying: Boolean,
-    modifier: Modifier = Modifier,
-    onIntent: (MiniPlayerIntent) -> Unit
+    onIntent: (MiniPlayerIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier,
@@ -106,33 +107,33 @@ private fun MiniPlayerControls(
                 .testTag(MiniPlayerViewSemantic.TEST_TAG_SHUFFLE)
                 .size(24.dp),
             isShuffling = isShuffling,
-            onClicked = { onIntent(MiniPlayerIntent.OnShuffleClicked) }
+            onClick = { onIntent(MiniPlayerIntent.OnShuffleClicked) }
         )
         IconButton(
             modifier = Modifier
                 .testTag(MiniPlayerViewSemantic.TEST_TAG_SKIP_TO_PREVIOUS)
                 .size(24.dp),
             painter = painterResource(Res.images.ic_skip_previous),
-            onClicked = { onIntent(MiniPlayerIntent.OnSkipToPreviousClicked) }
+            onClick = { onIntent(MiniPlayerIntent.OnSkipToPreviousClicked) }
         )
         PlayIconButton(
             modifier = Modifier
                 .testTag(MiniPlayerViewSemantic.TEST_TAG_PLAY)
                 .size(24.dp),
             isPlaying = isPlaying,
-            onClicked = { onIntent(MiniPlayerIntent.OnPlayClicked) }
+            onClick = { onIntent(MiniPlayerIntent.OnPlayClicked) }
         )
         IconButton(
             modifier = Modifier
                 .testTag(MiniPlayerViewSemantic.TEST_TAG_SKIP_TO_NEXT)
                 .size(24.dp),
             painter = painterResource(Res.images.ic_skip_next),
-            onClicked = { onIntent(MiniPlayerIntent.OnSkipToNextClicked) }
+            onClick = { onIntent(MiniPlayerIntent.OnSkipToNextClicked) }
         )
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun MiniPlayerViewPreview(
     @PreviewParameter(MiniPlayerUIStatePreviewProvider::class)
@@ -140,6 +141,7 @@ private fun MiniPlayerViewPreview(
 ) = ComposeAppTheme {
     MiniPlayerView(
         modifier = Modifier.themeBackground(),
-        state = state
-    ) {}
+        state = state,
+        onIntent = {}
+    )
 }

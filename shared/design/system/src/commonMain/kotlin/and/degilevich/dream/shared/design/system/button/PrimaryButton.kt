@@ -5,7 +5,6 @@ import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
 import and.degilevich.dream.shared.foundation.compose.preview.BooleanPreviewProvider
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,12 +18,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun PrimaryButton(
-    onClicked: () -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     isEnabled: Boolean = true,
     content: @Composable () -> Unit
@@ -37,7 +37,7 @@ fun PrimaryButton(
             Theme.colors.button.primary.backgroundDisabled
         }
     )
-    val onClickedDebounced = rememberDebounced(block = onClicked)
+    val onClickDebounced = rememberDebounced(block = onClick)
 
     Box(
         modifier = modifier
@@ -45,15 +45,15 @@ fun PrimaryButton(
                 isEnabled = isEnabled,
                 interactionSource = interactionSource
             )
+            .background(
+                color = backgroundColor,
+                shape = RoundedCornerShape(size = 20.dp)
+            )
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,
                 enabled = isEnabled,
-                onClick = onClickedDebounced
-            )
-            .background(
-                color = backgroundColor,
-                shape = RoundedCornerShape(size = 20.dp)
+                onClick = onClickDebounced
             )
             .padding(
                 vertical = 12.dp,
@@ -64,14 +64,14 @@ fun PrimaryButton(
     )
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonPreview(
     @PreviewParameter(BooleanPreviewProvider::class)
     isEnabled: Boolean
 ) = ComposeAppTheme {
     PrimaryButton(
-        onClicked = { },
+        onClick = { },
         isEnabled = isEnabled
     ) {
         Text(text = "Button")

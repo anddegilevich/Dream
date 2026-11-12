@@ -21,6 +21,7 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
+@Suppress("LargeClass")
 class PlayerManagerImplTest {
 
     @Test
@@ -466,7 +467,9 @@ class PlayerManagerImplTest {
             playerRepository = FakePlayerRepository(
                 onGetPlaybackState = {
                     fetchCount++
-                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                    value(
+                        if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState
+                    )
                 },
                 onSkipToNext = { Result.success(Unit) }
             )
@@ -518,7 +521,9 @@ class PlayerManagerImplTest {
             playerRepository = FakePlayerRepository(
                 onGetPlaybackState = {
                     fetchCount++
-                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                    value(
+                        if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState
+                    )
                 },
                 onSkipToPrevious = { Result.success(Unit) }
             )
@@ -570,7 +575,9 @@ class PlayerManagerImplTest {
             playerRepository = FakePlayerRepository(
                 onGetPlaybackState = {
                     fetchCount++
-                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                    value(
+                        if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState
+                    )
                 },
                 onSetShuffle = { Result.success(Unit) }
             )
@@ -622,7 +629,9 @@ class PlayerManagerImplTest {
             playerRepository = FakePlayerRepository(
                 onGetPlaybackState = {
                     fetchCount++
-                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                    value(
+                        if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState
+                    )
                 },
                 onPause = { Result.success(Unit) }
             )
@@ -726,7 +735,9 @@ class PlayerManagerImplTest {
             playerRepository = FakePlayerRepository(
                 onGetPlaybackState = {
                     fetchCount++
-                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                    value(
+                        if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState
+                    )
                 },
                 onResume = { Result.success(Unit) }
             )

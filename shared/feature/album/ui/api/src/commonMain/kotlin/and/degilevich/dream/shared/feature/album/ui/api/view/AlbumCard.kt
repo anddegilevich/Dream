@@ -9,7 +9,6 @@ import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
@@ -21,24 +20,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun AlbumCard(
     data: AlbumCardUIData,
-    modifier: Modifier = Modifier,
-    onClicked: (id: Identifier) -> Unit
+    onClick: (id: Identifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+    val onClickDebounced = rememberDebounced { onClick(data.id) }
 
     Column(
         modifier = modifier
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,
-                onClick = onClickedDebounced
+                onClick = onClickDebounced
             )
             .scaleOnClick(
                 interactionSource = interactionSource
@@ -69,7 +69,7 @@ fun AlbumCard(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun AlbumCardPreview(
     @PreviewParameter(AlbumCardUIDataPreviewProvider::class)
@@ -78,5 +78,6 @@ private fun AlbumCardPreview(
     AlbumCard(
         modifier = Modifier.themeBackground(),
         data = data,
-    ) {}
+        onClick = {}
+    )
 }

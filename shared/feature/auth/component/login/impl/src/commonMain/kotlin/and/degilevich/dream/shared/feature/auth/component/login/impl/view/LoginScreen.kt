@@ -1,6 +1,9 @@
 package and.degilevich.dream.shared.feature.auth.component.login.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.button_connect_spotify
+import and.degilevich.dream.ic_duck
+import and.degilevich.dream.label_login_prompt
 import and.degilevich.dream.shared.design.system.button.LoadingTextButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
@@ -9,7 +12,6 @@ import and.degilevich.dream.shared.feature.auth.component.login.impl.component.m
 import and.degilevich.dream.shared.feature.auth.component.login.impl.component.model.LoginUIState
 import and.degilevich.dream.shared.feature.auth.component.login.impl.preview.LoginUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.auth.component.login.impl.view.semantic.LoginScreenSemantic
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -30,8 +33,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun LoginScreen(
     state: LoginUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (LoginIntent) -> Unit
+    onIntent: (LoginIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
@@ -63,20 +66,22 @@ fun LoginScreen(
             modifier = Modifier.testTag(LoginScreenSemantic.TEST_TAG_LOGIN_BUTTON),
             text = stringResource(Res.strings.button_connect_spotify),
             isLoading = state.isLoadingLoginButton,
-            isEnabled = state.isEnabledLoginButton
-        ) {
-            onIntent(LoginIntent.OnLoginClicked)
-        }
+            isEnabled = state.isEnabledLoginButton,
+            onClick = {
+                onIntent(LoginIntent.OnLoginClicked)
+            }
+        )
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun LoginScreenPreview(
     @PreviewParameter(LoginUIStatePreviewProvider::class)
     state: LoginUIState
 ) = ComposeAppTheme {
     LoginScreen(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

@@ -8,7 +8,6 @@ import and.degilevich.dream.shared.feature.artist.component.details.impl.preview
 import and.degilevich.dream.shared.feature.artist.component.details.impl.view.semantic.ArtistInfoLayoutSemantic
 import and.degilevich.dream.shared.feature.artist.ui.api.view.ArtistIcon
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -49,7 +49,7 @@ fun ArtistInfoLayout(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun ArtistInfoLayoutPreview(
     @PreviewParameter(ArtistInfoLayoutUIDataPreviewProvider::class)

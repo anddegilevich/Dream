@@ -1,11 +1,11 @@
 package and.degilevich.dream.shared.feature.common.component.splash.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_duck
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.common.component.splash.impl.view.semantic.SplashScreenSemantic
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 
@@ -38,7 +39,7 @@ fun SplashScreen(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun SplashScreenPreview() = ComposeAppTheme {
     SplashScreen()

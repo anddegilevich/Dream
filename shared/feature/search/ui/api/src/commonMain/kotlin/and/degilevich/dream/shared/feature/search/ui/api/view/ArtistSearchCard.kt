@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.search.ui.api.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.label_artist
 import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.artist.ui.api.view.ArtistIcon
@@ -24,17 +25,17 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun ArtistSearchCard(
     data: ArtistSearchCardUIData,
-    modifier: Modifier = Modifier,
-    onClicked: (id: Identifier) -> Unit
+    onClick: (id: Identifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+    val onClickDebounced = rememberDebounced { onClick(data.id) }
 
     Row(
         modifier = modifier
             .clickable(
                 interactionSource = null,
                 indication = themeRipple(),
-                onClick = onClickedDebounced
+                onClick = onClickDebounced
             )
             .padding(all = 4.dp),
         verticalAlignment = Alignment.CenterVertically

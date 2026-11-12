@@ -9,7 +9,6 @@ import and.degilevich.dream.shared.feature.album.component.details.impl.preview.
 import and.degilevich.dream.shared.feature.album.component.details.impl.view.semantic.AlbumDetailsLayoutSemantic
 import and.degilevich.dream.shared.feature.album.ui.api.view.AlbumIcon
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -65,7 +65,7 @@ fun AlbumDetailsLayout(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun AlbumDetailsLayoutPreview(
     @PreviewParameter(AlbumDetailsLayoutUIDataPreviewProvider::class)

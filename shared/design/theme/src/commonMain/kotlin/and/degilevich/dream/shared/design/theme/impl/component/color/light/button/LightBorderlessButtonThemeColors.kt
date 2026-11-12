@@ -1,6 +1,8 @@
 package and.degilevich.dream.shared.design.theme.impl.component.color.light.button
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.black
+import and.degilevich.dream.davys_gray
 import and.degilevich.dream.shared.design.theme.api.component.color.button.BorderlessButtonThemeColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color

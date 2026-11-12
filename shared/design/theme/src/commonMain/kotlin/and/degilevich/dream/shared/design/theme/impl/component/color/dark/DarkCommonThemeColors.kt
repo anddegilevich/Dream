@@ -1,6 +1,9 @@
 package and.degilevich.dream.shared.design.theme.impl.component.color.dark
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.chinese_black
+import and.degilevich.dream.malachite
+import and.degilevich.dream.philippine_silver
 import and.degilevich.dream.shared.design.theme.api.component.color.CommonThemeColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color

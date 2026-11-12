@@ -2,7 +2,6 @@ package and.degilevich.dream.shared.feature.user.ui.api.view
 
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
@@ -11,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -39,7 +39,7 @@ fun UserAvatarPlaceholder(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun UserAvatarPlaceholderPreview() = ComposeAppTheme {
     UserAvatarPlaceholder(

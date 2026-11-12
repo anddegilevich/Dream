@@ -4,7 +4,6 @@ import and.degilevich.dream.shared.design.system.loading.LoadingIndicator
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.preview.BooleanPreviewProvider
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.expandHorizontally
@@ -16,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.dp
 fun LoadingTextButton(
     text: String,
     isLoading: Boolean,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    isEnabled: Boolean = true,
-    onClicked: () -> Unit
+    isEnabled: Boolean = true
 ) {
     val contentColor by animateColorAsState(
         targetValue = if (isEnabled) {
@@ -38,7 +38,7 @@ fun LoadingTextButton(
     PrimaryButton(
         modifier = modifier,
         isEnabled = isEnabled,
-        onClicked = onClicked
+        onClick = onClick
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -62,7 +62,7 @@ fun LoadingTextButton(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun LoadingTextButtonPreview(
     @PreviewParameter(BooleanPreviewProvider::class)
@@ -70,6 +70,7 @@ private fun LoadingTextButtonPreview(
 ) = ComposeAppTheme {
     LoadingTextButton(
         text = "Button",
-        isLoading = isLoading
-    ) { }
+        isLoading = isLoading,
+        onClick = { }
+    )
 }

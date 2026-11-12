@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.common.component.drawer.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.button_logout
 import and.degilevich.dream.shared.design.system.button.PrimaryTextButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
@@ -11,7 +12,6 @@ import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.sem
 import and.degilevich.dream.shared.feature.common.component.drawer.impl.view.skeleton.SkeletonDrawerHeader
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
@@ -28,8 +29,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun AppDrawer(
     state: DrawerUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (DrawerIntent) -> Unit
+    onIntent: (DrawerIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
@@ -54,20 +55,22 @@ fun AppDrawer(
             modifier = Modifier
                 .testTag(AppDrawerSemantic.TEST_TAG_LOGOUT_BUTTON)
                 .fillMaxWidth(),
-            text = stringResource(Res.strings.button_logout)
-        ) {
-            onIntent(DrawerIntent.OnLogoutClicked)
-        }
+            text = stringResource(Res.strings.button_logout),
+            onClick = {
+                onIntent(DrawerIntent.OnLogoutClicked)
+            }
+        )
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun AppDrawerPreview(
     @PreviewParameter(DrawerUIStatePreviewProvider::class)
     state: DrawerUIState
 ) = ComposeAppTheme {
     AppDrawer(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

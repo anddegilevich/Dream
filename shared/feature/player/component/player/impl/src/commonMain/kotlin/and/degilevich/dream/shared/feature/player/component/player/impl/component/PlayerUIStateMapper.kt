@@ -11,13 +11,13 @@ import org.koin.core.component.inject
 internal class PlayerUIStateMapper : Mapper<PlayerState, PlayerUIState>, KoinComponent {
 
     private val trackInfoToTrackCardInfoUIDataMapper: TrackInfoToTrackCardInfoUIDataMapper by inject()
-    private val playbackStateDataToPlaybackProgressUIDataMapper: PlaybackStateDataToPlaybackProgressUIDataMapper by inject()
+    private val playbackProgressUIDataMapper: PlaybackStateDataToPlaybackProgressUIDataMapper by inject()
 
     override fun map(item: PlayerState): PlayerUIState = with(item) {
         PlayerUIState(
             coverUrl = playbackState.track.album.images.firstOrNull()?.url.orEmpty(),
             track = trackInfoToTrackCardInfoUIDataMapper.map(playbackState.track),
-            progress = playbackStateDataToPlaybackProgressUIDataMapper.map(playbackState),
+            progress = playbackProgressUIDataMapper.map(playbackState),
             isShuffling = playbackState.isShuffling,
             isPlaying = playbackState.isPlaying
         )

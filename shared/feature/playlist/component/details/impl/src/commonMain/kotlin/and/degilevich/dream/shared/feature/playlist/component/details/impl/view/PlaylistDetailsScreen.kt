@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.playlist.component.details.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_back
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.roundedThemeShimmer
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
@@ -18,7 +19,6 @@ import and.degilevich.dream.shared.foundation.compose.list.OnLastItemDisplayedSi
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -35,6 +35,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -42,8 +43,8 @@ import dev.icerock.moko.resources.compose.painterResource
 @Composable
 fun PlaylistDetailsScreen(
     state: PlaylistDetailsUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (PlaylistDetailsIntent) -> Unit
+    onIntent: (PlaylistDetailsIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val listState = rememberLazyListState()
 
@@ -74,10 +75,11 @@ fun PlaylistDetailsScreen(
                 modifier = Modifier
                     .testTag(PlaylistDetailsScreenSemantic.TEST_TAG_BACK)
                     .size(24.dp),
-                painter = painterResource(Res.images.ic_back)
-            ) {
-                onIntent(PlaylistDetailsIntent.OnBackClicked)
-            }
+                painter = painterResource(Res.images.ic_back),
+                onClick = {
+                    onIntent(PlaylistDetailsIntent.OnBackClicked)
+                }
+            )
         }
         item {
             SkeletonCrossfade(
@@ -139,10 +141,11 @@ fun PlaylistDetailsScreen(
                         .testTag(PlaylistDetailsScreenSemantic.TEST_TAG_ITEM)
                         .animateItem()
                         .fillMaxWidth(),
-                    data = track
-                ) { trackId ->
-                    onIntent(PlaylistDetailsIntent.OnTrackClicked(id = trackId))
-                }
+                    data = track,
+                    onClick = { trackId ->
+                        onIntent(PlaylistDetailsIntent.OnTrackClicked(id = trackId))
+                    }
+                )
             }
         )
         if (state.isLoadingTracks) {
@@ -160,13 +163,14 @@ fun PlaylistDetailsScreen(
 private const val LOADING_ITEMS_COUNT = 10
 private const val LOAD_NEXT_PAGE_THRESHOLD = 10
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlaylistDetailsScreenPreview(
     @PreviewParameter(PlaylistDetailsUIStatePreviewProvider::class)
     state: PlaylistDetailsUIState
 ) = ComposeAppTheme {
     PlaylistDetailsScreen(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.search.component.search.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.hint_search
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.search.component.search.impl.component.model.SearchIntent
@@ -16,7 +17,6 @@ import and.degilevich.dream.shared.foundation.compose.ime.controller.rememberIme
 import and.degilevich.dream.shared.foundation.compose.list.OnLastItemDisplayedSideEffect
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -31,6 +31,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
@@ -38,8 +39,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun SearchScreen(
     state: SearchUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (SearchIntent) -> Unit
+    onIntent: (SearchIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val lazyListState = rememberLazyListState()
     val imeController = rememberImeController()
@@ -68,10 +69,11 @@ fun SearchScreen(
                 .padding(16.dp)
                 .fillMaxWidth(),
             value = state.query,
-            placeholder = stringResource(Res.strings.hint_search)
-        ) { value ->
-            onIntent(SearchIntent.OnQueryChanged(value))
-        }
+            placeholder = stringResource(Res.strings.hint_search),
+            onValueChange = { value ->
+                onIntent(SearchIntent.OnQueryChanged(value))
+            }
+        )
         LazyColumn(
             modifier = Modifier.weight(1f),
             state = lazyListState,
@@ -94,7 +96,7 @@ fun SearchScreen(
                             .animateItem()
                             .fillMaxWidth(),
                         data = item,
-                        onClicked = { id ->
+                        onClick = { id ->
                             onIntent(SearchIntent.OnItemClicked(id))
                         }
                     )
@@ -114,13 +116,14 @@ fun SearchScreen(
 private const val LOADING_ITEMS_COUNT = 16
 private const val LOAD_NEXT_PAGE_THRESHOLD = 10
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun SearchScreenPreview(
     @PreviewParameter(SearchUIStatePreviewProvider::class)
     state: SearchUIState
 ) = ComposeAppTheme {
     SearchScreen(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

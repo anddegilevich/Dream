@@ -1,7 +1,6 @@
 package and.degilevich.dream.shared.feature.playlist.ui.api.view
 
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.updateTransition
@@ -15,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
@@ -57,7 +57,7 @@ fun PlaylistIcon(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlaylistIconPreview() = ComposeAppTheme {
     PlaylistIcon(

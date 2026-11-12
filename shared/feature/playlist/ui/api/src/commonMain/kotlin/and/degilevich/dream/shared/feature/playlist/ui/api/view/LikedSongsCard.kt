@@ -1,12 +1,13 @@
 package and.degilevich.dream.shared.feature.playlist.ui.api.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_heart
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.modifier.clickable.scaleOnClick
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.title_liked_songs
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -23,24 +24,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun LikedSongsCard(
-    modifier: Modifier = Modifier,
-    onClicked: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    val onClickedDebounced = rememberDebounced { onClicked() }
+    val onClickDebounced = rememberDebounced { onClick() }
 
     Column(
         modifier = modifier
             .clickable(
                 interactionSource = interactionSource,
                 indication = null,
-                onClick = onClickedDebounced
+                onClick = onClickDebounced
             )
             .scaleOnClick(interactionSource = interactionSource)
             .width(140.dp),
@@ -70,10 +72,11 @@ fun LikedSongsCard(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun LikedSongsCardPreview() = ComposeAppTheme {
     LikedSongsCard(
-        modifier = Modifier.themeBackground()
-    ) {}
+        modifier = Modifier.themeBackground(),
+        onClick = {}
+    )
 }

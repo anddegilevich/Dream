@@ -8,7 +8,6 @@ import and.degilevich.dream.shared.feature.playlist.ui.api.model.PlaylistTrackCa
 import and.degilevich.dream.shared.feature.playlist.ui.api.preview.PlaylistTrackCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shated.feature.track.ui.api.view.TrackCardInfoView
 import and.degilevich.dream.shated.feature.track.ui.api.view.TrackCardNumberView
 import androidx.compose.foundation.clickable
@@ -18,23 +17,24 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun PlaylistTrackCard(
     data: PlaylistTrackCardUIData,
-    modifier: Modifier = Modifier,
-    onClicked: (id: Identifier) -> Unit
+    onClick: (id: Identifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+    val onClickDebounced = rememberDebounced { onClick(data.id) }
 
     Row(
         modifier = modifier
             .clickable(
                 interactionSource = null,
                 indication = themeRipple(),
-                onClick = onClickedDebounced
+                onClick = onClickDebounced
             ),
         horizontalArrangement = Arrangement.spacedBy(space = 8.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -48,7 +48,7 @@ fun PlaylistTrackCard(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlaylistTrackCardPreview(
     @PreviewParameter(PlaylistTrackCardUIDataPreviewProvider::class)
@@ -56,6 +56,7 @@ private fun PlaylistTrackCardPreview(
 ) = ComposeAppTheme {
     PlaylistTrackCard(
         modifier = Modifier.themeBackground(),
-        data = data
-    ) { }
+        data = data,
+        onClick = { }
+    )
 }

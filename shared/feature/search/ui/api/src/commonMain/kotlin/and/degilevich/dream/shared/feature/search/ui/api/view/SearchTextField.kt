@@ -1,11 +1,11 @@
 package and.degilevich.dream.shared.feature.search.ui.api.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_search
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.focus.clearFocusOnImeDismiss
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.fadeIn
@@ -34,12 +34,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
 
 @Composable
 fun SearchTextField(
     value: TextFieldValue,
+    onValueChange: (value: TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,
     placeholder: String = "",
     isEnabled: Boolean = true,
@@ -47,7 +49,6 @@ fun SearchTextField(
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    onValueChanged: (value: TextFieldValue) -> Unit,
 ) {
     val isEmptyInput = remember(value) { value.text.isEmpty() }
     val shape = remember { RoundedCornerShape(12.dp) }
@@ -55,7 +56,7 @@ fun SearchTextField(
     BasicTextField(
         modifier = modifier.clearFocusOnImeDismiss(),
         value = value,
-        onValueChange = onValueChanged,
+        onValueChange = onValueChange,
         singleLine = true,
         enabled = isEnabled,
         keyboardOptions = keyboardOptions,
@@ -117,6 +118,7 @@ fun SearchTextField(
 @Composable
 fun SearchTextField(
     value: String,
+    onValueChange: (value: String) -> Unit,
     modifier: Modifier = Modifier,
     placeholder: String = "",
     isEnabled: Boolean = true,
@@ -124,7 +126,6 @@ fun SearchTextField(
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    onValueChanged: (value: String) -> Unit,
 ) {
     var internalTextFieldValue by remember { mutableStateOf(TextFieldValue(text = value)) }
     val textFieldValue = remember(internalTextFieldValue, value) { internalTextFieldValue.copy(text = value) }
@@ -132,10 +133,10 @@ fun SearchTextField(
     SearchTextField(
         modifier = modifier,
         value = textFieldValue,
-        onValueChanged = { newValue ->
+        onValueChange = { newValue ->
             internalTextFieldValue = newValue
             if (value != newValue.text) {
-                onValueChanged(newValue.text)
+                onValueChange(newValue.text)
             }
         },
         placeholder = placeholder,
@@ -149,10 +150,11 @@ fun SearchTextField(
 
 private const val PLACEHOLDER_FADE_OUT_DURATION = 200
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun SearchTextFieldPreview() = ComposeAppTheme {
     SearchTextField(
         value = "Search",
-    ) { }
+        onValueChange = { }
+    )
 }

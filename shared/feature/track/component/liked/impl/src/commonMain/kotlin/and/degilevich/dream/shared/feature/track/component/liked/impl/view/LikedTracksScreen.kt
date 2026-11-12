@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.track.component.liked.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_back
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.roundedThemeShimmer
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
@@ -17,7 +18,7 @@ import and.degilevich.dream.shared.foundation.compose.list.OnLastItemDisplayedSi
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.Skeleton
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.title_liked_songs
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -35,6 +36,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -43,8 +45,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun LikedTracksScreen(
     state: LikedTracksUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (LikedTracksIntent) -> Unit
+    onIntent: (LikedTracksIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val listState = rememberLazyListState()
 
@@ -75,10 +77,11 @@ fun LikedTracksScreen(
                 modifier = Modifier
                     .testTag(LikedTracksScreenSemantic.TEST_TAG_BACK)
                     .size(24.dp),
-                painter = painterResource(Res.images.ic_back)
-            ) {
-                onIntent(LikedTracksIntent.OnBackClicked)
-            }
+                painter = painterResource(Res.images.ic_back),
+                onClick = {
+                    onIntent(LikedTracksIntent.OnBackClicked)
+                }
+            )
         }
         item {
             LikedTracksHeader(state = state)
@@ -99,10 +102,11 @@ fun LikedTracksScreen(
                         .testTag(LikedTracksScreenSemantic.TEST_TAG_ITEM)
                         .animateItem()
                         .fillMaxWidth(),
-                    data = track
-                ) { trackId ->
-                    onIntent(LikedTracksIntent.OnTrackClicked(id = trackId))
-                }
+                    data = track,
+                    onClick = { trackId ->
+                        onIntent(LikedTracksIntent.OnTrackClicked(id = trackId))
+                    }
+                )
             }
         )
         if (state.isLoadingTracks) {
@@ -160,13 +164,14 @@ private fun LikedTracksHeader(
 private const val LOADING_ITEMS_COUNT = 10
 private const val LOAD_NEXT_PAGE_THRESHOLD = 10
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun LikedTracksScreenPreview(
     @PreviewParameter(LikedTracksUIStatePreviewProvider::class)
     state: LikedTracksUIState
 ) = ComposeAppTheme {
     LikedTracksScreen(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

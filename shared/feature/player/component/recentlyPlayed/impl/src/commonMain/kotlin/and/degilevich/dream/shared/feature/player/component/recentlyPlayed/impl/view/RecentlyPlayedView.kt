@@ -12,7 +12,7 @@ import and.degilevich.dream.shared.feature.playlist.ui.api.view.PlaylistTrackCar
 import and.degilevich.dream.shared.feature.playlist.ui.api.view.skeleton.SkeletonPlaylistTrackCard
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.title_recently_played
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +22,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
@@ -29,8 +30,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun RecentlyPlayedView(
     state: RecentlyPlayedUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (RecentlyPlayedIntent) -> Unit
+    onIntent: (RecentlyPlayedIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier.fillMaxWidth()
@@ -59,12 +60,13 @@ fun RecentlyPlayedView(
             ) { index ->
                 PlaylistTrackCard(
                     modifier = Modifier.testTag(RecentlyPlayedViewSemantic.TEST_TAG_ITEM),
-                    data = items[index]
-                ) { id ->
-                    onIntent(
-                        RecentlyPlayedIntent.OnTrackClicked(id = id)
-                    )
-                }
+                    data = items[index],
+                    onClick = { id ->
+                        onIntent(
+                            RecentlyPlayedIntent.OnTrackClicked(id = id)
+                        )
+                    }
+                )
             }
         }
     }
@@ -101,7 +103,7 @@ private fun RecentlyPlayedGrid(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun RecentlyPlayedViewPreview(
     @PreviewParameter(RecentlyPlayedUIStatePreviewProvider::class)
@@ -109,8 +111,9 @@ private fun RecentlyPlayedViewPreview(
 ) = ComposeAppTheme {
     RecentlyPlayedView(
         modifier = Modifier.themeBackground(),
-        state = state
-    ) {}
+        state = state,
+        onIntent = {}
+    )
 }
 
 private const val RECENTLY_PLAYED_COLUMN_COUNT = 2

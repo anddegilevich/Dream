@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.playlist.component.details.impl.component
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.plural_song
 import and.degilevich.dream.shared.feature.playlist.component.details.impl.component.model.PlaylistDetailsHeaderUIData
 import and.degilevich.dream.shared.feature.playlist.component.details.impl.component.model.PlaylistDetailsState
 import and.degilevich.dream.shared.feature.playlist.component.details.impl.component.model.PlaylistDetailsUIState

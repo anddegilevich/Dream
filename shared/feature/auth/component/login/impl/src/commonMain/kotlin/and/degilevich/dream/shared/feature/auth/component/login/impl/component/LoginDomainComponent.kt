@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.auth.component.login.impl.component
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.error_authentication_failed
 import and.degilevich.dream.shared.feature.auth.component.login.impl.component.model.LoginIntent
 import and.degilevich.dream.shared.feature.auth.component.login.impl.component.model.LoginSideEffect
 import and.degilevich.dream.shared.feature.auth.component.login.impl.component.model.LoginState

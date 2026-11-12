@@ -1,6 +1,8 @@
 package and.degilevich.dream.shared.core.toast.impl.factory
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.button_repeat
+import and.degilevich.dream.error
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.api.model.ToastActionData
 import and.degilevich.dream.shared.core.toast.api.model.ToastData

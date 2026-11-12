@@ -7,7 +7,6 @@ import and.degilevich.dream.shared.feature.common.component.navbar.impl.componen
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarUIState
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.preview.NavbarUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.view.semantic.AppNavbarSemantic
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,14 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun AppNavbar(
     state: NavbarUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (NavbarIntent) -> Unit
+    onIntent: (NavbarIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
@@ -40,22 +40,24 @@ fun AppNavbar(
                     modifier = Modifier
                         .testTag(AppNavbarSemantic.TEST_TAG_ITEM)
                         .weight(1f),
-                    data = item
-                ) {
-                    onIntent(NavbarIntent.OnItemClicked(item.id))
-                }
+                    data = item,
+                    onClick = {
+                        onIntent(NavbarIntent.OnItemClicked(item.id))
+                    }
+                )
             }
         }
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun AppNavbarPreview(
     @PreviewParameter(NavbarUIStatePreviewProvider::class)
     state: NavbarUIState
 ) = ComposeAppTheme {
     AppNavbar(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

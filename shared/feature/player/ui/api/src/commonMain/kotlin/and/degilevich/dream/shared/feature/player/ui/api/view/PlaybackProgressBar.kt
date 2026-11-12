@@ -5,7 +5,6 @@ import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.player.ui.api.model.PlaybackProgressUIData
 import and.degilevich.dream.shared.feature.player.ui.api.preview.PlaybackProgressUIDataPreviewProvider
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -15,6 +14,7 @@ import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -40,7 +40,7 @@ fun PlaybackProgressBar(
     )
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlaybackProgressBarPreview(
     @PreviewParameter(PlaybackProgressUIDataPreviewProvider::class)

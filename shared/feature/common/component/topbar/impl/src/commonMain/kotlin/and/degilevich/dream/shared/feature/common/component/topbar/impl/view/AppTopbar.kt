@@ -12,7 +12,6 @@ import and.degilevich.dream.shared.feature.user.ui.api.view.UserAvatar
 import and.degilevich.dream.shared.feature.user.ui.api.view.skeleton.SkeletonUserAvatar
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -28,14 +27,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun AppTopbar(
     state: TopbarUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (TopbarIntent) -> Unit
+    onIntent: (TopbarIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val onAvatarClicked = rememberDebounced { onIntent(TopbarIntent.OnAvatarClicked) }
 
@@ -82,13 +82,14 @@ fun AppTopbar(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun AppTopbarPreview(
     @PreviewParameter(TopbarUIStatePreviewProvider::class)
     state: TopbarUIState
 ) = ComposeAppTheme {
     AppTopbar(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

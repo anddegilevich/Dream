@@ -1,6 +1,9 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.impl.preview
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_home
+import and.degilevich.dream.ic_home_filled
+import and.degilevich.dream.ic_search
 import and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model.NavbarItemUIData
 import and.degilevich.dream.shared.foundation.abstraction.id.identifier
 import and.degilevich.dream.shared.foundation.compose.preview.LabeledPreviewParameterProvider

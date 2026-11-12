@@ -10,7 +10,6 @@ import and.degilevich.dream.shared.feature.common.component.dashboard.impl.view.
 import and.degilevich.dream.shared.feature.player.component.recentlyPlayed.api.component.RecentlyPlayedComponent
 import and.degilevich.dream.shared.feature.playlist.component.list.api.component.PlaylistListComponent
 import and.degilevich.dream.shared.foundation.compose.ext.identifiedItems
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shared.foundation.decompose.compose.preview.PreviewLazyChildItems
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.lazyitems.ChildItemsLifecycleController
@@ -65,7 +65,7 @@ fun DashboardScreen(
 }
 
 @OptIn(ExperimentalDecomposeApi::class)
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun DashboardScreenPreview() = ComposeAppTheme {
     DashboardScreen(

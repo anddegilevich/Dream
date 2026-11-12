@@ -3,7 +3,6 @@ package and.degilevich.dream.shared.feature.user.ui.api.view
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
 import and.degilevich.dream.shared.feature.user.ui.api.model.UserAvatarUIData
 import and.degilevich.dream.shared.feature.user.ui.api.preview.UserAvatarUIDataPreviewProvider
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.updateTransition
@@ -19,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -67,7 +67,7 @@ fun UserAvatar(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun UserAvatarPreview(
     @PreviewParameter(UserAvatarUIDataPreviewProvider::class)

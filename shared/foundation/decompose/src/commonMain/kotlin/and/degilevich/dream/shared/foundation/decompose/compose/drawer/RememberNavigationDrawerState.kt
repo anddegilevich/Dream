@@ -9,21 +9,23 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.arkivanov.decompose.value.Value
 
 @Composable
 fun <T : Any> rememberNavigationDrawerState(
     drawer: Value<ChildDrawer<T>>,
-    onStateChanged: (isOpen: Boolean) -> Unit,
+    onStateChange: (isOpen: Boolean) -> Unit,
 ): NavigationDrawerState<T> {
+    val currentOnStateChange by rememberUpdatedState(onStateChange)
     val childDrawer by drawer.subscribeAsState()
     val materialDrawerState = rememberDrawerState(
         initialValue = if (childDrawer.isOpen) DrawerValue.Open else DrawerValue.Closed
     )
 
     DisposableEffect(materialDrawerState.isOpen) {
-        onStateChanged(materialDrawerState.isOpen)
+        currentOnStateChange(materialDrawerState.isOpen)
         onDispose {}
     }
 

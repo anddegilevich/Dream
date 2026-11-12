@@ -1,7 +1,9 @@
 package and.degilevich.dream.shared.foundation.compose.modifier.shimmer
 
 import and.degilevich.dream.shared.foundation.compose.modifier.shimmer.color.ShimmerColors
-import and.degilevich.dream.shared.foundation.compose.modifier.shimmer.controller.rememberShimmerGradient
+import and.degilevich.dream.shared.foundation.compose.modifier.shimmer.controller.ShimmerGradientAnimationController
+import and.degilevich.dream.shared.foundation.compose.modifier.shimmer.controller.ShimmerGradientAnimationControllerImpl
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,51 +19,87 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.graphics.drawscope.ContentDrawScope
+import androidx.compose.ui.node.DrawModifierNode
+import androidx.compose.ui.node.ModifierNodeElement
+import androidx.compose.ui.node.invalidateDraw
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import kotlin.math.max
 
-@Suppress("SpreadOperator")
 fun Modifier.shimmer(
     colors: ShimmerColors = ShimmerColors.Default
 ): Modifier {
-    return composed {
-        var viewSize by remember { mutableStateOf(IntSize.Zero) }
-        val offset = remember(viewSize) {
-            val maxDimension = max(viewSize.height, viewSize.width) * 2f
-            Offset(
-                x = maxDimension,
-                y = maxDimension
-            )
-        }
-        val gradient = rememberShimmerGradient(colors = colors)
+    return this then ShimmerModifierNodeElement(colors = colors)
+}
 
-        onGloballyPositioned { layoutCoordinates ->
-            viewSize = layoutCoordinates.size
-        }.drawWithContent {
-            drawRect(
-                brush = Brush.linearGradient(
-                    *gradient,
-                    start = Offset.Zero,
-                    end = offset,
-                )
+@Suppress("ModifierNodeInspectableProperties")
+private data class ShimmerModifierNodeElement(
+    private val colors: ShimmerColors
+) : ModifierNodeElement<ShimmerNode>() {
+
+    override fun create(): ShimmerNode {
+        return ShimmerNode(colors = colors)
+    }
+
+    override fun update(node: ShimmerNode) {
+        node.update(colors = colors)
+    }
+}
+
+private class ShimmerNode(
+    private var colors: ShimmerColors
+) : Modifier.Node(), DrawModifierNode {
+
+    private val animatableShimmerStart = Animatable(initialValue = 0f)
+    private val animatableFlash = Animatable(initialValue = 0f)
+    private val animatableShimmerEnd = Animatable(initialValue = 0f)
+    private var animationController: ShimmerGradientAnimationController? = null
+
+    override fun onAttach() {
+        animationController = ShimmerGradientAnimationControllerImpl(
+            coroutineScope = coroutineScope,
+            animatableShimmerStart = animatableShimmerStart,
+            animatableFlash = animatableFlash,
+            animatableShimmerEnd = animatableShimmerEnd
+        ).apply { start() }
+    }
+
+    override fun onDetach() {
+        animationController?.stop()
+        animationController = null
+    }
+
+    fun update(colors: ShimmerColors) {
+        if (this.colors == colors) return
+        this.colors = colors
+        invalidateDraw()
+    }
+
+    @Suppress("SpreadOperator")
+    override fun ContentDrawScope.draw() {
+        val maxDimension = max(size.height, size.width) * 2f
+        drawRect(
+            brush = Brush.linearGradient(
+                *arrayOf(
+                    animatableShimmerStart.value to colors.background,
+                    animatableFlash.value to colors.flash,
+                    animatableShimmerEnd.value to colors.background
+                ),
+                start = Offset.Zero,
+                end = Offset(
+                    x = maxDimension,
+                    y = maxDimension
+                ),
             )
-        }
+        )
     }
 }
 

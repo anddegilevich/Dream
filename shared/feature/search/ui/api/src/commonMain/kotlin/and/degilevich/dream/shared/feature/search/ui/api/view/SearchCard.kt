@@ -8,23 +8,23 @@ import and.degilevich.dream.shared.feature.search.ui.api.model.card.SearchCardUI
 import and.degilevich.dream.shared.feature.search.ui.api.model.card.TrackSearchCardUIData
 import and.degilevich.dream.shared.feature.search.ui.api.preview.SearchCardUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 
 @Composable
 fun SearchCard(
     data: SearchCardUIData,
-    modifier: Modifier = Modifier,
-    onClicked: (id: Identifier) -> Unit
+    onClick: (id: Identifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     when (data) {
         is AlbumSearchCardUIData -> {
             AlbumSearchCard(
                 modifier = modifier,
                 data = data,
-                onClicked = onClicked
+                onClick = onClick
             )
         }
 
@@ -32,7 +32,7 @@ fun SearchCard(
             ArtistSearchCard(
                 modifier = modifier,
                 data = data,
-                onClicked = onClicked
+                onClick = onClick
             )
         }
 
@@ -40,13 +40,13 @@ fun SearchCard(
             TrackSearchCard(
                 modifier = modifier,
                 data = data,
-                onClicked = onClicked
+                onClick = onClick
             )
         }
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun SearchCardPreview(
     @PreviewParameter(SearchCardUIDataPreviewProvider::class)
@@ -54,6 +54,7 @@ private fun SearchCardPreview(
 ) = ComposeAppTheme {
     SearchCard(
         modifier = Modifier.themeBackground(),
-        data = data
-    ) { }
+        data = data,
+        onClick = { }
+    )
 }

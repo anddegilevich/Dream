@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.common.component.navbar.impl.component.model
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_home
 import and.degilevich.dream.shared.foundation.abstraction.empty.factory.EmptyFactory
 import and.degilevich.dream.shared.foundation.abstraction.id.Identified
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier

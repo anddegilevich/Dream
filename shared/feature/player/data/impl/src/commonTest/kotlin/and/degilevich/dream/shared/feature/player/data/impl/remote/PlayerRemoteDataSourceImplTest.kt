@@ -406,6 +406,7 @@ class PlayerRemoteDataSourceImplTest {
     }
 
     private companion object {
-        const val ERROR_BODY = """{"error":{"status":403,"message":"Player command failed: Premium required","reason":"PREMIUM_REQUIRED"}}"""
+        const val ERROR_BODY = """{"error":{"status":403,""" +
+            """"message":"Player command failed: Premium required","reason":"PREMIUM_REQUIRED"}}"""
     }
 }

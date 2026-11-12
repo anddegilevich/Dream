@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.artist.component.details.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_back
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
@@ -16,7 +17,7 @@ import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.ext.plus
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.identifiedSkeletonItems
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
+import and.degilevich.dream.title_albums
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -35,6 +36,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -43,8 +45,8 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun ArtistDetailsScreen(
     state: ArtistDetailsUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (ArtistDetailsIntent) -> Unit
+    onIntent: (ArtistDetailsIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     LazyColumn(
         modifier = modifier
@@ -65,10 +67,11 @@ fun ArtistDetailsScreen(
                     modifier = Modifier
                         .testTag(ArtistDetailsScreenSemantic.TEST_TAG_BACK)
                         .size(24.dp),
-                    painter = painterResource(Res.images.ic_back)
-                ) {
-                    onIntent(ArtistDetailsIntent.OnBackClicked)
-                }
+                    painter = painterResource(Res.images.ic_back),
+                    onClick = {
+                        onIntent(ArtistDetailsIntent.OnBackClicked)
+                    }
+                )
                 Space(height = 12.dp)
                 SkeletonCrossfade(
                     skeleton = state.info,
@@ -123,7 +126,7 @@ fun ArtistDetailsScreen(
                                     .testTag(ArtistDetailsScreenSemantic.TEST_TAG_ITEM)
                                     .animateItem(),
                                 data = album,
-                                onClicked = { id ->
+                                onClick = { id ->
                                     onIntent(
                                         ArtistDetailsIntent.OnAlbumClicked(id = id)
                                     )
@@ -137,13 +140,14 @@ fun ArtistDetailsScreen(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun ArtistDetailsScreenPreview(
     @PreviewParameter(ArtistDetailsUIStatePreviewProvider::class)
     state: ArtistDetailsUIState
 ) = ComposeAppTheme {
     ArtistDetailsScreen(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

@@ -7,7 +7,6 @@ import and.degilevich.dream.shared.feature.playlist.component.details.impl.compo
 import and.degilevich.dream.shared.feature.playlist.component.details.impl.preview.PlaylistDetailsHeaderUIDataPreviewProvider
 import and.degilevich.dream.shared.feature.playlist.component.details.impl.view.semantic.PlaylistDetailsScreenSemantic
 import and.degilevich.dream.shared.feature.playlist.ui.api.view.PlaylistIcon
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
@@ -16,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 
@@ -52,7 +52,7 @@ fun PlaylistDetailsHeader(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun PlaylistDetailsHeaderPreview(
     @PreviewParameter(PlaylistDetailsHeaderUIDataPreviewProvider::class)

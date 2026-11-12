@@ -1,6 +1,8 @@
 package and.degilevich.dream.shared.design.theme.impl.component.color.dark
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.charleston_grey
+import and.degilevich.dream.davys_gray
 import and.degilevich.dream.shared.design.theme.api.component.color.ShimmerThemeColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color

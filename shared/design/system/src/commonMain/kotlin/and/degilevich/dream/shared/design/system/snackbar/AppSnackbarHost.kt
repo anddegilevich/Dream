@@ -51,17 +51,18 @@ private fun AppSnackbarHostPreview() = ComposeAppTheme(isDarkMode = true) {
     ) {
         PrimaryTextButton(
             modifier = Modifier.align(Alignment.Center),
-            text = "Show toast"
-        ) {
-            coroutineScope.launch {
-                toastCount += 1
-                snackBarHostState.showSnackbar(
-                    message = "Toast $toastCount",
-                    duration = SnackbarDuration.Short,
-                    actionLabel = "Action"
-                )
+            text = "Show toast",
+            onClick = {
+                coroutineScope.launch {
+                    toastCount += 1
+                    snackBarHostState.showSnackbar(
+                        message = "Toast $toastCount",
+                        duration = SnackbarDuration.Short,
+                        actionLabel = "Action"
+                    )
+                }
             }
-        }
+        )
 
         AppSnackbarHost(
             modifier = Modifier.align(Alignment.BottomCenter),

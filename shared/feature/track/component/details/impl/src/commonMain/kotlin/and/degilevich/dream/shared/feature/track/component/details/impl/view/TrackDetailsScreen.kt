@@ -1,6 +1,7 @@
 package and.degilevich.dream.shared.feature.track.component.details.impl.view
 
 import and.degilevich.dream.Res
+import and.degilevich.dream.ic_back
 import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
@@ -11,7 +12,6 @@ import and.degilevich.dream.shared.feature.track.component.details.impl.view.sem
 import and.degilevich.dream.shared.feature.track.component.details.impl.view.skeleton.SkeletonTrackDetailsInfoLayout
 import and.degilevich.dream.shared.foundation.compose.ext.Space
 import and.degilevich.dream.shared.foundation.compose.modifier.skeleton.SkeletonCrossfade
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,6 +25,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -32,8 +33,8 @@ import dev.icerock.moko.resources.compose.painterResource
 @Composable
 fun TrackDetailsScreen(
     state: TrackDetailsUIState,
-    modifier: Modifier = Modifier,
-    onIntent: (TrackDetailsIntent) -> Unit
+    onIntent: (TrackDetailsIntent) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
@@ -51,10 +52,11 @@ fun TrackDetailsScreen(
             modifier = Modifier
                 .testTag(TrackDetailsScreenSemantic.TEST_TAG_BACK)
                 .size(24.dp),
-            painter = painterResource(Res.images.ic_back)
-        ) {
-            onIntent(TrackDetailsIntent.OnBackClicked)
-        }
+            painter = painterResource(Res.images.ic_back),
+            onClick = {
+                onIntent(TrackDetailsIntent.OnBackClicked)
+            }
+        )
         Space(height = 20.dp)
         SkeletonCrossfade(
             skeleton = state.info,
@@ -82,13 +84,14 @@ fun TrackDetailsScreen(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun TrackDetailsScreenPreview(
     @PreviewParameter(TrackDetailsUIStatePreviewProvider::class)
     state: TrackDetailsUIState
 ) = ComposeAppTheme {
     TrackDetailsScreen(
-        state = state
-    ) { }
+        state = state,
+        onIntent = { }
+    )
 }

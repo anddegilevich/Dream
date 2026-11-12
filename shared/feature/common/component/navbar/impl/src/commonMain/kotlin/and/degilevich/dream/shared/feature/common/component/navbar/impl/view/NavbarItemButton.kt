@@ -9,7 +9,6 @@ import and.degilevich.dream.shared.feature.common.component.navbar.impl.preview.
 import and.degilevich.dream.shared.foundation.abstraction.id.Identifier
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.ext.Space
-import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -21,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.painterResource
@@ -28,8 +28,8 @@ import dev.icerock.moko.resources.compose.painterResource
 @Composable
 fun NavbarItemButton(
     data: NavbarItemUIData,
-    modifier: Modifier = Modifier,
-    onClicked: (id: Identifier) -> Unit
+    onClick: (id: Identifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val iconColor by animateColorAsState(
         targetValue = if (data.isSelected) {
@@ -39,14 +39,14 @@ fun NavbarItemButton(
         }
     )
 
-    val onClickedDebounced = rememberDebounced { onClicked(data.id) }
+    val onClickDebounced = rememberDebounced { onClick(data.id) }
 
     Column(
         modifier = modifier
             .clickable(
                 interactionSource = null,
                 indication = themeRipple(),
-                onClick = onClickedDebounced
+                onClick = onClickDebounced
             )
             .padding(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -66,7 +66,7 @@ fun NavbarItemButton(
     }
 }
 
-@LightDarkPreviews
+@PreviewLightDark
 @Composable
 private fun NavbarItemButtonPreview(
     @PreviewParameter(NavbarItemUIDataPreviewProvider::class)
@@ -74,6 +74,7 @@ private fun NavbarItemButtonPreview(
 ) = ComposeAppTheme {
     NavbarItemButton(
         modifier = Modifier.themeBackground(),
-        data = data
-    ) {}
+        data = data,
+        onClick = {}
+    )
 }
