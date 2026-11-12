@@ -11,14 +11,17 @@ import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.comp
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.preview.MiniPlayerUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.view.semantic.MiniPlayerViewSemantic
 import and.degilevich.dream.shared.feature.player.ui.api.view.PlayIconButton
+import and.degilevich.dream.shared.feature.player.ui.api.view.PlaybackProgressBar
 import and.degilevich.dream.shared.feature.player.ui.api.view.ShuffleIconButton
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shated.feature.track.ui.api.view.TrackCardInfoView
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,7 +42,7 @@ fun MiniPlayerView(
 ) {
     val onViewClickedDebounced = rememberDebounced { onIntent(MiniPlayerIntent.OnViewClicked) }
 
-    Row(
+    Column(
         modifier = modifier
             .testTag(MiniPlayerViewSemantic.TEST_TAG_CONTENT)
             .fillMaxWidth()
@@ -49,24 +52,39 @@ fun MiniPlayerView(
                 indication = themeRipple(),
                 onClick = onViewClickedDebounced
             )
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(space = 12.dp),
-        verticalAlignment = Alignment.CenterVertically
     ) {
-        AlbumIcon(
+        Row(
             modifier = Modifier
-                .size(48.dp)
-                .clip(RoundedCornerShape(4.dp)),
-            iconUrl = state.coverUrl
-        )
-        TrackCardInfoView(
-            modifier = Modifier.weight(1f),
-            data = state.track
-        )
-        MiniPlayerControls(
-            isShuffling = state.isShuffling,
-            isPlaying = state.isPlaying,
-            onIntent = onIntent
+                .fillMaxWidth()
+                .padding(
+                    horizontal = 16.dp,
+                    vertical = 8.dp
+                ),
+            horizontalArrangement = Arrangement.spacedBy(space = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            AlbumIcon(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(RoundedCornerShape(4.dp)),
+                iconUrl = state.coverUrl
+            )
+            TrackCardInfoView(
+                modifier = Modifier.weight(1f),
+                data = state.track
+            )
+            MiniPlayerControls(
+                isShuffling = state.isShuffling,
+                isPlaying = state.isPlaying,
+                onIntent = onIntent
+            )
+        }
+        PlaybackProgressBar(
+            modifier = Modifier
+                .testTag(MiniPlayerViewSemantic.TEST_TAG_PROGRESS)
+                .fillMaxWidth(),
+            height = 2.dp,
+            fraction = state.progressFraction
         )
     }
 }

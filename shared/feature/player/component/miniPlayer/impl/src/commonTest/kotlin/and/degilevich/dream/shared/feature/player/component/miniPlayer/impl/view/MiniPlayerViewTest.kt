@@ -5,9 +5,12 @@ import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.comp
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.component.model.MiniPlayerUIState
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.preview.MiniPlayerUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.view.semantic.MiniPlayerViewSemantic
+import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasProgressBarRangeInfo
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.performClick
@@ -26,6 +29,7 @@ class MiniPlayerViewTest {
     private val skipToPrevious = hasTestTag(MiniPlayerViewSemantic.TEST_TAG_SKIP_TO_PREVIOUS)
     private val skipToNext = hasTestTag(MiniPlayerViewSemantic.TEST_TAG_SKIP_TO_NEXT)
     private val play = hasTestTag(MiniPlayerViewSemantic.TEST_TAG_PLAY)
+    private val progress = hasTestTag(MiniPlayerViewSemantic.TEST_TAG_PROGRESS)
 
     @Test
     fun `render default state - shows track and controls`() = runComposeUiTest {
@@ -43,7 +47,34 @@ class MiniPlayerViewTest {
         onNode(skipToPrevious).assertIsDisplayed()
         onNode(skipToNext).assertIsDisplayed()
         onNode(play).assertIsDisplayed()
+        onNode(progress).assertIsDisplayed()
         intents.shouldBeEmpty()
+    }
+
+    @Test
+    fun `render default state - progress bar shows state fraction`() = runComposeUiTest {
+        val state = provider.provideDefault()
+        setContent(state = state)
+
+        onNode(progress).assert(hasProgressBarRangeInfo(progressRangeInfo(state.progressFraction)))
+    }
+
+    @Test
+    fun `render progress start state - progress bar is empty`() = runComposeUiTest {
+        val state = provider.provideProgressStart()
+        setContent(state = state)
+
+        onNode(progress).assertIsDisplayed()
+        onNode(progress).assert(hasProgressBarRangeInfo(progressRangeInfo(state.progressFraction)))
+    }
+
+    @Test
+    fun `render progress end state - progress bar is full`() = runComposeUiTest {
+        val state = provider.provideProgressEnd()
+        setContent(state = state)
+
+        onNode(progress).assertIsDisplayed()
+        onNode(progress).assert(hasProgressBarRangeInfo(progressRangeInfo(state.progressFraction)))
     }
 
     @Test
@@ -138,6 +169,11 @@ class MiniPlayerViewTest {
         waitUntil(conditionDescription = "intent emitted") { intents.isNotEmpty() }
         intents.shouldContainExactly(MiniPlayerIntent.OnPlayClicked)
     }
+
+    private fun progressRangeInfo(fraction: Float) = ProgressBarRangeInfo(
+        current = fraction,
+        range = 0f..1f
+    )
 
     private fun ComposeUiTest.setContent(
         state: MiniPlayerUIState,

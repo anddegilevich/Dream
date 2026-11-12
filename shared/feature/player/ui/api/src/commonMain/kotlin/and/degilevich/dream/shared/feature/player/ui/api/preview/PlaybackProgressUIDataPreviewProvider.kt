@@ -7,8 +7,16 @@ class PlaybackProgressUIDataPreviewProvider : LabeledPreviewParameterProvider<Pl
 
     override val labeledValues = listOf(
         "Default" to provideDefault(),
-        "Start" to PlaybackProgressUIData(fraction = 0f, elapsed = "0:00", remaining = "-3:45"),
-        "Long" to PlaybackProgressUIData(fraction = 0.9f, elapsed = "1:02:03", remaining = "-6:54")
+        "Start" to PlaybackProgressUIData(
+            fraction = 0f,
+            elapsed = "0:00",
+            remaining = "-3:45"
+        ),
+        "Long" to PlaybackProgressUIData(
+            fraction = 0.9f,
+            elapsed = "1:02:03",
+            remaining = "-6:54"
+        )
     )
 
     fun provideDefault(): PlaybackProgressUIData {

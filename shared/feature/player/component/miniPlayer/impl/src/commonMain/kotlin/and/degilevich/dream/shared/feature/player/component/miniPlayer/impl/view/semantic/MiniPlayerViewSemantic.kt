@@ -6,4 +6,5 @@ object MiniPlayerViewSemantic {
     const val TEST_TAG_SKIP_TO_PREVIOUS = "mini_player_skip_to_previous"
     const val TEST_TAG_SKIP_TO_NEXT = "mini_player_skip_to_next"
     const val TEST_TAG_PLAY = "mini_player_play"
+    const val TEST_TAG_PROGRESS = "mini_player_progress"
 }

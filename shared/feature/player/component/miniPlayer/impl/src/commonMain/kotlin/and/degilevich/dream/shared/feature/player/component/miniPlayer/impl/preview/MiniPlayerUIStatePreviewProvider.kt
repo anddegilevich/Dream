@@ -10,7 +10,9 @@ class MiniPlayerUIStatePreviewProvider : LabeledPreviewParameterProvider<MiniPla
         "Default" to provideDefault(),
         "Shuffling" to provideShuffling(),
         "Playing" to providePlaying(),
-        "Long names" to provideLongNames()
+        "Long names" to provideLongNames(),
+        "Progress start" to provideProgressStart(),
+        "Progress end" to provideProgressEnd()
     )
 
     fun provideDefault(): MiniPlayerUIState {
@@ -20,6 +22,7 @@ class MiniPlayerUIStatePreviewProvider : LabeledPreviewParameterProvider<MiniPla
                 name = "Track",
                 artists = "Artist"
             ),
+            progressFraction = 0.25f,
             isShuffling = false,
             isPlaying = false
         )
@@ -40,5 +43,13 @@ class MiniPlayerUIStatePreviewProvider : LabeledPreviewParameterProvider<MiniPla
                 artists = "First Artist, Second Artist, Third Artist"
             )
         )
+    }
+
+    fun provideProgressStart(): MiniPlayerUIState {
+        return provideDefault().copy(progressFraction = 0f)
+    }
+
+    fun provideProgressEnd(): MiniPlayerUIState {
+        return provideDefault().copy(progressFraction = 1f)
     }
 }

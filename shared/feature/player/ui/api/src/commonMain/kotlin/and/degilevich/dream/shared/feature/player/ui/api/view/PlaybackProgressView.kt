@@ -6,18 +6,13 @@ import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.player.ui.api.model.PlaybackProgressUIData
 import and.degilevich.dream.shared.feature.player.ui.api.preview.PlaybackProgressUIDataPreviewProvider
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -28,24 +23,16 @@ fun PlaybackProgressView(
     data: PlaybackProgressUIData,
     modifier: Modifier = Modifier
 ) {
-    val fraction by animateFloatAsState(
-        targetValue = data.fraction,
-        animationSpec = tween(
-            easing = LinearEasing
-        )
-    )
-
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(space = 8.dp)
     ) {
-        LinearProgressIndicator(
+        PlaybackProgressBar(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(CircleShape),
-            progress = fraction,
-            color = Theme.colors.common.brand,
-            backgroundColor = Theme.colors.common.line
+            fraction = data.fraction,
+            height = 4.dp
         )
         Row(
             modifier = Modifier.fillMaxWidth(),

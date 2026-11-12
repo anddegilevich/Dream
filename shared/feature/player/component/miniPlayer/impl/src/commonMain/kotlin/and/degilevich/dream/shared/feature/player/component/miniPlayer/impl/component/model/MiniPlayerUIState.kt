@@ -8,6 +8,7 @@ import androidx.compose.runtime.Immutable
 data class MiniPlayerUIState(
     val coverUrl: String,
     val track: TrackCardInfoUIData,
+    val progressFraction: Float,
     val isShuffling: Boolean,
     val isPlaying: Boolean
 ) {
@@ -18,6 +19,7 @@ data class MiniPlayerUIState(
             return MiniPlayerUIState(
                 coverUrl = "",
                 track = TrackCardInfoUIData.empty(),
+                progressFraction = 0f,
                 isShuffling = false,
                 isPlaying = false
             )
