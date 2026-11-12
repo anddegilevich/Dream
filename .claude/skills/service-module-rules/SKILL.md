@@ -13,3 +13,4 @@ description: core/service module conventions — generated Spotify API client, A
 * `TokensStorage`/`TokensStorageImpl` persists `Tokens`; mapping between wire `TokenResponse` and domain `Tokens` goes through `TokensMappers`, not inline construction
 * Everything in `core/service/impl` (`ApiServiceImpl`, `TokenServiceImpl`, `TokensStorageImpl`) is `internal`, bound in `serviceModule()` via `singleOf(::XImpl) bind X::class`
 * Feature-level repositories/data sources never import `core/service/impl` — only `core/service/api`'s `ApiService` and the generated `api`/`model` types (see `data-module-rules`, `data-mapper-module-rules`)
+* Spotify API usage rules (auth flow, scopes, tokens, 429 backoff, deprecated endpoints, error handling, ToS) live in `spotify-api-rules`
