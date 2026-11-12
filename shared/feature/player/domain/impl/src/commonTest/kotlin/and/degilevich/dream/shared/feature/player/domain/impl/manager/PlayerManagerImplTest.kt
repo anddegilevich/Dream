@@ -18,6 +18,7 @@ import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 class PlayerManagerImplTest {
@@ -430,6 +431,428 @@ class PlayerManagerImplTest {
 
         result shouldBe expected
         manager.playerState.first() shouldBe PlayerStateData.Idle
+    }
+
+    @Test
+    fun `skipToNext - repository succeeds while active - resets progress locally before fetching`() = runTest {
+        var fetchCount = 0
+        val initialState = playbackStateData(trackId = "track", isPlaying = true, progressMs = 20000)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) initialState else playbackStateData(trackId = "fetched"))
+                },
+                onSkipToNext = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.skipToNext() }
+        runCurrent()
+
+        fetchCount shouldBe 1
+        values.last() shouldBe PlayerStateData.Active(playbackState = initialState.copy(progressMs = 0))
+    }
+
+    @Test
+    fun `skipToNext - repository succeeds - fetches the player state 500 ms later`() = runTest {
+        var fetchCount = 0
+        val fetchedState = playbackStateData(trackId = "fetched", isPlaying = false)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                },
+                onSkipToNext = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.skipToNext() }
+        runCurrent()
+        advance(499.milliseconds)
+        val fetchCountBeforeDelay = fetchCount
+        advance(1.milliseconds)
+
+        fetchCountBeforeDelay shouldBe 1
+        fetchCount shouldBe 2
+        values.last() shouldBe PlayerStateData.Active(playbackState = fetchedState)
+    }
+
+    @Test
+    fun `skipToPrevious - repository succeeds while active - resets progress locally before fetching`() = runTest {
+        var fetchCount = 0
+        val initialState = playbackStateData(trackId = "track", isPlaying = true, progressMs = 20000)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) initialState else playbackStateData(trackId = "fetched"))
+                },
+                onSkipToPrevious = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.skipToPrevious() }
+        runCurrent()
+
+        fetchCount shouldBe 1
+        values.last() shouldBe PlayerStateData.Active(playbackState = initialState.copy(progressMs = 0))
+    }
+
+    @Test
+    fun `skipToPrevious - repository succeeds - fetches the player state 500 ms later`() = runTest {
+        var fetchCount = 0
+        val fetchedState = playbackStateData(trackId = "fetched", isPlaying = false)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                },
+                onSkipToPrevious = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.skipToPrevious() }
+        runCurrent()
+        advance(499.milliseconds)
+        val fetchCountBeforeDelay = fetchCount
+        advance(1.milliseconds)
+
+        fetchCountBeforeDelay shouldBe 1
+        fetchCount shouldBe 2
+        values.last() shouldBe PlayerStateData.Active(playbackState = fetchedState)
+    }
+
+    @Test
+    fun `setShuffle - repository succeeds while active - updates shuffling locally before fetching`() = runTest {
+        var fetchCount = 0
+        val initialState = playbackStateData(trackId = "track", isPlaying = false, isShuffling = false)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) initialState else playbackStateData(trackId = "fetched"))
+                },
+                onSetShuffle = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.setShuffle(params = SetShuffleParams(isEnabled = true)) }
+        runCurrent()
+
+        fetchCount shouldBe 1
+        values.last() shouldBe PlayerStateData.Active(playbackState = initialState.copy(isShuffling = true))
+    }
+
+    @Test
+    fun `setShuffle - repository succeeds - fetches the player state 500 ms later`() = runTest {
+        var fetchCount = 0
+        val fetchedState = playbackStateData(trackId = "fetched", isPlaying = false, isShuffling = true)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                },
+                onSetShuffle = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.setShuffle(params = SetShuffleParams(isEnabled = true)) }
+        runCurrent()
+        advance(499.milliseconds)
+        val fetchCountBeforeDelay = fetchCount
+        advance(1.milliseconds)
+
+        fetchCountBeforeDelay shouldBe 1
+        fetchCount shouldBe 2
+        values.last() shouldBe PlayerStateData.Active(playbackState = fetchedState)
+    }
+
+    @Test
+    fun `pause - repository succeeds while active - marks playback paused locally before fetching`() = runTest {
+        var fetchCount = 0
+        val initialState = playbackStateData(trackId = "track", isPlaying = true, progressMs = 20000)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) initialState else playbackStateData(trackId = "fetched"))
+                },
+                onPause = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.pause() }
+        runCurrent()
+
+        fetchCount shouldBe 1
+        values.last() shouldBe PlayerStateData.Active(playbackState = initialState.copy(isPlaying = false))
+    }
+
+    @Test
+    fun `pause - repository succeeds - fetches the player state 500 ms later`() = runTest {
+        var fetchCount = 0
+        val fetchedState = playbackStateData(trackId = "fetched", isPlaying = false)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                },
+                onPause = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.pause() }
+        runCurrent()
+        advance(499.milliseconds)
+        val fetchCountBeforeDelay = fetchCount
+        advance(1.milliseconds)
+
+        fetchCountBeforeDelay shouldBe 1
+        fetchCount shouldBe 2
+        values.last() shouldBe PlayerStateData.Active(playbackState = fetchedState)
+    }
+
+    @Test
+    fun `pause - repository succeeds while idle - stays idle until the fetch`() = runTest {
+        var fetchCount = 0
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    if (fetchCount == 1) {
+                        Result.success(GetPlaybackStateResult.None)
+                    } else {
+                        value(playbackStateData(trackId = "fetched", isPlaying = false))
+                    }
+                },
+                onPause = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.pause() }
+        runCurrent()
+
+        fetchCount shouldBe 1
+        values.last() shouldBe PlayerStateData.Idle
+    }
+
+    @Test
+    fun `pause - repository fails while active - keeps the state and does not fetch`() = runTest {
+        var fetchCount = 0
+        val initialState = playbackStateData(trackId = "track", isPlaying = false, progressMs = 20000)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(initialState)
+                },
+                onPause = { Result.failure(IllegalStateException("premium required")) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.pause() }
+        runCurrent()
+        advance(1.seconds)
+
+        fetchCount shouldBe 1
+        values.last() shouldBe PlayerStateData.Active(playbackState = initialState)
+    }
+
+    @Test
+    fun `resume - repository succeeds while active - marks playback playing locally before fetching`() = runTest {
+        var fetchCount = 0
+        val initialState = playbackStateData(trackId = "track", isPlaying = false, progressMs = 20000)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) initialState else playbackStateData(trackId = "fetched"))
+                },
+                onResume = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.resume() }
+        runCurrent()
+
+        fetchCount shouldBe 1
+        values.last() shouldBe PlayerStateData.Active(playbackState = initialState.copy(isPlaying = true))
+    }
+
+    @Test
+    fun `resume - repository succeeds - fetches the player state 500 ms later`() = runTest {
+        var fetchCount = 0
+        val fetchedState = playbackStateData(trackId = "fetched", isPlaying = false)
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(if (fetchCount == 1) playbackStateData(trackId = "track", isPlaying = false) else fetchedState)
+                },
+                onResume = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        launch { manager.resume() }
+        runCurrent()
+        advance(499.milliseconds)
+        val fetchCountBeforeDelay = fetchCount
+        advance(1.milliseconds)
+
+        fetchCountBeforeDelay shouldBe 1
+        fetchCount shouldBe 2
+        values.last() shouldBe PlayerStateData.Active(playbackState = fetchedState)
+    }
+
+    @Test
+    fun `skipToNext - repository succeeds while playing - stops progress ticker until the fetch`() = runTest {
+        var fetchCount = 0
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(playing(progressMs = 20000, durationMs = 200000))
+                },
+                onSkipToNext = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        advance(900.milliseconds)
+        launch { manager.skipToNext() }
+        runCurrent()
+        advance(400.milliseconds)
+
+        fetchCount shouldBe 1
+        values.last().progressMs() shouldBe 0
+    }
+
+    @Test
+    fun `skipToNext - fetched playing state - restarts progress ticker from the fetch`() = runTest {
+        var fetchCount = 0
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(playing(progressMs = if (fetchCount == 1) 20000 else 5000, durationMs = 200000))
+                },
+                onSkipToNext = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        advance(900.milliseconds)
+        launch { manager.skipToNext() }
+        runCurrent()
+        advance(1200.milliseconds)
+        val progressBeforeTick = values.last().progressMs()
+        advance(300.milliseconds)
+
+        fetchCount shouldBe 2
+        progressBeforeTick shouldBe 5000
+        values.last().progressMs() shouldBe 6000
+    }
+
+    @Test
+    fun `resume - repository succeeds while paused - does not advance progress until the fetch`() = runTest {
+        var fetchCount = 0
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    value(playbackStateData(isPlaying = false, progressMs = 20000))
+                },
+                onResume = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        advance(900.milliseconds)
+        launch { manager.resume() }
+        runCurrent()
+        advance(400.milliseconds)
+
+        fetchCount shouldBe 1
+        values.last().progressMs() shouldBe 20000
+    }
+
+    @Test
+    fun `resume - fetched playing state - starts progress ticker from the fetch`() = runTest {
+        var fetchCount = 0
+        val values = mutableListOf<PlayerStateData>()
+        val manager = createManager(
+            playerRepository = FakePlayerRepository(
+                onGetPlaybackState = {
+                    fetchCount++
+                    if (fetchCount == 1) {
+                        value(playbackStateData(isPlaying = false, progressMs = 20000))
+                    } else {
+                        value(playing(progressMs = 30000, durationMs = 200000))
+                    }
+                },
+                onResume = { Result.success(Unit) }
+            )
+        )
+
+        collect(manager = manager, into = values)
+        runCurrent()
+        advance(900.milliseconds)
+        launch { manager.resume() }
+        runCurrent()
+        advance(1200.milliseconds)
+        val progressBeforeTick = values.last().progressMs()
+        advance(300.milliseconds)
+
+        fetchCount shouldBe 2
+        progressBeforeTick shouldBe 30000
+        values.last().progressMs() shouldBe 31000
     }
 
     private fun createManager(
