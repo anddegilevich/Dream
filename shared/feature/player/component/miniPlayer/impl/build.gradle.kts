@@ -7,6 +7,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.shared.feature.player.component.miniPlayer.api)
             implementation(projects.shared.feature.player.domain.api)
+            implementation(projects.shared.feature.player.ui.api)
             implementation(projects.shared.feature.track.ui.api)
             implementation(projects.shared.feature.album.ui.api)
         }

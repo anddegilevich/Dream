@@ -5,16 +5,15 @@ import and.degilevich.dream.shared.design.system.button.IconButton
 import and.degilevich.dream.shared.design.system.indication.themeRipple
 import and.degilevich.dream.shared.design.system.modifier.themeBackground
 import and.degilevich.dream.shared.design.theme.api.ComposeAppTheme
-import and.degilevich.dream.shared.design.theme.api.Theme
 import and.degilevich.dream.shared.feature.album.ui.api.view.AlbumIcon
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.component.model.MiniPlayerIntent
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.component.model.MiniPlayerUIState
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.preview.MiniPlayerUIStatePreviewProvider
 import and.degilevich.dream.shared.feature.player.component.miniPlayer.impl.view.semantic.MiniPlayerViewSemantic
+import and.degilevich.dream.shared.feature.player.ui.api.view.ShuffleIconButton
 import and.degilevich.dream.shared.foundation.compose.click.rememberDebounced
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shated.feature.track.ui.api.view.TrackCardInfoView
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -23,7 +22,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -77,25 +75,16 @@ private fun MiniPlayerControls(
     modifier: Modifier = Modifier,
     onIntent: (MiniPlayerIntent) -> Unit
 ) {
-    val shuffleTint by animateColorAsState(
-        targetValue = if (isShuffling) {
-            Theme.colors.common.brand
-        } else {
-            Theme.colors.icon.secondary
-        }
-    )
-
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(space = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(
+        ShuffleIconButton(
             modifier = Modifier
                 .testTag(MiniPlayerViewSemantic.TEST_TAG_SHUFFLE)
                 .size(24.dp),
-            painter = painterResource(Res.images.ic_shuffle),
-            tint = shuffleTint,
+            isShuffling = isShuffling,
             onClicked = { onIntent(MiniPlayerIntent.OnShuffleClicked) }
         )
         IconButton(
