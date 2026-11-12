@@ -7,12 +7,15 @@ import and.degilevich.dream.shared.feature.common.component.drawer.api.component
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
 import and.degilevich.dream.shared.feature.common.component.topbar.api.component.TopbarComponent
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeDrawer
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeMiniPlayer
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeTopbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomeIntent
+import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomeMiniPlayerConfig
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.common.home.impl.view.semantic.HomeScreenSemantic
+import and.degilevich.dream.shared.feature.player.component.miniPlayer.api.component.MiniPlayerComponent
 import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.ChildDrawer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -27,6 +30,7 @@ import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.v2.runComposeUiTest
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.Child
+import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import io.kotest.matchers.collections.shouldContainExactly
@@ -39,6 +43,8 @@ class HomeScreenTest {
     private val page = hasTestTag(HomeScreenSemantic.TEST_TAG_PAGE)
     private val topbar = hasTestTag(STUB_TEST_TAG_TOPBAR)
     private val drawerContent = hasTestTag(STUB_TEST_TAG_DRAWER)
+    private val miniPlayer = hasTestTag(HomeScreenSemantic.TEST_TAG_MINI_PLAYER)
+    private val miniPlayerContent = hasTestTag(STUB_TEST_TAG_MINI_PLAYER)
 
     @Test
     fun `render closed drawer - shows topbar and selected page`() = runComposeUiTest {
@@ -48,6 +54,26 @@ class HomeScreenTest {
             .assertIsDisplayed()
         onNode(topbar).assertIsDisplayed()
         onNode(drawerContent).assertIsNotDisplayed()
+    }
+
+    @Test
+    fun `render active mini player slot - shows mini player`() = runComposeUiTest {
+        setContent(
+            drawer = drawer(isOpen = false),
+            miniPlayer = miniPlayer(isActive = true)
+        )
+        onNode(miniPlayer).assertIsDisplayed()
+        onNode(miniPlayerContent).assertIsDisplayed()
+    }
+
+    @Test
+    fun `render empty mini player slot - hides mini player`() = runComposeUiTest {
+        setContent(
+            drawer = drawer(isOpen = false),
+            miniPlayer = miniPlayer(isActive = false)
+        )
+        onNode(miniPlayer).assertDoesNotExist()
+        onNode(miniPlayerContent).assertDoesNotExist()
     }
 
     @Test
@@ -69,6 +95,7 @@ class HomeScreenTest {
 
     private fun ComposeUiTest.setContent(
         drawer: Value<ChildDrawer<HomeDrawer>>,
+        miniPlayer: Value<ChildSlot<HomeMiniPlayerConfig, HomeMiniPlayer>> = miniPlayer(isActive = false),
         onIntent: (HomeIntent) -> Unit = {}
     ) = setContent {
         ComposeAppTheme {
@@ -97,6 +124,7 @@ class HomeScreenTest {
                         }
                     }
                 ),
+                miniPlayer = miniPlayer,
                 pages = MutableValue(
                     ChildPagesState(
                         items = listOf(
@@ -122,6 +150,30 @@ class HomeScreenTest {
         }
     }
 
+    private fun miniPlayer(isActive: Boolean): Value<ChildSlot<HomeMiniPlayerConfig, HomeMiniPlayer>> {
+        if (!isActive) return MutableValue(ChildSlot())
+        return MutableValue(
+            ChildSlot(
+                child = Child.Created(
+                    configuration = HomeMiniPlayerConfig,
+                    instance = HomeMiniPlayer(
+                        component = object : MiniPlayerComponent {
+                            @Composable
+                            override fun Render() {
+                                ViewStub(
+                                    modifier = Modifier
+                                        .height(64.dp)
+                                        .testTag(STUB_TEST_TAG_MINI_PLAYER),
+                                    stub = "MiniPlayerComponent"
+                                )
+                            }
+                        }
+                    )
+                )
+            )
+        )
+    }
+
     private fun drawer(isOpen: Boolean): Value<ChildDrawer<HomeDrawer>> {
         return MutableValue(
             ChildDrawer(
@@ -144,3 +196,4 @@ class HomeScreenTest {
 
 private const val STUB_TEST_TAG_TOPBAR = "stub_topbar"
 private const val STUB_TEST_TAG_DRAWER = "stub_drawer"
+private const val STUB_TEST_TAG_MINI_PLAYER = "stub_mini_player"

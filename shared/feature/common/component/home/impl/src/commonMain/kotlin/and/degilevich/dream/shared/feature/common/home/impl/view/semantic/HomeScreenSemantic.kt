@@ -3,4 +3,5 @@ package and.degilevich.dream.shared.feature.common.home.impl.view.semantic
 object HomeScreenSemantic {
     const val TEST_TAG_PAGE = "home_page"
     const val TEST_TAG_DRAWER = "home_drawer"
+    const val TEST_TAG_MINI_PLAYER = "home_mini_player"
 }

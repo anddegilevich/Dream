@@ -8,15 +8,21 @@ import and.degilevich.dream.shared.feature.common.component.drawer.api.component
 import and.degilevich.dream.shared.feature.common.component.navbar.api.component.NavbarComponent
 import and.degilevich.dream.shared.feature.common.component.topbar.api.component.TopbarComponent
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeDrawer
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeMiniPlayer
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeTopbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomeIntent
+import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomeMiniPlayerConfig
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.common.home.impl.view.semantic.HomeScreenSemantic
+import and.degilevich.dream.shared.feature.player.component.miniPlayer.api.component.MiniPlayerComponent
 import and.degilevich.dream.shared.foundation.compose.preview.LightDarkPreviews
 import and.degilevich.dream.shared.foundation.decompose.compose.drawer.rememberNavigationDrawerState
+import and.degilevich.dream.shared.foundation.decompose.compose.slot.AnimatedSlot
 import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.ChildDrawer
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -26,12 +32,16 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.material.ModalDrawer
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.extensions.compose.pages.ChildPages
 import com.arkivanov.decompose.extensions.compose.pages.PagesScrollAnimation
+import com.arkivanov.decompose.extensions.compose.subscribeAsState
+import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.router.pages.ChildPages as ChildPagesState
@@ -40,6 +50,7 @@ import com.arkivanov.decompose.router.pages.ChildPages as ChildPagesState
 fun HomeScreen(
     topbar: HomeTopbar,
     navbar: HomeNavbar,
+    miniPlayer: Value<ChildSlot<HomeMiniPlayerConfig, HomeMiniPlayer>>,
     pages: Value<ChildPagesState<HomePageConfig, HomePage>>,
     drawer: Value<ChildDrawer<HomeDrawer>>,
     modifier: Modifier = Modifier,
@@ -69,6 +80,7 @@ fun HomeScreen(
         HomeContent(
             topbar = topbar,
             navbar = navbar,
+            miniPlayer = miniPlayer,
             pages = pages
         )
     }
@@ -78,9 +90,12 @@ fun HomeScreen(
 private fun HomeContent(
     topbar: HomeTopbar,
     navbar: HomeNavbar,
+    miniPlayer: Value<ChildSlot<HomeMiniPlayerConfig, HomeMiniPlayer>>,
     pages: Value<ChildPagesState<HomePageConfig, HomePage>>,
     modifier: Modifier = Modifier
 ) {
+    val miniPlayerSlot by miniPlayer.subscribeAsState()
+
     Column(
         modifier = modifier
             .themeBackground()
@@ -111,6 +126,14 @@ private fun HomeContent(
                 page.Render()
             }
         }
+        AnimatedSlot(
+            modifier = Modifier.testTag(HomeScreenSemantic.TEST_TAG_MINI_PLAYER),
+            slot = miniPlayerSlot,
+            enter = expandVertically(expandFrom = Alignment.Bottom),
+            exit = shrinkVertically(shrinkTowards = Alignment.Bottom)
+        ) { child ->
+            child.instance.Render()
+        }
         navbar.Render()
     }
 }
@@ -140,6 +163,24 @@ private fun HomeScreenPreview() = ComposeAppTheme {
                     )
                 }
             }
+        ),
+        miniPlayer = MutableValue(
+            ChildSlot(
+                child = Child.Created(
+                    configuration = HomeMiniPlayerConfig,
+                    instance = HomeMiniPlayer(
+                        component = object : MiniPlayerComponent {
+                            @Composable
+                            override fun Render() {
+                                ViewStub(
+                                    modifier = Modifier.height(64.dp),
+                                    stub = "MiniPlayerComponent"
+                                )
+                            }
+                        }
+                    )
+                )
+            )
         ),
         pages = MutableValue(
             ChildPagesState(

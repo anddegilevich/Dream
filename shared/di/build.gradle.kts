@@ -58,7 +58,10 @@ kotlin {
             implementation(projects.shared.feature.player.data.impl)
             implementation(projects.shared.feature.player.data.mapper.impl)
             implementation(projects.shared.feature.player.domain.impl)
+            implementation(projects.shared.feature.player.ui.impl)
             implementation(projects.shared.feature.player.component.recentlyPlayed.impl)
+            implementation(projects.shared.feature.player.component.miniPlayer.impl)
+            implementation(projects.shared.feature.player.component.player.impl)
 
             implementation(projects.shared.feature.search.data.impl)
             implementation(projects.shared.feature.search.data.mapper.impl)

@@ -10,6 +10,8 @@ kotlin {
             implementation(projects.shared.feature.common.component.topbar.api)
             implementation(projects.shared.feature.common.component.drawer.api)
             implementation(projects.shared.feature.search.component.search.api)
+            implementation(projects.shared.feature.player.component.miniPlayer.api)
+            implementation(projects.shared.feature.player.domain.api)
             api(projects.shared.feature.common.component.home.api)
         }
     }

@@ -10,12 +10,17 @@ import and.degilevich.dream.shared.feature.common.component.navbar.api.component
 import and.degilevich.dream.shared.feature.common.component.topbar.api.component.TopbarComponentFactory
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeDrawer
+import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeMiniPlayer
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeNavbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomePage
 import and.degilevich.dream.shared.feature.common.home.impl.component.child.HomeTopbar
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomeIntent
+import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomeMiniPlayerConfig
 import and.degilevich.dream.shared.feature.common.home.impl.component.model.HomePageConfig
 import and.degilevich.dream.shared.feature.common.home.impl.view.HomeScreen
+import and.degilevich.dream.shared.feature.player.component.miniPlayer.api.component.MiniPlayerComponentFactory
+import and.degilevich.dream.shared.feature.player.domain.api.manager.PlayerManager
+import and.degilevich.dream.shared.feature.player.domain.model.core.api.data.PlayerStateData
 import and.degilevich.dream.shared.feature.search.component.search.api.component.SearchComponentFactory
 import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.ChildDrawer
 import and.degilevich.dream.shared.foundation.decompose.navigation.drawer.DrawerNavigation
@@ -30,10 +35,20 @@ import com.arkivanov.decompose.router.pages.PagesNavigation
 import com.arkivanov.decompose.router.pages.childPages
 import com.arkivanov.decompose.router.pages.select
 import com.arkivanov.decompose.router.pages.setItems
+import com.arkivanov.decompose.router.slot.ChildSlot
+import com.arkivanov.decompose.router.slot.SlotNavigation
+import com.arkivanov.decompose.router.slot.activate
+import com.arkivanov.decompose.router.slot.childSlot
+import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -48,11 +63,13 @@ internal class HomeComponentImpl(
 
     private val navbarManager: NavbarManager by inject()
     private val drawerManager: DrawerManager by inject()
+    private val playerManager: PlayerManager by inject()
     private val topbarComponentFactory: TopbarComponentFactory by inject()
     private val navbarComponentFactory: NavbarComponentFactory by inject()
     private val dashboardComponentFactory: DashboardComponentFactory by inject()
     private val searchComponentFactory: SearchComponentFactory by inject()
     private val drawerComponentFactory: DrawerComponentFactory by inject()
+    private val miniPlayerComponentFactory: MiniPlayerComponentFactory by inject()
 
     private val scope: CoroutineScope = coroutineScope()
 
@@ -66,6 +83,18 @@ internal class HomeComponentImpl(
         component = navbarComponentFactory.create(
             componentContext = childContext(key = NAVBAR_KEY)
         )
+    )
+
+    private val miniPlayerNavigation = SlotNavigation<HomeMiniPlayerConfig>()
+
+    private val miniPlayer: Value<ChildSlot<HomeMiniPlayerConfig, HomeMiniPlayer>> = childSlot(
+        source = miniPlayerNavigation,
+        serializer = HomeMiniPlayerConfig.serializer(),
+        key = MINI_PLAYER_KEY,
+        handleBackButton = false,
+        childFactory = { _, componentContext ->
+            miniPlayerFactory(componentContext = componentContext)
+        }
     )
 
     private val pagesNavigation = PagesNavigation<HomePageConfig>()
@@ -91,6 +120,7 @@ internal class HomeComponentImpl(
         observeNavbarItems()
         observeNavbarActiveItemIndex()
         observeDrawerState()
+        observePlayerState()
     }
 
     @Composable
@@ -98,6 +128,7 @@ internal class HomeComponentImpl(
         HomeScreen(
             topbar = topbar,
             navbar = navbar,
+            miniPlayer = miniPlayer,
             pages = pages,
             drawer = drawer,
             onIntent = ::handleIntent
@@ -127,6 +158,19 @@ internal class HomeComponentImpl(
             drawerNavigation.close()
         }
     }.launchIn(scope)
+
+    private fun observePlayerState() = playerManager.playerState
+        .flowOn(Dispatchers.IO)
+        .map { playerState -> playerState is PlayerStateData.Active }
+        .distinctUntilChanged()
+        .onEach { isActive ->
+            if (isActive) {
+                miniPlayerNavigation.activate(configuration = HomeMiniPlayerConfig)
+            } else {
+                miniPlayerNavigation.dismiss()
+            }
+        }
+        .launchIn(scope)
 
     private fun handleIntent(intent: HomeIntent) {
         when (intent) {
@@ -173,10 +217,21 @@ internal class HomeComponentImpl(
         )
     }
 
+    private fun miniPlayerFactory(
+        componentContext: ComponentContext
+    ): HomeMiniPlayer {
+        return HomeMiniPlayer(
+            component = miniPlayerComponentFactory.create(
+                componentContext = componentContext
+            )
+        )
+    }
+
     private companion object {
         const val PAGES_KEY = "pages"
         const val NAVBAR_KEY = "navbar"
         const val TOPBAR_KEY = "topbar"
         const val DRAWER_KEY = "drawer"
+        const val MINI_PLAYER_KEY = "mini_player"
     }
 }
