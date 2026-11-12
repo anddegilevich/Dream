@@ -21,7 +21,6 @@ class MainActivity : ComponentActivity() {
         )
     }
 
-    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         initSplash()
         initEdgeToEdge()
