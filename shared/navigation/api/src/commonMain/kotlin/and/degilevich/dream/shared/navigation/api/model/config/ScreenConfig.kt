@@ -48,4 +48,8 @@ sealed interface ScreenConfig {
 
     @Serializable
     data object LikedTracks : ScreenConfig
+
+    // Player
+    @Serializable
+    data object Player : ScreenConfig
 }

@@ -5,6 +5,7 @@ import and.degilevich.dream.shared.feature.artist.component.details.api.componen
 import and.degilevich.dream.shared.feature.auth.component.login.api.component.LoginComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponent
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponent
+import and.degilevich.dream.shared.feature.player.component.player.api.component.PlayerComponent
 import and.degilevich.dream.shared.feature.playlist.component.details.api.component.PlaylistDetailsComponent
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponent
 import and.degilevich.dream.shared.feature.track.component.liked.api.component.LikedTracksComponent
@@ -65,4 +66,11 @@ internal sealed interface Screen : RenderComponent {
     class LikedTracks(
         component: LikedTracksComponent
     ) : Screen, LikedTracksComponent by component
+
+    // Player
+
+    @Stable
+    class Player(
+        component: PlayerComponent
+    ) : Screen, PlayerComponent by component
 }

@@ -51,6 +51,8 @@ kotlin {
             implementation(projects.shared.feature.track.component.details.api)
             implementation(projects.shared.feature.track.component.liked.api)
 
+            implementation(projects.shared.feature.player.component.player.api)
+
             api(projects.shared.app.api)
         }
     }

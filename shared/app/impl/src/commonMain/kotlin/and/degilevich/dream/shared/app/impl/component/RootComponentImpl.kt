@@ -11,6 +11,7 @@ import and.degilevich.dream.shared.feature.auth.component.login.api.component.Lo
 import and.degilevich.dream.shared.feature.base.component.impl.BaseComponent
 import and.degilevich.dream.shared.feature.common.component.splash.api.component.SplashComponentFactory
 import and.degilevich.dream.shared.feature.common.home.api.component.HomeComponentFactory
+import and.degilevich.dream.shared.feature.player.component.player.api.component.PlayerComponentFactory
 import and.degilevich.dream.shared.feature.playlist.component.details.api.component.PlaylistDetailsComponentFactory
 import and.degilevich.dream.shared.feature.track.component.details.api.component.TrackDetailsComponentFactory
 import and.degilevich.dream.shared.feature.track.component.liked.api.component.LikedTracksComponentFactory
@@ -50,6 +51,7 @@ class RootComponentImpl(
     private val playlistDetailsComponentFactory: PlaylistDetailsComponentFactory by inject()
     private val trackDetailsComponentFactory: TrackDetailsComponentFactory by inject()
     private val likedTracksComponentFactory: LikedTracksComponentFactory by inject()
+    private val playerComponentFactory: PlayerComponentFactory by inject()
 
     private val screens: Value<ChildStack<ScreenConfig, Screen>> = childStack(
         source = navigationComponent.screenNavigationSource,
@@ -124,6 +126,12 @@ class RootComponentImpl(
 
             is ScreenConfig.LikedTracks -> Screen.LikedTracks(
                 component = likedTracksComponentFactory.create(
+                    componentContext = componentContext
+                )
+            )
+
+            is ScreenConfig.Player -> Screen.Player(
+                component = playerComponentFactory.create(
                     componentContext = componentContext
                 )
             )

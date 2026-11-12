@@ -8,7 +8,9 @@ import and.degilevich.dream.shared.feature.player.domain.api.manager.PlayerManag
 import and.degilevich.dream.shared.feature.player.domain.model.core.api.data.PlaybackStateData
 import and.degilevich.dream.shared.feature.player.domain.model.core.api.data.PlayerStateData
 import and.degilevich.dream.shared.feature.player.domain.model.core.api.method.setShuffle.SetShuffleParams
+import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.essenty.lifecycle.doOnCreate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -35,7 +37,7 @@ internal class MiniPlayerDomainComponent(
 
     override fun handleIntent(intent: MiniPlayerIntent) {
         when (intent) {
-            is MiniPlayerIntent.OnViewClicked -> Unit
+            is MiniPlayerIntent.OnViewClicked -> navigateToPlayer()
             is MiniPlayerIntent.OnSkipToPreviousClicked -> skipToPrevious()
             is MiniPlayerIntent.OnSkipToNextClicked -> skipToNext()
             is MiniPlayerIntent.OnShuffleClicked -> toggleShuffle()
@@ -73,6 +75,10 @@ internal class MiniPlayerDomainComponent(
 
     private fun skipToNext() = scope.launch {
         withContext(Dispatchers.IO) { playerManager.skipToNext() }
+    }
+
+    private fun navigateToPlayer() {
+        navigator.screenNavigator.pushToFront(ScreenConfig.Player)
     }
 
     private fun setPlaybackState(playbackState: PlaybackStateData) = reduce {
