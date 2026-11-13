@@ -16,23 +16,20 @@ import kotlin.test.Test
 class SplashScreenTest {
 
     private val logo = hasTestTag(SplashScreenSemantic.TEST_TAG_LOGO)
-    private val title = hasTestTag(SplashScreenSemantic.TEST_TAG_TITLE)
     private val attribution = hasTestTag(SplashScreenSemantic.TEST_TAG_ATTRIBUTION)
 
     @Test
-    fun `intro - starts with the logo alone then reveals the title and Spotify attribution`() = runComposeUiTest {
+    fun `intro - starts with the logo alone then reveals the Spotify attribution`() = runComposeUiTest {
         mainClock.autoAdvance = false
 
         setSplashScreen(onIntent = {})
 
         onNode(logo).assertExists().assertIsDisplayed()
-        onNode(title).assertDoesNotExist()
         onNode(attribution).assertDoesNotExist()
 
         mainClock.advanceTimeBy(milliseconds = INTRO_FINISHED_MS)
 
         onNode(logo).assertExists().assertIsDisplayed()
-        onNode(title).assertExists().assertIsDisplayed()
         onNode(attribution).assertExists().assertIsDisplayed()
     }
 
