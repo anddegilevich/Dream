@@ -12,6 +12,7 @@ import and.degilevich.dream.shared.core.service.api.generated.api.TracksApi
 import and.degilevich.dream.shared.core.service.api.generated.api.UsersApi
 import and.degilevich.dream.shared.core.service.api.model.SessionData
 import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfigurator
+import and.degilevich.dream.shared.core.service.impl.network.ServiceResponseErrorConfigurator
 import and.degilevich.dream.shared.core.service.impl.session.model.AuthError
 import and.degilevich.dream.shared.core.service.impl.session.storage.SessionStorage
 import and.degilevich.dream.shared.core.service.impl.token.client.TokenService
@@ -28,7 +29,8 @@ internal class ApiServiceImpl(
     private val sessionStorage: SessionStorage,
     private val tokenService: TokenService,
     private val tokensDataToBearerMapper: TokensDataToBearerMapper,
-    private val requestRetryConfigurator: ServiceRequestRetryConfigurator
+    private val requestRetryConfigurator: ServiceRequestRetryConfigurator,
+    private val responseErrorConfigurator: ServiceResponseErrorConfigurator
 ) : ApiService {
 
     private val apiServiceClient = remoteClient.client.config {

@@ -36,4 +36,11 @@
     <string name="error">Error</string>
     <string name="error_forbidden_resource">Requested resource is forbidden</string>
     <string name="error_authentication_failed">Authentication failed</string>
+    <string name="error_session_expired">Session expired. Please log in again</string>
+    <string name="error_action_not_allowed">This action isn't allowed</string>
+    <string name="error_not_found">Not found</string>
+    <string name="error_too_many_requests">Too many requests. Try again later</string>
+    <string name="error_service_unavailable">Spotify is unavailable. Try again later</string>
+    <string name="error_timeout">Request timed out</string>
+    <string name="error_no_connection">No internet connection</string>
 </resources>

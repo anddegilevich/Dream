@@ -8,6 +8,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.shared.resource.api)
+            implementation(projects.shared.core.network.api)
+            implementation(projects.shared.core.service.api)
             api(projects.shared.core.toast.api)
         }
     }

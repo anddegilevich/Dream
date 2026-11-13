@@ -34,4 +34,11 @@
     <string name="error">Ошибка</string>
     <string name="error_forbidden_resource">Сервис не доступен</string>
     <string name="error_authentication_failed">Не удалось войти</string>
+    <string name="error_session_expired">Сессия истекла. Войдите снова</string>
+    <string name="error_action_not_allowed">Это действие недоступно</string>
+    <string name="error_not_found">Не найдено</string>
+    <string name="error_too_many_requests">Слишком много запросов. Попробуйте позже</string>
+    <string name="error_service_unavailable">Spotify недоступен. Попробуйте позже</string>
+    <string name="error_timeout">Превышено время ожидания</string>
+    <string name="error_no_connection">Нет подключения к интернету</string>
 </resources>

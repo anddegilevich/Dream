@@ -5,6 +5,8 @@ import and.degilevich.dream.shared.core.service.api.session.SessionService
 import and.degilevich.dream.shared.core.service.impl.ApiServiceImpl
 import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfigurator
 import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfiguratorImpl
+import and.degilevich.dream.shared.core.service.impl.network.ServiceResponseErrorConfigurator
+import and.degilevich.dream.shared.core.service.impl.network.ServiceResponseErrorConfiguratorImpl
 import and.degilevich.dream.shared.core.service.impl.session.SessionServiceImpl
 import and.degilevich.dream.shared.core.service.impl.session.pkce.PkceGenerator
 import and.degilevich.dream.shared.core.service.impl.session.pkce.PkceGeneratorImpl
@@ -27,6 +29,7 @@ import org.koin.dsl.module
 
 fun serviceModule() = module {
     singleOf(::ServiceRequestRetryConfiguratorImpl) bind ServiceRequestRetryConfigurator::class
+    singleOf(::ServiceResponseErrorConfiguratorImpl) bind ServiceResponseErrorConfigurator::class
     singleOf(::SessionStorageImpl) bind SessionStorage::class
     singleOf(::PkceGeneratorImpl) bind PkceGenerator::class
     singleOf(::AuthUrlBuilderImpl) bind AuthUrlBuilder::class
