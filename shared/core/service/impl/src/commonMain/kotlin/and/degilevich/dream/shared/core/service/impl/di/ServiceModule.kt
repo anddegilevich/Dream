@@ -3,6 +3,8 @@ package and.degilevich.dream.shared.core.service.impl.di
 import and.degilevich.dream.shared.core.service.api.ApiService
 import and.degilevich.dream.shared.core.service.api.session.SessionService
 import and.degilevich.dream.shared.core.service.impl.ApiServiceImpl
+import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfigurator
+import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfiguratorImpl
 import and.degilevich.dream.shared.core.service.impl.session.SessionServiceImpl
 import and.degilevich.dream.shared.core.service.impl.session.pkce.PkceGenerator
 import and.degilevich.dream.shared.core.service.impl.session.pkce.PkceGeneratorImpl
@@ -24,6 +26,7 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun serviceModule() = module {
+    singleOf(::ServiceRequestRetryConfiguratorImpl) bind ServiceRequestRetryConfigurator::class
     singleOf(::SessionStorageImpl) bind SessionStorage::class
     singleOf(::PkceGeneratorImpl) bind PkceGenerator::class
     singleOf(::AuthUrlBuilderImpl) bind AuthUrlBuilder::class

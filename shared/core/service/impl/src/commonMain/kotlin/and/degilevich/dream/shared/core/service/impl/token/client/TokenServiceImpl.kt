@@ -3,6 +3,7 @@ package and.degilevich.dream.shared.core.service.impl.token.client
 import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.network.api.RemoteClient
 import and.degilevich.dream.shared.core.service.api.model.TokensData
+import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfigurator
 import and.degilevich.dream.shared.core.service.impl.session.model.AuthError
 import and.degilevich.dream.shared.core.service.impl.token.mapper.TokenResponseToDataMapper
 import and.degilevich.dream.shared.core.service.impl.token.model.response.TokenResponse
@@ -18,13 +19,15 @@ import io.ktor.http.Parameters
 
 internal class TokenServiceImpl(
     remoteClient: RemoteClient,
-    private val tokenResponseToDataMapper: TokenResponseToDataMapper
+    private val tokenResponseToDataMapper: TokenResponseToDataMapper,
+    private val requestRetryConfigurator: ServiceRequestRetryConfigurator
 ) : TokenService {
 
     private val client: HttpClient = remoteClient.client.config {
         install(DefaultRequest) {
             url(SharedBuildConfig.AUTH_TOKEN_URL)
         }
+        apply(requestRetryConfigurator::configure)
     }
 
     override suspend fun exchangeCode(

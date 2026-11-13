@@ -2,6 +2,8 @@ package and.degilevich.dream.shared.core.service.impl
 
 import and.degilevich.dream.shared.core.service.api.model.SessionData
 import and.degilevich.dream.shared.core.service.api.model.TokensData
+import and.degilevich.dream.shared.core.service.impl.network.FakeServiceRequestRetryConfigurator
+import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfigurator
 import and.degilevich.dream.shared.core.service.impl.network.fakeRemoteClient
 import and.degilevich.dream.shared.core.service.impl.session.model.AuthError
 import and.degilevich.dream.shared.core.service.impl.session.storage.FakeSessionStorage
@@ -122,16 +124,32 @@ class ApiServiceImplTest {
         sessionCleared shouldBe false
     }
 
+    @Test
+    fun `init - always - configures request retry on the api client once`() {
+        var configureCount = 0
+
+        createApiService(
+            engine = respondingWith(statuses = listOf(HttpStatusCode.OK)),
+            requestRetryConfigurator = FakeServiceRequestRetryConfigurator(onConfigure = { configureCount++ })
+        )
+
+        configureCount shouldBe 1
+    }
+
     private fun createApiService(
         engine: MockEngine,
         sessionStorage: SessionStorage = FakeSessionStorage(),
-        tokenService: TokenService = FakeTokenService()
+        tokenService: TokenService = FakeTokenService(),
+        requestRetryConfigurator: ServiceRequestRetryConfigurator = FakeServiceRequestRetryConfigurator(
+            onConfigure = {}
+        )
     ): ApiServiceImpl {
         return ApiServiceImpl(
             remoteClient = fakeRemoteClient(engine = engine),
             sessionStorage = sessionStorage,
             tokenService = tokenService,
-            tokensDataToBearerMapper = TokensDataToBearerMapperImpl()
+            tokensDataToBearerMapper = TokensDataToBearerMapperImpl(),
+            requestRetryConfigurator = requestRetryConfigurator
         )
     }
 

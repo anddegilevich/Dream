@@ -41,6 +41,7 @@ Source: Spotify for Developers recommended AI-assistant prompt.
 
 * HTTP 429 → respect `Retry-After` header, exponential backoff
 * Never retry immediately or in tight loops
+* Implemented once in `ServiceRequestRetryConfiguratorImpl` (`core/service/impl`), injected into `ApiServiceImpl` + `TokenServiceImpl` — `HttpRequestRetry`, 429 only, max 3 retries, wait = max(`Retry-After`, exponential backoff + jitter), `Retry-After` > 30s fails fast; never add per-feature retry
 
 ## Deprecated endpoints
 

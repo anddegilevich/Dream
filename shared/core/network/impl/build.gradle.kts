@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.project.ktor)
     alias(libs.plugins.project.di)
     alias(libs.plugins.project.serialization)
+    alias(libs.plugins.project.coroutines)
 }
 
 kotlin {
@@ -12,6 +13,9 @@ kotlin {
             implementation(projects.shared.foundation.serialization)
             implementation(projects.shared.logger)
             api(projects.shared.core.network.api)
+        }
+        commonTest.dependencies {
+            implementation(libs.ktor.client.mock)
         }
     }
 

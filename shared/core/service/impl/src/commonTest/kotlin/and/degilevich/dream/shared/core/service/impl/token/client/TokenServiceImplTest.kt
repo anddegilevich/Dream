@@ -2,6 +2,8 @@ package and.degilevich.dream.shared.core.service.impl.token.client
 
 import and.degilevich.dream.SharedBuildConfig
 import and.degilevich.dream.shared.core.service.api.model.TokensData
+import and.degilevich.dream.shared.core.service.impl.network.FakeServiceRequestRetryConfigurator
+import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfigurator
 import and.degilevich.dream.shared.core.service.impl.network.fakeRemoteClient
 import and.degilevich.dream.shared.core.service.impl.session.model.AuthError
 import and.degilevich.dream.shared.core.service.impl.token.mapper.FakeTokenResponseToDataMapper
@@ -270,13 +272,29 @@ class TokenServiceImplTest {
         result.exceptionOrNull().shouldBeInstanceOf<AuthError.GrantRejected>()
     }
 
+    @Test
+    fun `init - always - configures request retry on the token client once`() {
+        var configureCount = 0
+
+        createTokenService(
+            engine = respondingWith(content = ""),
+            requestRetryConfigurator = FakeServiceRequestRetryConfigurator(onConfigure = { configureCount++ })
+        )
+
+        configureCount shouldBe 1
+    }
+
     private fun createTokenService(
         engine: MockEngine,
-        tokenResponseToDataMapper: TokenResponseToDataMapper = FakeTokenResponseToDataMapper()
+        tokenResponseToDataMapper: TokenResponseToDataMapper = FakeTokenResponseToDataMapper(),
+        requestRetryConfigurator: ServiceRequestRetryConfigurator = FakeServiceRequestRetryConfigurator(
+            onConfigure = {}
+        )
     ): TokenServiceImpl {
         return TokenServiceImpl(
             remoteClient = fakeRemoteClient(engine = engine),
-            tokenResponseToDataMapper = tokenResponseToDataMapper
+            tokenResponseToDataMapper = tokenResponseToDataMapper,
+            requestRetryConfigurator = requestRetryConfigurator
         )
     }
 
