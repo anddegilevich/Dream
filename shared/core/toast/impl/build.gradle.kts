@@ -12,6 +12,9 @@ kotlin {
             implementation(projects.shared.core.service.api)
             api(projects.shared.core.toast.api)
         }
+        commonTest.dependencies {
+            implementation(projects.shared.resource.test)
+        }
     }
 
     android {

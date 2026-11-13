@@ -1,9 +1,14 @@
 package and.degilevich.dream.shared.core.service.impl
 
+import and.degilevich.dream.shared.core.service.api.exception.ServiceErrorStatus
+import and.degilevich.dream.shared.core.service.api.exception.ServiceException
 import and.degilevich.dream.shared.core.service.api.model.SessionData
 import and.degilevich.dream.shared.core.service.api.model.TokensData
 import and.degilevich.dream.shared.core.service.impl.network.FakeServiceRequestRetryConfigurator
+import and.degilevich.dream.shared.core.service.impl.network.FakeServiceResponseErrorConfigurator
 import and.degilevich.dream.shared.core.service.impl.network.ServiceRequestRetryConfigurator
+import and.degilevich.dream.shared.core.service.impl.network.ServiceResponseErrorConfigurator
+import and.degilevich.dream.shared.core.service.impl.network.ServiceResponseErrorConfiguratorImpl
 import and.degilevich.dream.shared.core.service.impl.network.fakeRemoteClient
 import and.degilevich.dream.shared.core.service.impl.session.model.AuthError
 import and.degilevich.dream.shared.core.service.impl.session.storage.FakeSessionStorage
@@ -136,11 +141,69 @@ class ApiServiceImplTest {
         configureCount shouldBe 1
     }
 
+    @Test
+    fun `init - always - configures response error handling on the api client once`() {
+        var configureCount = 0
+
+        createApiService(
+            engine = respondingWith(statuses = listOf(HttpStatusCode.OK)),
+            responseErrorConfigurator = FakeServiceResponseErrorConfigurator(onConfigure = { configureCount++ })
+        )
+
+        configureCount shouldBe 1
+    }
+
+    @Test
+    fun `usersApi - access token rejected with real error handling - refreshes and retries`() = runTest {
+        val engine = respondingWith(statuses = listOf(HttpStatusCode.Unauthorized, HttpStatusCode.OK))
+        var stored = session(accessToken = "expired-access-token")
+        val apiService = createApiService(
+            engine = engine,
+            sessionStorage = FakeSessionStorage(
+                onRead = { stored },
+                onSave = { session -> stored = session }
+            ),
+            tokenService = FakeTokenService(
+                onRefresh = { Result.success(tokens(accessToken = "refreshed-access-token")) }
+            ),
+            responseErrorConfigurator = ServiceResponseErrorConfiguratorImpl()
+        )
+
+        apiService.usersApi.getCurrentUsersProfile()
+
+        engine.requestHistory.size shouldBe 2
+        engine.requestHistory.last().headers[HttpHeaders.Authorization] shouldBe "Bearer refreshed-access-token"
+    }
+
+    @Test
+    fun `usersApi - refresh rejected with real error handling - throws unauthorized service exception`() = runTest {
+        val apiService = createApiService(
+            engine = respondingWith(statuses = listOf(HttpStatusCode.Unauthorized, HttpStatusCode.Unauthorized)),
+            sessionStorage = FakeSessionStorage(
+                onRead = { session(accessToken = "expired-access-token") },
+                onClear = {}
+            ),
+            tokenService = FakeTokenService(
+                onRefresh = { Result.failure(AuthError.GrantRejected(cause = null)) }
+            ),
+            responseErrorConfigurator = ServiceResponseErrorConfiguratorImpl()
+        )
+
+        val error = assertFailsWith<ServiceException> {
+            apiService.usersApi.getCurrentUsersProfile()
+        }
+
+        error.status shouldBe ServiceErrorStatus.UNAUTHORIZED
+    }
+
     private fun createApiService(
         engine: MockEngine,
         sessionStorage: SessionStorage = FakeSessionStorage(),
         tokenService: TokenService = FakeTokenService(),
         requestRetryConfigurator: ServiceRequestRetryConfigurator = FakeServiceRequestRetryConfigurator(
+            onConfigure = {}
+        ),
+        responseErrorConfigurator: ServiceResponseErrorConfigurator = FakeServiceResponseErrorConfigurator(
             onConfigure = {}
         )
     ): ApiServiceImpl {
@@ -149,7 +212,8 @@ class ApiServiceImplTest {
             sessionStorage = sessionStorage,
             tokenService = tokenService,
             tokensDataToBearerMapper = TokensDataToBearerMapperImpl(),
-            requestRetryConfigurator = requestRetryConfigurator
+            requestRetryConfigurator = requestRetryConfigurator,
+            responseErrorConfigurator = responseErrorConfigurator
         )
     }
 

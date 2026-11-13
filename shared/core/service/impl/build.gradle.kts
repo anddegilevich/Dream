@@ -15,6 +15,7 @@ kotlin {
             implementation(projects.shared.core.crypto.api)
             implementation(projects.shared.core.webauth.api)
             implementation(projects.shared.foundation.abstraction)
+            implementation(projects.shared.foundation.serialization)
         }
         commonTest.dependencies {
             implementation(libs.ktor.client.mock)

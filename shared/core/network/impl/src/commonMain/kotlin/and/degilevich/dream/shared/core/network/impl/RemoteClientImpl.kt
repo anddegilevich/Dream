@@ -22,6 +22,7 @@ internal class RemoteClientImpl(
         apply(loggingConfigurator::configure)
         apply(contentNegotiationConfigurator::configure)
         apply(timeoutConfigurator::configure)
+        apply(networkErrorConfigurator::configure)
         expectSuccess = true
     }
 }

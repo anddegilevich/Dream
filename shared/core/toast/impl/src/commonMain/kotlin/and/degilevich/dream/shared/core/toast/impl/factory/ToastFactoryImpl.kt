@@ -2,16 +2,17 @@ package and.degilevich.dream.shared.core.toast.impl.factory
 
 import and.degilevich.dream.Res
 import and.degilevich.dream.button_repeat
-import and.degilevich.dream.error
 import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.api.model.ToastActionData
 import and.degilevich.dream.shared.core.toast.api.model.ToastData
 import and.degilevich.dream.shared.core.toast.api.model.ToastDurationData
+import and.degilevich.dream.shared.core.toast.impl.mapper.ErrorToMessageMapper
 import and.degilevich.dream.shared.resource.api.ResourceManager
 import dev.icerock.moko.resources.StringResource
 
 internal class ToastFactoryImpl(
-    private val resourceManager: ResourceManager
+    private val resourceManager: ResourceManager,
+    private val errorToMessageMapper: ErrorToMessageMapper
 ) : ToastFactory {
 
     override fun createMessageToast(message: String): ToastData {
@@ -31,7 +32,7 @@ internal class ToastFactoryImpl(
 
     override fun createMessageToast(error: Throwable): ToastData {
         return createMessageToast(
-            message = mapErrorToMessage(error)
+            message = errorToMessageMapper.map(item = error)
         )
     }
 
@@ -55,12 +56,8 @@ internal class ToastFactoryImpl(
         onRepeat: () -> Unit
     ): ToastData {
         return createRepeatToast(
-            message = mapErrorToMessage(error),
+            message = errorToMessageMapper.map(item = error),
             onRepeat = onRepeat
         )
-    }
-
-    private fun mapErrorToMessage(error: Throwable): String {
-        return error.message ?: resourceManager.getString(Res.strings.error)
     }
 }

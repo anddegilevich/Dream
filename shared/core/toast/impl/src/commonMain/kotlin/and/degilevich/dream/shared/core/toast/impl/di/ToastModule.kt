@@ -8,6 +8,10 @@ import and.degilevich.dream.shared.core.toast.api.factory.ToastFactory
 import and.degilevich.dream.shared.core.toast.impl.channel.ToastChannelImpl
 import and.degilevich.dream.shared.core.toast.impl.controller.ToastControllerImpl
 import and.degilevich.dream.shared.core.toast.impl.factory.ToastFactoryImpl
+import and.degilevich.dream.shared.core.toast.impl.mapper.ErrorToMessageMapper
+import and.degilevich.dream.shared.core.toast.impl.mapper.ErrorToMessageMapperImpl
+import and.degilevich.dream.shared.core.toast.impl.mapper.ServiceExceptionToMessageMapper
+import and.degilevich.dream.shared.core.toast.impl.mapper.ServiceExceptionToMessageMapperImpl
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
@@ -21,5 +25,7 @@ fun toastModule() = module {
         ToastReceiveChannel::class,
         ToastChannel::class
     )
+    factoryOf(::ServiceExceptionToMessageMapperImpl) bind ServiceExceptionToMessageMapper::class
+    factoryOf(::ErrorToMessageMapperImpl) bind ErrorToMessageMapper::class
     factoryOf(::ToastFactoryImpl) bind ToastFactory::class
 }

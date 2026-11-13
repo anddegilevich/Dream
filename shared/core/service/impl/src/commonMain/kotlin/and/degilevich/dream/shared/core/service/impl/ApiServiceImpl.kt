@@ -37,6 +37,7 @@ internal class ApiServiceImpl(
         installDefaultRequest()
         installAuth()
         apply(requestRetryConfigurator::configure)
+        apply(responseErrorConfigurator::configure)
     }
 
     private fun HttpClientConfig<*>.installDefaultRequest() {

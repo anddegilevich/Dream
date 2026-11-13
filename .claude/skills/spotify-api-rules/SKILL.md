@@ -53,6 +53,10 @@ Source: Spotify for Developers recommended AI-assistant prompt.
 
 * Handle every HTTP error code documented in the spec for the endpoint
 * Read returned error message, surface meaningful feedback to user — don't swallow into generic failure
+* Spotify error body `{"error":{"status","message"}}` → `ServiceException(status: ServiceErrorStatus, serviceMessage)` (`core/service/api/exception`), thrown by `ServiceResponseErrorConfigurator` — installed only on `ApiServiceImpl`'s client; token endpoint keeps its OAuth error format + `AuthError` mapping in `TokenServiceImpl`
+* `ServiceErrorStatus` = Spotify's documented error codes (400, 401, 403, 404, 429, 500, 502, 503) + `UNKNOWN`; add a value only when Spotify documents a new code
+* Transport failures are not Spotify-specific: `NetworkTimeoutException` / `NoNetworkConnectionException` (`core/network/api/exception`), thrown by `NetworkErrorConfigurator` on the base `RemoteClient`
+* Spotify error messages are English-only (spec has no locale for errors) → user-facing text comes from localized strings via `ErrorToMessageMapper` (`core/toast/impl`), which delegates `ServiceException` to `ServiceExceptionToMessageMapper` (status → string); `serviceMessage` is the fallback only for statuses without a string (`BAD_REQUEST`, `UNKNOWN`)
 
 ## Developer Terms (`https://developer.spotify.com/terms`)
 

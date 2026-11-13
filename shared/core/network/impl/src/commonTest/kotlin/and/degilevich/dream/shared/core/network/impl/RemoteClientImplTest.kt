@@ -4,8 +4,10 @@ import and.degilevich.dream.shared.core.network.api.RemoteClient
 import and.degilevich.dream.shared.core.network.impl.configurator.ContentNegotiationConfigurator
 import and.degilevich.dream.shared.core.network.impl.configurator.FakeContentNegotiationConfigurator
 import and.degilevich.dream.shared.core.network.impl.configurator.FakeLoggingConfigurator
+import and.degilevich.dream.shared.core.network.impl.configurator.FakeNetworkErrorConfigurator
 import and.degilevich.dream.shared.core.network.impl.configurator.FakeTimeoutConfigurator
 import and.degilevich.dream.shared.core.network.impl.configurator.LoggingConfigurator
+import and.degilevich.dream.shared.core.network.impl.configurator.NetworkErrorConfigurator
 import and.degilevich.dream.shared.core.network.impl.configurator.TimeoutConfigurator
 import and.degilevich.dream.shared.core.network.impl.engine.FakeClientEngineFactory
 import io.kotest.assertions.throwables.shouldThrow
@@ -31,10 +33,11 @@ class RemoteClientImplTest {
             contentNegotiationConfigurator = FakeContentNegotiationConfigurator(
                 onConfigure = { applied.add("contentNegotiation") }
             ),
-            timeoutConfigurator = FakeTimeoutConfigurator(onConfigure = { applied.add("timeout") })
+            timeoutConfigurator = FakeTimeoutConfigurator(onConfigure = { applied.add("timeout") }),
+            networkErrorConfigurator = FakeNetworkErrorConfigurator(onConfigure = { applied.add("networkError") })
         ).client
 
-        applied shouldContainExactly listOf("logging", "contentNegotiation", "timeout")
+        applied shouldContainExactly listOf("logging", "contentNegotiation", "timeout", "networkError")
     }
 
     @Test
@@ -56,13 +59,15 @@ class RemoteClientImplTest {
         contentNegotiationConfigurator: ContentNegotiationConfigurator = FakeContentNegotiationConfigurator(
             onConfigure = {}
         ),
-        timeoutConfigurator: TimeoutConfigurator = FakeTimeoutConfigurator(onConfigure = {})
+        timeoutConfigurator: TimeoutConfigurator = FakeTimeoutConfigurator(onConfigure = {}),
+        networkErrorConfigurator: NetworkErrorConfigurator = FakeNetworkErrorConfigurator(onConfigure = {})
     ): RemoteClient {
         return RemoteClientImpl(
             clientEngineFactory = FakeClientEngineFactory(onCreate = { engine }),
             loggingConfigurator = loggingConfigurator,
             contentNegotiationConfigurator = contentNegotiationConfigurator,
-            timeoutConfigurator = timeoutConfigurator
+            timeoutConfigurator = timeoutConfigurator,
+            networkErrorConfigurator = networkErrorConfigurator
         )
     }
 
