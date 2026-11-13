@@ -27,6 +27,7 @@
     <string name="label_artist">Artist</string>
     <string name="label_album">Album</string>
     <string name="label_track">Track</string>
+    <string name="label_powered_by">powered by</string>
 
     <string name="mask_artist_name">Artist name: %s</string>
 

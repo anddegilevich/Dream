@@ -8,7 +8,6 @@ import and.degilevich.dream.shared.feature.common.component.splash.impl.componen
 import and.degilevich.dream.shared.navigation.api.model.config.ScreenConfig
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.replaceCurrent
-import com.arkivanov.essenty.lifecycle.doOnStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
@@ -24,30 +23,26 @@ internal class SplashDomainComponent(
 
     private val hasActiveSessionUseCase: HasActiveSessionUseCase by inject()
 
-    init {
-        subscribeToLifecycle()
+    override fun handleIntent(intent: SplashIntent) {
+        when (intent) {
+            is SplashIntent.OnIntroFinished -> onIntroFinished()
+        }
     }
 
-    private fun subscribeToLifecycle() {
-        doOnStart {
-            processNavigation()
-        }
+    private fun onIntroFinished() {
+        processNavigation()
     }
 
     private fun processNavigation() = scope.launch {
         val hasActiveSession = withContext(context = Dispatchers.IO) { hasActiveSessionUseCase() }
         if (hasActiveSession) {
-            navigateToHome()
+            replaceSplashWith(ScreenConfig.Home)
         } else {
-            navigateToLogin()
+            replaceSplashWith(ScreenConfig.Login)
         }
     }
 
-    private fun navigateToHome() {
-        navigator.screenNavigator.replaceCurrent(ScreenConfig.Home)
-    }
-
-    private fun navigateToLogin() {
-        navigator.screenNavigator.replaceCurrent(ScreenConfig.Login)
+    private fun replaceSplashWith(destination: ScreenConfig) {
+        navigator.screenNavigator.replaceCurrent(destination)
     }
 }

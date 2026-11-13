@@ -24,6 +24,8 @@ internal class SplashComponentImpl(
 
     @Composable
     override fun Render() {
-        SplashScreen()
+        SplashScreen(
+            onIntent = ::handleIntent
+        )
     }
 }
