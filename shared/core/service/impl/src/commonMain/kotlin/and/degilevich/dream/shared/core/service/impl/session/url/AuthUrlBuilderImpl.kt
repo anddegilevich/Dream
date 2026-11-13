@@ -36,21 +36,17 @@ internal class AuthUrlBuilderImpl : AuthUrlBuilder {
             SpotifyScope.UGC_IMAGE_UPLOAD,
             SpotifyScope.USER_READ_PLAYBACK_STATE,
             SpotifyScope.USER_MODIFY_PLAYBACK_STATE,
-            SpotifyScope.USER_READ_CURRENTLY_PLAYING,
             SpotifyScope.APP_REMOTE_CONTROL,
-            SpotifyScope.STREAMING,
             SpotifyScope.PLAYLIST_READ_PRIVATE,
             SpotifyScope.PLAYLIST_READ_COLLABORATIVE,
             SpotifyScope.PLAYLIST_MODIFY_PRIVATE,
             SpotifyScope.PLAYLIST_MODIFY_PUBLIC,
             SpotifyScope.USER_FOLLOW_MODIFY,
             SpotifyScope.USER_FOLLOW_READ,
-            SpotifyScope.USER_READ_PLAYBACK_POSITION,
             SpotifyScope.USER_TOP_READ,
             SpotifyScope.USER_READ_RECENTLY_PLAYED,
             SpotifyScope.USER_LIBRARY_MODIFY,
             SpotifyScope.USER_LIBRARY_READ,
-            SpotifyScope.USER_READ_EMAIL,
             SpotifyScope.USER_READ_PRIVATE
         )
     }
